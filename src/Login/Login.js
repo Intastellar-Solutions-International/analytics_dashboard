@@ -2,6 +2,7 @@ import "./Login.css";
 import logo from "../components/header/logo.png";
 import API from "../API/api";
 export default function Login() {
+    document.title = "Login | Intastellar Analytics";
     const [email, setEmail] = React.useState();
     const [password, setPassword] = React.useState();
     const [errorMessage, setErrorMessage] = React.useState("");

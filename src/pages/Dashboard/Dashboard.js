@@ -7,6 +7,7 @@ import "./Style.css";
 const { useState, useEffect, useRef } = React;
 
 export default function Dashboard() {
+    document.title = "Dashboard | Intastellar Analytics";
     const ref = useRef(null);
     const [data, setData] = useState(null);
     const [lastUpdated, setLastUpdated] = useState(Math.floor(Date.now() / 100));
