@@ -2,13 +2,18 @@ import Widget from "../../components/widget/widget";
 import Fetch from "../../functions/fetch";
 import API from "../../API/api";
 import Loading from "./Loading";
-const { useState, useEffect } = React;
+const { useState, useEffect, useRef } = React;
 
 export default function TopWidgets() {
     const [data, setData] = useState(null);
-    
+
     useEffect(() => {
-        Fetch(API.getTotalNumber.url, API.getTotalNumber.method).then((data) => setData(data));
+        Fetch(API.getTotalNumber.url, API.getTotalNumber.method).then((data) => setData(data))
+        
+        const id = setInterval(() => {
+            Fetch(API.getTotalNumber.url, API.getTotalNumber.method).then((data) => setData(data))
+        }, 5 * 60 * 1000);
+        return()=>clearInterval(id)
     }, []);
 
     return (
