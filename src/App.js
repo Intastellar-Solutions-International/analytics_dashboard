@@ -12,6 +12,7 @@ const { useState, useEffect } = React;
 
 import Dashboard from "./pages/Dashboard/Dashboard.js";
 export default function App() {
+
     if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined) {
         return (
             <>

@@ -1,11 +1,6 @@
-const FetchData =  async (url, method) => {
-    const response = await fetch(url, {
-        method: method
-    });
-
-    const json = await response.json();
-
-    return json;
+const Fetch = async (url, method) => {
+    const t = fetch(url, { method: method}).then((res) => res.json());
+    return t;
 }
 
-export default FetchData;
+export default Fetch;

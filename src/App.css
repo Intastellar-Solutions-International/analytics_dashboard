@@ -10,3 +10,10 @@ body{
 .grid-container{
     display: grid;
 }
+
+.overvieTotal-num {
+    font-size: 2.7em;
+    margin: 0px;
+    margin-block-start: 1em;
+    color: rgb(239, 239, 239);
+}

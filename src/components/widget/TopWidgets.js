@@ -1,21 +1,21 @@
 import Widget from "../../components/widget/widget";
-import FetchData from "../../functions/fetch";
+import Fetch from "../../functions/fetch";
 import API from "../../API/api";
+import Loading from "./Loading";
+const { useState, useEffect } = React;
 
 export default function TopWidgets() {
-    const data = FetchData(API.getTotalNumber.url, API.getTotalNumber.method).then(data => {
-        return data;
-    });
-
-    if (data) {
-        console.log(data);
-    }
+    const [data, setData] = useState(null);
+    
+    useEffect(() => {
+        Fetch(API.getTotalNumber.url, API.getTotalNumber.method).then((data) => setData(data));
+    }, []);
 
     return (
         <>
-            {(!data) ? <Loading /> : <Widget totalNumber="" type="Website" /> }
-            {(!data) ? <Loading /> : <Widget totalNumber="" type="JS" /> }
-            {(!data) ? <Loading /> : <Widget totalNumber="" type="WordPress" /> }
+            {(!data) ? <Loading /> : <Widget totalNumber={ data.Total } type="Website" /> }
+            {(!data) ? <Loading /> : <Widget totalNumber={ data.JS + "%" } type="JS" /> }
+            {(!data) ? <Loading /> : <Widget totalNumber={ data.WP + "%" } type="WordPress" /> }
         </>
     )
 }

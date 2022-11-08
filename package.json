@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/Intastellar-Solutions-International/analytics_dashboard/issues"
   },
-  "homepage": "https://github.com/Intastellar-Solutions-International/analytics_dashboard#readme"
+  "homepage": "https://github.com/Intastellar-Solutions-International/analytics_dashboard#readme",
+  "dependencies": {
+    "swr": "^1.3.0"
+  },
+  "devDependencies": {
+    "node-loader": "^2.0.0"
+  }
 }

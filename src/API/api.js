@@ -6,6 +6,10 @@ const API = {
     },
     Login: {
         url: `https://apis.intastellaraccounts.com/signin/v2/signin.php`,
+    },
+    getInteractions: {
+        url:  `${PrimaryHost}/analytics/gdpr/getInteractions.php`,
+        method: "GET",
     }
 }
 
