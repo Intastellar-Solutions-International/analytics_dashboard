@@ -1,4 +1,6 @@
 import "./header.css";
+import logo from "./logo.png";
+
 export default function Header() {
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
@@ -7,7 +9,7 @@ export default function Header() {
         <>
             <header className="dashboard-header">
                 <div className="dashboard-profile">
-                    <img className="dashboard-logo" src="https://assets.intastellar-clients.net/bG9nb3MvaW50YXN0ZWxsYXJfc29sdXRpb25zQDJ4LnBuZw==" alt="Intastellar Solutions Logo" />
+                    <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
                     <div className="flex">
                         <img src={profileImage} className="content-img"></img>
                         <p className="dashboard-name">{Name} <br /> { email }</p>
