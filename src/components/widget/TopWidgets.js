@@ -18,7 +18,7 @@ export default function TopWidgets() {
 
     return (
         <>
-            {(!data) ? <Loading /> : <Widget totalNumber={ data.Total } type="Website" /> }
+            {(!data) ? <Loading /> : <Widget overviewTotal={ true } totalNumber={ data.Total } type="Website" /> }
             {(!data) ? <Loading /> : <Widget totalNumber={ data.JS + "%" } type="JS" /> }
             {(!data) ? <Loading /> : <Widget totalNumber={ data.WP + "%" } type="WordPress" /> }
         </>

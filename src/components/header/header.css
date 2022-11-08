@@ -1,5 +1,6 @@
 .dashboard-header {
     width: 100%;
+    max-height: 88px;
     position: fixed;
     top: 0;
     left: 0;
@@ -50,4 +51,38 @@
     background: #fff;
     margin-right: 10px;
     padding: 32px;
+    height: 88px;
+    object-fit: cover;
+}
+
+.collapsed {
+    width: 100px;
+    height: 100%;
+    padding: 15px;
+    background: rgb(63, 63, 63);
+    transition: width .5s ease-in-out;
+}
+
+.collapsed:hover {
+    width: 150px;
+}
+
+.collapsed nav {
+    position: fixed;
+    width: 70px;
+}
+
+.collapsed a {
+    color: #fff;
+    display: block;
+    padding: 15px 0;
+    width: 50px;
+    margin: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: width .5s ease-in-out;
+}
+
+.collapsed:hover a {
+    width: 100%;
 }

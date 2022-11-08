@@ -13,27 +13,34 @@ const { useState, useEffect } = React;
 import Dashboard from "./pages/Dashboard/Dashboard.js";
 export default function App() {
 
-    if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined) {
+    if (JSON.parse(localStorage.getItem("globals"))?.status !== undefined && JSON.parse(localStorage.getItem("globals"))?.status != "admin") {
+        localStorage.removeItem("globals");
+        window.location.href = "/login";
+    }
+
+    if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status == "admin") {
         return (
             <>
                 <Router>
                     <Header />
-                    {/* <Nav /> */}
-                    <Switch>
-                        <Route path="/dashboard" exact>
-                            <Dashboard />
-                        </Route>
-                        <Route path="/websites">
+                    <div className="main-grid">
+                        <Nav />
+                        <Switch>
+                            <Route path="/dashboard" exact>
+                                <Dashboard />
+                            </Route>
+                            <Route path="/websites">
 
-                        </Route>
-                        <Redirect to="/dashboard" />
-                    </Switch>
+                            </Route>
+                            <Redirect to="/login" />
+                        </Switch>
+                    </div>
                 </Router>
             </>
         )
-    } else {
+    } else if(JSON.parse(localStorage.getItem("globals"))?.status == undefined || JSON.parse(localStorage.getItem("globals"))?.status != "admin") {
         return (
-            <Router>
+            <Router path="/login" exact>
                 <Login />
             </Router>
         )

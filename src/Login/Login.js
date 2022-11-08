@@ -1,3 +1,5 @@
+import "./Login.css";
+import logo from "../components/header/logo.png";
 import API from "../API/api";
 export default function Login() {
     const [email, setEmail] = React.useState();
@@ -41,10 +43,13 @@ export default function Login() {
 
     return (
         <>
-            <form onSubmit={ Authenticate }>
-                <input type="email" placeholder="email" onChange={e => { setEmail(e.target.value); }}/>
-                <input type="password" placeholder="password" onChange={e => { setPassword(e.target.value); }} />
-                <button type="submit">Login</button>
+            <form className="loginForm" onSubmit={Authenticate}>
+                <img className="loginForm-logo" src={logo} alt="Intastellar Solutions Logo" />
+                <h1>Login</h1>
+                <p>To signin please use your Intastellar Account</p>
+                <input className="loginForm-inputField" type="email" placeholder="email" onChange={e => { setEmail(e.target.value); }}/>
+                <input className="loginForm-inputField" type="password" placeholder="password" onChange={e => { setPassword(e.target.value); }} />
+                <button className="loginForm-inputField --btn" type="submit">Login</button>
             </form>       
         </>
     )

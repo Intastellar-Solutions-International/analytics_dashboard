@@ -50,7 +50,7 @@ export default function Dashboard() {
                 </div>
                 <div className="">
                     <h2>User Interactions</h2>
-                    {(!data) ? <Loading /> : <Widget totalNumber={ data.Total } type="Total interactions" /> }
+                    {(!data) ? <Loading /> : <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" /> }
                 </div>
                 <div className="grid-container grid-3">
                     {(!data) ? <Loading /> : <Widget totalNumber={data.Accepted + "%"} type="Accepted cookies" />}

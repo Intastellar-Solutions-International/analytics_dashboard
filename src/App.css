@@ -2,13 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
 
+*{
+    box-sizing: border-box;
+}
+
 body{
     background-color: rgb(36, 36, 36);
     color: rgb(197, 197, 197);
     font-family: "Questrial", Arial, Helvetica, sans-serif;
     margin: 0;
-    scroll-padding-top: 100px;
-    padding-top: 100px;
 }
 
 .grid-container{
@@ -20,4 +22,11 @@ body{
     margin: 0px;
     margin-block-start: 1em;
     color: rgb(239, 239, 239);
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: minmax(min-content, max-content) 1fr;
+    scroll-padding-top: 88px;
+    padding-top: 88px;
 }

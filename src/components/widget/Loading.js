@@ -3,7 +3,8 @@ export default function Loading() {
     return (
         <>
             <div className="widget">
-                we are loading data...
+                <h2 className="overvieTotal-num">Loading...</h2>
+                <p>Data is being loaded</p>
             </div>
         </>
     )
