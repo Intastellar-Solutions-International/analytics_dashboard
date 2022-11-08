@@ -1,9 +1,10 @@
 import "./Widget.css";
-export default function Widget() {
+export default function Widget(props) {
     return (
         <>
-            <div class="widget">
-                
+            <div className="widget">
+                <h2 className="overvieTotal-num">{ props?.totalNumber }</h2>
+                <p>{ props?.type }</p>
             </div>
         </>
     )

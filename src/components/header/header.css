@@ -2,6 +2,7 @@
     width: 100%;
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 100;
     display: flex;
     align-items: center;
@@ -9,4 +10,44 @@
     padding: 0px 25px 0px 0px;
     background-color: rgb(63, 63, 63);
     color: rgb(197, 197, 197);
+}
+
+.dashboard-profile {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.clock {
+    color: rgb(197, 197, 197);
+    margin: 0;
+}
+
+.dashboard-name {
+    padding: 0px 20px;
+    font-size: 14px;
+}
+
+.dashboard-header>.dashboard-profile .content-img {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    border-width: 2.5px;
+    border-color: var(--intastellarGold);
+    border-radius: 50%;
+    object-fit: cover;
+    margin: auto;
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);
+}
+
+.dashboard-logo {
+    width: 25%;
+    background: #fff;
+    margin-right: 10px;
+    padding: 32px;
 }

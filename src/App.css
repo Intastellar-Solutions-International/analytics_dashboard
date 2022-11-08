@@ -1,3 +1,12 @@
 body{
     background-color: rgb(36, 36, 36);
+    color: rgb(197, 197, 197);
+    font-family: "Questrial", Arial, Helvetica, sans-serif;
+    margin: 0;
+    scroll-padding-top: 100px;
+    padding-top: 100px;
+}
+
+.grid-container{
+    display: grid;
 }
