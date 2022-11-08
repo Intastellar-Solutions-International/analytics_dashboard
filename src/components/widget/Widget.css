@@ -1,0 +1,14 @@
+.widget{
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+    background: radial-gradient(circle at top, rgb(101, 101, 101) -10%, rgb(48, 48, 48));
+    border-radius: 10px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    /* min-height: 200px; */
+    margin: 20px 0px;
+    color: rgb(197, 197, 197);
+    text-align: center;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
