@@ -8,9 +8,9 @@ const Link =  window.ReactRouterDOM.Link;
 const Prompt =  window.ReactRouterDOM.Prompt;
 const Switch = window.ReactRouterDOM.Switch;
 const Redirect = window.ReactRouterDOM.Redirect;
-const { useState, useEffect } = React;
 
 import Dashboard from "./pages/Dashboard/Dashboard.js";
+import Websites from "./pages/Websites/Websites.js";
 export default function App() {
 
     if (JSON.parse(localStorage.getItem("globals"))?.status !== undefined && JSON.parse(localStorage.getItem("globals"))?.status != "admin") {
@@ -29,8 +29,8 @@ export default function App() {
                             <Route path="/dashboard" exact>
                                 <Dashboard />
                             </Route>
-                            <Route path="/websites">
-
+                            <Route path="/websites" exact>
+                                <Websites />
                             </Route>
                             <Redirect to="/login" />
                         </Switch>

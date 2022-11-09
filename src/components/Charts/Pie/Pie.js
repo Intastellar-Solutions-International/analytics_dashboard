@@ -5,10 +5,10 @@ export default function PieChart(props) {
     return (
         <>
             <div className="pieChart">
-                {data?.map((chart) => {
+                {data?.map((chart, key) => {
                     return (
                         <>
-                            <div className=""></div>
+                            <div className="" key={key}>{ data[chart] }</div>
                         </>
                     )
                 })}
