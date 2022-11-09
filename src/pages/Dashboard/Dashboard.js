@@ -5,6 +5,8 @@ import Widget from "../../components/widget/widget.js";
 import Loading from "../../components/widget/Loading.js";
 import "./Style.css";
 import PieChart from "../../components/Charts/Pie/Pie.js";
+import WorldMap from "../../components/Charts/WorldMap/WorldMap.js";
+
 const { useState, useEffect, useRef } = React;
 
 export default function Dashboard() {
@@ -59,6 +61,18 @@ export default function Dashboard() {
                     {(!data) ? <Loading /> : <Widget totalNumber={data.Marketing + "%"} type="Accepted only Marketing" />}
                     {(!data) ? <Loading /> : <Widget totalNumber={data.Functional + "%"} type="Accepted only Functional" />}
                     {(!data) ? <Loading /> : <Widget totalNumber={ data.Statics + "%"} type="Accepted only Statics" /> }
+                </div>
+                <div className="grid-container grid-3 widget">
+                    <h2>World Map</h2>
+                    {(!data) ? <Loading /> :
+                    <WorldMap data={{
+                        Marketing: data.Marketing,
+                        Functional: data.Functional,
+                        Statistic: data.Statics,
+                        Accepted: data.Accepted,
+                        Declined: data.Declined
+                        }} />
+                    }
                 </div>
                 <div className="grid-container grid-3 widget">
                     {(!data) ? <Loading /> :

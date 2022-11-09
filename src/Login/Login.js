@@ -55,7 +55,6 @@ export default function Login() {
                         <input className="loginForm-inputField" type="password" placeholder="password" onChange={e => { setPassword(e.target.value); }} />
                     </div>
                     <button className="loginForm-inputField --btn" type="submit">Login</button>
-                    <a href="#" className="loginForm-forget">Forgot password?</a>
                 </form>
             </div>       
         </>
