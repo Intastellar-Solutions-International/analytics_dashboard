@@ -4,6 +4,7 @@ import API from "../../API/api";
 import Widget from "../../components/widget/widget.js";
 import Loading from "../../components/widget/Loading.js";
 import "./Style.css";
+import PieChart from "../../components/Charts/Pie/Pie.js";
 const { useState, useEffect, useRef } = React;
 
 export default function Dashboard() {
@@ -46,9 +47,6 @@ export default function Dashboard() {
                 <div className="grid-container grid-3">
                     <TopWidgets />
                 </div>
-                <div className="grid-container grid-3">
-                    
-                </div>
                 <div className="">
                     <h2>User Interactions</h2>
                     {(!data) ? <Loading /> : <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" /> }
@@ -61,6 +59,17 @@ export default function Dashboard() {
                     {(!data) ? <Loading /> : <Widget totalNumber={data.Marketing + "%"} type="Accepted only Marketing" />}
                     {(!data) ? <Loading /> : <Widget totalNumber={data.Functional + "%"} type="Accepted only Functional" />}
                     {(!data) ? <Loading /> : <Widget totalNumber={ data.Statics + "%"} type="Accepted only Statics" /> }
+                </div>
+                <div className="grid-container grid-3 widget">
+                    {(!data) ? <Loading /> :
+                    <PieChart data={{
+                        Marketing: data.Marketing,
+                        Functional: data.Functional,
+                        Statistic: data.Statics,
+                        Accepted: data.Accepted,
+                        Declined: data.Declined
+                        }} />
+                    }
                 </div>
             </main>
         </>

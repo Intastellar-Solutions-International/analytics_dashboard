@@ -44,15 +44,17 @@ export default function Login() {
 
     return (
         <>
-            <form className="loginForm" onSubmit={Authenticate}>
-                <img className="loginForm-logo" src={logo} alt="Intastellar Solutions Logo" />
-                <h1 className="loginForm-title">Login</h1>
-                <p className="loginForm-service">Intastellar Analytics</p>
-                <p>To signin please use your Intastellar Account</p>
-                <input className="loginForm-inputField" type="email" placeholder="email" onChange={e => { setEmail(e.target.value); }}/>
-                <input className="loginForm-inputField" type="password" placeholder="password" onChange={e => { setPassword(e.target.value); }} />
-                <button className="loginForm-inputField --btn" type="submit">Login</button>
-            </form>       
+            <div className="loginForm-container">
+                <form className="loginForm" onSubmit={Authenticate}>
+                    <img className="loginForm-logo" src={logo} alt="Intastellar Solutions Logo" />
+                    <h1 className="loginForm-title">Login</h1>
+                    <p className="loginForm-service">Intastellar Analytics</p>
+                    <p>To signin please use your Intastellar Account</p>
+                    <input className="loginForm-inputField" type="email" placeholder="email" onChange={e => { setEmail(e.target.value); }}/>
+                    <input className="loginForm-inputField" type="password" placeholder="password" onChange={e => { setPassword(e.target.value); }} />
+                    <button className="loginForm-inputField --btn" type="submit">Login</button>
+                </form>
+            </div>       
         </>
     )
 }

@@ -48,11 +48,11 @@
 
 .dashboard-logo {
     width: 25%;
-    background: #fff;
+    filter: invert(100);
     margin-right: 10px;
     padding: 32px;
     height: 88px;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .collapsed {
