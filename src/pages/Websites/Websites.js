@@ -10,7 +10,7 @@ export default function Websites() {
 
     useEffect(() => {
         Fetch(API.getDomains.url, API.getDomains.method, API.getDomains.headers).then((data) => {
-            setData(data)
+            setData(data);
             setUpdated("Now");
             setLastUpdated(Math.floor(Date.now() / 1000));
         });
@@ -38,13 +38,14 @@ export default function Websites() {
 
         return()=>clearInterval(id)
     }, [lastUpdated, setLastUpdated]);
+
     return (
         <>
             <main className="dashboard-content">
                 <h2>Analytics Dashboard</h2>
                 <h3>List of all Websites</h3>
                 {
-                    (!data) ? <Loading /> : data.map(
+                    (!data) ? <Loading /> : data?.map(
                         (domain) => {
                             return (
                                 <>
