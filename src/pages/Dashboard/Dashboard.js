@@ -17,7 +17,7 @@ export default function Dashboard() {
     const [updated, setUpdated] = useState("");
 
     useEffect(() => {
-        Fetch(API.getInteractions.url, API.getInteractions.method, API.getTotalNumber.headers).then((data) => {
+        Fetch(API.getInteractions.url, API.getInteractions.method, API.getInteractions.headers).then((data) => {
             setData(data)
             setUpdated("Now");
             setLastUpdated(Math.floor(Date.now() / 1000));
@@ -29,7 +29,13 @@ export default function Dashboard() {
         }, 1000);
 
         const id = setInterval(() => {
-            Fetch(API.getInteractions.url, API.getInteractions.method, API.getTotalNumber.headers).then((data) => {
+            Fetch(API.getInteractions.url, API.getInteractions.method, API.getInteractions.headers).then((data) => {
+                if (data === "Err_Login_Expired") {
+                    localStorage.removeItem("globals");
+                    
+                    window.location.href = "/login";
+                    return;
+                }
                 setData(data);
                 clearInterval(interval1);
                 setUpdated("Now");
@@ -43,7 +49,7 @@ export default function Dashboard() {
 
     return (
         <>
-            <main className="dashboard-content">
+            <div className="dashboard-content">
                 <h2>Analytics Dashboard</h2>
                 <p>Updated: { updated }</p>
                 <div className="grid-container grid-3">
@@ -85,7 +91,7 @@ export default function Dashboard() {
                         }} />
                     }
                 </div>
-            </main>
+            </div>
         </>
     )
 }

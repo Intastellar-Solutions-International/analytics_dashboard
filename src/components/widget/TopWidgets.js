@@ -11,7 +11,7 @@ export default function TopWidgets() {
         Fetch(API.getTotalNumber.url, API.getTotalNumber.method, API.getTotalNumber.headers).then((data) => {
             if (data === "Err_Login_Expired") {
                 localStorage.removeItem("globals");
-                window.location.reload();
+                window.location.href = "/login";
                 return;
             }
             setData(data)

@@ -5,12 +5,14 @@ export default function PieChart(props) {
     return (
         <>
             <div className="pieChart">
-                {data?.map((chart, key) => {
-                    return (
-                        <>
-                            <div className="" key={key}>{ data[chart] }</div>
-                        </>
-                    )
+                {data?.map((chart, key, id) => {
+                    id?.map((chart, key) => {
+                        return (
+                            <>
+                                <div className="" key={key}>{ chart }</div>
+                            </>
+                        )
+                    });
                 })}
             </div>
         </>

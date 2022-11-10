@@ -18,6 +18,13 @@ const API = {
         headers: {
             "Authorization": "Basic " + JSON.parse(localStorage.getItem("globals"))?.token
         }
+    },
+    getDomains: {
+        url: `${PrimaryHost}/analytics/gdpr/getDomains.php`,
+        method: "GET",
+        headers: {
+            "Authorization": "Basic " + JSON.parse(localStorage.getItem("globals"))?.token
+        }
     }
 }
 
