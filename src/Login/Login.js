@@ -42,6 +42,15 @@ export default function Login() {
         })
     };
 
+    const checkMail = function (mail) {
+        const res = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (res.test(email)) {
+            setDisplay(true)
+            return;
+        }
+        setDisplay(false);
+    }
+
     return (
         <>
             <div className="loginForm-container">
@@ -49,7 +58,7 @@ export default function Login() {
                     <img className="loginForm-logo" src={logo} alt="Intastellar Solutions Logo" />
                     <h1 className="loginForm-title">Login</h1>
                     <label>Email:</label>
-                    <input className="loginForm-inputField" type="email" placeholder="email" onChange={e => { setEmail(e.target.value); }} />
+                    <input className="loginForm-inputField" type="email" placeholder="email" onChange={e => { setEmail(e.target.value); checkMail(e.target.value) }} />
                     <div style={{display: (display) ? "block" : "none"}}>
                         <label>Password:</label>
                         <input className="loginForm-inputField" type="password" placeholder="password" onChange={e => { setPassword(e.target.value); }} />

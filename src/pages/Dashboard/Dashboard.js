@@ -17,7 +17,7 @@ export default function Dashboard() {
     const [updated, setUpdated] = useState("");
 
     useEffect(() => {
-        Fetch(API.getInteractions.url, API.getInteractions.method).then((data) => {
+        Fetch(API.getInteractions.url, API.getInteractions.method, API.getTotalNumber.headers).then((data) => {
             setData(data)
             setUpdated("Now");
             setLastUpdated(Math.floor(Date.now() / 1000));
@@ -29,7 +29,7 @@ export default function Dashboard() {
         }, 1000);
 
         const id = setInterval(() => {
-            Fetch(API.getInteractions.url, API.getInteractions.method).then((data) => {
+            Fetch(API.getInteractions.url, API.getInteractions.method, API.getTotalNumber.headers).then((data) => {
                 setData(data);
                 clearInterval(interval1);
                 setUpdated("Now");

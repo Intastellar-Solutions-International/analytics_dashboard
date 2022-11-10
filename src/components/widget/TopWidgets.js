@@ -8,10 +8,19 @@ export default function TopWidgets() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        Fetch(API.getTotalNumber.url, API.getTotalNumber.method).then((data) => setData(data))
+        Fetch(API.getTotalNumber.url, API.getTotalNumber.method, API.getTotalNumber.headers).then((data) => {
+            if (data === "Err_Login_Expired") {
+                localStorage.removeItem("globals");
+                window.location.reload();
+                return;
+            }
+            setData(data)
+        })
         
         const id = setInterval(() => {
-            Fetch(API.getTotalNumber.url, API.getTotalNumber.method).then((data) => setData(data))
+            Fetch(API.getTotalNumber.url, API.getTotalNumber.method, API.getTotalNumber.headers).then((data) => {
+                setData(data)
+            })
         }, 5 * 60 * 1000);
         return()=>clearInterval(id)
     }, []);
