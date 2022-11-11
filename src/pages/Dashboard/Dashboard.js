@@ -5,7 +5,7 @@ import Widget from "../../components/widget/widget.js";
 import Loading from "../../components/widget/Loading.js";
 import "./Style.css";
 import PieChart from "../../components/Charts/Pie/Pie.js";
-import WorldMap from "../../components/Charts/WorldMap/WorldMap.js";
+import Map from "../../components/Charts/WorldMap/WorldMap.js";
 
 const { useState, useEffect, useRef } = React;
 
@@ -51,12 +51,12 @@ export default function Dashboard() {
         <>
             <div className="dashboard-content">
                 <h2>Analytics Dashboard</h2>
-                <p>Updated: { updated }</p>
+                <p>Updated: {updated}</p>
                 <div className="grid-container grid-3">
                     <TopWidgets />
                 </div>
                 <div className="">
-                    <h2>User Interactions</h2>
+                    <h2>Data of user interaction</h2>
                     {(!data) ? <Loading /> : <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" /> }
                 </div>
                 <div className="grid-container grid-3">
@@ -68,17 +68,24 @@ export default function Dashboard() {
                     {(!data) ? <Loading /> : <Widget totalNumber={data.Functional + "%"} type="Accepted only Functional" />}
                     {(!data) ? <Loading /> : <Widget totalNumber={ data.Statics + "%"} type="Accepted only Statics" /> }
                 </div>
-                <div className="grid-container grid-3 widget">
-                    <h2>World Map</h2>
-                    {(!data) ? <Loading /> :
-                    <WorldMap data={{
-                        Marketing: data.Marketing,
-                        Functional: data.Functional,
-                        Statistic: data.Statics,
-                        Accepted: data.Accepted,
-                        Declined: data.Declined
-                        }} />
-                    }
+                <div>
+                    <section className="grid-container grid-3">
+                        {(!data) ? <Loading /> :
+                            <section className="widget">
+                                <h2>List of countries</h2>
+                                {
+                                    <Map data={{
+                                        Marketing: data.Marketing,
+                                        Functional: data.Functional,
+                                        Statistic: data.Statics,
+                                        Accepted: data.Accepted,
+                                        Declined: data.Declined,
+                                        Countries: data.Countries
+                                    }} />
+                                }
+                            </section>
+                        }
+                    </section>
                 </div>
                 <div className="grid-container grid-3 widget">
                     {(!data) ? <Loading /> :

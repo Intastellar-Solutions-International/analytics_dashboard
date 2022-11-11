@@ -1,0 +1,21 @@
+.map-selected {
+    fill: #E3DA37;
+}
+  
+.map-unselected {
+    fill: #699EAA;
+}
+
+.map-selected:hover, .map-unselected:hover {
+    cursor: pointer;
+}
+
+.countryStats{
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.country{
+    padding: 20px 0px;
+}

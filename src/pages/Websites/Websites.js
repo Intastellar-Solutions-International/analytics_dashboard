@@ -42,19 +42,21 @@ export default function Websites() {
     return (
         <>
             <main className="dashboard-content">
-                <h2>Analytics Dashboard</h2>
-                <h3>List of all Websites</h3>
-                {
-                    (!data) ? <Loading /> : data?.map(
-                        (domain) => {
-                            return (
-                                <>
-                                    <a href={ "http://" + domain }>{domain}</a><br />
-                                </>
-                            )
-                        }
-                    )
-                }
+                <h2>Analytics</h2>
+                <section className="widget">
+                    <h3>List of all Websites</h3>
+                    {
+                        (!data) ? <Loading /> : data?.map(
+                            (domain) => {
+                                return (
+                                    <>
+                                        <a className="link" href={ "http://" + domain }>{domain}</a><br />
+                                    </>
+                                )
+                            }
+                        )
+                    }
+                </section>
             </main>
         </>
     )

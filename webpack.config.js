@@ -1,19 +1,18 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+const client = {
   entry: path.resolve(__dirname, 'index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
     publicPath: '/'
   },
-    mode: "development",
+  mode: "development",
   watch: true,
   watchOptions: {
     ignored: /node_modules/,
   },
-  
   devServer: {
     historyApiFallback: true,
   },
@@ -22,8 +21,11 @@ module.exports = {
       template: "src/index.html"
     })
   ],
-  node: {
-    __dirname: false,
+  resolve: {
+      modules: [
+        'node_modules',
+        path.resolve('node_modules')
+      ]
   },
   module: {
       rules: [
@@ -64,3 +66,5 @@ module.exports = {
     ]
   },
 };
+
+module.exports = [client]

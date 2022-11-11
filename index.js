@@ -1,5 +1,5 @@
 import App from "./src/App.js";
-ReactDOM.render(
-    <App />,
-    document.getElementById('app')
-);
+const createRoot = window.ReactDOM.createRoot
+const container = document.getElementById('app');
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(<App tab="home" />);

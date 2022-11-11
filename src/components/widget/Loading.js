@@ -1,10 +1,11 @@
 import "./Widget.css";
+import "./Loading.css";
 export default function Loading() {
     return (
         <>
             <div className="widget">
-                <h2 className="overvieTotal-num">Loading...</h2>
-                <p>Data is being loaded</p>
+                <div className="bigNumIsLoading"></div>
+                <div className="smallIsLoading"></div>
             </div>
         </>
     )
