@@ -13,11 +13,6 @@ import Dashboard from "./pages/Dashboard/Dashboard.js";
 import Websites from "./pages/Websites/Websites.js";
 export default function App() {
 
-    /* if (JSON.parse(localStorage.getItem("globals"))?.status !== undefined && JSON.parse(localStorage.getItem("globals"))?.status != "admin") {
-        localStorage.removeItem("globals");
-        window.location.href = "/login";
-    } */
-
     if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status == "admin") {
         return (
             <>
