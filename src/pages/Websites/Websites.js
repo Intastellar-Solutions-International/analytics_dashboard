@@ -55,7 +55,7 @@ export default function Websites() {
                             (domain) => {
                                 return (
                                     <>
-                                        <a className="link widget" href={ "http://" + domain } target="_blank" rel="noopener nofollow noreferer">{domain}</a><br />
+                                        <a className="link widget" href={ "http://" + domain } target="_blank" rel="noopener nofollow noreferer">{domain}</a>
                                     </>
                                 )
                             }
