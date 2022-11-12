@@ -1,23 +1,28 @@
 .loginForm-container{
     display: grid;
+    grid-template-columns: 1fr .85fr;
     height: 100vh;
-    place-content: center;
     width: 100%;
     text-align: center;
-    background: #c09f53;
+    background-color: #c09f53;
+    background-image: url("https://www.intastellaraccounts.com/images/AdobeStock_317238161.jpeg");
+    background-position: left;
+    background-size: cover;
+    background-blend-mode: multiply;
 }
 .loginForm{
     width: 100%;
-    max-width: 450px;
+    height: 100%;
     margin: auto;
     background: radial-gradient(circle at top, rgb(101, 101, 101) -10%, rgb(48, 48, 48));
-    padding: 30px 30px 60px;
+    padding: 80px;
     box-sizing: border-box;
-    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     color: rgb(234, 234, 234);
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
-    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 .loginForm label{
@@ -44,10 +49,14 @@
 }
 
 .loginForm-logo{
-    width: 70%;
+    width: 50%;
     margin: auto;
     padding: 20px 15px;
-    filter: invert(100);
+    filter: invert(100) brightness(100);
+}
+
+.loginForm-logo.--hideMobile{
+    display: none;
 }
 
 .loginForm-inputField.--btn{
@@ -60,10 +69,11 @@
 }
 
 .loginForm-title{
-    font-size: 1.4em;
+    font-size: 1.7em;
     text-align: left;
-    padding: 15px 5px;
+    padding: 15px 0px;
     width: 50%;
+    text-transform: uppercase;
     margin-bottom: -2px;
 }
 
