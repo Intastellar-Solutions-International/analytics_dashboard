@@ -1,4 +1,4 @@
-import { PrimaryHost } from "./host";
+import { PrimaryHost, LoginHost } from "./host";
 import Authentication from "../Authentication/Auth";
 
 const API = {
@@ -10,7 +10,7 @@ const API = {
         }
     },
     Login: {
-        url: `https://apis.intastellaraccounts.com/signin/v2/signin.php`,
+        url: `${LoginHost}/signin/v2/signin.php`,
     },
     getInteractions: {
         url:  `${PrimaryHost}/analytics/gdpr/getInteractions.php`,
