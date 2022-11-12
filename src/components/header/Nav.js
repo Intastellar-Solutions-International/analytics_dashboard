@@ -16,7 +16,7 @@ export default function Nav() {
                     <button className="expandBtn" onClick={() => Expand() }>Expand</button>
                     <Link className={"navItems" + (window.location.href.split("/")[3] === "dashboard" ? " --active" : "")} to="/dashboard"><i className="dashboard-icons dashboard"></i> Dashboard</Link>
                     <Link className={"navItems" + (window.location.href.split("/")[3] === "websites" ? " --active" : "")} to="/websites"><i className="dashboard-icons websites"></i> Websites</Link>
-                    <button className="" onClick={() => Authentication.Logout()}>Logout</button>
+                    <button className="navLogout" onClick={() => Authentication.Logout()}>Logout</button>
                 </nav>
             </aside>
         </>
