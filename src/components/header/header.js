@@ -14,7 +14,7 @@ export default function Header() {
                     <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
                     <div className="flex" onClick={Authentication.Logout}>
                         <img src={profileImage} className="content-img"></img>
-                        <p className="dashboard-name">{Name} <br /> { email }</p>
+                        <p className="dashboard-name">{Name}</p>
                     </div>
                 </div>
             </header>
