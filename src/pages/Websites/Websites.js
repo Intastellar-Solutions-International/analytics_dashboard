@@ -10,6 +10,11 @@ export default function Websites() {
 
     useEffect(() => {
         Fetch(API.getDomains.url, API.getDomains.method, API.getDomains.headers).then((data) => {
+            if (data === "Err_Login_Expired") {
+                localStorage.removeItem("globals");
+                window.location.href = "/login";
+                return;
+            }
             setData(data);
             setUpdated("Now");
             setLastUpdated(Math.floor(Date.now() / 1000));
@@ -43,14 +48,14 @@ export default function Websites() {
         <>
             <main className="dashboard-content">
                 <h2>Analytics</h2>
-                <section className="widget">
-                    <h3>List of all Websites</h3>
+                <h3>List of all Websites</h3>
+                <section className="grid-container grid-3">
                     {
                         (!data) ? <Loading /> : data?.map(
                             (domain) => {
                                 return (
                                     <>
-                                        <a className="link" href={ "http://" + domain } target="_blank" rel="noopener nofollow noreferer">{domain}</a><br />
+                                        <a className="link widget" href={ "http://" + domain } target="_blank" rel="noopener nofollow noreferer">{domain}</a><br />
                                     </>
                                 )
                             }
