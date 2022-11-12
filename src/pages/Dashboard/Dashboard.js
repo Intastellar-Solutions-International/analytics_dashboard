@@ -4,9 +4,7 @@ import API from "../../API/api";
 import Widget from "../../components/widget/widget.js";
 import Loading from "../../components/widget/Loading.js";
 import "./Style.css";
-import PieChart from "../../components/Charts/Pie/Pie.js";
 import Map from "../../components/Charts/WorldMap/WorldMap.js";
-
 const { useState, useEffect, useRef } = React;
 
 export default function Dashboard() {
@@ -66,13 +64,20 @@ export default function Dashboard() {
                 <div className="grid-container grid-3">
                     {(!data) ? <Loading /> : <Widget totalNumber={data.Marketing + "%"} type="Accepted only Marketing" />}
                     {(!data) ? <Loading /> : <Widget totalNumber={data.Functional + "%"} type="Accepted only Functional" />}
-                    {(!data) ? <Loading /> : <Widget totalNumber={ data.Statics + "%"} type="Accepted only Statics" /> }
+                    {(!data) ? <Loading /> : <Widget totalNumber={data.Statics + "%"} type="Accepted only Statics" />}
+                    {/* {(!data) ? <Loading /> : <Pie data={{
+                        Accepted: data.Accepted,
+                        Declined: data.Declined,
+                        Marketing: data.Marketing,
+                        Functional: data.Functional,
+                        Statics: data.Statics
+                    }} />} */}
                 </div>
                 <div>
                     <section className="grid-container grid-3">
                         {(!data) ? <Loading /> :
-                            <section className="widget">
-                                <h2>List of countries</h2>
+                            <section>
+                                <h3>User interactions based on country</h3>
                                 {
                                     <Map data={{
                                         Marketing: data.Marketing,
@@ -87,7 +92,7 @@ export default function Dashboard() {
                         }
                     </section>
                 </div>
-                <div className="grid-container grid-3 widget">
+                {/* <div className="grid-container grid-3 widget">
                     {(!data) ? <Loading /> :
                     <PieChart data={{
                         Marketing: data.Marketing,
@@ -97,7 +102,7 @@ export default function Dashboard() {
                         Declined: data.Declined
                         }} />
                     }
-                </div>
+                </div> */}
             </div>
         </>
     )

@@ -50,7 +50,7 @@ export default function Websites() {
                             (domain) => {
                                 return (
                                     <>
-                                        <a className="link" href={ "http://" + domain }>{domain}</a><br />
+                                        <a className="link" href={ "http://" + domain } target="_blank" rel="noopener nofollow noreferer">{domain}</a><br />
                                     </>
                                 )
                             }

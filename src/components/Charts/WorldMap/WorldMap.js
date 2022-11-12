@@ -4,23 +4,23 @@ export default function Map(props) {
    const countries = data.Countries;
 
    return (
-      <>
+      <div className="grid-container grid-3">
          {
-            countries.map((country, key) => {
+            countries?.map((country, key) => {
                return (
-                  <div className="country" key={key}>
+                  <div className="widget overviewTotal" key={key}>
                      <h3>{(country.country != "") ? country.country : "Unknown"}</h3>
+                     <h4>Total: {country.num.total}</h4>
                      <section className="countryStats">
-                        <p>Total: {country.num}</p>
-                        <p>Accepted: {country.accepted}%</p>
-                        <p>Declined: {country.declined}%</p>
-                        <p>Functional: {country.functional}%</p>
-                        <p>Marketing: {country.marketing}%</p>
-                        <p>Statics: {country.statics}%</p>
+                        <p>Accepted <br />{country.accepted}% is { (country.num.accept === null ) ? "0" : country.num.accept }</p>
+                        <p>Declined: <br />{country.declined}% is { (country.num.decline === null ) ? "0" : country.num.decline  }</p>
+                        <p>Functional: <br />{country.functional}% is { (country.num.functional === null) ? "0" : country.num.functional }</p>
+                        <p>Marketing: <br />{country.marketing}% is { (country.num.marketing === null ) ? "0" : country.num.marketing }</p>
+                        <p>Statics: <br />{country.statics}% is { (country.num.statics === null ) ? "0" : country.num.statics }</p>
                      </section>
                   </div>)
             })
          }
-      </>
+      </div>
    )
 }
