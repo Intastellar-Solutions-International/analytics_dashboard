@@ -55,6 +55,7 @@ export default function Dashboard() {
                 </div>
                 <div className="">
                     <h2>Data of user interaction</h2>
+                    <p>Updated: {updated}</p>
                     {(!data) ? <Loading /> : <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" /> }
                 </div>
                 <div className="grid-container grid-3">
@@ -74,10 +75,11 @@ export default function Dashboard() {
                     }} />} */}
                 </div>
                 <div>
-                    <section className="grid-container grid-3">
+                    <section>
                         {(!data) ? <Loading /> :
                             <section>
                                 <h3>User interactions based on country</h3>
+                                <p>Updated: {updated}</p>
                                 {
                                     <Map data={{
                                         Marketing: data.Marketing,
