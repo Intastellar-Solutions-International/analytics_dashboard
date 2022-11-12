@@ -1,49 +1,18 @@
 import "./Login.css";
 import logo from "../components/header/logo.png";
 import API from "../API/api";
+import Authentication from "../Authentication/Auth";
 export default function Login() {
     document.title = "Login | Intastellar Analytics";
     const [email, setEmail] = React.useState();
     const [password, setPassword] = React.useState();
     const [errorMessage, setErrorMessage] = React.useState(null);
 
-    const Authenticate = async (e) => {
-        e.preventDefault();
-
-        fetch(API.Login.url, {
-            withCredentials: false,
-            method: "POST",
-            headers: {
-                'LoginType': 'employee',
-                'Content-Type': 'application/json; charset=utf-8'
-            },
-            body: JSON.stringify({
-                email: email,
-                password: password
-            })
-        }).then((response) => {
-            return response.json();
-        }).then(response => {
-            if (response === "Err_Logon_Fail") {
-                setErrorMessage("We having trouble to log you in");
-                return;
-            }
-
-            if (response === "Err_Logon_Deny") {
-                setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Alsense Account Manager for assistance");
-                return;
-            }
-
-            localStorage.setItem("globals", JSON.stringify(response));
-            window.location.href = "/dashboard";
-
-        })
-    };
 
     return (
         <>
             <div className="loginForm-container">
-                <form className="loginForm" onSubmit={Authenticate}>
+                <form className="loginForm" onSubmit={(e) => { e.preventDefault(), Authentication.Login(API.Login.url, email, password, setErrorMessage) }}>
                     <img className="loginForm-logo" src={logo} alt="Intastellar Solutions Logo" />
                     <h1 className="loginForm-title">Login</h1>
                     <label>{(errorMessage != null) ? errorMessage : null }</label>

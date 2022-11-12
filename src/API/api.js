@@ -1,12 +1,12 @@
 import { PrimaryHost } from "./host";
-
+import Authentication from "../Authentication/Auth";
 
 const API = {
     getTotalNumber: {
         url:  `${PrimaryHost}/analytics/gdpr/getTotalNumber.php`,
         method: "GET",
         headers: {
-            "Authorization": "Basic " + JSON.parse(localStorage.getItem("globals"))?.token
+            "Authorization": Authentication.getToken()
         }
     },
     Login: {
@@ -16,14 +16,14 @@ const API = {
         url:  `${PrimaryHost}/analytics/gdpr/getInteractions.php`,
         method: "GET",
         headers: {
-            "Authorization": "Basic " + JSON.parse(localStorage.getItem("globals"))?.token
+            "Authorization": Authentication.getToken()
         }
     },
     getDomains: {
         url: `${PrimaryHost}/analytics/gdpr/getDomains.php`,
         method: "GET",
         headers: {
-            "Authorization": "Basic " + JSON.parse(localStorage.getItem("globals"))?.token
+            "Authorization": Authentication.getToken()
         }
     }
 }
