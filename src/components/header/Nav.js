@@ -12,8 +12,8 @@ export default function Nav() {
     return (
         <>
             <aside className="sidebar">
-                <button className="expandBtn" onClick={() => Expand() }>Expand</button>
                 <nav className="collapsed">
+                    <button className="expandBtn" onClick={() => Expand() }>Expand</button>
                     <Link className={"navItems" + (window.location.href.split("/")[3] === "dashboard" ? " --active" : "")} to="/dashboard"><i className="dashboard-icons dashboard"></i> Dashboard</Link>
                     <Link className={"navItems" + (window.location.href.split("/")[3] === "websites" ? " --active" : "")} to="/websites"><i className="dashboard-icons websites"></i> Websites</Link>
                     <button className="" onClick={() => Authentication.Logout()}>Logout</button>
