@@ -103,5 +103,10 @@ body{
 
     .loginForm{
         padding: 40px;
+        background: radial-gradient(circle at top, rgba(188, 188, 188, .6) -10%, rgba(48, 48, 48, .4));
+    }
+
+    .loginForm-container{
+        background-position: -250px;
     }
 }
