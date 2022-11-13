@@ -11,6 +11,9 @@ const Redirect = window.ReactRouterDOM.Redirect;
 import Dashboard from "./pages/Dashboard/Dashboard.js";
 import Websites from "./pages/Domains/index.js";
 import Settings from "./pages/Settings";
+import CreateOrganisation from "./pages/Settings/CreateOrganisation";
+import AddUser from "./pages/Settings/AddUser";
+
 export default function App() {
     const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
 
@@ -30,6 +33,12 @@ export default function App() {
                             </Route>
                             <Route path="/settings" exact>
                                 <Settings />
+                            </Route>
+                            <Route path="/settings/create-organisation">
+                                <CreateOrganisation />
+                            </Route>
+                            <Route path="/settings/add-user">
+                                <AddUser />
                             </Route>
                             <Redirect to="/login" />
                         </Switch>
