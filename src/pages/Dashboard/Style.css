@@ -10,10 +10,16 @@
     margin: auto;
 }
 
+.dashboardView-selectorContainer{
+    margin-bottom: 60px;
+}
+
 .dashboardView-selector{
-    padding: 15px 30px;
+    padding: 5px 15px;
+    margin: 10px;
     border: none;
     background-color: rgb(58, 58, 58);
-    color: #fff;
-    border-radius: 10px;
+    color: inherit;
+    border-radius: 5px;
+    font-size: 14px;
 }

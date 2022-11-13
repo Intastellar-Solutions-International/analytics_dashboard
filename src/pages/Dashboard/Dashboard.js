@@ -59,16 +59,18 @@ export default function Dashboard(props){
         <>
             <div className="dashboard-content">
                 <h2>Analytics Dashboard</h2>
-                <p>Viewing data for: {dashboardView}</p>
-                <select className="dashboardView-selector" defaultValue={"GDPR Cookiebanner"} onChange={(e) => {props.setDashboardView(e.target.value)}}>
-                    {
-                        JSON.parse(localStorage.getItem("globals")).access.type.map((type, key) => {
-                            return (
-                                <option key={ key } value={type} defaultValue={"GDPR Cookiebanner"}>{ type }</option>
-                            )
-                        })
-                    }
-                </select>
+                <section className="dashboardView-selectorContainer">
+                    <p>Viewing data for
+                    <select className="dashboardView-selector" defaultValue={"GDPR Cookiebanner"} onChange={(e) => {props.setDashboardView(e.target.value)}}>
+                        {
+                            JSON.parse(localStorage.getItem("globals")).access.type.map((type, key) => {
+                                return (
+                                    <option key={ key } value={type} defaultValue={"GDPR Cookiebanner"}>{ type }</option>
+                                )
+                            })
+                        }
+                    </select></p>
+               </section>
                 <p>Updated: {updated}</p>
                 <div className="grid-container grid-3">
                     {
