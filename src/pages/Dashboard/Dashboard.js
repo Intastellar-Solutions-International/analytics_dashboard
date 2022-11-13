@@ -59,7 +59,7 @@ export default function Dashboard(props){
         <>
             <div className="dashboard-content">
                 <h2>Analytics Dashboard</h2>
-                <p>{dashboardView}</p>
+                <p>Viewing data for: {dashboardView}</p>
                 {/* <select defaultValue={"GDPR Cookiebanner"} onChange={(e) => {props.setDashboardView(e.target.value)}}>
                     {
                         JSON.parse(localStorage.getItem("globals")).access.type.map((type, key) => {

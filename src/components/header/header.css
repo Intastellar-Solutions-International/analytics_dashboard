@@ -113,7 +113,7 @@
 .dashboard-icons{
     width: 25px;
     height: 25px;
-    padding: 15px;
+    /* padding: 15px; */
     margin-right: 10px;
     display: flex;
     justify-content: center;
@@ -121,15 +121,37 @@
 }
 
 .dashboard::after{
-    content: "H";
+    content: "";
+    background:  url("icons/dashboard.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
     font-style: normal;
     font-size: 20px;
+
+    display: block;
+    font-style: normal;
+    width: 20px;
+    height: 20px;
 }
 
 .websites::after{
     content: "I";
     font-style: normal;
     font-size: 20px;
+}
+
+.logout::after{
+    content: "";
+    background:  url("icons/Logout.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
 }
 
 .expandBtn{
@@ -139,6 +161,24 @@
     border: none;
     background: transparent;
     color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    cursor: pointer;
+}
+
+.expandBtn::after{
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: block;
+    float: right;
+    margin-left: auto;
+    background:  url("icons/expand.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
 }
 
 .navLogout{
@@ -152,4 +192,7 @@
     text-align: center;
     border-top: 1px solid #636363;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+
 }

@@ -13,10 +13,10 @@ export default function Nav() {
         <>
             <aside className="sidebar">
                 <nav className="collapsed">
-                    <button className="expandBtn" onClick={() => Expand() }>Expand</button>
+                    <button className="expandBtn" onClick={() => Expand() }></button>
                     <Link className={"navItems" + (window.location.href.split("/")[3] === "dashboard" ? " --active" : "")} to="/dashboard"><i className="dashboard-icons dashboard"></i> Dashboard</Link>
                     <Link className={"navItems" + (window.location.href.split("/")[3] === "websites" ? " --active" : "")} to="/websites"><i className="dashboard-icons websites"></i> Websites</Link>
-                    <button className="navLogout" onClick={() => Authentication.Logout()}>Logout</button>
+                    <button className="navLogout" onClick={() => Authentication.Logout()}><i className="dashboard-icons logout"></i> Logout</button>
                 </nav>
             </aside>
         </>
