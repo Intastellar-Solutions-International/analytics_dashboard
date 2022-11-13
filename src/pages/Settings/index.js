@@ -1,3 +1,4 @@
+import "./Style.css";
 export default function Settings(props) {
     return (
         <>
