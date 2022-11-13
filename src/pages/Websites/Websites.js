@@ -9,7 +9,7 @@ export default function Websites() {
     const [updated, setUpdated] = useState("");
 
     useEffect(() => {
-        Fetch(API.getDomains.url, API.getDomains.method, API.getDomains.headers).then((data) => {
+        Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
             if (data === "Err_Login_Expired") {
                 localStorage.removeItem("globals");
                 window.location.href = "/login";
@@ -26,7 +26,7 @@ export default function Websites() {
         }, 1000);
 
         const id = setInterval(() => {
-            Fetch(API.getDomains.url, API.getDomains.method, API.getDomains.headers).then((data) => {
+            Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
                 if (data === "Err_Login_Expired") {
                     localStorage.removeItem("globals");
                     
@@ -52,10 +52,10 @@ export default function Websites() {
                 <section className="grid-container grid-3">
                     {
                         (!data) ? <Loading /> : data?.map(
-                            (domain) => {
+                            (domain, key) => {
                                 return (
                                     <>
-                                        <a className="link widget" href={ "http://" + domain } target="_blank" rel="noopener nofollow noreferer">{domain}</a>
+                                        <a key={ key } className="link widget" href={ "http://" + domain } target="_blank" rel="noopener nofollow noreferer">{domain}</a>
                                     </>
                                 )
                             }

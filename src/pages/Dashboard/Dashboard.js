@@ -14,11 +14,18 @@ export default function Dashboard(props){
     const [lastUpdated, setLastUpdated] = useState(Math.floor(Date.now() / 100));
     const [updated, setUpdated] = useState("");
     const dashboardView = props.dashboardView;
+    let url = API.gdpr.getInteractions.url;
+    let method = API.gdpr.getInteractions.method;
+    let header = API.gdpr.getInteractions.headers;
+
+    if(dashboardView === "GDPR Cookiebanner") {
+        url = API.gdpr.getInteractions.url;
+        method = API.gdpr.getInteractions.method;
+        header = API.gdpr.getInteractions.headers;
+    };
 
     useEffect(() => {
-        Fetch(API.getInteractions.url, API.getInteractions.method, API.getInteractions.headers, JSON.stringify({
-            view: dashboardView
-        })).then((data) => {
+        Fetch(url, method, header).then((data) => {
             setData(data)
             setUpdated("Now");
             setLastUpdated(Math.floor(Date.now() / 1000));
@@ -30,9 +37,7 @@ export default function Dashboard(props){
         }, 1000);
 
         const id = setInterval(() => {
-            Fetch(API.getInteractions.url, API.getInteractions.method, API.getInteractions.headers, JSON.stringify({
-                view: dashboardView
-            })).then((data) => {
+            Fetch(url, method, header).then((data) => {
                 if (data === "Err_Login_Expired") {
                     localStorage.removeItem("globals");
                     
@@ -55,7 +60,7 @@ export default function Dashboard(props){
             <div className="dashboard-content">
                 <h2>Analytics Dashboard</h2>
                 <p>{dashboardView}</p>
-                <select defaultValue={"GDPR Cookiebanner"} onChange={(e) => {props.setDashboardView(e.target.value)}}>
+                {/* <select defaultValue={"GDPR Cookiebanner"} onChange={(e) => {props.setDashboardView(e.target.value)}}>
                     {
                         JSON.parse(localStorage.getItem("globals")).access.type.map((type, key) => {
                             return (
@@ -63,11 +68,15 @@ export default function Dashboard(props){
                             )
                         })
                     }
-                </select>
+                </select> */}
                 <p>Updated: {updated}</p>
                 <div className="grid-container grid-3">
                     {
-                        (dashboardView === "GDPR Cookiebanner") ? <TopWidgets /> : null
+                        (dashboardView === "GDPR Cookiebanner") ? <TopWidgets dashboardView={dashboardView} API={{
+                            url: API.gdpr.getTotalNumber.url,
+                            method: API.gdpr.getTotalNumber.method,
+                            header: API.gdpr.getTotalNumber.headers 
+                        }} /> : null
                     }
                 </div>
                 <div className="">

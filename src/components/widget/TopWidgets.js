@@ -4,11 +4,15 @@ import API from "../../API/api";
 import Loading from "./Loading";
 const { useState, useEffect, useRef } = React;
 
-export default function TopWidgets() {
+export default function TopWidgets(props) {
     const [data, setData] = useState(null);
+    
+    const APIUrl = props.API.url;
+    const APIMethod = props.API.method;
+    const APIHeader = props.API.header;
 
     useEffect(() => {
-        Fetch(API.getTotalNumber.url, API.getTotalNumber.method, API.getTotalNumber.headers).then((data) => {
+        Fetch(APIUrl, APIMethod, APIHeader).then((data) => {
             if (data === "Err_Login_Expired") {
                 localStorage.removeItem("globals");
                 window.location.href = "/login";
@@ -18,7 +22,7 @@ export default function TopWidgets() {
         })
         
         const id = setInterval(() => {
-            Fetch(API.getTotalNumber.url, API.getTotalNumber.method, API.getTotalNumber.headers).then((data) => {
+            Fetch(APIUrl, APIMethod, APIHeader).then((data) => {
                 setData(data)
             })
         }, 5 * 60 * 1000);
