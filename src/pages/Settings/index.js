@@ -1,4 +1,5 @@
 import "./Style.css";
+const { useState, useEffect, useRef } = React;
 const Link = window.ReactRouterDOM.Link;
 export default function Settings(props) {
     return (

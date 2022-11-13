@@ -1,4 +1,7 @@
-export default function AddUser () {
+import Fetch from "../../../functions/fetch";
+import API from "../../../API/api";
+const { useState, useEffect, useRef } = React;
+export default function AddUser() {
     return (
         <>
             <main className="dashboard-content">
