@@ -27,6 +27,45 @@ const API = {
                 "Authorization": Authentication.getToken()
             }
         }
+    },
+    ferry: {
+        getTotalSales: {
+            url: `${PrimaryHost}/analytics/ferry/getTotalSales.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken()
+            }
+        }
+    },
+    settings: {
+        getSettings: {
+            url: ``,
+            method: "GET",
+            headers: {
+                "Autorization": Authentication.getToken()
+            }
+        },
+        createSettings: {
+            url: ``,
+            method: "POST",
+            headers: {
+                "Autorization": Authentication.getToken()
+            }
+        },
+        updateSettings: {
+            url: ``,
+            method: "POST",
+            headers: {
+                "Autorization": Authentication.getToken()
+            }
+        },
+        addUser: {
+            url: ``,
+            method: "POST",
+            headers: {
+                "Authorization": Authentication.getToken()
+            }
+        }
     }
 }
 
