@@ -71,7 +71,7 @@ export default function Dashboard(props){
                         }
                     </select></p>
                </section>
-                <p>Updated: {updated}</p>
+                <p>Last updated: {updated}</p>
                 <div className="grid-container grid-3">
                     {
                         (dashboardView === "GDPR Cookiebanner") ? <TopWidgets dashboardView={dashboardView} API={{
@@ -85,7 +85,7 @@ export default function Dashboard(props){
                     <>
                         <div className="">
                             <h2>Data of user interaction</h2>
-                            <p>Updated: {updated}</p>
+                            <p>Last updated: {updated}</p>
                             {(!data) ? <Loading /> : <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" /> }
                         </div>
                         <div className="grid-container grid-3">
@@ -109,7 +109,7 @@ export default function Dashboard(props){
                                 {(!data) ? <Loading /> :
                                     <section>
                                         <h3>User interactions based on country</h3>
-                                        <p>Updated: {updated}</p>
+                                        <p>Last updated: {updated}</p>
                                         {
                                             <Map data={{
                                                 Marketing: data.Marketing,
