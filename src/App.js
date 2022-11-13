@@ -13,6 +13,7 @@ import Websites from "./pages/Domains/index.js";
 import Settings from "./pages/Settings";
 import CreateOrganisation from "./pages/Settings/CreateOrganisation";
 import AddUser from "./pages/Settings/AddUser";
+import ViewOrg from "./pages/Settings/ViewOrganisations";
 
 export default function App() {
     const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
@@ -39,6 +40,9 @@ export default function App() {
                             </Route>
                             <Route path="/settings/add-user">
                                 <AddUser />
+                            </Route>
+                            <Route path="/settings/view-organisations">
+                                <ViewOrg />
                             </Route>
                             <Redirect to="/login" />
                         </Switch>

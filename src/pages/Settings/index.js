@@ -7,6 +7,7 @@ export default function Settings(props) {
                 <h1>Settings</h1>
                 <Link to="/settings/add-user">Add user</Link>
                 <Link to="/settings/create-organisation">Create Organisation</Link>
+                <Link to="/settings/view-organisations">View Organisations</Link>
             </main>
         </>
     )
