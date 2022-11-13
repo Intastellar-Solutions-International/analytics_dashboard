@@ -64,6 +64,7 @@
     background: rgb(63, 63, 63);
     transition: width .5s ease-in-out;
     width: 65px;
+    min-height: 100vh;
 }
 
 .collapsed {
@@ -161,6 +162,19 @@
     height: 20px;
 }
 
+.settings::after{
+    content: "";
+    background:  url("icons/settings.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
 .logout::after{
     content: "";
     background:  url("icons/Logout.svg");
@@ -199,6 +213,10 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
+}
+
+.navItems--bottom{
+    margin-top: auto;
 }
 
 .navLogout{
