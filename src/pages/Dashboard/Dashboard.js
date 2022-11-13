@@ -7,15 +7,18 @@ import "./Style.css";
 import Map from "../../components/Charts/WorldMap/WorldMap.js";
 const { useState, useEffect, useRef } = React;
 
-export default function Dashboard() {
+export default function Dashboard(props){
     document.title = "Dashboard | Intastellar Analytics";
     const ref = useRef(null);
     const [data, setData] = useState(null);
     const [lastUpdated, setLastUpdated] = useState(Math.floor(Date.now() / 100));
     const [updated, setUpdated] = useState("");
+    const dashboardView = props.dashboardView;
 
     useEffect(() => {
-        Fetch(API.getInteractions.url, API.getInteractions.method, API.getInteractions.headers).then((data) => {
+        Fetch(API.getInteractions.url, API.getInteractions.method, API.getInteractions.headers, JSON.stringify({
+            view: dashboardView
+        })).then((data) => {
             setData(data)
             setUpdated("Now");
             setLastUpdated(Math.floor(Date.now() / 1000));
@@ -27,7 +30,9 @@ export default function Dashboard() {
         }, 1000);
 
         const id = setInterval(() => {
-            Fetch(API.getInteractions.url, API.getInteractions.method, API.getInteractions.headers).then((data) => {
+            Fetch(API.getInteractions.url, API.getInteractions.method, API.getInteractions.headers, JSON.stringify({
+                view: dashboardView
+            })).then((data) => {
                 if (data === "Err_Login_Expired") {
                     localStorage.removeItem("globals");
                     
@@ -43,15 +48,27 @@ export default function Dashboard() {
         }, 5 * 60 * 1000);
 
         return()=>clearInterval(id)
-    }, [lastUpdated, setLastUpdated]);
+    }, [lastUpdated, setLastUpdated, dashboardView, props.setDashboardView]);
 
     return (
         <>
             <div className="dashboard-content">
                 <h2>Analytics Dashboard</h2>
+                <p>{dashboardView}</p>
+                <select defaultValue={"GDPR Cookiebanner"} onChange={(e) => {props.setDashboardView(e.target.value)}}>
+                    {
+                        JSON.parse(localStorage.getItem("globals")).access.type.map((type, key) => {
+                            return (
+                                <option key={ key } value={type} defaultValue={"GDPR Cookiebanner"}>{ type }</option>
+                            )
+                        })
+                    }
+                </select>
                 <p>Updated: {updated}</p>
                 <div className="grid-container grid-3">
-                    <TopWidgets />
+                    {
+                        (dashboardView === "GDPR Cookiebanner") ? <TopWidgets /> : null
+                    }
                 </div>
                 <div className="">
                     <h2>Data of user interaction</h2>

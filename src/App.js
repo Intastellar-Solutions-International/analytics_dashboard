@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/header/header";
 import Login from "./Login/Login";
 import Nav from "./components/header/Nav";
+const { useState, useEffect, useRef } = React;
 const Router = window.ReactRouterDOM.BrowserRouter;
 const Route =  window.ReactRouterDOM.Route;
 const Switch = window.ReactRouterDOM.Switch;
@@ -10,17 +11,18 @@ const Redirect = window.ReactRouterDOM.Redirect;
 import Dashboard from "./pages/Dashboard/Dashboard.js";
 import Websites from "./pages/Websites/Websites.js";
 export default function App() {
+    const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
 
-    if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status == "admin") {
+    if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
         return (
             <>
                 <Router>
                     <Header />
-                    <div className="main-grid">
-                        <Nav />
+                    <div className="main-grid"> 
+                         <Nav />
                         <Switch>
                             <Route path="/dashboard" exact>
-                                <Dashboard />
+                                <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} />
                             </Route>
                             <Route path="/websites" exact>
                                 <Websites />

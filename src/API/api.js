@@ -4,7 +4,7 @@ import Authentication from "../Authentication/Auth";
 const API = {
     getTotalNumber: {
         url:  `${PrimaryHost}/analytics/gdpr/getTotalNumber.php`,
-        method: "GET",
+        method: "POST",
         headers: {
             "Authorization": Authentication.getToken()
         }
@@ -14,14 +14,14 @@ const API = {
     },
     getInteractions: {
         url:  `${PrimaryHost}/analytics/gdpr/getInteractions.php`,
-        method: "GET",
+        method: "POST",
         headers: {
             "Authorization": Authentication.getToken()
         }
     },
     getDomains: {
         url: `${PrimaryHost}/analytics/gdpr/getDomains.php`,
-        method: "GET",
+        method: "POST",
         headers: {
             "Authorization": Authentication.getToken()
         }

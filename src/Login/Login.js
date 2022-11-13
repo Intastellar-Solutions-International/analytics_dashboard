@@ -5,10 +5,11 @@ import Authentication from "../Authentication/Auth";
 
 export default function Login() {
     document.title = "Login | Intastellar Analytics";
+    document.body.style.overflow = "hidden";
+    document.body.style.height = "100vh"
     const [email, setEmail] = React.useState();
     const [password, setPassword] = React.useState();
     const [errorMessage, setErrorMessage] = React.useState(null);
-
 
     return (
         <>
