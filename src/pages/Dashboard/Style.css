@@ -9,3 +9,11 @@
     width: 90%;
     margin: auto;
 }
+
+.dashboardView-selector{
+    padding: 15px 30px;
+    border: none;
+    background-color: rgb(58, 58, 58);
+    color: #fff;
+    border-radius: 10px;
+}
