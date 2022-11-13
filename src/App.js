@@ -9,7 +9,7 @@ const Switch = window.ReactRouterDOM.Switch;
 const Redirect = window.ReactRouterDOM.Redirect;
 
 import Dashboard from "./pages/Dashboard/Dashboard.js";
-import Websites from "./pages/Websites/Websites.js";
+import Websites from "./pages/Domains/index.js";
 export default function App() {
     const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
 
@@ -24,7 +24,7 @@ export default function App() {
                             <Route path="/dashboard" exact>
                                 <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} />
                             </Route>
-                            <Route path="/websites" exact>
+                            <Route path="/domains" exact>
                                 <Websites />
                             </Route>
                             <Redirect to="/login" />

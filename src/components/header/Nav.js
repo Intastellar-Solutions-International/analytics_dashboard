@@ -15,7 +15,7 @@ export default function Nav() {
                 <nav className="collapsed">
                     <button className="expandBtn" onClick={() => Expand() }></button>
                     <Link className={"navItems" + (window.location.href.split("/")[3] === "dashboard" ? " --active" : "")} to="/dashboard"><i className="dashboard-icons dashboard"></i> Dashboard</Link>
-                    <Link className={"navItems" + (window.location.href.split("/")[3] === "websites" ? " --active" : "")} to="/websites"><i className="dashboard-icons websites"></i> Websites</Link>
+                    <Link className={"navItems" + (window.location.href.split("/")[3] === "websites" ? " --active" : "")} to="/domains"><i className="dashboard-icons domains"></i> Domains</Link>
                     <button className="navLogout" onClick={() => Authentication.Logout()}><i className="dashboard-icons logout"></i> Logout</button>
                 </nav>
             </aside>

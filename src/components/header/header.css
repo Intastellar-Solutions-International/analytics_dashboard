@@ -135,10 +135,17 @@
     height: 20px;
 }
 
-.websites::after{
-    content: "I";
+.domains::after{
+    content: "";
+    background:  url("icons/domain.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
     font-style: normal;
     font-size: 20px;
+    width: 20px;
+    height: 20px;
 }
 
 .logout::after{
