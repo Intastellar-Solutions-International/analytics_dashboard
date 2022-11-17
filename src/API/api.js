@@ -26,35 +26,35 @@ const API = {
             headers: {
                 "Authorization": Authentication.getToken()
             }
+        }
+    },
+    settings: {
+        getOrganisation: {
+            url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken()
+            }
         },
-        settings: {
-            getOrganisation: {
-                url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
-                method: "GET",
-                headers: {
-                    "Autorization": Authentication.getToken()
-                }
-            },
-            createOrganisation: {
-                url: `${PrimaryHost}/analytics/settings/createOrganisation.php`,
-                method: "POST",
-                headers: {
-                    "Autorization": Authentication.getToken()
-                }
-            },
-            updateSettings: {
-                url: `${PrimaryHost}/analytics/settings/updateSettings.php`,
-                method: "POST",
-                headers: {
-                    "Autorization": Authentication.getToken()
-                }
-            },
-            addUser: {
-                url: `${PrimaryHost}/analytics/settings/add-user.php`,
-                method: "POST",
-                headers: {
-                    "Authorization": Authentication.getToken()
-                }
+        createOrganisation: {
+            url: `${PrimaryHost}/analytics/settings/create-organisation.php`,
+            method: "POST",
+            headers: {
+                "Authorization": Authentication.getToken()
+            }
+        },
+        updateSettings: {
+            url: `${PrimaryHost}/analytics/settings/updateSettings.php`,
+            method: "POST",
+            headers: {
+                "Authorization": Authentication.getToken()
+            }
+        },
+        addUser: {
+            url: `${PrimaryHost}/analytics/settings/add-user.php`,
+            method: "POST",
+            headers: {
+                "Authorization": Authentication.getToken()
             }
         }
     }
