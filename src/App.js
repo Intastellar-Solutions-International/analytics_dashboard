@@ -25,7 +25,7 @@ export default function App() {
                 <Router>
                     <Header />
                     <div className="main-grid"> 
-                         <Nav />
+                        <Nav />
                         <Switch>
                             <Route path="/dashboard" exact>
                                 <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} />

@@ -1,5 +1,6 @@
 const Authentication = {
-    Login: function (url, email, password, setErrorMessage) {
+    Login: function (url, email, password, setErrorMessage, setLoading) {
+        setLoading(true);
         fetch(url, {
             withCredentials: false,
             method: "POST",
@@ -23,6 +24,7 @@ const Authentication = {
                 setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Alsense Account Manager for assistance");
                 return;
             }
+            setLoading(false);
 
             localStorage.setItem("globals", JSON.stringify(response));
             window.location.href = "/dashboard";

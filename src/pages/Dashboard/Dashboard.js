@@ -85,13 +85,13 @@ export default function Dashboard(props){
                     {(!data) ? <Loading /> : <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" /> }
                 </div>
                 <div className="grid-container grid-3">
-                    {(!data) ? <Loading /> : <Widget totalNumber={data.Accepted + "%"} type="Accepted cookies" />}
-                    {(!data) ? <Loading /> : <Widget totalNumber={ data.Declined + "%"} type="Declined cookies" /> }
+                    {(!data) ? <Loading /> : <Widget totalNumber={data?.Accepted + "%"} type="Accepted cookies" />}
+                    {(!data) ? <Loading /> : <Widget totalNumber={ data?.Declined + "%"} type="Declined cookies" /> }
                 </div>
                 <div className="grid-container grid-3">
-                    {(!data) ? <Loading /> : <Widget totalNumber={data.Marketing + "%"} type="Accepted only Marketing" />}
-                    {(!data) ? <Loading /> : <Widget totalNumber={data.Functional + "%"} type="Accepted only Functional" />}
-                    {(!data) ? <Loading /> : <Widget totalNumber={data.Statics + "%"} type="Accepted only Statics" />}
+                    {(!data) ? <Loading /> : <Widget totalNumber={data?.Marketing + "%"} type="Accepted only Marketing" />}
+                    {(!data) ? <Loading /> : <Widget totalNumber={data?.Functional + "%"} type="Accepted only Functional" />}
+                    {(!data) ? <Loading /> : <Widget totalNumber={data?.Statics + "%"} type="Accepted only Statics" />}
                     {/* {(!data) ? <Loading /> : <Pie data={{
                         Accepted: data.Accepted,
                         Declined: data.Declined,
