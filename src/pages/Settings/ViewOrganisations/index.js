@@ -27,10 +27,10 @@ export default function ViewOrg() {
                 <h1>My Organisation</h1>
                 <Link to="/settings">Back to settings</Link>
                 {
-                    (!data) ? <Loading /> : data.map((d) => {
+                    (!data) ? <Loading /> : data.map((key,d) => {
                         return (
                             <>
-                                <h2 className="widget">{ d }</h2>
+                                <h2 key={key} className="widget">{ d }</h2>
                             </>
                         )
                     })

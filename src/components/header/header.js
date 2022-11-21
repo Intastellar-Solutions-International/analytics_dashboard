@@ -21,6 +21,11 @@ export default function Header() {
                 window.location.href = "/login";
                 return;
             }
+
+            if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
+                JSON.parse(localStorage.getItem("globals")).organisation = data;
+            }
+            
             setData(data);
         });
     }, [])
@@ -34,12 +39,12 @@ export default function Header() {
                         <img src={profileImage} className="content-img"></img>
                         <div>
                             <p className="dashboard-name">{Name}</p>
-                            <select>
+                            <select className="dashboard-organisationSelector">
                             {
-                                (!data) ? "" : data.map((d) => {
+                                (!data) ? "" : data.map((d, key) => {
                                     return (
                                         <>
-                                            <option>{ d }</option>
+                                            <option key={key}>{ d }</option>
                                         </>
                                     )
                                 })
