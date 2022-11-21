@@ -36,7 +36,7 @@ const Authentication = {
         window.location.reload();
     },
     getToken: function () {
-        const token = (JSON.parse(localStorage.getItem("globals"))?.token) ? "Basic " + JSON.parse(localStorage.getItem("globals"))?.token : undefined;
+        const token = (JSON.parse(localStorage.getItem("globals"))?.token) ? "Bearer " + JSON.parse(localStorage.getItem("globals"))?.token : undefined;
         return  token;
     }
 }

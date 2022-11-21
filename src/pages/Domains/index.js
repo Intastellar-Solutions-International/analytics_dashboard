@@ -54,9 +54,14 @@ export default function Websites() {
                     {
                         (!data) ? <Loading /> : data?.map(
                             (domain, key) => {
+                                const main = domain[0];
+                                const timestamp = domain[1];
                                 return (
                                     <>
-                                        <a key={ key } className="link widget" href={ "http://" + domain } target="_blank" rel="noopener nofollow noreferer">{domain}</a>
+                                        <a key={key} className="link widget" href={"http://" + main} target="_blank" rel="noopener nofollow noreferer">
+                                            {main} <br />
+                                            {timestamp}
+                                        </a>
                                     </>
                                 )
                             }

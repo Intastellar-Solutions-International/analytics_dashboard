@@ -4,20 +4,21 @@ const { useState, useEffect, useRef } = React;
 const Link = window.ReactRouterDOM.Link;
 export default function AddUser() {
     const [organisationName, setOrganisationName] = useState("");
+    const [organisationAdmin, setOrganisationAdmin] = useState("");
+
     const [status, setStatus] = useState(null);
     const create = (e) => {
         e.preventDefault();
         setStatus("Loading...");
-        fetch(API.settings.createOrganisation.url, {
-            withCredentials: false,
-            method: API.settings.createOrganisation.method,
-            headers: API.settings.createOrganisation.headers,
-            body: JSON.stringify(
+        Fetch(API.settings.createOrganisation.url, API.settings.createOrganisation.method,
+            API.settings.createOrganisation.headers,
+            JSON.stringify(
                 {
-                    organisationName: organisationName
+                    organisationName: organisationName,
+                    organisationMember: organisationAdmin
                 }
             )
-        }).then(re => re.json()).then(
+        ).then(re => re.json()).then(
             (re) => {
                 setStatus(null);
                 if (re == "ERROR_CREATING_ORGANISATION" || re === "Err_Token_Not_Found") return;
@@ -34,7 +35,9 @@ export default function AddUser() {
                 <form onSubmit={create}>
                     <p>{(status != null) ? status : null}</p>
                     <label for="orgName">Organisation Name</label><br />
-                    <input id="orgName" autoComplete="off" onChange={(e) => setOrganisationName(e.target.value)} /> <b />
+                    <input type="text" id="orgName" autoComplete="off" onChange={(e) => setOrganisationName(e.target.value)} /> <br />
+                    <label for="MemberName">Admin Email</label><br />
+                    <input type="email" id="MemberName" autoComplete="off" onChange={(e) => setOrganisationAdmin(e.target.value)} /> <br />
                     <button type="submit">Create Organisation</button>
                 </form>
             </main>
