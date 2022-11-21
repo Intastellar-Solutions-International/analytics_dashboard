@@ -31,7 +31,7 @@ const API = {
     settings: {
         getOrganisation: {
             url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
-            method: "GET",
+            method: "POST",
             headers: {
                 "Authorization": Authentication.getToken()
             }

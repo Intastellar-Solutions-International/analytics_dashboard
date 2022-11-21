@@ -38,6 +38,10 @@ const Authentication = {
     getToken: function () {
         const token = (JSON.parse(localStorage.getItem("globals"))?.token) ? "Bearer " + JSON.parse(localStorage.getItem("globals"))?.token : undefined;
         return  token;
+    },
+    getUserId: function () {
+        const email = (JSON.parse(localStorage.getItem("globals"))?.profile?.email) ? JSON.parse(localStorage.getItem("globals"))?.profile?.email : undefined;
+        return  email;
     }
 }
 
