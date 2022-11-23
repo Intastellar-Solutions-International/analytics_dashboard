@@ -25,10 +25,19 @@ export default function Dashboard(props){
     };
 
     useEffect(() => {
-        Fetch(url, method, header).then((data) => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        Fetch(url, method, header, signal).then((data) => {
             setData(data)
             setUpdated("Now");
             setLastUpdated(Math.floor(Date.now() / 1000));
+        }).catch(err => {
+            if (err.name === "AbortError") {
+                console.log("cancelled")
+            } else {
+                
+            }
         });
         const interval1 = setInterval(() => {
             if ((Math.floor(Date.now() / 1000)) - lastUpdated >= 60) {
@@ -37,7 +46,7 @@ export default function Dashboard(props){
         }, 1000);
 
         const id = setInterval(() => {
-            Fetch(url, method, header).then((data) => {
+            Fetch(url, method, header, signal).then((data) => {
                 if (data === "Err_Login_Expired") {
                     localStorage.removeItem("globals");
                     
@@ -49,10 +58,19 @@ export default function Dashboard(props){
                 setUpdated("Now");
 
                 setLastUpdated(Math.floor(Date.now() / 1000));
-            });
+            }).catch(err => {
+                if (err.name === "AbortError") {
+                    console.log("cancelled")
+                } else {
+                    
+                }
+            });;
         }, 5 * 60 * 1000);
 
-        return()=>clearInterval(id)
+        return () => {
+            clearInterval(id);
+            controller.abort();
+        }
     }, [lastUpdated, setLastUpdated, dashboardView, props.setDashboardView]);
 
     return (

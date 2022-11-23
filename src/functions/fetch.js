@@ -1,5 +1,5 @@
-const Fetch = async (url, method, headers, body) => {
-    const t = fetch(url, { method: method, headers, body } ).then((res) => res.json());
+const Fetch = async (url, method, headers, signal, body) => {
+    const t = fetch(url, { method: method, headers, body, signal } ).then((res) => res.json());
     return t;
 }
 
