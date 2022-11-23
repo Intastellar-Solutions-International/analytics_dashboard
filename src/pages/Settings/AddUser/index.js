@@ -1,6 +1,7 @@
 import { OrganisationContext } from "../../../App";
 import Fetch from "../../../functions/fetch";
 import API from "../../../API/api";
+import SuccessWindow from "../../../components/SuccessWindow";
 const Link = window.ReactRouterDOM.Link;
 const { useState, useEffect, useRef, useContext } = React;
 export default function AddUser() {
@@ -22,11 +23,11 @@ export default function AddUser() {
                     userRole: userRole
                 }
             )
-        ).then(re => re.json()).then(
+        ).then(
             (re) => {
                 setStatus(null);
                 if (re == "ERROR_CREATING_ORGANISATION" || re === "Err_Token_Not_Found") return;
-                setStatus(`Organisation Created with the name: ${organisationName}`);
+                setStatus(`User ${userName} added to ${Organisation?.name}`);
             }
         )
     };
@@ -36,6 +37,7 @@ export default function AddUser() {
             <main className="dashboard-content">
                 <h1>Add user for { Organisation?.name }</h1>
                 <Link to="/settings">Back to settings</Link>
+                <SuccessWindow style={{rgiht: "-100%"}} message={`User Felix Schultz added to ${Organisation?.name}`} />
                 <form onSubmit={addUser}>
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" onChange={(e) => setUserName(e.target.value)}/>
