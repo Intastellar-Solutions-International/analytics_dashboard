@@ -11,8 +11,6 @@ export default function Header() {
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
 
-    console.log(Organisation);
-
     const [data, setData] = useState(null);
 
     useEffect(() => {
@@ -29,6 +27,7 @@ export default function Header() {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
             
+            setOrganisation(JSON.parse(data)); 
             setData(data);
         });
     }, [])
@@ -42,18 +41,20 @@ export default function Header() {
                         <img src={profileImage} className="content-img"></img>
                         <div>
                             <p className="dashboard-name">{Name}</p>
-                            <select defaultValue={Organisation} onChange={(e) => { setOrganisation({id: JSON.parse(e.target.value).id, name: JSON.parse(e.target.value).name}) }} className="dashboard-organisationSelector">
-                            {
-                                (!data) ? "" : data.map((d, key) => {
-                                    d = JSON.parse(d);
-                                    return (
-                                        <>
-                                            <option key={key} value={JSON.stringify({id: d.id, name: d.name})}>{ d.name }</option>
-                                        </>
-                                    )
-                                })
+                            {(data && Organisation) ?
+                                <select defaultValue={Organisation} onChange={(e) => { setOrganisation({ id: JSON.parse(e.target.value).id, name: JSON.parse(e.target.value).name }) }} className="dashboard-organisationSelector">
+                                    {
+                                        (!data) ? "" : data.map((d, key) => {
+                                            d = JSON.parse(d);
+                                            return (
+                                                <>
+                                                    <option key={key} value={JSON.stringify({ id: d.id, name: d.name })}>{d.name}</option>
+                                                </>
+                                            )
+                                        })
+                                    }
+                                </select> : null
                             }
-                            </select>
                         </div>
                     </div>
                 </div>

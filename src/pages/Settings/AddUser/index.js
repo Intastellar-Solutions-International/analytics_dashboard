@@ -6,7 +6,7 @@ const { useState, useEffect, useRef, useContext } = React;
 export default function AddUser() {
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
     const [userMail, setUserMail] = useState("");
-    const [userRole, setUserRole] = useState("");
+    const [userRole, setUserRole] = useState("Admin");
     const [userName, setUserName] = useState("");
     const [status, setStatus] = useState(null);
 
@@ -19,8 +19,7 @@ export default function AddUser() {
                 {
                     organisationId: Organisation.id,
                     userEmail: userMail,
-                    userRole: userRole,
-                    userName: userName
+                    userRole: userRole
                 }
             )
         ).then(re => re.json()).then(
@@ -36,8 +35,7 @@ export default function AddUser() {
         {
             organisationId: Organisation.id,
             userEmail: userMail,
-            userRole: userRole,
-            userName: userName
+            userRole: userRole
         }
     )
 

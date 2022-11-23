@@ -1,6 +1,7 @@
 import Fetch from "../../../functions/fetch";
+import { OrganisationContext } from "../../../App";
 import API from "../../../API/api";
-const { useState, useEffect, useRef } = React;
+const { useState, useEffect, useRef, useContext } = React;
 const Link = window.ReactRouterDOM.Link;
 export default function AddUser() {
     const [organisationName, setOrganisationName] = useState("");
@@ -18,7 +19,7 @@ export default function AddUser() {
                     organisationMember: organisationAdmin
                 }
             )
-        ).then(re => re.json()).then(
+        ).then(
             (re) => {
                 setStatus(null);
                 if (re == "ERROR_CREATING_ORGANISATION" || re === "Err_Token_Not_Found") return;

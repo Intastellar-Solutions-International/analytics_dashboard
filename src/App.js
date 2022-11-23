@@ -21,7 +21,7 @@ export const OrganisationContext = createContext(null);
 export default function App() {
 
     const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
-    const [organisation, setOrganisation] = useState({id: 1, name: "Intastellar Solutions, International"});
+    const [organisation, setOrganisation] = useState(null);
 
     if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
         return (
