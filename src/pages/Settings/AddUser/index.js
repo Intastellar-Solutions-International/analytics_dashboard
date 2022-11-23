@@ -17,7 +17,7 @@ export default function AddUser() {
             API.settings.addUser.headers,
             JSON.stringify(
                 {
-                    organisationId: Organisation.id,
+                    organisationId: Organisation?.id,
                     userEmail: userMail,
                     userRole: userRole
                 }
@@ -31,18 +31,10 @@ export default function AddUser() {
         )
     };
 
-    console.log(
-        {
-            organisationId: Organisation.id,
-            userEmail: userMail,
-            userRole: userRole
-        }
-    )
-
     return (
         <>
             <main className="dashboard-content">
-                <h1>Add user for { Organisation.name }</h1>
+                <h1>Add user for { Organisation?.name }</h1>
                 <Link to="/settings">Back to settings</Link>
                 <form onSubmit={addUser}>
                     <label for="name">Name</label>
