@@ -41,6 +41,7 @@ export default function Header() {
                         <img src={profileImage} className="content-img"></img>
                         <div>
                             <p className="dashboard-name">{Name}</p>
+                            <div className="dashboard-organisationContainer">
                             {(data && Organisation) ?
                                 <select defaultValue={Organisation} onChange={(e) => { setOrganisation({ id: JSON.parse(e.target.value).id, name: JSON.parse(e.target.value).name }) }} className="dashboard-organisationSelector">
                                     {
@@ -55,6 +56,7 @@ export default function Header() {
                                     }
                                 </select> : null
                             }
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -244,4 +244,24 @@
     font-size: 12px;
     appearance: none;
     -webkit-appearance: none;
+    position: relative;
+}
+
+.dashboard-organisationContainer{
+    position: relative;
+}
+
+.dashboard-organisationContainer::after{
+    content: "";
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    display: block;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    transform: rotate(135deg);
+
+    position: absolute;
+    right: -10px;
+    top: 0;
 }
