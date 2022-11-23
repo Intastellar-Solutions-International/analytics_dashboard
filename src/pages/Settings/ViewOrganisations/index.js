@@ -5,7 +5,7 @@ import Loading from "../../../components/widget/Loading";
 const { useState, useEffect, useRef } = React;
 const Link = window.ReactRouterDOM.Link;
 export default function ViewOrg() {
-
+    document.title = "My Organisation | Intastellar Analytics";
     const [data, setData] = useState(null);
 
     useEffect(() => {

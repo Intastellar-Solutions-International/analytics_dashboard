@@ -7,6 +7,7 @@ import SuccessWindow from "../../../components/SuccessWindow";
 const Link = window.ReactRouterDOM.Link;
 const { useState, useEffect, useRef, useContext } = React;
 export default function AddUser() {
+    document.title = "Add User to an Organisation | Intastellar Analytics";
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
     const [userMail, setUserMail] = useState("");
     const [userRole, setUserRole] = useState("Admin");

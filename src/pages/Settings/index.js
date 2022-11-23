@@ -2,6 +2,7 @@ import "./Style.css";
 const { useState, useEffect, useRef } = React;
 const Link = window.ReactRouterDOM.Link;
 export default function Settings(props) {
+    document.title = "Settings | Intastellar Analytics";
     return (
         <>
             <main className="dashboard-content">
