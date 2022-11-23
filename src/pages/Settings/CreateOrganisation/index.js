@@ -1,4 +1,6 @@
 import Fetch from "../../../functions/fetch";
+import Text from "../../../components/InputFields/textInput";
+import Email from "../../../components/InputFields/EmailInput";
 import { OrganisationContext } from "../../../App";
 import API from "../../../API/api";
 const { useState, useEffect, useRef, useContext } = React;
@@ -36,9 +38,9 @@ export default function AddUser() {
                 <form onSubmit={create}>
                     <p>{(status != null) ? status : null}</p>
                     <label for="orgName">Organisation Name</label><br />
-                    <input type="text" id="orgName" autoComplete="off" onChange={(e) => setOrganisationName(e.target.value)} /> <br />
+                    <Text onChange={(e) => setOrganisationName(e.target.value)} />
                     <label for="MemberName">Admin Email</label><br />
-                    <input type="email" id="MemberName" autoComplete="off" onChange={(e) => setOrganisationAdmin(e.target.value)} /> <br />
+                    <Email onChange={(e) => setOrganisationAdmin(e.target.value)} />
                     <button type="submit">Create Organisation</button>
                 </form>
             </main>
