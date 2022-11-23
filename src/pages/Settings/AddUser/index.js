@@ -26,7 +26,7 @@ export default function AddUser() {
         ).then(
             (re) => {
                 setStatus(null);
-                if (re == "ERROR_CREATING_ORGANISATION" || re === "Err_Token_Not_Found") return;
+                if (re == "ERROR_ADDING_USER" || re === "Err_Token_Not_Found") setStatus(`We are having trouble adding ${userName} to ${Organisation?.name}`); return;
                 setStatus(`User ${userName} added to ${Organisation?.name}`);
             }
         )
@@ -37,7 +37,7 @@ export default function AddUser() {
             <main className="dashboard-content">
                 <h1>Add user for { Organisation?.name }</h1>
                 <Link to="/settings">Back to settings</Link>
-                <SuccessWindow style={{rgiht: "-100%"}} message={`User Felix Schultz added to ${Organisation?.name}`} />
+                <SuccessWindow style={(status ? {right: "0"} : {right: "-100%"})} message={status} />
                 <form onSubmit={addUser}>
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" onChange={(e) => setUserName(e.target.value)}/>

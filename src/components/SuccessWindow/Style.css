@@ -5,6 +5,7 @@
     background: rgb(58, 58, 58);
     width: auto;
     border-top: 2px solid green;
+    transition: right .5s ease-in-out;
 }
 
 .successWindow-content{
