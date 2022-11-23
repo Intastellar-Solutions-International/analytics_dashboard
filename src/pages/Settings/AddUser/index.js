@@ -1,9 +1,9 @@
 import { OrganisationContext } from "../../../App";
-import Fetch from "../../../functions/fetch";
+import Fetch from "../../../Functions/fetch";
 import API from "../../../API/api";
-import Text from "../../../components/InputFields/textInput";
-import Email from "../../../components/InputFields/EmailInput";
-import SuccessWindow from "../../../components/SuccessWindow";
+import Text from "../../../Components/InputFields/textInput";
+import Email from "../../../Components/InputFields/EmailInput";
+import SuccessWindow from "../../../Components/SuccessWindow";
 const Link = window.ReactRouterDOM.Link;
 const { useState, useEffect, useRef, useContext } = React;
 export default function AddUser() {

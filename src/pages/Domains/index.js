@@ -1,6 +1,6 @@
-import Fetch from "../../functions/fetch";
+import Fetch from "../../Functions/fetch";
 import API from "../../API/api";
-import Loading from "../../components/widget/Loading";
+import Loading from "../../Components/widget/Loading";
 const { useState, useEffect, useRef } = React;
 
 export default function Websites() {

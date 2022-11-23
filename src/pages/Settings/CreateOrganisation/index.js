@@ -1,6 +1,6 @@
-import Fetch from "../../../functions/fetch";
-import Text from "../../../components/InputFields/textInput";
-import Email from "../../../components/InputFields/EmailInput";
+import Fetch from "../../../Functions/fetch";
+import Text from "../../../Components/InputFields/textInput";
+import Email from "../../../Components/InputFields/EmailInput";
 import { OrganisationContext } from "../../../App";
 import API from "../../../API/api";
 const { useState, useEffect, useRef, useContext } = React;

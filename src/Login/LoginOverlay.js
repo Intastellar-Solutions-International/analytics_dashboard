@@ -1,5 +1,5 @@
 import "./Login.css";
-import logo from "../components/header/logo.png";
+import logo from "../Components/Header/logo.png";
 import API from "../API/api";
 import Authentication from "../Authentication/Auth";
 

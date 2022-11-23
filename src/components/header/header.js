@@ -2,7 +2,7 @@ const { useState, useEffect, useRef, useContext } = React;
 import { OrganisationContext } from "../../App";
 import "./header.css";
 import logo from "./logo.png";
-import Fetch from "../../functions/fetch";
+import Fetch from "../../Functions/fetch";
 import API from "../../API/api";
 import Authentication from "../../Authentication/Auth";
 

@@ -1,5 +1,5 @@
-import Widget from "../../components/widget/widget";
-import Fetch from "../../functions/fetch";
+import Widget from "./widget";
+import Fetch from "../../Functions/fetch";
 import API from "../../API/api";
 import Loading from "./Loading";
 const { useState, useEffect, useRef } = React;

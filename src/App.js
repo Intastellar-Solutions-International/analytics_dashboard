@@ -1,19 +1,19 @@
 import "./App.css";
-import Header from "./components/header/header";
+import Header from "./Components/Header/header";
 import Login from "./Login/Login";
-import Nav from "./components/header/Nav";
+import Nav from "./Components/Header/Nav";
 const { useState, useEffect, useRef, createContext } = React;
 const Router = window.ReactRouterDOM.BrowserRouter;
 const Route =  window.ReactRouterDOM.Route;
 const Switch = window.ReactRouterDOM.Switch;
 const Redirect = window.ReactRouterDOM.Redirect;
 
-import Dashboard from "./pages/Dashboard/Dashboard.js";
-import Websites from "./pages/Domains/index.js";
-import Settings from "./pages/Settings";
-import CreateOrganisation from "./pages/Settings/CreateOrganisation";
-import AddUser from "./pages/Settings/AddUser";
-import ViewOrg from "./pages/Settings/ViewOrganisations";
+import Dashboard from "./Pages/Dashboard/Dashboard.js";
+import Websites from "./Pages/Domains/index.js";
+import Settings from "./Pages/Settings";
+import CreateOrganisation from "./Pages/Settings/CreateOrganisation";
+import AddUser from "./Pages/Settings/AddUser";
+import ViewOrg from "./Pages/Settings/ViewOrganisations";
 import LoginOverLay from "./Login/LoginOverlay";
 
 export const OrganisationContext = createContext(null);

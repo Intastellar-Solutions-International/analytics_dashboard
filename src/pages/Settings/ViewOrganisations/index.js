@@ -1,7 +1,7 @@
-import Fetch from "../../../functions/fetch";
+import Fetch from "../../../Functions/fetch";
 import API from "../../../API/api";
 import Authentication from "../../../Authentication/Auth";
-import Loading from "../../../components/widget/Loading";
+import Loading from "../../../Components/widget/Loading";
 const { useState, useEffect, useRef } = React;
 const Link = window.ReactRouterDOM.Link;
 export default function ViewOrg() {

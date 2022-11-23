@@ -1,10 +1,10 @@
-import TopWidgets from "../../components/widget/TopWidgets.js";
-import Fetch from "../../functions/fetch";
+import TopWidgets from "../../Components/widget/TopWidgets.js";
+import Fetch from "../../Functions/fetch";
 import API from "../../API/api";
-import Widget from "../../components/widget/widget.js";
-import Loading from "../../components/widget/Loading.js";
+import Widget from "../../Components/widget/widget.js";
+import Loading from "../../Components/widget/Loading.js";
 import "./Style.css";
-import Map from "../../components/Charts/WorldMap/WorldMap.js";
+import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 const { useState, useEffect, useRef } = React;
 
 export default function Dashboard(props){
