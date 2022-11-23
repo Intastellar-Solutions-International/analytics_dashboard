@@ -10,6 +10,9 @@ export default function AddUser() {
     const [userRole, setUserRole] = useState("Admin");
     const [userName, setUserName] = useState("");
     const [status, setStatus] = useState(null);
+    const [style, setStyle] = useState({
+        right: "-100%"
+    });
 
     const addUser = (e) => {
         e.preventDefault();
@@ -26,8 +29,25 @@ export default function AddUser() {
         ).then(
             (re) => {
                 setStatus(null);
-                if (re == "ERROR_ADDING_USER" || re === "Err_Token_Not_Found") setStatus(`We are having trouble adding ${userName} to ${Organisation?.name}`); return;
-                setStatus(`User ${userName} added to ${Organisation?.name}`);
+                if(re == "ERROR_ADDING_USER" || re === "Err_Token_Not_Found") { 
+                    setStatus(`We are having trouble adding ${userName} to ${Organisation?.name}`);
+                    setStyle({
+                        right: "0",
+                        borderColor: "red"
+                    })
+                }else{
+                    setStatus(`User ${userName} added to ${Organisation?.name}`);
+                    setStyle({
+                        right: "0"
+                    })
+                }
+
+                setTimeout(() => {
+                    setStyle({
+                        right: "-100%",
+                        borderColor: "red"
+                    })
+                }, 6000)
             }
         )
     };
@@ -37,7 +57,7 @@ export default function AddUser() {
             <main className="dashboard-content">
                 <h1>Add user for { Organisation?.name }</h1>
                 <Link to="/settings">Back to settings</Link>
-                <SuccessWindow style={(status ? {right: "0"} : {right: "-100%"})} message={status} />
+                <SuccessWindow style={style} message={status} />
                 <form onSubmit={addUser}>
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" onChange={(e) => setUserName(e.target.value)}/>
