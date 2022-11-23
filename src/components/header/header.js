@@ -1,4 +1,5 @@
-const { useState, useEffect, useRef } = React;
+const { useState, useEffect, useRef, useContext } = React;
+import { OrganisationContext } from "../../App";
 import "./header.css";
 import logo from "./logo.png";
 import Fetch from "../../functions/fetch";
@@ -6,9 +7,11 @@ import API from "../../API/api";
 import Authentication from "../../Authentication/Auth";
 
 export default function Header() {
+    const [Organisation, setOrganisation] = useContext(OrganisationContext);
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
-    const email = JSON.parse(localStorage.getItem("globals"))?.profile?.email;
+
+    console.log(Organisation);
 
     const [data, setData] = useState(null);
 
@@ -39,12 +42,13 @@ export default function Header() {
                         <img src={profileImage} className="content-img"></img>
                         <div>
                             <p className="dashboard-name">{Name}</p>
-                            <select className="dashboard-organisationSelector">
+                            <select defaultValue={Organisation} onChange={(e) => { setOrganisation({id: JSON.parse(e.target.value).id, name: JSON.parse(e.target.value).name}) }} className="dashboard-organisationSelector">
                             {
                                 (!data) ? "" : data.map((d, key) => {
+                                    d = JSON.parse(d);
                                     return (
                                         <>
-                                            <option key={key}>{ d }</option>
+                                            <option key={key} value={JSON.stringify({id: d.id, name: d.name})}>{ d.name }</option>
                                         </>
                                     )
                                 })
