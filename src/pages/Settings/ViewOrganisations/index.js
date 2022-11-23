@@ -25,7 +25,7 @@ export default function ViewOrg() {
         <>
             <main className="dashboard-content">
                 <h1>My Organisation</h1>
-                <Link to="/settings">Back to settings</Link>
+                <Link className="backLink" to="/settings">Back to settings</Link>
                 {
                     (!data) ? <Loading /> : data.map((d, key) => {
                         d = JSON.parse(d);

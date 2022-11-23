@@ -38,3 +38,24 @@ body{
     text-decoration: none;
     text-align: left;
 }
+
+.backLink{
+    text-decoration: none;
+    color: #fff;
+    padding: 15px 0px;
+    margin: 10px 0px;
+    display: block;
+    position: relative;
+    display: flex;
+}
+
+.backLink::before{
+    content: "";
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    display: block;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    transform: rotate(-45deg);
+}

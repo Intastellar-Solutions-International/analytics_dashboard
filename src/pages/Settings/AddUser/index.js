@@ -30,7 +30,7 @@ export default function AddUser() {
             (re) => {
                 setStatus(null);
                 if(re == "ERROR_ADDING_USER" || re === "Err_Token_Not_Found") { 
-                    setStatus(`We are having trouble adding ${userName} to ${Organisation?.name}`);
+                    setStatus(`We couldn´t add the user`);
                     setStyle({
                         right: "0",
                         borderColor: "red"
@@ -56,7 +56,7 @@ export default function AddUser() {
         <>
             <main className="dashboard-content">
                 <h1>Add user for { Organisation?.name }</h1>
-                <Link to="/settings">Back to settings</Link>
+                <Link className="backLink" to="/settings">Back to settings</Link>
                 <SuccessWindow style={style} message={status} />
                 <form onSubmit={addUser}>
                     <label for="name">Name</label>

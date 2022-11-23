@@ -32,7 +32,7 @@ export default function AddUser() {
         <>
             <main className="dashboard-content">
                 <h1>Create a Organisation</h1>
-                <Link to="/settings">Back to settings</Link>
+                <Link className="backLink" to="/settings">Back to settings</Link>
                 <form onSubmit={create}>
                     <p>{(status != null) ? status : null}</p>
                     <label for="orgName">Organisation Name</label><br />
