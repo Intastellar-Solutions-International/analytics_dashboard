@@ -1,6 +1,8 @@
 import { OrganisationContext } from "../../../App";
 import Fetch from "../../../functions/fetch";
 import API from "../../../API/api";
+import Text from "../../../components/InputFields/textInput";
+import Email from "../../../components/InputFields/EmailInput";
 import SuccessWindow from "../../../components/SuccessWindow";
 const Link = window.ReactRouterDOM.Link;
 const { useState, useEffect, useRef, useContext } = React;
@@ -60,9 +62,9 @@ export default function AddUser() {
                 <SuccessWindow style={style} message={status} />
                 <form onSubmit={addUser}>
                     <label for="name">Name</label>
-                    <input type="text" id="name" name="name" onChange={(e) => setUserName(e.target.value)}/>
+                    <Text onChange={(e) => setUserName(e.target.value)}/>
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" onChange={(e) => setUserMail(e.target.value)} />
+                    <Email onChange={(e) => setUserMail(e.target.value)} />
                     <label for="role">Role</label>
                     <select id="role" name="role" onChange={(e) => setUserRole(e.target.value)}>
                         <option>Admin</option>
