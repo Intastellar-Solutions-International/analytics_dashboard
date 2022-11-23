@@ -56,6 +56,7 @@ export default function Websites() {
                             (domain, key) => {
                                 const main = domain[0];
                                 const installed = domain[1];
+                                const lastVisited = domain[2];
                                 return (
                                     <>
                                         <a key={key} className="link widget" href={"http://" + main} target="_blank" rel="noopener nofollow noreferer">

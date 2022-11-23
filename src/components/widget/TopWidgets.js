@@ -3,6 +3,7 @@ import Fetch from "../../functions/fetch";
 import API from "../../API/api";
 import Loading from "./Loading";
 const { useState, useEffect, useRef } = React;
+const Link = window.ReactRouterDOM.Link;
 
 export default function TopWidgets(props) {
     const [data, setData] = useState(null);
@@ -31,7 +32,7 @@ export default function TopWidgets(props) {
 
     return (
         <>
-            {(!data) ? <Loading /> : <Widget overviewTotal={ true } totalNumber={ data.Total } type="Website" /> }
+            {(!data) ? <Loading /> : <Link style={{textDecoration: "none"}} to="/domains"><Widget overviewTotal={ true } totalNumber={ data.Total } type="Website" /></Link> }
             {(!data) ? <Loading /> : <Widget totalNumber={ data.JS + "%" } type="JS" /> }
             {(!data) ? <Loading /> : <Widget totalNumber={ data.WP + "%" } type="WordPress" /> }
         </>

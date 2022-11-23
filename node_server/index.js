@@ -29,7 +29,7 @@ app.get("/tr", (request, res) => {
         })
     }) */
 
-    res.json({ msg: "Hi you are now on", platform: platform })
+    res.json({ev: ev, icon: icon, platform: platform })
 });
 
 app.listen(port, () => {
