@@ -24,6 +24,7 @@ export default function Dashboard(props){
         header = API.gdpr.getInteractions.headers;
     };
 
+    
     useEffect(() => {
         Fetch(url, method, header).then((data) => {
             setData(data)

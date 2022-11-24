@@ -9,16 +9,19 @@ export default function Websites() {
     const [updated, setUpdated] = useState("");
 
     useEffect(() => {
-        Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
-            if (data === "Err_Login_Expired") {
-                localStorage.removeItem("globals");
-                window.location.href = "/login";
-                return;
-            }
-            setData(data);
+        const [loading, data, error] = Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers);
+
+        if (data === "Err_Login_Expired") {
+            localStorage.removeItem("globals");
+            window.location.href = "/login";
+            return;
+        }
+        
+        if(!loading){
             setUpdated("Now");
             setLastUpdated(Math.floor(Date.now() / 1000));
-        });
+        }
+            
         const interval1 = setInterval(() => {
             if ((Math.floor(Date.now() / 1000)) - lastUpdated >= 60) {
                 setUpdated(Math.floor(((Math.floor(Date.now() / 1000)) - lastUpdated) / 60) + " minute ago");
@@ -26,19 +29,17 @@ export default function Websites() {
         }, 1000);
 
         const id = setInterval(() => {
-            Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
-                if (data === "Err_Login_Expired") {
-                    localStorage.removeItem("globals");
-                    
-                    window.location.href = "/login";
-                    return;
-                }
-                setData(data);
-                clearInterval(interval1);
+            const [loading, data, error] = Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers);
+            if (data === "Err_Login_Expired") {
+                localStorage.removeItem("globals");
+                window.location.href = "/login";
+                return;
+            }
+            
+            if(!loading){
                 setUpdated("Now");
-
                 setLastUpdated(Math.floor(Date.now() / 1000));
-            });
+            }
         }, 5 * 60 * 1000);
 
         return()=>clearInterval(id)

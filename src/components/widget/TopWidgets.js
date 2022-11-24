@@ -1,39 +1,25 @@
 import Widget from "./widget";
-import Fetch from "../../Functions/fetch";
-import API from "../../API/api";
+import useFetch from "../../Functions/FetchHook";
 import Loading from "./Loading";
-const { useState, useEffect, useRef } = React;
 
 export default function TopWidgets(props) {
-    const [data, setData] = useState(null);
     
     const APIUrl = props.API.url;
     const APIMethod = props.API.method;
     const APIHeader = props.API.header;
 
-    useEffect(() => {
-        Fetch(APIUrl, APIMethod, APIHeader).then((data) => {
-            if (data === "Err_Login_Expired") {
-                localStorage.removeItem("globals");
-                window.location.href = "/login";
-                return;
-            }
-            setData(data)
-        })
-        
-        const id = setInterval(() => {
-            Fetch(APIUrl, APIMethod, APIHeader).then((data) => {
-                setData(data)
-            })
-        }, 5 * 60 * 1000);
-        return()=>clearInterval(id)
-    }, []);
+    const [loading, data, error] = useFetch(APIUrl, APIMethod, APIHeader);
+    if (data === "Err_Login_Expired") {
+        localStorage.removeItem("globals");
+        window.location.href = "/login";
+        return;
+    }
 
     return (
         <>
-            {(!data) ? <Loading /> : <Widget overviewTotal={ true } totalNumber={ data.Total } type="Website" /> }
-            {(!data) ? <Loading /> : <Widget totalNumber={ data.JS + "%" } type="JS" /> }
-            {(!data) ? <Loading /> : <Widget totalNumber={ data.WP + "%" } type="WordPress" /> }
+            {(loading) ? <Loading /> : <Widget overviewTotal={ true } totalNumber={ data.Total } type="Website" /> }
+            {(loading) ? <Loading /> : <Widget totalNumber={ data.JS + "%" } type="JS" /> }
+            {(loading) ? <Loading /> : <Widget totalNumber={ data.WP + "%" } type="WordPress" /> }
         </>
     )
 }
