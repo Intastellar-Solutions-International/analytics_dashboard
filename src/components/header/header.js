@@ -5,6 +5,7 @@ import logo from "./logo.png";
 import Fetch from "../../Functions/fetch";
 import API from "../../API/api";
 import Authentication from "../../Authentication/Auth";
+import Select from "../SelectInput/Selector";
 
 export default function Header() {
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
@@ -39,22 +40,14 @@ export default function Header() {
                     <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
                     <div className="flex">
                         <img src={profileImage} className="content-img"></img>
-                        <div>
+                        <div className="dashboard-profile__nameContainer">
                             <p className="dashboard-name">{Name}</p>
                             <div className="dashboard-organisationContainer">
                             {(data && Organisation) ?
-                                <select defaultValue={Organisation} onChange={(e) => { setOrganisation({ id: JSON.parse(e.target.value).id, name: JSON.parse(e.target.value).name }) }} className="dashboard-organisationSelector">
-                                    {
-                                        (!data) ? "" : data.map((d, key) => {
-                                            d = JSON.parse(d);
-                                            return (
-                                                <>
-                                                    <option key={key} value={JSON.stringify({ id: d.id, name: d.name })}>{d.name}</option>
-                                                </>
-                                            )
-                                        })
-                                    }
-                                </select> : null
+                                <Select
+                                    onChange={(e) => { setOrganisation({ id: JSON.parse(e.target.value).id, name: JSON.parse(e.target.value).name }) }}
+                                    items={data}
+                                /> : null
                             }
                             </div>
                         </div>
@@ -64,3 +57,16 @@ export default function Header() {
         </>
     )
 }
+
+{/* <select defaultValue={Organisation} onChange={(e) => { setOrganisation({ id: JSON.parse(e.target.value).id, name: JSON.parse(e.target.value).name }) }} className="dashboard-organisationSelector">
+    {
+        (!data) ? "" : data.map((d, key) => {
+            d = JSON.parse(d);
+            return (
+                <>
+                    <option key={key} value={JSON.stringify({ id: d.id, name: d.name })}>{d.name}</option>
+                </>
+            )
+        })
+    }
+</select> */}
