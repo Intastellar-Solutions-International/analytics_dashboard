@@ -11,12 +11,13 @@ export default function Login() {
     const [password, setPassword] = React.useState();
     const [isLoading, setLoading] = React.useState(false);
     const [errorMessage, setErrorMessage] = React.useState(null);
+    const type = "";
 
     return (
         <>
             <div className="loginForm-container">
                 <img className="loginForm-logo" src={logo} alt="Intastellar Solutions Logo" />
-                <form className="loginForm" onSubmit={(e) => { e.preventDefault(), Authentication.Login(API.Login.url, email, password, setErrorMessage, setLoading) }}>
+                <form className="loginForm" onSubmit={(e) => { e.preventDefault(), Authentication.Login(API.Login.url, email, password, type, setErrorMessage, setLoading) }}>
                     <img className="loginForm-logo --hideMobile" src={logo} alt="Intastellar Solutions Logo" />
                     <h1 className="loginForm-title">Signin</h1>
                     <label>{(errorMessage != null) ? errorMessage : null }</label>

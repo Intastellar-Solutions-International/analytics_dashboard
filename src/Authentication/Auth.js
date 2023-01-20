@@ -1,5 +1,5 @@
 const Authentication = {
-    Login: function (url, email, password, setErrorMessage, setLoading) {
+    Login: function (url, email, password, type, setErrorMessage, setLoading) {
         setLoading(true);
         fetch(url, {
             withCredentials: false,
@@ -10,7 +10,8 @@ const Authentication = {
             },
             body: JSON.stringify({
                 email: email,
-                password: password
+                password: password,
+                type: type
             })
         }).then((response) => {
             return response.json();
