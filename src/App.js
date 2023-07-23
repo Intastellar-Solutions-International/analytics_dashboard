@@ -25,7 +25,11 @@ export default function App() {
     const [organisation, setOrganisation] = useState(null);
     const [currentDomain, setCurrentDomain] = useState("all");
 
+    
     if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
+        if (window.location.href === "login") {
+            window.location.href = "/dashboard";
+        }
         return (
             <>
                 <Router>
