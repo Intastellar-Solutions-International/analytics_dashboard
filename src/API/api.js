@@ -28,6 +28,15 @@ const API = {
             }
         }
     },
+    ferry: {
+        getTotalSales: {
+            url: `${PrimaryHost}/analytics/ferry/getTotalSales.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken()
+            }
+        }
+    },
     settings: {
         getOrganisation: {
             url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
@@ -43,25 +52,6 @@ const API = {
                 "Authorization": Authentication.getToken()
             }
         },
-        updateSettings: {
-            url: `${PrimaryHost}/analytics/settings/updateSettings.php`,
-            method: "POST",
-            headers: {
-                "Authorization": Authentication.getToken()
-            }
-        },
-        addUser: {
-            url: `${PrimaryHost}/analytics/settings/add-user.php`,
-    ferry: {
-        getTotalSales: {
-            url: `${PrimaryHost}/analytics/ferry/getTotalSales.php`,
-            method: "GET",
-            headers: {
-                "Authorization": Authentication.getToken()
-            }
-        }
-    },
-    settings: {
         getSettings: {
             url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
             method: "GET",

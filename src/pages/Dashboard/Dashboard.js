@@ -1,6 +1,7 @@
 const { useState, useEffect, useRef, useContext } = React;
 import TopWidgets from "../../Components/widget/TopWidgets.js";
 import useFetch from "../../Functions/FetchHook";
+import Fetch from "../../Functions/fetch";
 import API from "../../API/api";
 import Widget from "../../Components/widget/widget";
 import Loading from "../../Components/widget/Loading";
@@ -11,6 +12,7 @@ import { DomainContext } from "../../App.js";
 export default function Dashboard(props){
     document.title = "Dashboard | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
+    const [lastUpdated, setLastUpdated] = useState("now");
     const dashboardView = props.dashboardView;
     let url = API.gdpr.getInteractions.url;
     let method = API.gdpr.getInteractions.method;
