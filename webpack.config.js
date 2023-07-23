@@ -34,7 +34,7 @@ const client = {
             loader: "node-loader",
         },
         {
-            test: /\.(jsx|js)$/,
+            test: /\.(jsx|js|ts)$/,
             include: path.resolve(__dirname),
             exclude: /node_modules/,
             use: [{

@@ -1,0 +1,35 @@
+.selector{
+    width: 200px;
+    position: relative;
+}
+
+.selector select{
+    border: none;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    color: #fff;
+    font-size: 12px;
+    margin: 0px;
+    padding-bottom: 5px;
+    border-radius: 0;
+}
+
+.selector select:focus, .selector select:focus-within, .selector select:focus-visible{
+    outline: none;
+    border-bottom: 1px solid;
+}
+
+.selector::after{
+    content: "";
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    display: block;
+    position: absolute;
+    right: -20px;
+    top: 0;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    transform: rotate(-135deg);
+}

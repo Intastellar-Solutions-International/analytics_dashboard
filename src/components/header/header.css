@@ -31,8 +31,9 @@
 }
 
 .dashboard-name {
-    padding: 0px 20px;
     font-size: 14px;
+    cursor: pointer;
+    margin: 0;
 }
 
 .dashboard-header>.dashboard-profile .content-img {
@@ -59,35 +60,201 @@
     position: relative;
 }
 
-.collapsed {
-    width: 100px;
-    height: 100%;
-    padding: 15px;
+.sidebar{
     background: rgb(63, 63, 63);
     transition: width .5s ease-in-out;
+    width: 65px;
+    min-height: 100vh;
 }
 
-.collapsed:hover {
+.collapsed {
+    width: 65px;
+    height: 92%;
+    position: fixed;
+    transition: width .5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.collapsed .hiddenCollapsed{
+    opacity: 0;
+    width: 0;
+    visibility: hidden;
+    transform: all 1s ease-in-out;
+}
+
+.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {
     width: 150px;
 }
 
 .collapsed nav {
-    position: fixed;
-    width: 70px;
+    width: 100%;
 }
 
-.collapsed a {
+.collapsed .navItems {
     color: #fff;
-    display: block;
-    padding: 15px 0;
-    width: 50px;
-    margin: auto;
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    margin: 10px auto;
     overflow: hidden;
+    align-items: center;
     white-space: nowrap;
     transition: width .5s ease-in-out;
     text-decoration: none;
 }
 
-.collapsed:hover a {
+.navItems.--active{
+    background-color: rgb(95, 95, 95);
+    color: rgb(241, 241, 241);
+    transition: width .5s ease-in-out;
+}
+
+.collapsed:hover .navItems, .collapsed.expand a{
     width: 100%;
+}
+
+.collapsed:hover nav, .collapsed.expand nav{
+    width: 150px;
+}
+
+.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{
+    opacity: 1;
+    width: auto;
+    visibility: visible;
+}
+
+.dashboard-icons{
+    width: 25px;
+    height: 25px;
+    /* padding: 15px; */
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dashboard::after{
+    content: "";
+    background:  url("icons/dashboard.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    font-style: normal;
+    font-size: 20px;
+
+    display: block;
+    font-style: normal;
+    width: 20px;
+    height: 20px;
+}
+
+.domains::after{
+    content: "";
+    background:  url("icons/domain.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.settings::after{
+    content: "";
+    background:  url("icons/settings.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.logout::after{
+    content: "";
+    background:  url("icons/Logout.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.expandBtn{
+    float: right;
+    padding: 10px;
+    margin: 10px 0px;
+    border: none;
+    background: transparent;
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    cursor: pointer;
+}
+
+.expandBtn::after{
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: block;
+    float: right;
+    margin-left: auto;
+    background:  url("icons/expand.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+}
+
+.navItems--bottom{
+    margin-top: auto;
+}
+
+.navLogout{
+    margin-top: auto;
+    background: transparent;
+    border: none;
+    width: 100%;
+    color: #fff;
+    padding: 30px 15px;
+    font-size: 15px;
+    text-align: center;
+    border-top: 1px solid #636363;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+}
+
+.dashboard-organisationSelector{
+    border: none;
+    padding: 0px 17px;
+    background: transparent;
+    color: #fff;
+    font-size: 12px;
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+}
+
+.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{
+    outline: none;
+}
+
+.dashboard-organisationContainer{
+    position: relative;
+}
+
+.dashboard-profile__nameContainer{
+    width: 220px;
+    margin-left: 10px;
 }

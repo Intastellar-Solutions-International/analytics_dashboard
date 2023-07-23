@@ -1,35 +1,28 @@
-import Widget from "../../components/widget/widget";
-import Fetch from "../../functions/fetch";
-import API from "../../API/api";
+import Widget from "./widget";
+import useFetch from "../../Functions/FetchHook";
 import Loading from "./Loading";
-const { useState, useEffect, useRef } = React;
 
-export default function TopWidgets() {
-    const [data, setData] = useState(null);
+export default function TopWidgets(props) {
+    
+    const APIUrl = props.API.url;
+    const APIMethod = props.API.method;
+    const APIHeader = props.API.header;
 
-    useEffect(() => {
-        Fetch(API.getTotalNumber.url, API.getTotalNumber.method, API.getTotalNumber.headers).then((data) => {
-            if (data === "Err_Login_Expired") {
-                localStorage.removeItem("globals");
-                window.location.href = "/login";
-                return;
-            }
-            setData(data)
-        })
-        
-        const id = setInterval(() => {
-            Fetch(API.getTotalNumber.url, API.getTotalNumber.method, API.getTotalNumber.headers).then((data) => {
-                setData(data)
-            })
-        }, 5 * 60 * 1000);
-        return()=>clearInterval(id)
-    }, []);
+    const [loading, data, error, updated] = useFetch(30, APIUrl, APIMethod, APIHeader);
+    if (data === "Err_Login_Expired") {
+        localStorage.removeItem("globals");
+        window.location.href = "/login";
+        return;
+    }
 
     return (
         <>
-            {(!data) ? <Loading /> : <Widget overviewTotal={ true } totalNumber={ data.Total } type="Website" /> }
-            {(!data) ? <Loading /> : <Widget totalNumber={ data.JS + "%" } type="JS" /> }
-            {(!data) ? <Loading /> : <Widget totalNumber={ data.WP + "%" } type="WordPress" /> }
+            <p>Updated: {updated}</p>
+            <div className="grid-container grid-3">
+                {(loading) ? <Loading /> : <Widget overviewTotal={ true } totalNumber={ data.Total } type="Website" /> }
+                {(loading) ? <Loading /> : <Widget totalNumber={ data.JS + "%" } type="JS" /> }
+                {(loading) ? <Loading /> : <Widget totalNumber={ data.WP + "%" } type="WordPress" /> }
+            </div>
         </>
     )
 }

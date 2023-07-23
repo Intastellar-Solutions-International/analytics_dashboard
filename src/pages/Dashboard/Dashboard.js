@@ -1,26 +1,46 @@
-import TopWidgets from "../../components/widget/TopWidgets.js";
-import Fetch from "../../functions/fetch";
+const { useState, useEffect, useRef, useContext } = React;
+import TopWidgets from "../../Components/widget/TopWidgets.js";
+import useFetch from "../../Functions/FetchHook";
+import Fetch from "../../Functions/fetch";
 import API from "../../API/api";
-import Widget from "../../components/widget/widget.js";
-import Loading from "../../components/widget/Loading.js";
+import Widget from "../../Components/widget/widget";
+import Loading from "../../Components/widget/Loading";
 import "./Style.css";
-import PieChart from "../../components/Charts/Pie/Pie.js";
-import Map from "../../components/Charts/WorldMap/WorldMap.js";
+import Map from "../../Components/Charts/WorldMap/WorldMap.js";
+import { DomainContext } from "../../App.js";
 
-const { useState, useEffect, useRef } = React;
-
-export default function Dashboard() {
+export default function Dashboard(props){
     document.title = "Dashboard | Intastellar Analytics";
-    const ref = useRef(null);
-    const [data, setData] = useState(null);
-    const [lastUpdated, setLastUpdated] = useState(Math.floor(Date.now() / 100));
-    const [updated, setUpdated] = useState("");
+    const [currentDomain, setCurrentDomain] = useContext(DomainContext);
+    const [lastUpdated, setLastUpdated] = useState("now");
+    const dashboardView = props.dashboardView;
+    let url = API.gdpr.getInteractions.url;
+    let method = API.gdpr.getInteractions.method;
+    let header = API.gdpr.getInteractions.headers;
+
+    if(dashboardView === "GDPR Cookiebanner") {
+        API.gdpr.getInteractions.headers.Domains = currentDomain;
+        url = API.gdpr.getInteractions.url;
+        method = API.gdpr.getInteractions.method;
+        header = API.gdpr.getInteractions.headers;
+    };
+
+    const [loading, data, error, updated] = useFetch(5, url, method, header);
 
     useEffect(() => {
-        Fetch(API.getInteractions.url, API.getInteractions.method, API.getInteractions.headers).then((data) => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        Fetch(url, method, header, signal).then((data) => {
             setData(data)
             setUpdated("Now");
             setLastUpdated(Math.floor(Date.now() / 1000));
+        }).catch(err => {
+            if (err.name === "AbortError") {
+                console.log("cancelled")
+            } else {
+                
+            }
         });
         const interval1 = setInterval(() => {
             if ((Math.floor(Date.now() / 1000)) - lastUpdated >= 60) {
@@ -29,7 +49,7 @@ export default function Dashboard() {
         }, 1000);
 
         const id = setInterval(() => {
-            Fetch(API.getInteractions.url, API.getInteractions.method, API.getInteractions.headers).then((data) => {
+            Fetch(url, method, header, signal).then((data) => {
                 if (data === "Err_Login_Expired") {
                     localStorage.removeItem("globals");
                     
@@ -41,38 +61,69 @@ export default function Dashboard() {
                 setUpdated("Now");
 
                 setLastUpdated(Math.floor(Date.now() / 1000));
-            });
+            }).catch(err => {
+                if (err.name === "AbortError") {
+                    console.log("cancelled")
+                } else {
+                    
+                }
+            });;
         }, 5 * 60 * 1000);
 
-        return()=>clearInterval(id)
-    }, [lastUpdated, setLastUpdated]);
+        return () => {
+            clearInterval(id);
+            controller.abort();
+        }
+    }, [lastUpdated, setLastUpdated, dashboardView, props.setDashboardView]);
 
     return (
         <>
             <div className="dashboard-content">
                 <h2>Analytics Dashboard</h2>
-                <p>Updated: {updated}</p>
-                <div className="grid-container grid-3">
-                    <TopWidgets />
-                </div>
+                <p>Viewing data for: {dashboardView}</p>
+                {/* <select defaultValue={"GDPR Cookiebanner"} onChange={(e) => {props.setDashboardView(e.target.value)}}>
+                    {
+                        JSON.parse(localStorage.getItem("globals")).access.type.map((type, key) => {
+                            return (
+                                <option key={ key } value={type} defaultValue={"GDPR Cookiebanner"}>{ type }</option>
+                            )
+                        })
+                    }
+                </select> */}
+                {
+                    (dashboardView === "GDPR Cookiebanner") ? <TopWidgets dashboardView={dashboardView} API={{
+                        url: API.gdpr.getTotalNumber.url,
+                        method: API.gdpr.getTotalNumber.method,
+                        header: API.gdpr.getTotalNumber.headers 
+                    }} /> : null
+                }
                 <div className="">
                     <h2>Data of user interaction</h2>
-                    {(!data) ? <Loading /> : <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" /> }
+                    <p>Updated: {updated}</p>
+                    {(loading) ? <Loading /> : <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" /> }
                 </div>
                 <div className="grid-container grid-3">
-                    {(!data) ? <Loading /> : <Widget totalNumber={data.Accepted + "%"} type="Accepted cookies" />}
-                    {(!data) ? <Loading /> : <Widget totalNumber={ data.Declined + "%"} type="Declined cookies" /> }
+                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Accepted + "%"} type="Accepted cookies" />}
+                    {(loading) ? <Loading /> : <Widget totalNumber={ data?.Declined + "%"} type="Declined cookies" /> }
                 </div>
                 <div className="grid-container grid-3">
-                    {(!data) ? <Loading /> : <Widget totalNumber={data.Marketing + "%"} type="Accepted only Marketing" />}
-                    {(!data) ? <Loading /> : <Widget totalNumber={data.Functional + "%"} type="Accepted only Functional" />}
-                    {(!data) ? <Loading /> : <Widget totalNumber={ data.Statics + "%"} type="Accepted only Statics" /> }
+                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Marketing + "%"} type="Accepted only Marketing" />}
+                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional + "%"} type="Accepted only Functional" />}
+                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics + "%"} type="Accepted only Statics" />}
+                    {/* {(!data) ? <Loading /> : <Pie data={{
+                        Accepted: data.Accepted,
+                        Declined: data.Declined,
+                        Marketing: data.Marketing,
+                        Functional: data.Functional,
+                        Statics: data.Statics
+                    }} />} */}
                 </div>
                 <div>
-                    <section className="grid-container grid-3">
-                        {(!data) ? <Loading /> :
-                            <section className="widget">
-                                <h2>List of countries</h2>
+                    <section>
+                        {(loading) ? <Loading /> :
+                            <section>
+                                <h3>User interactions based on country</h3>
+                                <p>Updated: {updated}</p>
                                 {
                                     <Map data={{
                                         Marketing: data.Marketing,
@@ -87,7 +138,7 @@ export default function Dashboard() {
                         }
                     </section>
                 </div>
-                <div className="grid-container grid-3 widget">
+                {/* <div className="grid-container grid-3 widget">
                     {(!data) ? <Loading /> :
                     <PieChart data={{
                         Marketing: data.Marketing,
@@ -97,7 +148,7 @@ export default function Dashboard() {
                         Declined: data.Declined
                         }} />
                     }
-                </div>
+                </div> */}
             </div>
         </>
     )
