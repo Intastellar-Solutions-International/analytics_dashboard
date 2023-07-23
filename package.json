@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "startDev": "webpack serve",
-    "startNodeServer": "nodemon index.js"
+    "startNodeServer": "nodemon index.js",
+    "buildProd": "webpack --mode production && cp -R"
   },
   "repository": {
     "type": "git",
