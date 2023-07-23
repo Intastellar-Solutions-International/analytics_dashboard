@@ -52,6 +52,39 @@ const API = {
         },
         addUser: {
             url: `${PrimaryHost}/analytics/settings/add-user.php`,
+    ferry: {
+        getTotalSales: {
+            url: `${PrimaryHost}/analytics/ferry/getTotalSales.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken()
+            }
+        }
+    },
+    settings: {
+        getSettings: {
+            url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
+            method: "GET",
+            headers: {
+                "Autorization": Authentication.getToken()
+            }
+        },
+        createSettings: {
+            url: `${PrimaryHost}/analytics/settings/create-organisation.php`,
+            method: "POST",
+            headers: {
+                "Autorization": Authentication.getToken()
+            }
+        },
+        updateSettings: {
+            url: `${PrimaryHost}/analytics/settings/updateSettings.php`,
+            method: "POST",
+            headers: {
+                "Autorization": Authentication.getToken()
+            }
+        },
+        addUser: {
+            url: `${PrimaryHost}/analytics/settings/add-user.php`,
             method: "POST",
             headers: {
                 "Authorization": Authentication.getToken()

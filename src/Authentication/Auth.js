@@ -28,7 +28,11 @@ const Authentication = {
             setLoading(false);
 
             localStorage.setItem("globals", JSON.stringify(response));
-            window.location.href = "/dashboard";
+            if (window.location.href === "login") {
+                window.location.href = "/dashboard";
+            } else {
+                window.location.reload();
+            }
 
         })
     },
