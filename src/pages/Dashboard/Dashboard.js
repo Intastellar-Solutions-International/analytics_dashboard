@@ -1,19 +1,23 @@
+const { useState, useEffect, useRef, useContext } = React;
 import TopWidgets from "../../Components/widget/TopWidgets.js";
 import useFetch from "../../Functions/FetchHook";
 import API from "../../API/api";
-import Widget from "../../Components/widget/widget.js";
-import Loading from "../../Components/widget/Loading.js";
+import Widget from "../../Components/widget/widget";
+import Loading from "../../Components/widget/Loading";
 import "./Style.css";
 import Map from "../../Components/Charts/WorldMap/WorldMap.js";
+import { DomainContext } from "../../App.js";
 
 export default function Dashboard(props){
     document.title = "Dashboard | Intastellar Analytics";
+    const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const dashboardView = props.dashboardView;
     let url = API.gdpr.getInteractions.url;
     let method = API.gdpr.getInteractions.method;
     let header = API.gdpr.getInteractions.headers;
 
     if(dashboardView === "GDPR Cookiebanner") {
+        API.gdpr.getInteractions.headers.Domains = currentDomain;
         url = API.gdpr.getInteractions.url;
         method = API.gdpr.getInteractions.method;
         header = API.gdpr.getInteractions.headers;

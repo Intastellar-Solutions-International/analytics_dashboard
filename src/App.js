@@ -17,45 +17,49 @@ import ViewOrg from "./Pages/Settings/ViewOrganisations";
 import LoginOverLay from "./Login/LoginOverlay";
 
 export const OrganisationContext = createContext(null);
+export const DomainContext = createContext(null);
 
 export default function App() {
 
     const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
     const [organisation, setOrganisation] = useState(null);
+    const [currentDomain, setCurrentDomain] = useState("all");
 
     if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
         return (
             <>
                 <Router>
                     <OrganisationContext.Provider value={ [organisation, setOrganisation] }>
-                        <Header />
-                        <div className="main-grid"> 
-                            <Nav />
-                            <Switch>
-                                <Route path="/dashboard" exact>
-                                    <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} />
-                                </Route>
-                                <Route path="/domains" exact>
-                                    <Websites />
-                                </Route>
-                                <Route path="/settings" exact>
-                                    <Settings />
-                                </Route>
-                                <Route path="/settings/create-organisation">
-                                    <CreateOrganisation />
-                                </Route>
-                                <Route path="/settings/add-user">
-                                    <AddUser />
-                                </Route>
-                                <Route path="/settings/view-organisations">
-                                    <ViewOrg />
-                                </Route>
-                                <Router path="/login" exact>
-                                    <LoginOverLay />
-                                </Router>
-                                <Redirect to="/login" />
-                            </Switch>
-                        </div>
+                        <DomainContext.Provider value={ [currentDomain, setCurrentDomain]}>
+                            <Header />
+                            <div className="main-grid"> 
+                                <Nav />
+                                <Switch>
+                                    <Route path="/dashboard" exact>
+                                        <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} />
+                                    </Route>
+                                    <Route path="/domains" exact>
+                                        <Websites />
+                                    </Route>
+                                    <Route path="/settings" exact>
+                                        <Settings />
+                                    </Route>
+                                    <Route path="/settings/create-organisation">
+                                        <CreateOrganisation />
+                                    </Route>
+                                    <Route path="/settings/add-user">
+                                        <AddUser />
+                                    </Route>
+                                    <Route path="/settings/view-organisations">
+                                        <ViewOrg />
+                                    </Route>
+                                    <Router path="/login" exact>
+                                        <LoginOverLay />
+                                    </Router>
+                                    <Redirect to="/login" />
+                                </Switch>
+                            </div>
+                        </DomainContext.Provider>
                     </OrganisationContext.Provider>
                 </Router>
             </>
