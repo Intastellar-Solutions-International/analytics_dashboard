@@ -1,48 +1,12 @@
-import Fetch from "../../functions/fetch";
+import Fetch from "../../Functions/FetchHook";
 import API from "../../API/api";
-import Loading from "../../components/widget/Loading";
+import Loading from "../../Components/widget/Loading";
 const { useState, useEffect, useRef } = React;
 
 export default function Websites() {
-    const [data, setData] = useState(null);
-    const [lastUpdated, setLastUpdated] = useState(Math.floor(Date.now() / 100));
-    const [updated, setUpdated] = useState("");
 
-    useEffect(() => {
-        Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
-            if (data === "Err_Login_Expired") {
-                localStorage.removeItem("globals");
-                window.location.href = "/login";
-                return;
-            }
-            setData(data);
-            setUpdated("Now");
-            setLastUpdated(Math.floor(Date.now() / 1000));
-        });
-        const interval1 = setInterval(() => {
-            if ((Math.floor(Date.now() / 1000)) - lastUpdated >= 60) {
-                setUpdated(Math.floor(((Math.floor(Date.now() / 1000)) - lastUpdated) / 60) + " minute ago");
-            }
-        }, 1000);
+    const [loading, data, error] = Fetch(10, API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers);
 
-        const id = setInterval(() => {
-            Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
-                if (data === "Err_Login_Expired") {
-                    localStorage.removeItem("globals");
-                    
-                    window.location.href = "/login";
-                    return;
-                }
-                setData(data);
-                clearInterval(interval1);
-                setUpdated("Now");
-
-                setLastUpdated(Math.floor(Date.now() / 1000));
-            });
-        }, 5 * 60 * 1000);
-
-        return()=>clearInterval(id)
-    }, [lastUpdated, setLastUpdated]);
 
     return (
         <>
@@ -52,15 +16,19 @@ export default function Websites() {
                 <p>On all these domains the GDPR cookiebanner is implemented</p>
                 <section className="grid-container grid-3">
                     {
-                        (!data) ? <Loading /> : data?.map(
+                        (loading) ? <Loading /> : data?.map(
                             (domain, key) => {
                                 const main = domain[0];
+
+                                const timestamp = domain[1];
+
                                 const installed = domain[1];
                                 const lastVisited = domain[2];
                                 return (
                                     <>
                                         <a key={key} className="link widget" href={"http://" + main} target="_blank" rel="noopener nofollow noreferer">
                                             {main} <br />
+                                            {timestamp}
                                             {installed}
                                         </a>
                                     </>

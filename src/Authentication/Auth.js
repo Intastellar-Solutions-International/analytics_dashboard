@@ -1,5 +1,6 @@
 const Authentication = {
-    Login: function (url, email, password, setErrorMessage) {
+    Login: function (url, email, password, type, setErrorMessage, setLoading) {
+        setLoading(true);
         fetch(url, {
             withCredentials: false,
             method: "POST",
@@ -9,7 +10,8 @@ const Authentication = {
             },
             body: JSON.stringify({
                 email: email,
-                password: password
+                password: password,
+                type: type
             })
         }).then((response) => {
             return response.json();
@@ -23,6 +25,7 @@ const Authentication = {
                 setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Alsense Account Manager for assistance");
                 return;
             }
+            setLoading(false);
 
             localStorage.setItem("globals", JSON.stringify(response));
             if (window.location.href === "login") {
@@ -40,6 +43,10 @@ const Authentication = {
     getToken: function () {
         const token = (JSON.parse(localStorage.getItem("globals"))?.token) ? "Bearer " + JSON.parse(localStorage.getItem("globals"))?.token : undefined;
         return  token;
+    },
+    getUserId: function () {
+        const email = (JSON.parse(localStorage.getItem("globals"))?.profile?.email) ? JSON.parse(localStorage.getItem("globals"))?.profile?.email : undefined;
+        return  email;
     }
 }
 
