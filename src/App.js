@@ -27,7 +27,7 @@ export default function App() {
 
     
     if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
-        if (window.location.href === "login") {
+        if (window.location.href.indexOf("login") > -1) {
             window.location.href = "/dashboard";
         }
         return (

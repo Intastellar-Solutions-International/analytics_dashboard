@@ -7,15 +7,17 @@ import useFetch from "../../Functions/FetchHook";
 import API from "../../API/api";
 import Authentication from "../../Authentication/Auth";
 import Select from "../SelectInput/Selector";
+import UserProfile from "../UserProfile/UserProfile";
 
 export default function Header() {
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
-    const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
+    const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name;
 
     const [data, setData] = useState(null);
     const [domains, setDomains] = useState(null);
+    const [viewUserProfile, setViewUserProfile] = useState(false);
 
     useEffect(() => {
         Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
@@ -62,8 +64,9 @@ export default function Header() {
                         /> : null */
                     }
                     <div className="flex">
-                        <img src={profileImage} className="content-img"></img>
-                        <div className="dashboard-profile__nameContainer">
+                        <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile) } />
+                        {(viewUserProfile) ? <UserProfile profileImage={profileImage} name={Name} /> : null}
+                        {/* <div className="dashboard-profile__nameContainer">
                             <p className="dashboard-name">{Name}</p>
                             <div className="dashboard-organisationContainer">
                             {(data && Organisation) ?
@@ -73,7 +76,7 @@ export default function Header() {
                                 /> : null
                             }
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </header>
