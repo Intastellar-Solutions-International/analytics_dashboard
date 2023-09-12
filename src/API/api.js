@@ -52,16 +52,7 @@ const API = {
         },
         addUser: {
             url: `${PrimaryHost}/analytics/settings/add-user.php`,
-    ferry: {
-        getTotalSales: {
-            url: `${PrimaryHost}/analytics/ferry/getTotalSales.php`,
-            method: "GET",
-            headers: {
-                "Authorization": Authentication.getToken()
-            }
-        }
-    },
-    settings: {
+        },
         getSettings: {
             url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
             method: "GET",
@@ -76,21 +67,16 @@ const API = {
                 "Autorization": Authentication.getToken()
             }
         },
-        updateSettings: {
-            url: `${PrimaryHost}/analytics/settings/updateSettings.php`,
-            method: "POST",
-            headers: {
-                "Autorization": Authentication.getToken()
-            }
-        },
-        addUser: {
-            url: `${PrimaryHost}/analytics/settings/add-user.php`,
-            method: "POST",
+    },
+    ferry: {
+        getTotalSales: {
+            url: `${PrimaryHost}/analytics/ferry/getTotalSales.php`,
+            method: "GET",
             headers: {
                 "Authorization": Authentication.getToken()
             }
         }
-    }
-}
+    },
+};
 
 export default API;
