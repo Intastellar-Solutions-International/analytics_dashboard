@@ -12,6 +12,10 @@ export default function LoginOverLay() {
     const [isLoading, setLoading] = React.useState(false);
     const [errorMessage, setErrorMessage] = React.useState(null);
 
+    if(JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status){
+        window.location.href = "/dashboard";
+    }
+
     return (
         <>
             <div className="loginForm-overlay">

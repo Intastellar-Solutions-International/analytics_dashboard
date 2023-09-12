@@ -15,12 +15,12 @@ import CreateOrganisation from "./Pages/Settings/CreateOrganisation";
 import AddUser from "./Pages/Settings/AddUser";
 import ViewOrg from "./Pages/Settings/ViewOrganisations";
 import LoginOverLay from "./Login/LoginOverlay";
+import DomainDashbord from "./Pages/Dashboard/DomainDashbord";
 
 export const OrganisationContext = createContext(null);
 export const DomainContext = createContext(null);
 
 export default function App() {
-
     const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
     const [organisation, setOrganisation] = useState(null);
     const [currentDomain, setCurrentDomain] = useState("all");
@@ -56,6 +56,9 @@ export default function App() {
                                     <Router path="/login" exact>
                                         <LoginOverLay />
                                     </Router>
+                                    <Route path='/view/:handle'>
+                                        <DomainDashbord />
+                                    </Route>
                                     <Redirect to="/login" />
                                 </Switch>
                             </div>

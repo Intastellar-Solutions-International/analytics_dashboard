@@ -49,17 +49,20 @@ export default function Header() {
             setData(data);
         });
     }, [])
-
     return (
         <>
             <header className="dashboard-header">
                 <div className="dashboard-profile">
                     <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
-                    {/* (domains && currentDomain) ?
+                    {(domains && currentDomain) ?
                         <Select
-                            onChange={(e) => { setCurrentDomain(e.target.value) }}
+                            onChange={(e) => { 
+                                const domain = e.target.value;
+                                const encodedDomain = domain.split('.').map(encodeURIComponent).join('%2E');
+                                /* console.log(encodedDomain); */
+                                window.location.href = `/view/${encodedDomain}` }}
                             items={domains}
-                        /> : null */
+                        /> : null
                     }
                     <div className="flex">
                         <img src={profileImage} className="content-img"></img>

@@ -3,7 +3,6 @@ import Authentication from "../../Authentication/Auth";
 const Link = window.ReactRouterDOM.Link;
 
 export default function Nav() {
-
     const Expand = function () {
         document.querySelector(".sidebar").classList.toggle("expand");
         document.querySelector(".collapsed").classList.toggle("expand");
