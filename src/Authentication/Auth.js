@@ -49,7 +49,7 @@ const Authentication = {
         return  email;
     },
     getOrganisation: function(){
-        const organisation = (JSON.parse(localStorage.getItem("organisation")).id) ? JSON.parse(localStorage.getItem("organisation"))?.id : undefined;
+        const organisation = (localStorage.getItem("organisation") != null || localStorage.getItem("organisation") != undefined) ? JSON.parse(localStorage.getItem("organisation"))?.id : undefined;
         return organisation;
     }
 }

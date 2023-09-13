@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./Components/Header/header";
 import Login from "./Login/Login";
 import Nav from "./Components/Header/Nav";
+import API from "./API/api";
 const { useState, useEffect, useRef, createContext } = React;
 const Router = window.ReactRouterDOM.BrowserRouter;
 const Route =  window.ReactRouterDOM.Route;
@@ -16,16 +17,21 @@ import AddUser from "./Pages/Settings/AddUser";
 import ViewOrg from "./Pages/Settings/ViewOrganisations";
 import LoginOverLay from "./Login/LoginOverlay";
 import DomainDashbord from "./Pages/Dashboard/DomainDashbord";
+import Fetch from "./Functions/fetch";
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
 export const DomainContext = createContext(null);
 
 export default function App() {
     const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
-    const [organisation, setOrganisation] = useState((localStorage.getItem("organisation")) ? localStorage.getItem("organisation") : "Intastellar Solutions, International");
+    const [organisation, setOrganisation] = useState((localStorage.getItem("organisation")) ? localStorage.getItem("organisation") : null);
     const [currentDomain, setCurrentDomain] = useState("all");
 
     if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
+        Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
+            organisationMember: JSON.parse(localStorage.getItem("globals"))?.profile?.email
+        })).then((data) => (localStorage.getItem("organisation") == null || localStorage.getItem("organisation") == undefined) ? localStorage.setItem("organisation", data[0]) : null);
+        
         return (
             <>
                 <Router>

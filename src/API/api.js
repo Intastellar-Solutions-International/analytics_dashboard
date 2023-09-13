@@ -58,12 +58,16 @@ const API = {
         },
         addUser: {
             url: `${PrimaryHost}/analytics/settings/add-user.php`,
+            method: "POST",
+            headers: {
+                "Authorization": Authentication.getToken(),
+            }
         },
         getSettings: {
             url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
             method: "GET",
             headers: {
-                "Autorization": Authentication.getToken(),
+                "Authorization": Authentication.getToken(),
                 "Organisation": Authentication.getOrganisation()
             }
         },
@@ -71,7 +75,7 @@ const API = {
             url: `${PrimaryHost}/analytics/settings/create-organisation.php`,
             method: "POST",
             headers: {
-                "Autorization": Authentication.getToken(),
+                "Authorization": Authentication.getToken(),
                 "Organisation": Authentication.getOrganisation()
             }
         },
