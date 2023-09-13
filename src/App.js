@@ -4,7 +4,7 @@ import Login from "./Login/Login";
 import Nav from "./Components/Header/Nav";
 import API from "./API/api";
 const { useState, useEffect, useRef, createContext } = React;
-const Router = window.ReactRouterDOM.BrowserRouter;
+const Router = window.ReactRouterDOM.HashRouter;
 const Route =  window.ReactRouterDOM.Route;
 const Switch = window.ReactRouterDOM.Switch;
 const Redirect = window.ReactRouterDOM.Redirect;

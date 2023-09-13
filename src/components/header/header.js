@@ -23,7 +23,7 @@ export default function Header() {
         Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
             if (data === "Err_Login_Expired") {
                 localStorage.removeItem("globals");
-                window.location.href = "/login";
+                window.location.href = "/#login";
                 return;
             }
 
@@ -71,7 +71,7 @@ export default function Header() {
                             onChange={(e) => { 
                                 const domain = e.target.value;
                                 setCurrentDomain(domain);
-                                window.location.href = `/view/${domain.replace('.', '%2E')}`;
+                                window.location.href = `#/view/${domain.replace('.', '%2E')}`;
                             }}
                             items={domainList} title="Choose one of your domains"
                         />
@@ -87,7 +87,7 @@ export default function Header() {
                                     onChange={(e) => { 
                                         setOrganisation(JSON.parse(e.target.value));
                                         localStorage.setItem("organisation", e.target.value);
-                                        window.location.href = "/dashboard";}}
+                                        window.location.href = "#/dashboard";}}
                                     items={data}
                                 /> : null
                             }
