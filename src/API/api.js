@@ -36,16 +36,14 @@ const API = {
             url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
             method: "POST",
             headers: {
-                "Authorization": Authentication.getToken(),
-                "Organisation": Authentication.getOrganisation()
+                "Authorization": Authentication.getToken()
             }
         },
         createOrganisation: {
             url: `${PrimaryHost}/analytics/settings/create-organisation.php`,
             method: "POST",
             headers: {
-                "Authorization": Authentication.getToken(),
-                "Organisation": Authentication.getOrganisation()
+                "Authorization": Authentication.getToken()
             }
         },
         updateSettings: {
