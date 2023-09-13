@@ -27,6 +27,7 @@ export default function App() {
     const [organisation, setOrganisation] = useState((localStorage.getItem("organisation")) ? localStorage.getItem("organisation") : null);
     const [currentDomain, setCurrentDomain] = useState("all");
 
+    
     if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
         Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
             organisationMember: JSON.parse(localStorage.getItem("globals"))?.profile?.email

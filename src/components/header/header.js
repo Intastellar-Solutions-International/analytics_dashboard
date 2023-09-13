@@ -13,10 +13,12 @@ export default function Header() {
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
+
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
     const navigate = useHistory();
     const [data, setData] = useState(null);
     const [domains, setDomains] = useState(null);
+
     useEffect(() => {
         Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
             if (data === "Err_Login_Expired") {
@@ -76,7 +78,7 @@ export default function Header() {
                     </> : null
                     }
                     <div className="flex">
-                        <img src={profileImage} className="content-img"></img>
+                        <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile) } />
                         <div className="dashboard-profile__nameContainer">
                             <p className="dashboard-name">{Name}</p>
                             <div className="dashboard-organisationContainer">
