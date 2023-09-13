@@ -10,21 +10,24 @@ const API = {
             url:  `${PrimaryHost}/analytics/gdpr/getTotalNumber.php`,
             method: "GET",
             headers: {
-                "Authorization": Authentication.getToken()
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation()
             }
         },
         getInteractions: {
             url:  `${PrimaryHost}/analytics/gdpr/getInteractions.php`,
             method: "GET",
             headers: {
-                "Authorization": Authentication.getToken()
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation()
             }
         },
         getDomains: {
             url: `${PrimaryHost}/analytics/gdpr/getDomains.php`,
             method: "GET",
             headers: {
-                "Authorization": Authentication.getToken()
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation()
             }
         }
     },
@@ -52,35 +55,48 @@ const API = {
                 "Authorization": Authentication.getToken()
             }
         },
-        getSettings: {
-            url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
-            method: "GET",
-            headers: {
-                "Autorization": Authentication.getToken()
-            }
-        },
-        createSettings: {
-            url: `${PrimaryHost}/analytics/settings/create-organisation.php`,
-            method: "POST",
-            headers: {
-                "Autorization": Authentication.getToken()
-            }
-        },
         updateSettings: {
             url: `${PrimaryHost}/analytics/settings/updateSettings.php`,
             method: "POST",
             headers: {
-                "Autorization": Authentication.getToken()
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation()
             }
         },
         addUser: {
             url: `${PrimaryHost}/analytics/settings/add-user.php`,
             method: "POST",
             headers: {
-                "Authorization": Authentication.getToken()
+                "Authorization": Authentication.getToken(),
+            }
+        },
+        getSettings: {
+            url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation()
+            }
+        },
+        createSettings: {
+            url: `${PrimaryHost}/analytics/settings/create-organisation.php`,
+            method: "POST",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation()
+            }
+        },
+    },
+    ferry: {
+        getTotalSales: {
+            url: `${PrimaryHost}/analytics/ferry/getTotalSales.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation()
             }
         }
-    }
-}
+    },
+};
 
 export default API;

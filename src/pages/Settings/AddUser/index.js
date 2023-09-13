@@ -13,6 +13,7 @@ export default function AddUser() {
     const [userRole, setUserRole] = useState("Admin");
     const [userName, setUserName] = useState("");
     const [status, setStatus] = useState(null);
+    const [organisationId, setOrganisationId] = useState(null);
     const [style, setStyle] = useState({
         right: "-100%"
     });
@@ -24,7 +25,7 @@ export default function AddUser() {
             API.settings.addUser.headers,
             JSON.stringify(
                 {
-                    organisationId: Organisation?.id,
+                    organisationId: organisationId,
                     userEmail: userMail,
                     userRole: userRole
                 }
@@ -70,6 +71,10 @@ export default function AddUser() {
                     <select id="role" name="role" onChange={(e) => setUserRole(e.target.value)}>
                         <option>Admin</option>
                         <option>Manager</option>
+                    </select>
+                    <label for="organisation">Organisation</label>
+                    <select id="organisation" name="organisation" onChange={(e) => setOrganisationId(e.target.value)}>
+                        <option value={Organisation?.id}>{Organisation?.name}</option>
                     </select>
                     <button>Add user</button>
                 </form>

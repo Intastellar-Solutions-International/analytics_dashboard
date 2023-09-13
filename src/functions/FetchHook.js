@@ -47,7 +47,7 @@ export default function useFetch(updateInterval, url, method, headers, body){
                 clearInterval(id);
             }
         }
-    }, [url, lastUpdated]);
+    }, [url]);
 
     return [loading, data, error, updated];
 }
