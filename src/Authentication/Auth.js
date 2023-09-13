@@ -47,6 +47,10 @@ const Authentication = {
     getUserId: function () {
         const email = (JSON.parse(localStorage.getItem("globals"))?.profile?.email) ? JSON.parse(localStorage.getItem("globals"))?.profile?.email : undefined;
         return  email;
+    },
+    getOrganisation: function(){
+        const organisation = (localStorage.getItem("organisation") != null || localStorage.getItem("organisation") != undefined) ? JSON.parse(localStorage.getItem("organisation"))?.id : undefined;
+        return organisation;
     }
 }
 

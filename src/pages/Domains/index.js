@@ -18,18 +18,18 @@ export default function Websites() {
                     {
                         (loading) ? <Loading /> : data?.map(
                             (domain, key) => {
-                                const main = domain[0];
+                                const main = domain["domain"];
 
                                 const timestamp = domain[1];
 
-                                const installed = domain[1];
-                                const lastVisited = domain[2];
+                                const installed = domain["installed"];
+                                const lastVisited = domain["lastedVisited"];
                                 return (
                                     <>
                                         <a key={key} className="link widget" href={"http://" + main} target="_blank" rel="noopener nofollow noreferer">
                                             {main} <br />
-                                            {timestamp}
-                                            {installed}
+                                            Last visited: {lastVisited} <br />
+                                            Installed: {installed}
                                         </a>
                                     </>
                                 )

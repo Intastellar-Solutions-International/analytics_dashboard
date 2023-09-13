@@ -7,12 +7,13 @@ import Widget from "../../Components/widget/widget";
 import Loading from "../../Components/widget/Loading";
 import "./Style.css";
 import Map from "../../Components/Charts/WorldMap/WorldMap.js";
-import { DomainContext } from "../../App.js";
+import { DomainContext, OrganisationContext } from "../../App.js";
 
 export default function Dashboard(props){
     document.title = "Dashboard | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
-    const [lastUpdated, setLastUpdated] = useState("now");
+    const [organisation, setOrganisation] = useContext(OrganisationContext);
+    const [lastUpdated, setLastUpdated] = useState("Now");
     const dashboardView = props.dashboardView;
     let url = API.gdpr.getInteractions.url;
     let method = API.gdpr.getInteractions.method;
@@ -80,7 +81,7 @@ export default function Dashboard(props){
         <>
             <div className="dashboard-content">
                 <h2>Analytics Dashboard</h2>
-                <p>Viewing data for: {dashboardView}</p>
+                <p>Viewing all data for: {JSON.parse(organisation).name}</p>
                 {/* <select defaultValue={"GDPR Cookiebanner"} onChange={(e) => {props.setDashboardView(e.target.value)}}>
                     {
                         JSON.parse(localStorage.getItem("globals")).access.type.map((type, key) => {
@@ -91,7 +92,7 @@ export default function Dashboard(props){
                     }
                 </select> */}
                 {
-                    (dashboardView === "GDPR Cookiebanner") ? <TopWidgets dashboardView={dashboardView} API={{
+                    (dashboardView === "GDPR Cookiebanner" && JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
                         url: API.gdpr.getTotalNumber.url,
                         method: API.gdpr.getTotalNumber.method,
                         header: API.gdpr.getTotalNumber.headers 
