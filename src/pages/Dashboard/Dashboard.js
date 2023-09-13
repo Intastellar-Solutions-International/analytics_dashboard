@@ -76,7 +76,7 @@ export default function Dashboard(props){
             controller.abort();
         }
     }, [lastUpdated, setLastUpdated, dashboardView, props.setDashboardView]);
-    console.log(organisation);
+
     return (
         <>
             <div className="dashboard-content">
