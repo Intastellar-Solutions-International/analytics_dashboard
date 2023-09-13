@@ -1,24 +1,18 @@
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+const config = {
   entry: {
-    app: path.resolve(__dirname, './index.js'),
+    intastellarAnalytics: path.resolve(__dirname, '/index.js'),
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, "./dist"),
     clean: true,
     publicPath: "/"
   },
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
       {
           test: /\.node$/,
           loader: "node-loader",
@@ -54,12 +48,30 @@ module.exports = {
           ],
       }
     ]
-  },
-  optimization: {
-    minimizer: [
-      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`), uncomment the next line
-      // `...`,
-      new CssMinimizerPlugin(),
-    ],
   }
+};
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.devtool = 'source-map';
+    config.mode = 'development';
+    config.plugins = [ 
+      new HtmlWebpackPlugin({
+        template: "./index.html",
+      })
+    ]
+  }
+
+  if (argv.mode === 'production') {
+    //...
+    config.mode = 'production';
+    config.plugins = [ 
+      new HtmlWebpackPlugin({
+        template: "./production.html",
+      })
+    ]
+
+  }
+
+  return config;
 };
