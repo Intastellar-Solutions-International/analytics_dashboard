@@ -28,9 +28,10 @@ export default function Header() {
             if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
-            data.unshift(["all", null, null]);
+            
+            data.unshift({domain: "all", installed: null, lastedVisited: null});
             data = data.filter((d) => {
-                return d[0] !== undefined && d[0] !== "" && d[0] !== "undefined." ;
+                return d !== undefined && d !== "" && d["domain"] !== "undefined." ;
             })
             setDomains(data); 
         });
@@ -47,11 +48,14 @@ export default function Header() {
             if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
-
             setData(data);
         });
     }, [])
     let view = "";
+    const domainList = domains?.map((d) => {
+        return d.domain;
+    })
+
     return (
         <>
             <header className="dashboard-header">
@@ -65,7 +69,7 @@ export default function Header() {
                                 setCurrentDomain(domain);
                                 window.location.href = `/view/${domain.replace('.', '%2E')}`;
                             }}
-                            items={domains} title="Choose a domain"
+                            items={domainList} title="Choose a domain"
                         />
                     </> : null
                     }
