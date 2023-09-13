@@ -16,10 +16,9 @@ export default function Login() {
     return (
         <>
             <div className="loginForm-container">
-                <img className="loginForm-logo" src={logo} alt="Intastellar Solutions Logo" />
                 <form className="loginForm" onSubmit={(e) => { e.preventDefault(), Authentication.Login(API.Login.url, email, password, type, setErrorMessage, setLoading) }}>
-                    <img className="loginForm-logo --hideMobile" src={logo} alt="Intastellar Solutions Logo" />
-                    <h1 className="loginForm-title">Signin</h1>
+                    <img className="loginForm-logo" src={logo} alt="Intastellar Solutions Logo" />
+                    <h1 className="loginForm-title">Signin to Intastellar Analytics</h1>
                     <label>{(errorMessage != null) ? errorMessage : null }</label>
                     <label>Email:</label>
                     <input className="loginForm-inputField" type="email" placeholder="email" onChange={e => { setEmail(e.target.value); }} />
