@@ -87,7 +87,7 @@ export default function Header() {
                                     onChange={(e) => { 
                                         setOrganisation(JSON.parse(e.target.value));
                                         localStorage.setItem("organisation", e.target.value);
-                                        window.location.href = "/dashboard";}}
+                                        window.location.href = "#/dashboard";}}
                                     items={data}
                                 /> : null
                             }
