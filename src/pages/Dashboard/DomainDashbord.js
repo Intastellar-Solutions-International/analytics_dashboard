@@ -22,7 +22,7 @@ export default function DomainDashbord(){
             <div className="dashboard-content">
                 <h1>Domain Dashboard</h1>
                 <p>You´re currently viewing the data for:</p>
-                <h2><a href={`https://${handle}`} target="_blank">{handle}</a></h2>
+                <h2><a className="activeDomain" href={`https://${handle}`} target="_blank">{handle}</a></h2>
                 {(loading) ? <Loading /> : (data.Total === 0) ? <h1>No interactions yet</h1> : 
                 <>
                     <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" />

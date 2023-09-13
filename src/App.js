@@ -30,7 +30,7 @@ export default function App() {
             <>
                 <Router>
                     <OrganisationContext.Provider value={ [organisation, setOrganisation] }>
-                        <DomainContext.Provider value={ [currentDomain, setCurrentDomain]}>
+                        <DomainContext.Provider value={ [currentDomain, setCurrentDomain] }>
                             <Header />
                             <div className="main-grid"> 
                                 <Nav />

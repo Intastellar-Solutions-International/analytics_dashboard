@@ -47,7 +47,7 @@ export default function Header() {
             if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
-            console.log(data);
+
             setData(data);
         });
     }, [])
@@ -62,7 +62,6 @@ export default function Header() {
                         <Select defaultValue={currentDomain}
                             onChange={(e) => { 
                                 const domain = e.target.value;
-                                const encodedDomain = domain.replace('.', '%2E');
                                 setCurrentDomain(domain);
                                 window.location.href = `/view/${domain.replace('.', '%2E')}`;
                             }}

@@ -9,3 +9,9 @@
     width: 90%;
     margin: 0 auto;
 }
+
+.activeDomain{
+    color: aliceblue;
+    text-decoration: none;
+    text-transform: uppercase;
+}

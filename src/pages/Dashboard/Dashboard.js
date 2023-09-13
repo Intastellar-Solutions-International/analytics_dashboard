@@ -76,12 +76,12 @@ export default function Dashboard(props){
             controller.abort();
         }
     }, [lastUpdated, setLastUpdated, dashboardView, props.setDashboardView]);
-    
+
     return (
         <>
             <div className="dashboard-content">
                 <h2>Analytics Dashboard</h2>
-                <p>Viewing data for: {dashboardView} - Logged into {}</p>
+                <p>Viewing all data for: {JSON.parse(organisation).name}</p>
                 {/* <select defaultValue={"GDPR Cookiebanner"} onChange={(e) => {props.setDashboardView(e.target.value)}}>
                     {
                         JSON.parse(localStorage.getItem("globals")).access.type.map((type, key) => {
@@ -92,7 +92,7 @@ export default function Dashboard(props){
                     }
                 </select> */}
                 {
-                    (dashboardView === "GDPR Cookiebanner") ? <TopWidgets dashboardView={dashboardView} API={{
+                    (dashboardView === "GDPR Cookiebanner" && JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
                         url: API.gdpr.getTotalNumber.url,
                         method: API.gdpr.getTotalNumber.method,
                         header: API.gdpr.getTotalNumber.headers 
