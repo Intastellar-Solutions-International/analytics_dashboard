@@ -31,7 +31,12 @@ export default function App() {
     if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
         Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
             organisationMember: JSON.parse(localStorage.getItem("globals"))?.profile?.email
-        })).then((data) => (localStorage.getItem("organisation") == null || localStorage.getItem("organisation") == undefined) ? localStorage.setItem("organisation", data[0]) : null);
+        })).then((data) => {
+            if(localStorage.getItem("organisation") == null || localStorage.getItem("organisation") == undefined){
+                localStorage.setItem("organisation", data[0]);
+                window.location.reload();
+            }
+        });
         
         return (
             <>
