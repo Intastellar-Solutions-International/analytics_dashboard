@@ -1,6 +1,11 @@
 .selector{
-    width: 200px;
+    width: calc(max-content + 20px);
     position: relative;
+}
+
+.selectTitle{
+    margin-bottom: 10px;
+    display: block;
 }
 
 .selector select{
@@ -13,6 +18,9 @@
     margin: 0px;
     padding-bottom: 5px;
     border-radius: 0;
+    /* border-bottom: 1px solid; */
+    display: block;
+    width: 100%;
 }
 
 .selector select:focus, .selector select:focus-within, .selector select:focus-visible{
@@ -27,8 +35,8 @@
     margin-right: 10px;
     display: block;
     position: absolute;
-    right: -20px;
     top: 0;
+    right: 0;
     border-top: 1px solid;
     border-left: 1px solid;
     transform: rotate(-135deg);

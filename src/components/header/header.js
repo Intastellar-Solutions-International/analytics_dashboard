@@ -28,7 +28,7 @@ export default function Header() {
             if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
-            
+
             data.unshift({domain: "all", installed: null, lastedVisited: null});
             data = data.filter((d) => {
                 return d !== undefined && d !== "" && d["domain"] !== "undefined." ;
@@ -53,8 +53,10 @@ export default function Header() {
     }, [])
     let view = "";
     const domainList = domains?.map((d) => {
-        return d.domain;
-    })
+        return  d.domain;
+    }).filter((d) => {
+        return d !== undefined && d !== "" && d !== "undefined.";
+    });
 
     return (
         <>
@@ -69,7 +71,7 @@ export default function Header() {
                                 setCurrentDomain(domain);
                                 window.location.href = `/view/${domain.replace('.', '%2E')}`;
                             }}
-                            items={domainList} title="Choose a domain"
+                            items={domainList} title="Choose one of your domains"
                         />
                     </> : null
                     }
