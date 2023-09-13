@@ -30,7 +30,9 @@
     "webpack-node-externals": "^3.0.0"
   },
   "devDependencies": {
+    "css-minimizer-webpack-plugin": "^5.0.1",
     "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.7.6",
     "node-loader": "^2.0.0"
   }
 }

@@ -16,11 +16,6 @@ const client = {
   devServer: {
     historyApiFallback: true,
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "src/index.html"
-    })
-  ],
   resolve: {
       modules: [
         'node_modules',
