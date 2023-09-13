@@ -54,7 +54,7 @@ export default function Dashboard(props){
                 if (data === "Err_Login_Expired") {
                     localStorage.removeItem("globals");
                     
-                    window.location.href = "/login";
+                    window.location.href = "/#login";
                     return;
                 }
                 setData(data);
