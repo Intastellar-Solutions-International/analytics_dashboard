@@ -5,7 +5,7 @@ const client = {
   entry: path.resolve(__dirname, 'index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     publicPath: '/'
   },
   mode: "development",
@@ -67,4 +67,29 @@ const client = {
   },
 };
 
-module.exports = [client]
+
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    client.devtool = 'source-map';
+    client.mode = 'development';
+    client.plugins = [ 
+      new HtmlWebpackPlugin({
+        template: "./index.html",
+      })
+    ]
+  }
+
+  if (argv.mode === 'production') {
+    //...
+    client.mode = 'production';
+    client.plugins = [ 
+      new HtmlWebpackPlugin({
+        template: "./production.html",
+      })
+    ]
+
+  }
+
+  return [client];
+};

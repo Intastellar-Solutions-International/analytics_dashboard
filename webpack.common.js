@@ -1,18 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+const config = {
   entry: {
-    app: path.resolve(__dirname, './index.js'),
+    intastellarAnalytics: path.resolve(__dirname, '/index.js'),
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "src/index.html"
-    }),
-  ],
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, "./dist"),
     clean: true,
     publicPath: "/"
   },
@@ -54,4 +49,29 @@ module.exports = {
       }
     ]
   }
+};
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.devtool = 'source-map';
+    config.mode = 'development';
+    config.plugins = [ 
+      new HtmlWebpackPlugin({
+        template: "./index.html",
+      })
+    ]
+  }
+
+  if (argv.mode === 'production') {
+    //...
+    config.mode = 'production';
+    config.plugins = [ 
+      new HtmlWebpackPlugin({
+        template: "./production.html",
+      })
+    ]
+
+  }
+
+  return config;
 };
