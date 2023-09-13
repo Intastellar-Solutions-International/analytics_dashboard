@@ -7,16 +7,16 @@ import useFetch from "../../Functions/FetchHook";
 import API from "../../API/api";
 import Authentication from "../../Authentication/Auth";
 import Select from "../SelectInput/Selector";
+const useHistory = window.ReactRouterDOM.useHistory;
 
 export default function Header() {
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
-
+    const navigate = useHistory();
     const [data, setData] = useState(null);
     const [domains, setDomains] = useState(null);
-
     useEffect(() => {
         Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
             if (data === "Err_Login_Expired") {
@@ -28,7 +28,10 @@ export default function Header() {
             if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
-
+            data.unshift(["all", null, null]);
+            data = data.filter((d) => {
+                return d[0] !== undefined && d[0] !== "" && d[0] !== "undefined." ;
+            })
             setDomains(data); 
         });
 
@@ -37,32 +40,35 @@ export default function Header() {
         })).then((data) => {
             if (data === "Err_Login_Expired") {
                 localStorage.removeItem("globals");
-                window.location.href = "/login";
+                navigate.push("/login");
                 return;
             }
 
             if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
-            
-            setOrganisation(JSON.parse(data)); 
+            console.log(data);
             setData(data);
         });
     }, [])
+    let view = "";
     return (
         <>
             <header className="dashboard-header">
                 <div className="dashboard-profile">
                     <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
                     {(domains && currentDomain) ?
-                        <Select
+                    <>
+                        <Select defaultValue={currentDomain}
                             onChange={(e) => { 
                                 const domain = e.target.value;
-                                const encodedDomain = domain.split('.').map(encodeURIComponent).join('%2E');
-                                /* console.log(encodedDomain); */
-                                window.location.href = `/view/${encodedDomain}` }}
-                            items={domains}
-                        /> : null
+                                const encodedDomain = domain.replace('.', '%2E');
+                                setCurrentDomain(domain);
+                                window.location.href = `/view/${domain.replace('.', '%2E')}`;
+                            }}
+                            items={domains} title="Choose a domain"
+                        />
+                    </> : null
                     }
                     <div className="flex">
                         <img src={profileImage} className="content-img"></img>
@@ -70,8 +76,11 @@ export default function Header() {
                             <p className="dashboard-name">{Name}</p>
                             <div className="dashboard-organisationContainer">
                             {(data && Organisation) ?
-                                <Select
-                                    onChange={(e) => { setOrganisation({ id: JSON.parse(e.target.value).id, name: JSON.parse(e.target.value).name }) }}
+                                <Select defaultValue={Organisation}
+                                    onChange={(e) => { 
+                                        setOrganisation(JSON.parse(e.target.value));
+                                        localStorage.setItem("organisation", e.target.value);
+                                        window.location.href = "/dashboard";}}
                                     items={data}
                                 /> : null
                             }

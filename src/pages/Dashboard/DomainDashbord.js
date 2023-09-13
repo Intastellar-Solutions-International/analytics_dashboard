@@ -22,27 +22,31 @@ export default function DomainDashbord(){
             <div className="dashboard-content">
                 <h1>Domain Dashboard</h1>
                 <p>You´re currently viewing the data for:</p>
-                <h2>{handle}</h2>
-                {(loading) ? <Loading /> : (data.Total === 0) ? <h1>No interactions yet</h1> : <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" />}
-                <div className="grid-container grid-3">
-                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Accepted + "%"} type="Accepted cookies" />}
-                    {(loading) ? <Loading /> : <Widget totalNumber={ data?.Declined + "%"} type="Declined cookies" /> }
-                </div>
-                <div className="grid-container grid-3">
-                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Marketing + "%"} type="Accepted only Marketing" />}
-                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional + "%"} type="Accepted only Functional" />}
-                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics + "%"} type="Accepted only Statics" />}
-                    {/* {(!data) ? <Loading /> : <Pie data={{
-                        Accepted: data.Accepted,
-                        Declined: data.Declined,
-                        Marketing: data.Marketing,
-                        Functional: data.Functional,
-                        Statics: data.Statics
-                    }} />} */}
-                </div>
+                <h2><a href={`https://${handle}`} target="_blank">{handle}</a></h2>
+                {(loading) ? <Loading /> : (data.Total === 0) ? <h1>No interactions yet</h1> : 
+                <>
+                    <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" />
+                    <div className="grid-container grid-3">
+                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Accepted + "%"} type="Accepted cookies" />}
+                        {(loading) ? <Loading /> : <Widget totalNumber={ data?.Declined + "%"} type="Declined cookies" /> }
+                    </div>
+                    <div className="grid-container grid-3">
+                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Marketing + "%"} type="Accepted only Marketing" />}
+                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional + "%"} type="Accepted only Functional" />}
+                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics + "%"} type="Accepted only Statics" />}
+                        {/* {(!data) ? <Loading /> : <Pie data={{
+                            Accepted: data.Accepted,
+                            Declined: data.Declined,
+                            Marketing: data.Marketing,
+                            Functional: data.Functional,
+                            Statics: data.Statics
+                        }} />} */}
+                    </div>
+                </>
+                }
                 <div className="grid-container grid-3">
                     <section>
-                        {(loading) ? <Loading /> :
+                        {(loading) ? <Loading /> : (data.Total === 0) ? null :
                             <section>
                                 <h3>User interactions based on country</h3>
                                 <p>Updated: {updated}</p>

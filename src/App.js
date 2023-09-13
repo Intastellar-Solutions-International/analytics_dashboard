@@ -17,12 +17,12 @@ import ViewOrg from "./Pages/Settings/ViewOrganisations";
 import LoginOverLay from "./Login/LoginOverlay";
 import DomainDashbord from "./Pages/Dashboard/DomainDashbord";
 
-export const OrganisationContext = createContext(null);
+export const OrganisationContext = createContext(localStorage.getItem("organisation"));
 export const DomainContext = createContext(null);
 
 export default function App() {
     const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
-    const [organisation, setOrganisation] = useState(null);
+    const [organisation, setOrganisation] = useState((localStorage.getItem("organisation")) ? localStorage.getItem("organisation") : "Intastellar Solutions, International");
     const [currentDomain, setCurrentDomain] = useState("all");
 
     if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
