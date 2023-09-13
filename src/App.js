@@ -79,7 +79,7 @@ export default function App() {
                 </Router>
             </>
         )
-    } else if(JSON.parse(localStorage.getItem("globals"))?.status == undefined || JSON.parse(localStorage.getItem("globals"))?.status != "admin") {
+    } else if(JSON.parse(localStorage.getItem("globals"))?.status == undefined) {
         return (
             <Router path="/login" exact>
                 <Login />
