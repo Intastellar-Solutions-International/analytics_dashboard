@@ -31,6 +31,15 @@ const API = {
             }
         }
     },
+    ferry: {
+        getTotalSales: {
+            url: `${PrimaryHost}/analytics/ferry/getTotalSales.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken()
+            }
+        }
+    },
     settings: {
         getOrganisation: {
             url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
