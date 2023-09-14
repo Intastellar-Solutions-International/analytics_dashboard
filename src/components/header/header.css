@@ -65,12 +65,13 @@
     transition: width .5s ease-in-out;
     width: 65px;
     min-height: 100vh;
+    position: fixed;
 }
 
 .collapsed {
-    width: 65px;
-    height: 92%;
-    position: fixed;
+    width: auto;
+    height: calc(100vh - 88px);
+    
     transition: width .5s ease-in-out;
     display: flex;
     flex-direction: column;
@@ -84,7 +85,7 @@
 }
 
 .sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {
-    width: 150px;
+    width: max-content;
 }
 
 .collapsed nav {
@@ -257,4 +258,22 @@
 .dashboard-profile__nameContainer{
     width: 220px;
     margin-left: 10px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 900px) {
+    .dashboard-header {
+        width: 100%;
+    }
+
+    .grid-3{
+        grid-template-columns: 1fr;
+    }
+
+    .grid-container{
+        display: block;
+    }
+
+    .dashboard-profile__nameContainer{
+        width: auto;
+    }
 }
