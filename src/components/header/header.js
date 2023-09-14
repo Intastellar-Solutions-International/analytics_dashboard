@@ -60,6 +60,14 @@ export default function Header() {
         return d !== undefined && d !== "" && d !== "undefined.";
     });
 
+    const allowedDomains = domains?.map((d) => {
+        return  d.domain;
+    }).filter((d) => {
+        return d !== undefined && d !== "" && d !== "undefined." && d !== "all";
+    });
+
+    localStorage.setItem("domains", JSON.stringify(allowedDomains));
+
     return (
         <>
             <header className="dashboard-header">
@@ -87,7 +95,7 @@ export default function Header() {
                                     onChange={(e) => { 
                                         setOrganisation(JSON.parse(e.target.value));
                                         localStorage.setItem("organisation", e.target.value);
-                                        window.location.href = "/dashboard";}}
+                                        window.location.reload();}}
                                     items={data}
                                 /> : null
                             }
