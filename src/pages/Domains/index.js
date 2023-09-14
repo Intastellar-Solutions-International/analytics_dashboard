@@ -2,7 +2,7 @@ import Fetch from "../../Functions/FetchHook";
 import API from "../../API/api";
 import {Loading, CurrentPageLoading} from "../../Components/widget/Loading";
 const { useState, useEffect, useRef } = React;
-
+const punycode = require("punycode");
 export default function Websites() {
 
     const [loading, data, error] = Fetch(10, API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers);
@@ -27,7 +27,7 @@ export default function Websites() {
                                 return (
                                     <>
                                         <a key={key} className="link widget" href={"http://" + main} target="_blank" rel="noopener nofollow noreferer">
-                                            {main} <br />
+                                            {punycode.toUnicode(main)} <br />
                                             Last visited: {lastVisited} <br />
                                             Installed: {installed}
                                         </a>

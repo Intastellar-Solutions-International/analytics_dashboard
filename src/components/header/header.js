@@ -8,6 +8,7 @@ import API from "../../API/api";
 import Authentication from "../../Authentication/Auth";
 import Select from "../SelectInput/Selector";
 const useHistory = window.ReactRouterDOM.useHistory;
+const punycode = require("punycode");
 
 export default function Header() {
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
@@ -55,13 +56,13 @@ export default function Header() {
     }, [])
     let view = "";
     const domainList = domains?.map((d) => {
-        return  d.domain;
+        return  punycode.toUnicode(d.domain);
     }).filter((d) => {
         return d !== undefined && d !== "" && d !== "undefined.";
     });
 
     const allowedDomains = domains?.map((d) => {
-        return  d.domain;
+        return  punycode.toUnicode(d.domain);
     }).filter((d) => {
         return d !== undefined && d !== "" && d !== "undefined." && d !== "all";
     });
@@ -77,11 +78,12 @@ export default function Header() {
                     <>
                         <Select defaultValue={currentDomain}
                             onChange={(e) => { 
-                                const domain = e.target.value;
+                                const domain = e;
                                 setCurrentDomain(domain);
                                 window.location.href = `/view/${domain.replace('.', '%2E')}`;
                             }}
                             items={domainList} title="Choose one of your domains"
+                            style={{left: "0"}}
                         />
                     </> : null
                     }
@@ -93,10 +95,11 @@ export default function Header() {
                             {(data && Organisation) ?
                                 <Select defaultValue={Organisation}
                                     onChange={(e) => { 
-                                        setOrganisation(JSON.parse(e.target.value));
-                                        localStorage.setItem("organisation", e.target.value);
+                                        setOrganisation(e);
+                                        localStorage.setItem("organisation", e);
                                         window.location.reload();}}
                                     items={data}
+                                    style={{right: "0"}}
                                 /> : null
                             }
                             </div>

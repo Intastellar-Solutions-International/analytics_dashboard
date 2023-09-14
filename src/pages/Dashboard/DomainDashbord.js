@@ -9,20 +9,21 @@ import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext } from "../../App.js";
 import NotAllowed from "../../Components/NotAllowed/NotAllowed";
 const useParams = window.ReactRouterDOM.useParams;
+const punycode = require("punycode");
 
 export default function DomainDashbord(){
     const { handle } = useParams();
-    document.title = `${handle} Dashboard | Intastellar Analytics`;
+    document.title = `${punycode.toUnicode(handle)} Dashboard | Intastellar Analytics`;
 
-    API.gdpr.getInteractions.headers.Domains = handle;
+    API.gdpr.getInteractions.headers.Domains = punycode.toASCII(handle);
     const [loading, data, error, updated] = useFetch(5, API.gdpr.getInteractions.url, API.gdpr.getInteractions.method, API.gdpr.getInteractions.headers);
 
-    return (localStorage?.getItem("domains")?.includes(handle)) ? (
+    return (localStorage?.getItem("domains")?.includes(punycode.toUnicode(handle))) ? (
         <>
             <div className="dashboard-content">
                 <h1>Domain Dashboard</h1>
                 <p>You´re currently viewing the data for:</p>
-                <h2><a className="activeDomain" href={`https://${handle}`} target="_blank">{handle}</a></h2>
+                <h2><a className="activeDomain" href={`https://${handle}`} target="_blank">{punycode.toUnicode(handle)}</a></h2>
                 {(loading) ? <Loading /> : (data.Total === 0) ? <h1>No interactions yet</h1> : 
                 <>
                     <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" />
