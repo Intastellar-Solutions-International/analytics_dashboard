@@ -16,6 +16,16 @@ export default function Select(props){
         setIsOpen(!isOpen);
     }
 
+    function clickOutSide(e){
+        if(e.target.className !== "dropdown-menu-button"){
+            setIsOpen(false);
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener("click", clickOutSide);
+    }, []);
+
     return <>
         <div className="selectorContianer">
             <div className="selector">
