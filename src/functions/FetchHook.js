@@ -49,5 +49,11 @@ export default function useFetch(updateInterval, url, method, headers, body){
         }
     }, [url]);
 
+    if(data == "Err_Login_Expired"){
+        localStorage.removeItem("globals");
+        window.location.href = "/login";
+        return;
+    }
+
     return [loading, data, error, updated, lastUpdated, setUpdated];
 }
