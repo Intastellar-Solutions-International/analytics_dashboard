@@ -1,6 +1,6 @@
 import "./Widget.css";
 import "./Loading.css";
-export default function Loading() {
+function Loading() {
     return (
         <>
             <div className="widget">
@@ -10,3 +10,16 @@ export default function Loading() {
         </>
     )
 }
+
+function CurrentPageLoading(){
+    return(
+        <>
+            <div className="dashboard-content">
+                <div className="bigNumIsLoading"></div>
+                <div className="smallIsLoading"></div>
+            </div>
+        </>
+    )
+}
+
+export {Loading, CurrentPageLoading}
