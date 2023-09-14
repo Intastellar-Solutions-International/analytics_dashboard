@@ -4,7 +4,7 @@ import useFetch from "../../Functions/FetchHook";
 import Fetch from "../../Functions/fetch";
 import API from "../../API/api";
 import Widget from "../../Components/widget/widget";
-import Loading from "../../Components/widget/Loading";
+import {Loading, CurrentPageLoading} from "../../Components/widget/Loading";
 import "./Style.css";
 import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext, OrganisationContext } from "../../App.js";

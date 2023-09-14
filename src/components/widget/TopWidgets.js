@@ -1,6 +1,6 @@
 import Widget from "./widget";
 import useFetch from "../../Functions/FetchHook";
-import Loading from "./Loading";
+import {Loading} from "./Loading";
 
 export default function TopWidgets(props) {
     

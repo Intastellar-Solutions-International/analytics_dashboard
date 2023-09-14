@@ -3,7 +3,7 @@ import useFetch from "../../Functions/FetchHook";
 import Fetch from "../../Functions/fetch";
 import API from "../../API/api";
 import Widget from "../../Components/widget/widget";
-import Loading from "../../Components/widget/Loading";
+import {Loading, CurrentPageLoading} from "../../Components/widget/Loading";
 import "./Style.css";
 import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext } from "../../App.js";
@@ -12,19 +12,12 @@ const useParams = window.ReactRouterDOM.useParams;
 
 export default function DomainDashbord(){
     const { handle } = useParams();
-    document.title = "Domain Dashboard | Intastellar Analytics";
+    document.title = `${handle} Dashboard | Intastellar Analytics`;
 
     API.gdpr.getInteractions.headers.Domains = handle;
     const [loading, data, error, updated] = useFetch(5, API.gdpr.getInteractions.url, API.gdpr.getInteractions.method, API.gdpr.getInteractions.headers);
 
-    if(localStorage.getItem("domains") != null || undefined){
-        const allowedDomains = localStorage.getItem("domains");
-        if(!allowedDomains.includes(handle)){
-            return(<NotAllowed />)
-        }
-    }
-
-    return (
+    return (localStorage.getItem("domains")?.includes(handle)) ? (
         <>
             <div className="dashboard-content">
                 <h1>Domain Dashboard</h1>
@@ -73,5 +66,5 @@ export default function DomainDashbord(){
                 </div>
             </div>
         </>
-    )
+    ) : (loading) ? <CurrentPageLoading/> : <NotAllowed />
 }   
