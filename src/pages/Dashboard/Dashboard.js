@@ -14,6 +14,7 @@ export default function Dashboard(props){
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const [lastUpdated, setLastUpdated] = useState("Now");
+    const [updated, setUpdated] = useState("Now");
     const dashboardView = props.dashboardView;
     let url = API.gdpr.getInteractions.url;
     let method = API.gdpr.getInteractions.method;
@@ -25,57 +26,8 @@ export default function Dashboard(props){
         method = API.gdpr.getInteractions.method;
         header = API.gdpr.getInteractions.headers;
     };
-
-    const [loading, data, error, updated] = useFetch(5, url, method, header);
-
-    useEffect(() => {
-        const controller = new AbortController();
-        const signal = controller.signal;
-
-        Fetch(url, method, header, signal).then((data) => {
-            setData(data)
-            setUpdated("Now");
-            setLastUpdated(Math.floor(Date.now() / 1000));
-        }).catch(err => {
-            if (err.name === "AbortError") {
-                console.log("cancelled")
-            } else {
-                
-            }
-        });
-        const interval1 = setInterval(() => {
-            if ((Math.floor(Date.now() / 1000)) - lastUpdated >= 60) {
-                setUpdated(Math.floor(((Math.floor(Date.now() / 1000)) - lastUpdated) / 60) + " minute ago");
-            }
-        }, 1000);
-
-        const id = setInterval(() => {
-            Fetch(url, method, header, signal).then((data) => {
-                if (data === "Err_Login_Expired") {
-                    localStorage.removeItem("globals");
-                    
-                    window.location.href = "/#login";
-                    return;
-                }
-                setData(data);
-                clearInterval(interval1);
-                setUpdated("Now");
-
-                setLastUpdated(Math.floor(Date.now() / 1000));
-            }).catch(err => {
-                if (err.name === "AbortError") {
-                    console.log("cancelled")
-                } else {
-                    
-                }
-            });;
-        }, 5 * 60 * 1000);
-
-        return () => {
-            clearInterval(id);
-            controller.abort();
-        }
-    }, [lastUpdated, setLastUpdated, dashboardView, props.setDashboardView]);
+    const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
+    
     return (
         <>
             <div className="dashboard-content">
@@ -99,7 +51,7 @@ export default function Dashboard(props){
                 }
                 <div className="">
                     <h2>Data of user interaction</h2>
-                    <p>Updated: {updated}</p>
+                    <p>Updated: {getUpdated}</p>
                     {(loading) ? <Loading /> : <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" /> }
                 </div>
                 <div className="grid-container grid-3">

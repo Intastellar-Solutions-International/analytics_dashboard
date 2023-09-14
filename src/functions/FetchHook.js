@@ -40,7 +40,7 @@ export default function useFetch(updateInterval, url, method, headers, body){
                 });
             }, updateInterval * 60 * 1000)
         }
-
+        console.log(updateInterval);
         return () => {
             controller.abort();
             if(typeof(updateInterval) !=='undefined'){
@@ -49,5 +49,5 @@ export default function useFetch(updateInterval, url, method, headers, body){
         }
     }, [url]);
 
-    return [loading, data, error, updated];
+    return [loading, data, error, updated, lastUpdated, setUpdated];
 }

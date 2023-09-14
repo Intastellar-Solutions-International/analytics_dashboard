@@ -17,7 +17,7 @@ export default function DomainDashbord(){
     API.gdpr.getInteractions.headers.Domains = handle;
     const [loading, data, error, updated] = useFetch(5, API.gdpr.getInteractions.url, API.gdpr.getInteractions.method, API.gdpr.getInteractions.headers);
 
-    return (localStorage.getItem("domains")?.includes(handle)) ? (
+    return (localStorage?.getItem("domains")?.includes(handle)) ? (
         <>
             <div className="dashboard-content">
                 <h1>Domain Dashboard</h1>
