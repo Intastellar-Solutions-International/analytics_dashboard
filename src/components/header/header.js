@@ -10,9 +10,9 @@ import Select from "../SelectInput/Selector";
 const useHistory = window.ReactRouterDOM.useHistory;
 const punycode = require("punycode");
 
-export default function Header() {
+export default function Header(props) {
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
-    const [currentDomain, setCurrentDomain] = useContext(DomainContext);
+    const [currentDomain, setCurrentDomain] = useState((window.location.pathname.split("/")[1] === "view") ? window.location.pathname.split("/")[2]?.replace("%2E", ".") : null);
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
 
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
@@ -68,7 +68,6 @@ export default function Header() {
     });
 
     localStorage.setItem("domains", JSON.stringify(allowedDomains));
-
     return (
         <>
             <header className="dashboard-header">

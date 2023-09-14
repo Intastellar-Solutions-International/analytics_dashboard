@@ -1,5 +1,5 @@
 const { useState, useEffect } = React;
-export default function useFetch(updateInterval, url, method, headers, body){
+export default function useFetch(updateInterval, url, method, headers, body, handle){
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState();
     const [error, setError] = useState();
@@ -40,14 +40,14 @@ export default function useFetch(updateInterval, url, method, headers, body){
                 });
             }, updateInterval * 60 * 1000)
         }
-        console.log(updateInterval);
+
         return () => {
             controller.abort();
             if(typeof(updateInterval) !=='undefined'){
                 clearInterval(id);
             }
         }
-    }, [url]);
+    }, [url, handle]);
 
     if(data == "Err_Login_Expired"){
         localStorage.removeItem("globals");
