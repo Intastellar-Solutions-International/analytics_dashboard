@@ -13,13 +13,12 @@ const punycode = require("punycode");
 
 export default function DomainDashbord(props){
     const { handle } = useParams();
-    /* props.setHandle(handle); */
     document.title = `${punycode.toUnicode(handle)} Dashboard | Intastellar Analytics`;
 
     API.gdpr.getInteractions.headers.Domains = punycode.toASCII(handle);
     const [loading, data, error, updated] = useFetch(5, API.gdpr.getInteractions.url, API.gdpr.getInteractions.method, API.gdpr.getInteractions.headers, null, handle);
 
-    return (localStorage?.getItem("domains")?.includes(punycode.toUnicode(handle))) ? (
+    return (localStorage?.getItem("domains")?.includes(punycode.toUnicode(handle)) || handle == "all") ? (
         <>
             <div className="dashboard-content">
                 <h1>Domain Dashboard</h1>
