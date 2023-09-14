@@ -13,8 +13,6 @@ export default function Dashboard(props){
     document.title = "Dashboard | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
-    const [lastUpdated, setLastUpdated] = useState("Now");
-    const [updated, setUpdated] = useState("Now");
     const dashboardView = props.dashboardView;
     let url = API.gdpr.getInteractions.url;
     let method = API.gdpr.getInteractions.method;
@@ -27,7 +25,7 @@ export default function Dashboard(props){
         header = API.gdpr.getInteractions.headers;
     };
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
-    
+
     return (
         <>
             <div className="dashboard-content">
