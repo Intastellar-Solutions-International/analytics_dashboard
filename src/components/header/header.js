@@ -8,6 +8,7 @@ import API from "../../API/api";
 import Authentication from "../../Authentication/Auth";
 import Select from "../SelectInput/Selector";
 const useHistory = window.ReactRouterDOM.useHistory;
+const punycode = require("punycode");
 
 export default function Header() {
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
@@ -55,13 +56,13 @@ export default function Header() {
     }, [])
     let view = "";
     const domainList = domains?.map((d) => {
-        return  d.domain;
+        return  punycode.toUnicode(d.domain);
     }).filter((d) => {
         return d !== undefined && d !== "" && d !== "undefined.";
     });
 
     const allowedDomains = domains?.map((d) => {
-        return  d.domain;
+        return  punycode.toUnicode(d.domain);
     }).filter((d) => {
         return d !== undefined && d !== "" && d !== "undefined." && d !== "all";
     });
