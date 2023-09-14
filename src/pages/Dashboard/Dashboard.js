@@ -73,7 +73,7 @@ export default function Dashboard(props){
                         {(loading) ? <Loading /> :
                             <section>
                                 <h3>User interactions based on country</h3>
-                                <p>Updated: {updated}</p>
+                                <p>Updated: {getUpdated}</p>
                                 {
                                     <Map data={{
                                         Marketing: data.Marketing,
