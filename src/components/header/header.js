@@ -12,7 +12,7 @@ const punycode = require("punycode");
 
 export default function Header(props) {
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
-    const [currentDomain, setCurrentDomain] = useState((window.location.pathname.split("/")[1] === "view") ? decodeURI(window.location.pathname.split("/")[2]?.replace("%2E", ".")) : null);
+    const [currentDomain, setCurrentDomain] = useState((window.location.pathname.split("/")[1] === "view") ? decodeURI(window.location.pathname.split("/")[2]?.replace("%2E", ".")) : "all");
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
 
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
@@ -68,6 +68,7 @@ export default function Header(props) {
     });
 
     localStorage.setItem("domains", JSON.stringify(allowedDomains));
+    console.log(currentDomain);
     return (
         <>
             <header className="dashboard-header">
