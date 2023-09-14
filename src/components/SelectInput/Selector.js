@@ -1,7 +1,8 @@
+const { useState, useEffect, useRef, useContext } = React;
 import "./Style.css";
 const useParams = window.ReactRouterDOM.useParams;
 export default function Select(props){
-    const { handle } = useParams();
+    const [isOpen, setIsOpen] = useState(false);
     function isJson(str) {
         try {
             JSON.parse(str);
@@ -10,29 +11,45 @@ export default function Select(props){
         }
         return true;
     }
+
+    function openMenu(){
+        setIsOpen(!isOpen);
+    }
+
+    function clickOutSide(e){
+        if(e.target.className !== "dropdown-menu-button"){
+            setIsOpen(false);
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener("click", clickOutSide);
+    }, []);
+
     return <>
         <div className="selectorContianer">
-            {(props?.title) ? <label htmlFor={(handle) ? handle : props?.defaultValue} className="selectTitle">{props.title}</label> : null}
             <div className="selector">
-                
-                <select name={(handle) ? handle : props?.defaultValue} value={(handle) ? handle : props?.defaultValue} onChange={props.onChange}>
-                    {
-                        props?.items?.map((item, key) => {
-                            if(isJson(item)){
-                                item = JSON.parse(item);
-                                return <>
-                                    <option key={item.id} value={JSON.stringify({ id: item.id, name: item.name })}>{item.name}</option>
-                                </>
-                                
-                            }else {
-                                return <>
-                                    <option key={item} value={item}>{item}</option>
-                                </> 
-                            }
-                            
-                        })
-                    }
-                </select>
+                <button className="dropdown-menu-button" onClick={openMenu}>{(isJson(props.defaultValue) ? JSON.parse(props.defaultValue).name : props.defaultValue)}</button>
+                {(isOpen) ? 
+                <div className="dropdown-menu">
+                    <ul className="dropdown-menu__content" style={props.style}>
+                        {
+                            props?.items?.map((item, key) => {
+                                if(isJson(item)){
+                                    item = JSON.parse(item);
+                                    return <>
+                                        <li onClick={() => props.onChange(JSON.stringify({ id: item.id, name: item.name }))} key={item.id}>{item.name}</li>
+                                    </> 
+                                }else {
+                                    return <>
+                                        <li onClick={(e) => props.onChange(e.target.innerText)} key={item} value={item}>{item}</li>
+                                    </>
+                                }
+                            })
+                        }
+                    </ul>
+                </div> : null
+                }
             </div>
         </div>
     </>

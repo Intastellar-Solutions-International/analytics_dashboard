@@ -26,7 +26,7 @@ export default function Websites() {
                                 const lastVisited = domain["lastedVisited"];
                                 return (
                                     <>
-                                        <a key={key} className="link widget" href={"http://" + punycode.toUnicode(main)} target="_blank" rel="noopener nofollow noreferer">
+                                        <a key={key} className="link widget" href={"http://" + main} target="_blank" rel="noopener nofollow noreferer">
                                             {punycode.toUnicode(main)} <br />
                                             Last visited: {lastVisited} <br />
                                             Installed: {installed}

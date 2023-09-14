@@ -26,6 +26,7 @@ export default function App() {
     const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
     const [organisation, setOrganisation] = useState((localStorage.getItem("organisation")) ? localStorage.getItem("organisation") : null);
     const [currentDomain, setCurrentDomain] = useState("all");
+    const [handle, setHandle] = useState(null);
 
     
     if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
@@ -44,7 +45,7 @@ export default function App() {
                 <Router>
                     <OrganisationContext.Provider value={ [organisation, setOrganisation] }>
                         <DomainContext.Provider value={ [currentDomain, setCurrentDomain] }>
-                            <Header />
+                            <Header handle={handle} />
                             <div className="main-grid"> 
                                 <Nav />
                                 <Switch>
@@ -70,7 +71,7 @@ export default function App() {
                                         <LoginOverLay />
                                     </Router>
                                     <Route path='/view/:handle'>
-                                        <DomainDashbord />
+                                        <DomainDashbord setHandle={setHandle} />
                                     </Route>
                                     <Redirect to="/login" />
                                 </Switch>

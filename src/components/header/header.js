@@ -10,9 +10,9 @@ import Select from "../SelectInput/Selector";
 const useHistory = window.ReactRouterDOM.useHistory;
 const punycode = require("punycode");
 
-export default function Header() {
+export default function Header(props) {
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
-    const [currentDomain, setCurrentDomain] = useContext(DomainContext);
+    const [currentDomain, setCurrentDomain] = useState((window.location.pathname.split("/")[1] === "view") ? decodeURI(window.location.pathname.split("/")[2]?.replace("%2E", ".")) : null);
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
 
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
@@ -68,7 +68,6 @@ export default function Header() {
     });
 
     localStorage.setItem("domains", JSON.stringify(allowedDomains));
-
     return (
         <>
             <header className="dashboard-header">
@@ -78,11 +77,12 @@ export default function Header() {
                     <>
                         <Select defaultValue={currentDomain}
                             onChange={(e) => { 
-                                const domain = e.target.value;
+                                const domain = e;
                                 setCurrentDomain(domain);
                                 window.location.href = `/view/${domain.replace('.', '%2E')}`;
                             }}
                             items={domainList} title="Choose one of your domains"
+                            style={{left: "0"}}
                         />
                     </> : null
                     }
@@ -94,10 +94,11 @@ export default function Header() {
                             {(data && Organisation) ?
                                 <Select defaultValue={Organisation}
                                     onChange={(e) => { 
-                                        setOrganisation(JSON.parse(e.target.value));
-                                        localStorage.setItem("organisation", e.target.value);
+                                        setOrganisation(e);
+                                        localStorage.setItem("organisation", e);
                                         window.location.reload();}}
                                     items={data}
+                                    style={{right: "0"}}
                                 /> : null
                             }
                             </div>
