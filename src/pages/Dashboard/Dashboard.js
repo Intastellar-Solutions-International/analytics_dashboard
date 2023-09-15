@@ -29,7 +29,7 @@ export default function Dashboard(props){
     return (
         <>
             <div className="dashboard-content">
-                <h2>Analytics Dashboard</h2>
+                <h2>Dashboard</h2>
                 <p>Viewing all data for: {(organisation != null) ? JSON.parse(organisation).name : null}</p>
                 {/* <select defaultValue={"GDPR Cookiebanner"} onChange={(e) => {props.setDashboardView(e.target.value)}}>
                     {
