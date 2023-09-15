@@ -21,7 +21,7 @@ export default function DomainDashbord(props){
     return (localStorage?.getItem("domains")?.includes(punycode.toUnicode(handle)) || handle == "all") ? (
         <>
             <div className="dashboard-content">
-                <h1>Domain Dashboard</h1>
+                <h1>Dashboard</h1>
                 <p>You´re currently viewing the data for:</p>
                 <h2><a className="activeDomain" href={`https://${handle}`} target="_blank">{punycode.toUnicode(handle)}</a></h2>
                 {(loading) ? <Loading /> : (data.Total === 0) ? <h1>No interactions yet</h1> : 
