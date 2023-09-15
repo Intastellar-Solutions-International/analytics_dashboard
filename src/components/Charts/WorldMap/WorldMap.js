@@ -1,30 +1,82 @@
 import "./Style.css";
 import styles from './Countries.module.css';
+import { VectorMap } from "react-jvectormap"
+const { getCode, getName, getData } = require("country-list");
+
 export default function Map(props) {
    const data = props.data;
    const countries = data.Countries;
-   const countryFill = {
-      fill: "",
-      country: ""
-   }
+   
+   /* const countryMap = countries?.reduce((country, key) => {
+      const countryCode = getCode(country.country);
+      const Total = country.num.total;
+      return {countryCode, Total};
+   }) */
+
+   /* const countryMap = countries?.reduce((country, key) => {
+      const countryCode = getCode(country.country);
+      return {countryCode: country.num.total}
+   }, {}) */
+
+   const mapData = {
+      CN: 100000,
+      IN: 9900,
+      SA: 86,
+      EG: 70,
+      SE: 0,
+      FI: 0,
+      FR: 0,
+      US: 20
+   };
+   const handleClick = (e, countryCode) => {
+      console.log(countryCode);
+   };
+
+   console.log(mapData);
+
    return (
       <>
          <div className="grid-container grid-3">
             {
-               countries?.map((country, key) => {
-                  return (
-                      <div className="widget overviewTotal" key={key}>
-                        <h3>{(country.country != "") ? country.country : "Unknown"}</h3>
-                        <h4>Total: {country.num.total}</h4>
-                        <section className="countryStats">
-                           <p>Accepted <br />{country.accepted}%  ({ (country.num.accept === null ) ? "0" : country.num.accept })</p>
-                           <p>Declined <br />{country.declined}% ({ (country.num.decline === null ) ? "0" : country.num.decline  })</p>
-                           <p>Functional <br />{country.functional}% ({ (country.num.functional === null) ? "0" : country.num.functional })</p>
-                           <p>Marketing <br />{country.marketing}% ({ (country.num.marketing === null ) ? "0" : country.num.marketing })</p>
-                           <p>Statics <br />{country.statics}% ({ (country.num.statics === null ) ? "0" : country.num.statics })</p>
-                        </section>
-                     </div>)
-               })
+            /* <VectorMap
+               map={"world_mill"}
+               backgroundColor="transparent" //change it to ocean blue: #0077be
+               zoomOnScroll={false}
+               containerStyle={{
+                 width: "100%",
+                 height: "520px"
+               }}
+               onRegionClick={handleClick} //gets the country code
+               containerClassName="map"
+               regionStyle={{
+                 initial: {
+                   fill: "#e4e4e4",
+                   "fill-opacity": 0.9,
+                   stroke: "none",
+                   "stroke-width": 0,
+                   "stroke-opacity": 0
+                 },
+                 hover: {
+                   "fill-opacity": 0.8,
+                   cursor: "pointer"
+                 },
+                 selected: {
+                   fill: "#2938bc" //color for the clicked country
+                 },
+                 selectedHover: {}
+               }}
+               regionsSelectable={true}
+               series={{
+                 regions: [
+                   {
+                     values: mapData, //this is your data
+                     scale: ["#146804", "#ff0000"], //your color game's here
+                     normalizeFunction: "polynomial"
+                   }
+                 ]
+               }}
+             /> */
+               
             }
          </div>
          <div style={{width: "1000px"}}>

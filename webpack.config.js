@@ -33,10 +33,11 @@ const client = {
             test: /\.node$/,
             loader: "node-loader",
         },
+        
         {
             test: /\.(jsx|js|ts)$/,
             include: path.resolve(__dirname),
-            exclude: /node_modules/,
+            /* exclude: /node_modules/, */
             use: [{
             loader: 'babel-loader',
             options: {
