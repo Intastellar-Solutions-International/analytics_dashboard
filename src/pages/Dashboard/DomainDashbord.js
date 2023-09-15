@@ -14,58 +14,63 @@ const punycode = require("punycode");
 export default function DomainDashbord(props){
     const { handle } = useParams();
     document.title = `${punycode.toUnicode(handle)} Dashboard | Intastellar Analytics`;
+    console.log(localStorage?.getItem("domains"));
+    if(localStorage?.getItem("domains") != undefined && Array.from(localStorage?.getItem("domains"))?.includes(punycode.toUnicode(handle)) || handle == "all") {
+        API.gdpr.getInteractions.headers.Domains = punycode.toASCII(handle);
+        const [loading, data, error, updated] = useFetch(5, API.gdpr.getInteractions.url, API.gdpr.getInteractions.method, API.gdpr.getInteractions.headers, null, handle);
 
-    API.gdpr.getInteractions.headers.Domains = punycode.toASCII(handle);
-    const [loading, data, error, updated] = useFetch(5, API.gdpr.getInteractions.url, API.gdpr.getInteractions.method, API.gdpr.getInteractions.headers, null, handle);
 
-    return (localStorage?.getItem("domains")?.includes(punycode.toUnicode(handle)) || handle == "all") ? (
-        <>
-            <div className="dashboard-content">
-                <h1>Domain Dashboard</h1>
-                <p>You´re currently viewing the data for:</p>
-                <h2><a className="activeDomain" href={`https://${handle}`} target="_blank">{punycode.toUnicode(handle)}</a></h2>
-                {(loading) ? <Loading /> : (data.Total === 0) ? <h1>No interactions yet</h1> : 
-                <>
-                    <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" />
+        return (loading) ? <CurrentPageLoading /> : (
+            <>
+                <div className="dashboard-content">
+                    <h1>Domain Dashboard</h1>
+                    <p>You´re currently viewing the data for:</p>
+                    <h2><a className="activeDomain" href={`https://${handle}`} target="_blank">{punycode.toUnicode(handle)}</a></h2>
+                    {(loading) ? <Loading /> : (data.Total === 0) ? <h1>No interactions yet</h1> : 
+                    <>
+                        <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" />
+                        <div className="grid-container grid-3">
+                            {(loading) ? <Loading /> : <Widget totalNumber={data?.Accepted + "%"} type="Accepted cookies" />}
+                            {(loading) ? <Loading /> : <Widget totalNumber={ data?.Declined + "%"} type="Declined cookies" /> }
+                        </div>
+                        <div className="grid-container grid-3">
+                            {(loading) ? <Loading /> : <Widget totalNumber={data?.Marketing + "%"} type="Accepted only Marketing" />}
+                            {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional + "%"} type="Accepted only Functional" />}
+                            {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics + "%"} type="Accepted only Statics" />}
+                            {/* {(!data) ? <Loading /> : <Pie data={{
+                                Accepted: data.Accepted,
+                                Declined: data.Declined,
+                                Marketing: data.Marketing,
+                                Functional: data.Functional,
+                                Statics: data.Statics
+                            }} />} */}
+                        </div>
+                    </>
+                    }
                     <div className="grid-container grid-3">
-                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Accepted + "%"} type="Accepted cookies" />}
-                        {(loading) ? <Loading /> : <Widget totalNumber={ data?.Declined + "%"} type="Declined cookies" /> }
+                        <section>
+                            {(loading) ? <Loading /> : (data.Total === 0) ? null :
+                                <section>
+                                    <h3>User interactions based on country</h3>
+                                    <p>Updated: {updated}</p>
+                                    {
+                                        <Map data={{
+                                            Marketing: data.Marketing,
+                                            Functional: data.Functional,
+                                            Statistic: data.Statics,
+                                            Accepted: data.Accepted,
+                                            Declined: data.Declined,
+                                            Countries: data.Countries
+                                        }} />
+                                    }
+                                </section>
+                            }
+                        </section>
                     </div>
-                    <div className="grid-container grid-3">
-                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Marketing + "%"} type="Accepted only Marketing" />}
-                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional + "%"} type="Accepted only Functional" />}
-                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics + "%"} type="Accepted only Statics" />}
-                        {/* {(!data) ? <Loading /> : <Pie data={{
-                            Accepted: data.Accepted,
-                            Declined: data.Declined,
-                            Marketing: data.Marketing,
-                            Functional: data.Functional,
-                            Statics: data.Statics
-                        }} />} */}
-                    </div>
-                </>
-                }
-                <div className="grid-container grid-3">
-                    <section>
-                        {(loading) ? <Loading /> : (data.Total === 0) ? null :
-                            <section>
-                                <h3>User interactions based on country</h3>
-                                <p>Updated: {updated}</p>
-                                {
-                                    <Map data={{
-                                        Marketing: data.Marketing,
-                                        Functional: data.Functional,
-                                        Statistic: data.Statics,
-                                        Accepted: data.Accepted,
-                                        Declined: data.Declined,
-                                        Countries: data.Countries
-                                    }} />
-                                }
-                            </section>
-                        }
-                    </section>
                 </div>
-            </div>
-        </>
-    ) : (loading) ? <CurrentPageLoading/> : <NotAllowed />
+            </>
+        )
+    } else {
+        return <NotAllowed />
+    }
 }   

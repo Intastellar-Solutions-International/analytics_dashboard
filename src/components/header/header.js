@@ -67,8 +67,8 @@ export default function Header(props) {
         return d !== undefined && d !== "" && d !== "undefined." && d !== "all";
     });
 
-    localStorage.setItem("domains", JSON.stringify(allowedDomains));
-    console.log(currentDomain);
+    localStorage.setItem("domains", allowedDomains);
+
     return (
         <>
             <header className="dashboard-header">
