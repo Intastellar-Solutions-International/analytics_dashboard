@@ -31,6 +31,8 @@
 .dropdown-menu__content{
     position: absolute;
     top: 100%;
+    font-size: 16px;
+    font-weight: lighter;
     width: max-content;
     max-height: 500px;
     overflow: scroll;
@@ -60,7 +62,7 @@
 .dropdown-menu-button{
     border: none;
     background-color: transparent;
-    font-size: 15px;
+    font-size: inherit;
     margin: 0px;
     padding: 0px;
     cursor: pointer;
@@ -85,4 +87,8 @@
     border-top: 1px solid;
     border-left: 1px solid;
     transform: rotate(-135deg);
+}
+
+.selectorContianer{
+    z-index: 1;
 }

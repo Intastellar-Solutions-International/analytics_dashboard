@@ -1,6 +1,8 @@
 const { useState, useEffect, useRef, useContext } = React;
 import TopWidgets from "../../Components/widget/TopWidgets.js";
 import useFetch from "../../Functions/FetchHook";
+import Fetch from "../../Functions/fetch";
+import Authentication from "../../Authentication/Auth";
 import API from "../../API/api";
 import Widget from "../../Components/widget/widget";
 import {Loading, CurrentPageLoading} from "../../Components/widget/Loading";
@@ -8,11 +10,13 @@ import AddDomain from "../../Components/AddDomain/AddDomain";
 import "./Style.css";
 import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
+import Select from "../../Components/SelectInput/Selector.js";
 
 export default function Dashboard(props){
     document.title = "Dashboard | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
+    const [organisations, setOrganisations] = useState(null);
     const dashboardView = props.dashboardView;
     let url = API.gdpr.getInteractions.url;
     let method = API.gdpr.getInteractions.method;
@@ -26,6 +30,20 @@ export default function Dashboard(props){
     };
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
 
+    useEffect(() => {
+        Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
+            organisationMember: Authentication.getUserId()
+        })).then((data) => {
+            if (data === "Err_Login_Expired") {
+                localStorage.removeItem("globals");
+                navigate.push("/login");
+                return;
+            }
+
+            setOrganisations(data);
+        });
+    }, []);
+
     return (
         <>
             <div className="dashboard-content">
@@ -34,7 +52,14 @@ export default function Dashboard(props){
                     <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
                 </section>
                 <div style={{paddingTop: "40px"}}>
-                    <h2>Organisation: {(organisation != null) ? JSON.parse(organisation).name : null}</h2>
+                    <h2 style={{display: "flex"}}>Organisation: {
+                        <Select style={{marginLeft: "10px"}} defaultValue={organisation}
+                        onChange={(e) => { 
+                            setOrganisation(e);
+                            localStorage.setItem("organisation", e);
+                            window.location.reload();}}
+                        items={organisations} title="Choose one of your domains"/>
+                        }</h2>
                     {
                         (dashboardView === "GDPR Cookiebanner" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
                             url: API.gdpr.getTotalNumber.url,
