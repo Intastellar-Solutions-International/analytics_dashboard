@@ -22,6 +22,7 @@ export default function Header(props) {
 
     useEffect(() => {
         Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
+            console.log(data);
             if (data === "Err_Login_Expired") {
                 localStorage.removeItem("globals");
                 window.location.href = "/#login";
@@ -69,7 +70,7 @@ export default function Header(props) {
     });
 
     localStorage.setItem("domains", JSON.stringify(allowedDomains));
-    
+
     return (
         <>
             <header className="dashboard-header">
