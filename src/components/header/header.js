@@ -36,41 +36,42 @@ export default function Header(props) {
             }
             setData(data);
         });
+
+        Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
+            if (data === "Err_Login_Expired") {
+                localStorage.removeItem("globals");
+                window.location.href = "/#login";
+                return;
+            }
+    
+            if(data.error === "Err_No_Domains") {
+                if(window.location.href.indexOf("/add-domain") == -1){
+                    window.location.href = "/add-domain";
+                }
+            }else{
+                data.unshift({domain: "all", installed: null, lastedVisited: null});
+                data?.map((d) => {
+                    return  punycode.toUnicode(d.domain);
+                }).filter((d) => {
+                    return d !== undefined && d !== "" && d !== "undefined.";
+                });
+                setDomains(data);
+            
+                const allowedDomains = data?.map((d) => {
+                    return  punycode.toUnicode(d.domain);
+                }).filter((d) => {
+                    return d !== undefined && d !== "" && d !== "undefined." && d !== "all";
+                });
+            
+                localStorage.setItem("domains", JSON.stringify(allowedDomains));
+    
+                if(window.location.href.indexOf("/add-domain") > -1){
+                    window.location.href = "/dashboard";
+                }
+            }
+        });
     }, []);
     
-    Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
-        if (data === "Err_Login_Expired") {
-            localStorage.removeItem("globals");
-            window.location.href = "/#login";
-            return;
-        }
-
-        if(data.error === "Err_No_Domains") {
-            if(window.location.href.indexOf("/add-domain") == -1){
-                window.location.href = "/add-domain";
-            }
-        }else{
-            data.unshift({domain: "all", installed: null, lastedVisited: null});
-            data?.map((d) => {
-                return  punycode.toUnicode(d.domain);
-            }).filter((d) => {
-                return d !== undefined && d !== "" && d !== "undefined.";
-            });
-            setDomains(data);
-        
-            const allowedDomains = data?.map((d) => {
-                return  punycode.toUnicode(d.domain);
-            }).filter((d) => {
-                return d !== undefined && d !== "" && d !== "undefined." && d !== "all";
-            });
-        
-            localStorage.setItem("domains", JSON.stringify(allowedDomains));
-
-            if(window.location.href.indexOf("/add-domain") > -1){
-                window.location.href = "/dashboard";
-            }
-        }
-    });
 
     domainList = domains?.map((d) => {
         return punycode.toUnicode(d.domain)
