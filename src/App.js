@@ -53,7 +53,7 @@ export default function App() {
                     navigate.push("/login");
                     return;
                 }
-    
+                
                 setOrganisations(data);
             });
 
