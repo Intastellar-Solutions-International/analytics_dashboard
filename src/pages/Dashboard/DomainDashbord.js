@@ -26,7 +26,7 @@ export default function DomainDashbord(props){
                 <h2><a className="activeDomain" href={`https://${handle}`} target="_blank">{punycode.toUnicode(handle)}</a></h2>
                 {(loading) ? <Loading /> : (data.Total === 0) ? <h1>No interactions yet</h1> : 
                 <>
-                    <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" />
+                    <Widget totalNumber={data.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" />
                     <div className="grid-container grid-3">
                         {(loading) ? <Loading /> : <Widget totalNumber={data?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}
                         {(loading) ? <Loading /> : <Widget totalNumber={ data?.Declined.toLocaleString("de-DE") + "%"} type="Declined cookies" /> }
@@ -35,13 +35,6 @@ export default function DomainDashbord(props){
                         {(loading) ? <Loading /> : <Widget totalNumber={data?.Marketing.toLocaleString("de-DE") + "%"} type="Accepted only Marketing" />}
                         {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
                         {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
-                        {/* {(!data) ? <Loading /> : <Pie data={{
-                            Accepted: data.Accepted,
-                            Declined: data.Declined,
-                            Marketing: data.Marketing,
-                            Functional: data.Functional,
-                            Statics: data.Statics
-                        }} />} */}
                     </div>
                 </>
                 }
