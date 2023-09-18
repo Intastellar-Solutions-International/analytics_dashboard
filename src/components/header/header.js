@@ -30,13 +30,19 @@ export default function Header(props) {
             }
 
             if(data.error === "Err_No_Domains") {
-                setDomains(undefined);
+                if(window.location.href.indexOf("/add-domain") == -1){
+                    window.location.href = "/add-domain";
+                }
             }else{
                 data.unshift({domain: "all", installed: null, lastedVisited: null});
                 data = data.filter((d) => {
                     return d !== undefined && d !== "" && d["domain"] !== "undefined." ;
                 })
-                setDomains(data); 
+                setDomains(data);
+
+                if(window.location.href.indexOf("/add-domain") > -1){
+                    window.location.href = "/dashboard";
+                }
             }
         });
 

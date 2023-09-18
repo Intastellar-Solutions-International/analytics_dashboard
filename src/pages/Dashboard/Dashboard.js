@@ -25,13 +25,8 @@ export default function Dashboard(props){
         header = API.gdpr.getInteractions.headers;
     };
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
-
-    return (localStorage.getItem("domains") === "undefined" && !loading) ? 
-        <>
-        <div className="dashboard-content">
-            <AddDomain />
-        </div>
-        </> : (
+    
+    return (
         <>
             <div className="dashboard-content">
                 <h2>Dashboard</h2>

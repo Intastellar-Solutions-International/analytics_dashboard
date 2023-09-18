@@ -1,6 +1,3 @@
-import Fetch from "../Functions/fetch";
-import API from "../API/api";
-
 const Authentication = {
     Login: function (url, email, password, type, setErrorMessage, setLoading) {
         setLoading(true);
@@ -28,21 +25,16 @@ const Authentication = {
                 setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Intastellar Account Manager for assistance");
                 return;
             }
-            
 
-            API.settings.getOrganisation.headers.Authorization = "Bearer " + response.token;
-            Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
-                organisationMember: response?.profile?.email
-            })).then((data) => {
-                setLoading(false);
-                localStorage.setItem("organisation", data[0]);
-                localStorage.setItem("globals", JSON.stringify(response));
-                if (window.location.href === "/login") {
-                    window.location.href = "/dashboard";
-                } else {
-                    window.location.reload();
-                }
-            })
+            setLoading(false);
+            
+            localStorage.setItem("organisation", response.organisation);
+            localStorage.setItem("globals", JSON.stringify(response));
+            if (window.location.href === "/login") {
+                window.location.href = "/dashboard";
+            } else {
+                window.location.reload();
+            }
 
         })
     },
