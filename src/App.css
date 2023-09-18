@@ -28,8 +28,8 @@ body{
     display: grid;
     grid-template-columns: minmax(min-content, max-content) 1fr;
     
-    scroll-padding-top: 88px;
-    padding-top: 88px;
+    scroll-padding-top: 66px;
+    padding-top: 66px;
 }
 
 .link{
