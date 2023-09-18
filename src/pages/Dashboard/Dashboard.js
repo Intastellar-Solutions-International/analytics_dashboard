@@ -32,7 +32,7 @@ export default function Dashboard(props){
     ) : (localStorage.getItem("domains") == "undefined") ? (
         <>
             <div className="dashboard-content">
-                <AddDomain />
+                <AddDomain organisation={JSON.parse(organisation).name} />
             </div>
         </>
     ) : (
