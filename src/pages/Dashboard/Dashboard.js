@@ -34,7 +34,7 @@ export default function Dashboard(props){
                     <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
                 </section>
                 <div style={{paddingTop: "40px"}}>
-                    <p>Viewing all data for: {(organisation != null) ? JSON.parse(organisation).name : null}</p>
+                    <h2>Organisation: {(organisation != null) ? JSON.parse(organisation).name : null}</h2>
                     {
                         (dashboardView === "GDPR Cookiebanner" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
                             url: API.gdpr.getTotalNumber.url,
