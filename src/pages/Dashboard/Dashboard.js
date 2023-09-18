@@ -16,7 +16,6 @@ export default function Dashboard(props){
     document.title = "Dashboard | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
-    const [organisations, setOrganisations] = useState(null);
     const dashboardView = props.dashboardView;
     let url = API.gdpr.getInteractions.url;
     let method = API.gdpr.getInteractions.method;
@@ -30,35 +29,9 @@ export default function Dashboard(props){
     };
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
 
-    useEffect(() => {
-        Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
-            organisationMember: Authentication.getUserId()
-        })).then((data) => {
-            if (data === "Err_Login_Expired") {
-                localStorage.removeItem("globals");
-                navigate.push("/login");
-                return;
-            }
-
-            setOrganisations(data);
-        });
-    }, []);
-
     return (
         <>
             <div className="dashboard-content">
-                <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
-                    <h1>Welcome, {JSON.parse(localStorage.getItem("globals")).profile.name.first_name}</h1>
-                    <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
-                    <h2 style={{display: "flex"}}>Organisation: {
-                        <Select style={{marginLeft: "10px"}} defaultValue={organisation}
-                        onChange={(e) => { 
-                            setOrganisation(e);
-                            localStorage.setItem("organisation", e);
-                            window.location.reload();}}
-                        items={organisations} title="Choose one of your domains"/>
-                    }</h2>
-                </section>
                 <div>
                     {
                         (dashboardView === "GDPR Cookiebanner" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
