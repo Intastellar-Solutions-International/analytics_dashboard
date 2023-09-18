@@ -64,27 +64,27 @@
     transition: width .5s ease-in-out;
     width: 65px;
     min-height: 100vh;
-    position: fixed;
 }
 
 .collapsed {
-    width: auto;
+    width: 65px;
     height: calc(100vh - 88px);
     
     transition: width .5s ease-in-out;
     display: flex;
     flex-direction: column;
+    position: fixed;
 }
 
 .collapsed .hiddenCollapsed{
     opacity: 0;
     width: 0;
     visibility: hidden;
-    transform: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 
 .sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {
-    width: max-content;
+    width: 150px;
 }
 
 .collapsed nav {
@@ -274,5 +274,9 @@
 
     .dashboard-profile__nameContainer{
         width: auto;
+    }
+
+    .sidebar{
+        display: none;
     }
 }
