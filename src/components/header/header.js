@@ -35,9 +35,6 @@ export default function Header(props) {
                 }
             }else{
                 data.unshift({domain: "all", installed: null, lastedVisited: null});
-                data = data.filter((d) => {
-                    return d !== undefined && d !== "" && d["domain"] !== "undefined." ;
-                })
                 setDomains(data);
 
                 if(window.location.href.indexOf("/add-domain") > -1){
