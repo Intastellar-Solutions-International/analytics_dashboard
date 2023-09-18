@@ -18,7 +18,7 @@ export default function Header(props) {
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
     const navigate = useHistory();
     const [data, setData] = useState(null);
-    const [domains, setDomains] = useState(null);
+    const [domains, setDomains] = useState(props.domains);
 
     useEffect(() => {
 
@@ -45,9 +45,7 @@ export default function Header(props) {
             }
     
             if(data.error === "Err_No_Domains") {
-                if(window.location.href.indexOf("/add-domain") == -1){
-                    window.location.href = "/add-domain";
-                }
+                
             }else{
                 data.unshift({domain: "all", installed: null, lastedVisited: null});
                 data?.map((d) => {
@@ -65,9 +63,6 @@ export default function Header(props) {
             
                 localStorage.setItem("domains", JSON.stringify(allowedDomains));
     
-                if(window.location.href.indexOf("/add-domain") > -1){
-                    window.location.href = "/dashboard";
-                }
             }
         });
     }, []);

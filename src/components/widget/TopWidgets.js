@@ -14,12 +14,9 @@ export default function TopWidgets(props) {
         window.location.href = "/#login";
         return;
     }
-    
-    console.log(loading, data, error);
 
     return (
         <>
-            <p>Updated: {updated}</p>
             <div className="grid-container grid-3">
                 {(loading) ? <Loading /> : <Widget overviewTotal={ true } totalNumber={ data?.Total.toLocaleString("de-DE") } type="Website" /> }
                 {(loading) ? <Loading /> : <Widget totalNumber={ data?.JS.toLocaleString("de-DE") + "%" } type="JS" /> }

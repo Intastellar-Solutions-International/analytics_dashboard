@@ -27,6 +27,7 @@ export default function Dashboard(props){
         method = API.gdpr.getInteractions.method;
         header = API.gdpr.getInteractions.headers;
     };
+
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
 
     return (
@@ -43,7 +44,6 @@ export default function Dashboard(props){
                 </div>
                 <div className="" style={{paddingTop: "40px"}}>
                     <h2>Data of user interaction</h2>
-                    <p>Updated: {getUpdated}</p>
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }
                 </div>
                 <div className="grid-container grid-3">
