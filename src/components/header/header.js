@@ -32,6 +32,7 @@ export default function Header(props) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
 
+            if(data.error == "No domains found") return;
             data.unshift({domain: "all", installed: null, lastedVisited: null});
             data = data.filter((d) => {
                 return d !== undefined && d !== "" && d["domain"] !== "undefined." ;
@@ -68,7 +69,7 @@ export default function Header(props) {
     });
 
     localStorage.setItem("domains", JSON.stringify(allowedDomains));
-    console.log(currentDomain);
+    
     return (
         <>
             <header className="dashboard-header">
