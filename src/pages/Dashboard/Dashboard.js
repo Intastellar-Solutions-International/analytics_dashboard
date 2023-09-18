@@ -1,7 +1,6 @@
 const { useState, useEffect, useRef, useContext } = React;
 import TopWidgets from "../../Components/widget/TopWidgets.js";
 import useFetch from "../../Functions/FetchHook";
-import Fetch from "../../Functions/fetch";
 import API from "../../API/api";
 import Widget from "../../Components/widget/widget";
 import {Loading, CurrentPageLoading} from "../../Components/widget/Loading";
@@ -31,15 +30,6 @@ export default function Dashboard(props){
             <div className="dashboard-content">
                 <h2>Dashboard</h2>
                 <p>Viewing all data for: {(organisation != null) ? JSON.parse(organisation).name : null}</p>
-                {/* <select defaultValue={"GDPR Cookiebanner"} onChange={(e) => {props.setDashboardView(e.target.value)}}>
-                    {
-                        JSON.parse(localStorage.getItem("globals")).access.type.map((type, key) => {
-                            return (
-                                <option key={ key } value={type} defaultValue={"GDPR Cookiebanner"}>{ type }</option>
-                            )
-                        })
-                    }
-                </select> */}
                 {
                     (dashboardView === "GDPR Cookiebanner" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
                         url: API.gdpr.getTotalNumber.url,

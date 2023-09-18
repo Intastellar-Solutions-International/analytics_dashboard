@@ -27,9 +27,11 @@ export default function App() {
     const [organisation, setOrganisation] = useState((localStorage.getItem("organisation")) ? localStorage.getItem("organisation") : null);
     const [currentDomain, setCurrentDomain] = useState("all");
     const [handle, setHandle] = useState(null);
-
     
-    if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
+    if (JSON.parse(localStorage.getItem("globals"))?.token != undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
+        if(window.location.href.indexOf("/login") > -1){
+            window.location.href = "/dashboard";
+        }
         Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
             organisationMember: JSON.parse(localStorage.getItem("globals"))?.profile?.email
         })).then((data) => {
