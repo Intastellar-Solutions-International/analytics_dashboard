@@ -25,7 +25,7 @@ export default function Dashboard(props){
         header = API.gdpr.getInteractions.headers;
     };
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
-    
+
     return (
         <>
             <div className="dashboard-content">
@@ -41,7 +41,7 @@ export default function Dashboard(props){
                 <div className="">
                     <h2>Data of user interaction</h2>
                     <p>Updated: {getUpdated}</p>
-                    {(loading) ? <Loading /> : <Widget totalNumber={data.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }
+                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }
                 </div>
                 <div className="grid-container grid-3">
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}
@@ -67,12 +67,12 @@ export default function Dashboard(props){
                                 <p>Updated: {getUpdated}</p>
                                 {
                                     <Map data={{
-                                        Marketing: data.Marketing.toLocaleString("de-DE"),
-                                        Functional: data.Functional.toLocaleString("de-DE"),
-                                        Statistic: data.Statics.toLocaleString("de-DE"),
-                                        Accepted: data.Accepted.toLocaleString("de-DE"),
-                                        Declined: data.Declined.toLocaleString("de-DE"),
-                                        Countries: data.Countries
+                                        Marketing: data?.Marketing.toLocaleString("de-DE"),
+                                        Functional: data?.Functional.toLocaleString("de-DE"),
+                                        Statistic: data?.Statics.toLocaleString("de-DE"),
+                                        Accepted: data?.Accepted.toLocaleString("de-DE"),
+                                        Declined: data?.Declined.toLocaleString("de-DE"),
+                                        Countries: data?.Countries
                                     }} />
                                 }
                             </section>
