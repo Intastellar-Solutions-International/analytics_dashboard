@@ -14,34 +14,13 @@ export default function Header(props) {
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
     const [currentDomain, setCurrentDomain] = useState((window.location.pathname.split("/")[1] === "view") ? decodeURI(window.location.pathname.split("/")[2]?.replace("%2E", ".")) : "all");
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
-
+    let domainList = null;
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
     const navigate = useHistory();
     const [data, setData] = useState(null);
     const [domains, setDomains] = useState(null);
 
     useEffect(() => {
-        
-        Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
-            if (data === "Err_Login_Expired") {
-                localStorage.removeItem("globals");
-                window.location.href = "/#login";
-                return;
-            }
-
-            if(data.error === "Err_No_Domains") {
-                if(window.location.href.indexOf("/add-domain") == -1){
-                    window.location.href = "/add-domain";
-                }
-            }else{
-                data.unshift({domain: "all", installed: null, lastedVisited: null});
-                setDomains(data);
-
-                if(window.location.href.indexOf("/add-domain") > -1){
-                    window.location.href = "/dashboard";
-                }
-            }
-        });
 
         Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
             organisationMember: Authentication.getUserId()
@@ -57,21 +36,46 @@ export default function Header(props) {
             }
             setData(data);
         });
-    }, [])
-    let view = "";
-    const domainList = domains?.map((d) => {
-        return  punycode.toUnicode(d.domain);
-    }).filter((d) => {
-        return d !== undefined && d !== "" && d !== "undefined.";
+    }, []);
+    
+    Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
+        if (data === "Err_Login_Expired") {
+            localStorage.removeItem("globals");
+            window.location.href = "/#login";
+            return;
+        }
+
+        if(data.error === "Err_No_Domains") {
+            if(window.location.href.indexOf("/add-domain") == -1){
+                window.location.href = "/add-domain";
+            }
+        }else{
+            data.unshift({domain: "all", installed: null, lastedVisited: null});
+            data?.map((d) => {
+                return  punycode.toUnicode(d.domain);
+            }).filter((d) => {
+                return d !== undefined && d !== "" && d !== "undefined.";
+            });
+            setDomains(data);
+        
+            const allowedDomains = data?.map((d) => {
+                return  punycode.toUnicode(d.domain);
+            }).filter((d) => {
+                return d !== undefined && d !== "" && d !== "undefined." && d !== "all";
+            });
+        
+            localStorage.setItem("domains", JSON.stringify(allowedDomains));
+
+            if(window.location.href.indexOf("/add-domain") > -1){
+                window.location.href = "/dashboard";
+            }
+        }
     });
 
-    const allowedDomains = domains?.map((d) => {
-        return  punycode.toUnicode(d.domain);
-    }).filter((d) => {
-        return d !== undefined && d !== "" && d !== "undefined." && d !== "all";
-    });
+    domainList = domains?.map((d) => {
+        return punycode.toUnicode(d.domain)
+    })
 
-    localStorage.setItem("domains", JSON.stringify(allowedDomains));
     return (
         <>
             <header className="dashboard-header">
