@@ -67,9 +67,6 @@ export default function App() {
                                     <Route path="/settings/view-organisations">
                                         <ViewOrg />
                                     </Route>
-                                    <Router path="/login" exact>
-                                        <LoginOverLay />
-                                    </Router>
                                     <Route path='/view/:handle'>
                                         <DomainDashbord setHandle={setHandle} />
                                     </Route>
