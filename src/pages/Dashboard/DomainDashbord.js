@@ -28,13 +28,13 @@ export default function DomainDashbord(props){
                 <>
                     <Widget totalNumber={data.Total} overviewTotal={ true } type="Total interactions" />
                     <div className="grid-container grid-3">
-                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Accepted + "%"} type="Accepted cookies" />}
-                        {(loading) ? <Loading /> : <Widget totalNumber={ data?.Declined + "%"} type="Declined cookies" /> }
+                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}
+                        {(loading) ? <Loading /> : <Widget totalNumber={ data?.Declined.toLocaleString("de-DE") + "%"} type="Declined cookies" /> }
                     </div>
                     <div className="grid-container grid-3">
-                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Marketing + "%"} type="Accepted only Marketing" />}
-                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional + "%"} type="Accepted only Functional" />}
-                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics + "%"} type="Accepted only Statics" />}
+                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Marketing.toLocaleString("de-DE") + "%"} type="Accepted only Marketing" />}
+                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
+                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
                         {/* {(!data) ? <Loading /> : <Pie data={{
                             Accepted: data.Accepted,
                             Declined: data.Declined,
@@ -53,11 +53,11 @@ export default function DomainDashbord(props){
                                 <p>Updated: {updated}</p>
                                 {
                                     <Map data={{
-                                        Marketing: data.Marketing,
-                                        Functional: data.Functional,
-                                        Statistic: data.Statics,
-                                        Accepted: data.Accepted,
-                                        Declined: data.Declined,
+                                        Marketing: data.Marketing.toLocaleString("de-DE"),
+                                        Functional: data.Functional.toLocaleString("de-DE"),
+                                        Statistic: data.Statics.toLocaleString("de-DE"),
+                                        Accepted: data.Accepted.toLocaleString("de-DE"),
+                                        Declined: data.Declined.toLocaleString("de-DE"),
                                         Countries: data.Countries
                                     }} />
                                 }

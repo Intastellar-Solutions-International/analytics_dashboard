@@ -19,9 +19,9 @@ export default function TopWidgets(props) {
         <>
             <p>Updated: {updated}</p>
             <div className="grid-container grid-3">
-                {(loading) ? <Loading /> : <Widget overviewTotal={ true } totalNumber={ data.Total } type="Website" /> }
-                {(loading) ? <Loading /> : <Widget totalNumber={ data.JS + "%" } type="JS" /> }
-                {(loading) ? <Loading /> : <Widget totalNumber={ data.WP + "%" } type="WordPress" /> }
+                {(loading) ? <Loading /> : <Widget overviewTotal={ true } totalNumber={ data.Total.toLocaleString("de-DE") } type="Website" /> }
+                {(loading) ? <Loading /> : <Widget totalNumber={ data.JS.toLocaleString("de-DE") + "%" } type="JS" /> }
+                {(loading) ? <Loading /> : <Widget totalNumber={ data.WP.toLocaleString("de-DE") + "%" } type="WordPress" /> }
             </div>
         </>
     )
