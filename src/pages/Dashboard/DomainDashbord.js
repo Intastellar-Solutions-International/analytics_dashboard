@@ -14,7 +14,7 @@ const punycode = require("punycode");
 export default function DomainDashbord(props){
     const { handle } = useParams();
     document.title = `${punycode.toUnicode(handle)} Dashboard | Intastellar Analytics`;
-    console.log(localStorage?.getItem("domains"));
+    
     if(localStorage?.getItem("domains") != undefined && Array.from(localStorage?.getItem("domains"))?.includes(punycode.toUnicode(handle)) || handle == "all") {
         API.gdpr.getInteractions.headers.Domains = punycode.toASCII(handle);
         const [loading, data, error, updated] = useFetch(5, API.gdpr.getInteractions.url, API.gdpr.getInteractions.method, API.gdpr.getInteractions.headers, null, handle);
