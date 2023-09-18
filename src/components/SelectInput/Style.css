@@ -1,6 +1,7 @@
 .selector{
     width: calc(max-content + 20px);
     position: relative;
+    display: flex;
 }
 
 .selectTitle{
@@ -31,6 +32,7 @@
 .dropdown-menu__content{
     position: absolute;
     top: 100%;
+    left: 0;
     font-size: 16px;
     font-weight: lighter;
     width: max-content;

@@ -87,6 +87,7 @@ export default function Header(props) {
                             }}
                             items={domainList} title="Choose one of your domains"
                             style={{left: "0"}}
+                            icon={'dashboard-icons domains'}
                         />
                     </> : null
                     }
