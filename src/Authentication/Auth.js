@@ -28,15 +28,15 @@ const Authentication = {
                 setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Intastellar Account Manager for assistance");
                 return;
             }
-            setLoading(false);
-
-            localStorage.setItem("globals", JSON.stringify(response));
+            
 
             API.settings.getOrganisation.headers.Authorization = "Bearer " + response.token;
             Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
                 organisationMember: response?.profile?.email
             })).then((data) => {
+                setLoading(false);
                 localStorage.setItem("organisation", data[0]);
+                localStorage.setItem("globals", JSON.stringify(response));
                 if (window.location.href === "/login") {
                     window.location.href = "/dashboard";
                 } else {

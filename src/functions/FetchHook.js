@@ -35,7 +35,7 @@ export default function useFetch(updateInterval, url, method, headers, body, han
                 setUpdated("Now");
                 setLastUpdated(Math.floor(Date.now() / 1000));
             });
-        
+
         if(typeof(updateInterval) !=='undefined'){
             const interval1 = setInterval(() => {
                 if ((Math.floor(Date.now() / 1000)) - lastUpdated >= 60) {

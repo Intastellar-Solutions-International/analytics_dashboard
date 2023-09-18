@@ -21,18 +21,16 @@ export default function Header(props) {
     const [domains, setDomains] = useState(null);
 
     useEffect(() => {
+        
         Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
             if (data === "Err_Login_Expired") {
                 localStorage.removeItem("globals");
                 window.location.href = "/#login";
                 return;
             }
-            if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
-                JSON.parse(localStorage.getItem("globals")).organisation = data;
-            }
 
             if(data.error === "Err_No_Domains") {
-                setDomains([]);
+                setDomains(undefined);
             }else{
                 data.unshift({domain: "all", installed: null, lastedVisited: null});
                 data = data.filter((d) => {
