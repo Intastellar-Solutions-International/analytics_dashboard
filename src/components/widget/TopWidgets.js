@@ -15,7 +15,7 @@ export default function TopWidgets(props) {
         return;
     }
     
-    console.log(loading, data, error, updated);
+    console.log(loading, data, error);
 
     return (
         <>

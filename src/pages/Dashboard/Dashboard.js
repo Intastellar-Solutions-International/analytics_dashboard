@@ -29,16 +29,21 @@ export default function Dashboard(props){
     return (
         <>
             <div className="dashboard-content">
-                <h2>Dashboard</h2>
-                <p>Viewing all data for: {(organisation != null) ? JSON.parse(organisation).name : null}</p>
-                {
-                    (dashboardView === "GDPR Cookiebanner" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
-                        url: API.gdpr.getTotalNumber.url,
-                        method: API.gdpr.getTotalNumber.method,
-                        header: API.gdpr.getTotalNumber.headers 
-                    }} /> : null
-                }
-                <div className="">
+                <section style={{paddingTop: "20px"}}>
+                    <h1>Welcome, {JSON.parse(localStorage.getItem("globals")).profile.name.first_name}</h1>
+                    <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
+                </section>
+                <div style={{paddingTop: "40px"}}>
+                    <p>Viewing all data for: {(organisation != null) ? JSON.parse(organisation).name : null}</p>
+                    {
+                        (dashboardView === "GDPR Cookiebanner" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
+                            url: API.gdpr.getTotalNumber.url,
+                            method: API.gdpr.getTotalNumber.method,
+                            header: API.gdpr.getTotalNumber.headers 
+                        }} /> : null
+                    }
+                </div>
+                <div className="" style={{paddingTop: "40px"}}>
                     <h2>Data of user interaction</h2>
                     <p>Updated: {getUpdated}</p>
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }
