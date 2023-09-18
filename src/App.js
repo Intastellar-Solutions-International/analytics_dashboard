@@ -75,7 +75,7 @@ export default function App() {
                 </Router>
             </>
         )
-    } else if(JSON.parse(localStorage.getItem("globals"))?.status == undefined) {
+    } else if(JSON.parse(localStorage.getItem("globals"))?.token == undefined) {
         return (
             <Router path="/login" exact>
                 <Login />
