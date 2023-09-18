@@ -27,16 +27,19 @@ export default function Header(props) {
                 window.location.href = "/#login";
                 return;
             }
-
             if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
 
-            data.unshift({domain: "all", installed: null, lastedVisited: null});
-            data = data.filter((d) => {
-                return d !== undefined && d !== "" && d["domain"] !== "undefined." ;
-            })
-            setDomains(data); 
+            if(data.error === "Err_No_Domains") {
+                setDomains([]);
+            }else{
+                data.unshift({domain: "all", installed: null, lastedVisited: null});
+                data = data.filter((d) => {
+                    return d !== undefined && d !== "" && d["domain"] !== "undefined." ;
+                })
+                setDomains(data); 
+            }
         });
 
         Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
@@ -68,7 +71,6 @@ export default function Header(props) {
     });
 
     localStorage.setItem("domains", JSON.stringify(allowedDomains));
-    console.log(currentDomain);
     return (
         <>
             <header className="dashboard-header">

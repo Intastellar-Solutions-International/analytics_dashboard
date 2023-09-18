@@ -4,6 +4,7 @@ import useFetch from "../../Functions/FetchHook";
 import API from "../../API/api";
 import Widget from "../../Components/widget/widget";
 import {Loading, CurrentPageLoading} from "../../Components/widget/Loading";
+import AddDomain from "../../Components/AddDomain/AddDomain";
 import "./Style.css";
 import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
@@ -25,7 +26,13 @@ export default function Dashboard(props){
     };
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
 
-    return (
+    return (localStorage.getItem("domains") == "undefined") ? (
+        <>
+            <div className="dashboard-content">
+                <AddDomain />
+            </div>
+        </>
+    ) : (
         <>
             <div className="dashboard-content">
                 <h2>Dashboard</h2>
