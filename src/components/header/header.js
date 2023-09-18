@@ -19,6 +19,7 @@ export default function Header(props) {
     const navigate = useHistory();
     const [data, setData] = useState(null);
     const [domains, setDomains] = useState(props.domains);
+    const [viewUserProfile, setViewUserProfile] = useState(false);
 
     useEffect(() => {
 
@@ -92,8 +93,7 @@ export default function Header(props) {
                     </> : null
                     }
                     <div className="flex">
-                        <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile) } />
-                        <div className="dashboard-profile__nameContainer">
+                        <section className="dashboard-profile__nameContainer">
                             <p className="dashboard-name">{Name}</p>
                             <div className="dashboard-organisationContainer">
                             {(data && Organisation) ?
@@ -107,23 +107,11 @@ export default function Header(props) {
                                 /> : null
                             }
                             </div>
-                        </div>
+                        </section>
+                        <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile) } />
                     </div>
                 </div>
             </header>
         </>
     )
 }
-
-{/* <select defaultValue={Organisation} onChange={(e) => { setOrganisation({ id: JSON.parse(e.target.value).id, name: JSON.parse(e.target.value).name }) }} className="dashboard-organisationSelector">
-    {
-        (!data) ? "" : data.map((d, key) => {
-            d = JSON.parse(d);
-            return (
-                <>
-                    <option key={key} value={JSON.stringify({ id: d.id, name: d.name })}>{d.name}</option>
-                </>
-            )
-        })
-    }
-</select> */}

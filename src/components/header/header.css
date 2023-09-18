@@ -256,7 +256,8 @@
 
 .dashboard-profile__nameContainer{
     width: 250px;
-    margin-left: 10px;
+    margin-right: 20px;
+    text-align: right;
 }
 
 @media screen and (min-width: 320px) and (max-width: 900px) {
