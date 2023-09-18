@@ -27,7 +27,9 @@ export default function Dashboard(props){
     };
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
 
-    return (localStorage.getItem("domains") == "undefined") ? (
+    return (loading && localStorage.getItem("domains") == "undefined") ? (
+        <CurrentPageLoading />
+    ) : (localStorage.getItem("domains") == "undefined") ? (
         <>
             <div className="dashboard-content">
                 <AddDomain />
