@@ -58,6 +58,8 @@ export default function Dashboard(props){
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
                     {(getDomainsUrlLoading) ? <Loading /> : getDomainsUrlData?.map((d) => {
+                        const consent = JSON.parse(d.consent);
+                        console.log(consent)
                         return (
                             <>
                                 <div>
@@ -65,6 +67,10 @@ export default function Dashboard(props){
                                     <p>Time: {d.consents_timestamp}</p>
                                     <p>Referrer: {d.referrer}</p>
                                     <p>URL: {d.url}</p>
+                                    <section>
+                                        <h4>Consent given</h4>
+                                        <p>{consent.consent_type} cookies: {consent.consent_value}</p>
+                                    </section>
                                 </div>
                             </>
                         )
