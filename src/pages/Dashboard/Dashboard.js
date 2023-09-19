@@ -59,7 +59,6 @@ export default function Dashboard(props){
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
                     {(getDomainsUrlLoading) ? <Loading /> : getDomainsUrlData?.map((d) => {
                         const consent = JSON.parse(d.consent);
-                        console.log(consent)
                         return (
                             <>
                                 <div>
