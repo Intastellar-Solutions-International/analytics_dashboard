@@ -20,6 +20,7 @@ export default function Dashboard(props){
     let url = API.gdpr.getInteractions.url;
     let method = API.gdpr.getInteractions.method;
     let header = API.gdpr.getInteractions.headers;
+    let consent = null;
 
     if(dashboardView === "GDPR Cookiebanner") {
         API.gdpr.getInteractions.headers.Domains = currentDomain;
@@ -29,6 +30,8 @@ export default function Dashboard(props){
     };
 
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
+    API.gdpr.getDomainsUrl.headers.Domains = currentDomain;
+    const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = useFetch(5, API.gdpr.getDomainsUrl.url, API.gdpr.getDomainsUrl.method, API.gdpr.getDomainsUrl.headers);
 
     return (
         <>
@@ -54,14 +57,20 @@ export default function Dashboard(props){
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Marketing.toLocaleString("de-DE") + "%"} type="Accepted only Marketing" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
-                    {/* {(!data) ? <Loading /> : <Pie data={{
-                        Accepted: data.Accepted,
-                        Declined: data.Declined,
-                        Marketing: data.Marketing,
-                        Functional: data.Functional,
-                        Statics: data.Statics
-                    }} />} */}
+                    {(getDomainsUrlLoading) ? <Loading /> : getDomainsUrlData?.map((d) => {
+                        return (
+                            <>
+                                <div>
+                                    <h3>Consent</h3>
+                                    <p>Time: {d.consents_timestamp}</p>
+                                    <p>Referrer: {d.referrer}</p>
+                                    <p>URL: {d.url}</p>
+                                </div>
+                            </>
+                        )
+                    })}
                 </div>
+
                 <div>
                     <section>
                         {(loading) ? <Loading /> :

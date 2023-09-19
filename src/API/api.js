@@ -14,6 +14,14 @@ const API = {
                 "Organisation": Authentication.getOrganisation()
             }
         },
+        getDomainsUrl: {
+            url: `${PrimaryHost}/analytics/gdpr/getDomainStatistics.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation()
+            }
+        },
         getInteractions: {
             url:  `${PrimaryHost}/analytics/gdpr/getInteractions.php`,
             method: "GET",
