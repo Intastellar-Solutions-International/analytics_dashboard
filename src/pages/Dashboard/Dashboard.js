@@ -100,8 +100,8 @@ export default function Dashboard(props){
                                                     <h4>Consent given</h4>
                                                     {
                                                         (Object.prototype.toString.call(consent) === '[object Array]') ? consent.map((c) => {
-                                                                return <p>{c?.type} cookies: {(!c.checked) ? "false" : c?.checked}</p>
-                                                            }) : <p>{consent?.consent_type} cookies: {consent?.consent_value}</p>
+                                                                return <p>{c?.type} cookies: {(!c.checked) ? "declined" : (c?.checked == "checked" || c?.checked == "1") ? "Accepted" : c?.checked}</p>
+                                                            }) : <p>{consent?.consent_type} cookies: {(consent?.consent_value == "1" || consent?.consent_value == "checked") ? "Accepted" : "declined"}</p>
                                                     }
                                                 </section>
                                             </div>
