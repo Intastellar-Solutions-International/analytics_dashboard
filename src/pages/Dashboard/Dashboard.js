@@ -1,8 +1,7 @@
 const { useState, useEffect, useRef, useContext } = React;
 import TopWidgets from "../../Components/widget/TopWidgets.js";
 import useFetch from "../../Functions/FetchHook";
-import Fetch from "../../Functions/fetch";
-import Authentication from "../../Authentication/Auth";
+import Unknown from "../../Components/Error/Unknown.js";
 import API from "../../API/api";
 import Widget from "../../Components/widget/widget";
 import {Loading, CurrentPageLoading} from "../../Components/widget/Loading";
@@ -23,6 +22,22 @@ export default function Dashboard(props){
     let method = API.gdpr.getInteractions.method;
     let header = API.gdpr.getInteractions.headers;
     let consent = null;
+
+    useEffect(() => {
+        function handleScrollEvent() {
+          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+             console.log("you're at the bottom of the page");
+             // here add more items in the 'filteredData' state from the 'allData' state source.
+          }
+       
+        }
+      
+        window.addEventListener('scroll', handleScrollEvent)
+      
+        return () => {
+          window.removeEventListener('scroll', handleScrollEvent);
+        }
+      }, [])
 
     if(dashboardView === "GDPR Cookiebanner") {
         API.gdpr.getInteractions.headers.Domains = currentDomain;
@@ -60,7 +75,7 @@ export default function Dashboard(props){
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
                 </div>
-                {(getDomainsUrlLoading) ? <Loading /> : <>
+                {(getDomainsUrlLoading && !getDomainsUrlError) ? <Loading /> : (getDomainsUrlError) ? <Unknown /> : <>
                         <div>
                             <h2>User consents</h2>
                             <div className="grid-container grid-3">
@@ -68,7 +83,7 @@ export default function Dashboard(props){
                                 getDomainsUrlData?.map((d) => {
                                     
                                     let consent = "";
-                                    if(isJson(d.consent)) {
+                                    if(isJson(d?.consent)) {
                                         consent = JSON.parse(d.consent);
                                     }else{
                                         consent = d.consent;
@@ -78,15 +93,15 @@ export default function Dashboard(props){
                                         <>
                                             <div className="user">
                                                 <p>UID: {d?.uid}</p>
-                                                <p>Time: {d.consents_timestamp}</p>
-                                                <p>Referrer: {d.referrer}</p>
+                                                <p>Time: {d?.consents_timestamp}</p>
+                                                <p>Referrer: {d?.referrer}</p>
                                                 <p className="lb">URL: {d.url}</p>
                                                 <section>
                                                     <h4>Consent given</h4>
                                                     {
                                                         (Object.prototype.toString.call(consent) === '[object Array]') ? consent.map((c) => {
-                                                                return <p>{c.type} cookies: {(!c.checked) ? "false" : c.checked}</p>
-                                                            }) : <p>{consent.consent_type} cookies: {consent.consent_value}</p>
+                                                                return <p>{c?.type} cookies: {(!c.checked) ? "false" : c?.checked}</p>
+                                                            }) : <p>{consent?.consent_type} cookies: {consent?.consent_value}</p>
                                                     }
                                                 </section>
                                             </div>
