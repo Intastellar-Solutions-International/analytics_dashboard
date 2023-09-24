@@ -94,7 +94,7 @@ export default function Dashboard(props){
                                             <div className="user">
                                                 <p>UID: {d?.uid}</p>
                                                 <p>Time: {d?.consents_timestamp}</p>
-                                                <p>Referrer: {d?.referrer}</p>
+                                                <p className="lb">Referrer: {d?.referrer}</p>
                                                 <p className="lb">URL: {d.url}</p>
                                                 <section>
                                                     <h4>Consent given</h4>
