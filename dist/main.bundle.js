@@ -762,23 +762,7 @@ function App() {
         backgroundColor: "rgb(218, 218, 218)",
         color: "#626262"
       }
-    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$profile = _JSON$parse3.profile) === null || _JSON$parse3$profile === void 0 ? void 0 : (_JSON$parse3$profile$ = _JSON$parse3$profile.name) === null || _JSON$parse3$profile$ === void 0 ? void 0 : _JSON$parse3$profile$.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation"), /*#__PURE__*/React.createElement("h2", {
-      style: {
-        display: "flex"
-      }
-    }, "Organisation: ", /*#__PURE__*/React.createElement(_Components_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      style: {
-        marginLeft: "10px"
-      },
-      defaultValue: organisation,
-      onChange: e => {
-        setOrganisation(e);
-        localStorage.setItem("organisation", e);
-        window.location.reload();
-      },
-      items: organisations,
-      title: "Choose one of your domains"
-    }))), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$profile = _JSON$parse3.profile) === null || _JSON$parse3$profile === void 0 ? void 0 : (_JSON$parse3$profile$ = _JSON$parse3$profile.name) === null || _JSON$parse3$profile$ === void 0 ? void 0 : _JSON$parse3$profile$.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
       dashboardView: dashboardView,
       setDashboardView: setDashboardView
     })))), /*#__PURE__*/React.createElement(Route, {
@@ -2306,19 +2290,7 @@ function UserConsents(props) {
     style: {
       display: "flex"
     }
-  }, "Organisation: ", /*#__PURE__*/React.createElement(_Components_SelectInput_Selector_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    style: {
-      marginLeft: "10px"
-    },
-    defaultValue: organisation,
-    onChange: e => {
-      setOrganisation(e);
-      localStorage.setItem("organisation", e);
-      window.location.reload();
-    },
-    items: organisations,
-    title: "Choose one of your domains"
-  }))), /*#__PURE__*/React.createElement("div", {
+  }, "Countries")), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   })));
 }
@@ -2917,11 +2889,6 @@ function UserConsents(props) {
   const organisations = props.organisations;
   _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"].gdpr.getDomainsUrl.headers.Domains = currentDomain;
   const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_4__["default"])(5, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"].gdpr.getDomainsUrl.url, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"].gdpr.getDomainsUrl.method, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"].gdpr.getDomainsUrl.headers);
-
-  if (!getDomainsUrlLoading) {
-    console.log(getDomainsUrlData);
-  }
-
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
     links: _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_9__.reportsLinks
   }), /*#__PURE__*/React.createElement("article", {
@@ -2932,27 +2899,16 @@ function UserConsents(props) {
     style: {
       padding: "40px",
       backgroundColor: "rgb(218, 218, 218)",
-      color: "#626262"
+      color: "#626262",
+      marginBottom: "20px"
     }
   }, /*#__PURE__*/React.createElement("h1", null, "Reports"), /*#__PURE__*/React.createElement("h2", {
     style: {
       display: "flex"
     }
-  }, "Organisation: ", /*#__PURE__*/React.createElement(_Components_SelectInput_Selector_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    style: {
-      marginLeft: "10px"
-    },
-    defaultValue: organisation,
-    onChange: e => {
-      setOrganisation(e);
-      localStorage.setItem("organisation", e);
-      window.location.reload();
-    },
-    items: organisations,
-    title: "Choose one of your domains"
-  }))), /*#__PURE__*/React.createElement("div", {
+  }, "User consents")), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("h1", null, "User Consents"), getDomainsUrlLoading && !getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_7__.Loading, null) : getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_5__["default"], null) : getDomainsUrlData == "Err_No_Data_Found" ? /*#__PURE__*/React.createElement(_Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_6__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  }, getDomainsUrlLoading && !getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_7__.Loading, null) : getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_5__["default"], null) : getDomainsUrlData == "Err_No_Data_Found" ? /*#__PURE__*/React.createElement(_Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_6__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, getDomainsUrlData === null || getDomainsUrlData === void 0 ? void 0 : getDomainsUrlData.map(d => {
     var _consent, _consent2, _consent3, _consent4;

@@ -26,14 +26,7 @@ export default function UserConsents(props) {
             <article style={{flex: "1"}}>
                 <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
                     <h1>Reports</h1>
-                    <h2 style={{display: "flex"}}>Organisation: {
-                        <Select style={{marginLeft: "10px"}} defaultValue={organisation}
-                        onChange={(e) => { 
-                            setOrganisation(e);
-                            localStorage.setItem("organisation", e);
-                            window.location.reload();}}
-                        items={organisations} title="Choose one of your domains"/>
-                    }</h2>
+                    <h2 style={{display: "flex"}}>Countries</h2>
                 </section>
                 <div className="dashboard-content">
                     

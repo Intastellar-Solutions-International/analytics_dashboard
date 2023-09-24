@@ -22,26 +22,15 @@ export default function UserConsents(props) {
     API.gdpr.getDomainsUrl.headers.Domains = currentDomain;
     const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = useFetch(5, API.gdpr.getDomainsUrl.url, API.gdpr.getDomainsUrl.method, API.gdpr.getDomainsUrl.headers);
     
-    if(!getDomainsUrlLoading){
-        console.log(getDomainsUrlData);
-    }
     return (
         <>
             <SideNav links={reportsLinks} />
             <article style={{flex: "1"}}>
-                <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
+                <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262", marginBottom: "20px"}}>
                     <h1>Reports</h1>
-                    <h2 style={{display: "flex"}}>Organisation: {
-                        <Select style={{marginLeft: "10px"}} defaultValue={organisation}
-                        onChange={(e) => { 
-                            setOrganisation(e);
-                            localStorage.setItem("organisation", e);
-                            window.location.reload();}}
-                        items={organisations} title="Choose one of your domains"/>
-                    }</h2>
+                    <h2 style={{display: "flex"}}>User consents</h2>
                 </section>
                 <div className="dashboard-content">
-                    <h1>User Consents</h1>
                     {(getDomainsUrlLoading && !getDomainsUrlError) ? <Loading /> : (getDomainsUrlError) ? <Unknown /> : ( getDomainsUrlData == "Err_No_Data_Found") ? <NoDataFound /> : <>
                         <div className="grid-container grid-3">
                         {
