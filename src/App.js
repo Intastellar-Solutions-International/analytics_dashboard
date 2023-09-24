@@ -27,7 +27,7 @@ import UserConsents from "./Pages/UserConsents/UserConsents";
 import Reports from "./Pages/Reports/Reports";
 import ErrorBoundary from "./Components/Error/ErrorBoundary";
 import Countries from "./Pages/Countries/Countries";
-
+import BugReport from "./Components/BugReport/BugReport";
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
 export const DomainContext = createContext(null);
@@ -84,6 +84,7 @@ export default function App() {
                     <OrganisationContext.Provider value={ [organisation, setOrganisation] }>
                         <DomainContext.Provider value={ [currentDomain, setCurrentDomain] }>
                             <Header handle={handle} />
+                            <BugReport />
                             <div className="main-grid"> 
                                 <Nav />
                                 <Switch>
