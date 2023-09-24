@@ -26,6 +26,7 @@ import Authentication from "./Authentication/Auth";
 import UserConsents from "./Pages/UserConsents/UserConsents";
 import Reports from "./Pages/Reports/Reports";
 import ErrorBoundary from "./Components/Error/ErrorBoundary";
+import Countries from "./Pages/Countries/Countries";
 
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
@@ -145,6 +146,11 @@ export default function App() {
                                     <Route path="/reports/user-consents">
                                         <ErrorBoundary>
                                             {domainError ? <AddDomain /> : <UserConsents organisations={organisations} />}
+                                        </ErrorBoundary>
+                                    </Route>
+                                    <Route path="/reports/countries">
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <Countries organisations={organisations} />}
                                         </ErrorBoundary>
                                     </Route>
                                     <Redirect to="/login" />

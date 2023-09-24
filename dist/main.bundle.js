@@ -653,6 +653,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pages_UserConsents_UserConsents__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./Pages/UserConsents/UserConsents */ "./src/Pages/UserConsents/UserConsents.js");
 /* harmony import */ var _Pages_Reports_Reports__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./Pages/Reports/Reports */ "./src/Pages/Reports/Reports.js");
 /* harmony import */ var _Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./Components/Error/ErrorBoundary */ "./src/Components/Error/ErrorBoundary.js");
+/* harmony import */ var _Pages_Countries_Countries__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./Pages/Countries/Countries */ "./src/Pages/Countries/Countries.js");
 
 
 
@@ -671,6 +672,7 @@ const Switch = window.ReactRouterDOM.Switch;
 const Redirect = window.ReactRouterDOM.Redirect;
 
 const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/punycode.es6.js");
+
 
 
 
@@ -801,6 +803,10 @@ function App() {
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, /*#__PURE__*/React.createElement(_Pages_Reports_Reports__WEBPACK_IMPORTED_MODULE_19__["default"], null))), /*#__PURE__*/React.createElement(Route, {
       path: "/reports/user-consents"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_UserConsents_UserConsents__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      organisations: organisations
+    }))), /*#__PURE__*/React.createElement(Route, {
+      path: "/reports/countries"
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Countries_Countries__WEBPACK_IMPORTED_MODULE_21__["default"], {
       organisations: organisations
     }))), /*#__PURE__*/React.createElement(Redirect, {
       to: "/login"
@@ -1124,9 +1130,9 @@ function SideNav(props) {
     return /*#__PURE__*/React.createElement(Link, {
       className: "navItems" + (useLocation().pathname === (link === null || link === void 0 ? void 0 : link.path) ? " --active" : ""),
       to: link === null || link === void 0 ? void 0 : link.path
-    }, /*#__PURE__*/React.createElement("i", {
+    }, link !== null && link !== void 0 && link.icon ? /*#__PURE__*/React.createElement("i", {
       className: "dashboard-icons " + (link === null || link === void 0 ? void 0 : link.icon)
-    }), " ", /*#__PURE__*/React.createElement("span", {
+    }) : null, " ", /*#__PURE__*/React.createElement("span", {
       className: "hiddenCollapsed"
     }, link === null || link === void 0 ? void 0 : link.name));
   }))));
@@ -1846,6 +1852,87 @@ function LoginOverLay() {
 
 /***/ }),
 
+/***/ "./src/Pages/Countries/Countries.js":
+/*!******************************************!*\
+  !*** ./src/Pages/Countries/Countries.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ UserConsents)
+/* harmony export */ });
+/* harmony import */ var _Components_SelectInput_Selector_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Components/SelectInput/Selector.js */ "./src/Components/SelectInput/Selector.js");
+/* harmony import */ var _Components_NotAllowed_NotAllowed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Components/NotAllowed/NotAllowed */ "./src/Components/NotAllowed/NotAllowed.js");
+/* harmony import */ var _Functions_isJson_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Functions/isJson.js */ "./src/Functions/isJson.js");
+/* harmony import */ var _Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/AddDomain/AddDomain */ "./src/Components/AddDomain/AddDomain.js");
+/* harmony import */ var _Functions_FetchHook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Functions/FetchHook */ "./src/Functions/FetchHook.js");
+/* harmony import */ var _Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Components/Error/Unknown.js */ "./src/Components/Error/Unknown.js");
+/* harmony import */ var _Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Components/widget/Loading.js */ "./src/Components/widget/Loading.js");
+/* harmony import */ var _API_api_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../API/api.js */ "./src/API/api.js");
+/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/Countries/Style.css");
+/* harmony import */ var _Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Header/SideNav.js */ "./src/Components/Header/SideNav.js");
+/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
+/* harmony import */ var _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../Reports/Reports.js */ "./src/Pages/Reports/Reports.js");
+const {
+  useState,
+  useEffect,
+  useRef,
+  useContext
+} = React;
+
+
+
+
+
+
+
+
+
+
+
+
+function UserConsents(props) {
+  const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_10__.DomainContext);
+  const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_10__.OrganisationContext);
+  const organisations = props.organisations;
+  _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.headers.Domains = currentDomain;
+  const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_4__["default"])(5, _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.url, _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.method, _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.headers);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    links: _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_11__.reportsLinks
+  }), /*#__PURE__*/React.createElement("article", {
+    style: {
+      flex: "1"
+    }
+  }, /*#__PURE__*/React.createElement("section", {
+    style: {
+      padding: "40px",
+      backgroundColor: "rgb(218, 218, 218)",
+      color: "#626262"
+    }
+  }, /*#__PURE__*/React.createElement("h1", null, "Reports"), /*#__PURE__*/React.createElement("h2", {
+    style: {
+      display: "flex"
+    }
+  }, "Organisation: ", /*#__PURE__*/React.createElement(_Components_SelectInput_Selector_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    style: {
+      marginLeft: "10px"
+    },
+    defaultValue: organisation,
+    onChange: e => {
+      setOrganisation(e);
+      localStorage.setItem("organisation", e);
+      window.location.reload();
+    },
+    items: organisations,
+    title: "Choose one of your domains"
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "dashboard-content"
+  })));
+}
+
+/***/ }),
+
 /***/ "./src/Pages/Dashboard/Dashboard.js":
 /*!******************************************!*\
   !*** ./src/Pages/Dashboard/Dashboard.js ***!
@@ -2107,17 +2194,21 @@ function Websites() {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Reports)
+/* harmony export */   "default": () => (/* binding */ Reports),
+/* harmony export */   "reportsLinks": () => (/* binding */ reportsLinks)
 /* harmony export */ });
 /* harmony import */ var _Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Components/Header/SideNav */ "./src/Components/Header/SideNav.js");
 
+const reportsLinks = [{
+  name: "User Consents",
+  path: "/reports/user-consents"
+}, {
+  name: "Countries",
+  path: "/reports/countries"
+}];
 function Reports() {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    links: [{
-      name: "User Consents",
-      path: "/reports/user-consents",
-      icon: "user-consents"
-    }]
+    links: reportsLinks
   }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "Reports")));
@@ -2404,9 +2495,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Components/Error/Unknown.js */ "./src/Components/Error/Unknown.js");
 /* harmony import */ var _Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Components/widget/Loading.js */ "./src/Components/widget/Loading.js");
 /* harmony import */ var _API_api_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../API/api.js */ "./src/API/api.js");
-/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/UserConsents/Style.css");
-/* harmony import */ var _Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Header/SideNav.js */ "./src/Components/Header/SideNav.js");
-/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
+/* harmony import */ var _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Reports/Reports.js */ "./src/Pages/Reports/Reports.js");
+/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/UserConsents/Style.css");
+/* harmony import */ var _Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Components/Header/SideNav.js */ "./src/Components/Header/SideNav.js");
+/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
 const {
   useState,
   useEffect,
@@ -2424,18 +2516,15 @@ const {
 
 
 
+
 function UserConsents(props) {
-  const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_10__.DomainContext);
-  const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_10__.OrganisationContext);
+  const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_11__.DomainContext);
+  const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_11__.OrganisationContext);
   const organisations = props.organisations;
   _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.headers.Domains = currentDomain;
   const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_4__["default"])(5, _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.url, _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.method, _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.headers);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    links: [{
-      name: "User Consents",
-      path: "/reports/user-consents",
-      icon: "user-consents"
-    }]
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    links: _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_8__.reportsLinks
   }), /*#__PURE__*/React.createElement("article", {
     style: {
       flex: "1"
@@ -2636,7 +2725,7 @@ var ___CSS_LOADER_URL_REPLACEMENT_4___ = _node_modules_css_loader_dist_runtime_g
 var ___CSS_LOADER_URL_REPLACEMENT_5___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_5___);
 var ___CSS_LOADER_URL_REPLACEMENT_6___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_6___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 100;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n}\n\n.dashboard-profile {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n}\n\n.flex{\n    display: flex;\n    align-items: center;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-color: var(--intastellarGold);\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    margin-right: 10px;\n    padding: 32px;\n    height: 88px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar{\n    background: rgb(63, 63, 63);\n    transition: width .5s ease-in-out;\n    width: 65px;\n    min-height: 100vh;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n    \n    transition: width .5s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n}\n\n.collapsed .hiddenCollapsed{\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all 1s ease-in-out;\n}\n\n.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay{\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 15px;\n    margin: 10px auto;\n    overflow: hidden;\n    align-items: center;\n    white-space: nowrap;\n    transition: width .5s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active{\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .5s ease-in-out;\n}\n\n.collapsed:hover .navItems, .collapsed.expand a{\n    width: 100%;\n}\n\n.collapsed:hover nav, .collapsed.expand nav{\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons{\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.dashboard::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_5___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn{\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after{\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_6___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom{\n    margin-top: auto;\n}\n\n.navLogout{\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector{\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{\n    outline: none;\n}\n\n.dashboard-organisationContainer{\n    position: relative;\n}\n\n.dashboard-profile__nameContainer{\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n    }\n\n    .grid-3{\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container{\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer{\n        width: auto;\n    }\n\n    .sidebar{\n        display: none;\n    }\n}", "",{"version":3,"sources":["webpack://./src/Components/Header/header.css"],"names":[],"mappings":"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","sourcesContent":[".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 100;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n}\n\n.dashboard-profile {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n}\n\n.flex{\n    display: flex;\n    align-items: center;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-color: var(--intastellarGold);\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    margin-right: 10px;\n    padding: 32px;\n    height: 88px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar{\n    background: rgb(63, 63, 63);\n    transition: width .5s ease-in-out;\n    width: 65px;\n    min-height: 100vh;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n    \n    transition: width .5s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n}\n\n.collapsed .hiddenCollapsed{\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all 1s ease-in-out;\n}\n\n.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay{\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 15px;\n    margin: 10px auto;\n    overflow: hidden;\n    align-items: center;\n    white-space: nowrap;\n    transition: width .5s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active{\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .5s ease-in-out;\n}\n\n.collapsed:hover .navItems, .collapsed.expand a{\n    width: 100%;\n}\n\n.collapsed:hover nav, .collapsed.expand nav{\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons{\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.dashboard::after{\n    content: \"\";\n    background:  url(\"icons/dashboard.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after{\n    content: \"\";\n    background:  url(\"icons/reports.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after{\n    content: \"\";\n    background:  url(\"icons/user-consents.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after{\n    content: \"\";\n    background:  url(\"icons/domain.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after{\n    content: \"\";\n    background:  url(\"icons/settings.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after{\n    content: \"\";\n    background:  url(\"icons/Logout.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn{\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after{\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background:  url(\"icons/expand.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom{\n    margin-top: auto;\n}\n\n.navLogout{\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector{\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{\n    outline: none;\n}\n\n.dashboard-organisationContainer{\n    position: relative;\n}\n\n.dashboard-profile__nameContainer{\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n    }\n\n    .grid-3{\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container{\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer{\n        width: auto;\n    }\n\n    .sidebar{\n        display: none;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 100;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n}\n\n.dashboard-profile {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n}\n\n.flex{\n    display: flex;\n    align-items: center;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-color: var(--intastellarGold);\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    margin-right: 10px;\n    padding: 32px;\n    height: 88px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar{\n    background: rgb(63, 63, 63);\n    transition: width .5s ease-in-out;\n    width: 65px;\n    min-height: 100vh;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n    \n    transition: width .25s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n}\n\n.collapsed .hiddenCollapsed{\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all .25s ease-in-out;\n}\n\n.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay{\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 25px 15px;\n    overflow: hidden;\n    align-items: center;\n    white-space: nowrap;\n    transition: width .15s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active, .navItems:hover{\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .15s ease-in-out;\n}\n\n.collapsed:hover .navItems, .collapsed.expand a{\n    width: 100%;\n}\n\n.collapsed:hover nav, .collapsed.expand nav{\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons{\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.dashboard::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_5___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn{\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after{\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_6___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom{\n    margin-top: auto;\n}\n\n.navLogout{\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector{\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{\n    outline: none;\n}\n\n.dashboard-organisationContainer{\n    position: relative;\n}\n\n.dashboard-profile__nameContainer{\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n    }\n\n    .grid-3{\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container{\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer{\n        width: auto;\n    }\n\n    .sidebar{\n        display: none;\n    }\n}", "",{"version":3,"sources":["webpack://./src/Components/Header/header.css"],"names":[],"mappings":"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","sourcesContent":[".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 100;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n}\n\n.dashboard-profile {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n}\n\n.flex{\n    display: flex;\n    align-items: center;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-color: var(--intastellarGold);\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    margin-right: 10px;\n    padding: 32px;\n    height: 88px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar{\n    background: rgb(63, 63, 63);\n    transition: width .5s ease-in-out;\n    width: 65px;\n    min-height: 100vh;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n    \n    transition: width .25s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n}\n\n.collapsed .hiddenCollapsed{\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all .25s ease-in-out;\n}\n\n.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay{\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 25px 15px;\n    overflow: hidden;\n    align-items: center;\n    white-space: nowrap;\n    transition: width .15s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active, .navItems:hover{\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .15s ease-in-out;\n}\n\n.collapsed:hover .navItems, .collapsed.expand a{\n    width: 100%;\n}\n\n.collapsed:hover nav, .collapsed.expand nav{\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons{\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.dashboard::after{\n    content: \"\";\n    background:  url(\"icons/dashboard.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after{\n    content: \"\";\n    background:  url(\"icons/reports.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after{\n    content: \"\";\n    background:  url(\"icons/user-consents.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after{\n    content: \"\";\n    background:  url(\"icons/domain.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after{\n    content: \"\";\n    background:  url(\"icons/settings.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after{\n    content: \"\";\n    background:  url(\"icons/Logout.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn{\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after{\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background:  url(\"icons/expand.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom{\n    margin-top: auto;\n}\n\n.navLogout{\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector{\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{\n    outline: none;\n}\n\n.dashboard-organisationContainer{\n    position: relative;\n}\n\n.dashboard-profile__nameContainer{\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n    }\n\n    .grid-3{\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container{\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer{\n        width: auto;\n    }\n\n    .sidebar{\n        display: none;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2793,6 +2882,32 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".loginForm-container{\n    display: grid;\n    grid-template-columns: 1fr .85fr;\n    height: 100vh;\n    width: 100%;\n    text-align: center;\n    background-color: #c09f53;\n    background-image: url(\"https://www.intastellaraccounts.com/images/AdobeStock_317238161.jpeg\");\n    background-position: left;\n    background-size: cover;\n    background-blend-mode: multiply;\n}\n\n.loginForm-overlay{\n    position: fixed;\n    top: 0;\n    z-index: 100;\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    display: grid;\n    place-content: center;\n    background: rgba(0,0,0,.7);\n}\n\n.loginForm{\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    background: radial-gradient(circle at top, rgba(188, 188, 188, .8) -10%, rgba(48, 48, 48, .6));\n    padding: 80px;\n    box-sizing: border-box;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    color: rgb(234, 234, 234);\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    grid-column: 2/3;\n}\n\n.loginForm-overlay .loginForm{\n    width: 500px;\n}\n\n.loginForm label{\n    text-align: left;\n    display: block;\n    padding: 5px 0px;\n}\n\n.loginForm-inputField{\n    padding: 15px;\n    border: none;\n    width: 100%;\n    box-sizing: border-box;\n    font-size: 12px;\n    margin: 2px 0px;\n}\n\n.loginForm-forget{\n    padding: 15px;\n    color: rgb(234, 234, 234);\n    text-decoration: none;\n    display: block;\n    text-align: right;\n}\n\n.loginForm-logo{\n    width: 50%;\n    margin: 0 auto;\n    padding: 20px 15px;\n    filter: invert(100) brightness(100);\n}\n\n.loginForm-logo.--hideMobile{\n    display: none;\n}\n\n.loginForm-inputField.--btn{\n    background-color: #c09f53;\n    font-size: 16px;\n    color: #fff;\n    font-weight: bold;\n    letter-spacing: 5px;\n    text-transform: uppercase;\n}\n\n.loginForm-title{\n    font-size: 1.7em;\n    text-align: left;\n    padding: 15px 0px;\n    width: 100%;\n    text-transform: uppercase;\n    margin-bottom: -2px;\n}\n\n.loginForm-service{\n    margin: 0 0 10px;\n}\n\n@media screen and (min-width: 375px) and (max-width: 900px) {\n    .loginForm-container{\n        grid-template-columns: 1fr;\n    }\n\n    .loginForm-logo{\n        width: 100%;\n        padding: 0;\n        margin: 20px 0px;\n    }\n\n    .loginForm{\n        padding: 40px;\n        background: radial-gradient(circle at top, rgba(188, 188, 188, .6) -10%, rgba(48, 48, 48, .4));\n    }\n\n    .loginForm-container{\n        background-position: -250px;\n    }\n}", "",{"version":3,"sources":["webpack://./src/Login/Login.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,gCAAgC;IAChC,aAAa;IACb,WAAW;IACX,kBAAkB;IAClB,yBAAyB;IACzB,6FAA6F;IAC7F,yBAAyB;IACzB,sBAAsB;IACtB,+BAA+B;AACnC;;AAEA;IACI,eAAe;IACf,MAAM;IACN,YAAY;IACZ,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,qBAAqB;IACrB,0BAA0B;AAC9B;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,8FAA8F;IAC9F,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,yBAAyB;IACzB,0CAA0C;IAC1C,kDAAkD;IAClD,gBAAgB;AACpB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,gBAAgB;IAChB,cAAc;IACd,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,YAAY;IACZ,WAAW;IACX,sBAAsB;IACtB,eAAe;IACf,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,yBAAyB;IACzB,qBAAqB;IACrB,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,UAAU;IACV,cAAc;IACd,kBAAkB;IAClB,mCAAmC;AACvC;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,yBAAyB;IACzB,eAAe;IACf,WAAW;IACX,iBAAiB;IACjB,mBAAmB;IACnB,yBAAyB;AAC7B;;AAEA;IACI,gBAAgB;IAChB,gBAAgB;IAChB,iBAAiB;IACjB,WAAW;IACX,yBAAyB;IACzB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI;QACI,0BAA0B;IAC9B;;IAEA;QACI,WAAW;QACX,UAAU;QACV,gBAAgB;IACpB;;IAEA;QACI,aAAa;QACb,8FAA8F;IAClG;;IAEA;QACI,2BAA2B;IAC/B;AACJ","sourcesContent":[".loginForm-container{\n    display: grid;\n    grid-template-columns: 1fr .85fr;\n    height: 100vh;\n    width: 100%;\n    text-align: center;\n    background-color: #c09f53;\n    background-image: url(\"https://www.intastellaraccounts.com/images/AdobeStock_317238161.jpeg\");\n    background-position: left;\n    background-size: cover;\n    background-blend-mode: multiply;\n}\n\n.loginForm-overlay{\n    position: fixed;\n    top: 0;\n    z-index: 100;\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    display: grid;\n    place-content: center;\n    background: rgba(0,0,0,.7);\n}\n\n.loginForm{\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    background: radial-gradient(circle at top, rgba(188, 188, 188, .8) -10%, rgba(48, 48, 48, .6));\n    padding: 80px;\n    box-sizing: border-box;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    color: rgb(234, 234, 234);\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    grid-column: 2/3;\n}\n\n.loginForm-overlay .loginForm{\n    width: 500px;\n}\n\n.loginForm label{\n    text-align: left;\n    display: block;\n    padding: 5px 0px;\n}\n\n.loginForm-inputField{\n    padding: 15px;\n    border: none;\n    width: 100%;\n    box-sizing: border-box;\n    font-size: 12px;\n    margin: 2px 0px;\n}\n\n.loginForm-forget{\n    padding: 15px;\n    color: rgb(234, 234, 234);\n    text-decoration: none;\n    display: block;\n    text-align: right;\n}\n\n.loginForm-logo{\n    width: 50%;\n    margin: 0 auto;\n    padding: 20px 15px;\n    filter: invert(100) brightness(100);\n}\n\n.loginForm-logo.--hideMobile{\n    display: none;\n}\n\n.loginForm-inputField.--btn{\n    background-color: #c09f53;\n    font-size: 16px;\n    color: #fff;\n    font-weight: bold;\n    letter-spacing: 5px;\n    text-transform: uppercase;\n}\n\n.loginForm-title{\n    font-size: 1.7em;\n    text-align: left;\n    padding: 15px 0px;\n    width: 100%;\n    text-transform: uppercase;\n    margin-bottom: -2px;\n}\n\n.loginForm-service{\n    margin: 0 0 10px;\n}\n\n@media screen and (min-width: 375px) and (max-width: 900px) {\n    .loginForm-container{\n        grid-template-columns: 1fr;\n    }\n\n    .loginForm-logo{\n        width: 100%;\n        padding: 0;\n        margin: 20px 0px;\n    }\n\n    .loginForm{\n        padding: 40px;\n        background: radial-gradient(circle at top, rgba(188, 188, 188, .6) -10%, rgba(48, 48, 48, .4));\n    }\n\n    .loginForm-container{\n        background-position: -250px;\n    }\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!./src/Pages/Countries/Style.css":
+/*!******************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!./src/Pages/Countries/Style.css ***!
+  \******************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "../node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "", "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6358,6 +6473,60 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Login_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Login_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Login_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/Pages/Countries/Style.css":
+/*!***************************************!*\
+  !*** ./src/Pages/Countries/Style.css ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "../node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "../node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "../node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "../node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js!./Style.css */ "../node_modules/css-loader/dist/cjs.js!./src/Pages/Countries/Style.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),

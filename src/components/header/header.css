@@ -70,7 +70,7 @@
     width: 65px;
     height: calc(100vh - 88px);
     
-    transition: width .5s ease-in-out;
+    transition: width .25s ease-in-out;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -80,7 +80,7 @@
     opacity: 0;
     width: 0;
     visibility: hidden;
-    transition: all 1s ease-in-out;
+    transition: all .25s ease-in-out;
 }
 
 .sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {
@@ -99,19 +99,18 @@
     color: #fff;
     display: flex;
     width: 100%;
-    padding: 15px;
-    margin: 10px auto;
+    padding: 25px 15px;
     overflow: hidden;
     align-items: center;
     white-space: nowrap;
-    transition: width .5s ease-in-out;
+    transition: width .15s ease-in-out;
     text-decoration: none;
 }
 
-.navItems.--active{
+.navItems.--active, .navItems:hover{
     background-color: rgb(95, 95, 95);
     color: rgb(241, 241, 241);
-    transition: width .5s ease-in-out;
+    transition: width .15s ease-in-out;
 }
 
 .collapsed:hover .navItems, .collapsed.expand a{
