@@ -25,10 +25,10 @@ body{
 }
 
 .main-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0px, max-content));
-    /* grid-template-columns: minmax(min-content, max-content) 1fr; */
-    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
     scroll-padding-top: 66px;
     padding-top: 66px;
 }

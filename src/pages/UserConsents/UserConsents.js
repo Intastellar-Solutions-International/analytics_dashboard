@@ -28,7 +28,7 @@ export default function UserConsents(props) {
                     icon: "user-consents"
                 }
             ]} />
-            <article>
+            <article style={{flex: "1"}}>
                 <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
                     <h1>Reports</h1>
                     <h2 style={{display: "flex"}}>Organisation: {
