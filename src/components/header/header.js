@@ -7,6 +7,7 @@ import useFetch from "../../Functions/FetchHook";
 import API from "../../API/api";
 import Authentication from "../../Authentication/Auth";
 import Select from "../SelectInput/Selector";
+import IntastellarAccounts from "../IntastellarAccounts/IntastellarAccounts";
 const useHistory = window.ReactRouterDOM.useHistory;
 const punycode = require("punycode");
 
@@ -111,6 +112,11 @@ export default function Header(props) {
                         <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile) } />
                     </div>
                 </div>
+                {(viewUserProfile) ? <IntastellarAccounts profile={{
+                    image: profileImage,
+                    name: Name,
+                    email: JSON.parse(localStorage.getItem("globals"))?.profile?.email,
+                }} /> : null}
             </header>
         </>
     )

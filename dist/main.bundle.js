@@ -1158,6 +1158,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../API/api */ "./src/API/api.js");
 /* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Authentication/Auth */ "./src/Authentication/Auth.js");
 /* harmony import */ var _SelectInput_Selector__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../SelectInput/Selector */ "./src/Components/SelectInput/Selector.js");
+/* harmony import */ var _IntastellarAccounts_IntastellarAccounts__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../IntastellarAccounts/IntastellarAccounts */ "./src/Components/IntastellarAccounts/IntastellarAccounts.js");
 const {
   useState,
   useEffect,
@@ -1172,12 +1173,13 @@ const {
 
 
 
+
 const useHistory = window.ReactRouterDOM.useHistory;
 
 const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/punycode.es6.js");
 
 function Header(props) {
-  var _window$location$path, _JSON$parse, _JSON$parse$profile, _JSON$parse2, _JSON$parse2$profile, _JSON$parse2$profile$, _JSON$parse3, _JSON$parse3$profile, _JSON$parse3$profile$;
+  var _window$location$path, _JSON$parse, _JSON$parse$profile, _JSON$parse2, _JSON$parse2$profile, _JSON$parse2$profile$, _JSON$parse3, _JSON$parse3$profile, _JSON$parse3$profile$, _JSON$parse4, _JSON$parse4$profile;
 
   const [Organisation, setOrganisation] = useContext(_App__WEBPACK_IMPORTED_MODULE_0__.OrganisationContext);
   const [currentDomain, setCurrentDomain] = useState(window.location.pathname.split("/")[1] === "view" ? decodeURI((_window$location$path = window.location.pathname.split("/")[2]) === null || _window$location$path === void 0 ? void 0 : _window$location$path.replace("%2E", ".")) : "all");
@@ -1279,7 +1281,13 @@ function Header(props) {
     src: profileImage,
     className: "content-img",
     onClick: () => setViewUserProfile(!viewUserProfile)
-  })))));
+  }))), viewUserProfile ? /*#__PURE__*/React.createElement(_IntastellarAccounts_IntastellarAccounts__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    profile: {
+      image: profileImage,
+      name: Name,
+      email: (_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : (_JSON$parse4$profile = _JSON$parse4.profile) === null || _JSON$parse4$profile === void 0 ? void 0 : _JSON$parse4$profile.email
+    }
+  }) : null));
 }
 
 /***/ }),
@@ -1327,6 +1335,106 @@ function Text(props) {
     type: "text",
     onChange: props.onChange
   }));
+}
+
+/***/ }),
+
+/***/ "./src/Components/IntastellarAccounts/IntastellarAccounts.js":
+/*!*******************************************************************!*\
+  !*** ./src/Components/IntastellarAccounts/IntastellarAccounts.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Account)
+/* harmony export */ });
+/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Style.css */ "./src/Components/IntastellarAccounts/Style.css");
+
+function Account(props) {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "user_content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dropdown-image-name"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dpde"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "img",
+    style: {
+      position: "relative",
+      width: "max-content",
+      margin: "20px auto"
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    src: props.profile.image,
+    className: "content-img"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "ziuVxb",
+    style: {
+      position: "absolute",
+      bottom: "10px",
+      right: "20px"
+    }
+  }, /*#__PURE__*/React.createElement("button", {
+    jsaction: "click:lj3vef",
+    "aria-label": "Change profile picture",
+    className: "GXg3Le LgkqPe",
+    jsname: "twx2Pc",
+    "data-cat": "profile",
+    "data-cp": "",
+    style: {
+      border: "none",
+      borderRadius: "50%",
+      boxShadow: "0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      background: "#fff",
+      padding: "10px"
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "24",
+    height: "24",
+    viewBox: "0 0 24 24",
+    focusable: "false",
+    className: "uarSJe NMm5M"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 14H4V7h16v12z"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M12 9c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4z"
+  }))))), /*#__PURE__*/React.createElement("div", {
+    className: "dropdown-name"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dpdn"
+  }, "Hi, ", props.profile.name, "!"), /*#__PURE__*/React.createElement("div", {
+    className: "dpde"
+  }, props.profile.email), /*#__PURE__*/React.createElement("div", {
+    className: "acc"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "https://my.intastellaraccounts.com",
+    target: "_blank"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: "https://www.intastellarsolutions.com/assets/icons/fav/favicon-96x96.png",
+    className: "logo-icon"
+  }), "Manage Your Intastellar Account")))), /*#__PURE__*/React.createElement("div", {
+    className: "dropdown-links"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "sign_out_btn_container"
+  }, /*#__PURE__*/React.createElement("a", {
+    className: "sign_out_btn",
+    href: "https://www.intastellaraccounts.com/logout.php?continue=my.intastellaraccounts.com/&service=My Account&entryFlow=bXkuaW50YXN0ZWxsYXJhY2NvdW50cy5jb20=&passive=true&flowName=WebSignout&Entry=authLogout"
+  }, /*#__PURE__*/React.createElement("svg", {
+    focusable: "false",
+    height: "24",
+    viewBox: "0 0 24 24",
+    width: "24",
+    className: " NMm5M"
+  }, /*#__PURE__*/React.createElement("path", {
+    d: "M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"
+  }), /*#__PURE__*/React.createElement("path", {
+    d: "M0 0h24v24H0z",
+    fill: "none"
+  })), " Sign Out"))));
 }
 
 /***/ }),
@@ -2754,6 +2862,32 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".intInput{\n    padding: 10px;\n    width: 100%;\n    border: none;\n}", "",{"version":3,"sources":["webpack://./src/Components/InputFields/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,WAAW;IACX,YAAY;AAChB","sourcesContent":[".intInput{\n    padding: 10px;\n    width: 100%;\n    border: none;\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!./src/Components/IntastellarAccounts/Style.css":
+/*!*********************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!./src/Components/IntastellarAccounts/Style.css ***!
+  \*********************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "../node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".user_content, .services-overview-container {\n    width: 340px;\n    height: auto;\n    max-height: 600px;\n    overflow: hidden;\n    border-radius: 10px;\n    float: right;\n    position: absolute;\n    top: 60px;\n    right: 20px;\n    box-sizing: border-box;\n    background: rgba(255,255,255,0.8);\n    /* box-shadow: 0 0 3px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.28); */\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    -webkit-backdrop-filter: blur(10px);\n    backdrop-filter: blur(10px);\n    -moz-backdrop-filter: blur(10px);\n}\n\n.dropdown-image-name {\n    height: auto;\n    padding: 25px 15px 10px;\n    text-align: center;\n}\n\n.dropdown-links {\n    max-height: 140px;\n    height: auto;\n    overflow: scroll;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dropdown-image-name {\n    text-align: center;\n}\n\n.content-img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n    border: 5px solid #fff;\n}\n\n.dropdown-name {\n    width: 100%;\n    color: #000;\n}\n\n.dpdn {\n    color: #202124;\n    font: 500 16px/22px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .29px;\n    margin: 0;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.acc {\n    background-color: transparent;\n    padding: 0;\n    border: none;\n    max-width: fit-content;\n}\n\n.logo-icon {\n    width: 55px;\n    height: 55px;\n    padding: 5px;\n}\n\n.sign_out_btn_container {\n    padding: 20px 30px;\n    border-top: 1px solid #c4c4c4;\n}\n\n.acc, .sign_out_btn {\n    background-color: #ffffff;\n    border: 1px solid #dadce0;\n    -moz-border-radius: 100px;\n    border-radius: 100px;\n    color: #3c4043;\n    display: inline-block;\n    font: 500 14px/16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .25px;\n    margin: 16px 0 0;\n    max-width: 260px;\n    outline: 0;\n    padding: 8px 10px;\n    text-align: center;\n    text-decoration: none;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.sign_out_btn {\n    border-radius: 4px !important;\n    margin: auto;\n    width: 100%;\n    display: flex;\n    align-items: center;\n}\n\n.acc a, .sign_out_btn {\n    color: #3c4043 !important;\n    text-decoration: none;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.ziuVxb{\n    position: absolute;\n    bottom: 10px;\n    right: 20px;\n}\n\nsvg.uarSJe.NMm5M {\n    width: 24px;\n    height: 24px;\n}", "",{"version":3,"sources":["webpack://./src/Components/IntastellarAccounts/Style.css"],"names":[],"mappings":"AAAA;IACI,YAAY;IACZ,YAAY;IACZ,iBAAiB;IACjB,gBAAgB;IAChB,mBAAmB;IACnB,YAAY;IACZ,kBAAkB;IAClB,SAAS;IACT,WAAW;IACX,sBAAsB;IACtB,iCAAiC;IACjC,oEAAoE;IACpE,kFAAkF;IAClF,mCAAmC;IACnC,2BAA2B;IAC3B,gCAAgC;AACpC;;AAEA;IACI,YAAY;IACZ,uBAAuB;IACvB,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,gBAAgB;AACpB;;AAEA;IACI,cAAc;IACd,iEAAiE;IACjE,sBAAsB;IACtB,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,kBAAkB;IAClB,iBAAiB;IACjB,YAAY;IACZ,sEAAsE;IACtE,sBAAsB;AAC1B;;AAEA;IACI,WAAW;IACX,WAAW;AACf;;AAEA;IACI,cAAc;IACd,6EAA6E;IAC7E,qBAAqB;IACrB,SAAS;IACT,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,cAAc;IACd,iEAAiE;IACjE,sBAAsB;IACtB,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,6BAA6B;IAC7B,UAAU;IACV,YAAY;IACZ,sBAAsB;AAC1B;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,6BAA6B;AACjC;;AAEA;IACI,yBAAyB;IACzB,yBAAyB;IACzB,yBAAyB;IACzB,oBAAoB;IACpB,cAAc;IACd,qBAAqB;IACrB,6EAA6E;IAC7E,qBAAqB;IACrB,gBAAgB;IAChB,gBAAgB;IAChB,UAAU;IACV,iBAAiB;IACjB,kBAAkB;IAClB,qBAAqB;IACrB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,6BAA6B;IAC7B,YAAY;IACZ,WAAW;IACX,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,yBAAyB;IACzB,qBAAqB;IACrB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;IAClB,YAAY;IACZ,WAAW;AACf;;AAEA;IACI,WAAW;IACX,YAAY;AAChB","sourcesContent":[".user_content, .services-overview-container {\n    width: 340px;\n    height: auto;\n    max-height: 600px;\n    overflow: hidden;\n    border-radius: 10px;\n    float: right;\n    position: absolute;\n    top: 60px;\n    right: 20px;\n    box-sizing: border-box;\n    background: rgba(255,255,255,0.8);\n    /* box-shadow: 0 0 3px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.28); */\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    -webkit-backdrop-filter: blur(10px);\n    backdrop-filter: blur(10px);\n    -moz-backdrop-filter: blur(10px);\n}\n\n.dropdown-image-name {\n    height: auto;\n    padding: 25px 15px 10px;\n    text-align: center;\n}\n\n.dropdown-links {\n    max-height: 140px;\n    height: auto;\n    overflow: scroll;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dropdown-image-name {\n    text-align: center;\n}\n\n.content-img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n    border: 5px solid #fff;\n}\n\n.dropdown-name {\n    width: 100%;\n    color: #000;\n}\n\n.dpdn {\n    color: #202124;\n    font: 500 16px/22px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .29px;\n    margin: 0;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.acc {\n    background-color: transparent;\n    padding: 0;\n    border: none;\n    max-width: fit-content;\n}\n\n.logo-icon {\n    width: 55px;\n    height: 55px;\n    padding: 5px;\n}\n\n.sign_out_btn_container {\n    padding: 20px 30px;\n    border-top: 1px solid #c4c4c4;\n}\n\n.acc, .sign_out_btn {\n    background-color: #ffffff;\n    border: 1px solid #dadce0;\n    -moz-border-radius: 100px;\n    border-radius: 100px;\n    color: #3c4043;\n    display: inline-block;\n    font: 500 14px/16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .25px;\n    margin: 16px 0 0;\n    max-width: 260px;\n    outline: 0;\n    padding: 8px 10px;\n    text-align: center;\n    text-decoration: none;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.sign_out_btn {\n    border-radius: 4px !important;\n    margin: auto;\n    width: 100%;\n    display: flex;\n    align-items: center;\n}\n\n.acc a, .sign_out_btn {\n    color: #3c4043 !important;\n    text-decoration: none;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.ziuVxb{\n    position: absolute;\n    bottom: 10px;\n    right: 20px;\n}\n\nsvg.uarSJe.NMm5M {\n    width: 24px;\n    height: 24px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6178,6 +6312,60 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "../node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js!./Style.css */ "../node_modules/css-loader/dist/cjs.js!./src/Components/InputFields/Style.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/Components/IntastellarAccounts/Style.css":
+/*!******************************************************!*\
+  !*** ./src/Components/IntastellarAccounts/Style.css ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "../node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "../node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "../node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "../node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js!./Style.css */ "../node_modules/css-loader/dist/cjs.js!./src/Components/IntastellarAccounts/Style.css");
 
       
       
