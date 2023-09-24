@@ -2906,11 +2906,7 @@ function UserConsents(props) {
       color: "#626262",
       marginBottom: "20px"
     }
-  }, /*#__PURE__*/React.createElement("h1", null, "Reports"), /*#__PURE__*/React.createElement("h2", {
-    style: {
-      display: "flex"
-    }
-  }, "User consents")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h1", null, "Reports - User consents")), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, getDomainsUrlLoading && !getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_7__.Loading, null) : getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_5__["default"], null) : getDomainsUrlData == "Err_No_Data_Found" ? /*#__PURE__*/React.createElement(_Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_6__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"

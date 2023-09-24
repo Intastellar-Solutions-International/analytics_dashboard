@@ -28,8 +28,7 @@ export default function UserConsents(props) {
             <SideNav links={reportsLinks} />
             <article style={{flex: "1"}}>
                 <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262", marginBottom: "20px"}}>
-                    <h1>Reports</h1>
-                    <h2 style={{display: "flex"}}>User consents</h2>
+                    <h1>Reports - User consents</h1>
                 </section>
                 <div className="dashboard-content">
                     {(getDomainsUrlLoading && !getDomainsUrlError) ? <Loading /> : (getDomainsUrlError) ? <Unknown /> : ( getDomainsUrlData == "Err_No_Data_Found") ? <NoDataFound /> : <>
