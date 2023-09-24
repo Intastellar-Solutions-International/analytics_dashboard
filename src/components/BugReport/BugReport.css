@@ -1,0 +1,74 @@
+.bug-container{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 200;
+}
+
+.send-feedback{
+    background-color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 15px;
+    margin-left: auto;
+    position: relative;
+    border-radius: 10px;
+    max-height: 50px;
+}
+
+.bug-menu{
+    bottom: 10px;
+    right: 10px;
+    z-index: 200;
+    position: fixed;
+    bottom: 70px;
+    background-color: #fff;
+    color: #2f2f2f;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    max-width: 450px;
+}
+
+.bug-menu .bug-menu-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bug-menu .bug-menu-header .bug-menu-title{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.bugReport-input{
+    border: 1px solid #bec0c3;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    font-size: 15px;
+    color: #2f2f2f;
+    resize: none;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.bugReport-input.--height{
+    height: 200px;
+}
+
+.bugReport-send{
+    background-color: #ff5e5e;
+    border: none;
+    padding: 15px 30px;
+    font-size: 15px;
+    margin-left: auto;
+    position: relative;
+    border-radius: 10px;
+    max-height: 50px;
+    float: right;
+    margin-top: 10px;
+}

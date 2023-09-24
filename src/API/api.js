@@ -105,6 +105,16 @@ const API = {
             }
         }
     },
+    github: {
+        createIssue: {
+            url: "https://github.acme-inc.com/api/v3/repos/Intastellar-Solutions-International/intastellar-analytics/issues",
+            method: "POST",
+            headers: {
+                "Authorization": "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",
+                'X-GitHub-Api-Version': '2022-11-28',
+            }
+        }
+    }
 };
 
 export default API;
