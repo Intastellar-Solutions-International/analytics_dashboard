@@ -40,13 +40,15 @@ export default function App() {
     const [organisations, setOrganisations] = useState(null);
     const [domains, setDomains] = useState(null);
     const [domainError, setDomainError] = useState(false);
+    const [id, setId] = useState(JSON.parse(localStorage.getItem("globals")).access.type[1].uri);
+
 
     if (localStorage.getItem("globals") && JSON.parse(localStorage.getItem("globals"))?.token != undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
         if(window.location.href.indexOf("/login") > -1){
-            window.location.href = "/dashboard";
+            window.location.href = `/${id}/dashboard`;
         }
 
-        /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers); */
+        /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
 
         useEffect(() => {
             Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
@@ -61,7 +63,7 @@ export default function App() {
                 setOrganisations(data);
             });
 
-            Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
+            Fetch(API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers).then((data) => {
                 
                 if(data.error === "Err_No_Domains") {
                     setDomainError(true);
@@ -88,7 +90,7 @@ export default function App() {
                             <div className="main-grid"> 
                                 <Nav />
                                 <Switch>
-                                    <Route path="/dashboard" exact>
+                                    <Route path="/:id/dashboard" exact>
                                         <ErrorBoundary>
                                             <div style={{flex:"1"}}>
                                                 <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
@@ -99,7 +101,7 @@ export default function App() {
                                             </div>
                                         </ErrorBoundary>
                                     </Route>
-                                    <Route path="/domains" exact>
+                                    <Route path="/:id/domains" exact>
                                         <ErrorBoundary>
                                             {domainError ? <AddDomain /> : <Websites />}
                                         </ErrorBoundary>
@@ -124,22 +126,22 @@ export default function App() {
                                             {domainError ? <AddDomain /> : <ViewOrg />}
                                         </ErrorBoundary>
                                     </Route>
-                                    <Route path='/view/:handle'>
+                                    <Route path='/:id/view/:handle'>
                                         <ErrorBoundary>
                                             {domainError ? <AddDomain /> : <DomainDashbord setHandle={setHandle} />}
                                         </ErrorBoundary>
                                     </Route>
-                                    <Route path="/reports" exact>
+                                    <Route path="/:id/reports" exact>
                                         <ErrorBoundary>
                                             <Reports />
                                         </ErrorBoundary>
                                     </Route>
-                                    <Route path="/reports/user-consents">
+                                    <Route path="/:id/reports/user-consents">
                                         <ErrorBoundary>
                                             {domainError ? <AddDomain /> : <UserConsents organisations={organisations} />}
                                         </ErrorBoundary>
                                     </Route>
-                                    <Route path="/reports/countries">
+                                    <Route path="/:id/reports/countries">
                                         <ErrorBoundary>
                                             {domainError ? <AddDomain /> : <Countries organisations={organisations} />}
                                         </ErrorBoundary>

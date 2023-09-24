@@ -703,14 +703,15 @@ function App() {
   const [organisations, setOrganisations] = useState(null);
   const [domains, setDomains] = useState(null);
   const [domainError, setDomainError] = useState(false);
+  const [id, setId] = useState(JSON.parse(localStorage.getItem("globals")).access.type[1].uri);
 
   if (localStorage.getItem("globals") && ((_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.token) != undefined || (_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) !== null && _JSON$parse2 !== void 0 && _JSON$parse2.status) {
     var _JSON$parse3, _JSON$parse3$profile, _JSON$parse3$profile$;
 
     if (window.location.href.indexOf("/login") > -1) {
-      window.location.href = "/dashboard";
+      window.location.href = "/".concat(id, "/dashboard");
     }
-    /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers); */
+    /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
 
 
     useEffect(() => {
@@ -725,7 +726,7 @@ function App() {
 
         setOrganisations(data);
       });
-      (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_14__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_4__["default"].gdpr.getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_4__["default"].gdpr.getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_4__["default"].gdpr.getDomains.headers).then(data => {
+      (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_14__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_4__["default"][id].getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_4__["default"][id].getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_4__["default"][id].getDomains.headers).then(data => {
         if (data.error === "Err_No_Domains") {
           setDomainError(true);
         } else {
@@ -752,7 +753,7 @@ function App() {
     }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_22__["default"], null), /*#__PURE__*/React.createElement("div", {
       className: "main-grid"
     }, /*#__PURE__*/React.createElement(_Components_Header_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/React.createElement(Switch, null, /*#__PURE__*/React.createElement(Route, {
-      path: "/dashboard",
+      path: "/:id/dashboard",
       exact: true
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, /*#__PURE__*/React.createElement("div", {
       style: {
@@ -768,7 +769,7 @@ function App() {
       dashboardView: dashboardView,
       setDashboardView: setDashboardView
     })))), /*#__PURE__*/React.createElement(Route, {
-      path: "/domains",
+      path: "/:id/domains",
       exact: true
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Domains_index_js__WEBPACK_IMPORTED_MODULE_7__["default"], null))), /*#__PURE__*/React.createElement(Route, {
       path: "/settings",
@@ -780,18 +781,18 @@ function App() {
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_AddUser__WEBPACK_IMPORTED_MODULE_10__["default"], null))), /*#__PURE__*/React.createElement(Route, {
       path: "/settings/view-organisations"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_ViewOrganisations__WEBPACK_IMPORTED_MODULE_11__["default"], null))), /*#__PURE__*/React.createElement(Route, {
-      path: "/view/:handle"
+      path: "/:id/view/:handle"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_DomainDashbord__WEBPACK_IMPORTED_MODULE_13__["default"], {
       setHandle: setHandle
     }))), /*#__PURE__*/React.createElement(Route, {
-      path: "/reports",
+      path: "/:id/reports",
       exact: true
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, /*#__PURE__*/React.createElement(_Pages_Reports_Reports__WEBPACK_IMPORTED_MODULE_19__["default"], null))), /*#__PURE__*/React.createElement(Route, {
-      path: "/reports/user-consents"
+      path: "/:id/reports/user-consents"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_UserConsents_UserConsents__WEBPACK_IMPORTED_MODULE_18__["default"], {
       organisations: organisations
     }))), /*#__PURE__*/React.createElement(Route, {
-      path: "/reports/countries"
+      path: "/:id/reports/countries"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Countries_Countries__WEBPACK_IMPORTED_MODULE_21__["default"], {
       organisations: organisations
     }))), /*#__PURE__*/React.createElement(Redirect, {
@@ -854,13 +855,14 @@ const Authentication = {
       }
 
       setLoading(false);
+      console.log(response.access.type[1].uri);
       localStorage.setItem("organisation", response.organisation);
       localStorage.setItem("globals", JSON.stringify(response));
 
-      if (window.location.href === "/login") {
-        window.location.href = "/dashboard";
+      if (window.location.pathname === "/login") {
+        window.location.href = "/" + response.access.type[1].uri + "/dashboard";
       } else {
-        window.location.reload();
+        /* window.location.reload(); */
       }
     });
   },
@@ -1141,21 +1143,21 @@ function Nav() {
     onClick: () => Expand()
   }), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname === "/dashboard" ? " --active" : ""),
-    to: "/dashboard"
+    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type[1].uri + "/dashboard"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons home"
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Home")), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname.indexOf("/reports") > -1 ? " --active" : ""),
-    to: "/reports"
+    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type[1].uri + "/reports"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons reports"
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Reports")), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname === "/domains" ? " --active" : ""),
-    to: "/domains"
+    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type[1].uri + "/domains"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons domains"
   }), " ", /*#__PURE__*/React.createElement("span", {
@@ -1192,10 +1194,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ SideNav)
 /* harmony export */ });
 const Link = window.ReactRouterDOM.Link;
+const useParams = window.ReactRouterDOM.useParams;
 function SideNav(props) {
   var _props$links;
 
   const useLocation = window.ReactRouterDOM.useLocation;
+  const {
+    handle,
+    id
+  } = useParams();
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("aside", {
     className: "sidebar expand"
   }, /*#__PURE__*/React.createElement("nav", {
@@ -1203,7 +1210,7 @@ function SideNav(props) {
   }, props === null || props === void 0 ? void 0 : (_props$links = props.links) === null || _props$links === void 0 ? void 0 : _props$links.map(link => {
     return /*#__PURE__*/React.createElement(Link, {
       className: "navItems" + (useLocation().pathname === (link === null || link === void 0 ? void 0 : link.path) ? " --active" : ""),
-      to: link === null || link === void 0 ? void 0 : link.path
+      to: "/" + id + (link === null || link === void 0 ? void 0 : link.path)
     }, link !== null && link !== void 0 && link.icon ? /*#__PURE__*/React.createElement("i", {
       className: "dashboard-icons " + (link === null || link === void 0 ? void 0 : link.icon)
     }) : null, " ", /*#__PURE__*/React.createElement("span", {
@@ -2397,14 +2404,19 @@ const {
 
 
 
+const useParams = window.ReactRouterDOM.useParams;
 function Dashboard(props) {
   document.title = "Home | Intastellar Analytics";
   const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_7__.DomainContext);
   const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_7__.OrganisationContext);
+  const {
+    handle,
+    id
+  } = useParams();
   const dashboardView = props.dashboardView;
-  let url = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getInteractions.url;
-  let method = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getInteractions.method;
-  let header = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getInteractions.headers;
+  let url = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.url;
+  let method = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.method;
+  let header = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.headers;
   let consent = null;
   useEffect(() => {
     function handleScrollEvent() {
@@ -2418,24 +2430,19 @@ function Dashboard(props) {
       window.removeEventListener('scroll', handleScrollEvent);
     };
   }, []);
-
-  if (dashboardView === "GDPR Cookiebanner") {
-    _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getInteractions.headers.Domains = currentDomain;
-    url = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getInteractions.url;
-    method = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getInteractions.method;
-    header = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getInteractions.headers;
-  }
-
-  ;
+  _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.headers.Domains = currentDomain;
+  url = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.url;
+  method = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.method;
+  header = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.headers;
   const [loading, data, error, getUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_1__["default"])(5, url, method, header);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, dashboardView === "GDPR Cookiebanner" && organisation != null && JSON.parse(organisation).id == 1 ? /*#__PURE__*/React.createElement(_Components_widget_TopWidgets_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
     dashboardView: dashboardView,
     API: {
-      url: _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getTotalNumber.url,
-      method: _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getTotalNumber.method,
-      header: _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getTotalNumber.headers
+      url: _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getTotalNumber.url,
+      method: _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getTotalNumber.method,
+      header: _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getTotalNumber.headers
     }
   }) : null, /*#__PURE__*/React.createElement("div", {
     className: "",
@@ -2521,11 +2528,12 @@ function DomainDashbord(props) {
   var _localStorage, _localStorage$getItem;
 
   const {
-    handle
+    handle,
+    id
   } = useParams();
   document.title = "".concat(punycode.toUnicode(handle), " Dashboard | Intastellar Analytics");
-  _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getInteractions.headers.Domains = punycode.toASCII(handle);
-  const [loading, data, error, updated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__["default"])(5, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getInteractions.url, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getInteractions.method, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].gdpr.getInteractions.headers, null, handle);
+  _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.headers.Domains = punycode.toASCII(handle);
+  const [loading, data, error, updated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__["default"])(5, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.url, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.method, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.headers, null, handle);
   return (_localStorage = localStorage) !== null && _localStorage !== void 0 && (_localStorage$getItem = _localStorage.getItem("domains")) !== null && _localStorage$getItem !== void 0 && _localStorage$getItem.includes(punycode.toUnicode(handle)) || handle == "all" ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "Dashboard"), /*#__PURE__*/React.createElement("p", null, "You\xB4re currently viewing the data for:"), /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("a", {
@@ -2853,8 +2861,13 @@ const {
   useRef
 } = React;
 const Link = window.ReactRouterDOM.Link;
+const useParams = window.ReactRouterDOM.useParams;
 function ViewOrg() {
   document.title = "My Organisation | Intastellar Analytics";
+  const {
+    handle,
+    id
+  } = useParams();
   const [loading, data, error, updated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_1__["default"])(1, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].settings.getOrganisation.url, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].settings.getOrganisation.method, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].settings.getOrganisation.headers, JSON.stringify({
     organisationMember: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_3__["default"].getUserId()
   }));
@@ -2892,8 +2905,13 @@ const {
   useRef
 } = React;
 const Link = window.ReactRouterDOM.Link;
+const useParams = window.ReactRouterDOM.useParams;
 function Settings(props) {
   document.title = "Settings | Intastellar Analytics";
+  const {
+    handle,
+    id
+  } = useParams();
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("main", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "Settings"), /*#__PURE__*/React.createElement("nav", null, /*#__PURE__*/React.createElement(Link, {
@@ -2952,13 +2970,18 @@ const {
 
 
 
+const useParams = window.ReactRouterDOM.useParams;
 function UserConsents(props) {
   document.title = "User consents | Intastellar Analytics";
   const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_12__.DomainContext);
   const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_12__.OrganisationContext);
+  const {
+    handle,
+    id
+  } = useParams();
   const organisations = props.organisations;
-  _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"].gdpr.getDomainsUrl.headers.Domains = currentDomain;
-  const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_4__["default"])(5, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"].gdpr.getDomainsUrl.url, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"].gdpr.getDomainsUrl.method, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"].gdpr.getDomainsUrl.headers);
+  _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"][id].getDomainsUrl.headers.Domains = currentDomain;
+  const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_4__["default"])(5, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"][id].getDomainsUrl.url, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"][id].getDomainsUrl.method, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"][id].getDomainsUrl.headers);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
     links: _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_9__.reportsLinks
   }), /*#__PURE__*/React.createElement("article", {

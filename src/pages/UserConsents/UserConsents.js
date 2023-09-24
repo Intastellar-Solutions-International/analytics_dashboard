@@ -12,16 +12,18 @@ import { reportsLinks } from "../Reports/Reports.js";
 import "./Style.css";
 import SideNav from "../../Components/Header/SideNav.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
+const useParams = window.ReactRouterDOM.useParams;
 
 export default function UserConsents(props) {
     document.title = "User consents | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
+    const { handle, id } = useParams();
     const organisations = props.organisations;
 
 
-    API.gdpr.getDomainsUrl.headers.Domains = currentDomain;
-    const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = useFetch(5, API.gdpr.getDomainsUrl.url, API.gdpr.getDomainsUrl.method, API.gdpr.getDomainsUrl.headers);
+    API[id].getDomainsUrl.headers.Domains = currentDomain;
+    const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = useFetch(5, API[id].getDomainsUrl.url, API[id].getDomainsUrl.method, API[id].getDomainsUrl.headers);
     
     return (
         <>
