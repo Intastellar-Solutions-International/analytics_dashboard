@@ -52,8 +52,12 @@
     font-size: 15px;
     color: #2f2f2f;
     resize: none;
-    height: 300px;
     width: 100%;
+    margin: 20px 0px;
+}
+
+.bugReport-input.--height{
+    height: 300px;
 }
 
 .bugReport-send{

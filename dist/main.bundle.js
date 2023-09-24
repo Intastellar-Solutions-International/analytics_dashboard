@@ -597,6 +597,16 @@ const API = {
         "Organisation": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getOrganisation()
       }
     }
+  },
+  github: {
+    createIssue: {
+      url: "https://github.acme-inc.com/api/v3/repos/Intastellar-Solutions-International/intastellar-analytics/issues",
+      method: "POST",
+      headers: {
+        "Authorization": "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",
+        'X-GitHub-Api-Version': '2022-11-28'
+      }
+    }
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (API);
@@ -923,6 +933,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ BugReport)
 /* harmony export */ });
 /* harmony import */ var _BugReport_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BugReport.css */ "./src/Components/BugReport/BugReport.css");
+/* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../API/api */ "./src/API/api.js");
 const {
   useState,
   useEffect,
@@ -930,7 +941,10 @@ const {
   useContext
 } = React;
 
+
 function BugReport() {
+  var _JSON$parse, _JSON$parse$profile, _JSON$parse2, _JSON$parse2$profile, _JSON$parse3, _JSON$parse3$profile;
+
   const [isOpen, setIsOpen] = useState(false);
 
   function openMenu() {
@@ -938,19 +952,36 @@ function BugReport() {
   }
 
   function clickOutSide(e) {
-    if (e.target.className !== "send-feedback" && e.target.className !== "bugReport-input" && e.target.className !== "bugReport-send") {
+    if (e.target.className !== "send-feedback" && e.target.className !== "bugReport-input" && e.target.className !== "bugReport-input bugReport-input --height" && e.target.className !== "bugReport-send") {
       setIsOpen(false);
     }
   }
 
   function sendFeedback(e) {
     e.preventDefault();
-    setIsOpen(false);
-  }
+    /* setIsOpen(false); */
 
-  useEffect(() => {
-    document.addEventListener("click", clickOutSide);
-  }, []);
+    fetch(_API_api__WEBPACK_IMPORTED_MODULE_1__["default"].github.createIssue.url, {
+      method: _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].github.createIssue.method,
+      body: JSON.stringify({
+        owner: "IntastellarSolutions",
+        repo: "IntastellarAnalytics",
+        title: document.querySelector(".feedback-type").value + ": " + document.querySelector(".--feedbackTitle").value,
+        body: document.querySelector(".--feedbackMessage").value,
+        labels: [document.querySelector(".feedback-type").value],
+        milestone: 1
+      }),
+      headers: _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].github.createIssue.headers
+    }).then(res => res.json()).then(data => {
+      console.log(data);
+    });
+  }
+  /* useEffect(() => {
+      document.addEventListener("click", clickOutSide);
+  }
+  , []); */
+
+
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "bug-container"
   }, isOpen ? /*#__PURE__*/React.createElement("div", {
@@ -962,10 +993,32 @@ function BugReport() {
   }, /*#__PURE__*/React.createElement("p", null, "Thank you for your feedback. We will try to fix the problem as soon as possible."), /*#__PURE__*/React.createElement("form", {
     className: "bugSubmitForm",
     onSubmit: sendFeedback
-  }, /*#__PURE__*/React.createElement("textarea", {
-    className: "bugReport-input",
+  }, /*#__PURE__*/React.createElement("label", null, "Title:"), /*#__PURE__*/React.createElement("input", {
+    className: "bugReport-input --feedbackTitle",
+    type: "text",
+    placeholder: "Title"
+  }), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("label", null, "What kind of feedback do you have?"), /*#__PURE__*/React.createElement("select", {
+    className: "bugReport-input feedback-type"
+  }, /*#__PURE__*/React.createElement("option", {
+    value: "Bug"
+  }, "Bug"), /*#__PURE__*/React.createElement("option", {
+    value: "Feature"
+  }, "Feature"), /*#__PURE__*/React.createElement("option", {
+    value: "Other"
+  }, "Other"))), /*#__PURE__*/React.createElement("label", null, "Describe your problem:"), /*#__PURE__*/React.createElement("textarea", {
+    className: "bugReport-input --height --feedbackMessage",
     col: "50",
     placeholder: "Please describe your problem here..."
+  }), /*#__PURE__*/React.createElement("input", {
+    className: "bugReport-input",
+    type: "hidden",
+    value: (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$profile = _JSON$parse.profile) === null || _JSON$parse$profile === void 0 ? void 0 : _JSON$parse$profile.email,
+    placeholder: "email"
+  }), /*#__PURE__*/React.createElement("input", {
+    className: "bugReport-input",
+    type: "hidden",
+    value: ((_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse2 === void 0 ? void 0 : (_JSON$parse2$profile = _JSON$parse2.profile) === null || _JSON$parse2$profile === void 0 ? void 0 : _JSON$parse2$profile.first_name) + " " + ((_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$profile = _JSON$parse3.profile) === null || _JSON$parse3$profile === void 0 ? void 0 : _JSON$parse3$profile.last_name),
+    placeholder: "email"
   }), /*#__PURE__*/React.createElement("button", {
     className: "bugReport-send"
   }, "Send feedback")))) : null, /*#__PURE__*/React.createElement("button", {
@@ -3085,7 +3138,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".bug-container{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n}\n\n.send-feedback{\n    background-color: #fff;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n}\n\n.bug-menu{\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n    position: fixed;\n    bottom: 70px;\n    background-color: #fff;\n    color: #2f2f2f;\n    border-radius: 10px;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);\n    max-width: 450px;\n}\n\n.bug-menu .bug-menu-header{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.bug-menu .bug-menu-header .bug-menu-title{\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.bugReport-input{\n    border: 1px solid #bec0c3;\n    border-radius: 5px;\n    padding: 10px;\n    outline: none;\n    font-size: 15px;\n    color: #2f2f2f;\n    resize: none;\n    height: 300px;\n    width: 100%;\n}\n\n.bugReport-send{\n    background-color: #ff5e5e;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n    float: right;\n    margin-top: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Components/BugReport/BugReport.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,YAAY;IACZ,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,sBAAsB;IACtB,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;AACpB;;AAEA;IACI,YAAY;IACZ,WAAW;IACX,YAAY;IACZ,eAAe;IACf,YAAY;IACZ,sBAAsB;IACtB,cAAc;IACd,mBAAmB;IACnB,aAAa;IACb,aAAa;IACb,sBAAsB;IACtB,SAAS;IACT,6CAA6C;IAC7C,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,gBAAgB;AACpB;;AAEA;IACI,yBAAyB;IACzB,kBAAkB;IAClB,aAAa;IACb,aAAa;IACb,eAAe;IACf,cAAc;IACd,YAAY;IACZ,aAAa;IACb,WAAW;AACf;;AAEA;IACI,yBAAyB;IACzB,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;IAChB,YAAY;IACZ,gBAAgB;AACpB","sourcesContent":[".bug-container{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n}\n\n.send-feedback{\n    background-color: #fff;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n}\n\n.bug-menu{\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n    position: fixed;\n    bottom: 70px;\n    background-color: #fff;\n    color: #2f2f2f;\n    border-radius: 10px;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);\n    max-width: 450px;\n}\n\n.bug-menu .bug-menu-header{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.bug-menu .bug-menu-header .bug-menu-title{\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.bugReport-input{\n    border: 1px solid #bec0c3;\n    border-radius: 5px;\n    padding: 10px;\n    outline: none;\n    font-size: 15px;\n    color: #2f2f2f;\n    resize: none;\n    height: 300px;\n    width: 100%;\n}\n\n.bugReport-send{\n    background-color: #ff5e5e;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n    float: right;\n    margin-top: 10px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".bug-container{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n}\n\n.send-feedback{\n    background-color: #fff;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n}\n\n.bug-menu{\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n    position: fixed;\n    bottom: 70px;\n    background-color: #fff;\n    color: #2f2f2f;\n    border-radius: 10px;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);\n    max-width: 450px;\n}\n\n.bug-menu .bug-menu-header{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.bug-menu .bug-menu-header .bug-menu-title{\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.bugReport-input{\n    border: 1px solid #bec0c3;\n    border-radius: 5px;\n    padding: 10px;\n    outline: none;\n    font-size: 15px;\n    color: #2f2f2f;\n    resize: none;\n    width: 100%;\n    margin: 20px 0px;\n}\n\n.bugReport-input.--height{\n    height: 300px;\n}\n\n.bugReport-send{\n    background-color: #ff5e5e;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n    float: right;\n    margin-top: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Components/BugReport/BugReport.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,YAAY;IACZ,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,sBAAsB;IACtB,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;AACpB;;AAEA;IACI,YAAY;IACZ,WAAW;IACX,YAAY;IACZ,eAAe;IACf,YAAY;IACZ,sBAAsB;IACtB,cAAc;IACd,mBAAmB;IACnB,aAAa;IACb,aAAa;IACb,sBAAsB;IACtB,SAAS;IACT,6CAA6C;IAC7C,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,gBAAgB;AACpB;;AAEA;IACI,yBAAyB;IACzB,kBAAkB;IAClB,aAAa;IACb,aAAa;IACb,eAAe;IACf,cAAc;IACd,YAAY;IACZ,WAAW;IACX,gBAAgB;AACpB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,yBAAyB;IACzB,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;IAChB,YAAY;IACZ,gBAAgB;AACpB","sourcesContent":[".bug-container{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n}\n\n.send-feedback{\n    background-color: #fff;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n}\n\n.bug-menu{\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n    position: fixed;\n    bottom: 70px;\n    background-color: #fff;\n    color: #2f2f2f;\n    border-radius: 10px;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);\n    max-width: 450px;\n}\n\n.bug-menu .bug-menu-header{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.bug-menu .bug-menu-header .bug-menu-title{\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.bugReport-input{\n    border: 1px solid #bec0c3;\n    border-radius: 5px;\n    padding: 10px;\n    outline: none;\n    font-size: 15px;\n    color: #2f2f2f;\n    resize: none;\n    width: 100%;\n    margin: 20px 0px;\n}\n\n.bugReport-input.--height{\n    height: 300px;\n}\n\n.bugReport-send{\n    background-color: #ff5e5e;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n    float: right;\n    margin-top: 10px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -1,5 +1,6 @@
 const { useState, useEffect, useRef, useContext } = React;
-import "./BugReport.css"
+import "./BugReport.css";
+import API from "../../API/api";
 export default function BugReport(){
     const [isOpen, setIsOpen] = useState(false);
 
@@ -8,21 +9,37 @@ export default function BugReport(){
     }
 
     function clickOutSide(e){
-        if(e.target.className !== "send-feedback" && e.target.className !== "bugReport-input" && e.target.className !== "bugReport-send"){
+        if(e.target.className !== "send-feedback" && e.target.className !== "bugReport-input" && e.target.className !== "bugReport-input bugReport-input --height"  && e.target.className !== "bugReport-send"){
             setIsOpen(false);
         }
     }
 
     function sendFeedback(e){
         e.preventDefault();
-        setIsOpen(false);
-
+        /* setIsOpen(false); */
+        
+        fetch(API.github.createIssue.url, {
+            method: API.github.createIssue.method,
+            body: JSON.stringify({
+                owner: "IntastellarSolutions",
+                repo: "IntastellarAnalytics",
+                title: document.querySelector(".feedback-type").value + ": " + document.querySelector(".--feedbackTitle").value,
+                body: document.querySelector(".--feedbackMessage").value,
+                labels: [
+                    document.querySelector(".feedback-type").value
+                ],
+                milestone: 1,
+            }),
+            headers: API.github.createIssue.headers 
+        }).then(res => res.json()).then(data => {
+            console.log(data);
+        })
     }
 
-    useEffect(() => {
+    /* useEffect(() => {
         document.addEventListener("click", clickOutSide);
     }
-    , []);
+    , []); */
 
     return <>
         <div className="bug-container">
@@ -34,7 +51,21 @@ export default function BugReport(){
                 <div className="bug-menu-body">
                     <p>Thank you for your feedback. We will try to fix the problem as soon as possible.</p>
                     <form className="bugSubmitForm" onSubmit={sendFeedback}>
-                        <textarea className="bugReport-input" col="50" placeholder="Please describe your problem here..."></textarea>
+                        <label>Title:</label>
+                        <input className="bugReport-input --feedbackTitle" type="text" placeholder="Title" />
+                        <section>
+                            <label>What kind of feedback do you have?</label>
+                            <select className="bugReport-input feedback-type">
+                                <option value="Bug">Bug</option>
+                                <option value="Feature">Feature</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </section>
+                        <label>Describe your problem:</label>
+                        <textarea className="bugReport-input --height --feedbackMessage" col="50" placeholder="Please describe your problem here..."></textarea>
+                        <input className="bugReport-input" type="hidden" value={JSON.parse(localStorage.getItem("globals"))?.profile?.email} placeholder="email" />
+                        <input className="bugReport-input" type="hidden" value={JSON.parse(localStorage.getItem("globals"))?.profile?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.last_name} placeholder="email" />
+                        
                         <button className="bugReport-send">Send feedback</button>
                     </form>
                 </div>
