@@ -18,11 +18,19 @@ const Authentication = {
         }).then(response => {
             if (response === "Err_Logon_Fail") {
                 setErrorMessage("We having trouble to log you in");
+                setLoading(false);
+                return;
+            }
+
+            if (response === "Err_Logon_Fail_Wrong_Password_Or_Email") {
+                setErrorMessage("Wrong password or email");
+                setLoading(false);
                 return;
             }
 
             if (response === "Err_Logon_Deny") {
                 setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Intastellar Account Manager for assistance");
+                setLoading(false);
                 return;
             }
 

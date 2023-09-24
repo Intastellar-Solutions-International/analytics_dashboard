@@ -40,8 +40,6 @@ export default function App() {
     const [domains, setDomains] = useState(null);
     const [domainError, setDomainError] = useState(false);
 
-    console.log("App.js", localStorage.getItem("globals"));
-
     if (localStorage.getItem("globals") && JSON.parse(localStorage.getItem("globals"))?.token != undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
         if(window.location.href.indexOf("/login") > -1){
             window.location.href = "/dashboard";

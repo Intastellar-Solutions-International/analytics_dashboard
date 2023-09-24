@@ -699,7 +699,6 @@ function App() {
   const [organisations, setOrganisations] = useState(null);
   const [domains, setDomains] = useState(null);
   const [domainError, setDomainError] = useState(false);
-  console.log("App.js", localStorage.getItem("globals"));
 
   if (localStorage.getItem("globals") && ((_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.token) != undefined || (_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) !== null && _JSON$parse2 !== void 0 && _JSON$parse2.status) {
     var _JSON$parse3, _JSON$parse3$profile, _JSON$parse3$profile$, _JSON$parse4, _JSON$parse4$profile, _JSON$parse4$profile$;
@@ -862,11 +861,19 @@ const Authentication = {
     }).then(response => {
       if (response === "Err_Logon_Fail") {
         setErrorMessage("We having trouble to log you in");
+        setLoading(false);
+        return;
+      }
+
+      if (response === "Err_Logon_Fail_Wrong_Password_Or_Email") {
+        setErrorMessage("Wrong password or email");
+        setLoading(false);
         return;
       }
 
       if (response === "Err_Logon_Deny") {
         setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Intastellar Account Manager for assistance");
+        setLoading(false);
         return;
       }
 
