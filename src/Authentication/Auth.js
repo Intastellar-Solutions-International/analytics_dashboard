@@ -18,18 +18,28 @@ const Authentication = {
         }).then(response => {
             if (response === "Err_Logon_Fail") {
                 setErrorMessage("We having trouble to log you in");
+                setLoading(false);
+                return;
+            }
+
+            if (response === "Err_Logon_Fail_Wrong_Password_Or_Email") {
+                setErrorMessage("Wrong password or email");
+                setLoading(false);
                 return;
             }
 
             if (response === "Err_Logon_Deny") {
-                setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Alsense Account Manager for assistance");
+                setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Intastellar Account Manager for assistance");
+                setLoading(false);
                 return;
             }
-            setLoading(false);
 
+            setLoading(false);
+            
+            localStorage.setItem("organisation", response.organisation);
             localStorage.setItem("globals", JSON.stringify(response));
-            if (window.location.href === "//login") {
-                window.location.href = "//dashboard";
+            if (window.location.href === "/login") {
+                window.location.href = "/dashboard";
             } else {
                 window.location.reload();
             }

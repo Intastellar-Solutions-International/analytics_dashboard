@@ -27,9 +27,10 @@ export default function Select(props){
     }, []);
 
     return <>
-        <div className="selectorContianer">
+        <div className="selectorContianer" style={props.style}>
             <div className="selector">
-                <button className="dropdown-menu-button" onClick={openMenu}>{(isJson(props.defaultValue) ? JSON.parse(props.defaultValue).name : props.defaultValue)}</button>
+                {(props.icon) ? <i className={props.icon}></i> : null}
+                <button className="dropdown-menu-button" style={props?.style2} onClick={openMenu}>{(isJson(props.defaultValue) ? JSON.parse(props.defaultValue).name : props.defaultValue)}</button>
                 {(isOpen) ? 
                 <div className="dropdown-menu">
                     <ul className="dropdown-menu__content" style={props.style}>

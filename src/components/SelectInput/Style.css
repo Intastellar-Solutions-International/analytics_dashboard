@@ -1,6 +1,7 @@
 .selector{
     width: calc(max-content + 20px);
     position: relative;
+    display: flex;
 }
 
 .selectTitle{
@@ -31,6 +32,9 @@
 .dropdown-menu__content{
     position: absolute;
     top: 100%;
+    left: 0;
+    font-size: 16px;
+    font-weight: lighter;
     width: max-content;
     max-height: 500px;
     overflow: scroll;
@@ -60,17 +64,16 @@
 .dropdown-menu-button{
     border: none;
     background-color: transparent;
-    font-size: 15px;
+    font-size: inherit;
     margin: 0px;
     padding: 0px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    color: #d6d6d6;
+    color: inherit;
     border-radius: 5px;
     min-width: max-content;
     position: relative;
-    width: 120px;
 }
 
 .dropdown-menu-button::after{
@@ -79,10 +82,12 @@
     height: 10px;
     margin-right: 10px;
     display: block;
-    position: absolute;
-    top: 0;
-    right: -30px;
+    margin-left: 10px;
     border-top: 1px solid;
     border-left: 1px solid;
     transform: rotate(-135deg);
+}
+
+.selectorContianer{
+    z-index: 1;
 }

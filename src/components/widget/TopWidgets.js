@@ -1,6 +1,12 @@
+const { useState, useEffect, useRef, useContext } = React;
 import Widget from "./widget";
 import useFetch from "../../Functions/FetchHook";
 import {Loading} from "./Loading";
+import ErrorBoundary from "../Error/ErrorBoundary";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function TopWidgets(props) {
     
@@ -14,14 +20,23 @@ export default function TopWidgets(props) {
         window.location.href = "/#login";
         return;
     }
+    
+    const chartRef = useRef(ChartJS);
+    const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
     return (
         <>
-            <p>Updated: {updated}</p>
             <div className="grid-container grid-3">
-                {(loading) ? <Loading /> : <Widget overviewTotal={ true } totalNumber={ data.Total } type="Website" /> }
-                {(loading) ? <Loading /> : <Widget totalNumber={ data.JS + "%" } type="JS" /> }
-                {(loading) ? <Loading /> : <Widget totalNumber={ data.WP + "%" } type="WordPress" /> }
+                {(loading) ? <Loading /> : <ErrorBoundary>
+                        <Widget overviewTotal={ true } totalNumber={ data?.Total.toLocaleString("de-DE") } type="Website" />
+                    </ErrorBoundary>
+                }
+                {(loading) ? <Loading /> : <ErrorBoundary>
+                    <Doughnut
+                data={data}
+                />
+                </ErrorBoundary> }
+                {(loading) ? <Loading /> : <ErrorBoundary><Widget totalNumber={ data?.WP.toLocaleString("de-DE") + "%" } type="WordPress" /></ErrorBoundary> }
             </div>
         </>
     )

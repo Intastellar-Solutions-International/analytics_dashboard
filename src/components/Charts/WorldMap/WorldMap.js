@@ -17,11 +17,11 @@ export default function Map(props) {
                         <h3>{(country.country != "") ? country.country : "Unknown"}</h3>
                         <h4>Total: {country.num.total}</h4>
                         <section className="countryStats">
-                           <p>Accepted <br />{country.accepted}%  ({ (country.num.accept === null ) ? "0" : country.num.accept })</p>
-                           <p>Declined <br />{country.declined}% ({ (country.num.decline === null ) ? "0" : country.num.decline  })</p>
-                           <p>Functional <br />{country.functional}% ({ (country.num.functional === null) ? "0" : country.num.functional })</p>
-                           <p>Marketing <br />{country.marketing}% ({ (country.num.marketing === null ) ? "0" : country.num.marketing })</p>
-                           <p>Statics <br />{country.statics}% ({ (country.num.statics === null ) ? "0" : country.num.statics })</p>
+                           <p>Accepted <br />{country.accepted.toLocaleString("de-DE")}%  ({ (country.num.accept === null ) ? "0" : country.num.accept })</p>
+                           <p>Declined <br />{country.declined.toLocaleString("de-DE")}% ({ (country.num.decline === null ) ? "0" : country.num.decline  })</p>
+                           <p>Functional <br />{country.functional.toLocaleString("de-DE")}% ({ (country.num.functional === null) ? "0" : country.num.functional })</p>
+                           <p>Marketing <br />{country.marketing.toLocaleString("de-DE")}% ({ (country.num.marketing === null ) ? "0" : country.num.marketing })</p>
+                           <p>Statics <br />{country.statics.toLocaleString("de-DE")}% ({ (country.num.statics === null ) ? "0" : country.num.statics })</p>
                         </section>
                      </div>)
                })

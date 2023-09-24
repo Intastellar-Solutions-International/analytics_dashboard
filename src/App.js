@@ -3,11 +3,13 @@ import Header from "./Components/Header/header";
 import Login from "./Login/Login";
 import Nav from "./Components/Header/Nav";
 import API from "./API/api";
+import useFetch from "./Functions/FetchHook";
 const { useState, useEffect, useRef, createContext } = React;
 const Router = window.ReactRouterDOM.BrowserRouter;
 const Route =  window.ReactRouterDOM.Route;
 const Switch = window.ReactRouterDOM.Switch;
 const Redirect = window.ReactRouterDOM.Redirect;
+const punycode = require("punycode");
 
 import Dashboard from "./Pages/Dashboard/Dashboard.js";
 import Websites from "./Pages/Domains/index.js";
@@ -18,6 +20,14 @@ import ViewOrg from "./Pages/Settings/ViewOrganisations";
 import LoginOverLay from "./Login/LoginOverlay";
 import DomainDashbord from "./Pages/Dashboard/DomainDashbord";
 import Fetch from "./Functions/fetch";
+import AddDomain from "./Components/AddDomain/AddDomain";
+import Select from "./Components/SelectInput/Selector";
+import Authentication from "./Authentication/Auth";
+import UserConsents from "./Pages/UserConsents/UserConsents";
+import Reports from "./Pages/Reports/Reports";
+import ErrorBoundary from "./Components/Error/ErrorBoundary";
+import Countries from "./Pages/Countries/Countries";
+
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
 export const DomainContext = createContext(null);
@@ -27,19 +37,47 @@ export default function App() {
     const [organisation, setOrganisation] = useState((localStorage.getItem("organisation")) ? localStorage.getItem("organisation") : null);
     const [currentDomain, setCurrentDomain] = useState("all");
     const [handle, setHandle] = useState(null);
+    const [organisations, setOrganisations] = useState(null);
+    const [domains, setDomains] = useState(null);
+    const [domainError, setDomainError] = useState(false);
 
-    
-    if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
-        Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
-            organisationMember: JSON.parse(localStorage.getItem("globals"))?.profile?.email
-        })).then((data) => {
+    if (localStorage.getItem("globals") && JSON.parse(localStorage.getItem("globals"))?.token != undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
+        if(window.location.href.indexOf("/login") > -1){
+            window.location.href = "/dashboard";
+        }
 
-            if(localStorage.getItem("organisation") == null || localStorage.getItem("organisation") == undefined){
-                localStorage.setItem("organisation", data[0]);
-                window.location.reload();
-            }
-        });
-        
+        /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers); */
+
+        useEffect(() => {
+            Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
+                organisationMember: Authentication.getUserId()
+            })).then((data) => {
+                if (data === "Err_Login_Expired") {
+                    localStorage.removeItem("globals");
+                    navigate.push("/login");
+                    return;
+                }
+                
+                setOrganisations(data);
+            });
+
+            Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
+                
+                if(data.error === "Err_No_Domains") {
+                    setDomainError(true);
+                }else{
+                    data.unshift({domain: "all", installed: null, lastedVisited: null});
+                    data?.map((d) => {
+                        return  punycode.toUnicode(d.domain);
+                    }).filter((d) => {
+                        return d !== undefined && d !== "" && d !== "undefined.";
+                    });
+                    setDomains(data);
+                }
+            });
+
+        }, []);
+
         return (
             <>
                 <Router>
@@ -50,28 +88,60 @@ export default function App() {
                                 <Nav />
                                 <Switch>
                                     <Route path="/dashboard" exact>
-                                        <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} />
+                                        <ErrorBoundary>
+                                            <div style={{flex:"1"}}>
+                                                <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
+                                                    <h1>Welcome, {JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name}</h1>
+                                                    <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
+                                                </section>
+                                                {domainError ? <AddDomain /> : <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} />}
+                                            </div>
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path="/domains" exact>
-                                        <Websites />
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <Websites />}
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path="/settings" exact>
-                                        <Settings />
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <Settings />}
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path="/settings/create-organisation">
-                                        <CreateOrganisation />
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <CreateOrganisation />}
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path="/settings/add-user">
-                                        <AddUser />
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <AddUser />}
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path="/settings/view-organisations">
-                                        <ViewOrg />
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <ViewOrg />}
+                                        </ErrorBoundary>
                                     </Route>
-                                    <Router path="/login" exact>
-                                        <LoginOverLay />
-                                    </Router>
                                     <Route path='/view/:handle'>
-                                        <DomainDashbord setHandle={setHandle} />
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <DomainDashbord setHandle={setHandle} />}
+                                        </ErrorBoundary>
+                                    </Route>
+                                    <Route path="/reports" exact>
+                                        <ErrorBoundary>
+                                            <Reports />
+                                        </ErrorBoundary>
+                                    </Route>
+                                    <Route path="/reports/user-consents">
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <UserConsents organisations={organisations} />}
+                                        </ErrorBoundary>
+                                    </Route>
+                                    <Route path="/reports/countries">
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <Countries organisations={organisations} />}
+                                        </ErrorBoundary>
                                     </Route>
                                     <Redirect to="/login" />
                                 </Switch>
@@ -81,10 +151,12 @@ export default function App() {
                 </Router>
             </>
         )
-    } else if(JSON.parse(localStorage.getItem("globals"))?.status == undefined) {
+    } else if(!localStorage.getItem("globals") || JSON.parse(localStorage.getItem("globals"))?.token == undefined) {
         return (
             <Router path="/login" exact>
-                <Login />
+                <ErrorBoundary>
+                    <Login />
+                </ErrorBoundary>
             </Router>
         )
     }

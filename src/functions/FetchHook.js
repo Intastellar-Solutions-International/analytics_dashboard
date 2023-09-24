@@ -11,7 +11,23 @@ export default function useFetch(updateInterval, url, method, headers, body, han
         const controller = new AbortController();
         setLoading(true);
         fetch(url, { method: method, headers, body, signal: controller.signal } )
-            .then((res) => res.json())
+            .then((res) => {
+                if(res.status === 401){
+                    return "Err_Login_Expired";
+                }else if(res.status === 403){
+                    return "Err_No_Access";
+                }else if(
+                    res.status === 404 ||
+                    res.status === 500 ||
+                    res.status === 502 ||
+                    res.status === 503 ||
+                    res.status === 504
+                ){
+                    return "Err_Server_Error";
+                }
+
+                return res.json()
+            })
             .then(setData)
             .catch(setError)
             .finally(() => {
@@ -19,7 +35,7 @@ export default function useFetch(updateInterval, url, method, headers, body, han
                 setUpdated("Now");
                 setLastUpdated(Math.floor(Date.now() / 1000));
             });
-        
+
         if(typeof(updateInterval) !=='undefined'){
             const interval1 = setInterval(() => {
                 if ((Math.floor(Date.now() / 1000)) - lastUpdated >= 60) {
