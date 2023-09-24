@@ -9,7 +9,6 @@ import "./Style.css";
 import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
 
-
 export default function Dashboard(props){
     document.title = "Dashboard | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
@@ -44,7 +43,6 @@ export default function Dashboard(props){
     };
 
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
-    
 
     return (
         <>
@@ -57,6 +55,7 @@ export default function Dashboard(props){
                             header: API.gdpr.getTotalNumber.headers 
                         }} /> : null
                     }
+                    
                 </div>
                 <div className="" style={{paddingTop: "40px"}}>
                     <h2>Data of user interaction</h2>
