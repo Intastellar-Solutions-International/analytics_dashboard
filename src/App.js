@@ -40,14 +40,9 @@ export default function App() {
     const [organisations, setOrganisations] = useState(null);
     const [domains, setDomains] = useState(null);
     const [domainError, setDomainError] = useState(false);
-    const [id, setId] = useState(JSON.parse(localStorage.getItem("globals")).access.type[1].uri);
-
+    const [id, setId] = useState(JSON.parse(localStorage.getItem("globals"))?.access?.type["gdpr"]?.uri);
 
     if (localStorage.getItem("globals") && JSON.parse(localStorage.getItem("globals"))?.token != undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
-        if(window.location.href.indexOf("/login") > -1){
-            window.location.href = `/${id}/dashboard`;
-        }
-
         /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
 
         useEffect(() => {
@@ -85,7 +80,7 @@ export default function App() {
                 <Router>
                     <OrganisationContext.Provider value={ [organisation, setOrganisation] }>
                         <DomainContext.Provider value={ [currentDomain, setCurrentDomain] }>
-                            <Header handle={handle} />
+                            <Header handle={handle} id={id} />
                             <BugReport />
                             <div className="main-grid"> 
                                 <Nav />

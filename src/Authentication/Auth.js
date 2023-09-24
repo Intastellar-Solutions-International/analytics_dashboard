@@ -36,14 +36,12 @@ const Authentication = {
 
             setLoading(false);
             
-            console.log(response.access.type[1].uri);
-
             localStorage.setItem("organisation", response.organisation);
             localStorage.setItem("globals", JSON.stringify(response));
             if (window.location.pathname === "/login") {
-                window.location.href = "/"+response.access.type[1].uri + "/dashboard";
+                window.location.href = "/"+response?.access?.type["gdpr"]?.uri + "/dashboard";
             } else {
-                /* window.location.reload(); */
+                window.location.reload();
             }
 
         })

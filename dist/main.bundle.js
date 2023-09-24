@@ -694,7 +694,7 @@ const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/pu
 const OrganisationContext = createContext(localStorage.getItem("organisation"));
 const DomainContext = createContext(null);
 function App() {
-  var _JSON$parse, _JSON$parse2, _JSON$parse4;
+  var _JSON$parse, _JSON$parse$access, _JSON$parse$access$ty, _JSON$parse2, _JSON$parse3, _JSON$parse5;
 
   const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
   const [organisation, setOrganisation] = useState(localStorage.getItem("organisation") ? localStorage.getItem("organisation") : null);
@@ -703,17 +703,12 @@ function App() {
   const [organisations, setOrganisations] = useState(null);
   const [domains, setDomains] = useState(null);
   const [domainError, setDomainError] = useState(false);
-  const [id, setId] = useState(JSON.parse(localStorage.getItem("globals")).access.type[1].uri);
+  const [id, setId] = useState((_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$access = _JSON$parse.access) === null || _JSON$parse$access === void 0 ? void 0 : (_JSON$parse$access$ty = _JSON$parse$access.type["gdpr"]) === null || _JSON$parse$access$ty === void 0 ? void 0 : _JSON$parse$access$ty.uri);
 
-  if (localStorage.getItem("globals") && ((_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.token) != undefined || (_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) !== null && _JSON$parse2 !== void 0 && _JSON$parse2.status) {
-    var _JSON$parse3, _JSON$parse3$profile, _JSON$parse3$profile$;
+  if (localStorage.getItem("globals") && ((_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse2 === void 0 ? void 0 : _JSON$parse2.token) != undefined || (_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) !== null && _JSON$parse3 !== void 0 && _JSON$parse3.status) {
+    var _JSON$parse4, _JSON$parse4$profile, _JSON$parse4$profile$;
 
-    if (window.location.href.indexOf("/login") > -1) {
-      window.location.href = "/".concat(id, "/dashboard");
-    }
     /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
-
-
     useEffect(() => {
       (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_14__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_4__["default"].settings.getOrganisation.url, _API_api__WEBPACK_IMPORTED_MODULE_4__["default"].settings.getOrganisation.method, _API_api__WEBPACK_IMPORTED_MODULE_4__["default"].settings.getOrganisation.headers, JSON.stringify({
         organisationMember: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_17__["default"].getUserId()
@@ -749,7 +744,8 @@ function App() {
     }, /*#__PURE__*/React.createElement(DomainContext.Provider, {
       value: [currentDomain, setCurrentDomain]
     }, /*#__PURE__*/React.createElement(_Components_Header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      handle: handle
+      handle: handle,
+      id: id
     }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_22__["default"], null), /*#__PURE__*/React.createElement("div", {
       className: "main-grid"
     }, /*#__PURE__*/React.createElement(_Components_Header_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/React.createElement(Switch, null, /*#__PURE__*/React.createElement(Route, {
@@ -765,7 +761,7 @@ function App() {
         backgroundColor: "rgb(218, 218, 218)",
         color: "#626262"
       }
-    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$profile = _JSON$parse3.profile) === null || _JSON$parse3$profile === void 0 ? void 0 : (_JSON$parse3$profile$ = _JSON$parse3$profile.name) === null || _JSON$parse3$profile$ === void 0 ? void 0 : _JSON$parse3$profile$.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : (_JSON$parse4$profile = _JSON$parse4.profile) === null || _JSON$parse4$profile === void 0 ? void 0 : (_JSON$parse4$profile$ = _JSON$parse4$profile.name) === null || _JSON$parse4$profile$ === void 0 ? void 0 : _JSON$parse4$profile$.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
       dashboardView: dashboardView,
       setDashboardView: setDashboardView
     })))), /*#__PURE__*/React.createElement(Route, {
@@ -798,7 +794,7 @@ function App() {
     }))), /*#__PURE__*/React.createElement(Redirect, {
       to: "/login"
     })))))));
-  } else if (!localStorage.getItem("globals") || ((_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : _JSON$parse4.token) == undefined) {
+  } else if (!localStorage.getItem("globals") || ((_JSON$parse5 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse5 === void 0 ? void 0 : _JSON$parse5.token) == undefined) {
     return /*#__PURE__*/React.createElement(Router, {
       path: "/login",
       exact: true
@@ -855,14 +851,15 @@ const Authentication = {
       }
 
       setLoading(false);
-      console.log(response.access.type[1].uri);
       localStorage.setItem("organisation", response.organisation);
       localStorage.setItem("globals", JSON.stringify(response));
 
       if (window.location.pathname === "/login") {
-        window.location.href = "/" + response.access.type[1].uri + "/dashboard";
+        var _response$access, _response$access$type;
+
+        window.location.href = "/" + (response === null || response === void 0 ? void 0 : (_response$access = response.access) === null || _response$access === void 0 ? void 0 : (_response$access$type = _response$access.type["gdpr"]) === null || _response$access$type === void 0 ? void 0 : _response$access$type.uri) + "/dashboard";
       } else {
-        /* window.location.reload(); */
+        window.location.reload();
       }
     });
   },
@@ -1143,21 +1140,21 @@ function Nav() {
     onClick: () => Expand()
   }), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname === "/dashboard" ? " --active" : ""),
-    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type[1].uri + "/dashboard"
+    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type["gdpr"].uri + "/dashboard"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons home"
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Home")), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname.indexOf("/reports") > -1 ? " --active" : ""),
-    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type[1].uri + "/reports"
+    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type["gdpr"].uri + "/reports"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons reports"
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Reports")), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname === "/domains" ? " --active" : ""),
-    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type[1].uri + "/domains"
+    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type["gdpr"].uri + "/domains"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons domains"
   }), " ", /*#__PURE__*/React.createElement("span", {
@@ -1287,7 +1284,7 @@ function Header(props) {
 
       setData(data);
     });
-    (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_3__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_5__["default"].gdpr.getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"].gdpr.getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"].gdpr.getDomains.headers).then(data => {
+    (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_3__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_5__["default"].gdpr.getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]].getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]].getDomains.headers).then(data => {
       if (data === "Err_Login_Expired") {
         localStorage.removeItem("globals");
         window.location.href = "/#login";
