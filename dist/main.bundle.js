@@ -1781,6 +1781,7 @@ function Select(props) {
     className: props.icon
   }) : null, /*#__PURE__*/React.createElement("button", {
     className: "dropdown-menu-button",
+    style: props === null || props === void 0 ? void 0 : props.style2,
     onClick: openMenu
   }, isJson(props.defaultValue) ? JSON.parse(props.defaultValue).name : props.defaultValue), isOpen ? /*#__PURE__*/React.createElement("div", {
     className: "dropdown-menu"
