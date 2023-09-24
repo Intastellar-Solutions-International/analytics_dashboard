@@ -23,6 +23,7 @@ import Fetch from "./Functions/fetch";
 import AddDomain from "./Components/AddDomain/AddDomain";
 import Select from "./Components/SelectInput/Selector";
 import Authentication from "./Authentication/Auth";
+import UserConsents from "./Pages/UserConsents/UserConsents";
 
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
@@ -119,6 +120,23 @@ export default function App() {
                                     </Route>
                                     <Route path='/view/:handle'>
                                         {domainError ? <AddDomain /> : <DomainDashbord setHandle={setHandle} />}
+                                    </Route>
+                                    <Route path="/user-consents">
+                                        <div>
+                                            <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
+                                                <h1>Welcome, {JSON.parse(localStorage.getItem("globals")).profile.name.first_name}</h1>
+                                                <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
+                                                <h2 style={{display: "flex"}}>Organisation: {
+                                                    <Select style={{marginLeft: "10px"}} defaultValue={organisation}
+                                                    onChange={(e) => { 
+                                                        setOrganisation(e);
+                                                        localStorage.setItem("organisation", e);
+                                                        window.location.reload();}}
+                                                    items={organisations} title="Choose one of your domains"/>
+                                                }</h2>
+                                            </section>
+                                            {domainError ? <AddDomain /> : <UserConsents />}
+                                        </div>
                                     </Route>
                                     <Redirect to="/login" />
                                 </Switch>

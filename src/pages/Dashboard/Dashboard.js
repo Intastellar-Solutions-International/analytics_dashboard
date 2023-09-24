@@ -1,17 +1,14 @@
 const { useState, useEffect, useRef, useContext } = React;
 import TopWidgets from "../../Components/widget/TopWidgets.js";
 import useFetch from "../../Functions/FetchHook";
-import Unknown from "../../Components/Error/Unknown.js";
 import API from "../../API/api";
 import Widget from "../../Components/widget/widget";
 import {Loading, CurrentPageLoading} from "../../Components/widget/Loading";
-import AddDomain from "../../Components/AddDomain/AddDomain";
+
 import "./Style.css";
 import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
-import Select from "../../Components/SelectInput/Selector.js";
-import NotAllowed from "../../Components/NotAllowed/NotAllowed";
-import { isJson } from "../../Functions/isJson.js";
+
 
 export default function Dashboard(props){
     document.title = "Dashboard | Intastellar Analytics";
@@ -47,8 +44,7 @@ export default function Dashboard(props){
     };
 
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
-    API.gdpr.getDomainsUrl.headers.Domains = currentDomain;
-    const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = useFetch(5, API.gdpr.getDomainsUrl.url, API.gdpr.getDomainsUrl.method, API.gdpr.getDomainsUrl.headers);
+    
 
     return (
         <>
@@ -75,43 +71,6 @@ export default function Dashboard(props){
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
                 </div>
-                {(getDomainsUrlLoading && !getDomainsUrlError) ? <Loading /> : (getDomainsUrlError) ? <Unknown /> : <>
-                        <div>
-                            <h2>User consents</h2>
-                            <div className="grid-container grid-3">
-                            {
-                                getDomainsUrlData?.map((d) => {
-                                    
-                                    let consent = "";
-                                    if(isJson(d?.consent)) {
-                                        consent = JSON.parse(d.consent);
-                                    }else{
-                                        consent = d.consent;
-                                    }
-
-                                    return (
-                                        <>
-                                            <div className="user">
-                                                <p>UID: {d?.uid}</p>
-                                                <p>Time: {d?.consents_timestamp}</p>
-                                                <p className="lb">Referrer: {d?.referrer}</p>
-                                                <p className="lb">URL: {d.url}</p>
-                                                <section>
-                                                    <h4>Consent given</h4>
-                                                    {
-                                                        (Object.prototype.toString.call(consent) === '[object Array]') ? consent.map((c) => {
-                                                                return <p>{c?.type} cookies: {(!c.checked) ? "declined" : (c?.checked == "checked" || c?.checked == "1") ? "Accepted" : c?.checked}</p>
-                                                            }) : <p>{consent?.consent_type} cookies: {(consent?.consent_value == "1" || consent?.consent_value == "checked") ? "Accepted" : "declined"}</p>
-                                                    }
-                                                </section>
-                                            </div>
-                                        </>
-                                    )
-                                })
-                            }
-                            </div>
-                        </div>
-                    </>}
                 <div>
                     <section>
                         {(loading) ? <Loading /> :
