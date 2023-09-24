@@ -135,8 +135,8 @@ export default function App() {
                                                     items={organisations} title="Choose one of your domains"/>
                                                 }</h2>
                                             </section>
+                                            {domainError ? <AddDomain /> : <UserConsents />}
                                         </div>
-                                        {domainError ? <AddDomain /> : <UserConsents />}
                                     </Route>
                                     <Redirect to="/login" />
                                 </Switch>
