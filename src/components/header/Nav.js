@@ -16,7 +16,7 @@ export default function Nav() {
                 <aside className="sidebar">
                     <nav className="collapsed">
                         <button className="expandBtn" onClick={() => Expand() }></button>
-                        <Link className={"navItems" + (useLocation().pathname === "/dashboard" ? " --active" : "")} to="/dashboard"><i className="dashboard-icons dashboard"></i> <span className="hiddenCollapsed">Dashboard</span></Link>
+                        <Link className={"navItems" + (useLocation().pathname === "/dashboard" ? " --active" : "")} to="/dashboard"><i className="dashboard-icons home"></i> <span className="hiddenCollapsed">Home</span></Link>
                         <Link className={"navItems" + (useLocation().pathname.indexOf("/reports") > -1 ? " --active" : "")} to="/reports"><i className="dashboard-icons reports"></i> <span className="hiddenCollapsed">Reports</span></Link>
                         <Link className={"navItems" + (useLocation().pathname === "/domains" ? " --active" : "")} to="/domains"><i className="dashboard-icons domains"></i> <span className="hiddenCollapsed">Domains</span></Link>
                         <section className="navItems--bottom">

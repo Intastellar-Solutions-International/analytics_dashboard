@@ -102,6 +102,7 @@
     padding: 25px 15px;
     overflow: hidden;
     align-items: center;
+    justify-content: center;
     white-space: nowrap;
     transition: width .15s ease-in-out;
     text-decoration: none;
@@ -137,6 +138,14 @@
     align-items: center;
 }
 
+.collapsed .dashboard-icons{
+    margin-right: 0px;
+}
+
+.collapsed.expand .dashboard-icons, .collapsed:hover .dashboard-icons{
+    margin-right: 10px;
+}
+
 .dashboard::after{
     content: "";
     background:  url("icons/dashboard.svg");
@@ -155,6 +164,19 @@
 .reports::after{
     content: "";
     background:  url("icons/reports.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.home::after{
+    content: "";
+    background:  url("icons/home.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
