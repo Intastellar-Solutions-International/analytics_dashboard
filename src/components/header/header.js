@@ -39,7 +39,7 @@ export default function Header(props) {
             setData(data);
         });
 
-        Fetch(API.gdpr.getDomains.url, API[window.location.pathname.split("/")[1]].getDomains.method, API[window.location.pathname.split("/")[1]].getDomains.headers).then((data) => {
+        Fetch(API[window.location.pathname.split("/")[1]]?.getDomains?.url, API[window.location.pathname.split("/")[1]]?.getDomains?.method, API[window.location.pathname.split("/")[1]]?.getDomains?.headers).then((data) => {
             if (data === "Err_Login_Expired") {
                 localStorage.removeItem("globals");
                 window.location.href = "/login";

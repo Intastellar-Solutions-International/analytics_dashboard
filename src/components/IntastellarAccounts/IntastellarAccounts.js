@@ -1,7 +1,7 @@
 import Authentication from "../../Authentication/Auth";
 import "./Style.css";
 const { useState, useEffect, useRef, useContext } = window.React;
-
+const Link = window.ReactRouterDOM.Link;
 export default function Account(props){
     function clickOutSide(e){
         if(e.target.className !== "user_content" || e.target.className !== "content-img"){
@@ -12,6 +12,8 @@ export default function Account(props){
     /* useEffect(() => {
         document.addEventListener("click", clickOutSide);
     }, []); */
+
+    console.log(JSON.parse(localStorage.getItem("globals"))?.access.type);
 
     return  <>
         <div className="user_content">
@@ -52,6 +54,18 @@ export default function Account(props){
                 </div>
             </div>
             <div className="dropdown-links">
+                {
+                    Object.keys(JSON.parse(localStorage.getItem("globals"))?.access.type).map(function(key, index) {
+                        return <>
+                            <Link key={index} to={"/" + JSON.parse(localStorage.getItem("globals"))?.access.type[key].uri + "/dashboard"} className="dropdown-link">
+                                <div className="dropdown-link-text">
+                                    {JSON.parse(localStorage.getItem("globals"))?.access.type[key].type}
+                                </div>
+                            </Link>
+                            </>
+                        
+                    })
+                }
             </div>
             <div className="sign_out_btn_container">
                 <button className="sign_out_btn" onClick={() => {Authentication.Logout()}}>

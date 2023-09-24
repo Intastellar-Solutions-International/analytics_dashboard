@@ -29,6 +29,20 @@
     overflow: scroll;
 }
 
+.dropdown-links a {
+    color: #000;
+    font-size: 15px;
+    padding: 15px;
+    display: block;
+	text-decoration: none;
+}
+
+.dropdown-links a:hover {
+    background: #cfcfcf;
+    text-decoration: none;
+    color: #000;
+}
+
 .dpde {
     color: #5f6368;
     font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
