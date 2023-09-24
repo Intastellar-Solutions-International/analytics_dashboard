@@ -12,11 +12,11 @@ const useParams = window.ReactRouterDOM.useParams;
 const punycode = require("punycode");
 
 export default function DomainDashbord(props){
-    const { handle } = useParams();
+    const { handle, id } = useParams();
     document.title = `${punycode.toUnicode(handle)} Dashboard | Intastellar Analytics`;
 
-    API.gdpr.getInteractions.headers.Domains = punycode.toASCII(handle);
-    const [loading, data, error, updated] = useFetch(5, API.gdpr.getInteractions.url, API.gdpr.getInteractions.method, API.gdpr.getInteractions.headers, null, handle);
+    API[id].getInteractions.headers.Domains = punycode.toASCII(handle);
+    const [loading, data, error, updated] = useFetch(5, API[id].getInteractions.url, API[id].getInteractions.method, API[id].getInteractions.headers, null, handle);
 
     return (localStorage?.getItem("domains")?.includes(punycode.toUnicode(handle)) || handle == "all") ? (
         <>

@@ -13,7 +13,7 @@ const punycode = require("punycode");
 
 export default function Header(props) {
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
-    const [currentDomain, setCurrentDomain] = useState((window.location.pathname.split("/")[1] === "view") ? decodeURI(window.location.pathname.split("/")[2]?.replace("%2E", ".")) : "all");
+    const [currentDomain, setCurrentDomain] = useState((window.location.pathname.split("/")[2] === "view") ? decodeURI(window.location.pathname.split("/")[3]?.replace("%2E", ".")) : "all");
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
     let domainList = null;
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
@@ -39,10 +39,10 @@ export default function Header(props) {
             setData(data);
         });
 
-        Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
+        Fetch(API[window.location.pathname.split("/")[1]]?.getDomains?.url, API[window.location.pathname.split("/")[1]]?.getDomains?.method, API[window.location.pathname.split("/")[1]]?.getDomains?.headers).then((data) => {
             if (data === "Err_Login_Expired") {
                 localStorage.removeItem("globals");
-                window.location.href = "/#login";
+                window.location.href = "/login";
                 return;
             }
     
@@ -97,7 +97,7 @@ export default function Header(props) {
                             onChange={(e) => { 
                                 const domain = e;
                                 setCurrentDomain(domain);
-                                window.location.href = `/view/${domain.replace('.', '%2E')}`;
+                                window.location.href = `/${window.location.pathname.split("/")[1]}/view/${domain.replace('.', '%2E')}`;
                             }}
                             items={domainList} title="Choose one of your domains"
                             style={{left: "0"}}

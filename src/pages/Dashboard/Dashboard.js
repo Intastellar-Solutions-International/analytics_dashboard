@@ -8,15 +8,18 @@ import {Loading, CurrentPageLoading} from "../../Components/widget/Loading";
 import "./Style.css";
 import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
+const useParams = window.ReactRouterDOM.useParams;
 
 export default function Dashboard(props){
     document.title = "Home | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
+    const { handle, id } = useParams();
+
     const dashboardView = props.dashboardView;
-    let url = API.gdpr.getInteractions.url;
-    let method = API.gdpr.getInteractions.method;
-    let header = API.gdpr.getInteractions.headers;
+    let url = API[id].getInteractions.url;
+    let method = API[id].getInteractions.method;
+    let header = API[id].getInteractions.headers;
     let consent = null;
 
     useEffect(() => {
@@ -34,13 +37,11 @@ export default function Dashboard(props){
           window.removeEventListener('scroll', handleScrollEvent);
         }
       }, [])
-
-    if(dashboardView === "GDPR Cookiebanner") {
-        API.gdpr.getInteractions.headers.Domains = currentDomain;
-        url = API.gdpr.getInteractions.url;
-        method = API.gdpr.getInteractions.method;
-        header = API.gdpr.getInteractions.headers;
-    };
+    
+    API[id].getInteractions.headers.Domains = currentDomain;
+    url = API[id].getInteractions.url;
+    method = API[id].getInteractions.method;
+    header = API[id].getInteractions.headers;
 
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
 
@@ -49,9 +50,9 @@ export default function Dashboard(props){
             <div className="dashboard-content">
                     {
                         (dashboardView === "GDPR Cookiebanner" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
-                            url: API.gdpr.getTotalNumber.url,
-                            method: API.gdpr.getTotalNumber.method,
-                            header: API.gdpr.getTotalNumber.headers 
+                            url: API[id].getTotalNumber.url,
+                            method: API[id].getTotalNumber.method,
+                            header: API[id].getTotalNumber.headers 
                         }} /> : null
                     }
                 <div className="" style={{paddingTop: "40px"}}>
