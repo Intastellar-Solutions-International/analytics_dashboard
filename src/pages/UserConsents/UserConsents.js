@@ -5,6 +5,7 @@ import { isJson } from "../../Functions/isJson.js";
 import AddDomain from "../../Components/AddDomain/AddDomain";
 import useFetch from "../../Functions/FetchHook";
 import Unknown from "../../Components/Error/Unknown.js";
+import NoDataFound from "../../Components/Error/NoDataFound.js";
 import { Loading } from "../../Components/widget/Loading.js";
 import API from "../../API/api.js";
 import { reportsLinks } from "../Reports/Reports.js";
@@ -20,6 +21,10 @@ export default function UserConsents(props) {
 
     API.gdpr.getDomainsUrl.headers.Domains = currentDomain;
     const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = useFetch(5, API.gdpr.getDomainsUrl.url, API.gdpr.getDomainsUrl.method, API.gdpr.getDomainsUrl.headers);
+    
+    if(!getDomainsUrlLoading){
+        console.log(getDomainsUrlData);
+    }
     return (
         <>
             <SideNav links={reportsLinks} />
@@ -37,16 +42,16 @@ export default function UserConsents(props) {
                 </section>
                 <div className="dashboard-content">
                     <h1>User Consents</h1>
-                    {(getDomainsUrlLoading && !getDomainsUrlError) ? <Loading /> : (getDomainsUrlError) ? <Unknown /> : <>
+                    {(getDomainsUrlLoading && !getDomainsUrlError) ? <Loading /> : (getDomainsUrlError) ? <Unknown /> : ( getDomainsUrlData == "Err_No_Data_Found") ? <NoDataFound /> : <>
                         <div className="grid-container grid-3">
                         {
                             getDomainsUrlData?.map((d) => {
                                 
                                 let consent = "";
                                 if(isJson(d?.consent)) {
-                                    consent = JSON.parse(d.consent);
+                                    consent = JSON.parse(d?.consent);
                                 }else{
-                                    consent = d.consent;
+                                    consent = d?.consent;
                                 }
 
                                 return (
@@ -55,11 +60,11 @@ export default function UserConsents(props) {
                                             <p>UID: {d?.uid}</p>
                                             <p>Time: {d?.consents_timestamp}</p>
                                             <p className="lb">Referrer: {d?.referrer}</p>
-                                            <p className="lb">URL: {d.url}</p>
+                                            <p className="lb">URL: {d?.url}</p>
                                             <section>
                                                 <h4>Consent given</h4>
                                                 {
-                                                    (Object.prototype.toString.call(consent) === '[object Array]') ? consent.map((c) => {
+                                                    (Object.prototype.toString.call(consent) === '[object Array]') ? consent?.map((c) => {
                                                             return <p>{c?.type} cookies: {(!c.checked) ? "declined" : (c?.checked == "checked" || c?.checked == "1") ? "Accepted" : c?.checked}</p>
                                                         }) : <p>{consent?.consent_type} cookies: {(consent?.consent_value == "1" || consent?.consent_value == "checked") ? "Accepted" : "declined"}</p>
                                                 }

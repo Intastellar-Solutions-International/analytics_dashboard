@@ -1006,6 +1006,30 @@ class ErrorBoundary extends React.Component {
 
 /***/ }),
 
+/***/ "./src/Components/Error/NoDataFound.js":
+/*!*********************************************!*\
+  !*** ./src/Components/Error/NoDataFound.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Unknown)
+/* harmony export */ });
+function Unknown(props) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "error"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "error-container"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "error-header"
+  }, /*#__PURE__*/React.createElement("h2", null, "We didn\xB4t find any data")), /*#__PURE__*/React.createElement("div", {
+    className: "error-body"
+  }, /*#__PURE__*/React.createElement("p", null, "Currently there are no data available"))));
+}
+
+/***/ }),
+
 /***/ "./src/Components/Error/Unknown.js":
 /*!*****************************************!*\
   !*** ./src/Components/Error/Unknown.js ***!
@@ -2861,12 +2885,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/AddDomain/AddDomain */ "./src/Components/AddDomain/AddDomain.js");
 /* harmony import */ var _Functions_FetchHook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Functions/FetchHook */ "./src/Functions/FetchHook.js");
 /* harmony import */ var _Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Components/Error/Unknown.js */ "./src/Components/Error/Unknown.js");
-/* harmony import */ var _Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Components/widget/Loading.js */ "./src/Components/widget/Loading.js");
-/* harmony import */ var _API_api_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../API/api.js */ "./src/API/api.js");
-/* harmony import */ var _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Reports/Reports.js */ "./src/Pages/Reports/Reports.js");
-/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/UserConsents/Style.css");
-/* harmony import */ var _Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Components/Header/SideNav.js */ "./src/Components/Header/SideNav.js");
-/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
+/* harmony import */ var _Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Components/Error/NoDataFound.js */ "./src/Components/Error/NoDataFound.js");
+/* harmony import */ var _Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Components/widget/Loading.js */ "./src/Components/widget/Loading.js");
+/* harmony import */ var _API_api_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../API/api.js */ "./src/API/api.js");
+/* harmony import */ var _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Reports/Reports.js */ "./src/Pages/Reports/Reports.js");
+/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/UserConsents/Style.css");
+/* harmony import */ var _Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Components/Header/SideNav.js */ "./src/Components/Header/SideNav.js");
+/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
 const {
   useState,
   useEffect,
@@ -2885,14 +2910,20 @@ const {
 
 
 
+
 function UserConsents(props) {
-  const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_11__.DomainContext);
-  const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_11__.OrganisationContext);
+  const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_12__.DomainContext);
+  const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_12__.OrganisationContext);
   const organisations = props.organisations;
-  _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.headers.Domains = currentDomain;
-  const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_4__["default"])(5, _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.url, _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.method, _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.headers);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    links: _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_8__.reportsLinks
+  _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"].gdpr.getDomainsUrl.headers.Domains = currentDomain;
+  const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_4__["default"])(5, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"].gdpr.getDomainsUrl.url, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"].gdpr.getDomainsUrl.method, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"].gdpr.getDomainsUrl.headers);
+
+  if (!getDomainsUrlLoading) {
+    console.log(getDomainsUrlData);
+  }
+
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    links: _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_9__.reportsLinks
   }), /*#__PURE__*/React.createElement("article", {
     style: {
       flex: "1"
@@ -2921,17 +2952,17 @@ function UserConsents(props) {
     title: "Choose one of your domains"
   }))), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("h1", null, "User Consents"), getDomainsUrlLoading && !getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_6__.Loading, null) : getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_5__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h1", null, "User Consents"), getDomainsUrlLoading && !getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_7__.Loading, null) : getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_5__["default"], null) : getDomainsUrlData == "Err_No_Data_Found" ? /*#__PURE__*/React.createElement(_Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_6__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, getDomainsUrlData === null || getDomainsUrlData === void 0 ? void 0 : getDomainsUrlData.map(d => {
-    var _consent, _consent2, _consent3;
+    var _consent, _consent2, _consent3, _consent4;
 
     let consent = "";
 
     if ((0,_Functions_isJson_js__WEBPACK_IMPORTED_MODULE_2__.isJson)(d === null || d === void 0 ? void 0 : d.consent)) {
-      consent = JSON.parse(d.consent);
+      consent = JSON.parse(d === null || d === void 0 ? void 0 : d.consent);
     } else {
-      consent = d.consent;
+      consent = d === null || d === void 0 ? void 0 : d.consent;
     }
 
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
@@ -2940,9 +2971,9 @@ function UserConsents(props) {
       className: "lb"
     }, "Referrer: ", d === null || d === void 0 ? void 0 : d.referrer), /*#__PURE__*/React.createElement("p", {
       className: "lb"
-    }, "URL: ", d.url), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("h4", null, "Consent given"), Object.prototype.toString.call(consent) === '[object Array]' ? consent.map(c => {
+    }, "URL: ", d === null || d === void 0 ? void 0 : d.url), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("h4", null, "Consent given"), Object.prototype.toString.call(consent) === '[object Array]' ? (_consent = consent) === null || _consent === void 0 ? void 0 : _consent.map(c => {
       return /*#__PURE__*/React.createElement("p", null, c === null || c === void 0 ? void 0 : c.type, " cookies: ", !c.checked ? "declined" : (c === null || c === void 0 ? void 0 : c.checked) == "checked" || (c === null || c === void 0 ? void 0 : c.checked) == "1" ? "Accepted" : c === null || c === void 0 ? void 0 : c.checked);
-    }) : /*#__PURE__*/React.createElement("p", null, (_consent = consent) === null || _consent === void 0 ? void 0 : _consent.consent_type, " cookies: ", ((_consent2 = consent) === null || _consent2 === void 0 ? void 0 : _consent2.consent_value) == "1" || ((_consent3 = consent) === null || _consent3 === void 0 ? void 0 : _consent3.consent_value) == "checked" ? "Accepted" : "declined"))));
+    }) : /*#__PURE__*/React.createElement("p", null, (_consent2 = consent) === null || _consent2 === void 0 ? void 0 : _consent2.consent_type, " cookies: ", ((_consent3 = consent) === null || _consent3 === void 0 ? void 0 : _consent3.consent_value) == "1" || ((_consent4 = consent) === null || _consent4 === void 0 ? void 0 : _consent4.consent_value) == "checked" ? "Accepted" : "declined"))));
   }))))));
 }
 
