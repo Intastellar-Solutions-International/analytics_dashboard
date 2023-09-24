@@ -79,6 +79,18 @@ export default function Header(props) {
             <header className="dashboard-header">
                 <div className="dashboard-profile">
                     <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
+                    <section style={{display: "flex"}}>
+                    {(data && Organisation) ?
+                        <Select defaultValue={Organisation}
+                            onChange={(e) => { 
+                                setOrganisation(e);
+                                localStorage.setItem("organisation", e);
+                                window.location.reload();}}
+                            items={data}
+                            style={{right: "0"}}
+                        /> : null
+                    }
+                    <i className="arrowRight"></i>
                     {(domains && currentDomain) ?
                     <>
                         <Select defaultValue={currentDomain}
@@ -93,30 +105,16 @@ export default function Header(props) {
                         />
                     </> : null
                     }
+                    </section>
                     <div className="flex">
-                        <section className="dashboard-profile__nameContainer">
-                            <p className="dashboard-name">{Name}</p>
-                            <div className="dashboard-organisationContainer">
-                            {(data && Organisation) ?
-                                <Select defaultValue={Organisation}
-                                    onChange={(e) => { 
-                                        setOrganisation(e);
-                                        localStorage.setItem("organisation", e);
-                                        window.location.reload();}}
-                                    items={data}
-                                    style={{right: "0"}}
-                                /> : null
-                            }
-                            </div>
-                        </section>
                         <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile) } />
                     </div>
                 </div>
                 {(viewUserProfile) ? <IntastellarAccounts profile={{
                     image: profileImage,
-                    name: Name,
+                    name: JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name,
                     email: JSON.parse(localStorage.getItem("globals"))?.profile?.email,
-                }} /> : null}
+                }} setIsOpen={setViewUserProfile} /> : null}
             </header>
         </>
     )

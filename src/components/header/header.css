@@ -41,11 +41,10 @@
     width: 50px;
     height: 50px;
     border-width: 2.5px;
-    border-color: var(--intastellarGold);
+    border-color: transparent;
     border-radius: 50%;
     object-fit: cover;
     margin: auto;
-    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);
 }
 
 .dashboard-logo {
@@ -309,6 +308,14 @@
     width: 250px;
     margin-right: 20px;
     text-align: right;
+}
+
+.arrowRight{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-left: 10px;
+
 }
 
 @media screen and (min-width: 320px) and (max-width: 900px) {

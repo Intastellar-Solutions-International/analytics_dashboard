@@ -1,6 +1,18 @@
+import Authentication from "../../Authentication/Auth";
 import "./Style.css";
+const { useState, useEffect, useRef, useContext } = window.React;
 
 export default function Account(props){
+    function clickOutSide(e){
+        if(e.target.className !== "user_content" || e.target.className !== "content-img"){
+            props.setIsOpen(false);
+        }
+    }
+
+    /* useEffect(() => {
+        document.addEventListener("click", clickOutSide);
+    }, []); */
+
     return  <>
         <div className="user_content">
             <div className="dropdown-image-name">
@@ -42,9 +54,9 @@ export default function Account(props){
             <div className="dropdown-links">
             </div>
             <div className="sign_out_btn_container">
-                <a className="sign_out_btn" href="https://www.intastellaraccounts.com/logout.php?continue=my.intastellaraccounts.com/&amp;service=My Account&amp;entryFlow=bXkuaW50YXN0ZWxsYXJhY2NvdW50cy5jb20=&amp;passive=true&amp;flowName=WebSignout&amp;Entry=authLogout">
+                <button className="sign_out_btn" onClick={() => {Authentication.Logout()}}>
                     <svg focusable="false" height="24" viewBox="0 0 24 24" width="24" className=" NMm5M"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg> Sign Out
-                </a>
+                </button>
             </div>
         </div>
     </>
