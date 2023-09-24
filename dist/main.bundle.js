@@ -1260,7 +1260,7 @@ function Header(props) {
   var _window$location$path, _JSON$parse, _JSON$parse$profile, _JSON$parse2, _JSON$parse2$profile, _JSON$parse2$profile$, _JSON$parse3, _JSON$parse3$profile, _JSON$parse3$profile$, _JSON$parse4, _JSON$parse4$profile, _JSON$parse4$profile$, _JSON$parse5, _JSON$parse5$profile;
 
   const [Organisation, setOrganisation] = useContext(_App__WEBPACK_IMPORTED_MODULE_0__.OrganisationContext);
-  const [currentDomain, setCurrentDomain] = useState(window.location.pathname.split("/")[1] === "view" ? decodeURI((_window$location$path = window.location.pathname.split("/")[2]) === null || _window$location$path === void 0 ? void 0 : _window$location$path.replace("%2E", ".")) : "all");
+  const [currentDomain, setCurrentDomain] = useState(window.location.pathname.split("/")[2] === "view" ? decodeURI((_window$location$path = window.location.pathname.split("/")[3]) === null || _window$location$path === void 0 ? void 0 : _window$location$path.replace("%2E", ".")) : "all");
   const profileImage = (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$profile = _JSON$parse.profile) === null || _JSON$parse$profile === void 0 ? void 0 : _JSON$parse$profile.image;
   let domainList = null;
   const Name = ((_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse2 === void 0 ? void 0 : (_JSON$parse2$profile = _JSON$parse2.profile) === null || _JSON$parse2$profile === void 0 ? void 0 : (_JSON$parse2$profile$ = _JSON$parse2$profile.name) === null || _JSON$parse2$profile$ === void 0 ? void 0 : _JSON$parse2$profile$.first_name) + " " + ((_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$profile = _JSON$parse3.profile) === null || _JSON$parse3$profile === void 0 ? void 0 : (_JSON$parse3$profile$ = _JSON$parse3$profile.name) === null || _JSON$parse3$profile$ === void 0 ? void 0 : _JSON$parse3$profile$.last_name);
@@ -1287,7 +1287,7 @@ function Header(props) {
     (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_3__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_5__["default"].gdpr.getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]].getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]].getDomains.headers).then(data => {
       if (data === "Err_Login_Expired") {
         localStorage.removeItem("globals");
-        window.location.href = "/#login";
+        window.location.href = "/login";
         return;
       }
 
@@ -1345,7 +1345,7 @@ function Header(props) {
     onChange: e => {
       const domain = e;
       setCurrentDomain(domain);
-      window.location.href = "/view/".concat(domain.replace('.', '%2E'));
+      window.location.href = "/".concat(window.location.pathname.split("/")[1], "/view/").concat(domain.replace('.', '%2E'));
     },
     items: domainList,
     title: "Choose one of your domains",
