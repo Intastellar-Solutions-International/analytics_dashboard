@@ -690,7 +690,7 @@ const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/pu
 const OrganisationContext = createContext(localStorage.getItem("organisation"));
 const DomainContext = createContext(null);
 function App() {
-  var _JSON$parse, _JSON$parse2, _JSON$parse5;
+  var _JSON$parse, _JSON$parse2, _JSON$parse4;
 
   const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
   const [organisation, setOrganisation] = useState(localStorage.getItem("organisation") ? localStorage.getItem("organisation") : null);
@@ -701,7 +701,7 @@ function App() {
   const [domainError, setDomainError] = useState(false);
 
   if (localStorage.getItem("globals") && ((_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.token) != undefined || (_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) !== null && _JSON$parse2 !== void 0 && _JSON$parse2.status) {
-    var _JSON$parse3, _JSON$parse3$profile, _JSON$parse3$profile$, _JSON$parse4, _JSON$parse4$profile, _JSON$parse4$profile$;
+    var _JSON$parse3, _JSON$parse3$profile, _JSON$parse3$profile$;
 
     if (window.location.href.indexOf("/login") > -1) {
       window.location.href = "/dashboard";
@@ -795,33 +795,13 @@ function App() {
       path: "/reports",
       exact: true
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, /*#__PURE__*/React.createElement(_Pages_Reports_Reports__WEBPACK_IMPORTED_MODULE_19__["default"], null))), /*#__PURE__*/React.createElement(Route, {
-      path: "/user-consents"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("section", {
-      style: {
-        padding: "40px",
-        backgroundColor: "rgb(218, 218, 218)",
-        color: "#626262"
-      }
-    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : (_JSON$parse4$profile = _JSON$parse4.profile) === null || _JSON$parse4$profile === void 0 ? void 0 : (_JSON$parse4$profile$ = _JSON$parse4$profile.name) === null || _JSON$parse4$profile$ === void 0 ? void 0 : _JSON$parse4$profile$.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation"), /*#__PURE__*/React.createElement("h2", {
-      style: {
-        display: "flex"
-      }
-    }, "Organisation: ", /*#__PURE__*/React.createElement(_Components_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_16__["default"], {
-      style: {
-        marginLeft: "10px"
-      },
-      defaultValue: organisation,
-      onChange: e => {
-        setOrganisation(e);
-        localStorage.setItem("organisation", e);
-        window.location.reload();
-      },
-      items: organisations,
-      title: "Choose one of your domains"
-    }))), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_UserConsents_UserConsents__WEBPACK_IMPORTED_MODULE_18__["default"], null)))), /*#__PURE__*/React.createElement(Redirect, {
+      path: "/reports/user-consents"
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_UserConsents_UserConsents__WEBPACK_IMPORTED_MODULE_18__["default"], {
+      organisations: organisations
+    }))), /*#__PURE__*/React.createElement(Redirect, {
       to: "/login"
     })))))));
-  } else if (!localStorage.getItem("globals") || ((_JSON$parse5 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse5 === void 0 ? void 0 : _JSON$parse5.token) == undefined) {
+  } else if (!localStorage.getItem("globals") || ((_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : _JSON$parse4.token) == undefined) {
     return /*#__PURE__*/React.createElement(Router, {
       path: "/login",
       exact: true
@@ -1083,20 +1063,13 @@ function Nav() {
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Dashboard")), /*#__PURE__*/React.createElement(Link, {
-    className: "navItems" + (useLocation().pathname === "/reports" ? " --active" : ""),
+    className: "navItems" + (useLocation().pathname.indexOf("/reports") > -1 ? " --active" : ""),
     to: "/reports"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons reports"
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Reports")), /*#__PURE__*/React.createElement(Link, {
-    className: "navItems" + (useLocation().pathname === "/user-consents" ? " --active" : ""),
-    to: "/user-consents"
-  }, /*#__PURE__*/React.createElement("i", {
-    className: "dashboard-icons user-consents"
-  }), " ", /*#__PURE__*/React.createElement("span", {
-    className: "hiddenCollapsed"
-  }, "User Consents")), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname === "/domains" ? " --active" : ""),
     to: "/domains"
   }, /*#__PURE__*/React.createElement("i", {
@@ -2136,7 +2109,11 @@ __webpack_require__.r(__webpack_exports__);
 
 function Reports() {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    links: []
+    links: [{
+      name: "User Consents",
+      path: "/reports/user-consents",
+      icon: "user-consents"
+    }]
   }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "Reports")));
@@ -2423,8 +2400,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Components/Error/Unknown.js */ "./src/Components/Error/Unknown.js");
 /* harmony import */ var _Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Components/widget/Loading.js */ "./src/Components/widget/Loading.js");
 /* harmony import */ var _API_api_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../API/api.js */ "./src/API/api.js");
-/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
-/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/UserConsents/Style.css");
+/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/UserConsents/Style.css");
+/* harmony import */ var _Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Header/SideNav.js */ "./src/Components/Header/SideNav.js");
+/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
 const {
   useState,
   useEffect,
@@ -2441,11 +2419,42 @@ const {
 
 
 
+
 function UserConsents(props) {
-  const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_8__.DomainContext);
+  const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_10__.DomainContext);
+  const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_10__.OrganisationContext);
+  const organisations = props.organisations;
   _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.headers.Domains = currentDomain;
   const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_4__["default"])(5, _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.url, _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.method, _API_api_js__WEBPACK_IMPORTED_MODULE_7__["default"].gdpr.getDomainsUrl.headers);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    links: [{
+      name: "User Consents",
+      path: "/reports/user-consents",
+      icon: "user-consents"
+    }]
+  }), /*#__PURE__*/React.createElement("article", null, /*#__PURE__*/React.createElement("section", {
+    style: {
+      padding: "40px",
+      backgroundColor: "rgb(218, 218, 218)",
+      color: "#626262"
+    }
+  }, /*#__PURE__*/React.createElement("h1", null, "Reports"), /*#__PURE__*/React.createElement("h2", {
+    style: {
+      display: "flex"
+    }
+  }, "Organisation: ", /*#__PURE__*/React.createElement(_Components_SelectInput_Selector_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    style: {
+      marginLeft: "10px"
+    },
+    defaultValue: organisation,
+    onChange: e => {
+      setOrganisation(e);
+      localStorage.setItem("organisation", e);
+      window.location.reload();
+    },
+    items: organisations,
+    title: "Choose one of your domains"
+  }))), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "User Consents"), getDomainsUrlLoading && !getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_6__.Loading, null) : getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_5__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
@@ -2469,7 +2478,7 @@ function UserConsents(props) {
     }, "URL: ", d.url), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("h4", null, "Consent given"), Object.prototype.toString.call(consent) === '[object Array]' ? consent.map(c => {
       return /*#__PURE__*/React.createElement("p", null, c === null || c === void 0 ? void 0 : c.type, " cookies: ", !c.checked ? "declined" : (c === null || c === void 0 ? void 0 : c.checked) == "checked" || (c === null || c === void 0 ? void 0 : c.checked) == "1" ? "Accepted" : c === null || c === void 0 ? void 0 : c.checked);
     }) : /*#__PURE__*/React.createElement("p", null, (_consent = consent) === null || _consent === void 0 ? void 0 : _consent.consent_type, " cookies: ", ((_consent2 = consent) === null || _consent2 === void 0 ? void 0 : _consent2.consent_value) == "1" || ((_consent3 = consent) === null || _consent3 === void 0 ? void 0 : _consent3.consent_value) == "checked" ? "Accepted" : "declined"))));
-  })))));
+  }))))));
 }
 
 /***/ }),
