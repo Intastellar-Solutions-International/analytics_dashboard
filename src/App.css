@@ -26,7 +26,8 @@ body{
 
 .main-grid {
     display: grid;
-    grid-template-columns: minmax(min-content, max-content) 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(0px, max-content));
+    /* grid-template-columns: minmax(min-content, max-content) 1fr; */
     
     scroll-padding-top: 66px;
     padding-top: 66px;

@@ -24,6 +24,7 @@ import AddDomain from "./Components/AddDomain/AddDomain";
 import Select from "./Components/SelectInput/Selector";
 import Authentication from "./Authentication/Auth";
 import UserConsents from "./Pages/UserConsents/UserConsents";
+import Reports from "./Pages/Reports/Reports";
 
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
@@ -120,6 +121,9 @@ export default function App() {
                                     </Route>
                                     <Route path='/view/:handle'>
                                         {domainError ? <AddDomain /> : <DomainDashbord setHandle={setHandle} />}
+                                    </Route>
+                                    <Route path="/reports" exact>
+                                        <Reports />
                                     </Route>
                                     <Route path="/user-consents">
                                         <div>

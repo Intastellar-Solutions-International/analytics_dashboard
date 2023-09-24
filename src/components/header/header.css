@@ -87,6 +87,10 @@
     width: 150px;
 }
 
+.navOverlay{
+    display: flex;
+}
+
 .collapsed nav {
     width: 100%;
 }

@@ -47,7 +47,6 @@ export default function Dashboard(props){
     return (
         <>
             <div className="dashboard-content">
-                <div>
                     {
                         (dashboardView === "GDPR Cookiebanner" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
                             url: API.gdpr.getTotalNumber.url,
@@ -55,8 +54,6 @@ export default function Dashboard(props){
                             header: API.gdpr.getTotalNumber.headers 
                         }} /> : null
                     }
-                    
-                </div>
                 <div className="" style={{paddingTop: "40px"}}>
                     <h2>Data of user interaction</h2>
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }
