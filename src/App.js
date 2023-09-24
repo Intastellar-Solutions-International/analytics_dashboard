@@ -25,6 +25,7 @@ import Select from "./Components/SelectInput/Selector";
 import Authentication from "./Authentication/Auth";
 import UserConsents from "./Pages/UserConsents/UserConsents";
 import Reports from "./Pages/Reports/Reports";
+import ErrorBoundary from "./Components/Error/ErrorBoundary";
 
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
@@ -39,7 +40,9 @@ export default function App() {
     const [domains, setDomains] = useState(null);
     const [domainError, setDomainError] = useState(false);
 
-    if (JSON.parse(localStorage.getItem("globals"))?.token != undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
+    console.log("App.js", localStorage.getItem("globals"));
+
+    if (localStorage.getItem("globals") && JSON.parse(localStorage.getItem("globals"))?.token != undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
         if(window.location.href.indexOf("/login") > -1){
             window.location.href = "/dashboard";
         }
@@ -86,61 +89,79 @@ export default function App() {
                                 <Nav />
                                 <Switch>
                                     <Route path="/dashboard" exact>
-                                        <div>
-                                        <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
-                                            <h1>Welcome, {JSON.parse(localStorage.getItem("globals")).profile.name.first_name}</h1>
-                                            <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
-                                            <h2 style={{display: "flex"}}>Organisation: {
-                                                <Select style={{marginLeft: "10px"}} defaultValue={organisation}
-                                                onChange={(e) => { 
-                                                    setOrganisation(e);
-                                                    localStorage.setItem("organisation", e);
-                                                    window.location.reload();}}
-                                                items={organisations} title="Choose one of your domains"/>
-                                            }</h2>
-                                        </section>
-                                        {domainError ? <AddDomain /> : <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} />
+                                        <ErrorBoundary>
+                                            <div>
+                                                <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
+                                                    <h1>Welcome, {JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name}</h1>
+                                                    <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
+                                                    <h2 style={{display: "flex"}}>Organisation: {
+                                                        <Select style={{marginLeft: "10px"}} defaultValue={organisation}
+                                                        onChange={(e) => { 
+                                                            setOrganisation(e);
+                                                            localStorage.setItem("organisation", e);
+                                                            window.location.reload();}}
+                                                        items={organisations} title="Choose one of your domains"/>
+                                                    }</h2>
+                                                </section>
+                                                {domainError ? <AddDomain /> : <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} />
 
-                                        }
-                                        </div>
+                                                }
+                                            </div>
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path="/domains" exact>
-                                        {domainError ? <AddDomain /> : <Websites />}
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <Websites />}
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path="/settings" exact>
-                                        {domainError ? <AddDomain /> : <Settings />}
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <Settings />}
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path="/settings/create-organisation">
-                                        {domainError ? <AddDomain /> : <CreateOrganisation />}
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <CreateOrganisation />}
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path="/settings/add-user">
-                                        {domainError ? <AddDomain /> : <AddUser />}
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <AddUser />}
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path="/settings/view-organisations">
-                                        {domainError ? <AddDomain /> : <ViewOrg />}
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <ViewOrg />}
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path='/view/:handle'>
-                                        {domainError ? <AddDomain /> : <DomainDashbord setHandle={setHandle} />}
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <DomainDashbord setHandle={setHandle} />}
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path="/reports" exact>
-                                        <Reports />
+                                        <ErrorBoundary>
+                                            <Reports />
+                                        </ErrorBoundary>
                                     </Route>
                                     <Route path="/user-consents">
-                                        <div>
-                                            <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
-                                                <h1>Welcome, {JSON.parse(localStorage.getItem("globals")).profile.name.first_name}</h1>
-                                                <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
-                                                <h2 style={{display: "flex"}}>Organisation: {
-                                                    <Select style={{marginLeft: "10px"}} defaultValue={organisation}
-                                                    onChange={(e) => { 
-                                                        setOrganisation(e);
-                                                        localStorage.setItem("organisation", e);
-                                                        window.location.reload();}}
-                                                    items={organisations} title="Choose one of your domains"/>
-                                                }</h2>
-                                            </section>
-                                            {domainError ? <AddDomain /> : <UserConsents />}
-                                        </div>
+                                        <ErrorBoundary>
+                                            <div>
+                                                <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
+                                                    <h1>Welcome, {JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name}</h1>
+                                                    <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
+                                                    <h2 style={{display: "flex"}}>Organisation: {
+                                                        <Select style={{marginLeft: "10px"}} defaultValue={organisation}
+                                                        onChange={(e) => { 
+                                                            setOrganisation(e);
+                                                            localStorage.setItem("organisation", e);
+                                                            window.location.reload();}}
+                                                        items={organisations} title="Choose one of your domains"/>
+                                                    }</h2>
+                                                </section>
+                                                {domainError ? <AddDomain /> : <UserConsents />}
+                                            </div>
+                                        </ErrorBoundary>
                                     </Route>
                                     <Redirect to="/login" />
                                 </Switch>
@@ -150,10 +171,12 @@ export default function App() {
                 </Router>
             </>
         )
-    } else if(JSON.parse(localStorage.getItem("globals"))?.token == undefined) {
+    } else if(!localStorage.getItem("globals") || JSON.parse(localStorage.getItem("globals"))?.token == undefined) {
         return (
             <Router path="/login" exact>
-                <Login />
+                <ErrorBoundary>
+                    <Login />
+                </ErrorBoundary>
             </Router>
         )
     }
