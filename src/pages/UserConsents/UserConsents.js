@@ -14,6 +14,7 @@ import SideNav from "../../Components/Header/SideNav.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
 
 export default function UserConsents(props) {
+    document.title = "User consents | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const organisations = props.organisations;

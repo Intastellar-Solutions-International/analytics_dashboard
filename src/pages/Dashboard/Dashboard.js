@@ -10,7 +10,7 @@ import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
 
 export default function Dashboard(props){
-    document.title = "Dashboard | Intastellar Analytics";
+    document.title = "Home | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const dashboardView = props.dashboardView;

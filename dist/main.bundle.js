@@ -2270,6 +2270,7 @@ const {
 
 
 function UserConsents(props) {
+  document.title = "Countries | Intastellar Analytics";
   const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_10__.DomainContext);
   const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_10__.OrganisationContext);
   const organisations = props.organisations;
@@ -2331,7 +2332,7 @@ const {
 
 
 function Dashboard(props) {
-  document.title = "Dashboard | Intastellar Analytics";
+  document.title = "Home | Intastellar Analytics";
   const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_7__.DomainContext);
   const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_7__.OrganisationContext);
   const dashboardView = props.dashboardView;
@@ -2572,6 +2573,7 @@ const reportsLinks = [{
   path: "/reports/countries"
 }];
 function Reports() {
+  document.title = "Reports | Intastellar Analytics";
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_0__["default"], {
     links: reportsLinks
   }), /*#__PURE__*/React.createElement("div", {
@@ -2885,6 +2887,7 @@ const {
 
 
 function UserConsents(props) {
+  document.title = "User consents | Intastellar Analytics";
   const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_12__.DomainContext);
   const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_12__.OrganisationContext);
   const organisations = props.organisations;
