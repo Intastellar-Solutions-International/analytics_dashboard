@@ -77,26 +77,20 @@ export default function App() {
 
         }, []);
 
-        if(id === null){
-            return (
-                <>
-                    <PlatformSelector setId={setId} platforms={JSON.parse(localStorage.getItem("globals"))?.access?.type} />
-                    <BugReport />
-                </>
-            )
-        }
-
         return (
             <>
                 <Router>
                     <OrganisationContext.Provider value={ [organisation, setOrganisation] }>
                         <DomainContext.Provider value={ [currentDomain, setCurrentDomain] }>
                             <ErrorBoundary>
-                                <Header handle={handle} id={id} />
-                                <BugReport />
+                                {(window.location.pathname === "dashboard") ? null : <>
+                                    <Header handle={handle} id={id} />
+                                    <BugReport />
+                                </>}
+                                
                             </ErrorBoundary>
                             <div className="main-grid"> 
-                                <Nav />
+                                {(window.location.pathname === "dashboard") ? null : <Nav />}
                                 <Switch>
                                     <Route path="/:id/dashboard" exact>
                                         <ErrorBoundary>
