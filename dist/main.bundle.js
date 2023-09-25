@@ -721,10 +721,6 @@ function App() {
     var _JSON$parse4, _JSON$parse4$profile, _JSON$parse4$profile$;
 
     /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
-    if (window.location.pathname === "/login") {
-      /* window.location.pathname = "/dashboard"; */
-    }
-
     useEffect(() => {
       var _API$id, _API$id$getDomains;
 
@@ -884,12 +880,7 @@ const Authentication = {
       setLoading(false);
       localStorage.setItem("organisation", response.organisation);
       localStorage.setItem("globals", JSON.stringify(response));
-
-      if (window.location.pathname === "/login") {
-        window.location.href = "/dashboard";
-      } else {
-        window.location.reload();
-      }
+      window.location.href = "/dashboard";
     });
   },
   Logout: function () {
