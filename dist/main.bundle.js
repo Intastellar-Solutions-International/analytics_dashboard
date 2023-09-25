@@ -885,11 +885,18 @@ const Authentication = {
       setLoading(false);
       localStorage.setItem("organisation", response.organisation);
       localStorage.setItem("globals", JSON.stringify(response));
-      window.location.href = "/dashboard";
+
+      if (localStorage.getItem("platform") === null || localStorage.getItem("platform") === undefined) {
+        window.location.href = "/dashboard";
+      } else {
+        window.location.href = "/" + localStorage.getItem("platform") + "/dashboard";
+      }
     });
   },
   Logout: function () {
     localStorage.removeItem("globals");
+    localStorage.removeItem("organisation");
+    localStorage.removeItem("domains");
     window.location.reload();
   },
   getToken: function () {
