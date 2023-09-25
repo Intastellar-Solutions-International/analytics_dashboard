@@ -3,6 +3,10 @@
     place-content: center;
     place-items: center;
     height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 20000;
+    background-color: rgb(36, 36, 36);
 }
 
 .platform-select-logo{

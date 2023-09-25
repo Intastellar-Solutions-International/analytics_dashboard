@@ -718,7 +718,7 @@ function App() {
   const [id, setId] = useState(localStorage.getItem("platform") ? localStorage.getItem("platform") : null);
 
   if (localStorage.getItem("globals") && ((_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.token) != undefined || (_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) !== null && _JSON$parse2 !== void 0 && _JSON$parse2.status) {
-    var _JSON$parse3, _JSON$parse3$profile, _JSON$parse3$profile$, _JSON$parse4, _JSON$parse4$access;
+    var _JSON$parse4, _JSON$parse4$profile, _JSON$parse4$profile$, _JSON$parse5, _JSON$parse5$access;
 
     /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
     useEffect(() => {
@@ -756,16 +756,26 @@ function App() {
         });
       }
     }, []);
+
+    if (id === null) {
+      var _JSON$parse3, _JSON$parse3$access;
+
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_23__["default"], {
+        setId: setId,
+        platforms: (_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$access = _JSON$parse3.access) === null || _JSON$parse3$access === void 0 ? void 0 : _JSON$parse3$access.type
+      }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_22__["default"], null));
+    }
+
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Router, null, /*#__PURE__*/React.createElement(OrganisationContext.Provider, {
       value: [organisation, setOrganisation]
     }, /*#__PURE__*/React.createElement(DomainContext.Provider, {
       value: [currentDomain, setCurrentDomain]
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, window.location.pathname === "dashboard" ? null : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, /*#__PURE__*/React.createElement(_Components_Header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
       handle: handle,
       id: id
-    }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_22__["default"], null))), /*#__PURE__*/React.createElement("div", {
+    }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_22__["default"], null)), /*#__PURE__*/React.createElement("div", {
       className: "main-grid"
-    }, window.location.pathname === "dashboard" ? null : /*#__PURE__*/React.createElement(_Components_Header_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/React.createElement(Switch, null, /*#__PURE__*/React.createElement(Route, {
+    }, /*#__PURE__*/React.createElement(_Components_Header_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/React.createElement(Switch, null, /*#__PURE__*/React.createElement(Route, {
       path: "/:id/dashboard",
       exact: true
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, /*#__PURE__*/React.createElement("div", {
@@ -778,7 +788,7 @@ function App() {
         backgroundColor: "rgb(218, 218, 218)",
         color: "#626262"
       }
-    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$profile = _JSON$parse3.profile) === null || _JSON$parse3$profile === void 0 ? void 0 : (_JSON$parse3$profile$ = _JSON$parse3$profile.name) === null || _JSON$parse3$profile$ === void 0 ? void 0 : _JSON$parse3$profile$.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : (_JSON$parse4$profile = _JSON$parse4.profile) === null || _JSON$parse4$profile === void 0 ? void 0 : (_JSON$parse4$profile$ = _JSON$parse4$profile.name) === null || _JSON$parse4$profile$ === void 0 ? void 0 : _JSON$parse4$profile$.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
       dashboardView: dashboardView,
       setDashboardView: setDashboardView
     })))), /*#__PURE__*/React.createElement(Route, {
@@ -812,7 +822,7 @@ function App() {
       path: "/dashboard"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_23__["default"], {
       setId: setId,
-      platforms: (_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : (_JSON$parse4$access = _JSON$parse4.access) === null || _JSON$parse4$access === void 0 ? void 0 : _JSON$parse4$access.type
+      platforms: (_JSON$parse5 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse5 === void 0 ? void 0 : (_JSON$parse5$access = _JSON$parse5.access) === null || _JSON$parse5$access === void 0 ? void 0 : _JSON$parse5$access.type
     }))), /*#__PURE__*/React.createElement(Redirect, {
       to: "/login"
     })))))));
@@ -3402,7 +3412,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".platform{\n    display: grid;\n    place-content: center;\n    place-items: center;\n    height: 100vh;\n}\n\n.platform-select-logo{\n    filter: invert(1);\n    width: 35%;\n    padding: 45px;\n    margin-top: -105px;\n}", "",{"version":3,"sources":["webpack://./src/Components/PlatformSelector/PlatformSelector.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,qBAAqB;IACrB,mBAAmB;IACnB,aAAa;AACjB;;AAEA;IACI,iBAAiB;IACjB,UAAU;IACV,aAAa;IACb,kBAAkB;AACtB","sourcesContent":[".platform{\n    display: grid;\n    place-content: center;\n    place-items: center;\n    height: 100vh;\n}\n\n.platform-select-logo{\n    filter: invert(1);\n    width: 35%;\n    padding: 45px;\n    margin-top: -105px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".platform{\n    display: grid;\n    place-content: center;\n    place-items: center;\n    height: 100vh;\n    position: fixed;\n    top: 0;\n    z-index: 20000;\n    background-color: rgb(36, 36, 36);\n}\n\n.platform-select-logo{\n    filter: invert(1);\n    width: 35%;\n    padding: 45px;\n    margin-top: -105px;\n}", "",{"version":3,"sources":["webpack://./src/Components/PlatformSelector/PlatformSelector.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,qBAAqB;IACrB,mBAAmB;IACnB,aAAa;IACb,eAAe;IACf,MAAM;IACN,cAAc;IACd,iCAAiC;AACrC;;AAEA;IACI,iBAAiB;IACjB,UAAU;IACV,aAAa;IACb,kBAAkB;AACtB","sourcesContent":[".platform{\n    display: grid;\n    place-content: center;\n    place-items: center;\n    height: 100vh;\n    position: fixed;\n    top: 0;\n    z-index: 20000;\n    background-color: rgb(36, 36, 36);\n}\n\n.platform-select-logo{\n    filter: invert(1);\n    width: 35%;\n    padding: 45px;\n    margin-top: -105px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
