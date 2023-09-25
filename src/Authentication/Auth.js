@@ -39,7 +39,7 @@ const Authentication = {
             localStorage.setItem("organisation", response.organisation);
             localStorage.setItem("globals", JSON.stringify(response));
             if (window.location.pathname === "/login") {
-                window.location.href = "/"+response?.access?.type["gdpr"]?.uri + "/dashboard";
+                window.location.href = "/dashboard";
             } else {
                 window.location.reload();
             }

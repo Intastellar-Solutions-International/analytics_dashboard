@@ -28,6 +28,7 @@ import Reports from "./Pages/Reports/Reports";
 import ErrorBoundary from "./Components/Error/ErrorBoundary";
 import Countries from "./Pages/Countries/Countries";
 import BugReport from "./Components/BugReport/BugReport";
+import PlatformSelector from "./Components/PlatformSelector/PlatformSelector";
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
 export const DomainContext = createContext(null);
@@ -40,13 +41,13 @@ export default function App() {
     const [organisations, setOrganisations] = useState(null);
     const [domains, setDomains] = useState(null);
     const [domainError, setDomainError] = useState(false);
-    const [id, setId] = useState(JSON.parse(localStorage.getItem("globals"))?.access?.type["gdpr"]?.uri);
+    const [id, setId] = useState((localStorage.getItem("platform")) ? localStorage.getItem("platform") : null);
 
     if (localStorage.getItem("globals") && JSON.parse(localStorage.getItem("globals"))?.token != undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
         /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
 
         if(window.location.pathname === "/login") {
-            window.location.pathname = "/"+id+"/dashboard";
+            window.location.pathname = "/dashboard";
         }
 
         useEffect(() => {
@@ -62,22 +63,32 @@ export default function App() {
                 setOrganisations(data);
             });
 
-            Fetch(API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers).then((data) => {
-                
-                if(data.error === "Err_No_Domains") {
-                    setDomainError(true);
-                }else{
-                    data.unshift({domain: "all", installed: null, lastedVisited: null});
-                    data?.map((d) => {
-                        return  punycode.toUnicode(d.domain);
-                    }).filter((d) => {
-                        return d !== undefined && d !== "" && d !== "undefined.";
-                    });
-                    setDomains(data);
-                }
-            });
+            if(id){
+                Fetch(API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers).then((data) => {
+                    
+                    if(data.error === "Err_No_Domains") {
+                        setDomainError(true);
+                    }else{
+                        data.unshift({domain: "all", installed: null, lastedVisited: null});
+                        data?.map((d) => {
+                            return  punycode.toUnicode(d.domain);
+                        }).filter((d) => {
+                            return d !== undefined && d !== "" && d !== "undefined.";
+                        });
+                        setDomains(data);
+                    }
+                });
+            }
 
         }, []);
+
+        console.log(id);
+
+        if(id === null){
+            return (
+                <PlatformSelector setId={setId} platforms={JSON.parse(localStorage.getItem("globals"))?.access?.type} />
+            )
+        }
 
         return (
             <>
