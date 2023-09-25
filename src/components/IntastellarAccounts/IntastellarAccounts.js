@@ -56,8 +56,11 @@ export default function Account(props){
             <div className="dropdown-links">
                 {
                     Object.keys(JSON.parse(localStorage.getItem("globals"))?.access.type).map(function(key, index) {
+                        const uri = JSON.parse(localStorage.getItem("globals"))?.access.type[key].uri;
                         return <>
-                            <a key={index} href={"/" + JSON.parse(localStorage.getItem("globals"))?.access.type[key].uri + "/dashboard"} className="dropdown-link">
+                            <a key={index} href={"/" + uri + "/dashboard"} className="dropdown-link" onClick={() => {
+                                localStorage.setItem("platform", uri);
+                            }}>
                                 <div className="dropdown-link-text">
                                     {JSON.parse(localStorage.getItem("globals"))?.access.type[key].type}
                                 </div>

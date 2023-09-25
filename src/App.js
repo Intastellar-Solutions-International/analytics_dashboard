@@ -62,8 +62,8 @@ export default function App() {
                 
                 setOrganisations(data);
             });
-
-            if(id){
+            
+            if(id && API[id]?.getDomains?.url != undefined){
                 Fetch(API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers).then((data) => {
                     
                     if(data.error === "Err_No_Domains") {
