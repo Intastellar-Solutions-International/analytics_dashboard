@@ -57,11 +57,11 @@ export default function Account(props){
                 {
                     Object.keys(JSON.parse(localStorage.getItem("globals"))?.access.type).map(function(key, index) {
                         return <>
-                            <Link key={index} to={"/" + JSON.parse(localStorage.getItem("globals"))?.access.type[key].uri + "/dashboard"} className="dropdown-link">
+                            <a key={index} href={"/" + JSON.parse(localStorage.getItem("globals"))?.access.type[key].uri + "/dashboard"} className="dropdown-link">
                                 <div className="dropdown-link-text">
                                     {JSON.parse(localStorage.getItem("globals"))?.access.type[key].type}
                                 </div>
-                            </Link>
+                            </a>
                             </>
                         
                     })
