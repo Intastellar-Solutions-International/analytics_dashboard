@@ -1,0 +1,13 @@
+.platform{
+    display: grid;
+    place-content: center;
+    place-items: center;
+    height: 100vh;
+}
+
+.platform-select-logo{
+    filter: invert(1);
+    width: 35%;
+    padding: 45px;
+    margin-top: -105px;
+}

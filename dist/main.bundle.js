@@ -706,7 +706,7 @@ const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/pu
 const OrganisationContext = createContext(localStorage.getItem("organisation"));
 const DomainContext = createContext(null);
 function App() {
-  var _JSON$parse, _JSON$parse2, _JSON$parse5;
+  var _JSON$parse, _JSON$parse2;
 
   const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
   const [organisation, setOrganisation] = useState(localStorage.getItem("organisation") ? localStorage.getItem("organisation") : null);
@@ -760,25 +760,24 @@ function App() {
         });
       }
     }, []);
-    console.log(id);
 
     if (id === null) {
       var _JSON$parse3, _JSON$parse3$access;
 
-      return /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_23__["default"], {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_23__["default"], {
         setId: setId,
         platforms: (_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$access = _JSON$parse3.access) === null || _JSON$parse3$access === void 0 ? void 0 : _JSON$parse3$access.type
-      });
+      }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_22__["default"], null));
     }
 
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Router, null, /*#__PURE__*/React.createElement(OrganisationContext.Provider, {
       value: [organisation, setOrganisation]
     }, /*#__PURE__*/React.createElement(DomainContext.Provider, {
       value: [currentDomain, setCurrentDomain]
-    }, /*#__PURE__*/React.createElement(_Components_Header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, /*#__PURE__*/React.createElement(_Components_Header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
       handle: handle,
       id: id
-    }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_22__["default"], null), /*#__PURE__*/React.createElement("div", {
+    }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_22__["default"], null)), /*#__PURE__*/React.createElement("div", {
       className: "main-grid"
     }, /*#__PURE__*/React.createElement(_Components_Header_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/React.createElement(Switch, null, /*#__PURE__*/React.createElement(Route, {
       path: "/:id/dashboard",
@@ -826,7 +825,7 @@ function App() {
     }))), /*#__PURE__*/React.createElement(Redirect, {
       to: "/login"
     })))))));
-  } else if (!localStorage.getItem("globals") || ((_JSON$parse5 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse5 === void 0 ? void 0 : _JSON$parse5.token) == undefined) {
+  } else if (!localStorage.getItem("globals")) {
     return /*#__PURE__*/React.createElement(Router, {
       path: "/login",
       exact: true
@@ -1899,16 +1898,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ PlatformSelector)
 /* harmony export */ });
 /* harmony import */ var _SelectInput_Selector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../SelectInput/Selector */ "./src/Components/SelectInput/Selector.js");
+/* harmony import */ var _PlatformSelector_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlatformSelector.css */ "./src/Components/PlatformSelector/PlatformSelector.css");
+/* harmony import */ var _Header_logo_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Header/logo.png */ "./src/Components/Header/logo.png");
+
+
 
 function PlatformSelector(props) {
   const items = Object.keys(props === null || props === void 0 ? void 0 : props.platforms).map(platform => {
     return props === null || props === void 0 ? void 0 : props.platforms[platform];
   });
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
-    className: "platform"
-  }, /*#__PURE__*/React.createElement("h1", null, "Please Select a Platform that you want to view data for:"), /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    className: "platform grid"
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "platform-select-logo",
+    src: _Header_logo_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: "Intastellar Solutions Logo"
+  }), /*#__PURE__*/React.createElement("h1", null, "Please Select a Platform that you want to view data for:"), /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_0__["default"], {
     style: {
-      left: "0"
+      left: "0",
+      fontSize: "16px"
     },
     key: "",
     items: items,
@@ -3179,7 +3187,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.c
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Questrial&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Cinzel&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "*{\n    box-sizing: border-box;\n}\n\nbody{\n    background-color: rgb(36, 36, 36);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n}", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAIA;IACI,sBAAsB;AAC1B;;AAEA;IACI,iCAAiC;IACjC,yBAAyB;IACzB,sDAAsD;IACtD,SAAS;AACb;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,WAAW;IACX,uBAAuB;IACvB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;;IAEf,wBAAwB;IACxB,iBAAiB;AACrB;;AAEA;IACI,yBAAyB;IACzB,cAAc;IACd,aAAa;IACb,qBAAqB;IACrB,gBAAgB;AACpB;;AAEA;IACI,qBAAqB;IACrB,WAAW;IACX,iBAAiB;IACjB,gBAAgB;IAChB,cAAc;IACd,kBAAkB;IAClB,oBAAoB;AACxB;;AAEA;IACI,WAAW;IACX,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,cAAc;IACd,qBAAqB;IACrB,sBAAsB;IACtB,yBAAyB;AAC7B;;AAEA;IACI,oBAAoB;AACxB;;AAEA;IACI;QACI,cAAc;IAClB;AACJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');\n@import url(\"https://fonts.googleapis.com/css2?family=Questrial&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Cinzel&display=swap\");\n\n*{\n    box-sizing: border-box;\n}\n\nbody{\n    background-color: rgb(36, 36, 36);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "*{\n    box-sizing: border-box;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(36, 36, 36);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n}", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAIA;IACI,sBAAsB;AAC1B;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,iCAAiC;IACjC,yBAAyB;IACzB,sDAAsD;IACtD,SAAS;AACb;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,WAAW;IACX,uBAAuB;IACvB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;;IAEf,wBAAwB;IACxB,iBAAiB;AACrB;;AAEA;IACI,yBAAyB;IACzB,cAAc;IACd,aAAa;IACb,qBAAqB;IACrB,gBAAgB;AACpB;;AAEA;IACI,qBAAqB;IACrB,WAAW;IACX,iBAAiB;IACjB,gBAAgB;IAChB,cAAc;IACd,kBAAkB;IAClB,oBAAoB;AACxB;;AAEA;IACI,WAAW;IACX,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,cAAc;IACd,qBAAqB;IACrB,sBAAsB;IACtB,yBAAyB;AAC7B;;AAEA;IACI,oBAAoB;AACxB;;AAEA;IACI;QACI,cAAc;IAClB;AACJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');\n@import url(\"https://fonts.googleapis.com/css2?family=Questrial&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Cinzel&display=swap\");\n\n*{\n    box-sizing: border-box;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(36, 36, 36);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3383,6 +3391,32 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".user_content, .services-overview-container {\n    width: 345px;\n    height: auto;\n    max-height: 600px;\n    overflow: hidden;\n    border-radius: 10px;\n    float: right;\n    position: absolute;\n    top: 60px;\n    right: 20px;\n    box-sizing: border-box;\n    background: rgba(255,255,255,0.8);\n    /* box-shadow: 0 0 3px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.28); */\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    -webkit-backdrop-filter: blur(10px);\n    backdrop-filter: blur(10px);\n    -moz-backdrop-filter: blur(10px);\n}\n\n.dropdown-image-name {\n    height: auto;\n    padding: 25px 15px 10px;\n    text-align: center;\n}\n\n.dropdown-links {\n    max-height: 140px;\n    height: auto;\n    overflow: scroll;\n}\n\n.dropdown-links a {\n    color: #000;\n    font-size: 15px;\n    padding: 15px;\n    display: block;\n\ttext-decoration: none;\n}\n\n.dropdown-links a:hover {\n    background: #b7b7b7;\n    text-decoration: none;\n    color: #000;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dropdown-image-name {\n    text-align: center;\n}\n\n.content-img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n    border: 5px solid #fff;\n}\n\n.dropdown-name {\n    width: 100%;\n    color: #000;\n}\n\n.dpdn {\n    color: #202124;\n    font: 500 16px/22px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .29px;\n    margin: 0;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.acc {\n    background-color: transparent;\n    padding: 0;\n    border: none;\n    max-width: fit-content;\n}\n\n.logo-icon {\n    width: 44px;\n    aspect-ratio: 1/1;\n    padding: 5px;\n}\n\n.sign_out_btn_container {\n    padding: 20px 30px;\n    border-top: 1px solid #c4c4c4;\n}\n\n.acc, .sign_out_btn {\n    background-color: #ffffff;\n    border: 1px solid #dadce0;\n    -moz-border-radius: 100px;\n    border-radius: 100px;\n    color: #3c4043;\n    display: inline-block;\n    font: 500 13px/16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .25px;\n    margin: 16px 0 0;\n    max-width: 260px;\n    outline: 0;\n    padding: 8px 9px;\n    text-align: center;\n    text-decoration: none;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.sign_out_btn {\n    border-radius: 4px !important;\n    margin: auto;\n    width: 100%;\n    display: flex;\n    align-items: center;\n}\n\n.acc a, .sign_out_btn {\n    color: #3c4043 !important;\n    text-decoration: none;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.ziuVxb{\n    position: absolute;\n    bottom: 10px;\n    right: 20px;\n}\n\nsvg.uarSJe.NMm5M {\n    width: 24px;\n    height: 24px;\n}\n\n.dpde .intastellaraccounts-logo {\n    width: 50%;\n    margin: 0;\n}", "",{"version":3,"sources":["webpack://./src/Components/IntastellarAccounts/Style.css"],"names":[],"mappings":"AAAA;IACI,YAAY;IACZ,YAAY;IACZ,iBAAiB;IACjB,gBAAgB;IAChB,mBAAmB;IACnB,YAAY;IACZ,kBAAkB;IAClB,SAAS;IACT,WAAW;IACX,sBAAsB;IACtB,iCAAiC;IACjC,oEAAoE;IACpE,kFAAkF;IAClF,mCAAmC;IACnC,2BAA2B;IAC3B,gCAAgC;AACpC;;AAEA;IACI,YAAY;IACZ,uBAAuB;IACvB,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,eAAe;IACf,aAAa;IACb,cAAc;CACjB,qBAAqB;AACtB;;AAEA;IACI,mBAAmB;IACnB,qBAAqB;IACrB,WAAW;AACf;;AAEA;IACI,cAAc;IACd,iEAAiE;IACjE,sBAAsB;IACtB,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,kBAAkB;IAClB,iBAAiB;IACjB,YAAY;IACZ,sEAAsE;IACtE,sBAAsB;AAC1B;;AAEA;IACI,WAAW;IACX,WAAW;AACf;;AAEA;IACI,cAAc;IACd,6EAA6E;IAC7E,qBAAqB;IACrB,SAAS;IACT,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,cAAc;IACd,iEAAiE;IACjE,sBAAsB;IACtB,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,6BAA6B;IAC7B,UAAU;IACV,YAAY;IACZ,sBAAsB;AAC1B;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,6BAA6B;AACjC;;AAEA;IACI,yBAAyB;IACzB,yBAAyB;IACzB,yBAAyB;IACzB,oBAAoB;IACpB,cAAc;IACd,qBAAqB;IACrB,6EAA6E;IAC7E,qBAAqB;IACrB,gBAAgB;IAChB,gBAAgB;IAChB,UAAU;IACV,gBAAgB;IAChB,kBAAkB;IAClB,qBAAqB;IACrB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,6BAA6B;IAC7B,YAAY;IACZ,WAAW;IACX,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,yBAAyB;IACzB,qBAAqB;IACrB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;IAClB,YAAY;IACZ,WAAW;AACf;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,UAAU;IACV,SAAS;AACb","sourcesContent":[".user_content, .services-overview-container {\n    width: 345px;\n    height: auto;\n    max-height: 600px;\n    overflow: hidden;\n    border-radius: 10px;\n    float: right;\n    position: absolute;\n    top: 60px;\n    right: 20px;\n    box-sizing: border-box;\n    background: rgba(255,255,255,0.8);\n    /* box-shadow: 0 0 3px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.28); */\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    -webkit-backdrop-filter: blur(10px);\n    backdrop-filter: blur(10px);\n    -moz-backdrop-filter: blur(10px);\n}\n\n.dropdown-image-name {\n    height: auto;\n    padding: 25px 15px 10px;\n    text-align: center;\n}\n\n.dropdown-links {\n    max-height: 140px;\n    height: auto;\n    overflow: scroll;\n}\n\n.dropdown-links a {\n    color: #000;\n    font-size: 15px;\n    padding: 15px;\n    display: block;\n\ttext-decoration: none;\n}\n\n.dropdown-links a:hover {\n    background: #b7b7b7;\n    text-decoration: none;\n    color: #000;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dropdown-image-name {\n    text-align: center;\n}\n\n.content-img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n    border: 5px solid #fff;\n}\n\n.dropdown-name {\n    width: 100%;\n    color: #000;\n}\n\n.dpdn {\n    color: #202124;\n    font: 500 16px/22px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .29px;\n    margin: 0;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.acc {\n    background-color: transparent;\n    padding: 0;\n    border: none;\n    max-width: fit-content;\n}\n\n.logo-icon {\n    width: 44px;\n    aspect-ratio: 1/1;\n    padding: 5px;\n}\n\n.sign_out_btn_container {\n    padding: 20px 30px;\n    border-top: 1px solid #c4c4c4;\n}\n\n.acc, .sign_out_btn {\n    background-color: #ffffff;\n    border: 1px solid #dadce0;\n    -moz-border-radius: 100px;\n    border-radius: 100px;\n    color: #3c4043;\n    display: inline-block;\n    font: 500 13px/16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .25px;\n    margin: 16px 0 0;\n    max-width: 260px;\n    outline: 0;\n    padding: 8px 9px;\n    text-align: center;\n    text-decoration: none;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.sign_out_btn {\n    border-radius: 4px !important;\n    margin: auto;\n    width: 100%;\n    display: flex;\n    align-items: center;\n}\n\n.acc a, .sign_out_btn {\n    color: #3c4043 !important;\n    text-decoration: none;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.ziuVxb{\n    position: absolute;\n    bottom: 10px;\n    right: 20px;\n}\n\nsvg.uarSJe.NMm5M {\n    width: 24px;\n    height: 24px;\n}\n\n.dpde .intastellaraccounts-logo {\n    width: 50%;\n    margin: 0;\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!./src/Components/PlatformSelector/PlatformSelector.css":
+/*!*****************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!./src/Components/PlatformSelector/PlatformSelector.css ***!
+  \*****************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "../node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".platform{\n    display: grid;\n    place-content: center;\n    place-items: center;\n    height: 100vh;\n}\n\n.platform-select-logo{\n    filter: invert(1);\n    width: 35%;\n    padding: 45px;\n    margin-top: -105px;\n}", "",{"version":3,"sources":["webpack://./src/Components/PlatformSelector/PlatformSelector.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,qBAAqB;IACrB,mBAAmB;IACnB,aAAa;AACjB;;AAEA;IACI,iBAAiB;IACjB,UAAU;IACV,aAAa;IACb,kBAAkB;AACtB","sourcesContent":[".platform{\n    display: grid;\n    place-content: center;\n    place-items: center;\n    height: 100vh;\n}\n\n.platform-select-logo{\n    filter: invert(1);\n    width: 35%;\n    padding: 45px;\n    margin-top: -105px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6942,6 +6976,60 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/Components/PlatformSelector/PlatformSelector.css":
+/*!**************************************************************!*\
+  !*** ./src/Components/PlatformSelector/PlatformSelector.css ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "../node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "../node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "../node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "../node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_PlatformSelector_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js!./PlatformSelector.css */ "../node_modules/css-loader/dist/cjs.js!./src/Components/PlatformSelector/PlatformSelector.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_PlatformSelector_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_PlatformSelector_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_PlatformSelector_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_PlatformSelector_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),

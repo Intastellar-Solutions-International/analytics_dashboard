@@ -42,7 +42,6 @@ export default function App() {
     const [domains, setDomains] = useState(null);
     const [domainError, setDomainError] = useState(false);
     const [id, setId] = useState((localStorage.getItem("platform")) ? localStorage.getItem("platform") : null);
-
     if (localStorage.getItem("globals") && JSON.parse(localStorage.getItem("globals"))?.token != undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
         /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
 
@@ -62,7 +61,7 @@ export default function App() {
                 
                 setOrganisations(data);
             });
-            
+
             if(id && API[id]?.getDomains?.url != undefined){
                 Fetch(API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers).then((data) => {
                     
@@ -82,11 +81,12 @@ export default function App() {
 
         }, []);
 
-        console.log(id);
-
         if(id === null){
             return (
-                <PlatformSelector setId={setId} platforms={JSON.parse(localStorage.getItem("globals"))?.access?.type} />
+                <>
+                    <PlatformSelector setId={setId} platforms={JSON.parse(localStorage.getItem("globals"))?.access?.type} />
+                    <BugReport />
+                </>
             )
         }
 
@@ -95,8 +95,10 @@ export default function App() {
                 <Router>
                     <OrganisationContext.Provider value={ [organisation, setOrganisation] }>
                         <DomainContext.Provider value={ [currentDomain, setCurrentDomain] }>
-                            <Header handle={handle} id={id} />
-                            <BugReport />
+                            <ErrorBoundary>
+                                <Header handle={handle} id={id} />
+                                <BugReport />
+                            </ErrorBoundary>
                             <div className="main-grid"> 
                                 <Nav />
                                 <Switch>
@@ -164,7 +166,8 @@ export default function App() {
                 </Router>
             </>
         )
-    } else if(!localStorage.getItem("globals") || JSON.parse(localStorage.getItem("globals"))?.token == undefined) {
+    } else if(!localStorage.getItem("globals")) {
+        
         return (
             <Router path="/login" exact>
                 <ErrorBoundary>
