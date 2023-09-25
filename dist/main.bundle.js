@@ -718,7 +718,7 @@ function App() {
   const [id, setId] = useState(localStorage.getItem("platform") ? localStorage.getItem("platform") : null);
 
   if (localStorage.getItem("globals") && ((_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.token) != undefined || (_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) !== null && _JSON$parse2 !== void 0 && _JSON$parse2.status) {
-    var _JSON$parse4, _JSON$parse4$profile, _JSON$parse4$profile$;
+    var _JSON$parse4, _JSON$parse4$profile, _JSON$parse4$profile$, _JSON$parse5, _JSON$parse5$access;
 
     /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
     useEffect(() => {
@@ -818,6 +818,11 @@ function App() {
       path: "/:id/reports/countries"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Countries_Countries__WEBPACK_IMPORTED_MODULE_21__["default"], {
       organisations: organisations
+    }))), /*#__PURE__*/React.createElement(Route, {
+      path: "/dashboard"
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_23__["default"], {
+      setId: setId,
+      platforms: (_JSON$parse5 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse5 === void 0 ? void 0 : (_JSON$parse5$access = _JSON$parse5.access) === null || _JSON$parse5$access === void 0 ? void 0 : _JSON$parse5$access.type
     }))), /*#__PURE__*/React.createElement(Redirect, {
       to: "/login"
     })))))));

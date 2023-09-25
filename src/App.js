@@ -154,6 +154,11 @@ export default function App() {
                                             {domainError ? <AddDomain /> : <Countries organisations={organisations} />}
                                         </ErrorBoundary>
                                     </Route>
+                                    <Route path="/dashboard">
+                                        <ErrorBoundary>
+                                            <PlatformSelector setId={setId} platforms={JSON.parse(localStorage.getItem("globals"))?.access?.type} />
+                                        </ErrorBoundary>
+                                    </Route>
                                     <Redirect to="/login" />
                                 </Switch>
                             </div>
