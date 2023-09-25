@@ -46,7 +46,7 @@ export default function App() {
         /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
 
         if(window.location.pathname === "/login") {
-            window.location.pathname = "/dashboard";
+            /* window.location.pathname = "/dashboard"; */
         }
 
         useEffect(() => {
