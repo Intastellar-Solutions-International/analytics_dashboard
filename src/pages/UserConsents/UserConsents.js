@@ -49,7 +49,7 @@ export default function UserConsents(props) {
                                     <>
                                         <div className="user">
                                             <p>UID: {d?.uid}</p>
-                                            <p>Time: {d?.consents_timestamp}</p>
+                                            <p>Time: {new Date(d?.consents_timestamp).toLocaleString('de-DE', { timeZone: 'Europe/Copenhagen' })}</p>
                                             <p className="lb">Referrer: {d?.referrer}</p>
                                             <p className="lb">URL: {d?.url}</p>
                                             <section>
