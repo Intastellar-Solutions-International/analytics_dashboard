@@ -120,12 +120,12 @@ export default function App() {
                                     </Route>
                                     <Route path="/settings/create-organisation">
                                         <ErrorBoundary>
-                                            {domainError ? <AddDomain /> : <CreateOrganisation />}
+                                            {Authentication.User.Status === "admin" || Authentication.User.Status === "super-admin" ? <CreateOrganisation /> : null}
                                         </ErrorBoundary>
                                     </Route>
                                     <Route path="/settings/add-user">
                                         <ErrorBoundary>
-                                            {domainError ? <AddUser /> : <AddUser />}
+                                            {Authentication.User.Status === "admin" || Authentication.User.Status === "super-admin" ? <AddUser /> : null}
                                         </ErrorBoundary>
                                     </Route>
                                     <Route path="/settings/view-organisations">

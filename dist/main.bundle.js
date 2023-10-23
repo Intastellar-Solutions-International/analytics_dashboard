@@ -811,9 +811,9 @@ function App() {
       exact: true
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings__WEBPACK_IMPORTED_MODULE_8__["default"], null))), /*#__PURE__*/React.createElement(Route, {
       path: "/settings/create-organisation"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_CreateOrganisation__WEBPACK_IMPORTED_MODULE_9__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_17__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_17__["default"].User.Status === "super-admin" ? /*#__PURE__*/React.createElement(_Pages_Settings_CreateOrganisation__WEBPACK_IMPORTED_MODULE_9__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
       path: "/settings/add-user"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Pages_Settings_AddUser__WEBPACK_IMPORTED_MODULE_10__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_AddUser__WEBPACK_IMPORTED_MODULE_10__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_17__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_17__["default"].User.Status === "super-admin" ? /*#__PURE__*/React.createElement(_Pages_Settings_AddUser__WEBPACK_IMPORTED_MODULE_10__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
       path: "/settings/view-organisations"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_20__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_15__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_ViewOrganisations__WEBPACK_IMPORTED_MODULE_11__["default"], null))), /*#__PURE__*/React.createElement(Route, {
       path: "/:id/view/:handle"
@@ -858,6 +858,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+var _JSON$parse6;
+
 const Authentication = {
   Login: function (url, email, password, type, setErrorMessage, setLoading) {
     setLoading(true);
@@ -928,6 +930,9 @@ const Authentication = {
 
     const organisation = localStorage.getItem("organisation") != null || localStorage.getItem("organisation") != undefined ? (_JSON$parse5 = JSON.parse(localStorage.getItem("organisation"))) === null || _JSON$parse5 === void 0 ? void 0 : _JSON$parse5.id : undefined;
     return organisation;
+  },
+  User: {
+    Status: (_JSON$parse6 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse6 === void 0 ? void 0 : _JSON$parse6.status
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Authentication);
@@ -1285,8 +1290,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ SideNav)
 /* harmony export */ });
+/* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Authentication/Auth */ "./src/Authentication/Auth.js");
 const Link = window.ReactRouterDOM.Link;
 const useParams = window.ReactRouterDOM.useParams;
+
 function SideNav(props) {
   var _props$links;
 
@@ -1301,23 +1308,25 @@ function SideNav(props) {
   }, /*#__PURE__*/React.createElement("nav", {
     className: "collapsed expand"
   }, props === null || props === void 0 ? void 0 : (_props$links = props.links) === null || _props$links === void 0 ? void 0 : _props$links.map((link, key) => {
-    var _useLocation;
-
     if (link.path.indexOf("reports") !== -1) {
       url = "/" + id + (link === null || link === void 0 ? void 0 : link.path);
     } else {
       url = link === null || link === void 0 ? void 0 : link.path;
     }
 
-    return /*#__PURE__*/React.createElement(Link, {
-      key: key,
-      className: "navItems" + (((_useLocation = useLocation()) === null || _useLocation === void 0 ? void 0 : _useLocation.pathname) === (link === null || link === void 0 ? void 0 : link.path) ? " --active" : ""),
-      to: url
-    }, link !== null && link !== void 0 && link.icon ? /*#__PURE__*/React.createElement("i", {
-      className: "dashboard-icons " + (link === null || link === void 0 ? void 0 : link.icon)
-    }) : null, " ", /*#__PURE__*/React.createElement("span", {
-      className: "hiddenCollapsed"
-    }, link === null || link === void 0 ? void 0 : link.name));
+    if ((link === null || link === void 0 ? void 0 : link.view.indexOf(_Authentication_Auth__WEBPACK_IMPORTED_MODULE_0__["default"].User.Status)) != -1) {
+      var _useLocation;
+
+      return /*#__PURE__*/React.createElement(Link, {
+        key: key,
+        className: "navItems" + (((_useLocation = useLocation()) === null || _useLocation === void 0 ? void 0 : _useLocation.pathname) === (link === null || link === void 0 ? void 0 : link.path) ? " --active" : ""),
+        to: url
+      }, link !== null && link !== void 0 && link.icon ? /*#__PURE__*/React.createElement("i", {
+        className: "dashboard-icons " + (link === null || link === void 0 ? void 0 : link.icon)
+      }) : null, " ", /*#__PURE__*/React.createElement("span", {
+        className: "hiddenCollapsed"
+      }, link === null || link === void 0 ? void 0 : link.name));
+    }
   }))));
 }
 
@@ -2921,13 +2930,16 @@ function AddUser() {
 
   const reportsLinks = [{
     name: "Add new User",
-    path: "/settings/add-user"
+    path: "/settings/add-user",
+    view: ["admin", "super-admin"]
   }, {
     name: "Create new Organisation",
-    path: "/settings/create-organisation"
+    path: "/settings/create-organisation",
+    view: ["admin", "super-admin"]
   }, {
     name: "View Organisations",
-    path: "/settings/view-organisations"
+    path: "/settings/view-organisations",
+    view: ["admin", "super-admin", "user", "manager"]
   }];
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_7__["default"], {
     links: reportsLinks
@@ -3025,13 +3037,16 @@ function AddUser() {
 
   const reportsLinks = [{
     name: "Add new User",
-    path: "/settings/add-user"
+    path: "/settings/add-user",
+    view: ["admin", "super-admin"]
   }, {
     name: "Create new Organisation",
-    path: "/settings/create-organisation"
+    path: "/settings/create-organisation",
+    view: ["admin", "super-admin"]
   }, {
     name: "View Organisations",
-    path: "/settings/view-organisations"
+    path: "/settings/view-organisations",
+    view: ["admin", "super-admin", "user", "manager"]
   }];
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_3__["default"], {
     links: reportsLinks
@@ -3094,14 +3109,22 @@ function ViewOrg() {
   }));
   const reportsLinks = [{
     name: "Add new User",
-    path: "/settings/add-user"
+    path: "/settings/add-user",
+    view: ["admin", "super-admin"]
   }, {
     name: "Create new Organisation",
-    path: "/settings/create-organisation"
+    path: "/settings/create-organisation",
+    view: ["admin", "super-admin"]
   }, {
     name: "View Organisations",
-    path: "/settings/view-organisations"
+    path: "/settings/view-organisations",
+    view: ["admin", "super-admin", "user", "manager"]
   }];
+
+  function editOrganisation(org) {
+    console.log("Edit: ", org);
+  }
+
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_5__["default"], {
     links: reportsLinks
   }), /*#__PURE__*/React.createElement("main", {
@@ -3110,10 +3133,16 @@ function ViewOrg() {
     className: "backLink",
     to: "/settings"
   }, "Back to settings"), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : data.map((d, key) => {
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", {
+    return /*#__PURE__*/React.createElement("article", {
       key: key,
       className: "widget"
-    }, d.name));
+    }, /*#__PURE__*/React.createElement("h2", null, d.name), _Authentication_Auth__WEBPACK_IMPORTED_MODULE_3__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_3__["default"].User.Status === "super-admin" ? /*#__PURE__*/React.createElement("button", {
+      className: "cta",
+      onClick: () => editOrganisation({
+        name: d.name,
+        id: d.id
+      })
+    }, "Edit") : null);
   })));
 }
 
@@ -3148,13 +3177,16 @@ function Settings(props) {
   } = useParams();
   const reportsLinks = [{
     name: "Add new User",
-    path: "/settings/add-user"
+    path: "/settings/add-user",
+    view: ["admin", "super-admin"]
   }, {
     name: "Create new Organisation",
-    path: "/settings/create-organisation"
+    path: "/settings/create-organisation",
+    view: ["admin", "super-admin"]
   }, {
     name: "View Organisations",
-    path: "/settings/view-organisations"
+    path: "/settings/view-organisations",
+    view: ["admin", "super-admin", "user", "manager"]
   }];
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
     links: reportsLinks

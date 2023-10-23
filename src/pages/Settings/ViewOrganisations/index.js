@@ -18,17 +18,24 @@ export default function ViewOrg() {
     const reportsLinks = [
         {
             name: "Add new User",
-            path: "/settings/add-user"
+            path: "/settings/add-user",
+            view: ["admin", "super-admin"]
         },
         {
             name: "Create new Organisation",
-            path: "/settings/create-organisation"
+            path: "/settings/create-organisation",
+            view: ["admin", "super-admin"]
         },
         {
             name: "View Organisations",
-            path: "/settings/view-organisations"
+            path: "/settings/view-organisations",
+            view: ["admin", "super-admin", "user", "manager"]
         }
     ]
+
+    function editOrganisation(org){
+        console.log("Edit: ", org);
+    }
 
     return (
         <>
@@ -39,9 +46,14 @@ export default function ViewOrg() {
                 {
                     (loading) ? <Loading /> : data.map((d, key) => {
                         return (
-                            <>
-                                <h2 key={key} className="widget">{ d.name }</h2>
-                            </>
+                            <article key={key} className="widget">
+                                <h2 >{ d.name }</h2>
+                                {
+                                    (Authentication.User.Status === "admin" || Authentication.User.Status === "super-admin") ? 
+                                        <button className="cta" onClick={() => editOrganisation({name: d.name, id: d.id})}>Edit</button>
+                                    : null
+                                }
+                            </article>
                         )
                     })
                 }

@@ -9,15 +9,18 @@ export default function Settings(props) {
     const reportsLinks = [
         {
             name: "Add new User",
-            path: "/settings/add-user"
+            path: "/settings/add-user",
+            view: ["admin", "super-admin"]
         },
         {
             name: "Create new Organisation",
-            path: "/settings/create-organisation"
+            path: "/settings/create-organisation",
+            view: ["admin", "super-admin"]
         },
         {
             name: "View Organisations",
-            path: "/settings/view-organisations"
+            path: "/settings/view-organisations",
+            view: ["admin", "super-admin", "user", "manager"]
         }
     ]
     return (
