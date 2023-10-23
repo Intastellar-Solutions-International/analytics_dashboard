@@ -126,7 +126,7 @@ export default function App() {
                                     </Route>
                                     <Route path="/settings/add-user">
                                         <ErrorBoundary>
-                                            {domainError ? <AddDomain /> : <AddUser />}
+                                            {domainError ? <AddUser /> : <AddUser />}
                                         </ErrorBoundary>
                                     </Route>
                                     <Route path="/settings/view-organisations">
