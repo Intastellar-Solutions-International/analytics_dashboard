@@ -1295,14 +1295,24 @@ function SideNav(props) {
     handle,
     id
   } = useParams();
+  let url = "";
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("aside", {
     className: "sidebar expand"
   }, /*#__PURE__*/React.createElement("nav", {
     className: "collapsed expand"
-  }, props === null || props === void 0 ? void 0 : (_props$links = props.links) === null || _props$links === void 0 ? void 0 : _props$links.map(link => {
+  }, props === null || props === void 0 ? void 0 : (_props$links = props.links) === null || _props$links === void 0 ? void 0 : _props$links.map((link, key) => {
+    var _useLocation;
+
+    if (link.path.indexOf("reports") !== -1) {
+      url = "/" + id + (link === null || link === void 0 ? void 0 : link.path);
+    } else {
+      url = link === null || link === void 0 ? void 0 : link.path;
+    }
+
     return /*#__PURE__*/React.createElement(Link, {
-      className: "navItems" + (useLocation().pathname === (link === null || link === void 0 ? void 0 : link.path) ? " --active" : ""),
-      to: "/" + id + (link === null || link === void 0 ? void 0 : link.path)
+      key: key,
+      className: "navItems" + (((_useLocation = useLocation()) === null || _useLocation === void 0 ? void 0 : _useLocation.pathname) === (link === null || link === void 0 ? void 0 : link.path) ? " --active" : ""),
+      to: url
     }, link !== null && link !== void 0 && link.icon ? /*#__PURE__*/React.createElement("i", {
       className: "dashboard-icons " + (link === null || link === void 0 ? void 0 : link.icon)
     }) : null, " ", /*#__PURE__*/React.createElement("span", {
@@ -2813,6 +2823,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Components/Header/SideNav */ "./src/Components/Header/SideNav.js");
 
+const useParams = window.ReactRouterDOM.useParams;
 const reportsLinks = [{
   name: "User Consents",
   path: "/reports/user-consents"
@@ -3080,6 +3091,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Settings)
 /* harmony export */ });
 /* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/Settings/Style.css");
+/* harmony import */ var _Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Components/Header/SideNav */ "./src/Components/Header/SideNav.js");
+
 
 const {
   useState,
@@ -3094,18 +3107,21 @@ function Settings(props) {
     handle,
     id
   } = useParams();
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("main", {
+  const reportsLinks = [{
+    name: "Add new User",
+    path: "/settings/add-user"
+  }, {
+    name: "Create new Organisation",
+    path: "/settings/create-organisation"
+  }, {
+    name: "View Organisations",
+    path: "/settings/view-organisations"
+  }];
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    links: reportsLinks
+  }), /*#__PURE__*/React.createElement("main", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("h1", null, "Settings"), /*#__PURE__*/React.createElement("nav", null, /*#__PURE__*/React.createElement(Link, {
-    className: "settingsNavItem",
-    to: "/settings/add-user"
-  }, "Add user"), /*#__PURE__*/React.createElement(Link, {
-    className: "settingsNavItem",
-    to: "/settings/create-organisation"
-  }, "Create Organisation"), /*#__PURE__*/React.createElement(Link, {
-    className: "settingsNavItem",
-    to: "/settings/view-organisations"
-  }, "View Organisations"))));
+  }, /*#__PURE__*/React.createElement("h1", null, "Settings")));
 }
 
 /***/ }),
