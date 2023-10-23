@@ -58,6 +58,7 @@ export default function App() {
                 setOrganisations(data);
             });
 
+
             if(id && API[id]?.getDomains?.url != undefined){
                 Fetch(API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers).then((data) => {
                     
@@ -77,10 +78,10 @@ export default function App() {
 
         }, []);
 
-        if(id === null){
+        if(id === null && organisations){
             return (
                 <>
-                    <PlatformSelector setId={setId} platforms={JSON.parse(localStorage.getItem("globals"))?.access?.type} />
+                    <PlatformSelector setId={setId} platforms={organisations} />
                     <BugReport />
                 </>
             )

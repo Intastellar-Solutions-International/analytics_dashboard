@@ -35,7 +35,6 @@ const Authentication = {
             }
 
             setLoading(false);
-            
             localStorage.setItem("organisation", response.organisation);
             localStorage.setItem("globals", JSON.stringify(response));
 
