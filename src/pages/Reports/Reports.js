@@ -1,4 +1,5 @@
 import SideNav from "../../Components/Header/SideNav";
+const useParams = window.ReactRouterDOM.useParams;
 
 export const reportsLinks = [
     {
