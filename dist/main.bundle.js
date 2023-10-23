@@ -1308,18 +1308,32 @@ function SideNav(props) {
   }, /*#__PURE__*/React.createElement("nav", {
     className: "collapsed expand"
   }, props === null || props === void 0 ? void 0 : (_props$links = props.links) === null || _props$links === void 0 ? void 0 : _props$links.map((link, key) => {
+    var _link$view;
+
     if (link.path.indexOf("reports") !== -1) {
       url = "/" + id + (link === null || link === void 0 ? void 0 : link.path);
     } else {
       url = link === null || link === void 0 ? void 0 : link.path;
     }
 
-    if ((link === null || link === void 0 ? void 0 : link.view.indexOf(_Authentication_Auth__WEBPACK_IMPORTED_MODULE_0__["default"].User.Status)) != -1) {
+    if ((link === null || link === void 0 ? void 0 : (_link$view = link.view) === null || _link$view === void 0 ? void 0 : _link$view.indexOf(_Authentication_Auth__WEBPACK_IMPORTED_MODULE_0__["default"].User.Status)) != -1) {
       var _useLocation;
 
       return /*#__PURE__*/React.createElement(Link, {
         key: key,
         className: "navItems" + (((_useLocation = useLocation()) === null || _useLocation === void 0 ? void 0 : _useLocation.pathname) === (link === null || link === void 0 ? void 0 : link.path) ? " --active" : ""),
+        to: url
+      }, link !== null && link !== void 0 && link.icon ? /*#__PURE__*/React.createElement("i", {
+        className: "dashboard-icons " + (link === null || link === void 0 ? void 0 : link.icon)
+      }) : null, " ", /*#__PURE__*/React.createElement("span", {
+        className: "hiddenCollapsed"
+      }, link === null || link === void 0 ? void 0 : link.name));
+    } else {
+      var _useLocation2;
+
+      return /*#__PURE__*/React.createElement(Link, {
+        key: key,
+        className: "navItems" + (((_useLocation2 = useLocation()) === null || _useLocation2 === void 0 ? void 0 : _useLocation2.pathname) === (link === null || link === void 0 ? void 0 : link.path) ? " --active" : ""),
         to: url
       }, link !== null && link !== void 0 && link.icon ? /*#__PURE__*/React.createElement("i", {
         className: "dashboard-icons " + (link === null || link === void 0 ? void 0 : link.icon)

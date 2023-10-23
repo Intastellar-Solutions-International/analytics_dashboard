@@ -17,7 +17,9 @@ export default function SideNav(props) {
                             url = link?.path;
                         }
 
-                        if(link?.view.indexOf(Authentication.User.Status) != -1){
+                        if(link?.view?.indexOf(Authentication.User.Status) != -1){
+                            return <Link key={key} className={"navItems" + (useLocation()?.pathname === link?.path ? " --active" : "")} to={url}>{link?.icon ? <i className={"dashboard-icons " + link?.icon}></i> : null} <span className="hiddenCollapsed">{link?.name}</span></Link>
+                        }else{
                             return <Link key={key} className={"navItems" + (useLocation()?.pathname === link?.path ? " --active" : "")} to={url}>{link?.icon ? <i className={"dashboard-icons " + link?.icon}></i> : null} <span className="hiddenCollapsed">{link?.name}</span></Link>
                         }
 
