@@ -158,6 +158,11 @@ export default function App() {
                                             <PlatformSelector setId={setId} platforms={JSON.parse(localStorage.getItem("globals"))?.access?.type} />
                                         </ErrorBoundary>
                                     </Route>
+                                    <Router path="/login" exact>
+                                        <ErrorBoundary>
+                                            <Login />
+                                        </ErrorBoundary>
+                                    </Router>
                                     <Redirect to="/login" />
                                 </Switch>
                             </div>
@@ -169,11 +174,7 @@ export default function App() {
     } else if(!localStorage.getItem("globals") || window.location.pathname === "/login") {
         
         return (
-            <Router path="/login" exact>
-                <ErrorBoundary>
-                    <Login />
-                </ErrorBoundary>
-            </Router>
+            <Login />
         )
     }
 }
