@@ -18,7 +18,7 @@ export default function Header(props) {
     let domainList = null;
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
     const navigate = useHistory();
-    const [data, setData] = useState(null);
+    const [allOrganisations, setallOrganisations] = useState(null);
     const [domains, setDomains] = useState(props.domains);
     const [viewUserProfile, setViewUserProfile] = useState(false);
     const Platform = (localStorage.getItem("platform") == "gdpr") ? "Platform: GDPR Cookiebanner" : "Platform: Ferry Booking";
@@ -36,7 +36,8 @@ export default function Header(props) {
             if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
-            setData(data);
+
+            setallOrganisations(data);
         });
 
         Fetch(API[window.location.pathname.split("/")[1]]?.getDomains?.url, API[window.location.pathname.split("/")[1]]?.getDomains?.method, API[window.location.pathname.split("/")[1]]?.getDomains?.headers).then((data) => {
@@ -74,6 +75,8 @@ export default function Header(props) {
         return punycode.toUnicode(d.domain)
     })
 
+    console.log(allOrganisations, Organisation);
+
     return (
         <>
             <header className="dashboard-header">
@@ -83,13 +86,13 @@ export default function Header(props) {
                         {Platform}
                     </section>
                     <section style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
-                    {(data && Organisation) ? 
+                    {(allOrganisations && Organisation) ? 
                         <Select defaultValue={Organisation}
                             onChange={(e) => { 
                                 setOrganisation(e);
                                 localStorage.setItem("organisation", e);
                                 window.location.reload();}}
-                            items={data}
+                            items={allOrganisations}
                             style={{right: "0"}}
                         />: null
                     }
