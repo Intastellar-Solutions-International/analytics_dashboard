@@ -1240,21 +1240,21 @@ function Nav() {
     onClick: () => Expand()
   }), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname.indexOf("/dashboard") > -1 ? " --active" : ""),
-    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type["gdpr"].uri + "/dashboard"
+    to: "/" + localStorage.getItem("platform") + "/dashboard"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons home"
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Home")), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname.indexOf("/reports") > -1 ? " --active" : ""),
-    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type["gdpr"].uri + "/reports"
+    to: "/" + localStorage.getItem("platform") + "/reports"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons reports"
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Reports")), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname === "/domains" ? " --active" : ""),
-    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type["gdpr"].uri + "/domains"
+    to: "/" + localStorage.getItem("platform") + "/domains"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons domains"
   }), " ", /*#__PURE__*/React.createElement("span", {
