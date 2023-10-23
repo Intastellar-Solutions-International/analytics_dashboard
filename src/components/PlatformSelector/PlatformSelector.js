@@ -2,10 +2,31 @@ import Select from "../SelectInput/Selector"
 import "./PlatformSelector.css";
 import logo from "../Header/logo.png";
 export default function PlatformSelector(props) {
-
     const items = Object.keys(props?.platforms).map((platform) => {
-        return props?.platforms[platform]
-    })
+        return props?.platforms[platform];
+    }).filter((company) => {
+        return company.name === JSON.parse(localStorage.getItem("organisation")).name
+    }).map((platform) => {
+        return {
+            type: platform.access.type,
+            uri: platform.access.uri
+        }
+    }).map((platform) => {
+        const type = platform.type.split(",").map((type) => {
+            return type.trim();
+        })
+        const uri = platform.uri.split(",").map((uri) => {
+            return uri.trim();
+        })
+        return type.map((type, key) => {
+            return {
+                type: type,
+                uri: uri[key]
+            }
+        })
+    }).reduce((acc, val) => acc.concat(val), []).map((item) => {
+        return item;
+    });
 
     return <>
         <div className="platform grid">
