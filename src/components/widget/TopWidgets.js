@@ -31,11 +31,7 @@ export default function TopWidgets(props) {
                         <Widget overviewTotal={ true } totalNumber={ data?.Total.toLocaleString("de-DE") } type="Website" />
                     </ErrorBoundary>
                 }
-                {(loading) ? <Loading /> : <ErrorBoundary>
-                    <Doughnut
-                data={data}
-                />
-                </ErrorBoundary> }
+                {(loading) ? <Loading /> : <ErrorBoundary><Widget totalNumber={ data?.JS.toLocaleString("de-DE") + "%" } type="JavaScript" /></ErrorBoundary> }
                 {(loading) ? <Loading /> : <ErrorBoundary><Widget totalNumber={ data?.WP.toLocaleString("de-DE") + "%" } type="WordPress" /></ErrorBoundary> }
             </div>
         </>
