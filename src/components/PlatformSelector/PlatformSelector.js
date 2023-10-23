@@ -2,6 +2,7 @@ import Select from "../SelectInput/Selector"
 import "./PlatformSelector.css";
 import logo from "../Header/logo.png";
 export default function PlatformSelector(props) {
+
     const items = Object.keys(props?.platforms).map((platform) => {
         return props?.platforms[platform]
     })

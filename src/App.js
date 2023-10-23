@@ -44,7 +44,6 @@ export default function App() {
     const [id, setId] = useState((localStorage.getItem("platform")) ? localStorage.getItem("platform") : null);
     if (localStorage.getItem("globals") && JSON.parse(localStorage.getItem("globals"))?.token != undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
         /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
-
         useEffect(() => {
             Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
                 organisationMember: Authentication.getUserId()
