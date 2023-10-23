@@ -732,7 +732,7 @@ function App() {
   const [id, setId] = useState(localStorage.getItem("platform") ? localStorage.getItem("platform") : null);
 
   if (localStorage.getItem("globals") && ((_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.token) != undefined || (_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) !== null && _JSON$parse2 !== void 0 && _JSON$parse2.status) {
-    var _JSON$parse4, _JSON$parse4$profile, _JSON$parse4$profile$, _JSON$parse5, _JSON$parse5$access;
+    var _JSON$parse3, _JSON$parse3$profile, _JSON$parse3$profile$, _JSON$parse4, _JSON$parse4$access;
 
     /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
     useEffect(() => {
@@ -771,12 +771,10 @@ function App() {
       }
     }, []);
 
-    if (id === null) {
-      var _JSON$parse3, _JSON$parse3$access;
-
+    if (id === null && organisations) {
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_24__["default"], {
         setId: setId,
-        platforms: (_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$access = _JSON$parse3.access) === null || _JSON$parse3$access === void 0 ? void 0 : _JSON$parse3$access.type
+        platforms: organisations
       }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_23__["default"], null));
     }
 
@@ -802,7 +800,7 @@ function App() {
         backgroundColor: "rgb(218, 218, 218)",
         color: "#626262"
       }
-    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : (_JSON$parse4$profile = _JSON$parse4.profile) === null || _JSON$parse4$profile === void 0 ? void 0 : (_JSON$parse4$profile$ = _JSON$parse4$profile.name) === null || _JSON$parse4$profile$ === void 0 ? void 0 : _JSON$parse4$profile$.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_21__["default"], null, id == "gdpr" ? /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$profile = _JSON$parse3.profile) === null || _JSON$parse3$profile === void 0 ? void 0 : (_JSON$parse3$profile$ = _JSON$parse3$profile.name) === null || _JSON$parse3$profile$ === void 0 ? void 0 : _JSON$parse3$profile$.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_21__["default"], null, id == "gdpr" ? /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
       dashboardView: dashboardView,
       setDashboardView: setDashboardView
     }) : /*#__PURE__*/React.createElement(_Pages_Dashboard_ferry_Dashboard_js__WEBPACK_IMPORTED_MODULE_7__["default"], null)))), /*#__PURE__*/React.createElement(Route, {
@@ -836,7 +834,7 @@ function App() {
       path: "/dashboard"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_21__["default"], null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_24__["default"], {
       setId: setId,
-      platforms: (_JSON$parse5 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse5 === void 0 ? void 0 : (_JSON$parse5$access = _JSON$parse5.access) === null || _JSON$parse5$access === void 0 ? void 0 : _JSON$parse5$access.type
+      platforms: (_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : (_JSON$parse4$access = _JSON$parse4.access) === null || _JSON$parse4$access === void 0 ? void 0 : _JSON$parse4$access.type
     }))), /*#__PURE__*/React.createElement(Router, {
       path: "/login",
       exact: true
@@ -1242,21 +1240,21 @@ function Nav() {
     onClick: () => Expand()
   }), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname.indexOf("/dashboard") > -1 ? " --active" : ""),
-    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type["gdpr"].uri + "/dashboard"
+    to: "/dashboard"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons home"
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Home")), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname.indexOf("/reports") > -1 ? " --active" : ""),
-    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type["gdpr"].uri + "/reports"
+    to: "/reports"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons reports"
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Reports")), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname === "/domains" ? " --active" : ""),
-    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type["gdpr"].uri + "/domains"
+    to: "/domains"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons domains"
   }), " ", /*#__PURE__*/React.createElement("span", {
@@ -1395,7 +1393,7 @@ function Header(props) {
   let domainList = null;
   const Name = ((_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse2 === void 0 ? void 0 : (_JSON$parse2$profile = _JSON$parse2.profile) === null || _JSON$parse2$profile === void 0 ? void 0 : (_JSON$parse2$profile$ = _JSON$parse2$profile.name) === null || _JSON$parse2$profile$ === void 0 ? void 0 : _JSON$parse2$profile$.first_name) + " " + ((_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$profile = _JSON$parse3.profile) === null || _JSON$parse3$profile === void 0 ? void 0 : (_JSON$parse3$profile$ = _JSON$parse3$profile.name) === null || _JSON$parse3$profile$ === void 0 ? void 0 : _JSON$parse3$profile$.last_name);
   const navigate = useHistory();
-  const [data, setData] = useState(null);
+  const [allOrganisations, setallOrganisations] = useState(null);
   const [domains, setDomains] = useState(props.domains);
   const [viewUserProfile, setViewUserProfile] = useState(false);
   const Platform = localStorage.getItem("platform") == "gdpr" ? "Platform: GDPR Cookiebanner" : "Platform: Ferry Booking";
@@ -1415,7 +1413,7 @@ function Header(props) {
         JSON.parse(localStorage.getItem("globals")).organisation = data;
       }
 
-      setData(data);
+      setallOrganisations(data);
     });
     (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_3__["default"])((_API$window$location$ = _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]]) === null || _API$window$location$ === void 0 ? void 0 : (_API$window$location$2 = _API$window$location$.getDomains) === null || _API$window$location$2 === void 0 ? void 0 : _API$window$location$2.url, (_API$window$location$3 = _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]]) === null || _API$window$location$3 === void 0 ? void 0 : (_API$window$location$4 = _API$window$location$3.getDomains) === null || _API$window$location$4 === void 0 ? void 0 : _API$window$location$4.method, (_API$window$location$5 = _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]]) === null || _API$window$location$5 === void 0 ? void 0 : (_API$window$location$6 = _API$window$location$5.getDomains) === null || _API$window$location$6 === void 0 ? void 0 : _API$window$location$6.headers).then(data => {
       if (data === "Err_Login_Expired") {
@@ -1448,6 +1446,7 @@ function Header(props) {
   domainList = domains === null || domains === void 0 ? void 0 : domains.map(d => {
     return punycode.toUnicode(d.domain);
   });
+  console.log(allOrganisations, Organisation);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("header", {
     className: "dashboard-header"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1467,14 +1466,14 @@ function Header(props) {
       justifyContent: "center",
       alignItems: "center"
     }
-  }, data && Organisation ? /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, allOrganisations && Organisation ? /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_7__["default"], {
     defaultValue: Organisation,
     onChange: e => {
       setOrganisation(e);
       localStorage.setItem("organisation", e);
       window.location.reload();
     },
-    items: data,
+    items: allOrganisations,
     style: {
       right: "0"
     }
@@ -1972,7 +1971,26 @@ __webpack_require__.r(__webpack_exports__);
 function PlatformSelector(props) {
   const items = Object.keys(props === null || props === void 0 ? void 0 : props.platforms).map(platform => {
     return props === null || props === void 0 ? void 0 : props.platforms[platform];
+  }).filter(company => {
+    return company.name === JSON.parse(localStorage.getItem("organisation")).name;
+  }).map(platform => {
+    return {
+      type: platform.access.type,
+      uri: platform.access.uri
+    };
+  }).map(platform => {
+    const type = platform.type.split(",").map(type => {
+      return type.trim();
+    });
+    const uri = platform.uri.split(",").map(uri => {
+      return uri.trim();
+    });
+    return {
+      type: type,
+      uri: uri
+    };
   });
+  console.log(items);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "platform grid"
   }, /*#__PURE__*/React.createElement("img", {
