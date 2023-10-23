@@ -3,6 +3,7 @@ import useFetch from "../../../Functions/FetchHook";
 import API from "../../../API/api";
 import Authentication from "../../../Authentication/Auth";
 import {Loading, CurrentPageLoading} from "../../../Components/widget/Loading";
+import SideNav from "../../../Components/Header/SideNav";
 const { useState, useEffect, useRef } = React;
 const Link = window.ReactRouterDOM.Link;
 const useParams = window.ReactRouterDOM.useParams;
@@ -14,8 +15,24 @@ export default function ViewOrg() {
         organisationMember: Authentication.getUserId()
     }))
     
+    const reportsLinks = [
+        {
+            name: "Add new User",
+            path: "/settings/add-user"
+        },
+        {
+            name: "Create new Organisation",
+            path: "/settings/create-organisation"
+        },
+        {
+            name: "View Organisations",
+            path: "/settings/view-organisations"
+        }
+    ]
+
     return (
         <>
+            <SideNav links={reportsLinks} />
             <main className="dashboard-content">
                 <h1>My Organisation</h1>
                 <Link className="backLink" to="/settings">Back to settings</Link>

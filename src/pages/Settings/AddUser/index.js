@@ -5,6 +5,7 @@ import API from "../../../API/api";
 import Text from "../../../Components/InputFields/textInput";
 import Email from "../../../Components/InputFields/EmailInput";
 import SuccessWindow from "../../../Components/SuccessWindow";
+import SideNav from "../../../Components/Header/SideNav";
 const Link = window.ReactRouterDOM.Link;
 const { useState, useEffect, useRef, useContext } = React;
 export default function AddUser() {
@@ -57,8 +58,24 @@ export default function AddUser() {
         )
     };
 
+    const reportsLinks = [
+        {
+            name: "Add new User",
+            path: "/settings/add-user"
+        },
+        {
+            name: "Create new Organisation",
+            path: "/settings/create-organisation"
+        },
+        {
+            name: "View Organisations",
+            path: "/settings/view-organisations"
+        }
+    ]
+
     return (
         <>
+            <SideNav links={reportsLinks} />
             <main className="dashboard-content">
                 <h1>Add user for { JSON.parse(Organisation).name }</h1>
                 <Link className="backLink" to="/settings">Back to settings</Link>

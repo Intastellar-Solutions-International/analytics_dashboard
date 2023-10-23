@@ -167,7 +167,7 @@ export default function App() {
                 </Router>
             </>
         )
-    } else if(!localStorage.getItem("globals")) {
+    } else if(!localStorage.getItem("globals") || window.location.pathname === "/login") {
         
         return (
             <Router path="/login" exact>
