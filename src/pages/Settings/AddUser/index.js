@@ -55,11 +55,11 @@ export default function AddUser() {
             }
         )
     };
-
+    
     return (
         <>
             <main className="dashboard-content">
-                <h1>Add user for { Organisation?.name }</h1>
+                <h1>Add user for { JSON.parse(Organisation).name }</h1>
                 <Link className="backLink" to="/settings">Back to settings</Link>
                 <SuccessWindow style={style} message={status} />
                 <form onSubmit={addUser}>
@@ -74,7 +74,7 @@ export default function AddUser() {
                     </select>
                     <label for="organisation">Organisation</label>
                     <select id="organisation" name="organisation" onChange={(e) => setOrganisationId(e.target.value)}>
-                        <option value={Organisation?.id}>{Organisation?.name}</option>
+                        <option value={JSON.parse(Organisation).id}>{JSON.parse(Organisation).name}</option>
                     </select>
                     <button>Add user</button>
                 </form>
