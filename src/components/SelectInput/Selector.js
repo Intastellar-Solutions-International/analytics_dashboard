@@ -41,7 +41,7 @@ export default function Select(props){
                                     return <>
                                         <li onClick={() => props.onChange(JSON.stringify({ id: item.id, name: item.name }))} key={item.id}>{item.name}</li>
                                     </> 
-                                }else if(typeof item === "object"){
+                                }else if(typeof item === "object" && item?.uri){
                                     return <>
                                         <li onClick={() => props.onChange(
                                             JSON.stringify(
@@ -51,6 +51,10 @@ export default function Select(props){
                                                 }
                                             )
                                         )} key={item.uri}>{item.type}</li>
+                                    </> 
+                                }else if(typeof item === "object"){
+                                    return <>
+                                        <li onClick={() => props.onChange(JSON.stringify({ id: item.id, name: item.name }))} key={item.id}>{item.name}</li>
                                     </> 
                                 }else {
                                     return <>
