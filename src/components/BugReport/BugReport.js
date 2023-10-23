@@ -3,6 +3,7 @@ import "./BugReport.css";
 import API from "../../API/api";
 export default function BugReport(){
     const [isOpen, setIsOpen] = useState(false);
+    const [statusMessage, setStatusMessage] = useState(null);
 
     function openMenu(){
         setIsOpen(!isOpen);
@@ -32,6 +33,12 @@ export default function BugReport(){
             }),
             headers: API.github.createIssue.headers 
         }).then(res => res.json()).then(data => {
+            if(data.message != "Not Found"){
+                setIsOpen(false);
+                setStatusMessage("Thank you for your feedback. We will try to fix the problem as soon as possible.")
+            }else{
+                setStatusMessage("An error occured. Please try again later.");
+            }
             console.log(data);
         })
     }
@@ -49,7 +56,7 @@ export default function BugReport(){
                     <h2>Feedback</h2>
                 </div>
                 <div className="bug-menu-body">
-                    <p>Thank you for your feedback. We will try to fix the problem as soon as possible.</p>
+                    {(statusMessage == null) ? "" : <p>{statusMessage}</p>}
                     <form className="bugSubmitForm" onSubmit={sendFeedback}>
                         <label>Title:</label>
                         <input className="bugReport-input --feedbackTitle" type="text" placeholder="Title" />
