@@ -21,7 +21,6 @@ export default function ViewOrg() {
                 <Link className="backLink" to="/settings">Back to settings</Link>
                 {
                     (loading) ? <Loading /> : data.map((d, key) => {
-                        d = JSON.parse(d);
                         return (
                             <>
                                 <h2 key={key} className="widget">{ d.name }</h2>
