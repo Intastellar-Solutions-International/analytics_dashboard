@@ -1,3 +1,4 @@
+import "./Style/Style.css";
 import { OrganisationContext } from "../../../App";
 import Fetch from "../../../Functions/fetch";
 import API from "../../../API/api";
@@ -55,7 +56,7 @@ export default function AddUser() {
             }
         )
     };
-    
+
     return (
         <>
             <main className="dashboard-content">
@@ -68,15 +69,15 @@ export default function AddUser() {
                     <label for="email">Email</label>
                     <Email onChange={(e) => setUserMail(e.target.value)} />
                     <label for="role">Role</label>
-                    <select id="role" name="role" onChange={(e) => setUserRole(e.target.value)}>
+                    <select id="role" className="intInput" name="role" onChange={(e) => setUserRole(e.target.value)}>
                         <option>Admin</option>
-                        <option>Manager</option>
+                        <option selected>Manager</option>
                     </select>
                     <label for="organisation">Organisation</label>
-                    <select id="organisation" name="organisation" onChange={(e) => setOrganisationId(e.target.value)}>
+                    <select id="organisation" className="intInput" disabled name="organisation" onChange={(e) => setOrganisationId(e.target.value)}>
                         <option value={JSON.parse(Organisation).id}>{JSON.parse(Organisation).name}</option>
                     </select>
-                    <button>Add user</button>
+                    <button className="cta">Add user</button>
                 </form>
             </main>
         </>
