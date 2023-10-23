@@ -3060,7 +3060,6 @@ function ViewOrg() {
     className: "backLink",
     to: "/settings"
   }, "Back to settings"), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : data.map((d, key) => {
-    d = JSON.parse(d);
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", {
       key: key,
       className: "widget"
