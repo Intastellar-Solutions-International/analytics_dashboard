@@ -12,6 +12,7 @@ const Redirect = window.ReactRouterDOM.Redirect;
 const punycode = require("punycode");
 
 import Dashboard from "./Pages/Dashboard/Dashboard.js";
+import FerryDashboard from "./Pages/Dashboard/ferry/Dashboard.js";
 import Websites from "./Pages/Domains/index.js";
 import Settings from "./Pages/Settings";
 import CreateOrganisation from "./Pages/Settings/CreateOrganisation";
@@ -98,15 +99,17 @@ export default function App() {
                                 <Nav />
                                 <Switch>
                                     <Route path="/:id/dashboard" exact>
-                                        <ErrorBoundary>
-                                            <div style={{flex:"1"}}>
-                                                <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
-                                                    <h1>Welcome, {JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name}</h1>
-                                                    <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
-                                                </section>
-                                                {domainError ? <AddDomain /> : <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} />}
-                                            </div>
-                                        </ErrorBoundary>
+                                        <div style={{flex:"1"}}>
+                                            <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
+                                                <h1>Welcome, {JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name}</h1>
+                                                <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
+                                            </section>
+                                            {domainError ? <AddDomain /> : 
+                                            <ErrorBoundary>
+                                                {(id == "gdpr") ? <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} /> : <FerryDashboard />}
+                                            </ErrorBoundary>
+                                            }
+                                        </div>
                                     </Route>
                                     <Route path="/:id/domains" exact>
                                         <ErrorBoundary>
