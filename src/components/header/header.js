@@ -21,7 +21,7 @@ export default function Header(props) {
     const [data, setData] = useState(null);
     const [domains, setDomains] = useState(props.domains);
     const [viewUserProfile, setViewUserProfile] = useState(false);
-
+    const Platform = (localStorage.getItem("platform") == "gdpr") ? "Platform: GDPR Cookiebanner" : "Platform: Ferry Booking";
     useEffect(() => {
 
         Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
@@ -78,9 +78,12 @@ export default function Header(props) {
         <>
             <header className="dashboard-header">
                 <div className="dashboard-profile">
-                    <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
-                    <section style={{display: "flex"}}>
-                    {(data && Organisation) ?
+                    <section style={{display:"flex", alignItems:"center"}}>
+                        <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
+                        {Platform}
+                    </section>
+                    <section style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+                    {(data && Organisation) ? 
                         <Select defaultValue={Organisation}
                             onChange={(e) => { 
                                 setOrganisation(e);
@@ -88,7 +91,7 @@ export default function Header(props) {
                                 window.location.reload();}}
                             items={data}
                             style={{right: "0"}}
-                        /> : null
+                        />: null
                     }
                     <i className="arrowRight"></i>
                     {(domains && currentDomain) ?

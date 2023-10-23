@@ -14,7 +14,8 @@
 }
 
 .dashboard-profile {
-    display: flex;
+    display: grid;
+    grid-template-columns: 436px 1fr 50px;
     align-items: center;
     justify-content: space-between;
     width: 100%;
@@ -50,8 +51,8 @@
 .dashboard-logo {
     filter: invert(100);
     margin-right: 10px;
-    padding: 32px;
-    height: 88px;
+    padding: 20px;
+    height: 66px;
     text-align: left;
     object-fit: contain;
     object-position: 0;
