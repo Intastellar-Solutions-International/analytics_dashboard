@@ -1240,21 +1240,21 @@ function Nav() {
     onClick: () => Expand()
   }), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname.indexOf("/dashboard") > -1 ? " --active" : ""),
-    to: "/dashboard"
+    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type["gdpr"].uri + "/dashboard"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons home"
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Home")), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname.indexOf("/reports") > -1 ? " --active" : ""),
-    to: "/reports"
+    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type["gdpr"].uri + "/reports"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons reports"
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Reports")), /*#__PURE__*/React.createElement(Link, {
     className: "navItems" + (useLocation().pathname === "/domains" ? " --active" : ""),
-    to: "/domains"
+    to: "/" + JSON.parse(localStorage.getItem("globals")).access.type["gdpr"].uri + "/domains"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons domains"
   }), " ", /*#__PURE__*/React.createElement("span", {
@@ -1985,12 +1985,15 @@ function PlatformSelector(props) {
     const uri = platform.uri.split(",").map(uri => {
       return uri.trim();
     });
-    return {
-      type: type,
-      uri: uri
-    };
+    return type.map((type, key) => {
+      return {
+        type: type,
+        uri: uri[key]
+      };
+    });
+  }).reduce((acc, val) => acc.concat(val), []).map(item => {
+    return item;
   });
-  console.log(items);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "platform grid"
   }, /*#__PURE__*/React.createElement("img", {
