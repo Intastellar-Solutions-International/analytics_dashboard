@@ -1761,7 +1761,7 @@ const {
 } = window.React;
 const Link = window.ReactRouterDOM.Link;
 function Account(props) {
-  var _JSON$parse, _JSON$parse2;
+  var _JSON$parse;
 
   function clickOutSide(e) {
     if (e.target.className !== "user_content" || e.target.className !== "content-img") {
@@ -2078,22 +2078,6 @@ function Account(props) {
     src: "https://www.intastellarsolutions.com/assets/icons/fav/favicon-96x96.png",
     className: "logo-icon"
   }), "Manage Your Intastellar Account")))), /*#__PURE__*/React.createElement("div", {
-    className: "dropdown-links"
-  }, Object.keys((_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse2 === void 0 ? void 0 : _JSON$parse2.access.type).map(function (key, index) {
-    var _JSON$parse3, _JSON$parse4;
-
-    const uri = (_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : _JSON$parse3.access.type[key].uri;
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("a", {
-      key: index,
-      href: "/" + uri + "/dashboard",
-      className: "dropdown-link",
-      onClick: () => {
-        localStorage.setItem("platform", uri);
-      }
-    }, /*#__PURE__*/React.createElement("div", {
-      className: "dropdown-link-text"
-    }, (_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : _JSON$parse4.access.type[key].type)));
-  })), /*#__PURE__*/React.createElement("div", {
     className: "sign_out_btn_container"
   }, /*#__PURE__*/React.createElement("button", {
     className: "sign_out_btn",
@@ -2147,9 +2131,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SelectInput_Selector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../SelectInput/Selector */ "./src/Components/SelectInput/Selector.js");
 /* harmony import */ var _PlatformSelector_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlatformSelector.css */ "./src/Components/PlatformSelector/PlatformSelector.css");
 /* harmony import */ var _Header_logo_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Header/logo.png */ "./src/Components/Header/logo.png");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../App */ "./src/App.js");
 
 
 
+
+const {
+  useState,
+  useEffect,
+  useContext
+} = React;
 function PlatformSelector(props) {
   var _Object$keys$map$filt, _Object$keys$map$filt2;
 
@@ -2186,7 +2177,15 @@ function PlatformSelector(props) {
     className: "platform-select-logo",
     src: _Header_logo_png__WEBPACK_IMPORTED_MODULE_2__["default"],
     alt: "Intastellar Solutions Logo"
-  }), /*#__PURE__*/React.createElement("h1", null, "Please Select a Platform that you want to view data for:"), /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_0__["default"], {
+  }), /*#__PURE__*/React.createElement("h1", null, "Please Select a Platform that you want to view data for:"), items.length === 1 && items.indexOf(undefined) > -1 ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, "You don\xB4t have access to any platforms yet, please contact your administrator."), /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    defaultValue: "Choose another Organisation",
+    key: "",
+    items: props === null || props === void 0 ? void 0 : props.platforms,
+    onChange: e => {
+      localStorage.setItem("organisation", JSON.stringify(JSON.parse(e)));
+      window.location.reload();
+    }
+  })) : /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_0__["default"], {
     style: {
       left: "0",
       fontSize: "16px"
