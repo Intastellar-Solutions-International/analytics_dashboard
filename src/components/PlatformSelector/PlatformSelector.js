@@ -6,25 +6,25 @@ export default function PlatformSelector(props) {
         return props?.platforms[platform];
     }).filter((company) => {
         return company.name === JSON.parse(localStorage.getItem("organisation")).name
-    }).map((platform) => {
+    })?.map((platform) => {
         return {
             type: platform.access.type,
             uri: platform.access.uri
         }
     }).map((platform) => {
-        const type = platform.type.split(",").map((type) => {
+        const type = platform?.type?.split(",")?.map((type) => {
             return type.trim();
         })
-        const uri = platform.uri.split(",").map((uri) => {
+        const uri = platform?.uri?.split(",")?.map((uri) => {
             return uri.trim();
         })
-        return type.map((type, key) => {
+        return type?.map((type, key) => {
             return {
                 type: type,
                 uri: uri[key]
             }
         })
-    }).reduce((acc, val) => acc.concat(val), []).map((item) => {
+    }).reduce((acc, val) => acc.concat(val), [])?.map((item) => {
         return item;
     });
 
