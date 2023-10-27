@@ -13,11 +13,11 @@ export default function AddDomain(){
         <>
             <div className="dashboard-content">
                 <h2>Add domain</h2>
-                <p>Here you can add a domain to your organisation.</p>
+                <p>Here you can add a domain to your organisation, for any website your Organisation is using the Intastellar Cookie Consents Solutions</p>
                 <p>After adding a domain you can implement the GDPR cookiebanner on your website.</p>
                 <div className='grid'>
                     <section>
-                        <Textfield placeholder="Add domain" type={"url"} onChange={
+                        <Textfield placeholder="Add your root domain" type={"url"} onChange={
                             (e) => {
                                 if(e.target.value.length > 0 && e.target.value.match(domainRegex)){
                                     setDisabled(false);

@@ -986,10 +986,10 @@ function AddDomain() {
   const domainRegex = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("h2", null, "Add domain"), /*#__PURE__*/React.createElement("p", null, "Here you can add a domain to your organisation."), /*#__PURE__*/React.createElement("p", null, "After adding a domain you can implement the GDPR cookiebanner on your website."), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h2", null, "Add domain"), /*#__PURE__*/React.createElement("p", null, "Here you can add a domain to your organisation, for any website your Organisation is using the Intastellar Cookie Consents Solutions"), /*#__PURE__*/React.createElement("p", null, "After adding a domain you can implement the GDPR cookiebanner on your website."), /*#__PURE__*/React.createElement("div", {
     className: "grid"
   }, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement(_InputFields_textInput__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    placeholder: "Add domain",
+    placeholder: "Add your root domain",
     type: "url",
     onChange: e => {
       if (e.target.value.length > 0 && e.target.value.match(domainRegex)) {
