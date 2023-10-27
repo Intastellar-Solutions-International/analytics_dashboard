@@ -50,7 +50,6 @@ export default function Header(props) {
             if(data.error === "Err_No_Domains") {
                 
             }else{
-                console.log(data);
                 data.unshift({domain: "all", installed: null, lastedVisited: null});
                 data?.map((d) => {
                     return  punycode.toUnicode(d.domain);
@@ -75,8 +74,6 @@ export default function Header(props) {
     domainList = domains?.map((d) => {
         return punycode.toUnicode(d.domain)
     })
-
-    console.log(domains);
 
     return (
         <>

@@ -738,7 +738,6 @@ function App() {
   const [domains, setDomains] = useState(null);
   const [domainError, setDomainError] = useState(false);
   const [id, setId] = useState(localStorage.getItem("platform") ? localStorage.getItem("platform") : null);
-  console.log(localStorage.getItem("globals"));
 
   if (localStorage.getItem("globals") != null) {
     var _JSON$parse, _JSON$parse$profile, _JSON$parse$profile$n, _JSON$parse2, _JSON$parse2$access;
@@ -858,7 +857,6 @@ function App() {
       to: "/login"
     })))))));
   } else {
-    console.log("No globals");
     return /*#__PURE__*/React.createElement(_Login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], null);
   }
 }
@@ -1487,6 +1485,44 @@ function SideNav(props) {
 
 /***/ }),
 
+/***/ "./src/Components/Header/SideNavLinks/index.js":
+/*!*****************************************************!*\
+  !*** ./src/Components/Header/SideNavLinks/index.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "reportsLinks": () => (/* binding */ reportsLinks)
+/* harmony export */ });
+const reportsLinks = [{
+  name: "Add new User",
+  path: "/settings/add-user",
+  view: ["admin", "super-admin"]
+}, {
+  name: "View Users",
+  path: "/settings/view-users",
+  view: ["admin", "super-admin", "manager"]
+}, {
+  name: "Create new Organisation",
+  path: "/settings/create-organisation",
+  view: ["admin", "super-admin"]
+}, {
+  name: "View Organisations",
+  path: "/settings/view-organisations",
+  view: ["admin", "super-admin", "user", "manager"]
+}, {
+  name: "Add new Domain",
+  path: "/settings/add-domain",
+  view: ["admin", "super-admin", "manager"]
+}, {
+  name: "View Domains",
+  path: "/settings/view-domains",
+  view: ["admin", "super-admin", "manager"]
+}];
+
+/***/ }),
+
 /***/ "./src/Components/Header/header.js":
 /*!*****************************************!*\
   !*** ./src/Components/Header/header.js ***!
@@ -1564,7 +1600,6 @@ function Header(props) {
       }
 
       if (data.error === "Err_No_Domains") {} else {
-        console.log(data);
         data.unshift({
           domain: "all",
           installed: null,
@@ -1588,7 +1623,6 @@ function Header(props) {
   domainList = domains === null || domains === void 0 ? void 0 : domains.map(d => {
     return punycode.toUnicode(d.domain);
   });
-  console.log(domains);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("header", {
     className: "dashboard-header"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3072,24 +3106,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../Components/AddDomain/AddDomain */ "./src/Components/AddDomain/AddDomain.js");
 /* harmony import */ var _Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Components/Header/SideNav */ "./src/Components/Header/SideNav.js");
+/* harmony import */ var _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Components/Header/SideNavLinks */ "./src/Components/Header/SideNavLinks/index.js");
+
 
 
 function SettingsAddDomain() {
-  const reportsLinks = [{
-    name: "Add new User",
-    path: "/settings/add-user",
-    view: ["admin", "super-admin"]
-  }, {
-    name: "Create new Organisation",
-    path: "/settings/create-organisation",
-    view: ["admin", "super-admin"]
-  }, {
-    name: "View Organisations",
-    path: "/settings/view-organisations",
-    view: ["admin", "super-admin", "user", "manager"]
-  }];
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    links: reportsLinks
+    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_2__.reportsLinks
   }), /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_0__["default"], null));
 }
 
@@ -3113,6 +3136,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_InputFields_EmailInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../Components/InputFields/EmailInput */ "./src/Components/InputFields/EmailInput.js");
 /* harmony import */ var _Components_SuccessWindow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../Components/SuccessWindow */ "./src/Components/SuccessWindow/index.js");
 /* harmony import */ var _Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../Components/Header/SideNav */ "./src/Components/Header/SideNav.js");
+/* harmony import */ var _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../Components/Header/SideNavLinks */ "./src/Components/Header/SideNavLinks/index.js");
+
 
 
 
@@ -3172,21 +3197,8 @@ function AddUser() {
     });
   };
 
-  const reportsLinks = [{
-    name: "Add new User",
-    path: "/settings/add-user",
-    view: ["admin", "super-admin"]
-  }, {
-    name: "Create new Organisation",
-    path: "/settings/create-organisation",
-    view: ["admin", "super-admin"]
-  }, {
-    name: "View Organisations",
-    path: "/settings/view-organisations",
-    view: ["admin", "super-admin", "user", "manager"]
-  }];
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    links: reportsLinks
+    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_8__.reportsLinks
   }), /*#__PURE__*/React.createElement("main", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "Add user for ", JSON.parse(Organisation).name), /*#__PURE__*/React.createElement(Link, {
@@ -3245,8 +3257,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_InputFields_textInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Components/InputFields/textInput */ "./src/Components/InputFields/textInput.js");
 /* harmony import */ var _Components_InputFields_EmailInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Components/InputFields/EmailInput */ "./src/Components/InputFields/EmailInput.js");
 /* harmony import */ var _Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Components/Header/SideNav */ "./src/Components/Header/SideNav.js");
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../App */ "./src/App.js");
-/* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../API/api */ "./src/API/api.js");
+/* harmony import */ var _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Components/Header/SideNavLinks */ "./src/Components/Header/SideNavLinks/index.js");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../App */ "./src/App.js");
+/* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../API/api */ "./src/API/api.js");
+
 
 
 
@@ -3269,7 +3283,7 @@ function AddUser() {
   const create = e => {
     e.preventDefault();
     setStatus("Loading...");
-    (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_5__["default"].settings.createOrganisation.url, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"].settings.createOrganisation.method, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"].settings.createOrganisation.headers, JSON.stringify({
+    (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_0__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_6__["default"].settings.createOrganisation.url, _API_api__WEBPACK_IMPORTED_MODULE_6__["default"].settings.createOrganisation.method, _API_api__WEBPACK_IMPORTED_MODULE_6__["default"].settings.createOrganisation.headers, JSON.stringify({
       organisationName: organisationName,
       organisationMember: organisationAdmin
     })).then(re => {
@@ -3279,21 +3293,8 @@ function AddUser() {
     });
   };
 
-  const reportsLinks = [{
-    name: "Add new User",
-    path: "/settings/add-user",
-    view: ["admin", "super-admin"]
-  }, {
-    name: "Create new Organisation",
-    path: "/settings/create-organisation",
-    view: ["admin", "super-admin"]
-  }, {
-    name: "View Organisations",
-    path: "/settings/view-organisations",
-    view: ["admin", "super-admin", "user", "manager"]
-  }];
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    links: reportsLinks
+    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_4__.reportsLinks
   }), /*#__PURE__*/React.createElement("main", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "Create a Organisation"), /*#__PURE__*/React.createElement("form", {
@@ -3329,6 +3330,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Authentication/Auth */ "./src/Authentication/Auth.js");
 /* harmony import */ var _Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Components/widget/Loading */ "./src/Components/widget/Loading.js");
 /* harmony import */ var _Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../Components/Header/SideNav */ "./src/Components/Header/SideNav.js");
+/* harmony import */ var _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../Components/Header/SideNavLinks */ "./src/Components/Header/SideNavLinks/index.js");
+
 
 
 
@@ -3351,26 +3354,13 @@ function ViewOrg() {
   const [loading, data, error, updated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_1__["default"])(1, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].settings.getOrganisation.url, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].settings.getOrganisation.method, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].settings.getOrganisation.headers, JSON.stringify({
     organisationMember: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_3__["default"].getUserId()
   }));
-  const reportsLinks = [{
-    name: "Add new User",
-    path: "/settings/add-user",
-    view: ["admin", "super-admin"]
-  }, {
-    name: "Create new Organisation",
-    path: "/settings/create-organisation",
-    view: ["admin", "super-admin"]
-  }, {
-    name: "View Organisations",
-    path: "/settings/view-organisations",
-    view: ["admin", "super-admin", "user", "manager"]
-  }];
 
   function editOrganisation(org) {
     console.log("Edit: ", org);
   }
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    links: reportsLinks
+    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_6__.reportsLinks
   }), /*#__PURE__*/React.createElement("main", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "My Organisation"), /*#__PURE__*/React.createElement(Link, {
@@ -3404,6 +3394,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/Settings/Style.css");
 /* harmony import */ var _Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Components/Header/SideNav */ "./src/Components/Header/SideNav.js");
+/* harmony import */ var _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Components/Header/SideNavLinks */ "./src/Components/Header/SideNavLinks/index.js");
+
 
 
 const {
@@ -3419,33 +3411,8 @@ function Settings(props) {
     handle,
     id
   } = useParams();
-  const reportsLinks = [{
-    name: "Add new User",
-    path: "/settings/add-user",
-    view: ["admin", "super-admin"]
-  }, {
-    name: "View Users",
-    path: "/settings/view-users",
-    view: ["admin", "super-admin", "manager"]
-  }, {
-    name: "Create new Organisation",
-    path: "/settings/create-organisation",
-    view: ["admin", "super-admin"]
-  }, {
-    name: "View Organisations",
-    path: "/settings/view-organisations",
-    view: ["admin", "super-admin", "user", "manager"]
-  }, {
-    name: "Add new Domain",
-    path: "/settings/add-domain",
-    view: ["admin", "super-admin", "manager"]
-  }, {
-    name: "View Domains",
-    path: "/settings/view-domains",
-    view: ["admin", "super-admin", "manager"]
-  }];
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    links: reportsLinks
+    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_2__.reportsLinks
   }), /*#__PURE__*/React.createElement("main", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "Settings")));

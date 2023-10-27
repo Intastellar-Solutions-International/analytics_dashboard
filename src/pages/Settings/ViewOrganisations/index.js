@@ -4,6 +4,7 @@ import API from "../../../API/api";
 import Authentication from "../../../Authentication/Auth";
 import {Loading, CurrentPageLoading} from "../../../Components/widget/Loading";
 import SideNav from "../../../Components/Header/SideNav";
+import { reportsLinks } from "../../../Components/Header/SideNavLinks";
 const { useState, useEffect, useRef } = React;
 const Link = window.ReactRouterDOM.Link;
 const useParams = window.ReactRouterDOM.useParams;
@@ -14,24 +15,6 @@ export default function ViewOrg() {
     const [loading, data, error, updated] = useFetch(1,API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
         organisationMember: Authentication.getUserId()
     }))
-    
-    const reportsLinks = [
-        {
-            name: "Add new User",
-            path: "/settings/add-user",
-            view: ["admin", "super-admin"]
-        },
-        {
-            name: "Create new Organisation",
-            path: "/settings/create-organisation",
-            view: ["admin", "super-admin"]
-        },
-        {
-            name: "View Organisations",
-            path: "/settings/view-organisations",
-            view: ["admin", "super-admin", "user", "manager"]
-        }
-    ]
 
     function editOrganisation(org){
         console.log("Edit: ", org);

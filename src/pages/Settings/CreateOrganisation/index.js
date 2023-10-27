@@ -2,6 +2,7 @@ import Fetch from "../../../Functions/fetch";
 import Text from "../../../Components/InputFields/textInput";
 import Email from "../../../Components/InputFields/EmailInput";
 import SideNav from "../../../Components/Header/SideNav";
+import { reportsLinks } from "../../../Components/Header/SideNavLinks";
 import { OrganisationContext } from "../../../App";
 import API from "../../../API/api";
 const { useState, useEffect, useRef, useContext } = React;
@@ -31,24 +32,6 @@ export default function AddUser() {
             }
         )
     };
-
-    const reportsLinks = [
-        {
-            name: "Add new User",
-            path: "/settings/add-user",
-            view: ["admin", "super-admin"]
-        },
-        {
-            name: "Create new Organisation",
-            path: "/settings/create-organisation",
-            view: ["admin", "super-admin"]
-        },
-        {
-            name: "View Organisations",
-            path: "/settings/view-organisations",
-            view: ["admin", "super-admin", "user", "manager"]
-        }
-    ]
 
     return (
         <>

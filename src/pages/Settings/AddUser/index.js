@@ -6,6 +6,7 @@ import Text from "../../../Components/InputFields/textInput";
 import Email from "../../../Components/InputFields/EmailInput";
 import SuccessWindow from "../../../Components/SuccessWindow";
 import SideNav from "../../../Components/Header/SideNav";
+import { reportsLinks } from "../../../Components/Header/SideNavLinks";
 const Link = window.ReactRouterDOM.Link;
 const { useState, useEffect, useRef, useContext } = React;
 export default function AddUser() {
@@ -57,24 +58,6 @@ export default function AddUser() {
             }
         )
     };
-
-    const reportsLinks = [
-        {
-            name: "Add new User",
-            path: "/settings/add-user",
-            view: ["admin", "super-admin"]
-        },
-        {
-            name: "Create new Organisation",
-            path: "/settings/create-organisation",
-            view: ["admin", "super-admin"]
-        },
-        {
-            name: "View Organisations",
-            path: "/settings/view-organisations",
-            view: ["admin", "super-admin", "user", "manager"]
-        }
-    ]
 
     return (
         <>

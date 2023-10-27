@@ -44,7 +44,7 @@ export default function App() {
     const [domains, setDomains] = useState(null);
     const [domainError, setDomainError] = useState(false);
     const [id, setId] = useState((localStorage.getItem("platform")) ? localStorage.getItem("platform") : null);
-    console.log(localStorage.getItem("globals") );
+
     if (localStorage.getItem("globals") != null) {
         if(window.location.pathname === "/"){
             window.location.href = "/" + id + "/dashboard";
@@ -187,7 +187,6 @@ export default function App() {
             </>
         )
     } else {
-        console.log("No globals")
         return (
             <Login />
         )
