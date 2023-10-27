@@ -43,7 +43,7 @@ export default function App() {
     const [domains, setDomains] = useState(null);
     const [domainError, setDomainError] = useState(false);
     const [id, setId] = useState((localStorage.getItem("platform")) ? localStorage.getItem("platform") : null);
-    if (localStorage.getItem("globals") && JSON.parse(localStorage.getItem("globals"))?.token != undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
+    if (localStorage.getItem("globals") !== null) {
         /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
         useEffect(() => {
             Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
@@ -175,10 +175,11 @@ export default function App() {
                 </Router>
             </>
         )
-    } else if(!localStorage.getItem("globals") || window.location.pathname === "/login") {
-        
+    } else {
         return (
-            <Login />
+            <Route>
+                <Login />
+            </Route>
         )
     }
 }
