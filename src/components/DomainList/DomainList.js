@@ -49,7 +49,15 @@ export default function DomainList(props){
                 <ul>
                     {
                         currentDomain.map((domain, index) => {
-                            return <li key={index}>{domain}</li>
+                            return <li key={index}>
+                                {domain}
+                                <button onClick={() => {
+                                    const domains = savedDomains;
+                                    domains.splice(index, 1);
+                                    setSavedDomains(domains);
+                                    props.setCurrentDomain(domains);
+                                }}>Remove</button>
+                            </li>
                         })
                     }
                 </ul>

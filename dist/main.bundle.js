@@ -992,13 +992,13 @@ function AddDomain() {
     onClick: e => {
       e.preventDefault();
       const domain = (0,_Utils_Utils__WEBPACK_IMPORTED_MODULE_4__.extractHostname)(e.target.previousSibling.value);
-      console.log(domain);
       setCurrentDomain([...currentDomain, domain]);
       (0,_Utils_Utils__WEBPACK_IMPORTED_MODULE_4__.clearTextfield)(e.target.previousSibling);
     },
     text: "Add domain to list"
   })), /*#__PURE__*/React.createElement(_DomainList_DomainList__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    domains: currentDomain
+    domains: currentDomain,
+    setCurrentDomain: setCurrentDomain
   }))));
 }
 
@@ -1237,7 +1237,14 @@ function DomainList(props) {
   }, /*#__PURE__*/React.createElement("h2", null, "Domains to add"), currentDomain.length === 0 ? "" : /*#__PURE__*/React.createElement("ul", null, currentDomain.map((domain, index) => {
     return /*#__PURE__*/React.createElement("li", {
       key: index
-    }, domain);
+    }, domain, /*#__PURE__*/React.createElement("button", {
+      onClick: () => {
+        const domains = savedDomains;
+        domains.splice(index, 1);
+        setSavedDomains(domains);
+        props.setCurrentDomain(domains);
+      }
+    }, "Remove"));
   })), currentDomain.length > 0 ? /*#__PURE__*/React.createElement(_Button_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
     text: "Save",
     onClick: () => {

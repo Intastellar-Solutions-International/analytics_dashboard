@@ -19,12 +19,11 @@ export default function AddDomain(){
                         <Button onClick={(e) => {
                             e.preventDefault();
                             const domain = extractHostname(e.target.previousSibling.value)
-                            console.log(domain);
                             setCurrentDomain([...currentDomain, domain]);
                             clearTextfield(e.target.previousSibling);
                         }} text="Add domain to list" />
                     </section>
-                    <DomainList domains={currentDomain} />
+                    <DomainList domains={currentDomain} setCurrentDomain={setCurrentDomain} />
                 </div>
             </div>
         </>
