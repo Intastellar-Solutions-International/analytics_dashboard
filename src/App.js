@@ -44,6 +44,10 @@ export default function App() {
     const [domainError, setDomainError] = useState(false);
     const [id, setId] = useState((localStorage.getItem("platform")) ? localStorage.getItem("platform") : null);
     if (localStorage.getItem("globals") !== null) {
+        if(window.location.pathname === "/"){
+            window.location.href = "/" + id + "/dashboard";
+
+        }
         /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
         useEffect(() => {
             Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({

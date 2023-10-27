@@ -732,7 +732,12 @@ function App() {
   if (localStorage.getItem("globals") !== null) {
     var _JSON$parse, _JSON$parse$profile, _JSON$parse$profile$n, _JSON$parse2, _JSON$parse2$access;
 
+    if (window.location.pathname === "/") {
+      window.location.href = "/" + id + "/dashboard";
+    }
     /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
+
+
     useEffect(() => {
       var _API$id, _API$id$getDomains;
 
