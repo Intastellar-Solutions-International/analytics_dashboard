@@ -12,6 +12,7 @@ const useHistory = window.ReactRouterDOM.useHistory;
 const punycode = require("punycode");
 
 export default function Header(props) {
+
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
     const [currentDomain, setCurrentDomain] = useState((window.location.pathname.split("/")[2] === "view") ? decodeURI(window.location.pathname.split("/")[3]?.replace("%2E", ".")) : "all");
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
@@ -21,7 +22,7 @@ export default function Header(props) {
     const [allOrganisations, setallOrganisations] = useState(null);
     const [domains, setDomains] = useState(props.domains);
     const [viewUserProfile, setViewUserProfile] = useState(false);
-    const Platform = (localStorage.getItem("platform") == "gdpr") ? "Platform: GDPR Cookiebanner" : "Platform: Ferry Booking";
+    const Platform = (localStorage.getItem("platform") == "gdpr") ? "Platform:  Intastellar Cookie Consents" : "Platform: Ferry Booking";
     useEffect(() => {
 
         Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({

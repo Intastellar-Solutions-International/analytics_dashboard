@@ -36,7 +36,7 @@ export const OrganisationContext = createContext(localStorage.getItem("organisat
 export const DomainContext = createContext(null);
 
 export default function App() {
-    const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
+    const [dashboardView, setDashboardView] = useState((localStorage.getItem("platform")) ? localStorage.getItem("platform") : null);
     const [organisation, setOrganisation] = useState((localStorage.getItem("organisation")) ? localStorage.getItem("organisation") : null);
     const [currentDomain, setCurrentDomain] = useState("all");
     const [handle, setHandle] = useState(null);
@@ -108,7 +108,7 @@ export default function App() {
                                         <div style={{flex:"1"}}>
                                             <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
                                                 <h1>Welcome, {JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name}</h1>
-                                                <p>Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation</p>
+                                                <p>Here you can see all the data regarding your Intastellar Cookie Consents implementation of your organisation</p>
                                             </section>
                                             {domainError ? <AddDomain /> : 
                                             <ErrorBoundary>

@@ -49,7 +49,7 @@ export default function Dashboard(props){
         <>
             <div className="dashboard-content">
                     {
-                        (dashboardView === "GDPR Cookiebanner" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
+                        (id === "gdpr" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
                             url: API[id].getTotalNumber.url,
                             method: API[id].getTotalNumber.method,
                             header: API[id].getTotalNumber.headers 

@@ -730,7 +730,7 @@ const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/pu
 const OrganisationContext = createContext(localStorage.getItem("organisation"));
 const DomainContext = createContext(null);
 function App() {
-  const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
+  const [dashboardView, setDashboardView] = useState(localStorage.getItem("platform") ? localStorage.getItem("platform") : null);
   const [organisation, setOrganisation] = useState(localStorage.getItem("organisation") ? localStorage.getItem("organisation") : null);
   const [currentDomain, setCurrentDomain] = useState("all");
   const [handle, setHandle] = useState(null);
@@ -813,7 +813,7 @@ function App() {
         backgroundColor: "rgb(218, 218, 218)",
         color: "#626262"
       }
-    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$profile = _JSON$parse.profile) === null || _JSON$parse$profile === void 0 ? void 0 : (_JSON$parse$profile$n = _JSON$parse$profile.name) === null || _JSON$parse$profile$n === void 0 ? void 0 : _JSON$parse$profile$n.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, id == "gdpr" ? /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$profile = _JSON$parse.profile) === null || _JSON$parse$profile === void 0 ? void 0 : (_JSON$parse$profile$n = _JSON$parse$profile.name) === null || _JSON$parse$profile$n === void 0 ? void 0 : _JSON$parse$profile$n.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your Intastellar Cookie Consents implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, id == "gdpr" ? /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
       dashboardView: dashboardView,
       setDashboardView: setDashboardView
     }) : /*#__PURE__*/React.createElement(_Pages_Dashboard_ferry_Dashboard_js__WEBPACK_IMPORTED_MODULE_7__["default"], null)))), /*#__PURE__*/React.createElement(Route, {
@@ -986,7 +986,7 @@ function AddDomain() {
   const domainRegex = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("h2", null, "Add domain"), /*#__PURE__*/React.createElement("p", null, "Here you can add a domain to your organisation, for any website your Organisation is using the Intastellar Cookie Consents Solutions"), /*#__PURE__*/React.createElement("p", null, "After adding a domain you can implement the GDPR cookiebanner on your website."), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h2", null, "Add domain"), /*#__PURE__*/React.createElement("p", null, "Here you can add a domain to your organisation, for any website your Organisation is using the Intastellar Cookie Consents Solutions"), /*#__PURE__*/React.createElement("p", null, "After adding a domain you can implement the Intastellar Cookie Consents on your website."), /*#__PURE__*/React.createElement("div", {
     className: "grid"
   }, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement(_InputFields_textInput__WEBPACK_IMPORTED_MODULE_0__["default"], {
     placeholder: "Add your root domain",
@@ -1595,7 +1595,7 @@ function Header(props) {
   const [allOrganisations, setallOrganisations] = useState(null);
   const [domains, setDomains] = useState(props.domains);
   const [viewUserProfile, setViewUserProfile] = useState(false);
-  const Platform = localStorage.getItem("platform") == "gdpr" ? "Platform: GDPR Cookiebanner" : "Platform: Ferry Booking";
+  const Platform = localStorage.getItem("platform") == "gdpr" ? "Platform:  Intastellar Cookie Consents" : "Platform: Ferry Booking";
   useEffect(() => {
     var _API$window$location$, _API$window$location$2, _API$window$location$3, _API$window$location$4, _API$window$location$5, _API$window$location$6;
 
@@ -2877,7 +2877,7 @@ function Dashboard(props) {
   const [loading, data, error, getUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_1__["default"])(5, url, method, header);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, dashboardView === "GDPR Cookiebanner" && organisation != null && JSON.parse(organisation).id == 1 ? /*#__PURE__*/React.createElement(_Components_widget_TopWidgets_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+  }, id === "gdpr" && organisation != null && JSON.parse(organisation).id == 1 ? /*#__PURE__*/React.createElement(_Components_widget_TopWidgets_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
     dashboardView: dashboardView,
     API: {
       url: _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getTotalNumber.url,
@@ -3065,7 +3065,7 @@ function Websites() {
   const [loading, data, error] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__["default"])(10, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].gdpr.getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].gdpr.getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].gdpr.getDomains.headers);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("main", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("h2", null, "Analytics"), /*#__PURE__*/React.createElement("h3", null, "List of all domains"), /*#__PURE__*/React.createElement("p", null, "On all these domains the GDPR cookiebanner is implemented"), /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/React.createElement("h2", null, "Analytics"), /*#__PURE__*/React.createElement("h3", null, "List of all domains"), /*#__PURE__*/React.createElement("p", null, "On all these domains the Intastellar Cookie Consents is implemented"), /*#__PURE__*/React.createElement("section", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_2__.Loading, null) : data === null || data === void 0 ? void 0 : data.map((domain, key) => {
     const main = domain["domain"];

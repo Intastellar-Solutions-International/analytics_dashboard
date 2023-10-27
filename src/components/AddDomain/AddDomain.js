@@ -14,7 +14,7 @@ export default function AddDomain(){
             <div className="dashboard-content">
                 <h2>Add domain</h2>
                 <p>Here you can add a domain to your organisation, for any website your Organisation is using the Intastellar Cookie Consents Solutions</p>
-                <p>After adding a domain you can implement the GDPR cookiebanner on your website.</p>
+                <p>After adding a domain you can implement the Intastellar Cookie Consents on your website.</p>
                 <div className='grid'>
                     <section>
                         <Textfield placeholder="Add your root domain" type={"url"} onChange={
