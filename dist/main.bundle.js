@@ -1264,49 +1264,68 @@ function DomainList(props) {
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "domain-list"
-  }, !success ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains added"), /*#__PURE__*/React.createElement("p", null, "You have added the following domains to your Organisation: ", organisation.name), /*#__PURE__*/React.createElement("ul", null, savedDomains.map((domain, index) => {
+  }, success ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains added"), /*#__PURE__*/React.createElement("p", null, "You have added the following domains to your Organisation: ", organisation.name), /*#__PURE__*/React.createElement("ul", null, savedDomains.map((domain, index) => {
     return /*#__PURE__*/React.createElement("li", {
       key: index
     }, domain);
   })), /*#__PURE__*/React.createElement("p", null, "Now you can add these two lines of code into your head tag of your Website:"), /*#__PURE__*/React.createElement("button", {
     className: "copyCta",
     onClick: () => {
-      copy("<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script>;\n                            <script href='https://downloads.intastellarsolutions.com/cookieconsents/".concat(savedDomains[0], "/config.js'></script>"));
+      copy("<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script>\n                            <script href='https://downloads.intastellarsolutions.com/cookieconsents/".concat(savedDomains[0], "/config.js'></script>"));
     }
-  }, "Copy"), "<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script>;\n                        <script href='https://downloads.intastellarsolutions.com/cookieconsents/".concat(savedDomains[0], "/config.js'></script>")) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains to be added"), /*#__PURE__*/React.createElement("p", null, "You\xB4re about to add these domains to your Organisation: ", organisation.name), /*#__PURE__*/React.createElement("ul", null, currentDomain.map((domain, index) => {
+  }, "Copy"), /*#__PURE__*/React.createElement("div", {
+    style: {
+      clear: "both"
+    }
+  }), "<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script> \n\n                        <script href='https://downloads.intastellarsolutions.com/cookieconsents/".concat(savedDomains[0], "/config.js'></script>")) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains to be added"), /*#__PURE__*/React.createElement("p", null, "You\xB4re about to add these domains to your Organisation: ", organisation.name), /*#__PURE__*/React.createElement("ul", null, currentDomain.map((domain, index) => {
     return /*#__PURE__*/React.createElement("li", {
       key: index
     }, domain);
-  })), /*#__PURE__*/React.createElement("p", null, "Now you have added your domains to your Organisation, you need to implement the Intastellar Cookie Consents on your website. If not already."), /*#__PURE__*/React.createElement("h4", null, "Edit and include the following script in the head of your website"), /*#__PURE__*/React.createElement("p", null, "You can edit the following attributes:"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "policy_link: The link to your privacy policy"), /*#__PURE__*/React.createElement("li", null, "color: The color of the banner"), /*#__PURE__*/React.createElement("li", null, "arrange: The arrangement of the banner"), /*#__PURE__*/React.createElement("li", null, "logo: The logo of your company, this needs to be a link to the logo"), /*#__PURE__*/React.createElement("li", null, "requiredCookies: The cookies that are required for your website to function. (Please do not remove the brackets)"), /*#__PURE__*/React.createElement("li", null, "partnerDomain: The domains of your partners (Please do not remove the brackets)")), /*#__PURE__*/React.createElement("code", {
+  })), /*#__PURE__*/React.createElement("p", null, "Now you have added your domains to your Organisation, you need to implement the Intastellar Cookie Consents on your website. If not already."), /*#__PURE__*/React.createElement("h4", null, "Edit the file below"), /*#__PURE__*/React.createElement("p", null, "You can edit the following attributes:"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, "policy_link: The link to your privacy policy"), /*#__PURE__*/React.createElement("li", null, "color: The color of the banner"), /*#__PURE__*/React.createElement("li", null, "arrange: The arrangement of the banner"), /*#__PURE__*/React.createElement("li", null, "logo: The logo of your company, this needs to be a link to the logo"), /*#__PURE__*/React.createElement("li", null, "requiredCookies: The cookies that are required for your website to function. (Please do not remove the brackets)"), /*#__PURE__*/React.createElement("li", null, "partnerDomain: The domains of your partners (Please do not remove the brackets)")), /*#__PURE__*/React.createElement("code", {
     className: "editor"
-  }, "window.INTA = { ", /*#__PURE__*/React.createElement("br", null), "policy_link: ", /*#__PURE__*/React.createElement("span", {
+  }, "Privacy Policy Link: ", /*#__PURE__*/React.createElement("span", {
     contentEditable: true,
     suppressContentEditableWarning: true,
-    onInput: () => {
-      setPrivacyPolicyLink(document.querySelector(".editable").innerHTML);
+    onInput: e => {
+      setPrivacyPolicyLink(e.target.innerHTML);
     },
     className: "editable"
-  }, "\"", currentDomain[0] != undefined ? "https://".concat(currentDomain[0], "/privacy-policy") : null, "\""), " ", /*#__PURE__*/React.createElement("br", null), "settings: { ", /*#__PURE__*/React.createElement("br", null), "company: \"", organisation.name, "\", ", /*#__PURE__*/React.createElement("br", null), "color: ", /*#__PURE__*/React.createElement("span", {
+  }, "\"", currentDomain[0] != undefined ? "https://".concat(currentDomain[0], "/privacy-policy") : null, "\""), /*#__PURE__*/React.createElement("br", null), "Color: ", /*#__PURE__*/React.createElement("span", {
     contentEditable: true,
     suppressContentEditableWarning: true,
-    className: "editable"
-  }, "\"", choosenColor, "\""), ", ", /*#__PURE__*/React.createElement("br", null), "arrange: ", /*#__PURE__*/React.createElement("span", {
+    className: "editable",
+    onInput: e => {
+      setChoosenColor(e.target.innerHTML);
+    }
+  }, "\"", choosenColor, "\""), /*#__PURE__*/React.createElement("br", null), "Banner Arrangement: ", /*#__PURE__*/React.createElement("span", {
     contentEditable: true,
     suppressContentEditableWarning: true,
-    className: "editable"
-  }, "\"", bannerArrangement, "\""), ", ", /*#__PURE__*/React.createElement("br", null), "logo: ", /*#__PURE__*/React.createElement("span", {
+    className: "editable",
+    onInput: e => {
+      setBannerArrangement(e.target.innerHTML);
+    }
+  }, "\"", bannerArrangement, "\""), /*#__PURE__*/React.createElement("br", null), "Company Logo: ", /*#__PURE__*/React.createElement("span", {
     contentEditable: true,
     suppressContentEditableWarning: true,
-    className: "editable"
-  }, "\"", companyLogo, "\""), ", ", /*#__PURE__*/React.createElement("br", null), "requiredCookies:", /*#__PURE__*/React.createElement("span", {
+    className: "editable",
+    onInput: e => {
+      setCompanyLogo(e.target.innerHTML);
+    }
+  }, "\"", companyLogo, "\""), /*#__PURE__*/React.createElement("br", null), "Required Cookies: ", /*#__PURE__*/React.createElement("span", {
     contentEditable: true,
     suppressContentEditableWarning: true,
-    className: "editable"
-  }, "[", requiredCookies, "]"), ", ", /*#__PURE__*/React.createElement("br", null), "partnerDomain:", /*#__PURE__*/React.createElement("span", {
+    className: "editable",
+    onInput: e => {
+      setRequiredCookies(e.target.innerHTML);
+    }
+  }, "[", requiredCookies, "]"), /*#__PURE__*/React.createElement("br", null), "Partner Domains: ", /*#__PURE__*/React.createElement("span", {
     contentEditable: true,
     suppressContentEditableWarning: true,
-    className: "editable"
-  }, "[", partnerDomain, "]"), /*#__PURE__*/React.createElement("br", null), "} ", /*#__PURE__*/React.createElement("br", null), "} ", /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("p", null, "Read the full documentation under: ", /*#__PURE__*/React.createElement("a", {
+    className: "editable",
+    onInput: e => {
+      setPartnerDomain(e.target.innerHTML);
+    }
+  }, "[", partnerDomain, "]"), /*#__PURE__*/React.createElement("br", null)), /*#__PURE__*/React.createElement("p", null, "Read the full documentation under: ", /*#__PURE__*/React.createElement("a", {
     href: "https://developers.intastellarsolutions.com/cookie-solutions/docs/js-docs",
     target: "_blank"
   }, "https://developers.intastellarsolutions.com/cookie-solutions/docs/js-docs"))), currentDomain.length > 0 && !success ? /*#__PURE__*/React.createElement(_Button_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
@@ -3823,7 +3842,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".copyCta{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 10px 20px;\n    background-color: #f5f5f5;\n    border-radius: 5px;\n    margin-bottom: 15px;\n    border: none;\n    float: right;\n}\n\n.editable{\n    text-decoration: underline;\n    text-decoration-style: dotted;\n    color: rgb(0, 76, 130);\n}\n\n.domain-list{\n    padding: 0 15px;\n    background-color: #f5f5f5;\n    border-radius: 10px;\n    color: #6b6b6b;\n    padding-bottom: 15px;\n}\n\n.editor{\n    background-color: #d5d5d5;\n    display: block;\n    padding: 15px;\n    border-radius: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Components/DomainList/DomainList.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,kBAAkB;IAClB,yBAAyB;IACzB,kBAAkB;IAClB,mBAAmB;IACnB,YAAY;IACZ,YAAY;AAChB;;AAEA;IACI,0BAA0B;IAC1B,6BAA6B;IAC7B,sBAAsB;AAC1B;;AAEA;IACI,eAAe;IACf,yBAAyB;IACzB,mBAAmB;IACnB,cAAc;IACd,oBAAoB;AACxB;;AAEA;IACI,yBAAyB;IACzB,cAAc;IACd,aAAa;IACb,mBAAmB;AACvB","sourcesContent":[".copyCta{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 10px 20px;\n    background-color: #f5f5f5;\n    border-radius: 5px;\n    margin-bottom: 15px;\n    border: none;\n    float: right;\n}\n\n.editable{\n    text-decoration: underline;\n    text-decoration-style: dotted;\n    color: rgb(0, 76, 130);\n}\n\n.domain-list{\n    padding: 0 15px;\n    background-color: #f5f5f5;\n    border-radius: 10px;\n    color: #6b6b6b;\n    padding-bottom: 15px;\n}\n\n.editor{\n    background-color: #d5d5d5;\n    display: block;\n    padding: 15px;\n    border-radius: 10px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".copyCta{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 10px 20px;\n    background-color: #befc4d;\n    border-radius: 5px;\n    margin-bottom: 15px;\n    border: none;\n    float: right;\n}\n\n.editable{\n    text-decoration: underline;\n    text-decoration-style: dotted;\n    color: rgb(0, 76, 130);\n}\n\n.domain-list{\n    padding: 0 15px;\n    background-color: #f5f5f5;\n    border-radius: 10px;\n    color: #6b6b6b;\n    padding-bottom: 15px;\n    white-space: pre-line;\n}\n\n.editor{\n    background-color: #d5d5d5;\n    display: block;\n    padding: 15px;\n    border-radius: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Components/DomainList/DomainList.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,kBAAkB;IAClB,yBAAyB;IACzB,kBAAkB;IAClB,mBAAmB;IACnB,YAAY;IACZ,YAAY;AAChB;;AAEA;IACI,0BAA0B;IAC1B,6BAA6B;IAC7B,sBAAsB;AAC1B;;AAEA;IACI,eAAe;IACf,yBAAyB;IACzB,mBAAmB;IACnB,cAAc;IACd,oBAAoB;IACpB,qBAAqB;AACzB;;AAEA;IACI,yBAAyB;IACzB,cAAc;IACd,aAAa;IACb,mBAAmB;AACvB","sourcesContent":[".copyCta{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 10px 20px;\n    background-color: #befc4d;\n    border-radius: 5px;\n    margin-bottom: 15px;\n    border: none;\n    float: right;\n}\n\n.editable{\n    text-decoration: underline;\n    text-decoration-style: dotted;\n    color: rgb(0, 76, 130);\n}\n\n.domain-list{\n    padding: 0 15px;\n    background-color: #f5f5f5;\n    border-radius: 10px;\n    color: #6b6b6b;\n    padding-bottom: 15px;\n    white-space: pre-line;\n}\n\n.editor{\n    background-color: #d5d5d5;\n    display: block;\n    padding: 15px;\n    border-radius: 10px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

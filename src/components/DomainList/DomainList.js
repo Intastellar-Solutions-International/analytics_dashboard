@@ -59,7 +59,7 @@ export default function DomainList(props){
     return <>
         <div className="domain-list">
             {
-                (!success) ? <>
+                (success) ? <>
                     <h2>Domains added</h2>
                     <p>You have added the following domains to your Organisation: {organisation.name}</p>
                     <ul>
@@ -72,12 +72,13 @@ export default function DomainList(props){
                     <p>Now you can add these two lines of code into your head tag of your Website:</p>
                     <button className="copyCta" onClick={() => {
                         copy(
-                            `<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script>;
+                            `<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script>
                             <script href='https://downloads.intastellarsolutions.com/cookieconsents/${savedDomains[0]}/config.js'></script>`
                         )
                     }}>Copy</button>
+                    <div style={{clear: "both"}}></div>
                     {
-                        `<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script>;
+                        `<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script> \n
                         <script href='https://downloads.intastellarsolutions.com/cookieconsents/${savedDomains[0]}/config.js'></script>`
                     }
                 </> : <>
@@ -91,7 +92,7 @@ export default function DomainList(props){
                         }
                     </ul>
                     <p>Now you have added your domains to your Organisation, you need to implement the Intastellar Cookie Consents on your website. If not already.</p>
-                    <h4>Edit and include the following script in the head of your website</h4>
+                    <h4>Edit the file below</h4>
                     <p>You can edit the following attributes:</p>
                     <ul>
                         <li>policy_link: The link to your privacy policy</li>
@@ -102,7 +103,33 @@ export default function DomainList(props){
                         <li>partnerDomain: The domains of your partners (Please do not remove the brackets)</li>
                     </ul>
                     <code className="editor">
-                        window.INTA = &#123; <br />
+                        Privacy Policy Link: <span contentEditable={true}
+                                    suppressContentEditableWarning={true} onInput={(e) => {
+                                setPrivacyPolicyLink(e.target.innerHTML);
+                            }} className="editable">"{(currentDomain[0] != undefined) ? `https://${currentDomain[0]}/privacy-policy` : null}"</span>
+                        <br />
+                        Color: <span contentEditable={true} suppressContentEditableWarning={true} className="editable" onInput={(e) => {
+                                setChoosenColor(e.target.innerHTML);
+                            }}>"{choosenColor}"</span>
+                        <br />
+                        Banner Arrangement: <span contentEditable={true} suppressContentEditableWarning={true} className="editable" onInput={(e) => {
+                                setBannerArrangement(e.target.innerHTML);
+                            }}>"{bannerArrangement}"</span>
+                        <br />
+                        Company Logo: <span contentEditable={true} suppressContentEditableWarning={true} className="editable" onInput={(e) => {
+                                setCompanyLogo(e.target.innerHTML);
+                            }}>"{companyLogo}"</span>
+                        <br />
+                        Required Cookies: <span contentEditable={true} suppressContentEditableWarning={true} className="editable" onInput={(e) => {
+                                setRequiredCookies(e.target.innerHTML);
+                            }}>[{requiredCookies}]</span>
+                        <br />
+                        Partner Domains: <span contentEditable={true} suppressContentEditableWarning={true} className="editable" onInput={(e) => {
+                                setPartnerDomain(e.target.innerHTML);
+                            }}>[{partnerDomain}]</span>
+                        <br />
+                    </code>
+                        {/* window.INTA = &#123; <br />
                             policy_link: <span contentEditable={true}
                                     suppressContentEditableWarning={true} onInput={() => {
                                 setPrivacyPolicyLink(document.querySelector(".editable").innerHTML);
@@ -119,7 +146,7 @@ export default function DomainList(props){
                                     <span contentEditable={true} suppressContentEditableWarning={true} className="editable">[{partnerDomain}]</span>
                                 <br />&#125; <br />
                         &#125; <br />
-                    </code>
+                    </code> */}
                     
                     <p>Read the full documentation under: <a href="https://developers.intastellarsolutions.com/cookie-solutions/docs/js-docs" target="_blank">https://developers.intastellarsolutions.com/cookie-solutions/docs/js-docs</a></p>
                 </>
