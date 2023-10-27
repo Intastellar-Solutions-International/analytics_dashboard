@@ -1,8 +1,12 @@
 import Textfield from '../InputFields/textInput';
 import Button from '../Button/Button';
+import './AddDomain.css';
+import DomainList from '../DomainList/DomainList';
+import { clearTextfield } from '../../Utils/Utils';
 const { useState, useEffect, useRef, createContext } = React;
 export default function AddDomain(){
-    const [currentDomain, setCurrentDomain] = useState(null);
+    const [currentDomain, setCurrentDomain] = useState([]);
+    
     return (
         <>
             <div className="dashboard-content">
@@ -13,11 +17,10 @@ export default function AddDomain(){
                 <Button onClick={(e) => {
                     e.preventDefault();
                     console.log("Add domain");
-                    setCurrentDomain(e.target.previousSibling.value);
+                    setCurrentDomain([...currentDomain, e.target.previousSibling.value]);
+                    clearTextfield(e.target.previousSibling);
                 }} text="Add domain" />
-                {
-                    (currentDomain == null) ? "" : <p>{currentDomain}</p>
-                }
+                <DomainList domains={currentDomain} />
             </div>
         </>
     )
