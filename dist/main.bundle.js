@@ -2365,9 +2365,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Style.css */ "./src/Components/SuccessWindow/Style.css");
 
+const {
+  useState,
+  useEffect,
+  useRef
+} = React;
 function SuccessWindow(props) {
+  const [Style, setStyle] = useState(props === null || props === void 0 ? void 0 : props.style);
+
+  function closeWindow() {
+    setStyle({
+      right: "-100%"
+    });
+  }
+
+  setTimeout(() => {
+    closeWindow();
+  }, 5000);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
-    style: props.style,
+    style: Style,
     className: "successWindow"
   }, /*#__PURE__*/React.createElement("div", {
     className: "successWindow-content"
