@@ -1249,7 +1249,11 @@ function DomainList(props) {
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "domain-list"
-  }, /*#__PURE__*/React.createElement("h2", null, "Domains to add"), /*#__PURE__*/React.createElement("p", null, "You\xB4re about to add these domains to your Organisation: ", organisation.name), currentDomain.length === 0 ? "" : /*#__PURE__*/React.createElement("ul", null, currentDomain.map((domain, index) => {
+  }, !success ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains to add"), /*#__PURE__*/React.createElement("p", null, "You\xB4re about to add these domains to your Organisation: ", organisation.name)) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains added"), /*#__PURE__*/React.createElement("p", null, "You have added the following domains to your Organisation: ", organisation.name), /*#__PURE__*/React.createElement("ul", null, savedDomains.map((domain, index) => {
+    return /*#__PURE__*/React.createElement("li", {
+      key: index
+    }, domain);
+  })), /*#__PURE__*/React.createElement("h3", null, "Next steps"), /*#__PURE__*/React.createElement("p", null, "Now you have added your domains to your Organisation, you need to implement the Intastellar Cookie Consents on your website. If not already."), /*#__PURE__*/React.createElement("code", null, /*#__PURE__*/React.createElement("pre", null, "<script src=\"https://consents.cdn.intastellarsolutions.com/gdpr.js\"></script>"), /*#__PURE__*/React.createElement("pre", null, "<script>", /*#__PURE__*/React.createElement("br", null), "window.INTA = { ", /*#__PURE__*/React.createElement("br", null), "policy_link: \"https://", currentDomain[0], "/privacy-policy\" ", /*#__PURE__*/React.createElement("br", null), "}", /*#__PURE__*/React.createElement("br", null), "</script>"))), currentDomain.length > 0 && !success ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("ul", null, currentDomain === null || currentDomain === void 0 ? void 0 : currentDomain.map((domain, index) => {
     return /*#__PURE__*/React.createElement("li", {
       key: index
     }, domain, /*#__PURE__*/React.createElement("button", {
@@ -1260,12 +1264,12 @@ function DomainList(props) {
         props.setCurrentDomain(domains);
       }
     }, "Remove"));
-  })), currentDomain.length > 0 ? /*#__PURE__*/React.createElement(_Button_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  })), /*#__PURE__*/React.createElement(_Button_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
     text: "Save",
     onClick: () => {
       saveDomains(currentDomain);
     }
-  }) : ""), viewPopUp && success ? /*#__PURE__*/React.createElement(_SuccessWindow_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  })) : ""), viewPopUp && success ? /*#__PURE__*/React.createElement(_SuccessWindow_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
     message: /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Success!"), /*#__PURE__*/React.createElement("p", null, "You have added the following domains:"), /*#__PURE__*/React.createElement("ul", null, savedDomains.map((domain, index) => {
       return /*#__PURE__*/React.createElement("li", {
         key: index

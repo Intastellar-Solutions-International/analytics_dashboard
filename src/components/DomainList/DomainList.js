@@ -43,40 +43,13 @@ export default function DomainList(props){
 
     return <>
         <div className="domain-list">
-            <h2>Domains to add</h2>
-            <p>You´re about to add these domains to your Organisation: {organisation.name}</p>
             {
-                (currentDomain.length === 0) ? "" : 
-                <ul>
-                    {
-                        currentDomain.map((domain, index) => {
-                            return <li key={index}>
-                                {domain}
-                                <button onClick={() => {
-                                    const domains = savedDomains;
-                                    domains.splice(index, 1);
-                                    setSavedDomains(domains);
-                                    props.setCurrentDomain(domains);
-                                }}>Remove</button>
-                            </li>
-                        })
-                    }
-                </ul>
-            }
-            {
-                (currentDomain.length > 0) ? 
-                    <Button text="Save" onClick={ () => {
-                        saveDomains(currentDomain);
-                    }}  />
-                : ""
-            }
-        </div>
-        {
-            (viewPopUp && success) ? 
-            <SuccessWindow message={
-                <>
-                    <h2>Success!</h2>
-                    <p>You have added the following domains:</p>
+                (!success) ? <>
+                <h2>Domains to add</h2>
+                    <p>You´re about to add these domains to your Organisation: {organisation.name}</p>
+                </> : <>
+                    <h2>Domains added</h2>
+                    <p>You have added the following domains to your Organisation: {organisation.name}</p>
                     <ul>
                         {
                             savedDomains.map((domain, index) => {
@@ -84,8 +57,62 @@ export default function DomainList(props){
                             })
                         }
                     </ul>
+                    <h3>Next steps</h3>
+                    <p>Now you have added your domains to your Organisation, you need to implement the Intastellar Cookie Consents on your website. If not already.</p>
+                    <code>
+                        <pre>
+                            &lt;script src="https://consents.cdn.intastellarsolutions.com/gdpr.js"&gt;&lt;/script&gt;
+                        </pre>
+                        <pre>
+                            &lt;script&gt;<br />
+                                window.INTA = &#123; <br />
+                                    policy_link: "https://{currentDomain[0]}/privacy-policy" <br />
+                                &#125;<br />
+                            &lt;/script&gt;
+                        </pre>
+                    </code>
                 </>
-            } />
+            }
+            {
+                (currentDomain.length > 0 && !success) ? 
+                    <>
+                        <ul>
+                            {
+                                currentDomain?.map((domain, index) => {
+                                    return <li key={index}>
+                                        {domain}
+                                        <button onClick={() => {
+                                            const domains = savedDomains;
+                                            domains.splice(index, 1);
+                                            setSavedDomains(domains);
+                                            props.setCurrentDomain(domains);
+                                        }}>Remove</button>
+                                    </li>
+                                })
+                            }
+                        </ul>
+                        <Button text="Save" onClick={ () => {
+                            saveDomains(currentDomain);
+                        }}  />
+                    </>
+                : ""
+            }
+        </div>
+        {
+            (viewPopUp && success) ? 
+                <SuccessWindow message={
+                    <>
+                        <h2>Success!</h2>
+                        <p>You have added the following domains:</p>
+                        <ul>
+                            {
+                                savedDomains.map((domain, index) => {
+                                    return <li key={index}>{domain}</li>
+                                })
+                            }
+                        </ul>
+                    </>
+                } />
             : null
         }
     </>
