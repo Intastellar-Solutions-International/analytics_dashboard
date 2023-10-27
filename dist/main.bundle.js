@@ -597,6 +597,14 @@ const API = {
         "Organisation": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getOrganisation(),
         "Content-Type": "application/json"
       }
+    },
+    addDomain: {
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/add-domain.php"),
+      method: "POST",
+      headers: {
+        "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
+        "Content-Type": "application/json"
+      }
     }
   },
   ferry: {
@@ -1183,6 +1191,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _DomainList_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DomainList.css */ "./src/Components/DomainList/DomainList.css");
 /* harmony import */ var _Button_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Button/Button */ "./src/Components/Button/Button.js");
 /* harmony import */ var _SuccessWindow_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../SuccessWindow/index */ "./src/Components/SuccessWindow/index.js");
+/* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../API/api */ "./src/API/api.js");
+/* harmony import */ var _Functions_fetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Functions/fetch */ "./src/Functions/fetch.js");
 
 
 const {
@@ -1192,17 +1202,40 @@ const {
   createContext
 } = React;
 
+
+
 function DomainList(props) {
   const currentDomain = props.domains;
   const [viewPopUp, setPopUp] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [savedDomains, setSavedDomains] = useState([]);
 
   function saveDomains(domains) {
-    setSavedDomains([...domains]);
-    setPopUp(true);
-    setSuccess(true);
+    (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_4__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.url, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.method, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.headers, JSON.stringify({
+      organisationId: organisationId,
+      domains: domains
+    })).then(re => {
+      if (re.status === 200) {
+        return re.json();
+      } else {
+        setError(true);
+      }
+    }).then(data => {
+      console.log(data);
+
+      if (data === "success") {
+        setSuccess(true);
+        setPopUp(true);
+        setSavedDomains(domains);
+      } else if (data === "error") {
+        setError(true);
+        setErrorMessage("Something went wrong, please try again later");
+      } else {
+        setError(true);
+      }
+    }).catch(setErrorMessage);
   }
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
@@ -3723,7 +3756,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".domain-list{\n    padding: 0 15px;\n    background-color: #f5f5f5;\n    border-radius: 10px;\n    color: #6b6b6b;\n}", "",{"version":3,"sources":["webpack://./src/Components/DomainList/DomainList.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,yBAAyB;IACzB,mBAAmB;IACnB,cAAc;AAClB","sourcesContent":[".domain-list{\n    padding: 0 15px;\n    background-color: #f5f5f5;\n    border-radius: 10px;\n    color: #6b6b6b;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".domain-list{\n    padding: 0 15px;\n    background-color: #f5f5f5;\n    border-radius: 10px;\n    color: #6b6b6b;\n    padding-bottom: 15px;\n}", "",{"version":3,"sources":["webpack://./src/Components/DomainList/DomainList.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,yBAAyB;IACzB,mBAAmB;IACnB,cAAc;IACd,oBAAoB;AACxB","sourcesContent":[".domain-list{\n    padding: 0 15px;\n    background-color: #f5f5f5;\n    border-radius: 10px;\n    color: #6b6b6b;\n    padding-bottom: 15px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

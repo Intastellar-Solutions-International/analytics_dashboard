@@ -2,17 +2,50 @@ import "./DomainList.css";
 import Button from "../Button/Button";
 const { useState, useEffect, useRef, createContext } = React;
 import SuccessWindow from "../SuccessWindow/index";
+import API from "../../API/api";
+import Fetch from "../../Functions/fetch";
 export default function DomainList(props){
     const currentDomain = props.domains;
     const [viewPopUp, setPopUp] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const [savedDomains, setSavedDomains] = useState([]);
 
     function saveDomains(domains){
-        setSavedDomains([...domains]);
-        setPopUp(true);
-        setSuccess(true);
+
+        Fetch(API.settings.addDomain.url, API.settings.addDomain.method,
+            API.settings.addDomain.headers,
+            JSON.stringify(
+                {
+                    organisationId: organisationId,
+                    domains: domains
+                }
+            )
+        ).then(
+            re => {
+                if(re.status === 200){
+                    return re.json();
+                } else {
+                    setError(true);
+                }
+            }
+        ).then(
+            data => {
+                console.log(data);
+                if(data === "success"){
+                    setSuccess(true);
+                    setPopUp(true);
+                    setSavedDomains(domains);
+                } else if(data === "error"){
+                    setError(true);
+                    setErrorMessage("Something went wrong, please try again later");
+                } else {
+                    setError(true);
+                }
+            }
+        ).catch(setErrorMessage);
+
     }
 
     return <>

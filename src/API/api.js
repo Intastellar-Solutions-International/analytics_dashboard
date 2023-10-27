@@ -105,6 +105,14 @@ const API = {
                 "Content-Type": "application/json"
             }
         },
+        addDomain: {
+            url: `${PrimaryHost}/analytics/settings/add-domain.php`,
+            method: "POST",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Content-Type": "application/json"
+            }
+        },
     },
     ferry: {
         getTotalSales: {
