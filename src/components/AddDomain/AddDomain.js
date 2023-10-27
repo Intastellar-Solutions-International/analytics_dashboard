@@ -2,7 +2,8 @@ import Textfield from '../InputFields/textInput';
 import Button from '../Button/Button';
 import './AddDomain.css';
 import DomainList from '../DomainList/DomainList';
-import { clearTextfield } from '../../Utils/Utils';
+import { clearTextfield, extractHostname } from '../../Utils/Utils';
+
 const { useState, useEffect, useRef, createContext } = React;
 export default function AddDomain(){
     const [currentDomain, setCurrentDomain] = useState([]);
@@ -17,10 +18,11 @@ export default function AddDomain(){
                         <Textfield placeholder="Add domain" />
                         <Button onClick={(e) => {
                             e.preventDefault();
-                            console.log("Add domain");
-                            setCurrentDomain([...currentDomain, e.target.previousSibling.value]);
+                            const domain = extractHostname(e.target.previousSibling.value)
+                            console.log(domain);
+                            setCurrentDomain([...currentDomain, domain]);
                             clearTextfield(e.target.previousSibling);
-                        }} text="Next" />
+                        }} text="Add domain to list" />
                     </section>
                     <DomainList domains={currentDomain} />
                 </div>

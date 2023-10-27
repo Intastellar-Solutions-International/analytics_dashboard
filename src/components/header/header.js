@@ -50,6 +50,7 @@ export default function Header(props) {
             if(data.error === "Err_No_Domains") {
                 
             }else{
+                console.log(data);
                 data.unshift({domain: "all", installed: null, lastedVisited: null});
                 data?.map((d) => {
                     return  punycode.toUnicode(d.domain);
@@ -57,7 +58,7 @@ export default function Header(props) {
                     return d !== undefined && d !== "" && d !== "undefined.";
                 });
                 setDomains(data);
-            
+
                 const allowedDomains = data?.map((d) => {
                     return  punycode.toUnicode(d.domain);
                 }).filter((d) => {
@@ -75,7 +76,7 @@ export default function Header(props) {
         return punycode.toUnicode(d.domain)
     })
 
-    console.log(allOrganisations, Organisation);
+    console.log(domains);
 
     return (
         <>

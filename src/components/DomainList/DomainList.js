@@ -11,6 +11,7 @@ export default function DomainList(props){
     const [error, setError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [savedDomains, setSavedDomains] = useState([]);
+    const organisationId = (localStorage.getItem("organisation") != null) ? JSON.parse(localStorage.getItem("organisation")).id : null;
 
     function saveDomains(domains){
 
@@ -23,27 +24,19 @@ export default function DomainList(props){
                 }
             )
         ).then(
-            re => {
-                if(re.status === 200){
-                    return re.json();
-                } else {
-                    setError(true);
-                }
-            }
-        ).then(
-            data => {
-                console.log(data);
-                if(data === "success"){
+           re => {
+                console.log(re);
+                if(re === "success"){
                     setSuccess(true);
                     setPopUp(true);
                     setSavedDomains(domains);
-                } else if(data === "error"){
+                } else if(re === "error"){
                     setError(true);
                     setErrorMessage("Something went wrong, please try again later");
                 } else {
                     setError(true);
                 }
-            }
+           }
         ).catch(setErrorMessage);
 
     }

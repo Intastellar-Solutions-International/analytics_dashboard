@@ -993,11 +993,12 @@ function AddDomain() {
   }), /*#__PURE__*/React.createElement(_Button_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
     onClick: e => {
       e.preventDefault();
-      console.log("Add domain");
-      setCurrentDomain([...currentDomain, e.target.previousSibling.value]);
+      const domain = (0,_Utils_Utils__WEBPACK_IMPORTED_MODULE_4__.extractHostname)(e.target.previousSibling.value);
+      console.log(domain);
+      setCurrentDomain([...currentDomain, domain]);
       (0,_Utils_Utils__WEBPACK_IMPORTED_MODULE_4__.clearTextfield)(e.target.previousSibling);
     },
-    text: "Next"
+    text: "Add domain to list"
   })), /*#__PURE__*/React.createElement(_DomainList_DomainList__WEBPACK_IMPORTED_MODULE_3__["default"], {
     domains: currentDomain
   }))));
@@ -1211,25 +1212,20 @@ function DomainList(props) {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [savedDomains, setSavedDomains] = useState([]);
+  const organisationId = localStorage.getItem("organisation") != null ? JSON.parse(localStorage.getItem("organisation")).id : null;
 
   function saveDomains(domains) {
     (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_4__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.url, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.method, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.headers, JSON.stringify({
       organisationId: organisationId,
       domains: domains
     })).then(re => {
-      if (re.status === 200) {
-        return re.json();
-      } else {
-        setError(true);
-      }
-    }).then(data => {
-      console.log(data);
+      console.log(re);
 
-      if (data === "success") {
+      if (re === "success") {
         setSuccess(true);
         setPopUp(true);
         setSavedDomains(domains);
-      } else if (data === "error") {
+      } else if (re === "error") {
         setError(true);
         setErrorMessage("Something went wrong, please try again later");
       } else {
@@ -1568,6 +1564,7 @@ function Header(props) {
       }
 
       if (data.error === "Err_No_Domains") {} else {
+        console.log(data);
         data.unshift({
           domain: "all",
           installed: null,
@@ -1591,7 +1588,7 @@ function Header(props) {
   domainList = domains === null || domains === void 0 ? void 0 : domains.map(d => {
     return punycode.toUnicode(d.domain);
   });
-  console.log(allOrganisations, Organisation);
+  console.log(domains);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("header", {
     className: "dashboard-header"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3568,10 +3565,26 @@ function UserConsents(props) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "clearTextfield": () => (/* binding */ clearTextfield)
+/* harmony export */   "clearTextfield": () => (/* binding */ clearTextfield),
+/* harmony export */   "extractHostname": () => (/* binding */ extractHostname)
 /* harmony export */ });
 function clearTextfield(textfield) {
   textfield.value = "";
+}
+function extractHostname(url) {
+  var hostname;
+
+  if (url.indexOf("//") > -1) {
+    hostname = url.split('/')[2];
+  } else {
+    hostname = url.split('/')[0];
+  }
+
+  hostname = hostname.split(':')[0];
+  hostname = hostname.split('?')[0];
+  hostname = hostname.split('.');
+  hostname.reverse();
+  return hostname[1] + "." + hostname[0];
 }
 
 /***/ }),
