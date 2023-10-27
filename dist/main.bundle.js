@@ -982,18 +982,33 @@ const {
 } = React;
 function AddDomain() {
   const [currentDomain, setCurrentDomain] = useState([]);
+  const [disabled, setDisabled] = useState(true);
+  const domainRegex = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h2", null, "Add domain"), /*#__PURE__*/React.createElement("p", null, "Here you can add a domain to your organisation."), /*#__PURE__*/React.createElement("p", null, "After adding a domain you can implement the GDPR cookiebanner on your website."), /*#__PURE__*/React.createElement("div", {
     className: "grid"
   }, /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement(_InputFields_textInput__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    placeholder: "Add domain"
+    placeholder: "Add domain",
+    type: "url",
+    onChange: e => {
+      if (e.target.value.length > 0 && e.target.value.match(domainRegex)) {
+        setDisabled(false);
+      } else {
+        setDisabled(true);
+      }
+    }
   }), /*#__PURE__*/React.createElement(_Button_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    disabled: disabled,
     onClick: e => {
       e.preventDefault();
-      const domain = (0,_Utils_Utils__WEBPACK_IMPORTED_MODULE_4__.extractHostname)(e.target.previousSibling.value);
-      setCurrentDomain([...currentDomain, domain]);
-      (0,_Utils_Utils__WEBPACK_IMPORTED_MODULE_4__.clearTextfield)(e.target.previousSibling);
+
+      if (!disabled) {
+        const domain = (0,_Utils_Utils__WEBPACK_IMPORTED_MODULE_4__.extractHostname)(e.target.previousSibling.value);
+        setCurrentDomain([...currentDomain, domain]);
+        (0,_Utils_Utils__WEBPACK_IMPORTED_MODULE_4__.clearTextfield)(e.target.previousSibling);
+        setDisabled(true);
+      }
     },
     text: "Add domain to list"
   })), /*#__PURE__*/React.createElement(_DomainList_DomainList__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -1132,6 +1147,7 @@ __webpack_require__.r(__webpack_exports__);
 function Button(props) {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
     className: "cta",
+    disabled: props.disabled,
     onClick: props === null || props === void 0 ? void 0 : props.onClick
   }, props.text));
 }
@@ -1732,7 +1748,8 @@ function Text(props) {
     className: "intInput",
     placeholder: props === null || props === void 0 ? void 0 : props.placeholder,
     autoComplete: "off",
-    type: "text",
+    type: props !== null && props !== void 0 && props.type ? props.type : "text",
+    pattern: props !== null && props !== void 0 && props.pattern ? props.pattern : "",
     onChange: props.onChange
   }));
 }
@@ -4072,7 +4089,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".cta{\n    padding: 15px 30px;\n    background-color: #1e90ff;\n    border: none;\n    margin-top: 10px;\n    color: #fff;\n    font-size: 1rem;\n    border-radius: 5px;\n}", "",{"version":3,"sources":["webpack://./src/Pages/Settings/AddUser/Style/Style.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,yBAAyB;IACzB,YAAY;IACZ,gBAAgB;IAChB,WAAW;IACX,eAAe;IACf,kBAAkB;AACtB","sourcesContent":[".cta{\n    padding: 15px 30px;\n    background-color: #1e90ff;\n    border: none;\n    margin-top: 10px;\n    color: #fff;\n    font-size: 1rem;\n    border-radius: 5px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".cta{\n    padding: 15px 30px;\n    background-color: #1e90ff;\n    border: none;\n    margin-top: 10px;\n    color: #fff;\n    font-size: 1rem;\n    border-radius: 5px;\n}\n\n.cta:disabled{\n    background-color: #b3b3b3;\n    color: #fff;\n}", "",{"version":3,"sources":["webpack://./src/Pages/Settings/AddUser/Style/Style.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,yBAAyB;IACzB,YAAY;IACZ,gBAAgB;IAChB,WAAW;IACX,eAAe;IACf,kBAAkB;AACtB;;AAEA;IACI,yBAAyB;IACzB,WAAW;AACf","sourcesContent":[".cta{\n    padding: 15px 30px;\n    background-color: #1e90ff;\n    border: none;\n    margin-top: 10px;\n    color: #fff;\n    font-size: 1rem;\n    border-radius: 5px;\n}\n\n.cta:disabled{\n    background-color: #b3b3b3;\n    color: #fff;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

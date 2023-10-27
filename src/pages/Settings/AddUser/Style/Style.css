@@ -7,3 +7,8 @@
     font-size: 1rem;
     border-radius: 5px;
 }
+
+.cta:disabled{
+    background-color: #b3b3b3;
+    color: #fff;
+}
