@@ -22,6 +22,7 @@ import LoginOverLay from "./Login/LoginOverlay";
 import DomainDashbord from "./Pages/Dashboard/DomainDashbord";
 import Fetch from "./Functions/fetch";
 import AddDomain from "./Components/AddDomain/AddDomain";
+import SettingsAddDomain from "./Pages/Settings/AddDomain";
 import Select from "./Components/SelectInput/Selector";
 import Authentication from "./Authentication/Auth";
 import UserConsents from "./Pages/UserConsents/UserConsents";
@@ -43,10 +44,10 @@ export default function App() {
     const [domains, setDomains] = useState(null);
     const [domainError, setDomainError] = useState(false);
     const [id, setId] = useState((localStorage.getItem("platform")) ? localStorage.getItem("platform") : null);
-    if (localStorage.getItem("globals") !== null) {
+    console.log(localStorage.getItem("globals") );
+    if (localStorage.getItem("globals") != null) {
         if(window.location.pathname === "/"){
             window.location.href = "/" + id + "/dashboard";
-
         }
         /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
         useEffect(() => {
@@ -136,6 +137,12 @@ export default function App() {
                                             {Authentication.User.Status === "admin" || Authentication.User.Status === "super-admin" ? <AddUser /> : null}
                                         </ErrorBoundary>
                                     </Route>
+                                    <Route path="/settings/add-domain">
+                                        <ErrorBoundary>
+                                            {Authentication.User.Status === "admin" || Authentication.User.Status === "super-admin" || Authentication.User.Status === "manager" ? 
+                                            <SettingsAddDomain /> : null}
+                                        </ErrorBoundary>
+                                    </Route>
                                     <Route path="/settings/view-organisations">
                                         <ErrorBoundary>
                                             {domainError ? <AddDomain /> : <ViewOrg />}
@@ -180,6 +187,7 @@ export default function App() {
             </>
         )
     } else {
+        console.log("No globals")
         return (
             <Login />
         )
