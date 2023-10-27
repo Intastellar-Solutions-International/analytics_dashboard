@@ -981,7 +981,7 @@ function AddDomain() {
       setCurrentDomain([...currentDomain, e.target.previousSibling.value]);
       (0,_Utils_Utils__WEBPACK_IMPORTED_MODULE_4__.clearTextfield)(e.target.previousSibling);
     },
-    text: "Add domain"
+    text: "Next"
   }), /*#__PURE__*/React.createElement(_DomainList_DomainList__WEBPACK_IMPORTED_MODULE_3__["default"], {
     domains: currentDomain
   })));

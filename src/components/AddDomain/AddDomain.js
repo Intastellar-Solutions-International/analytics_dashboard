@@ -19,7 +19,7 @@ export default function AddDomain(){
                     console.log("Add domain");
                     setCurrentDomain([...currentDomain, e.target.previousSibling.value]);
                     clearTextfield(e.target.previousSibling);
-                }} text="Add domain" />
+                }} text="Next" />
                 <DomainList domains={currentDomain} />
             </div>
         </>
