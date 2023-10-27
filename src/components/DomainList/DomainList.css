@@ -11,8 +11,9 @@
 }
 
 .editable{
-    text-decoration: dotted;
-    color: rgb(0, 149, 255);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    color: rgb(0, 76, 130);
 }
 
 .domain-list{
