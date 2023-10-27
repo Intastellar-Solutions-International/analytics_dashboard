@@ -14,6 +14,11 @@ export default function DomainList(props){
     const organisationId = (localStorage.getItem("organisation") != null) ? JSON.parse(localStorage.getItem("organisation")).id : null;
     const [organisation, setOrganisation] = useState(JSON.parse(localStorage.getItem("organisation")));
     const [privacyPolicyLink, setPrivacyPolicyLink] = useState("");
+    const [choosenColor, setChoosenColor] = useState("red");
+    const [bannerArrangement, setBannerArrangement] = useState("ltr");
+    const [companyLogo, setCompanyLogo] = useState("");
+    const [requiredCookies, setRequiredCookies] = useState("");
+    const [partnerDomain, setPartnerDomain] = useState("");
 
     function saveDomains(domains){
 
@@ -51,7 +56,7 @@ export default function DomainList(props){
     return <>
         <div className="domain-list">
             {
-                (!success) ? <>
+                (success) ? <>
                 <h2>Domains to add</h2>
                     <p>You´re about to add these domains to your Organisation: {organisation.name}</p>
                 </> : <>
@@ -73,7 +78,15 @@ export default function DomainList(props){
                                 `<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script>;
                                 <script>
                                     window.INTA = {
-                                        policy_link: '${privacyPolicyLink}'
+                                        policy_link: '${privacyPolicyLink}',
+                                        settings: {
+                                            company: '${organisation.name}',
+                                            color: '${choosenColor}',
+                                            arrange: '${bannerArrangement}',
+                                            logo: '${companyLogo}',
+                                            requiredCookies: '${requiredCookies}',
+                                            partnerDomain: '${savedDomains}',
+                                        }
                                     }
                                 </script>`
                             )
@@ -82,16 +95,25 @@ export default function DomainList(props){
                         <pre>
                             &lt;script src="https://consents.cdn.intastellarsolutions.com/gdpr.js"&gt;&lt;/script&gt;
                         </pre>
-                        <pre>
-                            &lt;script&gt;<br />
-                                window.INTA = &#123; <br />
-                                    policy_link: "<span contentEditable={true}
-                                            suppressContentEditableWarning={true} onInput={() => {
-                                        setPrivacyPolicyLink(document.querySelector(".editable").innerHTML);
-                                    }} className="editable">https://{currentDomain[0]}/privacy-policy</span>" <br />
-                                &#125;<br />
-                            &lt;/script&gt;
-                        </pre>
+                        &lt;script&gt; <br />
+                            window.INTA = &#123; <br />
+                                policy_link: <span contentEditable={true}
+                                        suppressContentEditableWarning={true} onInput={() => {
+                                    setPrivacyPolicyLink(document.querySelector(".editable").innerHTML);
+                                }} className="editable">"{(currentDomain[0] != undefined) ? `https://${currentDomain[0]}/privacy-policy` : null}"</span> <br />
+                                settings: &#123; <br />
+                                    company: "{organisation.name}", <br />
+                                    color: <span contentEditable={true} suppressContentEditableWarning={true} className="editable">"{choosenColor}"</span>, <br />
+                                    arrange: <span contentEditable={true} suppressContentEditableWarning={true} className="editable">"{bannerArrangement}"</span>, <br />
+                                    logo: <span contentEditable={true} suppressContentEditableWarning={true} className="editable">"{companyLogo}"</span>, <br />
+                                    requiredCookies: [
+                                        <span contentEditable={true} suppressContentEditableWarning={true} className="editable">{requiredCookies}</span>
+                                    ], <br />
+                                    partnerDomain: [
+                                        <span contentEditable={true} suppressContentEditableWarning={true} className="editable">{partnerDomain}</span>
+                                    ] <br />&#125; <br />
+                            &#125; <br />
+                        &lt;/script&gt;
                     </code>
                     
                     <p>Read the full documentation under: <a href="https://developers.intastellarsolutions.com/cookie-solutions/docs/js-docs" target="_blank">https://developers.intastellarsolutions.com/cookie-solutions/docs/js-docs</a></p>

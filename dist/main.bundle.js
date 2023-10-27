@@ -1229,6 +1229,11 @@ function DomainList(props) {
   const organisationId = localStorage.getItem("organisation") != null ? JSON.parse(localStorage.getItem("organisation")).id : null;
   const [organisation, setOrganisation] = useState(JSON.parse(localStorage.getItem("organisation")));
   const [privacyPolicyLink, setPrivacyPolicyLink] = useState("");
+  const [choosenColor, setChoosenColor] = useState("red");
+  const [bannerArrangement, setBannerArrangement] = useState("ltr");
+  const [companyLogo, setCompanyLogo] = useState("");
+  const [requiredCookies, setRequiredCookies] = useState("");
+  const [partnerDomain, setPartnerDomain] = useState("");
 
   function saveDomains(domains) {
     (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_4__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.url, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.method, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.headers, JSON.stringify({
@@ -1254,7 +1259,7 @@ function DomainList(props) {
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "domain-list"
-  }, !success ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains to add"), /*#__PURE__*/React.createElement("p", null, "You\xB4re about to add these domains to your Organisation: ", organisation.name)) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains added"), /*#__PURE__*/React.createElement("p", null, "You have added the following domains to your Organisation: ", organisation.name), /*#__PURE__*/React.createElement("ul", null, savedDomains.map((domain, index) => {
+  }, success ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains to add"), /*#__PURE__*/React.createElement("p", null, "You\xB4re about to add these domains to your Organisation: ", organisation.name)) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains added"), /*#__PURE__*/React.createElement("p", null, "You have added the following domains to your Organisation: ", organisation.name), /*#__PURE__*/React.createElement("ul", null, savedDomains.map((domain, index) => {
     return /*#__PURE__*/React.createElement("li", {
       key: index
     }, domain);
@@ -1263,20 +1268,40 @@ function DomainList(props) {
   }, /*#__PURE__*/React.createElement("button", {
     className: "copyCta",
     onClick: () => {
-      copy("<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script>;\n                                <script>\n                                    window.INTA = {\n                                        policy_link: '".concat(privacyPolicyLink, "'\n                                    }\n                                </script>"));
+      copy("<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script>;\n                                <script>\n                                    window.INTA = {\n                                        policy_link: '".concat(privacyPolicyLink, "',\n                                        settings: {\n                                            company: '").concat(organisation.name, "',\n                                            color: '").concat(choosenColor, "',\n                                            arrange: '").concat(bannerArrangement, "',\n                                            logo: '").concat(companyLogo, "',\n                                            requiredCookies: '").concat(requiredCookies, "',\n                                            partnerDomain: '").concat(savedDomains, "',\n                                        }\n                                    }\n                                </script>"));
     }
   }, "Copy"), /*#__PURE__*/React.createElement("div", {
     style: {
       clear: "both"
     }
-  }), /*#__PURE__*/React.createElement("pre", null, "<script src=\"https://consents.cdn.intastellarsolutions.com/gdpr.js\"></script>"), /*#__PURE__*/React.createElement("pre", null, "<script>", /*#__PURE__*/React.createElement("br", null), "window.INTA = { ", /*#__PURE__*/React.createElement("br", null), "policy_link: \"", /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/React.createElement("pre", null, "<script src=\"https://consents.cdn.intastellarsolutions.com/gdpr.js\"></script>"), "<script> ", /*#__PURE__*/React.createElement("br", null), "window.INTA = { ", /*#__PURE__*/React.createElement("br", null), "policy_link: ", /*#__PURE__*/React.createElement("span", {
     contentEditable: true,
     suppressContentEditableWarning: true,
     onInput: () => {
       setPrivacyPolicyLink(document.querySelector(".editable").innerHTML);
     },
     className: "editable"
-  }, "https://", currentDomain[0], "/privacy-policy"), "\" ", /*#__PURE__*/React.createElement("br", null), "}", /*#__PURE__*/React.createElement("br", null), "</script>")), /*#__PURE__*/React.createElement("p", null, "Read the full documentation under: ", /*#__PURE__*/React.createElement("a", {
+  }, "\"", currentDomain[0] != undefined ? "https://".concat(currentDomain[0], "/privacy-policy") : null, "\""), " ", /*#__PURE__*/React.createElement("br", null), "settings: { ", /*#__PURE__*/React.createElement("br", null), "company: \"", organisation.name, "\", ", /*#__PURE__*/React.createElement("br", null), "color: ", /*#__PURE__*/React.createElement("span", {
+    contentEditable: true,
+    suppressContentEditableWarning: true,
+    className: "editable"
+  }, "\"", choosenColor, "\""), ", ", /*#__PURE__*/React.createElement("br", null), "arrange: ", /*#__PURE__*/React.createElement("span", {
+    contentEditable: true,
+    suppressContentEditableWarning: true,
+    className: "editable"
+  }, "\"", bannerArrangement, "\""), ", ", /*#__PURE__*/React.createElement("br", null), "logo: ", /*#__PURE__*/React.createElement("span", {
+    contentEditable: true,
+    suppressContentEditableWarning: true,
+    className: "editable"
+  }, "\"", companyLogo, "\""), ", ", /*#__PURE__*/React.createElement("br", null), "requiredCookies: [", /*#__PURE__*/React.createElement("span", {
+    contentEditable: true,
+    suppressContentEditableWarning: true,
+    className: "editable"
+  }, requiredCookies), "], ", /*#__PURE__*/React.createElement("br", null), "partnerDomain: [", /*#__PURE__*/React.createElement("span", {
+    contentEditable: true,
+    suppressContentEditableWarning: true,
+    className: "editable"
+  }, partnerDomain), "] ", /*#__PURE__*/React.createElement("br", null), "} ", /*#__PURE__*/React.createElement("br", null), "} ", /*#__PURE__*/React.createElement("br", null), "</script>"), /*#__PURE__*/React.createElement("p", null, "Read the full documentation under: ", /*#__PURE__*/React.createElement("a", {
     href: "https://developers.intastellarsolutions.com/cookie-solutions/docs/js-docs",
     target: "_blank"
   }, "https://developers.intastellarsolutions.com/cookie-solutions/docs/js-docs"))), currentDomain.length > 0 && !success ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("ul", null, currentDomain === null || currentDomain === void 0 ? void 0 : currentDomain.map((domain, index) => {
