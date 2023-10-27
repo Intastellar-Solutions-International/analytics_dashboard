@@ -5,6 +5,7 @@
     height: 100vh;
     position: fixed;
     top: 0;
+    grid-template-columns: 1fr;
     z-index: 20000;
     background-color: rgb(36, 36, 36);
 }
