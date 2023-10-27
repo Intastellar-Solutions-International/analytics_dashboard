@@ -720,8 +720,6 @@ const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/pu
 const OrganisationContext = createContext(localStorage.getItem("organisation"));
 const DomainContext = createContext(null);
 function App() {
-  var _JSON$parse, _JSON$parse2;
-
   const [dashboardView, setDashboardView] = useState("GDPR Cookiebanner");
   const [organisation, setOrganisation] = useState(localStorage.getItem("organisation") ? localStorage.getItem("organisation") : null);
   const [currentDomain, setCurrentDomain] = useState("all");
@@ -731,8 +729,8 @@ function App() {
   const [domainError, setDomainError] = useState(false);
   const [id, setId] = useState(localStorage.getItem("platform") ? localStorage.getItem("platform") : null);
 
-  if (localStorage.getItem("globals") && ((_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.token) != undefined || (_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) !== null && _JSON$parse2 !== void 0 && _JSON$parse2.status) {
-    var _JSON$parse3, _JSON$parse3$profile, _JSON$parse3$profile$, _JSON$parse4, _JSON$parse4$access;
+  if (localStorage.getItem("globals") !== null) {
+    var _JSON$parse, _JSON$parse$profile, _JSON$parse$profile$n, _JSON$parse2, _JSON$parse2$access;
 
     /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
     useEffect(() => {
@@ -800,7 +798,7 @@ function App() {
         backgroundColor: "rgb(218, 218, 218)",
         color: "#626262"
       }
-    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$profile = _JSON$parse3.profile) === null || _JSON$parse3$profile === void 0 ? void 0 : (_JSON$parse3$profile$ = _JSON$parse3$profile.name) === null || _JSON$parse3$profile$ === void 0 ? void 0 : _JSON$parse3$profile$.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_21__["default"], null, id == "gdpr" ? /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$profile = _JSON$parse.profile) === null || _JSON$parse$profile === void 0 ? void 0 : (_JSON$parse$profile$n = _JSON$parse$profile.name) === null || _JSON$parse$profile$n === void 0 ? void 0 : _JSON$parse$profile$n.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your GDPR cookiebanner implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_21__["default"], null, id == "gdpr" ? /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
       dashboardView: dashboardView,
       setDashboardView: setDashboardView
     }) : /*#__PURE__*/React.createElement(_Pages_Dashboard_ferry_Dashboard_js__WEBPACK_IMPORTED_MODULE_7__["default"], null)))), /*#__PURE__*/React.createElement(Route, {
@@ -834,14 +832,14 @@ function App() {
       path: "/dashboard"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_21__["default"], null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_24__["default"], {
       setId: setId,
-      platforms: (_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : (_JSON$parse4$access = _JSON$parse4.access) === null || _JSON$parse4$access === void 0 ? void 0 : _JSON$parse4$access.type
+      platforms: (_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse2 === void 0 ? void 0 : (_JSON$parse2$access = _JSON$parse2.access) === null || _JSON$parse2$access === void 0 ? void 0 : _JSON$parse2$access.type
     }))), /*#__PURE__*/React.createElement(Router, {
       path: "/login",
       exact: true
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_21__["default"], null, /*#__PURE__*/React.createElement(_Login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], null))), /*#__PURE__*/React.createElement(Redirect, {
       to: "/login"
     })))))));
-  } else if (!localStorage.getItem("globals") || window.location.pathname === "/login") {
+  } else {
     return /*#__PURE__*/React.createElement(_Login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], null);
   }
 }
@@ -950,13 +948,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ AddDomain)
 /* harmony export */ });
 /* harmony import */ var _InputFields_textInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../InputFields/textInput */ "./src/Components/InputFields/textInput.js");
+/* harmony import */ var _Button_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Button/Button */ "./src/Components/Button/Button.js");
 
+
+const {
+  useState,
+  useEffect,
+  useRef,
+  createContext
+} = React;
 function AddDomain() {
+  const [currentDomain, setCurrentDomain] = useState(null);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h2", null, "Add domain"), /*#__PURE__*/React.createElement("p", null, "Here you can add a domain to your organisation."), /*#__PURE__*/React.createElement("p", null, "After adding a domain you can implement the GDPR cookiebanner on your website."), /*#__PURE__*/React.createElement(_InputFields_textInput__WEBPACK_IMPORTED_MODULE_0__["default"], {
     placeholder: "Add domain"
-  })));
+  }), /*#__PURE__*/React.createElement(_Button_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    onClick: e => {
+      e.preventDefault();
+      console.log("Add domain");
+      setCurrentDomain(e.target.previousSibling.value);
+    },
+    text: "Add domain"
+  }), currentDomain == null ? "" : /*#__PURE__*/React.createElement("p", null, currentDomain)));
 }
 
 /***/ }),
@@ -1072,6 +1086,25 @@ function BugReport() {
     className: "send-feedback",
     onClick: openMenu
   }, "Feedback")));
+}
+
+/***/ }),
+
+/***/ "./src/Components/Button/Button.js":
+/*!*****************************************!*\
+  !*** ./src/Components/Button/Button.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Button)
+/* harmony export */ });
+function Button(props) {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
+    className: "cta",
+    onClick: props.onClick
+  }, props.text));
 }
 
 /***/ }),
@@ -1969,29 +2002,33 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function PlatformSelector(props) {
-  const items = Object.keys(props === null || props === void 0 ? void 0 : props.platforms).map(platform => {
+  var _Object$keys$map$filt, _Object$keys$map$filt2;
+
+  const items = (_Object$keys$map$filt = Object.keys(props === null || props === void 0 ? void 0 : props.platforms).map(platform => {
     return props === null || props === void 0 ? void 0 : props.platforms[platform];
   }).filter(company => {
     return company.name === JSON.parse(localStorage.getItem("organisation")).name;
-  }).map(platform => {
+  })) === null || _Object$keys$map$filt === void 0 ? void 0 : (_Object$keys$map$filt2 = _Object$keys$map$filt.map(platform => {
     return {
       type: platform.access.type,
       uri: platform.access.uri
     };
   }).map(platform => {
-    const type = platform.type.split(",").map(type => {
+    var _platform$type, _platform$type$split, _platform$uri, _platform$uri$split;
+
+    const type = platform === null || platform === void 0 ? void 0 : (_platform$type = platform.type) === null || _platform$type === void 0 ? void 0 : (_platform$type$split = _platform$type.split(",")) === null || _platform$type$split === void 0 ? void 0 : _platform$type$split.map(type => {
       return type.trim();
     });
-    const uri = platform.uri.split(",").map(uri => {
+    const uri = platform === null || platform === void 0 ? void 0 : (_platform$uri = platform.uri) === null || _platform$uri === void 0 ? void 0 : (_platform$uri$split = _platform$uri.split(",")) === null || _platform$uri$split === void 0 ? void 0 : _platform$uri$split.map(uri => {
       return uri.trim();
     });
-    return type.map((type, key) => {
+    return type === null || type === void 0 ? void 0 : type.map((type, key) => {
       return {
         type: type,
         uri: uri[key]
       };
     });
-  }).reduce((acc, val) => acc.concat(val), []).map(item => {
+  }).reduce((acc, val) => acc.concat(val), [])) === null || _Object$keys$map$filt2 === void 0 ? void 0 : _Object$keys$map$filt2.map(item => {
     return item;
   });
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
@@ -3412,7 +3449,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".bug-container{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n}\n\n.send-feedback{\n    background-color: #fff;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n}\n\n.bug-menu{\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n    position: fixed;\n    bottom: 70px;\n    background-color: #fff;\n    color: #2f2f2f;\n    border-radius: 10px;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);\n    max-width: 450px;\n}\n\n.bug-menu .bug-menu-header{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.bug-menu .bug-menu-header .bug-menu-title{\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.bugReport-input{\n    border: 1px solid #bec0c3;\n    border-radius: 5px;\n    padding: 10px;\n    outline: none;\n    font-size: 15px;\n    color: #2f2f2f;\n    resize: none;\n    width: 100%;\n    margin: 20px 0px;\n}\n\n.bugReport-input.--height{\n    height: 200px;\n}\n\n.bugReport-send{\n    background-color: #ff5e5e;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n    float: right;\n    margin-top: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Components/BugReport/BugReport.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,YAAY;IACZ,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,sBAAsB;IACtB,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;AACpB;;AAEA;IACI,YAAY;IACZ,WAAW;IACX,YAAY;IACZ,eAAe;IACf,YAAY;IACZ,sBAAsB;IACtB,cAAc;IACd,mBAAmB;IACnB,aAAa;IACb,aAAa;IACb,sBAAsB;IACtB,SAAS;IACT,6CAA6C;IAC7C,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,gBAAgB;AACpB;;AAEA;IACI,yBAAyB;IACzB,kBAAkB;IAClB,aAAa;IACb,aAAa;IACb,eAAe;IACf,cAAc;IACd,YAAY;IACZ,WAAW;IACX,gBAAgB;AACpB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,yBAAyB;IACzB,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;IAChB,YAAY;IACZ,gBAAgB;AACpB","sourcesContent":[".bug-container{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n}\n\n.send-feedback{\n    background-color: #fff;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n}\n\n.bug-menu{\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n    position: fixed;\n    bottom: 70px;\n    background-color: #fff;\n    color: #2f2f2f;\n    border-radius: 10px;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);\n    max-width: 450px;\n}\n\n.bug-menu .bug-menu-header{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.bug-menu .bug-menu-header .bug-menu-title{\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.bugReport-input{\n    border: 1px solid #bec0c3;\n    border-radius: 5px;\n    padding: 10px;\n    outline: none;\n    font-size: 15px;\n    color: #2f2f2f;\n    resize: none;\n    width: 100%;\n    margin: 20px 0px;\n}\n\n.bugReport-input.--height{\n    height: 200px;\n}\n\n.bugReport-send{\n    background-color: #ff5e5e;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n    float: right;\n    margin-top: 10px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".bug-container{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    z-index: 20001;\n}\n\n.send-feedback{\n    background-color: #fff;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n}\n\n.bug-menu{\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n    position: fixed;\n    bottom: 70px;\n    background-color: #fff;\n    color: #2f2f2f;\n    border-radius: 10px;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);\n    max-width: 450px;\n}\n\n.bug-menu .bug-menu-header{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.bug-menu .bug-menu-header .bug-menu-title{\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.bugReport-input{\n    border: 1px solid #bec0c3;\n    border-radius: 5px;\n    padding: 10px;\n    outline: none;\n    font-size: 15px;\n    color: #2f2f2f;\n    resize: none;\n    width: 100%;\n    margin: 20px 0px;\n}\n\n.bugReport-input.--height{\n    height: 200px;\n}\n\n.bugReport-send{\n    background-color: #ff5e5e;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n    float: right;\n    margin-top: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Components/BugReport/BugReport.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,YAAY;IACZ,WAAW;IACX,cAAc;AAClB;;AAEA;IACI,sBAAsB;IACtB,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;AACpB;;AAEA;IACI,YAAY;IACZ,WAAW;IACX,YAAY;IACZ,eAAe;IACf,YAAY;IACZ,sBAAsB;IACtB,cAAc;IACd,mBAAmB;IACnB,aAAa;IACb,aAAa;IACb,sBAAsB;IACtB,SAAS;IACT,6CAA6C;IAC7C,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,gBAAgB;AACpB;;AAEA;IACI,yBAAyB;IACzB,kBAAkB;IAClB,aAAa;IACb,aAAa;IACb,eAAe;IACf,cAAc;IACd,YAAY;IACZ,WAAW;IACX,gBAAgB;AACpB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,yBAAyB;IACzB,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;IAChB,YAAY;IACZ,gBAAgB;AACpB","sourcesContent":[".bug-container{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    z-index: 20001;\n}\n\n.send-feedback{\n    background-color: #fff;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n}\n\n.bug-menu{\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n    position: fixed;\n    bottom: 70px;\n    background-color: #fff;\n    color: #2f2f2f;\n    border-radius: 10px;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);\n    max-width: 450px;\n}\n\n.bug-menu .bug-menu-header{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.bug-menu .bug-menu-header .bug-menu-title{\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.bugReport-input{\n    border: 1px solid #bec0c3;\n    border-radius: 5px;\n    padding: 10px;\n    outline: none;\n    font-size: 15px;\n    color: #2f2f2f;\n    resize: none;\n    width: 100%;\n    margin: 20px 0px;\n}\n\n.bugReport-input.--height{\n    height: 200px;\n}\n\n.bugReport-send{\n    background-color: #ff5e5e;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n    float: right;\n    margin-top: 10px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

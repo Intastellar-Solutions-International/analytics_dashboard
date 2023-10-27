@@ -177,9 +177,7 @@ export default function App() {
         )
     } else {
         return (
-            <Route>
-                <Login />
-            </Route>
+            <Login />
         )
     }
 }
