@@ -1211,14 +1211,13 @@ function DomainList(props) {
   const [errorMessage, setErrorMessage] = useState("");
   const [savedDomains, setSavedDomains] = useState([]);
   const organisationId = localStorage.getItem("organisation") != null ? JSON.parse(localStorage.getItem("organisation")).id : null;
+  const [organisation, setOrganisation] = useState(JSON.parse(localStorage.getItem("organisation")));
 
   function saveDomains(domains) {
     (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_4__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.url, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.method, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.headers, JSON.stringify({
       organisationId: organisationId,
       domains: domains
     })).then(re => {
-      console.log(re);
-
       if (re === "success") {
         setSuccess(true);
         setPopUp(true);
@@ -1234,7 +1233,7 @@ function DomainList(props) {
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "domain-list"
-  }, /*#__PURE__*/React.createElement("h2", null, "Domains to add"), currentDomain.length === 0 ? "" : /*#__PURE__*/React.createElement("ul", null, currentDomain.map((domain, index) => {
+  }, /*#__PURE__*/React.createElement("h2", null, "Domains to add"), /*#__PURE__*/React.createElement("p", null, "You\xB4re about to add these domains to your Organisation: ", organisation.name), currentDomain.length === 0 ? "" : /*#__PURE__*/React.createElement("ul", null, currentDomain.map((domain, index) => {
     return /*#__PURE__*/React.createElement("li", {
       key: index
     }, domain, /*#__PURE__*/React.createElement("button", {

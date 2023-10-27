@@ -12,6 +12,7 @@ export default function DomainList(props){
     const [errorMessage, setErrorMessage] = useState("");
     const [savedDomains, setSavedDomains] = useState([]);
     const organisationId = (localStorage.getItem("organisation") != null) ? JSON.parse(localStorage.getItem("organisation")).id : null;
+    const [organisation, setOrganisation] = useState(JSON.parse(localStorage.getItem("organisation")));
 
     function saveDomains(domains){
 
@@ -25,7 +26,6 @@ export default function DomainList(props){
             )
         ).then(
            re => {
-                console.log(re);
                 if(re === "success"){
                     setSuccess(true);
                     setPopUp(true);
@@ -44,6 +44,7 @@ export default function DomainList(props){
     return <>
         <div className="domain-list">
             <h2>Domains to add</h2>
+            <p>You´re about to add these domains to your Organisation: {organisation.name}</p>
             {
                 (currentDomain.length === 0) ? "" : 
                 <ul>
