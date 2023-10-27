@@ -13,6 +13,7 @@ export default function DomainList(props){
     const [savedDomains, setSavedDomains] = useState([]);
     const organisationId = (localStorage.getItem("organisation") != null) ? JSON.parse(localStorage.getItem("organisation")).id : null;
     const [organisation, setOrganisation] = useState(JSON.parse(localStorage.getItem("organisation")));
+    const [privacyPolicyLink, setPrivacyPolicyLink] = useState("");
 
     function saveDomains(domains){
 
@@ -41,6 +42,12 @@ export default function DomainList(props){
 
     }
 
+    function copy(item){
+        navigator.clipboard.writeText(item);
+    }
+
+    
+
     return <>
         <div className="domain-list">
             {
@@ -59,18 +66,35 @@ export default function DomainList(props){
                     </ul>
                     <h3>Next steps</h3>
                     <p>Now you have added your domains to your Organisation, you need to implement the Intastellar Cookie Consents on your website. If not already.</p>
-                    <code>
+                    <h4>Include the following script in the head of your website</h4>
+                    <code className="editor">
+                        <button className="copyCta" onClick={() => {
+                            copy(
+                                `<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script>;
+                                <script>
+                                    window.INTA = {
+                                        policy_link: '${privacyPolicyLink}'
+                                    }
+                                </script>`
+                            )
+                        }}>Copy</button>
+                        <div style={{clear:"both"}}></div>
                         <pre>
                             &lt;script src="https://consents.cdn.intastellarsolutions.com/gdpr.js"&gt;&lt;/script&gt;
                         </pre>
                         <pre>
                             &lt;script&gt;<br />
                                 window.INTA = &#123; <br />
-                                    policy_link: "https://{currentDomain[0]}/privacy-policy" <br />
+                                    policy_link: "<span contentEditable={true}
+                                            suppressContentEditableWarning={true} onInput={() => {
+                                        setPrivacyPolicyLink(document.querySelector(".editable").innerHTML);
+                                    }} className="editable">https://{currentDomain[0]}/privacy-policy</span>" <br />
                                 &#125;<br />
                             &lt;/script&gt;
                         </pre>
                     </code>
+                    
+                    <p>Read the full documentation under: <a href="https://developers.intastellarsolutions.com/cookie-solutions/docs/js-docs" target="_blank">https://developers.intastellarsolutions.com/cookie-solutions/docs/js-docs</a></p>
                 </>
             }
             {

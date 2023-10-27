@@ -1,7 +1,31 @@
+.copyCta{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: none;
+    float: right;
+}
+
+.editable{
+    text-decoration: dotted;
+    color: rgb(0, 149, 255);
+}
+
 .domain-list{
     padding: 0 15px;
     background-color: #f5f5f5;
     border-radius: 10px;
     color: #6b6b6b;
     padding-bottom: 15px;
+}
+
+.editor{
+    background-color: #d5d5d5;
+    display: block;
+    padding: 15px;
+    border-radius: 10px;
 }
