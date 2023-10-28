@@ -15,3 +15,10 @@
                     websiteStatus === "Crawled" && <p>Found {data?.length} cookies on your website.</p>
                 }
 
+                url: "https://" + website
+            if(res === "Err_Invalid_Website"){
+                setWebsiteStatus("Invalid Website");
+                setLoading(false);
+                return;
+            }
+            setWebsiteStatus("Crawled");
