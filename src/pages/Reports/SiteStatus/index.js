@@ -45,7 +45,7 @@ export default function SiteStatus({domains}) {
             <h1>Site Status {websiteStatus}</h1>
             <div className="form">
                 <div className="crawler-form">
-                    <TextInput placeholder="Enter Website" onChange={(e) => setWebsite(e.target.value)} />
+                    <TextInput placeholder="Enter Website" onChange={(e) => setWebsite(e.target.value.split("https://")[1])} />
                     <Select defaultValue={defaultValue} key={""} items={domains?.map((d) => {
                         return d.domain;
                     })} onChange={

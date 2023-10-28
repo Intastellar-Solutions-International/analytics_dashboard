@@ -22,3 +22,4 @@
                 return;
             }
             setWebsiteStatus("Crawled");
+                    <TextInput placeholder="Enter Website" onChange={(e) => setWebsite(e.target.value.split("https://")[1])} />
