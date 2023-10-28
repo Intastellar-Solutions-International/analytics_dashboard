@@ -171,7 +171,7 @@ export default function App() {
                                     </Route>
                                     <Route path="/:id/reports/site-status">
                                         <ErrorBoundary>
-                                            {domainError ? <AddDomain /> : <SiteStatus organisations={organisations} />}
+                                            {domainError ? <AddDomain /> : <SiteStatus domains={domains} organisations={organisations} />}
                                         </ErrorBoundary>
                                     </Route>
                                     <Route path="/dashboard">
