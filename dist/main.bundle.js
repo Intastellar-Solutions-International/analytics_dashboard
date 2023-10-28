@@ -1270,7 +1270,7 @@ function Crawler(_ref) {
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "form"
-  }, /*#__PURE__*/React.createElement("h1", null, "Crawl your Website"), /*#__PURE__*/React.createElement("h3", null, "This is a Beta version"), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h1", null, "Cookie checker"), /*#__PURE__*/React.createElement("h3", null, "This is a Beta version"), /*#__PURE__*/React.createElement("div", {
     className: "crawler-form"
   }, /*#__PURE__*/React.createElement(_InputFields_textInput__WEBPACK_IMPORTED_MODULE_3__["default"], {
     placeholder: "Enter Website",

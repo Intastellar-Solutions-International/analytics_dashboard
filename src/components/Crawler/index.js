@@ -41,7 +41,7 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
 
     return <>
         <div className="form">
-            <h1>Crawl your Website</h1>
+            <h1>Cookie checker</h1>
             <h3>This is a Beta version</h3>
             <div className="crawler-form">
                 <TextInput placeholder="Enter Website" onChange={(e) => {
