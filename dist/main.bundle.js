@@ -3348,7 +3348,7 @@ function SiteStatus(_ref) {
   }), /*#__PURE__*/React.createElement(_Components_Button_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
     className: "crawl-cta",
     onClick: crawlWebsite
-  }, "Crawl Website")), websiteStatus === "Crawled" && /*#__PURE__*/React.createElement("p", null, "Found ", data === null || data === void 0 ? void 0 : data.length, " cookies on your website."), loading && /*#__PURE__*/React.createElement("p", null, "Loading..."), !loading && (data === null || data === void 0 ? void 0 : data.length) > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, "Cookies found on your Website"), /*#__PURE__*/React.createElement(_Components_Tabel__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, "Crawl Website")), websiteStatus === "Crawled" && /*#__PURE__*/React.createElement("p", null, "Found ", data === null || data === void 0 ? void 0 : data.length, " cookies on your website."), loading && /*#__PURE__*/React.createElement("p", null, "Loading..."), !loading && (data === null || data === void 0 ? void 0 : data.length) > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, "First party Cookies found on your Website"), /*#__PURE__*/React.createElement(_Components_Tabel__WEBPACK_IMPORTED_MODULE_4__["default"], {
     headers: ["Name", "Value", "Domain"],
     data: data
   })))));
