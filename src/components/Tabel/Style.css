@@ -14,4 +14,13 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 15px 0;
+    gap: 10px;
+    white-space: wrap;
+}
+
+.table-cell{
+    color: #fff;
+    padding: 0 5px;
+    white-space: wrap;
+    overflow: scroll;
 }
