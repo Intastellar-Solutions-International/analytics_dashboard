@@ -1202,6 +1202,106 @@ function Map(props) {
 
 /***/ }),
 
+/***/ "./src/Components/Crawler/index.js":
+/*!*****************************************!*\
+  !*** ./src/Components/Crawler/index.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Crawler)
+/* harmony export */ });
+/* harmony import */ var _SelectInput_Selector__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../SelectInput/Selector */ "./src/Components/SelectInput/Selector.js");
+/* harmony import */ var _Button_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Button/Button */ "./src/Components/Button/Button.js");
+/* harmony import */ var _Tabel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Tabel */ "./src/Components/Tabel/index.js");
+/* harmony import */ var _InputFields_textInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../InputFields/textInput */ "./src/Components/InputFields/textInput.js");
+/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Style.css */ "./src/Components/Crawler/Style.css");
+const {
+  useState,
+  useEffect,
+  useRef,
+  createContext
+} = React;
+
+
+
+
+
+function Crawler(_ref) {
+  let {
+    domains,
+    websiteStatus = null,
+    setWebsiteStatus = null
+  } = _ref;
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
+  const [websites, setWebsites] = useState([]);
+  const [crawlerItem, setCrawlerItem] = useState("");
+  const [defaultValue, setDefaultValue] = useState("or Select a Website");
+
+  if (websiteStatus === null) {
+    [websiteStatus, setWebsiteStatus] = useState("Not Crawled");
+  }
+
+  function crawlWebsite() {
+    setWebsiteStatus("Crawling...");
+    setLoading(true);
+    fetch("https://apis.intastellarsolutions.com/crawl-website", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        url: "https://" + crawlerItem
+      })
+    }).then(res => res.json()).then(res => {
+      if (res === "Err_Invalid_Website") {
+        setWebsiteStatus("Invalid Website");
+        setLoading(false);
+        return;
+      }
+
+      setLoading(false);
+      setWebsiteStatus("Crawled");
+      setData(res);
+    });
+  }
+
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "form"
+  }, /*#__PURE__*/React.createElement("h1", null, "Crawl your Website"), /*#__PURE__*/React.createElement("h3", null, "This is a Beta version"), /*#__PURE__*/React.createElement("div", {
+    className: "crawler-form"
+  }, /*#__PURE__*/React.createElement(_InputFields_textInput__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    placeholder: "Enter Website",
+    onChange: e => {
+      if (e.target.value.indexOf("https://") !== -1) {
+        e.target.value = e.target.value.replace("https://", "");
+      }
+
+      setCrawlerItem(e.target.value);
+    }
+  }), domains && /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    defaultValue: defaultValue,
+    key: "",
+    items: domains === null || domains === void 0 ? void 0 : domains.map(d => {
+      return d.domain;
+    }),
+    onChange: e => {
+      setCrawlerItem(e);
+      setDefaultValue(e);
+    }
+  }), /*#__PURE__*/React.createElement(_Button_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    className: "crawl-cta",
+    onClick: crawlWebsite
+  }, "Crawl Website")), websiteStatus === "Crawled" && /*#__PURE__*/React.createElement("p", null, "Found ", data === null || data === void 0 ? void 0 : data.length, " cookies on your website."), loading && /*#__PURE__*/React.createElement("p", null, "Loading..."), !loading && (data === null || data === void 0 ? void 0 : data.length) > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, "First party Cookies found on ", crawlerItem.replace("https://", "").replace("http://", "").replace("www.", "")), /*#__PURE__*/React.createElement(_Tabel__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    headers: ["Name", "Value", "Domain"],
+    data: data
+  }))));
+}
+
+/***/ }),
+
 /***/ "./src/Components/DomainList/DomainList.js":
 /*!*************************************************!*\
   !*** ./src/Components/DomainList/DomainList.js ***!
@@ -2969,6 +3069,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/Dashboard/Style.css");
 /* harmony import */ var _Components_Charts_WorldMap_WorldMap_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Components/Charts/WorldMap/WorldMap.js */ "./src/Components/Charts/WorldMap/WorldMap.js");
 /* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
+/* harmony import */ var _Components_Crawler__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Components/Crawler */ "./src/Components/Crawler/index.js");
 const {
   useState,
   useEffect,
@@ -2984,6 +3085,7 @@ const {
 
 
 const useParams = window.ReactRouterDOM.useParams;
+
 function Dashboard(props) {
   document.title = "Home | Intastellar Analytics";
   const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_7__.DomainContext);
@@ -3024,6 +3126,8 @@ function Dashboard(props) {
       header: _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getTotalNumber.headers
     }
   }) : null, /*#__PURE__*/React.createElement("div", {
+    className: "crawler"
+  }, /*#__PURE__*/React.createElement(_Components_Crawler__WEBPACK_IMPORTED_MODULE_8__["default"], null)), /*#__PURE__*/React.createElement("div", {
     className: "",
     style: {
       paddingTop: "40px"
@@ -3270,11 +3374,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../Components/Header/SideNav */ "./src/Components/Header/SideNav.js");
 /* harmony import */ var _Reports__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Reports */ "./src/Pages/Reports/Reports.js");
-/* harmony import */ var _Components_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Components/SelectInput/Selector */ "./src/Components/SelectInput/Selector.js");
-/* harmony import */ var _Components_Button_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Components/Button/Button */ "./src/Components/Button/Button.js");
-/* harmony import */ var _Components_Tabel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Components/Tabel */ "./src/Components/Tabel/index.js");
-/* harmony import */ var _Components_InputFields_textInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../Components/InputFields/textInput */ "./src/Components/InputFields/textInput.js");
-/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/Reports/SiteStatus/Style.css");
+/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/Reports/SiteStatus/Style.css");
+/* harmony import */ var _Components_Crawler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Components/Crawler */ "./src/Components/Crawler/index.js");
 
 
 const {
@@ -3285,73 +3386,21 @@ const {
 } = React;
 
 
-
-
-
 function SiteStatus(_ref) {
   let {
     domains
   } = _ref;
   document.title = "Site Status | Intastellar Analytics";
-  const [websites, setWebsites] = useState([]);
-  const [website, setWebsite] = useState("");
   const [websiteStatus, setWebsiteStatus] = useState("Not Crawled");
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(null);
-  const [defaultValue, setDefaultValue] = useState("or Select a Website");
-
-  function crawlWebsite() {
-    setWebsiteStatus("Crawling...");
-    setLoading(true);
-    fetch("https://apis.intastellarsolutions.com/crawl-website", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        url: "https://" + website
-      })
-    }).then(res => res.json()).then(res => {
-      if (res === "Err_Invalid_Website") {
-        setWebsiteStatus("Invalid Website");
-        setLoading(false);
-        return;
-      }
-
-      setLoading(false);
-      setWebsiteStatus("Crawled");
-      setData(res);
-    });
-  }
-
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_0__["default"], {
     links: _Reports__WEBPACK_IMPORTED_MODULE_1__.reportsLinks
   }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("h1", null, "Site Status ", websiteStatus), /*#__PURE__*/React.createElement("h3", null, "This is a Beta version"), /*#__PURE__*/React.createElement("p", null, "Check the status of your website."), /*#__PURE__*/React.createElement("div", {
-    className: "form"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "crawler-form"
-  }, /*#__PURE__*/React.createElement(_Components_InputFields_textInput__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    placeholder: "Enter Website",
-    onChange: e => setWebsite(e.target.value.split("https://")[1])
-  }), /*#__PURE__*/React.createElement(_Components_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    defaultValue: defaultValue,
-    key: "",
-    items: domains === null || domains === void 0 ? void 0 : domains.map(d => {
-      return d.domain;
-    }),
-    onChange: e => {
-      setWebsite(e);
-      setDefaultValue(e);
-    }
-  }), /*#__PURE__*/React.createElement(_Components_Button_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    className: "crawl-cta",
-    onClick: crawlWebsite
-  }, "Crawl Website")), websiteStatus === "Crawled" && /*#__PURE__*/React.createElement("p", null, "Found ", data === null || data === void 0 ? void 0 : data.length, " cookies on your website."), loading && /*#__PURE__*/React.createElement("p", null, "Loading..."), !loading && (data === null || data === void 0 ? void 0 : data.length) > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, "First party Cookies found on ", website.replace("https://", "").replace("http://", "").replace("www.", "")), /*#__PURE__*/React.createElement(_Components_Tabel__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    headers: ["Name", "Value", "Domain"],
-    data: data
-  })))));
+  }, /*#__PURE__*/React.createElement("h1", null, "Site Status ", websiteStatus), /*#__PURE__*/React.createElement("h3", null, "This is a Beta version"), /*#__PURE__*/React.createElement("p", null, "Check the status of your website."), /*#__PURE__*/React.createElement(_Components_Crawler__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    domains: domains,
+    websiteStatus: websiteStatus,
+    setWebsiteStatus: setWebsiteStatus
+  })));
 }
 
 /***/ }),
@@ -3840,7 +3889,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.c
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Questrial&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Cinzel&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "*{\n    box-sizing: border-box;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(36, 36, 36);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n}", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAIA;IACI,sBAAsB;AAC1B;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,iCAAiC;IACjC,yBAAyB;IACzB,sDAAsD;IACtD,SAAS;AACb;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,WAAW;IACX,uBAAuB;IACvB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;;IAEf,wBAAwB;IACxB,iBAAiB;AACrB;;AAEA;IACI,yBAAyB;IACzB,cAAc;IACd,aAAa;IACb,qBAAqB;IACrB,gBAAgB;AACpB;;AAEA;IACI,qBAAqB;IACrB,WAAW;IACX,iBAAiB;IACjB,gBAAgB;IAChB,cAAc;IACd,kBAAkB;IAClB,oBAAoB;AACxB;;AAEA;IACI,WAAW;IACX,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,cAAc;IACd,qBAAqB;IACrB,sBAAsB;IACtB,yBAAyB;AAC7B;;AAEA;IACI,oBAAoB;AACxB;;AAEA;IACI;QACI,cAAc;IAClB;AACJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');\n@import url(\"https://fonts.googleapis.com/css2?family=Questrial&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Cinzel&display=swap\");\n\n*{\n    box-sizing: border-box;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(36, 36, 36);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "*{\n    box-sizing: border-box;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(36, 36, 36);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n.crawler{\n    background-color: #ffffff;\n    position: relative;\n    padding: 15px 0;\n    color: #525252;\n}\n\n.crawler::before{\n    content: \"\";\n    display: block;\n    position: absolute;\n    width: 20px;\n    height: 100%;\n    background-color: #fff;\n    top: 0;\n    left: -20px;\n}\n\n.crawler::after{\n    content: \"\";\n    display: block;\n    position: absolute;\n    width: 20px;\n    height: 100%;\n    background-color: #fff;\n    top: 0;\n    right: -20px;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n}", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAIA;IACI,sBAAsB;AAC1B;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,iCAAiC;IACjC,yBAAyB;IACzB,sDAAsD;IACtD,SAAS;AACb;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,WAAW;IACX,uBAAuB;IACvB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;;IAEf,wBAAwB;IACxB,iBAAiB;AACrB;;AAEA;IACI,yBAAyB;IACzB,cAAc;IACd,aAAa;IACb,qBAAqB;IACrB,gBAAgB;AACpB;;AAEA;IACI,qBAAqB;IACrB,WAAW;IACX,iBAAiB;IACjB,gBAAgB;IAChB,cAAc;IACd,kBAAkB;IAClB,oBAAoB;AACxB;;AAEA;IACI,WAAW;IACX,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,cAAc;IACd,qBAAqB;IACrB,sBAAsB;IACtB,yBAAyB;AAC7B;;AAEA;IACI,oBAAoB;AACxB;;AAEA;IACI,yBAAyB;IACzB,kBAAkB;IAClB,eAAe;IACf,cAAc;AAClB;;AAEA;IACI,WAAW;IACX,cAAc;IACd,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,sBAAsB;IACtB,MAAM;IACN,WAAW;AACf;;AAEA;IACI,WAAW;IACX,cAAc;IACd,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,sBAAsB;IACtB,MAAM;IACN,YAAY;AAChB;;AAEA;IACI;QACI,cAAc;IAClB;AACJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');\n@import url(\"https://fonts.googleapis.com/css2?family=Questrial&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Cinzel&display=swap\");\n\n*{\n    box-sizing: border-box;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(36, 36, 36);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n.crawler{\n    background-color: #ffffff;\n    position: relative;\n    padding: 15px 0;\n    color: #525252;\n}\n\n.crawler::before{\n    content: \"\";\n    display: block;\n    position: absolute;\n    width: 20px;\n    height: 100%;\n    background-color: #fff;\n    top: 0;\n    left: -20px;\n}\n\n.crawler::after{\n    content: \"\";\n    display: block;\n    position: absolute;\n    width: 20px;\n    height: 100%;\n    background-color: #fff;\n    top: 0;\n    right: -20px;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3973,6 +4022,32 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".map-selected {\n    fill: #E3DA37;\n}\n  \n.map-unselected {\n    fill: #699EAA;\n}\n\n.map-selected:hover, .map-unselected:hover {\n    cursor: pointer;\n}\n\n.countryStats{\n    padding: 15px;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));\n    text-align: center;\n}\n\n.country{\n    padding: 20px 0px;\n    background-color: #343434;\n    border-radius: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/WorldMap/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;AACjB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,aAAa;IACb,yDAAyD;IACzD,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,yBAAyB;IACzB,mBAAmB;AACvB","sourcesContent":[".map-selected {\n    fill: #E3DA37;\n}\n  \n.map-unselected {\n    fill: #699EAA;\n}\n\n.map-selected:hover, .map-unselected:hover {\n    cursor: pointer;\n}\n\n.countryStats{\n    padding: 15px;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));\n    text-align: center;\n}\n\n.country{\n    padding: 20px 0px;\n    background-color: #343434;\n    border-radius: 10px;\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!./src/Components/Crawler/Style.css":
+/*!*********************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!./src/Components/Crawler/Style.css ***!
+  \*********************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "../node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".crawler-form{\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    grid-gap: 20px;\n    justify-content: center;\n    align-items: center;\n    margin-top: 20px;\n    margin-bottom: 20px;\n    background-color: #8e8e8e;\n    border-radius: 10px;\n    padding: 15px;\n}\n\n.crawl-cta{\n    padding: 15px;\n    border: none;\n    border-radius: 10px;\n    background-color: #dcbf00;\n    width: max-content;\n    font-size: 16px;\n    color: #fff;\n    margin-left: auto;\n}", "",{"version":3,"sources":["webpack://./src/Components/Crawler/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,yDAAyD;IACzD,cAAc;IACd,uBAAuB;IACvB,mBAAmB;IACnB,gBAAgB;IAChB,mBAAmB;IACnB,yBAAyB;IACzB,mBAAmB;IACnB,aAAa;AACjB;;AAEA;IACI,aAAa;IACb,YAAY;IACZ,mBAAmB;IACnB,yBAAyB;IACzB,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,iBAAiB;AACrB","sourcesContent":[".crawler-form{\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    grid-gap: 20px;\n    justify-content: center;\n    align-items: center;\n    margin-top: 20px;\n    margin-bottom: 20px;\n    background-color: #8e8e8e;\n    border-radius: 10px;\n    padding: 15px;\n}\n\n.crawl-cta{\n    padding: 15px;\n    border: none;\n    border-radius: 10px;\n    background-color: #dcbf00;\n    width: max-content;\n    font-size: 16px;\n    color: #fff;\n    margin-left: auto;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4355,7 +4430,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".crawler-form{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n    grid-gap: 20px;\n    justify-content: center;\n    align-items: center;\n    margin-top: 20px;\n    margin-bottom: 20px;\n    background-color: #8e8e8e;\n    border-radius: 10px;\n    padding: 15px;\n}\n\n.crawl-cta{\n    padding: 15px;\n    border: none;\n    border-radius: 10px;\n    background-color: #dcbf00;\n    width: max-content;\n    font-size: 16px;\n    color: #fff;\n    margin-left: auto;\n}", "",{"version":3,"sources":["webpack://./src/Pages/Reports/SiteStatus/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,kCAAkC;IAClC,cAAc;IACd,uBAAuB;IACvB,mBAAmB;IACnB,gBAAgB;IAChB,mBAAmB;IACnB,yBAAyB;IACzB,mBAAmB;IACnB,aAAa;AACjB;;AAEA;IACI,aAAa;IACb,YAAY;IACZ,mBAAmB;IACnB,yBAAyB;IACzB,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,iBAAiB;AACrB","sourcesContent":[".crawler-form{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n    grid-gap: 20px;\n    justify-content: center;\n    align-items: center;\n    margin-top: 20px;\n    margin-bottom: 20px;\n    background-color: #8e8e8e;\n    border-radius: 10px;\n    padding: 15px;\n}\n\n.crawl-cta{\n    padding: 15px;\n    border: none;\n    border-radius: 10px;\n    background-color: #dcbf00;\n    width: max-content;\n    font-size: 16px;\n    color: #fff;\n    margin-left: auto;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "", "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4859,6 +4934,60 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "../node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js!./Style.css */ "../node_modules/css-loader/dist/cjs.js!./src/Components/Charts/WorldMap/Style.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/Components/Crawler/Style.css":
+/*!******************************************!*\
+  !*** ./src/Components/Crawler/Style.css ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "../node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "../node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "../node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "../node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js!./Style.css */ "../node_modules/css-loader/dist/cjs.js!./src/Components/Crawler/Style.css");
 
       
       
