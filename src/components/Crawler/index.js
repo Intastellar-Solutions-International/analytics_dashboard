@@ -5,12 +5,16 @@ import Table from "../Tabel";
 import TextInput from "../InputFields/textInput";
 import "./Style.css";
 
-export default function Crawler({domains, websiteStatus, setWebsiteStatus}){
+export default function Crawler({domains, websiteStatus = null, setWebsiteStatus = null}){
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState(null);
-    const [defaultValue, setDefaultValue] = useState("or Select a Website");
     const [websites, setWebsites] = useState([]);
-    const [website, setWebsite] = useState("");
+    const [crawlerItem, setCrawlerItem] = useState("");
+    const [defaultValue, setDefaultValue] = useState("or Select a Website");
+    if(websiteStatus === null){
+        [websiteStatus, setWebsiteStatus] = useState("Not Crawled");
+    }
+    
 
     function crawlWebsite(){
         setWebsiteStatus("Crawling...");
@@ -21,7 +25,7 @@ export default function Crawler({domains, websiteStatus, setWebsiteStatus}){
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                url: "https://" + website
+                url: "https://" + crawlerItem
             })
         }).then(res => res.json()).then(res => {
             if(res === "Err_Invalid_Website"){
@@ -37,16 +41,24 @@ export default function Crawler({domains, websiteStatus, setWebsiteStatus}){
 
     return <>
         <div className="form">
+            <h1>Crawl your Website</h1>
+            <h3>This is a Beta version</h3>
             <div className="crawler-form">
-                <TextInput placeholder="Enter Website" onChange={(e) => setWebsite(e.target.value.split("https://")[1])} />
+                <TextInput placeholder="Enter Website" onChange={(e) => {
+                    if(e.target.value.indexOf("https://") !== -1){
+                        e.target.value = e.target.value.replace("https://", "");
+                    }
+                    setCrawlerItem(e.target.value)
+                }} />
+                {domains &&
                 <Select defaultValue={defaultValue} key={""} items={domains?.map((d) => {
                     return d.domain;
                 })} onChange={
                     (e) => {
-                        setWebsite(e);
+                        setCrawlerItem(e);
                         setDefaultValue(e);
                     }
-                } />
+                } />}
                 <Button className="crawl-cta" onClick={crawlWebsite}>Crawl Website</Button>
             </div>
 
@@ -57,7 +69,7 @@ export default function Crawler({domains, websiteStatus, setWebsiteStatus}){
             {loading && <p>Loading...</p>}
             
             {!loading && data?.length > 0 && <>
-                <h3>First party Cookies found on {website.replace("https://", "").replace("http://", "").replace("www.", "")}</h3>
+                <h3>First party Cookies found on {crawlerItem.replace("https://", "").replace("http://", "").replace("www.", "")}</h3>
                 <Table headers={["Name", "Value", "Domain"]} data={data} />
                 {/* <table>
                     <thead>

@@ -9,6 +9,7 @@ import "./Style.css";
 import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
 const useParams = window.ReactRouterDOM.useParams;
+import Crawler from "../../Components/Crawler";
 
 export default function Dashboard(props){
     document.title = "Home | Intastellar Analytics";
@@ -55,6 +56,9 @@ export default function Dashboard(props){
                             header: API[id].getTotalNumber.headers 
                         }} /> : null
                     }
+                <div className="crawler">
+                    <Crawler />
+                </div>
                 <div className="" style={{paddingTop: "40px"}}>
                     <h2>Data of user interaction</h2>
                     {(loading) ? <Loading /> : <Widget totalNumber={data?.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }

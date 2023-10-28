@@ -1,10 +1,6 @@
 import SideNav from "../../../Components/Header/SideNav";
 import { reportsLinks } from "../Reports";
 const { useState, useEffect, useRef, createContext } = React;
-import Select from "../../../Components/SelectInput/Selector";
-import Button from "../../../Components/Button/Button";
-import Table from "../../../Components/Tabel";
-import TextInput from "../../../Components/InputFields/textInput";
 import "./Style.css";
 import Crawler from "../../../Components/Crawler";
 
