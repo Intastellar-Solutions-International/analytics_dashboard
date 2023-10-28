@@ -1,5 +1,5 @@
 export default function Button(props){
     return <>
-        <button className="cta" disabled={props.disabled} onClick={props?.onClick}>{props.text}</button>
+        <button className={(props.className ? props.className : "cta")} disabled={props.disabled} onClick={props?.onClick}>{props.text ?? props.children}</button>
     </>
 }
