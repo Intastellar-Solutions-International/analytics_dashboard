@@ -31,6 +31,7 @@ import ErrorBoundary from "./Components/Error/ErrorBoundary";
 import Countries from "./Pages/Countries/Countries";
 import BugReport from "./Components/BugReport/BugReport";
 import PlatformSelector from "./Components/PlatformSelector/PlatformSelector";
+import SiteStatus from "./Pages/Reports/SiteStatus";
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
 export const DomainContext = createContext(null);
@@ -166,6 +167,11 @@ export default function App() {
                                     <Route path="/:id/reports/countries">
                                         <ErrorBoundary>
                                             {domainError ? <AddDomain /> : <Countries organisations={organisations} />}
+                                        </ErrorBoundary>
+                                    </Route>
+                                    <Route path="/:id/reports/site-status">
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <SiteStatus organisations={organisations} />}
                                         </ErrorBoundary>
                                     </Route>
                                     <Route path="/dashboard">

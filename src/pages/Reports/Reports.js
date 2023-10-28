@@ -9,6 +9,10 @@ export const reportsLinks = [
     {
         name: "Countries",
         path: "/reports/countries"
+    },
+    {
+        name: "Site Status",
+        path: "/reports/site-status"
     }
 ]
 

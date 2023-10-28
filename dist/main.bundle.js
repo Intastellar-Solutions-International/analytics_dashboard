@@ -688,6 +688,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pages_Countries_Countries__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./Pages/Countries/Countries */ "./src/Pages/Countries/Countries.js");
 /* harmony import */ var _Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./Components/BugReport/BugReport */ "./src/Components/BugReport/BugReport.js");
 /* harmony import */ var _Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./Components/PlatformSelector/PlatformSelector */ "./src/Components/PlatformSelector/PlatformSelector.js");
+/* harmony import */ var _Pages_Reports_SiteStatus__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./Pages/Reports/SiteStatus */ "./src/Pages/Reports/SiteStatus/index.js");
 
 
 
@@ -706,6 +707,7 @@ const Switch = window.ReactRouterDOM.Switch;
 const Redirect = window.ReactRouterDOM.Redirect;
 
 const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/punycode.es6.js");
+
 
 
 
@@ -844,6 +846,10 @@ function App() {
     }))), /*#__PURE__*/React.createElement(Route, {
       path: "/:id/reports/countries"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Countries_Countries__WEBPACK_IMPORTED_MODULE_23__["default"], {
+      organisations: organisations
+    }))), /*#__PURE__*/React.createElement(Route, {
+      path: "/:id/reports/site-status"
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Reports_SiteStatus__WEBPACK_IMPORTED_MODULE_26__["default"], {
       organisations: organisations
     }))), /*#__PURE__*/React.createElement(Route, {
       path: "/dashboard"
@@ -3188,6 +3194,9 @@ const reportsLinks = [{
 }, {
   name: "Countries",
   path: "/reports/countries"
+}, {
+  name: "Site Status",
+  path: "/reports/site-status"
 }];
 function Reports() {
   document.title = "Reports | Intastellar Analytics";
@@ -3196,6 +3205,70 @@ function Reports() {
   }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "Reports")));
+}
+
+/***/ }),
+
+/***/ "./src/Pages/Reports/SiteStatus/index.js":
+/*!***********************************************!*\
+  !*** ./src/Pages/Reports/SiteStatus/index.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ SiteStatus)
+/* harmony export */ });
+/* harmony import */ var _Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../Components/Header/SideNav */ "./src/Components/Header/SideNav.js");
+/* harmony import */ var _Reports__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Reports */ "./src/Pages/Reports/Reports.js");
+
+
+const {
+  useState,
+  useEffect,
+  useRef,
+  createContext
+} = React;
+function SiteStatus() {
+  document.title = "Site Status | Intastellar Analytics";
+  const [website, setWebsite] = useState("");
+  const [websiteStatus, setWebsiteStatus] = useState("Not Crawled");
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
+
+  function crawlWebsite() {
+    setWebsiteStatus("Crawling...");
+    setLoading(true);
+    fetch("https://apis.intastellarsolutions.com/crawl-website", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        url: website
+      })
+    }).then(res => res.json()).then(res => {
+      setLoading(false);
+      setWebsiteStatus(res.status);
+      setData(res);
+    });
+  }
+
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    links: _Reports__WEBPACK_IMPORTED_MODULE_1__.reportsLinks
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "dashboard-content"
+  }, /*#__PURE__*/React.createElement("h1", null, "Site Status"), /*#__PURE__*/React.createElement("div", {
+    className: "form"
+  }, /*#__PURE__*/React.createElement("label", null, "Website URL"), /*#__PURE__*/React.createElement("input", {
+    type: "text",
+    value: website,
+    onChange: e => setWebsite(e.target.value)
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: crawlWebsite
+  }, "Crawl Website"), /*#__PURE__*/React.createElement("p", null, "Website Status: ", websiteStatus), loading && /*#__PURE__*/React.createElement("p", null, "Loading..."), /*#__PURE__*/React.createElement("h2", null, "Cookies found on your Website"), !loading && (data === null || data === void 0 ? void 0 : data.length) > 0 && /*#__PURE__*/React.createElement("table", null, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Name"), /*#__PURE__*/React.createElement("th", null, "Domain"))), /*#__PURE__*/React.createElement("tbody", null, data.map((d, i) => /*#__PURE__*/React.createElement("tr", {
+    key: i
+  }, /*#__PURE__*/React.createElement("td", null, d.name), /*#__PURE__*/React.createElement("td", null, d.domain))))))));
 }
 
 /***/ }),
