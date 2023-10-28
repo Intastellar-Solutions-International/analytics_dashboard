@@ -3334,7 +3334,7 @@ function SiteStatus(_ref) {
     className: "crawler-form"
   }, /*#__PURE__*/React.createElement(_Components_InputFields_textInput__WEBPACK_IMPORTED_MODULE_5__["default"], {
     placeholder: "Enter Website",
-    onChange: e => setWebsite(e.target.value)
+    onChange: e => setWebsite(e.target.value.split("https://")[1])
   }), /*#__PURE__*/React.createElement(_Components_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_2__["default"], {
     defaultValue: defaultValue,
     key: "",
@@ -4199,7 +4199,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".table{\n    background-color: #5c5c5c;\n    padding: 15px;\n    border-radius: 10px;\n}\n\n.table-header{\n    font-size: 18px;\n    border-bottom: 1px solid #fff;\n    font-weight: bold;\n}\n\n.table-row{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n    padding: 15px 0;\n}", "",{"version":3,"sources":["webpack://./src/Components/Tabel/Style.css"],"names":[],"mappings":"AAAA;IACI,yBAAyB;IACzB,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,6BAA6B;IAC7B,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,kCAAkC;IAClC,eAAe;AACnB","sourcesContent":[".table{\n    background-color: #5c5c5c;\n    padding: 15px;\n    border-radius: 10px;\n}\n\n.table-header{\n    font-size: 18px;\n    border-bottom: 1px solid #fff;\n    font-weight: bold;\n}\n\n.table-row{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n    padding: 15px 0;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".table{\n    background-color: #5c5c5c;\n    padding: 15px;\n    border-radius: 10px;\n}\n\n.table-header{\n    font-size: 18px;\n    border-bottom: 1px solid #fff;\n    font-weight: bold;\n}\n\n.table-row{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n    padding: 15px 0;\n    gap: 10px;\n    white-space: wrap;\n}\n\n.table-cell{\n    color: #fff;\n    padding: 0 5px;\n    white-space: wrap;\n    overflow: scroll;\n}", "",{"version":3,"sources":["webpack://./src/Components/Tabel/Style.css"],"names":[],"mappings":"AAAA;IACI,yBAAyB;IACzB,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,6BAA6B;IAC7B,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,kCAAkC;IAClC,eAAe;IACf,SAAS;IACT,iBAAiB;AACrB;;AAEA;IACI,WAAW;IACX,cAAc;IACd,iBAAiB;IACjB,gBAAgB;AACpB","sourcesContent":[".table{\n    background-color: #5c5c5c;\n    padding: 15px;\n    border-radius: 10px;\n}\n\n.table-header{\n    font-size: 18px;\n    border-bottom: 1px solid #fff;\n    font-weight: bold;\n}\n\n.table-row{\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n    padding: 15px 0;\n    gap: 10px;\n    white-space: wrap;\n}\n\n.table-cell{\n    color: #fff;\n    padding: 0 5px;\n    white-space: wrap;\n    overflow: scroll;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
