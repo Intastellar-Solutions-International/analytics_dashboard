@@ -64,7 +64,7 @@ export default function SiteStatus({domains}) {
                 {loading && <p>Loading...</p>}
                 
                 {!loading && data?.length > 0 && <>
-                    <h3>First party Cookies found on your Website</h3>
+                    <h3>First party Cookies found on {website.replace("https://", "").replace("http://", "").replace("www.", "")}</h3>
                     <Table headers={["Name", "Value", "Domain"]} data={data} />
                     {/* <table>
                         <thead>
