@@ -43,6 +43,8 @@ export default function SiteStatus({domains}) {
         <SideNav links={reportsLinks} />
         <div className="dashboard-content">
             <h1>Site Status {websiteStatus}</h1>
+            <h3>This is a Beta version</h3>
+            <p>Check the status of your website.</p>
             <div className="form">
                 <div className="crawler-form">
                     <TextInput placeholder="Enter Website" onChange={(e) => setWebsite(e.target.value.split("https://")[1])} />

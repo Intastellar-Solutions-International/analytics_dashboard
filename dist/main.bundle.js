@@ -3328,7 +3328,7 @@ function SiteStatus(_ref) {
     links: _Reports__WEBPACK_IMPORTED_MODULE_1__.reportsLinks
   }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("h1", null, "Site Status ", websiteStatus), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h1", null, "Site Status ", websiteStatus), /*#__PURE__*/React.createElement("h3", null, "This is a Beta version"), /*#__PURE__*/React.createElement("p", null, "Check the status of your website."), /*#__PURE__*/React.createElement("div", {
     className: "form"
   }, /*#__PURE__*/React.createElement("div", {
     className: "crawler-form"
