@@ -71,7 +71,7 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
             
             {!loading && data?.length > 0 && <>
                 <h3>First party Cookies found on {crawlerItem.replace("https://", "").replace("http://", "").replace("www.", "")}</h3>
-                <Table headers={["Name", "Domain"]} data={data} />
+                <Table headers={["Name", "Domain", "Expires"]} data={data} />
                 {/* <table>
                     <thead>
                         <tr>

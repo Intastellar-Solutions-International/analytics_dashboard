@@ -21,6 +21,7 @@ export default function Table(props){
                                 return <>
                                     <div className="table-cell" key={i}>{d.name}</div>
                                     <div className="table-cell" key={i}>{d.domain}</div>
+                                    <div className="table-cell" key={i}>{d.expires}</div>
                                 </>
                             })
                         }
