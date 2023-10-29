@@ -3,6 +3,7 @@ import Select from "../SelectInput/Selector";
 import Button from "../Button/Button";
 import Table from "../Tabel";
 import TextInput from "../InputFields/textInput";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import "./Style.css";
 
 export default function Crawler({domains, websiteStatus = null, setWebsiteStatus = null}){
@@ -66,7 +67,7 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
                 websiteStatus === "Crawled" && <p>Found {data?.length} cookies on your website.</p>
             }
 
-            {loading && <p>Loading...</p>}
+            {loading && <LoadingSpinner />}
             
             {!loading && data?.length > 0 && <>
                 <h3>First party Cookies found on {crawlerItem.replace("https://", "").replace("http://", "").replace("www.", "")}</h3>
