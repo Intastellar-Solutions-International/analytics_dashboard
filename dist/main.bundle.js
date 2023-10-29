@@ -1216,13 +1216,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Button_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Button/Button */ "./src/Components/Button/Button.js");
 /* harmony import */ var _Tabel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Tabel */ "./src/Components/Tabel/index.js");
 /* harmony import */ var _InputFields_textInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../InputFields/textInput */ "./src/Components/InputFields/textInput.js");
-/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Style.css */ "./src/Components/Crawler/Style.css");
+/* harmony import */ var _LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../LoadingSpinner/LoadingSpinner */ "./src/Components/LoadingSpinner/LoadingSpinner.js");
+/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Style.css */ "./src/Components/Crawler/Style.css");
 const {
   useState,
   useEffect,
   useRef,
   createContext
 } = React;
+
 
 
 
@@ -1294,7 +1296,7 @@ function Crawler(_ref) {
   }), /*#__PURE__*/React.createElement(_Button_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
     className: "crawl-cta",
     onClick: crawlWebsite
-  }, "Crawl Website")), websiteStatus === "Crawled" && /*#__PURE__*/React.createElement("p", null, "Found ", data === null || data === void 0 ? void 0 : data.length, " cookies on your website."), loading && /*#__PURE__*/React.createElement("p", null, "Loading..."), !loading && (data === null || data === void 0 ? void 0 : data.length) > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, "First party Cookies found on ", crawlerItem.replace("https://", "").replace("http://", "").replace("www.", "")), /*#__PURE__*/React.createElement(_Tabel__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, "Crawl Website")), websiteStatus === "Crawled" && /*#__PURE__*/React.createElement("p", null, "Found ", data === null || data === void 0 ? void 0 : data.length, " cookies on your website."), loading && /*#__PURE__*/React.createElement(_LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_4__["default"], null), !loading && (data === null || data === void 0 ? void 0 : data.length) > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, "First party Cookies found on ", crawlerItem.replace("https://", "").replace("http://", "").replace("www.", "")), /*#__PURE__*/React.createElement(_Tabel__WEBPACK_IMPORTED_MODULE_2__["default"], {
     headers: ["Name", "Value", "Domain"],
     data: data
   }))));
@@ -2290,6 +2292,28 @@ function Account(props) {
     d: "M0 0h24v24H0z",
     fill: "none"
   })), " Sign Out"))));
+}
+
+/***/ }),
+
+/***/ "./src/Components/LoadingSpinner/LoadingSpinner.js":
+/*!*********************************************************!*\
+  !*** ./src/Components/LoadingSpinner/LoadingSpinner.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ LoadingSpinner)
+/* harmony export */ });
+/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Style.css */ "./src/Components/LoadingSpinner/Style.css");
+
+function LoadingSpinner() {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "loading-spinner"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "spinner"
+  })));
 }
 
 /***/ }),
@@ -4144,7 +4168,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".intInput{\n    padding: 10px;\n    width: 100%;\n    border: none;\n    appearance: none;\n    -webkit-appearance: none;\n    border-radius: 5px;\n}", "",{"version":3,"sources":["webpack://./src/Components/InputFields/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,WAAW;IACX,YAAY;IACZ,gBAAgB;IAChB,wBAAwB;IACxB,kBAAkB;AACtB","sourcesContent":[".intInput{\n    padding: 10px;\n    width: 100%;\n    border: none;\n    appearance: none;\n    -webkit-appearance: none;\n    border-radius: 5px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".intInput{\n    padding: 10px;\n    width: 100%;\n    border: none;\n    appearance: none;\n    -webkit-appearance: none;\n    border-radius: 5px;\n    font-size: 15px;\n}", "",{"version":3,"sources":["webpack://./src/Components/InputFields/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,WAAW;IACX,YAAY;IACZ,gBAAgB;IAChB,wBAAwB;IACxB,kBAAkB;IAClB,eAAe;AACnB","sourcesContent":[".intInput{\n    padding: 10px;\n    width: 100%;\n    border: none;\n    appearance: none;\n    -webkit-appearance: none;\n    border-radius: 5px;\n    font-size: 15px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4171,6 +4195,32 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".user_content, .services-overview-container {\n    width: 345px;\n    height: auto;\n    max-height: 600px;\n    overflow: hidden;\n    border-radius: 10px;\n    float: right;\n    position: absolute;\n    top: 60px;\n    right: 20px;\n    box-sizing: border-box;\n    background: rgba(255,255,255,0.8);\n    /* box-shadow: 0 0 3px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.28); */\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    -webkit-backdrop-filter: blur(10px);\n    backdrop-filter: blur(10px);\n    -moz-backdrop-filter: blur(10px);\n}\n\n.dropdown-image-name {\n    height: auto;\n    padding: 25px 15px 10px;\n    text-align: center;\n}\n\n.dropdown-links {\n    max-height: 140px;\n    height: auto;\n    overflow: scroll;\n}\n\n.dropdown-links a {\n    color: #000;\n    font-size: 15px;\n    padding: 15px;\n    display: block;\n\ttext-decoration: none;\n}\n\n.dropdown-links a:hover {\n    background: #b7b7b7;\n    text-decoration: none;\n    color: #000;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dropdown-image-name {\n    text-align: center;\n}\n\n.content-img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n    border: 5px solid #fff;\n}\n\n.dropdown-name {\n    width: 100%;\n    color: #000;\n}\n\n.dpdn {\n    color: #202124;\n    font: 500 16px/22px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .29px;\n    margin: 0;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.acc {\n    background-color: transparent;\n    padding: 0;\n    border: none;\n    max-width: fit-content;\n}\n\n.logo-icon {\n    width: 44px;\n    aspect-ratio: 1/1;\n    padding: 5px;\n}\n\n.sign_out_btn_container {\n    padding: 20px 30px;\n    border-top: 1px solid #c4c4c4;\n}\n\n.acc, .sign_out_btn {\n    background-color: #ffffff;\n    border: 1px solid #dadce0;\n    -moz-border-radius: 100px;\n    border-radius: 100px;\n    color: #3c4043;\n    display: inline-block;\n    font: 500 13px/16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .25px;\n    margin: 16px 0 0;\n    max-width: 260px;\n    outline: 0;\n    padding: 8px 9px;\n    text-align: center;\n    text-decoration: none;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.sign_out_btn {\n    border-radius: 4px !important;\n    margin: auto;\n    width: 100%;\n    display: flex;\n    align-items: center;\n}\n\n.acc a, .sign_out_btn {\n    color: #3c4043 !important;\n    text-decoration: none;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.ziuVxb{\n    position: absolute;\n    bottom: 10px;\n    right: 20px;\n}\n\nsvg.uarSJe.NMm5M {\n    width: 24px;\n    height: 24px;\n}\n\n.dpde .intastellaraccounts-logo {\n    width: 50%;\n    margin: 0;\n}", "",{"version":3,"sources":["webpack://./src/Components/IntastellarAccounts/Style.css"],"names":[],"mappings":"AAAA;IACI,YAAY;IACZ,YAAY;IACZ,iBAAiB;IACjB,gBAAgB;IAChB,mBAAmB;IACnB,YAAY;IACZ,kBAAkB;IAClB,SAAS;IACT,WAAW;IACX,sBAAsB;IACtB,iCAAiC;IACjC,oEAAoE;IACpE,kFAAkF;IAClF,mCAAmC;IACnC,2BAA2B;IAC3B,gCAAgC;AACpC;;AAEA;IACI,YAAY;IACZ,uBAAuB;IACvB,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,eAAe;IACf,aAAa;IACb,cAAc;CACjB,qBAAqB;AACtB;;AAEA;IACI,mBAAmB;IACnB,qBAAqB;IACrB,WAAW;AACf;;AAEA;IACI,cAAc;IACd,iEAAiE;IACjE,sBAAsB;IACtB,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,kBAAkB;IAClB,iBAAiB;IACjB,YAAY;IACZ,sEAAsE;IACtE,sBAAsB;AAC1B;;AAEA;IACI,WAAW;IACX,WAAW;AACf;;AAEA;IACI,cAAc;IACd,6EAA6E;IAC7E,qBAAqB;IACrB,SAAS;IACT,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,cAAc;IACd,iEAAiE;IACjE,sBAAsB;IACtB,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,6BAA6B;IAC7B,UAAU;IACV,YAAY;IACZ,sBAAsB;AAC1B;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,6BAA6B;AACjC;;AAEA;IACI,yBAAyB;IACzB,yBAAyB;IACzB,yBAAyB;IACzB,oBAAoB;IACpB,cAAc;IACd,qBAAqB;IACrB,6EAA6E;IAC7E,qBAAqB;IACrB,gBAAgB;IAChB,gBAAgB;IAChB,UAAU;IACV,gBAAgB;IAChB,kBAAkB;IAClB,qBAAqB;IACrB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,6BAA6B;IAC7B,YAAY;IACZ,WAAW;IACX,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,yBAAyB;IACzB,qBAAqB;IACrB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;IAClB,YAAY;IACZ,WAAW;AACf;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,UAAU;IACV,SAAS;AACb","sourcesContent":[".user_content, .services-overview-container {\n    width: 345px;\n    height: auto;\n    max-height: 600px;\n    overflow: hidden;\n    border-radius: 10px;\n    float: right;\n    position: absolute;\n    top: 60px;\n    right: 20px;\n    box-sizing: border-box;\n    background: rgba(255,255,255,0.8);\n    /* box-shadow: 0 0 3px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.28); */\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    -webkit-backdrop-filter: blur(10px);\n    backdrop-filter: blur(10px);\n    -moz-backdrop-filter: blur(10px);\n}\n\n.dropdown-image-name {\n    height: auto;\n    padding: 25px 15px 10px;\n    text-align: center;\n}\n\n.dropdown-links {\n    max-height: 140px;\n    height: auto;\n    overflow: scroll;\n}\n\n.dropdown-links a {\n    color: #000;\n    font-size: 15px;\n    padding: 15px;\n    display: block;\n\ttext-decoration: none;\n}\n\n.dropdown-links a:hover {\n    background: #b7b7b7;\n    text-decoration: none;\n    color: #000;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dropdown-image-name {\n    text-align: center;\n}\n\n.content-img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n    border: 5px solid #fff;\n}\n\n.dropdown-name {\n    width: 100%;\n    color: #000;\n}\n\n.dpdn {\n    color: #202124;\n    font: 500 16px/22px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .29px;\n    margin: 0;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.acc {\n    background-color: transparent;\n    padding: 0;\n    border: none;\n    max-width: fit-content;\n}\n\n.logo-icon {\n    width: 44px;\n    aspect-ratio: 1/1;\n    padding: 5px;\n}\n\n.sign_out_btn_container {\n    padding: 20px 30px;\n    border-top: 1px solid #c4c4c4;\n}\n\n.acc, .sign_out_btn {\n    background-color: #ffffff;\n    border: 1px solid #dadce0;\n    -moz-border-radius: 100px;\n    border-radius: 100px;\n    color: #3c4043;\n    display: inline-block;\n    font: 500 13px/16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .25px;\n    margin: 16px 0 0;\n    max-width: 260px;\n    outline: 0;\n    padding: 8px 9px;\n    text-align: center;\n    text-decoration: none;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.sign_out_btn {\n    border-radius: 4px !important;\n    margin: auto;\n    width: 100%;\n    display: flex;\n    align-items: center;\n}\n\n.acc a, .sign_out_btn {\n    color: #3c4043 !important;\n    text-decoration: none;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.ziuVxb{\n    position: absolute;\n    bottom: 10px;\n    right: 20px;\n}\n\nsvg.uarSJe.NMm5M {\n    width: 24px;\n    height: 24px;\n}\n\n.dpde .intastellaraccounts-logo {\n    width: 50%;\n    margin: 0;\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!./src/Components/LoadingSpinner/Style.css":
+/*!****************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!./src/Components/LoadingSpinner/Style.css ***!
+  \****************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "../node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".loading-spinner{\n    position: relative;\n    width: 150px;\n    height: 150px;\n    margin: auto;\n}\n\n.spinner{\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    border: 16px solid #9f9f9f;\n    border-radius: 50%;\n    border-top: 16px solid #1c608d;\n    width: 100px;\n    height: 100px;\n    animation: spin 2s linear infinite;\n}\n\n@keyframes spin{\n    0%{\n        transform: translate(-50%, -50%) rotate(0deg);\n    }\n    100%{\n        transform: translate(-50%, -50%) rotate(360deg);\n    }\n}", "",{"version":3,"sources":["webpack://./src/Components/LoadingSpinner/Style.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,YAAY;IACZ,aAAa;IACb,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,0BAA0B;IAC1B,kBAAkB;IAClB,8BAA8B;IAC9B,YAAY;IACZ,aAAa;IACb,kCAAkC;AACtC;;AAEA;IACI;QACI,6CAA6C;IACjD;IACA;QACI,+CAA+C;IACnD;AACJ","sourcesContent":[".loading-spinner{\n    position: relative;\n    width: 150px;\n    height: 150px;\n    margin: auto;\n}\n\n.spinner{\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    border: 16px solid #9f9f9f;\n    border-radius: 50%;\n    border-top: 16px solid #1c608d;\n    width: 100px;\n    height: 100px;\n    animation: spin 2s linear infinite;\n}\n\n@keyframes spin{\n    0%{\n        transform: translate(-50%, -50%) rotate(0deg);\n    }\n    100%{\n        transform: translate(-50%, -50%) rotate(360deg);\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5204,6 +5254,60 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "../node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js!./Style.css */ "../node_modules/css-loader/dist/cjs.js!./src/Components/IntastellarAccounts/Style.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/Components/LoadingSpinner/Style.css":
+/*!*************************************************!*\
+  !*** ./src/Components/LoadingSpinner/Style.css ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "../node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "../node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "../node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "../node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js!./Style.css */ "../node_modules/css-loader/dist/cjs.js!./src/Components/LoadingSpinner/Style.css");
 
       
       
