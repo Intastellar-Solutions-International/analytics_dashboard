@@ -35,19 +35,21 @@ const Authentication = {
             }
 
             setLoading(false);
-            
             localStorage.setItem("organisation", response.organisation);
             localStorage.setItem("globals", JSON.stringify(response));
-            if (window.location.pathname === "/login") {
-                window.location.href = "/"+response?.access?.type["gdpr"]?.uri + "/dashboard";
-            } else {
-                window.location.reload();
+
+            if(localStorage.getItem("platform") === null || localStorage.getItem("platform") === undefined){
+                window.location.href = "/dashboard";
+            }else{
+                window.location.href = "/" + localStorage.getItem("platform") + "/dashboard";
             }
 
         })
     },
     Logout: function () {
         localStorage.removeItem("globals");
+        localStorage.removeItem("organisation");
+        localStorage.removeItem("domains");
         window.location.reload();
     },
     getToken: function () {
@@ -61,6 +63,9 @@ const Authentication = {
     getOrganisation: function(){
         const organisation = (localStorage.getItem("organisation") != null || localStorage.getItem("organisation") != undefined) ? JSON.parse(localStorage.getItem("organisation"))?.id : undefined;
         return organisation;
+    },
+    User: {
+        Status: JSON.parse(localStorage.getItem("globals"))?.status
     }
 }
 

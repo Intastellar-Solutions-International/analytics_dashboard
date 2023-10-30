@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "startDev": "webpack serve",
+    "start": "webpack serve --open --mode development",
     "startNodeServer": "nodemon index.js",
     "buildProd": "webpack --mode production && cp -R"
   },

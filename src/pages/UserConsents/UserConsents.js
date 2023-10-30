@@ -13,6 +13,7 @@ import "./Style.css";
 import SideNav from "../../Components/Header/SideNav.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
 const useParams = window.ReactRouterDOM.useParams;
+const urlParams = new URLSearchParams(window.location.search);
 
 export default function UserConsents(props) {
     document.title = "User consents | Intastellar Analytics";
@@ -20,9 +21,10 @@ export default function UserConsents(props) {
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const { handle, id } = useParams();
     const organisations = props.organisations;
-
+    const page = urlParams.get("page") || 1;
 
     API[id].getDomainsUrl.headers.Domains = currentDomain;
+    API[id].getDomainsUrl.headers.Offset = page;
     const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = useFetch(5, API[id].getDomainsUrl.url, API[id].getDomainsUrl.method, API[id].getDomainsUrl.headers);
     
     return (
@@ -36,7 +38,7 @@ export default function UserConsents(props) {
                     {(getDomainsUrlLoading && !getDomainsUrlError) ? <Loading /> : (getDomainsUrlError) ? <Unknown /> : ( getDomainsUrlData == "Err_No_Data_Found") ? <NoDataFound /> : <>
                         <div className="grid-container grid-3">
                         {
-                            getDomainsUrlData?.map((d) => {
+                            getDomainsUrlData?.map((d, key) => {
                                 
                                 let consent = "";
                                 if(isJson(d?.consent)) {
@@ -47,16 +49,16 @@ export default function UserConsents(props) {
 
                                 return (
                                     <>
-                                        <div className="user">
+                                        <div className="user" key={key}>
                                             <p>UID: {d?.uid}</p>
-                                            <p>Time: {d?.consents_timestamp}</p>
+                                            <p>Time: {new Date(d?.consents_timestamp).toLocaleString('de-DE', { timeZone: 'Europe/Copenhagen' })}</p>
                                             <p className="lb">Referrer: {d?.referrer}</p>
                                             <p className="lb">URL: {d?.url}</p>
                                             <section>
                                                 <h4>Consent given</h4>
                                                 {
-                                                    (Object.prototype.toString.call(consent) === '[object Array]') ? consent?.map((c) => {
-                                                            return <p>{c?.type} cookies: {(!c.checked) ? "declined" : (c?.checked == "checked" || c?.checked == "1") ? "Accepted" : c?.checked}</p>
+                                                    (Object.prototype.toString.call(consent) === '[object Array]') ? consent?.map((c, key) => {
+                                                            return <p key={key}>{c?.type} cookies: {(!c.checked) ? "declined" : (c?.checked == "checked" || c?.checked == "1") ? "Accepted" : c?.checked}</p>
                                                         }) : <p>{consent?.consent_type} cookies: {(consent?.consent_value == "1" || consent?.consent_value == "checked") ? "Accepted" : "declined"}</p>
                                                 }
                                             </section>

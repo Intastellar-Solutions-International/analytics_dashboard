@@ -1,6 +1,8 @@
 import Fetch from "../../../Functions/fetch";
 import Text from "../../../Components/InputFields/textInput";
 import Email from "../../../Components/InputFields/EmailInput";
+import SideNav from "../../../Components/Header/SideNav";
+import { reportsLinks } from "../../../Components/Header/SideNavLinks";
 import { OrganisationContext } from "../../../App";
 import API from "../../../API/api";
 const { useState, useEffect, useRef, useContext } = React;
@@ -33,9 +35,9 @@ export default function AddUser() {
 
     return (
         <>
+            <SideNav links={reportsLinks} />
             <main className="dashboard-content">
                 <h1>Create a Organisation</h1>
-                <Link className="backLink" to="/settings">Back to settings</Link>
                 <form onSubmit={create}>
                     <p>{(status != null) ? status : null}</p>
                     <label for="orgName">Organisation Name</label><br />

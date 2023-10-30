@@ -12,16 +12,17 @@ const useHistory = window.ReactRouterDOM.useHistory;
 const punycode = require("punycode");
 
 export default function Header(props) {
+
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
     const [currentDomain, setCurrentDomain] = useState((window.location.pathname.split("/")[2] === "view") ? decodeURI(window.location.pathname.split("/")[3]?.replace("%2E", ".")) : "all");
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
     let domainList = null;
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
     const navigate = useHistory();
-    const [data, setData] = useState(null);
+    const [allOrganisations, setallOrganisations] = useState(null);
     const [domains, setDomains] = useState(props.domains);
     const [viewUserProfile, setViewUserProfile] = useState(false);
-
+    const Platform = (localStorage.getItem("platform") == "gdpr") ? "Platform:  Intastellar Cookie Consents" : "Platform: Ferry Booking";
     useEffect(() => {
 
         Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
@@ -36,7 +37,8 @@ export default function Header(props) {
             if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
-            setData(data);
+
+            setallOrganisations(data);
         });
 
         Fetch(API[window.location.pathname.split("/")[1]]?.getDomains?.url, API[window.location.pathname.split("/")[1]]?.getDomains?.method, API[window.location.pathname.split("/")[1]]?.getDomains?.headers).then((data) => {
@@ -56,7 +58,7 @@ export default function Header(props) {
                     return d !== undefined && d !== "" && d !== "undefined.";
                 });
                 setDomains(data);
-            
+
                 const allowedDomains = data?.map((d) => {
                     return  punycode.toUnicode(d.domain);
                 }).filter((d) => {
@@ -78,17 +80,20 @@ export default function Header(props) {
         <>
             <header className="dashboard-header">
                 <div className="dashboard-profile">
-                    <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
-                    <section style={{display: "flex"}}>
-                    {(data && Organisation) ?
+                    <section style={{display:"flex", alignItems:"center"}}>
+                        <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
+                        {Platform}
+                    </section>
+                    <section style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+                    {(allOrganisations && Organisation) ? 
                         <Select defaultValue={Organisation}
                             onChange={(e) => { 
                                 setOrganisation(e);
                                 localStorage.setItem("organisation", e);
                                 window.location.reload();}}
-                            items={data}
+                            items={allOrganisations}
                             style={{right: "0"}}
-                        /> : null
+                        />: null
                     }
                     <i className="arrowRight"></i>
                     {(domains && currentDomain) ?

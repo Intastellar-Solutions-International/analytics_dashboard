@@ -11,7 +11,8 @@ const API = {
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
-                "Organisation": Authentication.getOrganisation()
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
             }
         },
         getDomainsUrl: {
@@ -19,7 +20,8 @@ const API = {
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
-                "Organisation": Authentication.getOrganisation()
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
             }
         },
         getInteractions: {
@@ -27,7 +29,8 @@ const API = {
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
-                "Organisation": Authentication.getOrganisation()
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
             }
         },
         getDomains: {
@@ -35,7 +38,8 @@ const API = {
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
-                "Organisation": Authentication.getOrganisation()
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
             }
         }
     },
@@ -44,7 +48,8 @@ const API = {
             url: `${PrimaryHost}/analytics/ferry/getTotalSales.php`,
             method: "GET",
             headers: {
-                "Authorization": Authentication.getToken()
+                "Authorization": Authentication.getToken(),
+                "Content-Type": "application/json"
             }
         }
     },
@@ -53,14 +58,16 @@ const API = {
             url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
             method: "POST",
             headers: {
-                "Authorization": Authentication.getToken()
+                "Authorization": Authentication.getToken(),
+                "Content-Type": "application/json"
             }
         },
         createOrganisation: {
             url: `${PrimaryHost}/analytics/settings/create-organisation.php`,
             method: "POST",
             headers: {
-                "Authorization": Authentication.getToken()
+                "Authorization": Authentication.getToken(),
+                "Content-Type": "application/json"
             }
         },
         updateSettings: {
@@ -68,7 +75,8 @@ const API = {
             method: "POST",
             headers: {
                 "Authorization": Authentication.getToken(),
-                "Organisation": Authentication.getOrganisation()
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
             }
         },
         addUser: {
@@ -76,6 +84,7 @@ const API = {
             method: "POST",
             headers: {
                 "Authorization": Authentication.getToken(),
+                "Content-Type": "application/json"
             }
         },
         getSettings: {
@@ -83,7 +92,8 @@ const API = {
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
-                "Organisation": Authentication.getOrganisation()
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
             }
         },
         createSettings: {
@@ -91,7 +101,16 @@ const API = {
             method: "POST",
             headers: {
                 "Authorization": Authentication.getToken(),
-                "Organisation": Authentication.getOrganisation()
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
+            }
+        },
+        addDomain: {
+            url: `${PrimaryHost}/analytics/settings/add-domain.php`,
+            method: "POST",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Content-Type": "application/json"
             }
         },
     },
@@ -101,13 +120,14 @@ const API = {
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
-                "Organisation": Authentication.getOrganisation()
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
             }
         }
     },
     github: {
         createIssue: {
-            url: "https://github.acme-inc.com/api/v3/repos/Intastellar-Solutions-International/intastellar-analytics/issues",
+            url: "https://api.github.com/repositories/Intastellar-Solutions-International/intastellar-analytics/issues",
             method: "POST",
             headers: {
                 "Authorization": "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",
