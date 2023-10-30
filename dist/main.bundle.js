@@ -2600,10 +2600,7 @@ function Table(props) {
     }, d.name), /*#__PURE__*/React.createElement("div", {
       className: "table-cell",
       key: i
-    }, d.domain), /*#__PURE__*/React.createElement("div", {
-      className: "table-cell",
-      key: i
-    }, d.expires));
+    }, d.domain));
   })))));
 }
 
