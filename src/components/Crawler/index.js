@@ -48,28 +48,33 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
 
     return <>
         <div className="form">
-            <h2>CookieBot</h2>
-            <p>Find all cookies on your Website both first party and thrid party cookies.</p>
-            <h3>This is a Beta version</h3>
-            <form className="crawler-form" onSubmit={crawlWebsite}>
-                <TextInput placeholder="Enter Website" onChange={(e) => {
-                    if(e.target.value.indexOf("https://") !== -1){
-                        e.target.value = e.target.value.replace("https://", "");
-                    }
-                    setCrawlerItem(e.target.value)
-                }} />
-                {domains &&
-                <Select defaultValue={defaultValue} key={""} items={domains?.map((d) => {
-                    return d.domain;
-                })} onChange={
-                    (e) => {
-                        setCrawlerItem(e);
-                        setDefaultValue(e);
-                    }
-                } />}
-                <Button className="crawl-cta" onClick={crawlWebsite}>Crawl Website</Button>
-            </form>
-
+            <section className="crawler-intro">
+                <h2>CookieBot</h2>
+                <p>Find all cookies on your Website both first party and thrid party cookies.</p>
+                <p>Enter your website below to get started.</p>
+                <form className="crawler-form" onSubmit={crawlWebsite}>
+                    <TextInput placeholder="Enter Website" onChange={(e) => {
+                        if(e.target.value.indexOf("https://") !== -1){
+                            e.target.value = e.target.value.replace("https://", "");
+                        }
+                        setCrawlerItem(e.target.value)
+                    }} />
+                    {domains &&
+                    <Select defaultValue={defaultValue} key={""} items={domains?.map((d) => {
+                        return d.domain;
+                    })} onChange={
+                        (e) => {
+                            setCrawlerItem(e);
+                            setDefaultValue(e);
+                        }
+                    } />}
+                    <Button className="crawl-cta" onClick={crawlWebsite}>Find Cookies</Button>
+                </form>
+            </section>
+            <section className="crawler-intro">
+                <p>Free to use</p>
+                <p>Instant Report</p>
+            </section>
             {
                 websiteStatus === "Crawled" && <p>Found {data?.length - 1} cookies on your website.</p>
             }
