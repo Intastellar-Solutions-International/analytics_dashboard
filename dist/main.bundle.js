@@ -1311,7 +1311,7 @@ function Crawler(_ref) {
     onClick: crawlWebsite
   }, "Find Cookies"))), /*#__PURE__*/React.createElement("section", {
     className: "crawler-intro"
-  }, /*#__PURE__*/React.createElement("p", null, "Free to use"), /*#__PURE__*/React.createElement("p", null, "Instant Report")), websiteStatus === "Crawled" && /*#__PURE__*/React.createElement("p", null, "Found ", (data === null || data === void 0 ? void 0 : data.length) - 1, " cookies on your website across ", data.map(crawledUrl => {
+  }, /*#__PURE__*/React.createElement("p", null, "Free to use"), /*#__PURE__*/React.createElement("p", null, "Instant Report")), data === "Err_Development_Only" && /*#__PURE__*/React.createElement("p", null, "Sorry, this feature is only available in development mode"), websiteStatus === "Crawled" && /*#__PURE__*/React.createElement("p", null, "Found ", (data === null || data === void 0 ? void 0 : data.length) - 1, " cookies on your website across ", data.map(crawledUrl => {
     var _crawledUrl$crawledUr;
 
     return crawledUrl === null || crawledUrl === void 0 ? void 0 : (_crawledUrl$crawledUr = crawledUrl.crawledUrls) === null || _crawledUrl$crawledUr === void 0 ? void 0 : _crawledUrl$crawledUr.length;
