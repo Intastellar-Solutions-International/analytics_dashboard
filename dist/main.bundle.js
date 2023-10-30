@@ -1302,7 +1302,7 @@ function Crawler(_ref) {
   }), /*#__PURE__*/React.createElement(_Button_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
     className: "crawl-cta",
     onClick: crawlWebsite
-  }, "Crawl Website")), websiteStatus === "Crawled" && /*#__PURE__*/React.createElement("p", null, "Found ", data === null || data === void 0 ? void 0 : data.length, " cookies on your website."), loading && /*#__PURE__*/React.createElement(_LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_4__["default"], null), !loading && (data === null || data === void 0 ? void 0 : data.length) > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, "First party & third party Cookies found on ", crawlerItem.replace("https://", "").replace("http://", "").replace("www.", "")), /*#__PURE__*/React.createElement(_Tabel__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, "Crawl Website")), websiteStatus === "Crawled" && /*#__PURE__*/React.createElement("p", null, "Found ", data === null || data === void 0 ? void 0 : data.length, " cookies on your website."), loading && /*#__PURE__*/React.createElement(_LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_4__["default"], null), !loading && !error && (data === null || data === void 0 ? void 0 : data.length) > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, "First party & third party Cookies found on ", crawlerItem.replace("https://", "").replace("http://", "").replace("www.", "")), /*#__PURE__*/React.createElement(_Tabel__WEBPACK_IMPORTED_MODULE_2__["default"], {
     headers: ["Name", "Domain"],
     data: data
   }))));
