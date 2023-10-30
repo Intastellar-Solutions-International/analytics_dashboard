@@ -10,7 +10,7 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [data, setData] = useState(null);
-    const [websites, setWebsites] = useState([]);
+    const [fetchedWebsites, setFetchedWebsites] = useState("");
     const [crawlerItem, setCrawlerItem] = useState("");
     const [defaultValue, setDefaultValue] = useState("or Select a Website");
     if(websiteStatus === null){
@@ -39,6 +39,7 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
             setLoading(false);
             setWebsiteStatus("Crawled");
             setData(res);
+            setFetchedWebsites(crawlerItem);
         }).catch(err => {
             setLoading(false);
             setError(err);
@@ -75,7 +76,7 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
 
             {loading && <LoadingSpinner />}
             {!loading && data?.length > 0 && <>
-                <h3>First party & third party Cookies found on {crawlerItem.replace("https://", "").replace("http://", "").replace("www.", "")}</h3>
+                <h3>First party & third party Cookies found on {fetchedWebsites.replace("https://", "").replace("http://", "").replace("www.", "")}</h3>
                 <Table headers={["Name", "Domain"]} data={data} />
                 {/* <table>
                     <thead>
