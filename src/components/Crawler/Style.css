@@ -27,3 +27,19 @@
     margin-left: auto;
     flex-shrink: 0;
 }
+
+@media screen and (max-width: 768px){
+    .crawler-form{
+        flex-direction: column;
+    }
+    .crawl-cta{
+        margin-left: 0;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    .crawler-intro{
+        line-height: 1.5em;
+    }
+    
+}
