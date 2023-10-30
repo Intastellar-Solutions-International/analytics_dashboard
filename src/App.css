@@ -128,6 +128,14 @@ body{
     height: 100vh;
 }
 
+.cookieCheckContainer h2{
+    font-size: 2.5em;
+}
+
+.crawlerPage-logo{
+    max-width: 200px;
+}
+
 .cookieCheckContainer .form{
     width: 100%;
 }

@@ -202,7 +202,12 @@ export default function App() {
                     </Route>
                     <Route path="/check">
                         <div className="cookieCheckContainer">
+                            <img src="https://www.intastellarsolutions.com/assets/logos/intastellar-new-planet.svg" className="crawlerPage-logo" />
                             <Crawler />
+                            <footer>
+                                <p>Powered by Intastellar Cookie Consents</p>
+                                <p>&copy; 2023 Intastellar Solutions, International</p>
+                            </footer>
                         </div>
                     </Route>
                 </Switch>
