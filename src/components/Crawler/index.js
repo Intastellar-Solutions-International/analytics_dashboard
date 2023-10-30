@@ -4,6 +4,7 @@ import Button from "../Button/Button";
 import Table from "../Tabel";
 import TextInput from "../InputFields/textInput";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import Highlighter from "../Highlighter/Highlighter";
 import "./Style.css";
 
 export default function Crawler({domains, websiteStatus = null, setWebsiteStatus = null}){
@@ -49,7 +50,7 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
     return <>
         <div className="form">
             <section className="crawler-intro">
-                <h2>CookieBot</h2>
+                <h2>CookieBot {<Highlighter type="--coming">Coming Soon</Highlighter>}</h2>
                 <p>Find all cookies on your Website both first party and thrid party cookies.</p>
                 <p>Enter your website below to get started.</p>
                 <form className="crawler-form" onSubmit={crawlWebsite}>

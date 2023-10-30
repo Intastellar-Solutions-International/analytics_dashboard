@@ -2,6 +2,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
 
+:root{
+    --heroHeadline: 40px "Montserrat", Arial, Helvetica, sans-serif;
+    --heroHedlineColor: rgb(110, 110, 110);
+    --accentColor: rgb(0, 51, 153);
+    --colorHover: rgb(0, 118, 193);
+    --aboutColor: var(--aboutColorMain);
+    --aboutColorVarient: rgb(201, 226, 255);
+    --aboutColorMain: rgb(253, 246, 240);
+    --promoBG: rgba(0, 70, 209, 1);
+    --IntastellarGrey: rgb(88, 88, 88);
+    --IntastellarMediumGrey: rgb(156, 156, 156);
+    --infoBanner: rgb(207, 207, 207);
+    --infoBannerLigherShade: rgb(230, 230, 230);
+    --infoBannerlightesShade: rgb(246, 246, 246);
+    --infoBannerWarning: rgb(251, 237, 225);
+    --infoBannerError: rgb(255, 183, 183);
+    --statusBannerBg: var(--IntastellarMediumGrey);
+    --cookieBanner: rgb(190, 211, 255);
+    --borderRadius: 10px;
+}
+
 *{
     box-sizing: border-box;
 }
