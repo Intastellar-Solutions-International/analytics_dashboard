@@ -80,7 +80,7 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
                 data === "Err_Development_Only" && <p>Sorry, this feature is only available in development mode</p>
             }
             {
-                websiteStatus === "Crawled" && <p>Found {data?.length - 1} cookies on your website across {data?.map((crawledUrl) => crawledUrl?.crawledUrls?.length)} sites</p>
+                websiteStatus === "Crawled" && data !== "Err_Development_Only" && <p>Found {data?.length - 1} cookies on your website across {data?.map((crawledUrl) => crawledUrl?.crawledUrls?.length)} sites</p>
             }
 
             {loading && <LoadingSpinner />}
