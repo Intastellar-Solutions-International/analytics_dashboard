@@ -1246,7 +1246,8 @@ function Crawler(_ref) {
     [websiteStatus, setWebsiteStatus] = useState("Not Crawled");
   }
 
-  function crawlWebsite() {
+  function crawlWebsite(e) {
+    e.preventDefault();
     setWebsiteStatus("Crawling...");
     setLoading(true);
     fetch("https://apis.intastellarsolutions.com/crawl-website", {

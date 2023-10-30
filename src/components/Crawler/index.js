@@ -17,7 +17,8 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
     }
     
 
-    function crawlWebsite(){
+    function crawlWebsite(e){
+        e.preventDefault();
         setWebsiteStatus("Crawling...");
         setLoading(true);
         fetch("https://apis.intastellarsolutions.com/crawl-website", {
