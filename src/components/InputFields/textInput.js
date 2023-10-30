@@ -4,7 +4,7 @@ export default function Text(props){
         <>
             <input className="intInput" placeholder={props?.placeholder} autoComplete="off" type={
                 props?.type ? props.type : "text"
-            } pattern={props?.pattern ? props.pattern : ""} onChange={props.onChange} />
+            } {props?.pattern ? "pattern=" + props.pattern : ""} onChange={props.onChange} />
         </>
     )
 }
