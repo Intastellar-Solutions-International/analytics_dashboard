@@ -42,7 +42,8 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
 
     return <>
         <div className="form">
-            <h1>Cookie checker</h1>
+            <h2>CookieBot</h2>
+            <p>Find all cookies on your Website both first party and thrid party cookies.</p>
             <h3>This is a Beta version</h3>
             <div className="crawler-form">
                 <TextInput placeholder="Enter Website" onChange={(e) => {
@@ -70,8 +71,8 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
             {loading && <LoadingSpinner />}
             
             {!loading && data?.length > 0 && <>
-                <h3>First party Cookies found on {crawlerItem.replace("https://", "").replace("http://", "").replace("www.", "")}</h3>
-                <Table headers={["Name", "Domain", "Expires"]} data={data} />
+                <h3>First party & third party Cookies found on {crawlerItem.replace("https://", "").replace("http://", "").replace("www.", "")}</h3>
+                <Table headers={["Name", "Domain"]} data={data} />
                 {/* <table>
                     <thead>
                         <tr>
