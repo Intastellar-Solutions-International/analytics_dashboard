@@ -1929,7 +1929,6 @@ function Text(props) {
     placeholder: props === null || props === void 0 ? void 0 : props.placeholder,
     autoComplete: "off",
     type: props !== null && props !== void 0 && props.type ? props.type : "text",
-    pattern: props !== null && props !== void 0 && props.pattern ? props.pattern : "",
     onChange: props.onChange
   }));
 }
