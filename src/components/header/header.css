@@ -335,4 +335,8 @@
     .dashboard-profile__nameContainer{
         width: auto;
     }
+
+    .navOverlay{
+        display: none;
+    }
 }

@@ -71,27 +71,13 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
             </form>
 
             {
-                websiteStatus === "Crawled" && <p>Found {data?.length} cookies on your website.</p>
+                websiteStatus === "Crawled" && <p>Found {data?.length - 1} cookies on your website.</p>
             }
 
             {loading && <LoadingSpinner />}
-            {!loading && data?.length > 0 && <>
+            {!loading && data?.length - 1 > 0 && <>
                 <h3>First party & third party Cookies found on {fetchedWebsites.replace("https://", "").replace("http://", "").replace("www.", "")}</h3>
                 <Table headers={["Name", "Domain"]} data={data} />
-                {/* <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Domain</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data?.map((d, i) => <tr key={i}>
-                            <td>{d.name}</td>
-                            <td>{d.domain}</td>
-                        </tr>)}
-                    </tbody>
-                </table> */}
             </>
             }
         </div>
