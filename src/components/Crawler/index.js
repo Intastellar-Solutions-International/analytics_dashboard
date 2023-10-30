@@ -45,7 +45,7 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
             <h2>CookieBot</h2>
             <p>Find all cookies on your Website both first party and thrid party cookies.</p>
             <h3>This is a Beta version</h3>
-            <div className="crawler-form">
+            <form className="crawler-form" onSubmit={crawlWebsite}>
                 <TextInput placeholder="Enter Website" onChange={(e) => {
                     if(e.target.value.indexOf("https://") !== -1){
                         e.target.value = e.target.value.replace("https://", "");
@@ -62,7 +62,7 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
                     }
                 } />}
                 <Button className="crawl-cta" onClick={crawlWebsite}>Crawl Website</Button>
-            </div>
+            </form>
 
             {
                 websiteStatus === "Crawled" && <p>Found {data?.length} cookies on your website.</p>
