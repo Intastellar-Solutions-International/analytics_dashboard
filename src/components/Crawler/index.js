@@ -76,7 +76,7 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
                 <p>Instant Report</p>
             </section>
             {
-                websiteStatus === "Crawled" && <p>Found {data?.length - 1} cookies on your website.</p>
+                websiteStatus === "Crawled" && <p>Found {data?.length - 1} cookies on your website across {data.map((crawledUrl) => crawledUrl?.crawledUrls?.length)} sites</p>
             }
 
             {loading && <LoadingSpinner />}

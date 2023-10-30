@@ -20,7 +20,7 @@ export default function Table(props){
                             data.map((d, i) => {
                                 return <>
                                     <div className="table-cell" key={i}>{d.name}</div>
-                                    <div className="table-cell" key={i}>{d.domain}</div>
+                                    <div className="table-cell" key={i+1}>{d.domain}</div>
                                 </>
                             })
                         }

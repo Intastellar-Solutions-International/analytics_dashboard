@@ -1307,7 +1307,11 @@ function Crawler(_ref) {
     onClick: crawlWebsite
   }, "Find Cookies"))), /*#__PURE__*/React.createElement("section", {
     className: "crawler-intro"
-  }, /*#__PURE__*/React.createElement("p", null, "Free to use"), /*#__PURE__*/React.createElement("p", null, "Instant Report")), websiteStatus === "Crawled" && /*#__PURE__*/React.createElement("p", null, "Found ", (data === null || data === void 0 ? void 0 : data.length) - 1, " cookies on your website."), loading && /*#__PURE__*/React.createElement(_LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_4__["default"], null), !loading && (data === null || data === void 0 ? void 0 : data.length) - 1 > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, "First party & third party Cookies found on ", fetchedWebsites.replace("https://", "").replace("http://", "").replace("www.", "")), /*#__PURE__*/React.createElement(_Tabel__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/React.createElement("p", null, "Free to use"), /*#__PURE__*/React.createElement("p", null, "Instant Report")), websiteStatus === "Crawled" && /*#__PURE__*/React.createElement("p", null, "Found ", (data === null || data === void 0 ? void 0 : data.length) - 1, " cookies on your website across ", data.map(crawledUrl => {
+    var _crawledUrl$crawledUr;
+
+    return crawledUrl === null || crawledUrl === void 0 ? void 0 : (_crawledUrl$crawledUr = crawledUrl.crawledUrls) === null || _crawledUrl$crawledUr === void 0 ? void 0 : _crawledUrl$crawledUr.length;
+  }), " sites"), loading && /*#__PURE__*/React.createElement(_LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_4__["default"], null), !loading && (data === null || data === void 0 ? void 0 : data.length) - 1 > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, "First party & third party Cookies found on ", fetchedWebsites.replace("https://", "").replace("http://", "").replace("www.", "")), /*#__PURE__*/React.createElement(_Tabel__WEBPACK_IMPORTED_MODULE_2__["default"], {
     headers: ["Name", "Domain"],
     data: data
   }))));
@@ -2609,7 +2613,7 @@ function Table(props) {
       key: i
     }, d.name), /*#__PURE__*/React.createElement("div", {
       className: "table-cell",
-      key: i
+      key: i + 1
     }, d.domain));
   })))));
 }
