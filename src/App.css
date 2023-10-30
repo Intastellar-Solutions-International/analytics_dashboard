@@ -120,6 +120,18 @@ body{
     right: -20px;
 }
 
+.cookieCheckContainer{
+    width: 1200px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.cookieCheckContainer .form{
+    width: 100%;
+}
+
 @media screen and (min-width: 320px) and (max-width: 900px) {
     .main-grid{
         display: block;

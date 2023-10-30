@@ -32,6 +32,7 @@ import Countries from "./Pages/Countries/Countries";
 import BugReport from "./Components/BugReport/BugReport";
 import PlatformSelector from "./Components/PlatformSelector/PlatformSelector";
 import SiteStatus from "./Pages/Reports/SiteStatus";
+import Crawler from "./Components/Crawler";
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
 export const DomainContext = createContext(null);
@@ -194,7 +195,19 @@ export default function App() {
         )
     } else {
         return (
-            <Login />
+            <Router>
+                <Switch>
+                    <Route path="/login" exact>
+                        <Login />
+                    </Route>
+                    <Route path="/check">
+                        <div className="cookieCheckContainer">
+                            <Crawler />
+                        </div>
+                    </Route>
+                </Switch>
+                
+            </Router>
         )
     }
 }
