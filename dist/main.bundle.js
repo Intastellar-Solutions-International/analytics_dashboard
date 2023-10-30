@@ -4171,7 +4171,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".intInput{\n    padding: 10px;\n    width: 100%;\n    border: none;\n    appearance: none;\n    -webkit-appearance: none;\n    border-radius: 5px;\n    font-size: 15px;\n}", "",{"version":3,"sources":["webpack://./src/Components/InputFields/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,WAAW;IACX,YAAY;IACZ,gBAAgB;IAChB,wBAAwB;IACxB,kBAAkB;IAClB,eAAe;AACnB","sourcesContent":[".intInput{\n    padding: 10px;\n    width: 100%;\n    border: none;\n    appearance: none;\n    -webkit-appearance: none;\n    border-radius: 5px;\n    font-size: 15px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".intInput{\n    padding: 10px;\n    width: 100%;\n    border: none;\n    appearance: none;\n    -webkit-appearance: none;\n    border-radius: 5px;\n    font-size: 15px;\n    font-size: 16px;\n}", "",{"version":3,"sources":["webpack://./src/Components/InputFields/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,WAAW;IACX,YAAY;IACZ,gBAAgB;IAChB,wBAAwB;IACxB,kBAAkB;IAClB,eAAe;IACf,eAAe;AACnB","sourcesContent":[".intInput{\n    padding: 10px;\n    width: 100%;\n    border: none;\n    appearance: none;\n    -webkit-appearance: none;\n    border-radius: 5px;\n    font-size: 15px;\n    font-size: 16px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
