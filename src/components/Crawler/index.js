@@ -80,11 +80,11 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
                 data === "Err_Development_Only" && <p>Sorry, this feature is only available in development mode</p>
             }
             {
-                websiteStatus === "Crawled" && <p>Found {data?.length - 1} cookies on your website across {data.map((crawledUrl) => crawledUrl?.crawledUrls?.length)} sites</p>
+                websiteStatus === "Crawled" && <p>Found {data?.length - 1} cookies on your website across {data?.map((crawledUrl) => crawledUrl?.crawledUrls?.length)} sites</p>
             }
 
             {loading && <LoadingSpinner />}
-            {!loading && data?.length - 1 > 0 && <>
+            {!loading && data !== "Err_Development_Only" && data?.length - 1 > 0 && <>
                 <h3>First party & third party Cookies found on {fetchedWebsites.replace("https://", "").replace("http://", "").replace("www.", "")}</h3>
                 <Table headers={["Name", "Domain"]} data={data} />
             </>
