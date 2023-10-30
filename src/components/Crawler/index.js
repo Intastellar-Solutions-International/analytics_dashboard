@@ -39,7 +39,10 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
             setLoading(false);
             setWebsiteStatus("Crawled");
             setData(res);
-        }).catch(setError);
+        }).catch(err => {
+            setLoading(false);
+            setError(err);
+        });
     }
 
     return <>
@@ -70,7 +73,7 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
                 websiteStatus === "Crawled" && <p>Found {data?.length} cookies on your website.</p>
             }
 
-            {loading && !error && <LoadingSpinner />}
+            {loading && <LoadingSpinner />}
             {!loading && data?.length > 0 && <>
                 <h3>First party & third party Cookies found on {crawlerItem.replace("https://", "").replace("http://", "").replace("www.", "")}</h3>
                 <Table headers={["Name", "Domain"]} data={data} />
