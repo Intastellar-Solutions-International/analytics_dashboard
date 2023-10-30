@@ -144,4 +144,8 @@ body{
     .main-grid{
         display: block;
     }
+
+    .cookieCheckContainer{
+        width: 100%;
+    }
 }
