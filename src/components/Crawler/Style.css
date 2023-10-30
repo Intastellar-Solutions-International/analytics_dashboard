@@ -1,3 +1,7 @@
+.crawler-intro{
+    text-align: center;
+    line-height: .5em;
+}
 .crawler-form{
     display: flex;
     gap: 20px;
@@ -11,12 +15,14 @@
 }
 
 .crawl-cta{
-    padding: 15px;
+    padding: 16px 35px;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: #dcbf00;
     width: max-content;
     font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
     color: #fff;
     margin-left: auto;
     flex-shrink: 0;
