@@ -319,12 +319,24 @@
 
 }
 
+.company_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (min-width: 320px) and (max-width: 900px) {
     .dashboard-header {
         width: 100%;
+        max-height: max-content;
+        padding-right: 0;
     }
 
-    .grid-3{
+    .main-grid{
+        padding-top: 174px;
+    }
+
+    .grid-3, .dashboard-profile{
         grid-template-columns: 1fr;
     }
 
@@ -338,5 +350,13 @@
 
     .navOverlay{
         display: none;
+    }
+
+    .dashboard-header>.dashboard-profile .content-img{
+        margin: 0 5px 5px auto;
+    }
+
+    .company_container{
+        flex-direction: column;
     }
 }

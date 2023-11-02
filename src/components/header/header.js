@@ -84,7 +84,7 @@ export default function Header(props) {
                         <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
                         {Platform}
                     </section>
-                    <section style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+                    <section className="company_container">
                     {(allOrganisations && Organisation) ? 
                         <Select defaultValue={Organisation}
                             onChange={(e) => { 

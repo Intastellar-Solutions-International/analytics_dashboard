@@ -66,13 +66,13 @@ export default function Dashboard(props){
     return (
         <>
             <div className="dashboard-content">
-                    {
-                        (id === "gdpr" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
-                            url: API[id].getTotalNumber.url,
-                            method: API[id].getTotalNumber.method,
-                            header: API[id].getTotalNumber.headers 
-                        }} /> : null
-                    }
+                {
+                    (id === "gdpr" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
+                        url: API[id].getTotalNumber.url,
+                        method: API[id].getTotalNumber.method,
+                        header: API[id].getTotalNumber.headers 
+                    }} /> : null
+                }
                 <div className="crawler">
                     <Crawler />
                 </div>
