@@ -3718,6 +3718,7 @@ function Dashboard(props) {
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
   const [activeData, setActiveData] = useState(null);
+  const [loadingTimeDate, setloadingTimeDate] = useState(false);
   const dashboardView = props.dashboardView;
   let url = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.url;
   let method = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.method;
@@ -3745,7 +3746,6 @@ function Dashboard(props) {
   useEffect(() => {
     if (data) {
       setActiveData(data);
-      console.log(data);
     }
   }, [data]);
   document.querySelectorAll(".intInput").forEach(input => {
@@ -3770,12 +3770,17 @@ function Dashboard(props) {
   }, /*#__PURE__*/React.createElement("h2", null, "Data of user interaction"), /*#__PURE__*/React.createElement("form", {
     onSubmit: e => {
       e.preventDefault();
+      setloadingTimeDate(true);
       fetch(url, {
         method: method,
         headers: header
-      }).then(res => res.json()).then(data => {
+      }).then(res => {
+        return res.json();
+      }).then(data => {
         console.log(data);
         setActiveData(data);
+      }).finally(() => {
+        setloadingTimeDate(false);
       });
     }
   }, /*#__PURE__*/React.createElement("h3", null, "Filter by date"), /*#__PURE__*/React.createElement("section", {
@@ -3796,8 +3801,9 @@ function Dashboard(props) {
     min: "2019-01-01"
   }), /*#__PURE__*/React.createElement(_Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
     type: "submit",
+    disabled: loadingTimeDate ? true : "",
     className: "crawl-cta",
-    text: "Filter by date"
+    text: loadingTimeDate ? "Loading..." : "Filter by date"
   }))), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
     overviewTotal: true,

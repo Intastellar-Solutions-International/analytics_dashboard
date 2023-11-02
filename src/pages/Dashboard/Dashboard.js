@@ -21,6 +21,7 @@ export default function Dashboard(props){
     const [fromDate, setFromDate] = useState(null);
     const [toDate, setToDate] = useState(null);
     const [activeData, setActiveData] = useState(null);
+    const [loadingTimeDate, setloadingTimeDate] = useState(false);
 
     const dashboardView = props.dashboardView;
     let url = API[id].getInteractions.url;
@@ -55,7 +56,6 @@ export default function Dashboard(props){
     useEffect(() => {
         if(data){
             setActiveData(data);
-            console.log(data);
         }
     }, [data]);
 
@@ -80,9 +80,14 @@ export default function Dashboard(props){
                     <h2>Data of user interaction</h2>
                     <form onSubmit={(e) => {
                         e.preventDefault();
-                        fetch(url, { method: method, headers: header} ).then((res) => res.json()).then((data) => {
+                        setloadingTimeDate(true);
+                        fetch(url, { method: method, headers: header} ).then((res) => {
+                            return res.json();
+                        }).then((data) => {
                             console.log(data);
                             setActiveData(data);
+                        }).finally(() => {
+                            setloadingTimeDate(false);
                         })
                     }}>
                         <h3>Filter by date</h3>
@@ -93,7 +98,7 @@ export default function Dashboard(props){
                             <input type="date" className="intInput" onChange={(e) => {
                                 setToDate(e.target.value)
                             }} min="2019-01-01" />
-                            <Button type="submit" className="crawl-cta" text="Filter by date" />
+                            <Button type="submit" disabled={(loadingTimeDate) ? true : ""} className="crawl-cta" text={loadingTimeDate ? "Loading..." : "Filter by date"} />
                         </section>
                     </form>
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }
