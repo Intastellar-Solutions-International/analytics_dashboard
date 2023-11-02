@@ -10,18 +10,17 @@ import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
 const useParams = window.ReactRouterDOM.useParams;
 import Crawler from "../../Components/Crawler";
-import e from "cors";
-import Button from "../../Components/Button/Button.js";
+import Filter from "../../Components/Filter";
 
 export default function Dashboard(props){
+    
     document.title = "Home | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const { handle, id } = useParams();
+    const [activeData, setActiveData] = useState(null);
     const [fromDate, setFromDate] = useState(null);
     const [toDate, setToDate] = useState(null);
-    const [activeData, setActiveData] = useState(null);
-    const [loadingTimeDate, setloadingTimeDate] = useState(false);
 
     const dashboardView = props.dashboardView;
     let url = API[id].getInteractions.url;
@@ -78,29 +77,7 @@ export default function Dashboard(props){
                 </div>
                 <div className="" style={{paddingTop: "40px"}}>
                     <h2>Data of user interaction</h2>
-                    <form onSubmit={(e) => {
-                        e.preventDefault();
-                        setloadingTimeDate(true);
-                        fetch(url, { method: method, headers: header} ).then((res) => {
-                            return res.json();
-                        }).then((data) => {
-                            console.log(data);
-                            setActiveData(data);
-                        }).finally(() => {
-                            setloadingTimeDate(false);
-                        })
-                    }}>
-                        <h3>Filter by date</h3>
-                        <section className="grid-container grid-3">
-                            <input type="date" className="intInput" onChange={(e) => {
-                                setFromDate(e.target.value)
-                            }} min="2019-01-01" />
-                            <input type="date" className="intInput" onChange={(e) => {
-                                setToDate(e.target.value)
-                            }} min="2019-01-01" />
-                            <Button type="submit" disabled={(loadingTimeDate) ? true : ""} className="crawl-cta" text={loadingTimeDate ? "Loading..." : "Filter by date"} />
-                        </section>
-                    </form>
+                    <Filter url={url} method={method} header={header} setActiveData={setActiveData} setFromDate={setFromDate} setToDate={setToDate} />
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }
                 </div>
                 <div className="grid-container grid-3">

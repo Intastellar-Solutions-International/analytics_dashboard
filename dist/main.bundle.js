@@ -1,253 +1,6 @@
 /******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
-
-/***/ "./node_modules/cors/lib/index.js":
-/*!****************************************!*\
-  !*** ./node_modules/cors/lib/index.js ***!
-  \****************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-(function () {
-
-  'use strict';
-
-  var assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
-  var vary = __webpack_require__(/*! vary */ "./node_modules/vary/index.js");
-
-  var defaults = {
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 204
-  };
-
-  function isString(s) {
-    return typeof s === 'string' || s instanceof String;
-  }
-
-  function isOriginAllowed(origin, allowedOrigin) {
-    if (Array.isArray(allowedOrigin)) {
-      for (var i = 0; i < allowedOrigin.length; ++i) {
-        if (isOriginAllowed(origin, allowedOrigin[i])) {
-          return true;
-        }
-      }
-      return false;
-    } else if (isString(allowedOrigin)) {
-      return origin === allowedOrigin;
-    } else if (allowedOrigin instanceof RegExp) {
-      return allowedOrigin.test(origin);
-    } else {
-      return !!allowedOrigin;
-    }
-  }
-
-  function configureOrigin(options, req) {
-    var requestOrigin = req.headers.origin,
-      headers = [],
-      isAllowed;
-
-    if (!options.origin || options.origin === '*') {
-      // allow any origin
-      headers.push([{
-        key: 'Access-Control-Allow-Origin',
-        value: '*'
-      }]);
-    } else if (isString(options.origin)) {
-      // fixed origin
-      headers.push([{
-        key: 'Access-Control-Allow-Origin',
-        value: options.origin
-      }]);
-      headers.push([{
-        key: 'Vary',
-        value: 'Origin'
-      }]);
-    } else {
-      isAllowed = isOriginAllowed(requestOrigin, options.origin);
-      // reflect origin
-      headers.push([{
-        key: 'Access-Control-Allow-Origin',
-        value: isAllowed ? requestOrigin : false
-      }]);
-      headers.push([{
-        key: 'Vary',
-        value: 'Origin'
-      }]);
-    }
-
-    return headers;
-  }
-
-  function configureMethods(options) {
-    var methods = options.methods;
-    if (methods.join) {
-      methods = options.methods.join(','); // .methods is an array, so turn it into a string
-    }
-    return {
-      key: 'Access-Control-Allow-Methods',
-      value: methods
-    };
-  }
-
-  function configureCredentials(options) {
-    if (options.credentials === true) {
-      return {
-        key: 'Access-Control-Allow-Credentials',
-        value: 'true'
-      };
-    }
-    return null;
-  }
-
-  function configureAllowedHeaders(options, req) {
-    var allowedHeaders = options.allowedHeaders || options.headers;
-    var headers = [];
-
-    if (!allowedHeaders) {
-      allowedHeaders = req.headers['access-control-request-headers']; // .headers wasn't specified, so reflect the request headers
-      headers.push([{
-        key: 'Vary',
-        value: 'Access-Control-Request-Headers'
-      }]);
-    } else if (allowedHeaders.join) {
-      allowedHeaders = allowedHeaders.join(','); // .headers is an array, so turn it into a string
-    }
-    if (allowedHeaders && allowedHeaders.length) {
-      headers.push([{
-        key: 'Access-Control-Allow-Headers',
-        value: allowedHeaders
-      }]);
-    }
-
-    return headers;
-  }
-
-  function configureExposedHeaders(options) {
-    var headers = options.exposedHeaders;
-    if (!headers) {
-      return null;
-    } else if (headers.join) {
-      headers = headers.join(','); // .headers is an array, so turn it into a string
-    }
-    if (headers && headers.length) {
-      return {
-        key: 'Access-Control-Expose-Headers',
-        value: headers
-      };
-    }
-    return null;
-  }
-
-  function configureMaxAge(options) {
-    var maxAge = (typeof options.maxAge === 'number' || options.maxAge) && options.maxAge.toString()
-    if (maxAge && maxAge.length) {
-      return {
-        key: 'Access-Control-Max-Age',
-        value: maxAge
-      };
-    }
-    return null;
-  }
-
-  function applyHeaders(headers, res) {
-    for (var i = 0, n = headers.length; i < n; i++) {
-      var header = headers[i];
-      if (header) {
-        if (Array.isArray(header)) {
-          applyHeaders(header, res);
-        } else if (header.key === 'Vary' && header.value) {
-          vary(res, header.value);
-        } else if (header.value) {
-          res.setHeader(header.key, header.value);
-        }
-      }
-    }
-  }
-
-  function cors(options, req, res, next) {
-    var headers = [],
-      method = req.method && req.method.toUpperCase && req.method.toUpperCase();
-
-    if (method === 'OPTIONS') {
-      // preflight
-      headers.push(configureOrigin(options, req));
-      headers.push(configureCredentials(options, req));
-      headers.push(configureMethods(options, req));
-      headers.push(configureAllowedHeaders(options, req));
-      headers.push(configureMaxAge(options, req));
-      headers.push(configureExposedHeaders(options, req));
-      applyHeaders(headers, res);
-
-      if (options.preflightContinue) {
-        next();
-      } else {
-        // Safari (and potentially other browsers) need content-length 0,
-        //   for 204 or they just hang waiting for a body
-        res.statusCode = options.optionsSuccessStatus;
-        res.setHeader('Content-Length', '0');
-        res.end();
-      }
-    } else {
-      // actual response
-      headers.push(configureOrigin(options, req));
-      headers.push(configureCredentials(options, req));
-      headers.push(configureExposedHeaders(options, req));
-      applyHeaders(headers, res);
-      next();
-    }
-  }
-
-  function middlewareWrapper(o) {
-    // if options are static (either via defaults or custom options passed in), wrap in a function
-    var optionsCallback = null;
-    if (typeof o === 'function') {
-      optionsCallback = o;
-    } else {
-      optionsCallback = function (req, cb) {
-        cb(null, o);
-      };
-    }
-
-    return function corsMiddleware(req, res, next) {
-      optionsCallback(req, function (err, options) {
-        if (err) {
-          next(err);
-        } else {
-          var corsOptions = assign({}, defaults, options);
-          var originCallback = null;
-          if (corsOptions.origin && typeof corsOptions.origin === 'function') {
-            originCallback = corsOptions.origin;
-          } else if (corsOptions.origin) {
-            originCallback = function (origin, cb) {
-              cb(null, corsOptions.origin);
-            };
-          }
-
-          if (originCallback) {
-            originCallback(req.headers.origin, function (err2, origin) {
-              if (err2 || !origin) {
-                next(err2);
-              } else {
-                corsOptions.origin = origin;
-                cors(corsOptions, req, res, next);
-              }
-            });
-          } else {
-            next();
-          }
-        }
-      });
-    };
-  }
-
-  // can pass either an options hash, an options delegate, or nothing
-  module.exports = middlewareWrapper;
-
-}());
-
-
-/***/ }),
 
 /***/ "./src/Components/Header/logo.png":
 /*!****************************************!*\
@@ -255,113 +8,11 @@
   \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "e275e7aca6ee39ff06396126f40f419f.png");
-
-/***/ }),
-
-/***/ "./node_modules/object-assign/index.js":
-/*!*********************************************!*\
-  !*** ./node_modules/object-assign/index.js ***!
-  \*********************************************/
-/***/ ((module) => {
-
-"use strict";
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
-
-
-/* eslint-disable no-unused-vars */
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-function toObject(val) {
-	if (val === null || val === undefined) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
-	}
-
-	return Object(val);
-}
-
-function shouldUseNative() {
-	try {
-		if (!Object.assign) {
-			return false;
-		}
-
-		// Detect buggy property enumeration order in older V8 versions.
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
-		test1[5] = 'de';
-		if (Object.getOwnPropertyNames(test1)[0] === '5') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test2 = {};
-		for (var i = 0; i < 10; i++) {
-			test2['_' + String.fromCharCode(i)] = i;
-		}
-		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-			return test2[n];
-		});
-		if (order2.join('') !== '0123456789') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test3 = {};
-		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-			test3[letter] = letter;
-		});
-		if (Object.keys(Object.assign({}, test3)).join('') !==
-				'abcdefghijklmnopqrst') {
-			return false;
-		}
-
-		return true;
-	} catch (err) {
-		// We don't expect any of the above to throw, but better to be safe.
-		return false;
-	}
-}
-
-module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-	var from;
-	var to = toObject(target);
-	var symbols;
-
-	for (var s = 1; s < arguments.length; s++) {
-		from = Object(arguments[s]);
-
-		for (var key in from) {
-			if (hasOwnProperty.call(from, key)) {
-				to[key] = from[key];
-			}
-		}
-
-		if (getOwnPropertySymbols) {
-			symbols = getOwnPropertySymbols(from);
-			for (var i = 0; i < symbols.length; i++) {
-				if (propIsEnumerable.call(from, symbols[i])) {
-					to[symbols[i]] = from[symbols[i]];
-				}
-			}
-		}
-	}
-
-	return to;
-};
-
 
 /***/ }),
 
@@ -371,7 +22,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "decode": () => (/* binding */ decode),
@@ -830,173 +480,12 @@ const punycode = {
 
 /***/ }),
 
-/***/ "./node_modules/vary/index.js":
-/*!************************************!*\
-  !*** ./node_modules/vary/index.js ***!
-  \************************************/
-/***/ ((module) => {
-
-"use strict";
-/*!
- * vary
- * Copyright(c) 2014-2017 Douglas Christopher Wilson
- * MIT Licensed
- */
-
-
-
-/**
- * Module exports.
- */
-
-module.exports = vary
-module.exports.append = append
-
-/**
- * RegExp to match field-name in RFC 7230 sec 3.2
- *
- * field-name    = token
- * token         = 1*tchar
- * tchar         = "!" / "#" / "$" / "%" / "&" / "'" / "*"
- *               / "+" / "-" / "." / "^" / "_" / "`" / "|" / "~"
- *               / DIGIT / ALPHA
- *               ; any VCHAR, except delimiters
- */
-
-var FIELD_NAME_REGEXP = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/
-
-/**
- * Append a field to a vary header.
- *
- * @param {String} header
- * @param {String|Array} field
- * @return {String}
- * @public
- */
-
-function append (header, field) {
-  if (typeof header !== 'string') {
-    throw new TypeError('header argument is required')
-  }
-
-  if (!field) {
-    throw new TypeError('field argument is required')
-  }
-
-  // get fields array
-  var fields = !Array.isArray(field)
-    ? parse(String(field))
-    : field
-
-  // assert on invalid field names
-  for (var j = 0; j < fields.length; j++) {
-    if (!FIELD_NAME_REGEXP.test(fields[j])) {
-      throw new TypeError('field argument contains an invalid header name')
-    }
-  }
-
-  // existing, unspecified vary
-  if (header === '*') {
-    return header
-  }
-
-  // enumerate current values
-  var val = header
-  var vals = parse(header.toLowerCase())
-
-  // unspecified vary
-  if (fields.indexOf('*') !== -1 || vals.indexOf('*') !== -1) {
-    return '*'
-  }
-
-  for (var i = 0; i < fields.length; i++) {
-    var fld = fields[i].toLowerCase()
-
-    // append value (case-preserving)
-    if (vals.indexOf(fld) === -1) {
-      vals.push(fld)
-      val = val
-        ? val + ', ' + fields[i]
-        : fields[i]
-    }
-  }
-
-  return val
-}
-
-/**
- * Parse a vary header into an array.
- *
- * @param {String} header
- * @return {Array}
- * @private
- */
-
-function parse (header) {
-  var end = 0
-  var list = []
-  var start = 0
-
-  // gather tokens
-  for (var i = 0, len = header.length; i < len; i++) {
-    switch (header.charCodeAt(i)) {
-      case 0x20: /*   */
-        if (start === end) {
-          start = end = i + 1
-        }
-        break
-      case 0x2c: /* , */
-        list.push(header.substring(start, end))
-        start = end = i + 1
-        break
-      default:
-        end = i + 1
-        break
-    }
-  }
-
-  // final token
-  list.push(header.substring(start, end))
-
-  return list
-}
-
-/**
- * Mark that a request is varied on a header field.
- *
- * @param {Object} res
- * @param {String|Array} field
- * @public
- */
-
-function vary (res, field) {
-  if (!res || !res.getHeader || !res.setHeader) {
-    // quack quack
-    throw new TypeError('res argument is required')
-  }
-
-  // get existing header
-  var val = res.getHeader('Vary') || ''
-  var header = Array.isArray(val)
-    ? val.join(', ')
-    : String(val)
-
-  // set new header
-  if ((val = append(header, field))) {
-    res.setHeader('Vary', val)
-  }
-}
-
-
-/***/ }),
-
 /***/ "./src/API/api.js":
 /*!************************!*\
   !*** ./src/API/api.js ***!
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1150,7 +639,6 @@ const API = {
   \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "LoginHost": () => (/* binding */ LoginHost),
@@ -1168,7 +656,6 @@ const LoginHost = "https://apis.intastellaraccounts.com";
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DomainContext": () => (/* binding */ DomainContext),
@@ -1379,6 +866,10 @@ function App() {
       to: "/login"
     })))))));
   } else {
+    if (window.location.pathname !== "/login") {
+      window.location.href = "/login";
+    }
+
     return /*#__PURE__*/React.createElement(Router, null, /*#__PURE__*/React.createElement(Switch, null, /*#__PURE__*/React.createElement(Route, {
       path: "/login",
       exact: true
@@ -1401,7 +892,6 @@ function App() {
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -1493,7 +983,6 @@ const Authentication = {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ AddDomain)
@@ -1559,7 +1048,6 @@ function AddDomain() {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ BugReport)
@@ -1675,7 +1163,6 @@ function BugReport() {
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Button)
@@ -1698,7 +1185,6 @@ function Button(props) {
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Map)
@@ -1738,7 +1224,6 @@ function Map(props) {
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Crawler)
@@ -1862,7 +1347,6 @@ function Crawler(_ref) {
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ DomainList)
@@ -2014,7 +1498,6 @@ function DomainList(props) {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ErrorBoundary)
@@ -2055,7 +1538,6 @@ class ErrorBoundary extends React.Component {
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Unknown)
@@ -2080,7 +1562,6 @@ function Unknown(props) {
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Unknown)
@@ -2101,13 +1582,82 @@ function Unknown(props) {
 
 /***/ }),
 
+/***/ "./src/Components/Filter/index.js":
+/*!****************************************!*\
+  !*** ./src/Components/Filter/index.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Filter)
+/* harmony export */ });
+/* harmony import */ var _Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Components/Button/Button.js */ "./src/Components/Button/Button.js");
+const {
+  useState,
+  useEffect,
+  useRef,
+  useContext
+} = React;
+
+function Filter(_ref) {
+  let {
+    url,
+    method,
+    header,
+    setActiveData,
+    setFromDate,
+    setToDate
+  } = _ref;
+  const [loadingTimeDate, setloadingTimeDate] = useState(false);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("form", {
+    onSubmit: e => {
+      e.preventDefault();
+      setloadingTimeDate(true);
+      fetch(url, {
+        method: method,
+        headers: header
+      }).then(res => {
+        return res.json();
+      }).then(data => {
+        console.log(data);
+        setActiveData(data);
+      }).finally(() => {
+        setloadingTimeDate(false);
+      });
+    }
+  }, /*#__PURE__*/React.createElement("h3", null, "Filter by date"), /*#__PURE__*/React.createElement("section", {
+    className: "grid-container grid-3"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "date",
+    className: "intInput",
+    onChange: e => {
+      setFromDate(e.target.value);
+    },
+    min: "2019-01-01"
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "date",
+    className: "intInput",
+    onChange: e => {
+      setToDate(e.target.value);
+    },
+    min: "2019-01-01"
+  }), /*#__PURE__*/React.createElement(_Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    type: "submit",
+    disabled: loadingTimeDate ? true : "",
+    className: "crawl-cta",
+    text: loadingTimeDate ? "Loading..." : "Search now"
+  }))));
+}
+
+/***/ }),
+
 /***/ "./src/Components/Header/Nav.js":
 /*!**************************************!*\
   !*** ./src/Components/Header/Nav.js ***!
   \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Nav)
@@ -2183,7 +1733,6 @@ function Nav() {
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ SideNav)
@@ -2250,7 +1799,6 @@ function SideNav(props) {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "reportsLinks": () => (/* binding */ reportsLinks)
@@ -2289,7 +1837,6 @@ const reportsLinks = [{
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Header)
@@ -2334,7 +1881,7 @@ function Header(props) {
   const [allOrganisations, setallOrganisations] = useState(null);
   const [domains, setDomains] = useState(props.domains);
   const [viewUserProfile, setViewUserProfile] = useState(false);
-  const Platform = localStorage.getItem("platform") == "gdpr" ? "Platform:  Intastellar Cookie Consents" : "Platform: Ferry Booking";
+  const Platform = localStorage.getItem("platform") == "gdpr" ? "Intastellar Cookie Consents" : "Ferry Booking";
   useEffect(() => {
     var _API$window$location$, _API$window$location$2, _API$window$location$3, _API$window$location$4, _API$window$location$5, _API$window$location$6;
 
@@ -2391,13 +1938,14 @@ function Header(props) {
   }, /*#__PURE__*/React.createElement("section", {
     style: {
       display: "flex",
-      alignItems: "center"
+      alignItems: "center",
+      width: "150px"
     }
   }, /*#__PURE__*/React.createElement("img", {
     className: "dashboard-logo",
     src: _logo_png__WEBPACK_IMPORTED_MODULE_2__["default"],
     alt: "Intastellar Solutions Logo"
-  }), Platform), /*#__PURE__*/React.createElement("section", {
+  })), /*#__PURE__*/React.createElement("section", {
     className: "company_container"
   }, allOrganisations && Organisation ? /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_7__["default"], {
     defaultValue: Organisation,
@@ -2410,9 +1958,11 @@ function Header(props) {
     style: {
       right: "0"
     }
-  }) : null, /*#__PURE__*/React.createElement("i", {
-    className: "arrowRight"
-  }), domains && currentDomain ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }) : null, /*#__PURE__*/React.createElement("span", {
+    className: "divider"
+  }, ">"), /*#__PURE__*/React.createElement("span", {
+    className: "platform-view"
+  }, Platform), domains && currentDomain ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_7__["default"], {
     defaultValue: currentDomain,
     onChange: e => {
       const domain = e;
@@ -2449,7 +1999,6 @@ function Header(props) {
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Highlighter)
@@ -2470,7 +2019,6 @@ function Highlighter(props) {
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Email)
@@ -2494,7 +2042,6 @@ function Email(props) {
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Text)
@@ -2519,7 +2066,6 @@ function Text(props) {
   \*******************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Account)
@@ -2881,7 +2427,6 @@ function Account(props) {
   \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ LoadingSpinner)
@@ -2904,7 +2449,6 @@ function LoadingSpinner() {
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ NotAllowed)
@@ -2923,7 +2467,6 @@ function NotAllowed() {
   \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ PlatformSelector)
@@ -3009,7 +2552,6 @@ function PlatformSelector(props) {
   \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Select)
@@ -3113,7 +2655,6 @@ function Select(props) {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ SuccessWindow)
@@ -3153,7 +2694,6 @@ function SuccessWindow(props) {
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Table)
@@ -3197,7 +2737,6 @@ function Table(props) {
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CurrentPageLoading": () => (/* binding */ CurrentPageLoading),
@@ -3238,7 +2777,6 @@ function CurrentPageLoading() {
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ TopWidgets)
@@ -3298,7 +2836,6 @@ function TopWidgets(props) {
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Widget)
@@ -3322,7 +2859,6 @@ function Widget(props) {
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ useFetch)
@@ -3409,7 +2945,6 @@ function useFetch(updateInterval, url, method, headers, body, handle) {
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -3446,7 +2981,6 @@ const Fetch = async (url, method, headers, body, signal) => {
   \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "isJson": () => (/* binding */ isJson)
@@ -3469,7 +3003,6 @@ function isJson(str) {
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Login)
@@ -3504,7 +3037,7 @@ function Login() {
     alt: "Intastellar Solutions Logo"
   }), /*#__PURE__*/React.createElement("h1", {
     className: "loginForm-title"
-  }, "Signin to Intastellar Analytics"), /*#__PURE__*/React.createElement("label", null, errorMessage != null ? errorMessage : null), /*#__PURE__*/React.createElement("label", null, "Email:"), /*#__PURE__*/React.createElement("input", {
+  }, "Sign in to Intastellar Analytics"), /*#__PURE__*/React.createElement("label", null, errorMessage != null ? errorMessage : null), /*#__PURE__*/React.createElement("label", null, "Email:"), /*#__PURE__*/React.createElement("input", {
     className: "loginForm-inputField",
     type: "email",
     placeholder: "email",
@@ -3521,7 +3054,10 @@ function Login() {
   }), /*#__PURE__*/React.createElement("button", {
     className: "loginForm-inputField --btn",
     type: "submit"
-  }, isLoading ? "We are loggin you in..." : "SIGNIN"))));
+  }, isLoading ? "We are loggin you in..." : "SIGNIN"), /*#__PURE__*/React.createElement("a", {
+    className: "loginForm-inputField --link",
+    href: "/forgot-password"
+  }, "Forgot Password?"))));
 }
 
 /***/ }),
@@ -3532,7 +3068,6 @@ function Login() {
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ LoginOverLay)
@@ -3601,7 +3136,6 @@ function LoginOverLay() {
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ UserConsents)
@@ -3672,7 +3206,6 @@ function UserConsents(props) {
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Dashboard)
@@ -3686,9 +3219,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Charts_WorldMap_WorldMap_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Components/Charts/WorldMap/WorldMap.js */ "./src/Components/Charts/WorldMap/WorldMap.js");
 /* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
 /* harmony import */ var _Components_Crawler__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Components/Crawler */ "./src/Components/Crawler/index.js");
-/* harmony import */ var cors__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! cors */ "./node_modules/cors/lib/index.js");
-/* harmony import */ var cors__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(cors__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Components/Button/Button.js */ "./src/Components/Button/Button.js");
+/* harmony import */ var _Components_Filter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Filter */ "./src/Components/Filter/index.js");
 const {
   useState,
   useEffect,
@@ -3706,7 +3237,6 @@ const {
 const useParams = window.ReactRouterDOM.useParams;
 
 
-
 function Dashboard(props) {
   document.title = "Home | Intastellar Analytics";
   const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_7__.DomainContext);
@@ -3715,10 +3245,9 @@ function Dashboard(props) {
     handle,
     id
   } = useParams();
+  const [activeData, setActiveData] = useState(null);
   const [fromDate, setFromDate] = useState(null);
   const [toDate, setToDate] = useState(null);
-  const [activeData, setActiveData] = useState(null);
-  const [loadingTimeDate, setloadingTimeDate] = useState(false);
   const dashboardView = props.dashboardView;
   let url = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.url;
   let method = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.method;
@@ -3767,44 +3296,14 @@ function Dashboard(props) {
     style: {
       paddingTop: "40px"
     }
-  }, /*#__PURE__*/React.createElement("h2", null, "Data of user interaction"), /*#__PURE__*/React.createElement("form", {
-    onSubmit: e => {
-      e.preventDefault();
-      setloadingTimeDate(true);
-      fetch(url, {
-        method: method,
-        headers: header
-      }).then(res => {
-        return res.json();
-      }).then(data => {
-        console.log(data);
-        setActiveData(data);
-      }).finally(() => {
-        setloadingTimeDate(false);
-      });
-    }
-  }, /*#__PURE__*/React.createElement("h3", null, "Filter by date"), /*#__PURE__*/React.createElement("section", {
-    className: "grid-container grid-3"
-  }, /*#__PURE__*/React.createElement("input", {
-    type: "date",
-    className: "intInput",
-    onChange: e => {
-      setFromDate(e.target.value);
-    },
-    min: "2019-01-01"
-  }), /*#__PURE__*/React.createElement("input", {
-    type: "date",
-    className: "intInput",
-    onChange: e => {
-      setToDate(e.target.value);
-    },
-    min: "2019-01-01"
-  }), /*#__PURE__*/React.createElement(_Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    type: "submit",
-    disabled: loadingTimeDate ? true : "",
-    className: "crawl-cta",
-    text: loadingTimeDate ? "Loading..." : "Filter by date"
-  }))), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, /*#__PURE__*/React.createElement("h2", null, "Data of user interaction"), /*#__PURE__*/React.createElement(_Components_Filter__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    url: url,
+    method: method,
+    header: header,
+    setActiveData: setActiveData,
+    setFromDate: setFromDate,
+    setToDate: setToDate
+  }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
     overviewTotal: true,
     type: "Total interactions"
@@ -3847,7 +3346,6 @@ function Dashboard(props) {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ DomainDashbord)
@@ -3941,7 +3439,6 @@ function DomainDashbord(props) {
   \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ FerryDashboard)
@@ -3960,7 +3457,6 @@ function FerryDashboard() {
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Websites)
@@ -4008,7 +3504,6 @@ function Websites() {
   \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Reports),
@@ -4044,7 +3539,6 @@ function Reports() {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ SiteStatus)
@@ -4061,7 +3555,6 @@ function SiteStatus() {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ SettingsAddDomain)
@@ -4086,7 +3579,6 @@ function SettingsAddDomain() {
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ AddUser)
@@ -4212,7 +3704,6 @@ function AddUser() {
   \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ AddUser)
@@ -4284,7 +3775,6 @@ function AddUser() {
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ViewOrg)
@@ -4353,7 +3843,6 @@ function ViewOrg() {
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Settings)
@@ -4392,7 +3881,6 @@ function Settings(props) {
   \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ UserConsents)
@@ -4497,7 +3985,6 @@ function UserConsents(props) {
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "clearTextfield": () => (/* binding */ clearTextfield),
@@ -4530,7 +4017,6 @@ function extractHostname(url) {
   \************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4560,7 +4046,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ":root{\n    --heroHeadline: 40px \"Mon
   \***************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4587,7 +4072,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".grid{\n    display: grid;\n    grid-t
   \***************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4614,7 +4098,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".bug-container{\n    position: fixed;\
   \****************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4669,7 +4152,6 @@ ___CSS_LOADER_EXPORT___.locals = {
   \*****************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4696,7 +4178,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".map-selected {\n    fill: #E3DA37;\n}
   \*********************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4723,7 +4204,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".crawler-intro{\n    text-align: cente
   \*****************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4750,7 +4230,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".copyCta{\n    display: flex;\n    jus
   \*********************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4783,7 +4262,7 @@ var ___CSS_LOADER_URL_REPLACEMENT_5___ = _node_modules_css_loader_dist_runtime_g
 var ___CSS_LOADER_URL_REPLACEMENT_6___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_6___);
 var ___CSS_LOADER_URL_REPLACEMENT_7___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_7___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 100;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n}\n\n.dashboard-profile {\n    display: grid;\n    grid-template-columns: 436px 1fr 50px;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n}\n\n.flex{\n    display: flex;\n    align-items: center;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-color: transparent;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    margin-right: 10px;\n    padding: 20px;\n    height: 66px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar{\n    background: rgb(63, 63, 63);\n    transition: width .5s ease-in-out;\n    width: 65px;\n    min-height: 100vh;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n    \n    transition: width .25s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n}\n\n.collapsed .hiddenCollapsed{\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all .25s ease-in-out;\n}\n\n.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay{\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 25px 15px;\n    overflow: hidden;\n    align-items: center;\n    justify-content: center;\n    white-space: nowrap;\n    transition: width .15s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active, .navItems:hover{\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .15s ease-in-out;\n}\n\n.collapsed:hover .navItems, .collapsed.expand a{\n    width: 100%;\n}\n\n.collapsed:hover nav, .collapsed.expand nav{\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons{\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.collapsed .dashboard-icons{\n    margin-right: 0px;\n}\n\n.collapsed.expand .dashboard-icons, .collapsed:hover .dashboard-icons{\n    margin-right: 10px;\n}\n\n.dashboard::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.home::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_5___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_6___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn{\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after{\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_7___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom{\n    margin-top: auto;\n}\n\n.navLogout{\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector{\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{\n    outline: none;\n}\n\n.dashboard-organisationContainer{\n    position: relative;\n}\n\n.dashboard-profile__nameContainer{\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n.arrowRight{\n    width: 10px;\n    height: 10px;\n    display: inline-block;\n    margin-left: 10px;\n\n}\n\n.company_container{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n        max-height: max-content;\n        padding-right: 0;\n    }\n\n    .main-grid{\n        padding-top: 174px;\n    }\n\n    .grid-3, .dashboard-profile{\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container{\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer{\n        width: auto;\n    }\n\n    .navOverlay{\n        display: none;\n    }\n\n    .dashboard-header>.dashboard-profile .content-img{\n        margin: 0 5px 5px auto;\n    }\n\n    .company_container{\n        flex-direction: column;\n    }\n}", "",{"version":3,"sources":["webpack://./src/Components/Header/header.css"],"names":[],"mappings":"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","sourcesContent":[".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 100;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n}\n\n.dashboard-profile {\n    display: grid;\n    grid-template-columns: 436px 1fr 50px;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n}\n\n.flex{\n    display: flex;\n    align-items: center;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-color: transparent;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    margin-right: 10px;\n    padding: 20px;\n    height: 66px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar{\n    background: rgb(63, 63, 63);\n    transition: width .5s ease-in-out;\n    width: 65px;\n    min-height: 100vh;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n    \n    transition: width .25s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n}\n\n.collapsed .hiddenCollapsed{\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all .25s ease-in-out;\n}\n\n.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay{\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 25px 15px;\n    overflow: hidden;\n    align-items: center;\n    justify-content: center;\n    white-space: nowrap;\n    transition: width .15s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active, .navItems:hover{\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .15s ease-in-out;\n}\n\n.collapsed:hover .navItems, .collapsed.expand a{\n    width: 100%;\n}\n\n.collapsed:hover nav, .collapsed.expand nav{\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons{\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.collapsed .dashboard-icons{\n    margin-right: 0px;\n}\n\n.collapsed.expand .dashboard-icons, .collapsed:hover .dashboard-icons{\n    margin-right: 10px;\n}\n\n.dashboard::after{\n    content: \"\";\n    background:  url(\"icons/dashboard.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after{\n    content: \"\";\n    background:  url(\"icons/reports.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.home::after{\n    content: \"\";\n    background:  url(\"icons/home.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after{\n    content: \"\";\n    background:  url(\"icons/user-consents.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after{\n    content: \"\";\n    background:  url(\"icons/domain.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after{\n    content: \"\";\n    background:  url(\"icons/settings.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after{\n    content: \"\";\n    background:  url(\"icons/Logout.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn{\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after{\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background:  url(\"icons/expand.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom{\n    margin-top: auto;\n}\n\n.navLogout{\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector{\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{\n    outline: none;\n}\n\n.dashboard-organisationContainer{\n    position: relative;\n}\n\n.dashboard-profile__nameContainer{\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n.arrowRight{\n    width: 10px;\n    height: 10px;\n    display: inline-block;\n    margin-left: 10px;\n\n}\n\n.company_container{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n        max-height: max-content;\n        padding-right: 0;\n    }\n\n    .main-grid{\n        padding-top: 174px;\n    }\n\n    .grid-3, .dashboard-profile{\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container{\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer{\n        width: auto;\n    }\n\n    .navOverlay{\n        display: none;\n    }\n\n    .dashboard-header>.dashboard-profile .content-img{\n        margin: 0 5px 5px auto;\n    }\n\n    .company_container{\n        flex-direction: column;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 100;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n}\n\n.dashboard-profile {\n    display: grid;\n    grid-template-columns: min-content 1fr 50px;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n}\n\n.flex{\n    display: flex;\n    align-items: center;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-color: transparent;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    margin-right: 10px;\n    padding: 20px;\n    height: 66px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar{\n    background: rgb(63, 63, 63);\n    transition: width .5s ease-in-out;\n    width: 65px;\n    min-height: 100vh;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n    \n    transition: width .25s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n}\n\n.divider{\n    padding: 0 0 0 20px;\n}\n\n.platform-view{\n    padding: 0 20px;\n    display: inline-block;\n}\n\n.collapsed .hiddenCollapsed{\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all .25s ease-in-out;\n}\n\n.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay{\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 25px 15px;\n    overflow: hidden;\n    align-items: center;\n    justify-content: center;\n    white-space: nowrap;\n    transition: width .15s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active, .navItems:hover{\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .15s ease-in-out;\n}\n\n.collapsed:hover .navItems, .collapsed.expand a{\n    width: 100%;\n}\n\n.collapsed:hover nav, .collapsed.expand nav{\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons{\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.collapsed .dashboard-icons{\n    margin-right: 0px;\n}\n\n.collapsed.expand .dashboard-icons, .collapsed:hover .dashboard-icons{\n    margin-right: 10px;\n}\n\n.dashboard::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.home::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_5___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_6___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn{\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after{\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_7___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom{\n    margin-top: auto;\n}\n\n.navLogout{\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector{\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{\n    outline: none;\n}\n\n.dashboard-organisationContainer{\n    position: relative;\n}\n\n.dashboard-profile__nameContainer{\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n.arrowRight{\n    width: 10px;\n    height: 10px;\n    display: inline-block;\n    margin-left: 10px;\n\n}\n\n.company_container{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n        max-height: max-content;\n        padding-right: 0;\n    }\n\n    .main-grid{\n        padding-top: 174px;\n    }\n\n    .grid-3, .dashboard-profile{\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container{\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer{\n        width: auto;\n    }\n\n    .navOverlay{\n        display: none;\n    }\n\n    .dashboard-header>.dashboard-profile .content-img{\n        margin: 0 5px 5px auto;\n    }\n\n    .company_container{\n        flex-direction: column;\n    }\n}", "",{"version":3,"sources":["webpack://./src/Components/Header/header.css"],"names":[],"mappings":"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","sourcesContent":[".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 100;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n}\n\n.dashboard-profile {\n    display: grid;\n    grid-template-columns: min-content 1fr 50px;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n}\n\n.flex{\n    display: flex;\n    align-items: center;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-color: transparent;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    margin-right: 10px;\n    padding: 20px;\n    height: 66px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar{\n    background: rgb(63, 63, 63);\n    transition: width .5s ease-in-out;\n    width: 65px;\n    min-height: 100vh;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n    \n    transition: width .25s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n}\n\n.divider{\n    padding: 0 0 0 20px;\n}\n\n.platform-view{\n    padding: 0 20px;\n    display: inline-block;\n}\n\n.collapsed .hiddenCollapsed{\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all .25s ease-in-out;\n}\n\n.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay{\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 25px 15px;\n    overflow: hidden;\n    align-items: center;\n    justify-content: center;\n    white-space: nowrap;\n    transition: width .15s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active, .navItems:hover{\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .15s ease-in-out;\n}\n\n.collapsed:hover .navItems, .collapsed.expand a{\n    width: 100%;\n}\n\n.collapsed:hover nav, .collapsed.expand nav{\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons{\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.collapsed .dashboard-icons{\n    margin-right: 0px;\n}\n\n.collapsed.expand .dashboard-icons, .collapsed:hover .dashboard-icons{\n    margin-right: 10px;\n}\n\n.dashboard::after{\n    content: \"\";\n    background:  url(\"icons/dashboard.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after{\n    content: \"\";\n    background:  url(\"icons/reports.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.home::after{\n    content: \"\";\n    background:  url(\"icons/home.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after{\n    content: \"\";\n    background:  url(\"icons/user-consents.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after{\n    content: \"\";\n    background:  url(\"icons/domain.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after{\n    content: \"\";\n    background:  url(\"icons/settings.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after{\n    content: \"\";\n    background:  url(\"icons/Logout.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn{\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after{\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background:  url(\"icons/expand.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom{\n    margin-top: auto;\n}\n\n.navLogout{\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector{\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{\n    outline: none;\n}\n\n.dashboard-organisationContainer{\n    position: relative;\n}\n\n.dashboard-profile__nameContainer{\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n.arrowRight{\n    width: 10px;\n    height: 10px;\n    display: inline-block;\n    margin-left: 10px;\n\n}\n\n.company_container{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n        max-height: max-content;\n        padding-right: 0;\n    }\n\n    .main-grid{\n        padding-top: 174px;\n    }\n\n    .grid-3, .dashboard-profile{\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container{\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer{\n        width: auto;\n    }\n\n    .navOverlay{\n        display: none;\n    }\n\n    .dashboard-header>.dashboard-profile .content-img{\n        margin: 0 5px 5px auto;\n    }\n\n    .company_container{\n        flex-direction: column;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4796,7 +4275,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".dashboard-header {\n    width: 100%;\
   \*************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4823,7 +4301,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "h2:has(.highlight) {\n    display: inl
   \*************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4850,7 +4327,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".intInput{\n    padding: 15px;\n    wi
   \*********************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4877,7 +4353,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".user_content, .services-overview-cont
   \****************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4904,7 +4379,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".loading-spinner{\n    position: relat
   \*****************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4931,7 +4405,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".platform{\n    display: grid;\n    pl
   \*************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4958,7 +4431,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".selector{\n    width: calc(max-conten
   \***************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -4985,7 +4457,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".successWindow{\n    position: fixed;\
   \*******************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5012,7 +4483,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".table{\n    background-color: #5c5c5c
   \**********************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5039,7 +4509,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".bigNumIsLoading{\n    width: 100%;\n 
   \*********************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5066,7 +4535,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".widget{\n    box-shadow: 0 0 3px 0 rg
   \********************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5080,7 +4548,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".loginForm-container{\n    display: grid;\n    grid-template-columns: 1fr .85fr;\n    height: 100vh;\n    width: 100%;\n    text-align: center;\n    background-color: #c09f53;\n    background-image: url(\"https://www.intastellaraccounts.com/images/AdobeStock_317238161.jpeg\");\n    background-position: left;\n    background-size: cover;\n    background-blend-mode: multiply;\n}\n\n.loginForm-overlay{\n    position: fixed;\n    top: 0;\n    z-index: 100;\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    display: grid;\n    place-content: center;\n    background: rgba(0,0,0,.7);\n}\n\n.loginForm{\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    background: radial-gradient(circle at top, rgba(188, 188, 188, .8) -10%, rgba(48, 48, 48, .6));\n    padding: 80px;\n    box-sizing: border-box;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    color: rgb(234, 234, 234);\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    grid-column: 2/3;\n}\n\n.loginForm-overlay .loginForm{\n    width: 500px;\n}\n\n.loginForm label{\n    text-align: left;\n    display: block;\n    padding: 5px 0px;\n}\n\n.loginForm-inputField{\n    padding: 15px;\n    border: none;\n    width: 100%;\n    box-sizing: border-box;\n    font-size: 12px;\n    margin: 2px 0px;\n}\n\n.loginForm-forget{\n    padding: 15px;\n    color: rgb(234, 234, 234);\n    text-decoration: none;\n    display: block;\n    text-align: right;\n}\n\n.loginForm-logo{\n    width: 50%;\n    margin: 0 auto;\n    padding: 20px 15px;\n    filter: invert(100) brightness(100);\n}\n\n.loginForm-logo.--hideMobile{\n    display: none;\n}\n\n.loginForm-inputField.--btn{\n    background-color: #c09f53;\n    font-size: 16px;\n    color: #fff;\n    font-weight: bold;\n    letter-spacing: 5px;\n    text-transform: uppercase;\n}\n\n.loginForm-title{\n    font-size: 1.7em;\n    text-align: left;\n    padding: 15px 0px;\n    width: 100%;\n    text-transform: uppercase;\n    margin-bottom: -2px;\n}\n\n.loginForm-service{\n    margin: 0 0 10px;\n}\n\n@media screen and (min-width: 375px) and (max-width: 900px) {\n    .loginForm-container{\n        grid-template-columns: 1fr;\n    }\n\n    .loginForm-logo{\n        width: 100%;\n        padding: 0;\n        margin: 20px 0px;\n    }\n\n    .loginForm{\n        padding: 40px;\n        background: radial-gradient(circle at top, rgba(188, 188, 188, .6) -10%, rgba(48, 48, 48, .4));\n    }\n\n    .loginForm-container{\n        background-position: -250px;\n    }\n}", "",{"version":3,"sources":["webpack://./src/Login/Login.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,gCAAgC;IAChC,aAAa;IACb,WAAW;IACX,kBAAkB;IAClB,yBAAyB;IACzB,6FAA6F;IAC7F,yBAAyB;IACzB,sBAAsB;IACtB,+BAA+B;AACnC;;AAEA;IACI,eAAe;IACf,MAAM;IACN,YAAY;IACZ,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,qBAAqB;IACrB,0BAA0B;AAC9B;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,8FAA8F;IAC9F,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,yBAAyB;IACzB,0CAA0C;IAC1C,kDAAkD;IAClD,gBAAgB;AACpB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,gBAAgB;IAChB,cAAc;IACd,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,YAAY;IACZ,WAAW;IACX,sBAAsB;IACtB,eAAe;IACf,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,yBAAyB;IACzB,qBAAqB;IACrB,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,UAAU;IACV,cAAc;IACd,kBAAkB;IAClB,mCAAmC;AACvC;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,yBAAyB;IACzB,eAAe;IACf,WAAW;IACX,iBAAiB;IACjB,mBAAmB;IACnB,yBAAyB;AAC7B;;AAEA;IACI,gBAAgB;IAChB,gBAAgB;IAChB,iBAAiB;IACjB,WAAW;IACX,yBAAyB;IACzB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI;QACI,0BAA0B;IAC9B;;IAEA;QACI,WAAW;QACX,UAAU;QACV,gBAAgB;IACpB;;IAEA;QACI,aAAa;QACb,8FAA8F;IAClG;;IAEA;QACI,2BAA2B;IAC/B;AACJ","sourcesContent":[".loginForm-container{\n    display: grid;\n    grid-template-columns: 1fr .85fr;\n    height: 100vh;\n    width: 100%;\n    text-align: center;\n    background-color: #c09f53;\n    background-image: url(\"https://www.intastellaraccounts.com/images/AdobeStock_317238161.jpeg\");\n    background-position: left;\n    background-size: cover;\n    background-blend-mode: multiply;\n}\n\n.loginForm-overlay{\n    position: fixed;\n    top: 0;\n    z-index: 100;\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    display: grid;\n    place-content: center;\n    background: rgba(0,0,0,.7);\n}\n\n.loginForm{\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    background: radial-gradient(circle at top, rgba(188, 188, 188, .8) -10%, rgba(48, 48, 48, .6));\n    padding: 80px;\n    box-sizing: border-box;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    color: rgb(234, 234, 234);\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    grid-column: 2/3;\n}\n\n.loginForm-overlay .loginForm{\n    width: 500px;\n}\n\n.loginForm label{\n    text-align: left;\n    display: block;\n    padding: 5px 0px;\n}\n\n.loginForm-inputField{\n    padding: 15px;\n    border: none;\n    width: 100%;\n    box-sizing: border-box;\n    font-size: 12px;\n    margin: 2px 0px;\n}\n\n.loginForm-forget{\n    padding: 15px;\n    color: rgb(234, 234, 234);\n    text-decoration: none;\n    display: block;\n    text-align: right;\n}\n\n.loginForm-logo{\n    width: 50%;\n    margin: 0 auto;\n    padding: 20px 15px;\n    filter: invert(100) brightness(100);\n}\n\n.loginForm-logo.--hideMobile{\n    display: none;\n}\n\n.loginForm-inputField.--btn{\n    background-color: #c09f53;\n    font-size: 16px;\n    color: #fff;\n    font-weight: bold;\n    letter-spacing: 5px;\n    text-transform: uppercase;\n}\n\n.loginForm-title{\n    font-size: 1.7em;\n    text-align: left;\n    padding: 15px 0px;\n    width: 100%;\n    text-transform: uppercase;\n    margin-bottom: -2px;\n}\n\n.loginForm-service{\n    margin: 0 0 10px;\n}\n\n@media screen and (min-width: 375px) and (max-width: 900px) {\n    .loginForm-container{\n        grid-template-columns: 1fr;\n    }\n\n    .loginForm-logo{\n        width: 100%;\n        padding: 0;\n        margin: 20px 0px;\n    }\n\n    .loginForm{\n        padding: 40px;\n        background: radial-gradient(circle at top, rgba(188, 188, 188, .6) -10%, rgba(48, 48, 48, .4));\n    }\n\n    .loginForm-container{\n        background-position: -250px;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".loginForm-container{\n    display: grid;\n    grid-template-columns: 1fr .85fr;\n    height: 100vh;\n    width: 100%;\n    text-align: center;\n    background-color: #c09f53;\n    background-image: url(\"https://www.intastellaraccounts.com/images/AdobeStock_317238161.jpeg\");\n    background-position: left;\n    background-size: cover;\n    background-blend-mode: multiply;\n}\n\n.loginForm-overlay{\n    position: fixed;\n    top: 0;\n    z-index: 100;\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    display: grid;\n    place-content: center;\n    background: rgba(0,0,0,.7);\n}\n\n.loginForm{\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    background: radial-gradient(circle at top, rgba(188, 188, 188, .8) -10%, rgba(48, 48, 48, .6));\n    padding: 80px;\n    box-sizing: border-box;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    color: rgb(234, 234, 234);\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    grid-column: 2/3;\n}\n\n.loginForm-overlay .loginForm{\n    width: 500px;\n}\n\n.loginForm label{\n    text-align: left;\n    display: block;\n    padding: 5px 0px;\n}\n\n.loginForm-inputField{\n    padding: 15px;\n    border: none;\n    width: 100%;\n    box-sizing: border-box;\n    font-size: 12px;\n    margin: 2px 0px;\n}\n\n.loginForm-forget{\n    padding: 15px;\n    color: rgb(234, 234, 234);\n    text-decoration: none;\n    display: block;\n    text-align: right;\n}\n\n.loginForm-logo{\n    width: 60%;\n    margin: 0 auto;\n    padding: 20px 15px;\n    filter: invert(100) brightness(100);\n}\n\n.loginForm-logo.--hideMobile{\n    display: none;\n}\n\n.loginForm-inputField.--btn{\n    background-color: #c09f53;\n    font-size: 16px;\n    color: #fff;\n    font-weight: bold;\n    letter-spacing: 5px;\n    text-transform: uppercase;\n}\n\n.loginForm-title{\n    font-size: 1.7em;\n    text-align: left;\n    padding: 15px 0px;\n    width: 70%;\n    text-transform: uppercase;\n    margin-bottom: -2px;\n}\n\n.loginForm-service{\n    margin: 0 0 10px;\n}\n\n.loginForm-inputField.--link{\n    color: #fff;\n    text-decoration: none;\n    font-size: 14px;\n    text-align: center;\n    display: block;\n    margin: 10px 0px;\n}\n\n@media screen and (min-width: 375px) and (max-width: 900px) {\n    .loginForm-container{\n        grid-template-columns: 1fr;\n    }\n\n    .loginForm-logo{\n        width: 100%;\n        padding: 0;\n        margin: 20px 0px;\n    }\n\n    .loginForm{\n        padding: 40px;\n        background: radial-gradient(circle at top, rgba(188, 188, 188, .6) -10%, rgba(48, 48, 48, .4));\n    }\n\n    .loginForm-container{\n        background-position: -250px;\n    }\n}", "",{"version":3,"sources":["webpack://./src/Login/Login.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,gCAAgC;IAChC,aAAa;IACb,WAAW;IACX,kBAAkB;IAClB,yBAAyB;IACzB,6FAA6F;IAC7F,yBAAyB;IACzB,sBAAsB;IACtB,+BAA+B;AACnC;;AAEA;IACI,eAAe;IACf,MAAM;IACN,YAAY;IACZ,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,qBAAqB;IACrB,0BAA0B;AAC9B;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,8FAA8F;IAC9F,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,yBAAyB;IACzB,0CAA0C;IAC1C,kDAAkD;IAClD,gBAAgB;AACpB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,gBAAgB;IAChB,cAAc;IACd,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,YAAY;IACZ,WAAW;IACX,sBAAsB;IACtB,eAAe;IACf,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,yBAAyB;IACzB,qBAAqB;IACrB,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,UAAU;IACV,cAAc;IACd,kBAAkB;IAClB,mCAAmC;AACvC;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,yBAAyB;IACzB,eAAe;IACf,WAAW;IACX,iBAAiB;IACjB,mBAAmB;IACnB,yBAAyB;AAC7B;;AAEA;IACI,gBAAgB;IAChB,gBAAgB;IAChB,iBAAiB;IACjB,UAAU;IACV,yBAAyB;IACzB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,qBAAqB;IACrB,eAAe;IACf,kBAAkB;IAClB,cAAc;IACd,gBAAgB;AACpB;;AAEA;IACI;QACI,0BAA0B;IAC9B;;IAEA;QACI,WAAW;QACX,UAAU;QACV,gBAAgB;IACpB;;IAEA;QACI,aAAa;QACb,8FAA8F;IAClG;;IAEA;QACI,2BAA2B;IAC/B;AACJ","sourcesContent":[".loginForm-container{\n    display: grid;\n    grid-template-columns: 1fr .85fr;\n    height: 100vh;\n    width: 100%;\n    text-align: center;\n    background-color: #c09f53;\n    background-image: url(\"https://www.intastellaraccounts.com/images/AdobeStock_317238161.jpeg\");\n    background-position: left;\n    background-size: cover;\n    background-blend-mode: multiply;\n}\n\n.loginForm-overlay{\n    position: fixed;\n    top: 0;\n    z-index: 100;\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    display: grid;\n    place-content: center;\n    background: rgba(0,0,0,.7);\n}\n\n.loginForm{\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    background: radial-gradient(circle at top, rgba(188, 188, 188, .8) -10%, rgba(48, 48, 48, .6));\n    padding: 80px;\n    box-sizing: border-box;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    color: rgb(234, 234, 234);\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    grid-column: 2/3;\n}\n\n.loginForm-overlay .loginForm{\n    width: 500px;\n}\n\n.loginForm label{\n    text-align: left;\n    display: block;\n    padding: 5px 0px;\n}\n\n.loginForm-inputField{\n    padding: 15px;\n    border: none;\n    width: 100%;\n    box-sizing: border-box;\n    font-size: 12px;\n    margin: 2px 0px;\n}\n\n.loginForm-forget{\n    padding: 15px;\n    color: rgb(234, 234, 234);\n    text-decoration: none;\n    display: block;\n    text-align: right;\n}\n\n.loginForm-logo{\n    width: 60%;\n    margin: 0 auto;\n    padding: 20px 15px;\n    filter: invert(100) brightness(100);\n}\n\n.loginForm-logo.--hideMobile{\n    display: none;\n}\n\n.loginForm-inputField.--btn{\n    background-color: #c09f53;\n    font-size: 16px;\n    color: #fff;\n    font-weight: bold;\n    letter-spacing: 5px;\n    text-transform: uppercase;\n}\n\n.loginForm-title{\n    font-size: 1.7em;\n    text-align: left;\n    padding: 15px 0px;\n    width: 70%;\n    text-transform: uppercase;\n    margin-bottom: -2px;\n}\n\n.loginForm-service{\n    margin: 0 0 10px;\n}\n\n.loginForm-inputField.--link{\n    color: #fff;\n    text-decoration: none;\n    font-size: 14px;\n    text-align: center;\n    display: block;\n    margin: 10px 0px;\n}\n\n@media screen and (min-width: 375px) and (max-width: 900px) {\n    .loginForm-container{\n        grid-template-columns: 1fr;\n    }\n\n    .loginForm-logo{\n        width: 100%;\n        padding: 0;\n        margin: 20px 0px;\n    }\n\n    .loginForm{\n        padding: 40px;\n        background: radial-gradient(circle at top, rgba(188, 188, 188, .6) -10%, rgba(48, 48, 48, .4));\n    }\n\n    .loginForm-container{\n        background-position: -250px;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5093,7 +4561,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".loginForm-container{\n    display: gr
   \******************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5120,7 +4587,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "", "",{"version":3,"sources":[],"names
   \******************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5147,7 +4613,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".grid-3{\n    grid-template-columns: r
   \*******************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5174,7 +4639,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".cta{\n    padding: 15px 30px;\n    ba
   \*****************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5201,7 +4665,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".settingsNavItem{\n    display: inline
   \*********************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5228,7 +4691,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, "", "",{"version":3,"sources":[],"names
   \******************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /*
@@ -5340,7 +4802,6 @@ module.exports = function (cssWithMappingToString) {
   \*********************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 module.exports = function (url, options) {
@@ -5379,7 +4840,6 @@ module.exports = function (url, options) {
   \*************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 module.exports = function (item) {
@@ -5411,7 +4871,6 @@ module.exports = function (item) {
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5466,7 +4925,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5521,7 +4979,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5576,7 +5033,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5631,7 +5087,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5686,7 +5141,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5741,7 +5195,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5796,7 +5249,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5851,7 +5303,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5906,7 +5357,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -5961,7 +5411,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6016,7 +5465,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6071,7 +5519,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6126,7 +5573,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6181,7 +5627,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6236,7 +5681,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6291,7 +5735,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6346,7 +5789,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6401,7 +5843,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6456,7 +5897,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6511,7 +5951,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6566,7 +6005,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6621,7 +6059,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6676,7 +6113,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
@@ -6731,7 +6167,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \*****************************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 var stylesInDOM = [];
@@ -6845,7 +6280,6 @@ module.exports = function (list, options) {
   \*********************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 var memo = {};
@@ -6894,7 +6328,6 @@ module.exports = insertBySelector;
   \***********************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -6915,7 +6348,6 @@ module.exports = insertStyleElement;
   \***********************************************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -6937,7 +6369,6 @@ module.exports = setAttributesWithoutAttributes;
   \****************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -7017,7 +6448,6 @@ module.exports = domAPI;
   \**********************************************************************/
 /***/ ((module) => {
 
-"use strict";
 
 
 /* istanbul ignore next  */
@@ -7043,7 +6473,6 @@ module.exports = styleTagTransform;
   \************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 module.exports = __webpack_require__.p + "1acb48d14c56f1e6f79f.svg";
 
 /***/ }),
@@ -7054,7 +6483,6 @@ module.exports = __webpack_require__.p + "1acb48d14c56f1e6f79f.svg";
   \***************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 module.exports = __webpack_require__.p + "4cf8d7739a7be174b8bf.svg";
 
 /***/ }),
@@ -7065,7 +6493,6 @@ module.exports = __webpack_require__.p + "4cf8d7739a7be174b8bf.svg";
   \************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 module.exports = __webpack_require__.p + "3b63ccd5fe8fe756ffca.svg";
 
 /***/ }),
@@ -7076,7 +6503,6 @@ module.exports = __webpack_require__.p + "3b63ccd5fe8fe756ffca.svg";
   \************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 module.exports = __webpack_require__.p + "dc01a3dfd47967949745.svg";
 
 /***/ }),
@@ -7087,7 +6513,6 @@ module.exports = __webpack_require__.p + "dc01a3dfd47967949745.svg";
   \**********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 module.exports = __webpack_require__.p + "2625c30cf76b7494614e.svg";
 
 /***/ }),
@@ -7098,7 +6523,6 @@ module.exports = __webpack_require__.p + "2625c30cf76b7494614e.svg";
   \*************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 module.exports = __webpack_require__.p + "8b74842c2cf8732f43ac.svg";
 
 /***/ }),
@@ -7109,7 +6533,6 @@ module.exports = __webpack_require__.p + "8b74842c2cf8732f43ac.svg";
   \**************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 module.exports = __webpack_require__.p + "75b7b5582fda92e18d8c.svg";
 
 /***/ }),
@@ -7120,7 +6543,6 @@ module.exports = __webpack_require__.p + "75b7b5582fda92e18d8c.svg";
   \*******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
 module.exports = __webpack_require__.p + "e3b535deb7cea6e95472.svg";
 
 /***/ }),
@@ -7131,7 +6553,6 @@ module.exports = __webpack_require__.p + "e3b535deb7cea6e95472.svg";
   \******************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Color": () => (/* binding */ Color),
@@ -7755,7 +7176,6 @@ function index_esm(input) {
   \*********************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "Animation": () => (/* binding */ Animation),
@@ -19265,7 +18685,6 @@ const registerables = [
   \**************************************************************/
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "$": () => (/* binding */ unclipArea),
@@ -22251,9 +21670,8 @@ function styleChanged(style, prevStyle) {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-"use strict";
 /*!******************!*\
   !*** ./index.js ***!
   \******************/
