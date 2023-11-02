@@ -10,12 +10,17 @@ import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
 const useParams = window.ReactRouterDOM.useParams;
 import Crawler from "../../Components/Crawler";
+import e from "cors";
+import Button from "../../Components/Button/Button.js";
 
 export default function Dashboard(props){
     document.title = "Home | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const { handle, id } = useParams();
+    const [fromDate, setFromDate] = useState(null);
+    const [toDate, setToDate] = useState(null);
+    const [activeData, setActiveData] = useState(null);
 
     const dashboardView = props.dashboardView;
     let url = API[id].getInteractions.url;
@@ -40,11 +45,23 @@ export default function Dashboard(props){
       }, [])
     
     API[id].getInteractions.headers.Domains = currentDomain;
+    API[id].getInteractions.headers.FromDate = fromDate;
+    API[id].getInteractions.headers.ToDate = toDate;
     url = API[id].getInteractions.url;
     method = API[id].getInteractions.method;
     header = API[id].getInteractions.headers;
 
     const [loading, data, error, getUpdated] = useFetch(5, url, method, header);
+    useEffect(() => {
+        if(data){
+            setActiveData(data);
+            console.log(data);
+        }
+    }, [data]);
+
+    document.querySelectorAll(".intInput").forEach((input) => {
+        input.setAttribute("max", new Date().toISOString().split("T")[0]);
+    })
 
     return (
         <>
@@ -61,16 +78,34 @@ export default function Dashboard(props){
                 </div>
                 <div className="" style={{paddingTop: "40px"}}>
                     <h2>Data of user interaction</h2>
-                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }
+                    <form onSubmit={(e) => {
+                        e.preventDefault();
+                        fetch(url, { method: method, headers: header} ).then((res) => res.json()).then((data) => {
+                            console.log(data);
+                            setActiveData(data);
+                        })
+                    }}>
+                        <h3>Filter by date</h3>
+                        <section className="grid">
+                            <input type="date" className="intInput" onChange={(e) => {
+                                setFromDate(e.target.value)
+                            }} min="2019-01-01" max="" />
+                            <input type="date" className="intInput" onChange={(e) => {
+                                setToDate(e.target.value)
+                            }} min="2019-01-01" max="" />
+                        </section>
+                        <Button type="submit" text="Submit" />
+                    </form>
+                    {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }
                 </div>
                 <div className="grid-container grid-3">
-                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}
-                    {(loading) ? <Loading /> : <Widget totalNumber={ data?.Declined.toLocaleString("de-DE") + "%"} type="Declined cookies" /> }
+                    {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}
+                    {(loading) ? <Loading /> : <Widget totalNumber={ activeData?.Declined.toLocaleString("de-DE") + "%"} type="Declined cookies" /> }
                 </div>
                 <div className="grid-container grid-3">
-                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Marketing.toLocaleString("de-DE") + "%"} type="Accepted only Marketing" />}
-                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
-                    {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
+                    {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Marketing.toLocaleString("de-DE") + "%"} type="Accepted only Marketing" />}
+                    {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
+                    {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
                 </div>
                 <div>
                     <section>
@@ -80,12 +115,12 @@ export default function Dashboard(props){
                                 <p>Updated: {getUpdated}</p>
                                 {
                                     <Map data={{
-                                        Marketing: data?.Marketing.toLocaleString("de-DE"),
-                                        Functional: data?.Functional.toLocaleString("de-DE"),
-                                        Statistic: data?.Statics.toLocaleString("de-DE"),
-                                        Accepted: data?.Accepted.toLocaleString("de-DE"),
-                                        Declined: data?.Declined.toLocaleString("de-DE"),
-                                        Countries: data?.Countries
+                                        Marketing: activeData?.Marketing.toLocaleString("de-DE"),
+                                        Functional: activeData?.Functional.toLocaleString("de-DE"),
+                                        Statistic: activeData?.Statics.toLocaleString("de-DE"),
+                                        Accepted: activeData?.Accepted.toLocaleString("de-DE"),
+                                        Declined: activeData?.Declined.toLocaleString("de-DE"),
+                                        Countries: activeData?.Countries
                                     }} />
                                 }
                             </section>

@@ -120,8 +120,33 @@ body{
     right: -20px;
 }
 
+.cookieCheckContainer{
+    width: 1200px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.cookieCheckContainer h2{
+    font-size: 2.5em;
+}
+
+.crawlerPage-logo{
+    max-width: 200px;
+}
+
+.cookieCheckContainer .form{
+    width: 100%;
+}
+
 @media screen and (min-width: 320px) and (max-width: 900px) {
     .main-grid{
         display: block;
+    }
+
+    .cookieCheckContainer{
+        width: 100%;
+        padding: 10px;
     }
 }
