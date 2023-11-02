@@ -13,7 +13,6 @@ import Crawler from "../../Components/Crawler";
 import Filter from "../../Components/Filter";
 
 export default function Dashboard(props){
-    
     document.title = "Home | Intastellar Analytics";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);

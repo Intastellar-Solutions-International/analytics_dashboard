@@ -1265,7 +1265,9 @@ function Crawler(_ref) {
     [websiteStatus, setWebsiteStatus] = useState("Not Crawled");
   }
 
-  document.title = "CookieBot | Intastellar Consents Platform";
+  if (window.location.pathname === "/crawler" || window.location.pathname === "/check") {
+    document.title = "CookieBot | Intastellar Consents Platform";
+  }
 
   function crawlWebsite(e) {
     e.preventDefault();
