@@ -102,22 +102,22 @@ body{
     content: "";
     display: block;
     position: absolute;
-    width: 20px;
+    width: 50px;
     height: 100%;
     background-color: #fff;
     top: 0;
-    left: -20px;
+    left: -50px;
 }
 
 .crawler::after{
     content: "";
     display: block;
     position: absolute;
-    width: 20px;
+    width: 50px;
     height: 100%;
     background-color: #fff;
     top: 0;
-    right: -20px;
+    right: -50px;
 }
 
 .cookieCheckContainer{

@@ -64,6 +64,9 @@ export default function Dashboard(props){
     return (
         <>
             <div className="dashboard-content">
+                <div style={{padding: "40px 0"}}>
+                    <h1 style={{fontSize: "1.5em"}}>Home</h1>
+                </div>
                 {
                     (id === "gdpr" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
                         url: API[id].getTotalNumber.url,
