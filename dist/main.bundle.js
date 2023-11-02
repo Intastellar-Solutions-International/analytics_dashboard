@@ -3783,27 +3783,26 @@ function Dashboard(props) {
       });
     }
   }, /*#__PURE__*/React.createElement("h3", null, "Filter by date"), /*#__PURE__*/React.createElement("section", {
-    className: "grid"
+    className: "grid-container grid-3"
   }, /*#__PURE__*/React.createElement("input", {
     type: "date",
     className: "intInput",
     onChange: e => {
       setFromDate(e.target.value);
     },
-    min: "2019-01-01",
-    max: ""
+    min: "2019-01-01"
   }), /*#__PURE__*/React.createElement("input", {
     type: "date",
     className: "intInput",
     onChange: e => {
       setToDate(e.target.value);
     },
-    min: "2019-01-01",
-    max: ""
-  })), /*#__PURE__*/React.createElement(_Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    min: "2019-01-01"
+  }), /*#__PURE__*/React.createElement(_Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
     type: "submit",
-    text: "Submit"
-  })), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "crawl-cta",
+    text: "Filter by date"
+  }))), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
     overviewTotal: true,
     type: "Total interactions"

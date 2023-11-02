@@ -86,15 +86,15 @@ export default function Dashboard(props){
                         })
                     }}>
                         <h3>Filter by date</h3>
-                        <section className="grid">
+                        <section className="grid-container grid-3">
                             <input type="date" className="intInput" onChange={(e) => {
                                 setFromDate(e.target.value)
-                            }} min="2019-01-01" max="" />
+                            }} min="2019-01-01" />
                             <input type="date" className="intInput" onChange={(e) => {
                                 setToDate(e.target.value)
-                            }} min="2019-01-01" max="" />
+                            }} min="2019-01-01" />
+                            <Button type="submit" className="crawl-cta" text="Filter by date" />
                         </section>
-                        <Button type="submit" text="Submit" />
                     </form>
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }
                 </div>
