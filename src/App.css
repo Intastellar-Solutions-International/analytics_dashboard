@@ -98,30 +98,9 @@ body{
 .crawler{
     background-color: #ffffff;
     position: relative;
-    padding: 15px 0;
+    padding: 15px;
     color: #525252;
-}
-
-.crawler::before{
-    content: "";
-    display: block;
-    position: absolute;
-    width: 50px;
-    height: 100%;
-    background-color: #fff;
-    top: 0;
-    left: -50px;
-}
-
-.crawler::after{
-    content: "";
-    display: block;
-    position: absolute;
-    width: 50px;
-    height: 100%;
-    background-color: #fff;
-    top: 0;
-    right: -50px;
+    border-radius: 10px;
 }
 
 .cookieCheckContainer{
