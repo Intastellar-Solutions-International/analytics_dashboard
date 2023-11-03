@@ -1021,7 +1021,10 @@ const Authentication = {
       }
 
       setLoading(false);
-      console.log(response);
+
+      if (response == "Success") {
+        window.location.href = "/login";
+      }
     });
   },
   User: {
@@ -3083,7 +3086,7 @@ __webpack_require__.r(__webpack_exports__);
 const Link = window.ReactRouterDOM.Link;
 const useLocation = window.ReactRouterDOM.useLocation;
 function Login() {
-  document.title = "Login | Intastellar Analytics";
+  document.title = "Signin | Intastellar Consents";
   document.body.style.overflow = "hidden";
   document.body.style.height = "100vh";
   const [email, setEmail] = React.useState();
@@ -3153,7 +3156,7 @@ __webpack_require__.r(__webpack_exports__);
 function LoginOverLay() {
   var _JSON$parse, _JSON$parse2;
 
-  document.title = "Login | Intastellar Analytics";
+  document.title = "Signin | Intastellar Consents";
   document.body.style.overflow = "hidden";
   document.body.style.height = "100vh";
   const [email, setEmail] = React.useState();
@@ -3221,7 +3224,7 @@ const Link = window.ReactRouterDOM.Link;
 const useLocation = window.ReactRouterDOM.useLocation;
 
 function Signup() {
-  document.title = "Login | Intastellar Analytics";
+  document.title = "SignUp | Intastellar Consents";
   document.body.style.overflow = "hidden";
   document.body.style.height = "100vh";
   const [email, setEmail] = React.useState();

@@ -105,7 +105,9 @@ const Authentication = {
 
             setLoading(false);
 
-            console.log(response);
+            if(response == "Success"){
+                window.location.href = "/login";
+            }
 
         })
     },
