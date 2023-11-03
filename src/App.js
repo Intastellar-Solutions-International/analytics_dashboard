@@ -34,6 +34,7 @@ import BugReport from "./Components/BugReport/BugReport";
 import PlatformSelector from "./Components/PlatformSelector/PlatformSelector";
 import SiteStatus from "./Pages/Reports/SiteStatus";
 import Crawler from "./Components/Crawler";
+import UserAgents from "./Pages/Reports/UserAgents";
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
 export const DomainContext = createContext(null);
@@ -109,10 +110,10 @@ export default function App() {
                                 <Switch>
                                     <Route path="/:id/dashboard" exact>
                                         <div style={{flex:"1"}}>
-                                            <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
+                                            {/* <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
                                                 <h1>Welcome, {JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name}</h1>
                                                 <p>Here you can see all the data regarding your Intastellar Cookie Consents implementation of your organisation</p>
-                                            </section>
+                                            </section> */}
                                             {domainError ? <AddDomain /> : 
                                             <ErrorBoundary>
                                                 {(id == "gdpr") ? <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} /> : <FerryDashboard />}
@@ -169,6 +170,11 @@ export default function App() {
                                     <Route path="/:id/reports/user-consents">
                                         <ErrorBoundary>
                                             {domainError ? <AddDomain /> : <UserConsents organisations={organisations} />}
+                                        </ErrorBoundary>
+                                    </Route>
+                                    <Route path="/:id/reports/user-agents">
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <UserAgents />}
                                         </ErrorBoundary>
                                     </Route>
                                     <Route path="/:id/reports/countries">

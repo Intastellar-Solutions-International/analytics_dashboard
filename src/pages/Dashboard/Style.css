@@ -24,3 +24,10 @@
     color: #3d3d3d;
     border-radius: 10px;
 }
+
+@media screen and (max-width: 900px) {
+    .dashboard-content{
+        padding: 0 20px;
+    }
+    
+}

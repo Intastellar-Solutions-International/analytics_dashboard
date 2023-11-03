@@ -11,6 +11,10 @@ export const reportsLinks = [
         path: "/reports/countries"
     },
     {
+        name: "User Agents",
+        path: "/reports/user-agents"
+    },
+    {
         name: "Site Status",
         path: "/reports/site-status"
     }

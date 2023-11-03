@@ -1,5 +1,9 @@
 import "./Style.css";
 import styles from './Countries.module.css';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 export default function Map(props) {
    const data = props.data;
    const countries = data.Countries;
@@ -7,11 +11,12 @@ export default function Map(props) {
       fill: "",
       country: ""
    }
+   
    return (
       <>
          <div className="grid-container grid-3">
             {
-               countries?.map((country, key) => {
+               (countries != null) ? countries?.map((country, key) => {
                   return (
                       <div className="widget overviewTotal" key={key}>
                         <h3>{(country.country != "") ? country.country : "Unknown"}</h3>
@@ -24,7 +29,7 @@ export default function Map(props) {
                            <p>Statics <br />{country.statics.toLocaleString("de-DE")}% ({ (country.num.statics === null ) ? "0" : country.num.statics })</p>
                         </section>
                      </div>)
-               })
+               }) : null
             }
          </div>
          <div style={{width: "1000px"}}>

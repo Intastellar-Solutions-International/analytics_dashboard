@@ -81,7 +81,7 @@ export default function Dashboard(props){
                 <div className="" style={{paddingTop: "40px"}}>
                     <h2>Data of user interaction</h2>
                     <Filter url={url} method={method} header={header} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
-                    {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }
+                    {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} type="Total interactions" /> }
                 </div>
                 <div className="grid-container grid-3">
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}

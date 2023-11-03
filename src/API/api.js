@@ -44,6 +44,15 @@ const API = {
                 "Organisation": Authentication.getOrganisation(),
                 "Content-Type": "application/json"
             }
+        },
+        getDevices: {
+            url: `${PrimaryHost}/analytics/gdpr/getDevices.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
+            }
         }
     },
     ferry: {

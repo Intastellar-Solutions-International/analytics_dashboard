@@ -14,7 +14,7 @@ const useParams = window.ReactRouterDOM.useParams;
 const urlParams = new URLSearchParams(window.location.search);
 
 export default function UserConsents(props) {
-    document.title = "User consents | Intastellar Analytics";
+    document.title = "User consents | Intastellar Consents";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const { handle, id } = useParams();

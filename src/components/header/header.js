@@ -22,7 +22,7 @@ export default function Header(props) {
     const [allOrganisations, setallOrganisations] = useState(null);
     const [domains, setDomains] = useState(props.domains);
     const [viewUserProfile, setViewUserProfile] = useState(false);
-    const Platform = (localStorage.getItem("platform") == "gdpr") ? "Intastellar Cookie Consents" : "Ferry Booking";
+    const Platform = (localStorage.getItem("platform") == "gdpr") ? "Cookie Consents" : "Ferry Booking";
     useEffect(() => {
 
         Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
@@ -80,36 +80,35 @@ export default function Header(props) {
         <>
             <header className="dashboard-header">
                 <div className="dashboard-profile">
-                    <section style={{display:"flex", alignItems:"center", width:"150px"}}>
+                    <section style={{display:"flex", alignItems:"center"}}>
                         <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
-                    </section>
-                    <section className="company_container">
-                    {(allOrganisations && Organisation) ? 
-                        <Select defaultValue={Organisation}
-                            onChange={(e) => { 
-                                setOrganisation(e);
-                                localStorage.setItem("organisation", e);
-                                window.location.reload();}}
-                            items={allOrganisations}
-                            style={{right: "0"}}
-                        /> : null
-                    }
-                    <span className="divider">&gt;</span>
-                    <span className="platform-view">{Platform}</span>
-                    {(domains && currentDomain) ?
-                    <>
-                        <Select defaultValue={currentDomain}
-                            onChange={(e) => { 
-                                const domain = e;
-                                setCurrentDomain(domain);
-                                window.location.href = `/${window.location.pathname.split("/")[1]}/view/${domain.replace('.', '%2E')}`;
-                            }}
-                            items={domainList} title="Choose one of your domains"
-                            style={{left: "0"}}
-                            icon={'dashboard-icons domains'}
-                        />
-                    </> : null
-                    }
+                        <span className="platform-view">{Platform}</span>
+                        <section className="company_container">
+                        {(allOrganisations && Organisation) ? 
+                            <Select defaultValue={Organisation}
+                                onChange={(e) => { 
+                                    setOrganisation(e);
+                                    localStorage.setItem("organisation", e);
+                                    window.location.reload();}}
+                                items={allOrganisations}
+                                style={{right: "0"}}
+                            /> : null
+                        }
+                        {(domains && currentDomain) ?
+                        <>
+                            <Select defaultValue={currentDomain}
+                                onChange={(e) => { 
+                                    const domain = e;
+                                    setCurrentDomain(domain);
+                                    window.location.href = `/${window.location.pathname.split("/")[1]}/view/${domain.replace('.', '%2E')}`;
+                                }}
+                                items={domainList} title="Choose one of your domains"
+                                style={{left: "0"}}
+                                icon={'dashboard-icons domains'}
+                            />
+                        </> : null
+                        }
+                        </section>
                     </section>
                     <div className="flex">
                         <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile) } />

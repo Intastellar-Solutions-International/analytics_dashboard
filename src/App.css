@@ -27,12 +27,16 @@
     box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6{
+    font-weight: lighter;
+}
+
 img{
     max-width: 100%;
 }
 
 body{
-    background-color: rgb(36, 36, 36);
+    background-color: rgb(55, 55, 55);
     color: rgb(197, 197, 197);
     font-family: "Questrial", Arial, Helvetica, sans-serif;
     margin: 0;
@@ -148,5 +152,9 @@ body{
     .cookieCheckContainer{
         width: 100%;
         padding: 10px;
+    }
+
+    .dashboard-content{
+        padding: 0 20px;
     }
 }

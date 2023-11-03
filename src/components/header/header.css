@@ -11,14 +11,16 @@
     padding: 0px 25px 0px 0px;
     background-color: rgb(63, 63, 63);
     color: rgb(197, 197, 197);
+    border-bottom: 1px solid rgb(95, 95, 95);
 }
 
 .dashboard-profile {
     display: grid;
-    grid-template-columns: min-content 1fr 50px;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    font-size: 19px;
 }
 
 .flex{
@@ -45,13 +47,13 @@
     border-color: transparent;
     border-radius: 50%;
     object-fit: cover;
-    margin: auto;
+    margin-left: auto;
 }
 
 .dashboard-logo {
     filter: invert(100);
-    margin-right: 10px;
     padding: 20px;
+    padding-right: 0;
     height: 66px;
     text-align: left;
     object-fit: contain;
@@ -64,6 +66,7 @@
     transition: width .5s ease-in-out;
     width: 65px;
     min-height: 100vh;
+    border-right: 1px solid rgb(95, 95, 95);
 }
 
 .collapsed {
@@ -83,6 +86,9 @@
 .platform-view{
     padding: 0 20px;
     display: inline-block;
+    border-right: 1px solid;
+    padding-right: 10px;
+    margin-right: 10px;
 }
 
 .collapsed .hiddenCollapsed{
@@ -334,6 +340,10 @@
     align-items: center;
 }
 
+.company_container .selectorContianer{
+    margin-right: 20px;
+}
+
 @media screen and (min-width: 320px) and (max-width: 900px) {
     .dashboard-header {
         width: 100%;
@@ -342,7 +352,7 @@
     }
 
     .main-grid{
-        padding-top: 174px;
+        padding-top: 104px;
     }
 
     .grid-3, .dashboard-profile{
