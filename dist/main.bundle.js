@@ -1255,30 +1255,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Map)
 /* harmony export */ });
 /* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Style.css */ "./src/Components/Charts/WorldMap/Style.css");
-/* harmony import */ var _Countries_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Countries.module.css */ "./src/Components/Charts/WorldMap/Countries.module.css");
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.js");
+
+const {
+  useState,
+  useEffect,
+  useRef,
+  createContext
+} = React;
+const svgMap = window.svgMap;
+
+var countrieCodes = __webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'i18n-iso-countries'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())); // in a browser environment: countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
 
 
-
-
-chart_js__WEBPACK_IMPORTED_MODULE_2__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_2__.ArcElement, chart_js__WEBPACK_IMPORTED_MODULE_2__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_2__.Legend);
+countrieCodes.registerLocale(__webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'i18n-iso-countries/langs/en.json'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())));
+countrieCodes.registerLocale(__webpack_require__(Object(function webpackMissingModule() { var e = new Error("Cannot find module 'i18n-iso-countries/langs/fr.json'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())));
 function Map(props) {
   const data = props.data;
   const countries = data.Countries;
-  const countryFill = {
-    fill: "",
-    country: ""
-  };
+
+  if (countries != null) {
+    countries.map((country, key) => {
+      const name = country.country;
+      const countryObj = {};
+      countryObj[countrieCodes.getAlpha2Code(name)] = {
+        accepted: country.accepted
+      };
+    });
+    new svgMap({
+      targetElementID: 'svgMap',
+      data: {
+        data: {
+          gdp: {
+            name: 'GDP per capita',
+            format: '{0} USD',
+            thousandSeparator: ',',
+            thresholdMax: 50000,
+            thresholdMin: 1000
+          }
+        },
+        applyData: 'gdp',
+        values: countries
+      }
+    });
+  }
+
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
-  }, countries != null ? countries === null || countries === void 0 ? void 0 : countries.map((country, key) => {
-    return /*#__PURE__*/React.createElement("div", {
-      className: "widget overviewTotal",
-      key: key
-    }, /*#__PURE__*/React.createElement("h3", null, country.country != "" ? country.country : "Unknown"), /*#__PURE__*/React.createElement("h4", null, "Total: ", country.num.total), /*#__PURE__*/React.createElement("section", {
-      className: "countryStats"
-    }, /*#__PURE__*/React.createElement("p", null, "Accepted ", /*#__PURE__*/React.createElement("br", null), country.accepted.toLocaleString("de-DE"), "%  (", country.num.accept === null ? "0" : country.num.accept, ")"), /*#__PURE__*/React.createElement("p", null, "Declined ", /*#__PURE__*/React.createElement("br", null), country.declined.toLocaleString("de-DE"), "% (", country.num.decline === null ? "0" : country.num.decline, ")"), /*#__PURE__*/React.createElement("p", null, "Functional ", /*#__PURE__*/React.createElement("br", null), country.functional.toLocaleString("de-DE"), "% (", country.num.functional === null ? "0" : country.num.functional, ")"), /*#__PURE__*/React.createElement("p", null, "Marketing ", /*#__PURE__*/React.createElement("br", null), country.marketing.toLocaleString("de-DE"), "% (", country.num.marketing === null ? "0" : country.num.marketing, ")"), /*#__PURE__*/React.createElement("p", null, "Statics ", /*#__PURE__*/React.createElement("br", null), country.statics.toLocaleString("de-DE"), "% (", country.num.statics === null ? "0" : country.num.statics, ")")));
-  }) : null), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
+    id: "svgMap"
+  })), /*#__PURE__*/React.createElement("div", {
     style: {
       width: "1000px"
     }
@@ -4350,60 +4375,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".bug-container{\n    position: fixed;\
 
 /***/ }),
 
-/***/ "../node_modules/css-loader/dist/cjs.js!./src/Components/Charts/WorldMap/Countries.module.css":
-/*!****************************************************************************************************!*\
-  !*** ../node_modules/css-loader/dist/cjs.js!./src/Components/Charts/WorldMap/Countries.module.css ***!
-  \****************************************************************************************************/
-/***/ ((module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "../node_modules/css-loader/dist/runtime/sourceMaps.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-// Imports
-
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
-// Module
-___CSS_LOADER_EXPORT___.push([module.id, ".xLdyFHzE6CuHlEdvImZO{\n\n}\n\n.FxrihR0xL5hGV8RWkwDF{\n\n}\n\n._INYMlkt9xsLfAOTHrKM{\n\n}\n.qNjCoveYSMjtKLaLpPA5{\n\n}\n.zQPx73Hi4hec9DTaKl5m{\n\n}\n\n.mBly0YRXb8neUzYn870K{\n\n}\n\n.Wotz_v5eZcg5V4UQO40V{\n\n}\n\n.qKQ2XlzsQzoEmIbTkdZI{\n\n}\n\n.GcgeHt3YqTfMLvuvXuPX{\n\n}\n.Ngp5fbkAxcYejEo_p_my{\n\n}\n\n.lJ7YWV3tmFvh5qkZpXtj{\n\n}\n\n.BPs_IQYlfypdpV0X0839{\n    fill: \"blue\";\n}\n\n.CRA8UxoKAioNlK_l6rnY{\n\n}\n\n.HKoWVr4diw20sU64SXLs{\n\n}\n\n\n.dcPxMl_5otj6lpmR96R8{\n\n}\n\n.K8bV65hiYdhs1W5naTWF{\n\n}\n\n.QdXxdU1fkTlMDBfOM1yU{\n\n}\n\n.TTez5TtDuELmXdyK7tvi{\n\n}\n\n.EMXEOnGoWbd7fc7Hoyv6{\n\n}\n\n.XpYs62Wa9pOYWQVyozz1{\n\n}\n\n.hPB3zLPUfgWfypCRZG8N{\n\n}\n\n.BneLNGShnfXx1PCjL3cN{\n\n}\n\n.cZZuYKV9buTIUEul9jia{\n\n}\n\n.W6SBo6pJ2ycQAl_3XAO2{\n\n}\n\n.TFvHKPaReb9_VE5dNlvS{\n    \n}\n\n.fTG87SrpZ7kY5C_eNqvu{\n\n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/WorldMap/Countries.module.css"],"names":[],"mappings":"AAAA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;AACA;;AAEA;AACA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;AACA;;AAEA;;AAEA;;AAEA;;AAEA;IACI,YAAY;AAChB;;AAEA;;AAEA;;AAEA;;AAEA;;;AAGA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA;;AAEA","sourcesContent":[".Angola{\n\n}\n\n.Argentina{\n\n}\n\n.Australia{\n\n}\n.Azerbaijan{\n\n}\n.AmericaSamoa{\n\n}\n\n.AntiguaandBarbuda{\n\n}\n\n.Bahamas{\n\n}\n\n.Comoros{\n\n}\n\n.Canada{\n\n}\n.China{\n\n}\n\n.Chile{\n\n}\n\n.Denmark{\n    fill: \"blue\";\n}\n\n.France{\n\n}\n\n.Greece{\n\n}\n\n\n.Italy{\n\n}\n\n.Japan{\n\n}\n\n.Malaysia{\n\n}\n\n.Norway{\n\n}\n\n.NewZealand{\n\n}\n\n.UK{\n\n}\n\n.USA{\n\n}\n\n.Oman{\n\n}\n\n.Philippines{\n\n}\n\n.PapuaNewGuinea{\n\n}\n\n.Russia{\n    \n}\n\n.Turkey{\n\n}"],"sourceRoot":""}]);
-// Exports
-___CSS_LOADER_EXPORT___.locals = {
-	"Angola": "xLdyFHzE6CuHlEdvImZO",
-	"Argentina": "FxrihR0xL5hGV8RWkwDF",
-	"Australia": "_INYMlkt9xsLfAOTHrKM",
-	"Azerbaijan": "qNjCoveYSMjtKLaLpPA5",
-	"AmericaSamoa": "zQPx73Hi4hec9DTaKl5m",
-	"AntiguaandBarbuda": "mBly0YRXb8neUzYn870K",
-	"Bahamas": "Wotz_v5eZcg5V4UQO40V",
-	"Comoros": "qKQ2XlzsQzoEmIbTkdZI",
-	"Canada": "GcgeHt3YqTfMLvuvXuPX",
-	"China": "Ngp5fbkAxcYejEo_p_my",
-	"Chile": "lJ7YWV3tmFvh5qkZpXtj",
-	"Denmark": "BPs_IQYlfypdpV0X0839",
-	"France": "CRA8UxoKAioNlK_l6rnY",
-	"Greece": "HKoWVr4diw20sU64SXLs",
-	"Italy": "dcPxMl_5otj6lpmR96R8",
-	"Japan": "K8bV65hiYdhs1W5naTWF",
-	"Malaysia": "QdXxdU1fkTlMDBfOM1yU",
-	"Norway": "TTez5TtDuELmXdyK7tvi",
-	"NewZealand": "EMXEOnGoWbd7fc7Hoyv6",
-	"UK": "XpYs62Wa9pOYWQVyozz1",
-	"USA": "hPB3zLPUfgWfypCRZG8N",
-	"Oman": "BneLNGShnfXx1PCjL3cN",
-	"Philippines": "cZZuYKV9buTIUEul9jia",
-	"PapuaNewGuinea": "W6SBo6pJ2ycQAl_3XAO2",
-	"Russia": "TFvHKPaReb9_VE5dNlvS",
-	"Turkey": "fTG87SrpZ7kY5C_eNqvu"
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
 /***/ "../node_modules/css-loader/dist/cjs.js!./src/Components/Charts/WorldMap/Style.css":
 /*!*****************************************************************************************!*\
   !*** ../node_modules/css-loader/dist/cjs.js!./src/Components/Charts/WorldMap/Style.css ***!
@@ -5281,60 +5252,6 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_BugReport_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_BugReport_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_BugReport_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
-
-
-/***/ }),
-
-/***/ "./src/Components/Charts/WorldMap/Countries.module.css":
-/*!*************************************************************!*\
-  !*** ./src/Components/Charts/WorldMap/Countries.module.css ***!
-  \*************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "../node_modules/style-loader/dist/runtime/styleDomAPI.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "../node_modules/style-loader/dist/runtime/insertBySelector.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "../node_modules/style-loader/dist/runtime/insertStyleElement.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "../node_modules/style-loader/dist/runtime/styleTagTransform.js");
-/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Countries_module_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js!./Countries.module.css */ "../node_modules/css-loader/dist/cjs.js!./src/Components/Charts/WorldMap/Countries.module.css");
-
-      
-      
-      
-      
-      
-      
-      
-      
-      
-
-var options = {};
-
-options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
-options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
-
-      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
-    
-options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
-options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
-
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Countries_module_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
-
-
-
-
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Countries_module_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Countries_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Countries_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
