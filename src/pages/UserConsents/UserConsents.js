@@ -44,7 +44,9 @@ export default function UserConsents(props) {
                     <h1>Reports - User consents</h1>
                 </section>
                 <div className="dashboard-content">
-                    <Filter url={url} method={method} header={header} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
+                    <section className="filter">
+                        <Filter url={url} method={method} header={header} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
+                    </section>
                     {(getDomainsUrlLoading && !getDomainsUrlError) ? <Loading /> : (getDomainsUrlError) ? <Unknown /> : ( getDomainsUrlData == "Err_No_Data_Found") ? <NoDataFound /> : <>
                         <div className="grid-container grid-3">
                         {

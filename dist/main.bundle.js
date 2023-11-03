@@ -4062,6 +4062,8 @@ function UserConsents(props) {
     }
   }, /*#__PURE__*/React.createElement("h1", null, "Reports - User consents")), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
+  }, /*#__PURE__*/React.createElement("section", {
+    className: "filter"
   }, /*#__PURE__*/React.createElement(_Components_Filter_index_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
     url: url,
     method: method,
@@ -4071,7 +4073,7 @@ function UserConsents(props) {
     toDate: toDate,
     setFromDate: setFromDate,
     setToDate: setToDate
-  }), getDomainsUrlLoading && !getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_2__["default"], null) : getDomainsUrlData == "Err_No_Data_Found" ? /*#__PURE__*/React.createElement(_Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_3__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  })), getDomainsUrlLoading && !getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_2__["default"], null) : getDomainsUrlData == "Err_No_Data_Found" ? /*#__PURE__*/React.createElement(_Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_3__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, getDomainsUrlData === null || getDomainsUrlData === void 0 ? void 0 : getDomainsUrlData.map((d, key) => {
     var _consent, _consent2, _consent3, _consent4;
@@ -4802,7 +4804,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "", "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".filter{\n    margin-bottom: 15px;\n}", "",{"version":3,"sources":["webpack://./src/Pages/UserConsents/Style.css"],"names":[],"mappings":"AAAA;IACI,mBAAmB;AACvB","sourcesContent":[".filter{\n    margin-bottom: 15px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
