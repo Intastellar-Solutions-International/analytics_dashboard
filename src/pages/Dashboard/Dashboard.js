@@ -18,8 +18,9 @@ export default function Dashboard(props){
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const { handle, id } = useParams();
     const [activeData, setActiveData] = useState(null);
-    const [fromDate, setFromDate] = useState(null);
-    const [toDate, setToDate] = useState(null);
+    const today = new Date();
+    const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - 30)).toISOString().split("T")[0]);
+    const [toDate, setToDate] = useState(new Date().toISOString().split("T")[0]);
 
     const dashboardView = props.dashboardView;
     let url = API[id].getInteractions.url;
@@ -79,7 +80,7 @@ export default function Dashboard(props){
                 </div>
                 <div className="" style={{paddingTop: "40px"}}>
                     <h2>Data of user interaction</h2>
-                    <Filter url={url} method={method} header={header} setActiveData={setActiveData} setFromDate={setFromDate} setToDate={setToDate} />
+                    <Filter url={url} method={method} header={header} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" /> }
                 </div>
                 <div className="grid-container grid-3">
