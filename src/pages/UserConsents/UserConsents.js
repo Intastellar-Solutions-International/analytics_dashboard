@@ -44,10 +44,10 @@ export default function UserConsents(props) {
         <>
             <SideNav links={reportsLinks} />
             <article style={{flex: "1"}}>
-                <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262", marginBottom: "20px"}}>
-                    <h1>Reports - User consents</h1>
-                </section>
                 <div className="dashboard-content">
+                    <div style={{padding: "40px 0px"}}>
+                        <h1 style={{fontSize: "1.5em"}}>Reports - User consents</h1>
+                    </div>
                     <section className="filter">
                         <Filter url={url} method={method} header={header} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
                     </section>

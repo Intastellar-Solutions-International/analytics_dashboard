@@ -4184,16 +4184,17 @@ function UserConsents(props) {
     style: {
       flex: "1"
     }
-  }, /*#__PURE__*/React.createElement("section", {
-    style: {
-      padding: "40px",
-      backgroundColor: "rgb(218, 218, 218)",
-      color: "#626262",
-      marginBottom: "20px"
-    }
-  }, /*#__PURE__*/React.createElement("h1", null, "Reports - User consents")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      padding: "40px 0px"
+    }
+  }, /*#__PURE__*/React.createElement("h1", {
+    style: {
+      fontSize: "1.5em"
+    }
+  }, "Reports - User consents")), /*#__PURE__*/React.createElement("section", {
     className: "filter"
   }, /*#__PURE__*/React.createElement(_Components_Filter_index_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
     url: url,
@@ -4857,7 +4858,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".grid-3{\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain{\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user{\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content{\n        padding: 0 20px;\n    }\n    \n}", "",{"version":3,"sources":["webpack://./src/Pages/Dashboard/Style.css"],"names":[],"mappings":"AAAA;IACI,yDAAyD;IACzD,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,WAAW;IACX,cAAc;IACd,eAAe;IACf,OAAO;AACX;;AAEA;IACI,gBAAgB;IAChB,qBAAqB;IACrB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI;QACI,eAAe;IACnB;;AAEJ","sourcesContent":[".grid-3{\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain{\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user{\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content{\n        padding: 0 20px;\n    }\n    \n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".grid-3{\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    max-width: 1280px;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain{\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user{\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content{\n        padding: 0 20px;\n    }\n    \n}", "",{"version":3,"sources":["webpack://./src/Pages/Dashboard/Style.css"],"names":[],"mappings":"AAAA;IACI,yDAAyD;IACzD,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,cAAc;IACd,eAAe;IACf,OAAO;AACX;;AAEA;IACI,gBAAgB;IAChB,qBAAqB;IACrB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI;QACI,eAAe;IACnB;;AAEJ","sourcesContent":[".grid-3{\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    max-width: 1280px;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain{\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user{\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content{\n        padding: 0 20px;\n    }\n    \n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
