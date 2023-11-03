@@ -31,6 +31,31 @@
     <script src="https://cdn.jsdelivr.net/npm/react-chartjs-2@4.3.1/dist/index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/react-use-websocket@4.2.0/dist/index.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script>
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.defer = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-N6G38ST');
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-86T4LDB766"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'G-86T4LDB766');
+	gtag('require', 'displayfeatures');
+	</script>
 </head>
 <body>
     <div id="app"></div>
