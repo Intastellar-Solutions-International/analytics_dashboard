@@ -12,11 +12,13 @@ export default function Map(props) {
    if(countries != null){
       
       countries.map((country, key) => {
-         const name = country.country;
-
-         const countryObj = {};
-         countryObj[countrieCodes.getAlpha2Code(name)] = {
-            accepted: country.accepted
+         if(country.country != "Unknown"){
+            const name = country.country;
+            console.log(countrieCodes.getAlpha2Codes(name));
+            const countryObj = {};
+            countryObj[countrieCodes.getAlpha2Codes(name)] = {
+               accepted: country.accepted
+            }
          }
       });
 

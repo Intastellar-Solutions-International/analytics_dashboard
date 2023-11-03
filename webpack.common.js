@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+/* const nodeExternals = require('webpack-node-externals'); */
 
 const config = {
   entry: {
@@ -10,6 +11,9 @@ const config = {
     path: path.resolve(__dirname, "./dist"),
     clean: true,
     publicPath: "/"
+  },
+  externals: {
+    "i18n-iso-countries": "i18n-iso-countries",
   },
   module: {
     rules: [
