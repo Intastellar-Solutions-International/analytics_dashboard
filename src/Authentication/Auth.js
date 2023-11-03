@@ -35,6 +35,7 @@ const Authentication = {
             }
 
             setLoading(false);
+
             localStorage.setItem("organisation", response.organisation);
             localStorage.setItem("globals", JSON.stringify(response));
 
@@ -63,6 +64,50 @@ const Authentication = {
     getOrganisation: function(){
         const organisation = (localStorage.getItem("organisation") != null || localStorage.getItem("organisation") != undefined) ? JSON.parse(localStorage.getItem("organisation"))?.id : undefined;
         return organisation;
+    },
+    SignUp: function (url, email, password, firstname, lastname, type, companyName, setErrorMessage, setLoading) {
+        setLoading(true);
+        fetch(url, {
+            withCredentials: false,
+            method: "POST",
+            headers: {
+                'LoginType': 'employee',
+                'Content-Type': 'application/json; charset=utf-8'
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password,
+                type: type,
+                firstname: firstname,
+                lastname: lastname,
+                companyName: companyName
+            })
+        }).then((response) => {
+            return response.json();
+        }).then(response => {
+            if (response === "Err_Logon_Fail") {
+                setErrorMessage("We having trouble to log you in");
+                setLoading(false);
+                return;
+            }
+
+            if (response === "Err_Logon_Fail_Wrong_Password_Or_Email") {
+                setErrorMessage("Wrong password or email");
+                setLoading(false);
+                return;
+            }
+
+            if (response === "Err_Logon_Deny") {
+                setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Intastellar Account Manager for assistance");
+                setLoading(false);
+                return;
+            }
+
+            setLoading(false);
+
+            console.log(response);
+
+        })
     },
     User: {
         Status: JSON.parse(localStorage.getItem("globals"))?.status

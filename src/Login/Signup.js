@@ -3,6 +3,7 @@ import API from "../API/api";
 import logo from "../Components/Header/logo.png";
 const Link = window.ReactRouterDOM.Link;
 const useLocation = window.ReactRouterDOM.useLocation;
+import Authentication from "../Authentication/Auth";
 export default function Signup() {
     document.title = "Login | Intastellar Analytics";
     document.body.style.overflow = "hidden";
@@ -11,16 +12,19 @@ export default function Signup() {
     const [firstname, setFirstName] = React.useState();
     const [lastname, setLastName] = React.useState();
     const [password, setPassword] = React.useState();
+    const [companyName, setCompanyName] = React.useState();
     const [isLoading, setLoading] = React.useState(false);
     const [errorMessage, setErrorMessage] = React.useState(null);
     const type = "";
 
     return <>
         <div className="loginForm-container">
-            <form className="loginForm" onSubmit={(e) => { e.preventDefault(), Authentication.Login(API.Login.url, email, password, firstname, lastname, type, setErrorMessage, setLoading) }}>
+            <form className="loginForm" onSubmit={(e) => { e.preventDefault(), Authentication.SignUp(API.SignUp.url, email, password, firstname, lastname, type, companyName, setErrorMessage, setLoading) }}>
                 <img className="loginForm-logo" src={logo} alt="Intastellar Solutions Logo" />
                 <h1 className="loginForm-title">Sign up to Intastellar Consents</h1>
                 <label>{(errorMessage != null) ? errorMessage : null }</label>
+                <label>Company Name:</label>
+                <input className="loginForm-inputField" type="text" placeholder="company name" onChange={e => { setCompanyName(e.target.value); }} />
                 <label>Firstname:</label>
                 <input className="loginForm-inputField" type="text" placeholder="firstname" onChange={e => { setFirstName(e.target.value); }} />
                 <label>Lastname:</label>

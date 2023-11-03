@@ -498,6 +498,9 @@ const API = {
   Login: {
     url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.LoginHost, "/signin/v2/signin.php")
   },
+  SignUp: {
+    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.LoginHost, "/consents/signup/v1/signup.php")
+  },
   gdpr: {
     getTotalNumber: {
       url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getTotalNumber.php"),
@@ -978,6 +981,48 @@ const Authentication = {
 
     const organisation = localStorage.getItem("organisation") != null || localStorage.getItem("organisation") != undefined ? (_JSON$parse5 = JSON.parse(localStorage.getItem("organisation"))) === null || _JSON$parse5 === void 0 ? void 0 : _JSON$parse5.id : undefined;
     return organisation;
+  },
+  SignUp: function (url, email, password, firstname, lastname, type, companyName, setErrorMessage, setLoading) {
+    setLoading(true);
+    fetch(url, {
+      withCredentials: false,
+      method: "POST",
+      headers: {
+        'LoginType': 'employee',
+        'Content-Type': 'application/json; charset=utf-8'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        type: type,
+        firstname: firstname,
+        lastname: lastname,
+        companyName: companyName
+      })
+    }).then(response => {
+      return response.json();
+    }).then(response => {
+      if (response === "Err_Logon_Fail") {
+        setErrorMessage("We having trouble to log you in");
+        setLoading(false);
+        return;
+      }
+
+      if (response === "Err_Logon_Fail_Wrong_Password_Or_Email") {
+        setErrorMessage("Wrong password or email");
+        setLoading(false);
+        return;
+      }
+
+      if (response === "Err_Logon_Deny") {
+        setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Intastellar Account Manager for assistance");
+        setLoading(false);
+        return;
+      }
+
+      setLoading(false);
+      console.log(response);
+    });
   },
   User: {
     Status: (_JSON$parse6 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse6 === void 0 ? void 0 : _JSON$parse6.status
@@ -3168,11 +3213,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Login_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login.css */ "./src/Login/Login.css");
 /* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../API/api */ "./src/API/api.js");
 /* harmony import */ var _Components_Header_logo_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Components/Header/logo.png */ "./src/Components/Header/logo.png");
+/* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Authentication/Auth */ "./src/Authentication/Auth.js");
 
 
 
 const Link = window.ReactRouterDOM.Link;
 const useLocation = window.ReactRouterDOM.useLocation;
+
 function Signup() {
   document.title = "Login | Intastellar Analytics";
   document.body.style.overflow = "hidden";
@@ -3181,6 +3228,7 @@ function Signup() {
   const [firstname, setFirstName] = React.useState();
   const [lastname, setLastName] = React.useState();
   const [password, setPassword] = React.useState();
+  const [companyName, setCompanyName] = React.useState();
   const [isLoading, setLoading] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(null);
   const type = "";
@@ -3189,7 +3237,7 @@ function Signup() {
   }, /*#__PURE__*/React.createElement("form", {
     className: "loginForm",
     onSubmit: e => {
-      e.preventDefault(), Authentication.Login(_API_api__WEBPACK_IMPORTED_MODULE_1__["default"].Login.url, email, password, firstname, lastname, type, setErrorMessage, setLoading);
+      e.preventDefault(), _Authentication_Auth__WEBPACK_IMPORTED_MODULE_3__["default"].SignUp(_API_api__WEBPACK_IMPORTED_MODULE_1__["default"].SignUp.url, email, password, firstname, lastname, type, companyName, setErrorMessage, setLoading);
     }
   }, /*#__PURE__*/React.createElement("img", {
     className: "loginForm-logo",
@@ -3197,7 +3245,14 @@ function Signup() {
     alt: "Intastellar Solutions Logo"
   }), /*#__PURE__*/React.createElement("h1", {
     className: "loginForm-title"
-  }, "Sign up to Intastellar Consents"), /*#__PURE__*/React.createElement("label", null, errorMessage != null ? errorMessage : null), /*#__PURE__*/React.createElement("label", null, "Firstname:"), /*#__PURE__*/React.createElement("input", {
+  }, "Sign up to Intastellar Consents"), /*#__PURE__*/React.createElement("label", null, errorMessage != null ? errorMessage : null), /*#__PURE__*/React.createElement("label", null, "Company Name:"), /*#__PURE__*/React.createElement("input", {
+    className: "loginForm-inputField",
+    type: "text",
+    placeholder: "company name",
+    onChange: e => {
+      setCompanyName(e.target.value);
+    }
+  }), /*#__PURE__*/React.createElement("label", null, "Firstname:"), /*#__PURE__*/React.createElement("input", {
     className: "loginForm-inputField",
     type: "text",
     placeholder: "firstname",

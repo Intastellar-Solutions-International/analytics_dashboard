@@ -5,6 +5,9 @@ const API = {
     Login: {
         url: `${LoginHost}/signin/v2/signin.php`,
     },
+    SignUp: {
+        url: `${LoginHost}/consents/signup/v1/signup.php`,
+    },
     gdpr: {
         getTotalNumber: {
             url:  `${PrimaryHost}/analytics/gdpr/getTotalNumber.php`,
