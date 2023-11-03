@@ -1,9 +1,3 @@
-import "./App.css";
-import Header from "./Components/Header/header";
-import Login from "./Login/Login";
-import Nav from "./Components/Header/Nav";
-import API from "./API/api";
-import useFetch from "./Functions/FetchHook";
 const { useState, useEffect, useRef, createContext } = React;
 const Router = window.ReactRouterDOM.BrowserRouter;
 const Route =  window.ReactRouterDOM.Route;
@@ -11,6 +5,13 @@ const Switch = window.ReactRouterDOM.Switch;
 const Redirect = window.ReactRouterDOM.Redirect;
 const punycode = require("punycode");
 
+import "./App.css";
+import Header from "./Components/Header/header";
+import Login from "./Login/Login";
+import Signup from "./Login/Signup";
+import Nav from "./Components/Header/Nav";
+import API from "./API/api";
+import useFetch from "./Functions/FetchHook";
 import Dashboard from "./Pages/Dashboard/Dashboard.js";
 import FerryDashboard from "./Pages/Dashboard/ferry/Dashboard.js";
 import Websites from "./Pages/Domains/index.js";
@@ -119,6 +120,11 @@ export default function App() {
                                             }
                                         </div>
                                     </Route>
+                                    <Route path="/signup" exact>
+                                        <ErrorBoundary>
+                                            <Signup />
+                                        </ErrorBoundary>
+                                    </Route>
                                     <Route path="/:id/domains" exact>
                                         <ErrorBoundary>
                                             {domainError ? <AddDomain /> : <Websites />}
@@ -194,7 +200,7 @@ export default function App() {
             </>
         )
     } else {
-        if(window.location.pathname !== "/login"){
+        if(window.location.pathname !== "/login" && window.location.pathname !== "/signup"){
             window.location.href = "/login";
 
         }
@@ -203,6 +209,11 @@ export default function App() {
                 <Switch>
                     <Route path="/login" exact>
                         <Login />
+                    </Route>
+                    <Route path="/signup" exact>
+                        <ErrorBoundary>
+                            <Signup />
+                        </ErrorBoundary>
                     </Route>
                     <Route path="/check">
                         <div className="cookieCheckContainer">

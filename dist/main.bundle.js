@@ -665,37 +665,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.css */ "./src/App.css");
 /* harmony import */ var _Components_Header_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Components/Header/header */ "./src/Components/Header/header.js");
 /* harmony import */ var _Login_Login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Login/Login */ "./src/Login/Login.js");
-/* harmony import */ var _Components_Header_Nav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components/Header/Nav */ "./src/Components/Header/Nav.js");
-/* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./API/api */ "./src/API/api.js");
-/* harmony import */ var _Functions_FetchHook__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Functions/FetchHook */ "./src/Functions/FetchHook.js");
-/* harmony import */ var _Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Pages/Dashboard/Dashboard.js */ "./src/Pages/Dashboard/Dashboard.js");
-/* harmony import */ var _Pages_Dashboard_ferry_Dashboard_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Pages/Dashboard/ferry/Dashboard.js */ "./src/Pages/Dashboard/ferry/Dashboard.js");
-/* harmony import */ var _Pages_Domains_index_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Pages/Domains/index.js */ "./src/Pages/Domains/index.js");
-/* harmony import */ var _Pages_Settings__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Pages/Settings */ "./src/Pages/Settings/index.js");
-/* harmony import */ var _Pages_Settings_CreateOrganisation__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Pages/Settings/CreateOrganisation */ "./src/Pages/Settings/CreateOrganisation/index.js");
-/* harmony import */ var _Pages_Settings_AddUser__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Pages/Settings/AddUser */ "./src/Pages/Settings/AddUser/index.js");
-/* harmony import */ var _Pages_Settings_ViewOrganisations__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Pages/Settings/ViewOrganisations */ "./src/Pages/Settings/ViewOrganisations/index.js");
-/* harmony import */ var _Login_LoginOverlay__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Login/LoginOverlay */ "./src/Login/LoginOverlay.js");
-/* harmony import */ var _Pages_Dashboard_DomainDashbord__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Pages/Dashboard/DomainDashbord */ "./src/Pages/Dashboard/DomainDashbord.js");
-/* harmony import */ var _Functions_fetch__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./Functions/fetch */ "./src/Functions/fetch.js");
-/* harmony import */ var _Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./Components/AddDomain/AddDomain */ "./src/Components/AddDomain/AddDomain.js");
-/* harmony import */ var _Pages_Settings_AddDomain__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./Pages/Settings/AddDomain */ "./src/Pages/Settings/AddDomain/index.js");
-/* harmony import */ var _Components_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./Components/SelectInput/Selector */ "./src/Components/SelectInput/Selector.js");
-/* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./Authentication/Auth */ "./src/Authentication/Auth.js");
-/* harmony import */ var _Pages_UserConsents_UserConsents__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./Pages/UserConsents/UserConsents */ "./src/Pages/UserConsents/UserConsents.js");
-/* harmony import */ var _Pages_Reports_Reports__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./Pages/Reports/Reports */ "./src/Pages/Reports/Reports.js");
-/* harmony import */ var _Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./Components/Error/ErrorBoundary */ "./src/Components/Error/ErrorBoundary.js");
-/* harmony import */ var _Pages_Countries_Countries__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./Pages/Countries/Countries */ "./src/Pages/Countries/Countries.js");
-/* harmony import */ var _Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./Components/BugReport/BugReport */ "./src/Components/BugReport/BugReport.js");
-/* harmony import */ var _Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./Components/PlatformSelector/PlatformSelector */ "./src/Components/PlatformSelector/PlatformSelector.js");
-/* harmony import */ var _Pages_Reports_SiteStatus__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./Pages/Reports/SiteStatus */ "./src/Pages/Reports/SiteStatus/index.js");
-/* harmony import */ var _Components_Crawler__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./Components/Crawler */ "./src/Components/Crawler/index.js");
-
-
-
-
-
-
+/* harmony import */ var _Login_Signup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Login/Signup */ "./src/Login/Signup.js");
+/* harmony import */ var _Components_Header_Nav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Components/Header/Nav */ "./src/Components/Header/Nav.js");
+/* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./API/api */ "./src/API/api.js");
+/* harmony import */ var _Functions_FetchHook__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Functions/FetchHook */ "./src/Functions/FetchHook.js");
+/* harmony import */ var _Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Pages/Dashboard/Dashboard.js */ "./src/Pages/Dashboard/Dashboard.js");
+/* harmony import */ var _Pages_Dashboard_ferry_Dashboard_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Pages/Dashboard/ferry/Dashboard.js */ "./src/Pages/Dashboard/ferry/Dashboard.js");
+/* harmony import */ var _Pages_Domains_index_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Pages/Domains/index.js */ "./src/Pages/Domains/index.js");
+/* harmony import */ var _Pages_Settings__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Pages/Settings */ "./src/Pages/Settings/index.js");
+/* harmony import */ var _Pages_Settings_CreateOrganisation__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Pages/Settings/CreateOrganisation */ "./src/Pages/Settings/CreateOrganisation/index.js");
+/* harmony import */ var _Pages_Settings_AddUser__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Pages/Settings/AddUser */ "./src/Pages/Settings/AddUser/index.js");
+/* harmony import */ var _Pages_Settings_ViewOrganisations__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Pages/Settings/ViewOrganisations */ "./src/Pages/Settings/ViewOrganisations/index.js");
+/* harmony import */ var _Login_LoginOverlay__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Login/LoginOverlay */ "./src/Login/LoginOverlay.js");
+/* harmony import */ var _Pages_Dashboard_DomainDashbord__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./Pages/Dashboard/DomainDashbord */ "./src/Pages/Dashboard/DomainDashbord.js");
+/* harmony import */ var _Functions_fetch__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./Functions/fetch */ "./src/Functions/fetch.js");
+/* harmony import */ var _Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./Components/AddDomain/AddDomain */ "./src/Components/AddDomain/AddDomain.js");
+/* harmony import */ var _Pages_Settings_AddDomain__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./Pages/Settings/AddDomain */ "./src/Pages/Settings/AddDomain/index.js");
+/* harmony import */ var _Components_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./Components/SelectInput/Selector */ "./src/Components/SelectInput/Selector.js");
+/* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./Authentication/Auth */ "./src/Authentication/Auth.js");
+/* harmony import */ var _Pages_UserConsents_UserConsents__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./Pages/UserConsents/UserConsents */ "./src/Pages/UserConsents/UserConsents.js");
+/* harmony import */ var _Pages_Reports_Reports__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./Pages/Reports/Reports */ "./src/Pages/Reports/Reports.js");
+/* harmony import */ var _Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./Components/Error/ErrorBoundary */ "./src/Components/Error/ErrorBoundary.js");
+/* harmony import */ var _Pages_Countries_Countries__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./Pages/Countries/Countries */ "./src/Pages/Countries/Countries.js");
+/* harmony import */ var _Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./Components/BugReport/BugReport */ "./src/Components/BugReport/BugReport.js");
+/* harmony import */ var _Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./Components/PlatformSelector/PlatformSelector */ "./src/Components/PlatformSelector/PlatformSelector.js");
+/* harmony import */ var _Pages_Reports_SiteStatus__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./Pages/Reports/SiteStatus */ "./src/Pages/Reports/SiteStatus/index.js");
+/* harmony import */ var _Components_Crawler__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./Components/Crawler */ "./src/Components/Crawler/index.js");
 const {
   useState,
   useEffect,
@@ -708,6 +703,13 @@ const Switch = window.ReactRouterDOM.Switch;
 const Redirect = window.ReactRouterDOM.Redirect;
 
 const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/punycode.es6.js");
+
+
+
+
+
+
+
 
 
 
@@ -755,8 +757,8 @@ function App() {
     useEffect(() => {
       var _API$id, _API$id$getDomains;
 
-      (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_15__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_4__["default"].settings.getOrganisation.url, _API_api__WEBPACK_IMPORTED_MODULE_4__["default"].settings.getOrganisation.method, _API_api__WEBPACK_IMPORTED_MODULE_4__["default"].settings.getOrganisation.headers, JSON.stringify({
-        organisationMember: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_19__["default"].getUserId()
+      (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_16__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_5__["default"].settings.getOrganisation.url, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"].settings.getOrganisation.method, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"].settings.getOrganisation.headers, JSON.stringify({
+        organisationMember: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_20__["default"].getUserId()
       })).then(data => {
         if (data === "Err_Login_Expired") {
           localStorage.removeItem("globals");
@@ -767,8 +769,8 @@ function App() {
         setOrganisations(data);
       });
 
-      if (id && ((_API$id = _API_api__WEBPACK_IMPORTED_MODULE_4__["default"][id]) === null || _API$id === void 0 ? void 0 : (_API$id$getDomains = _API$id.getDomains) === null || _API$id$getDomains === void 0 ? void 0 : _API$id$getDomains.url) != undefined) {
-        (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_15__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_4__["default"][id].getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_4__["default"][id].getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_4__["default"][id].getDomains.headers).then(data => {
+      if (id && ((_API$id = _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][id]) === null || _API$id === void 0 ? void 0 : (_API$id$getDomains = _API$id.getDomains) === null || _API$id$getDomains === void 0 ? void 0 : _API$id$getDomains.url) != undefined) {
+        (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_16__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomains.headers).then(data => {
           if (data.error === "Err_No_Domains") {
             setDomainError(true);
           } else {
@@ -789,22 +791,22 @@ function App() {
     }, []);
 
     if (id === null && organisations) {
-      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_25__["default"], {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_26__["default"], {
         setId: setId,
         platforms: organisations
-      }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_24__["default"], null));
+      }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_25__["default"], null));
     }
 
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Router, null, /*#__PURE__*/React.createElement(OrganisationContext.Provider, {
       value: [organisation, setOrganisation]
     }, /*#__PURE__*/React.createElement(DomainContext.Provider, {
       value: [currentDomain, setCurrentDomain]
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, /*#__PURE__*/React.createElement(_Components_Header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, /*#__PURE__*/React.createElement(_Components_Header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
       handle: handle,
       id: id
-    }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_24__["default"], null)), /*#__PURE__*/React.createElement("div", {
+    }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_25__["default"], null)), /*#__PURE__*/React.createElement("div", {
       className: "main-grid"
-    }, /*#__PURE__*/React.createElement(_Components_Header_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/React.createElement(Switch, null, /*#__PURE__*/React.createElement(Route, {
+    }, /*#__PURE__*/React.createElement(_Components_Header_Nav__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/React.createElement(Switch, null, /*#__PURE__*/React.createElement(Route, {
       path: "/:id/dashboard",
       exact: true
     }, /*#__PURE__*/React.createElement("div", {
@@ -817,56 +819,59 @@ function App() {
         backgroundColor: "rgb(218, 218, 218)",
         color: "#626262"
       }
-    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$profile = _JSON$parse.profile) === null || _JSON$parse$profile === void 0 ? void 0 : (_JSON$parse$profile$n = _JSON$parse$profile.name) === null || _JSON$parse$profile$n === void 0 ? void 0 : _JSON$parse$profile$n.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your Intastellar Cookie Consents implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, id == "gdpr" ? /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    }, /*#__PURE__*/React.createElement("h1", null, "Welcome, ", (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$profile = _JSON$parse.profile) === null || _JSON$parse$profile === void 0 ? void 0 : (_JSON$parse$profile$n = _JSON$parse$profile.name) === null || _JSON$parse$profile$n === void 0 ? void 0 : _JSON$parse$profile$n.first_name), /*#__PURE__*/React.createElement("p", null, "Here you can see all the data regarding your Intastellar Cookie Consents implementation of your organisation")), domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_17__["default"], null) : /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, id == "gdpr" ? /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_7__["default"], {
       dashboardView: dashboardView,
       setDashboardView: setDashboardView
-    }) : /*#__PURE__*/React.createElement(_Pages_Dashboard_ferry_Dashboard_js__WEBPACK_IMPORTED_MODULE_7__["default"], null)))), /*#__PURE__*/React.createElement(Route, {
+    }) : /*#__PURE__*/React.createElement(_Pages_Dashboard_ferry_Dashboard_js__WEBPACK_IMPORTED_MODULE_8__["default"], null)))), /*#__PURE__*/React.createElement(Route, {
+      path: "/signup",
+      exact: true
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, /*#__PURE__*/React.createElement(_Login_Signup__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/React.createElement(Route, {
       path: "/:id/domains",
       exact: true
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Domains_index_js__WEBPACK_IMPORTED_MODULE_8__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_17__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Domains_index_js__WEBPACK_IMPORTED_MODULE_9__["default"], null))), /*#__PURE__*/React.createElement(Route, {
       path: "/settings",
       exact: true
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings__WEBPACK_IMPORTED_MODULE_9__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_17__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings__WEBPACK_IMPORTED_MODULE_10__["default"], null))), /*#__PURE__*/React.createElement(Route, {
       path: "/settings/create-organisation"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_19__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_19__["default"].User.Status === "super-admin" ? /*#__PURE__*/React.createElement(_Pages_Settings_CreateOrganisation__WEBPACK_IMPORTED_MODULE_10__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_20__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_20__["default"].User.Status === "super-admin" ? /*#__PURE__*/React.createElement(_Pages_Settings_CreateOrganisation__WEBPACK_IMPORTED_MODULE_11__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
       path: "/settings/add-user"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_19__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_19__["default"].User.Status === "super-admin" ? /*#__PURE__*/React.createElement(_Pages_Settings_AddUser__WEBPACK_IMPORTED_MODULE_11__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_20__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_20__["default"].User.Status === "super-admin" ? /*#__PURE__*/React.createElement(_Pages_Settings_AddUser__WEBPACK_IMPORTED_MODULE_12__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
       path: "/settings/add-domain"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_19__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_19__["default"].User.Status === "super-admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_19__["default"].User.Status === "manager" ? /*#__PURE__*/React.createElement(_Pages_Settings_AddDomain__WEBPACK_IMPORTED_MODULE_17__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_20__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_20__["default"].User.Status === "super-admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_20__["default"].User.Status === "manager" ? /*#__PURE__*/React.createElement(_Pages_Settings_AddDomain__WEBPACK_IMPORTED_MODULE_18__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
       path: "/settings/view-organisations"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_ViewOrganisations__WEBPACK_IMPORTED_MODULE_12__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_17__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_ViewOrganisations__WEBPACK_IMPORTED_MODULE_13__["default"], null))), /*#__PURE__*/React.createElement(Route, {
       path: "/:id/view/:handle"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_DomainDashbord__WEBPACK_IMPORTED_MODULE_14__["default"], {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_17__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_DomainDashbord__WEBPACK_IMPORTED_MODULE_15__["default"], {
       setHandle: setHandle
     }))), /*#__PURE__*/React.createElement(Route, {
       path: "/:id/reports",
       exact: true
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, /*#__PURE__*/React.createElement(_Pages_Reports_Reports__WEBPACK_IMPORTED_MODULE_21__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, /*#__PURE__*/React.createElement(_Pages_Reports_Reports__WEBPACK_IMPORTED_MODULE_22__["default"], null))), /*#__PURE__*/React.createElement(Route, {
       path: "/:id/reports/user-consents"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Pages_UserConsents_UserConsents__WEBPACK_IMPORTED_MODULE_20__["default"], {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_17__["default"], null) : /*#__PURE__*/React.createElement(_Pages_UserConsents_UserConsents__WEBPACK_IMPORTED_MODULE_21__["default"], {
       organisations: organisations
     }))), /*#__PURE__*/React.createElement(Route, {
       path: "/:id/reports/countries"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Countries_Countries__WEBPACK_IMPORTED_MODULE_23__["default"], {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_17__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Countries_Countries__WEBPACK_IMPORTED_MODULE_24__["default"], {
       organisations: organisations
     }))), /*#__PURE__*/React.createElement(Route, {
       path: "/:id/reports/site-status"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_16__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Reports_SiteStatus__WEBPACK_IMPORTED_MODULE_26__["default"], {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_17__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Reports_SiteStatus__WEBPACK_IMPORTED_MODULE_27__["default"], {
       domains: domains,
       organisations: organisations
     }))), /*#__PURE__*/React.createElement(Route, {
       path: "/dashboard"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_25__["default"], {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_26__["default"], {
       setId: setId,
       platforms: (_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse2 === void 0 ? void 0 : (_JSON$parse2$access = _JSON$parse2.access) === null || _JSON$parse2$access === void 0 ? void 0 : _JSON$parse2$access.type
     }))), /*#__PURE__*/React.createElement(Router, {
       path: "/login",
       exact: true
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_22__["default"], null, /*#__PURE__*/React.createElement(_Login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], null))), /*#__PURE__*/React.createElement(Redirect, {
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, /*#__PURE__*/React.createElement(_Login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], null))), /*#__PURE__*/React.createElement(Redirect, {
       to: "/login"
     })))))));
   } else {
-    if (window.location.pathname !== "/login") {
+    if (window.location.pathname !== "/login" && window.location.pathname !== "/signup") {
       window.location.href = "/login";
     }
 
@@ -874,13 +879,16 @@ function App() {
       path: "/login",
       exact: true
     }, /*#__PURE__*/React.createElement(_Login_Login__WEBPACK_IMPORTED_MODULE_2__["default"], null)), /*#__PURE__*/React.createElement(Route, {
+      path: "/signup",
+      exact: true
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_23__["default"], null, /*#__PURE__*/React.createElement(_Login_Signup__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/React.createElement(Route, {
       path: "/check"
     }, /*#__PURE__*/React.createElement("div", {
       className: "cookieCheckContainer"
     }, /*#__PURE__*/React.createElement("img", {
       src: "https://www.intastellarsolutions.com/assets/logos/intastellar-new-planet.svg",
       className: "crawlerPage-logo"
-    }), /*#__PURE__*/React.createElement(_Components_Crawler__WEBPACK_IMPORTED_MODULE_27__["default"], null), /*#__PURE__*/React.createElement("footer", null, /*#__PURE__*/React.createElement("p", null, "Powered by Intastellar Cookie Consents"), /*#__PURE__*/React.createElement("p", null, "\xA9 2023 Intastellar Solutions, International"))))));
+    }), /*#__PURE__*/React.createElement(_Components_Crawler__WEBPACK_IMPORTED_MODULE_28__["default"], null), /*#__PURE__*/React.createElement("footer", null, /*#__PURE__*/React.createElement("p", null, "Powered by Intastellar Cookie Consents"), /*#__PURE__*/React.createElement("p", null, "\xA9 2023 Intastellar Solutions, International"))))));
   }
 }
 
@@ -3017,6 +3025,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+const Link = window.ReactRouterDOM.Link;
+const useLocation = window.ReactRouterDOM.useLocation;
 function Login() {
   document.title = "Login | Intastellar Analytics";
   document.body.style.overflow = "hidden";
@@ -3039,7 +3049,7 @@ function Login() {
     alt: "Intastellar Solutions Logo"
   }), /*#__PURE__*/React.createElement("h1", {
     className: "loginForm-title"
-  }, "Sign in to Intastellar Analytics"), /*#__PURE__*/React.createElement("label", null, errorMessage != null ? errorMessage : null), /*#__PURE__*/React.createElement("label", null, "Email:"), /*#__PURE__*/React.createElement("input", {
+  }, "Sign in to Intastellar Consents"), /*#__PURE__*/React.createElement("label", null, errorMessage != null ? errorMessage : null), /*#__PURE__*/React.createElement("label", null, "Email:"), /*#__PURE__*/React.createElement("input", {
     className: "loginForm-inputField",
     type: "email",
     placeholder: "email",
@@ -3059,7 +3069,10 @@ function Login() {
   }, isLoading ? "We are loggin you in..." : "SIGNIN"), /*#__PURE__*/React.createElement("a", {
     className: "loginForm-inputField --link",
     href: "/forgot-password"
-  }, "Forgot Password?"))));
+  }, "Forgot Password?"), /*#__PURE__*/React.createElement(Link, {
+    className: "loginForm-inputField --link",
+    to: "/signup"
+  }, "Don't have an account? Signup"))));
 }
 
 /***/ }),
@@ -3128,6 +3141,87 @@ function LoginOverLay() {
     className: "loginForm-inputField --btn",
     type: "submit"
   }, isLoading ? "We are loggin you in..." : "SIGNIN"))));
+}
+
+/***/ }),
+
+/***/ "./src/Login/Signup.js":
+/*!*****************************!*\
+  !*** ./src/Login/Signup.js ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Signup)
+/* harmony export */ });
+/* harmony import */ var _Login_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login.css */ "./src/Login/Login.css");
+/* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../API/api */ "./src/API/api.js");
+/* harmony import */ var _Components_Header_logo_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Components/Header/logo.png */ "./src/Components/Header/logo.png");
+
+
+
+const Link = window.ReactRouterDOM.Link;
+const useLocation = window.ReactRouterDOM.useLocation;
+function Signup() {
+  document.title = "Login | Intastellar Analytics";
+  document.body.style.overflow = "hidden";
+  document.body.style.height = "100vh";
+  const [email, setEmail] = React.useState();
+  const [firstname, setFirstName] = React.useState();
+  const [lastname, setLastName] = React.useState();
+  const [password, setPassword] = React.useState();
+  const [isLoading, setLoading] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState(null);
+  const type = "";
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "loginForm-container"
+  }, /*#__PURE__*/React.createElement("form", {
+    className: "loginForm",
+    onSubmit: e => {
+      e.preventDefault(), Authentication.Login(_API_api__WEBPACK_IMPORTED_MODULE_1__["default"].Login.url, email, password, firstname, lastname, type, setErrorMessage, setLoading);
+    }
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "loginForm-logo",
+    src: _Components_Header_logo_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: "Intastellar Solutions Logo"
+  }), /*#__PURE__*/React.createElement("h1", {
+    className: "loginForm-title"
+  }, "Sign up to Intastellar Consents"), /*#__PURE__*/React.createElement("label", null, errorMessage != null ? errorMessage : null), /*#__PURE__*/React.createElement("label", null, "Firstname:"), /*#__PURE__*/React.createElement("input", {
+    className: "loginForm-inputField",
+    type: "text",
+    placeholder: "firstname",
+    onChange: e => {
+      setFirstName(e.target.value);
+    }
+  }), /*#__PURE__*/React.createElement("label", null, "Lastname:"), /*#__PURE__*/React.createElement("input", {
+    className: "loginForm-inputField",
+    type: "text",
+    placeholder: "firstname",
+    onChange: e => {
+      setLastName(e.target.value);
+    }
+  }), /*#__PURE__*/React.createElement("label", null, "Email:"), /*#__PURE__*/React.createElement("input", {
+    className: "loginForm-inputField",
+    type: "email",
+    placeholder: "email",
+    onChange: e => {
+      setEmail(e.target.value);
+    }
+  }), /*#__PURE__*/React.createElement("label", null, "Password:"), /*#__PURE__*/React.createElement("input", {
+    className: "loginForm-inputField",
+    type: "password",
+    placeholder: "password",
+    onChange: e => {
+      setPassword(e.target.value);
+    }
+  }), /*#__PURE__*/React.createElement("button", {
+    className: "loginForm-inputField --btn",
+    type: "submit"
+  }, isLoading ? "We are loggin you in..." : "SIGNUP"), /*#__PURE__*/React.createElement(Link, {
+    className: "loginForm-inputField --link",
+    to: "/login"
+  }, "Have an account? Login"))));
 }
 
 /***/ }),
