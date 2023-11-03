@@ -127,4 +127,8 @@
     .loginForm-container{
         background-position: -250px;
     }
+
+    .signup{
+        overflow: scroll;
+    }
 }
