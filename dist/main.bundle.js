@@ -3996,19 +3996,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ UserConsents)
 /* harmony export */ });
-/* harmony import */ var _Components_SelectInput_Selector_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Components/SelectInput/Selector.js */ "./src/Components/SelectInput/Selector.js");
-/* harmony import */ var _Components_NotAllowed_NotAllowed__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Components/NotAllowed/NotAllowed */ "./src/Components/NotAllowed/NotAllowed.js");
-/* harmony import */ var _Functions_isJson_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Functions/isJson.js */ "./src/Functions/isJson.js");
-/* harmony import */ var _Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/AddDomain/AddDomain */ "./src/Components/AddDomain/AddDomain.js");
-/* harmony import */ var _Functions_FetchHook__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Functions/FetchHook */ "./src/Functions/FetchHook.js");
-/* harmony import */ var _Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Components/Error/Unknown.js */ "./src/Components/Error/Unknown.js");
-/* harmony import */ var _Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Components/Error/NoDataFound.js */ "./src/Components/Error/NoDataFound.js");
-/* harmony import */ var _Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Components/widget/Loading.js */ "./src/Components/widget/Loading.js");
-/* harmony import */ var _API_api_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../API/api.js */ "./src/API/api.js");
-/* harmony import */ var _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../Reports/Reports.js */ "./src/Pages/Reports/Reports.js");
-/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/UserConsents/Style.css");
-/* harmony import */ var _Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Components/Header/SideNav.js */ "./src/Components/Header/SideNav.js");
-/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
+/* harmony import */ var _Functions_isJson_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Functions/isJson.js */ "./src/Functions/isJson.js");
+/* harmony import */ var _Functions_FetchHook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Functions/FetchHook */ "./src/Functions/FetchHook.js");
+/* harmony import */ var _Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Components/Error/Unknown.js */ "./src/Components/Error/Unknown.js");
+/* harmony import */ var _Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Components/Error/NoDataFound.js */ "./src/Components/Error/NoDataFound.js");
+/* harmony import */ var _Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Components/widget/Loading.js */ "./src/Components/widget/Loading.js");
+/* harmony import */ var _API_api_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../API/api.js */ "./src/API/api.js");
+/* harmony import */ var _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Reports/Reports.js */ "./src/Pages/Reports/Reports.js");
+/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/UserConsents/Style.css");
+/* harmony import */ var _Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Components/Header/SideNav.js */ "./src/Components/Header/SideNav.js");
+/* harmony import */ var _Components_Filter_index_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Filter/index.js */ "./src/Components/Filter/index.js");
+/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
 const {
   useState,
   useEffect,
@@ -4026,25 +4024,31 @@ const {
 
 
 
-
-
 const useParams = window.ReactRouterDOM.useParams;
 const urlParams = new URLSearchParams(window.location.search);
 function UserConsents(props) {
   document.title = "User consents | Intastellar Analytics";
-  const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_12__.DomainContext);
-  const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_12__.OrganisationContext);
+  const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_10__.DomainContext);
+  const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_10__.OrganisationContext);
   const {
     handle,
     id
   } = useParams();
-  const organisations = props.organisations;
   const page = urlParams.get("page") || 1;
-  _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"][id].getDomainsUrl.headers.Domains = currentDomain;
-  _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"][id].getDomainsUrl.headers.Offset = page;
-  const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_4__["default"])(5, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"][id].getDomainsUrl.url, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"][id].getDomainsUrl.method, _API_api_js__WEBPACK_IMPORTED_MODULE_8__["default"][id].getDomainsUrl.headers);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    links: _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_9__.reportsLinks
+  const today = new Date();
+  const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - 30)).toISOString().split("T")[0]);
+  const [toDate, setToDate] = useState(new Date().toISOString().split("T")[0]);
+  const [activeData, setActiveData] = useState(null);
+  _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.headers.Domains = currentDomain;
+  _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.headers.Offset = page;
+  _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.headers.FromDate = fromDate;
+  _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.headers.ToDate = toDate;
+  const header = _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.headers;
+  const url = _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.url;
+  const method = _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.method;
+  const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_1__["default"])(5, _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.url, _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.method, _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.headers);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    links: _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_6__.reportsLinks
   }), /*#__PURE__*/React.createElement("article", {
     style: {
       flex: "1"
@@ -4058,14 +4062,23 @@ function UserConsents(props) {
     }
   }, /*#__PURE__*/React.createElement("h1", null, "Reports - User consents")), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, getDomainsUrlLoading && !getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_7__.Loading, null) : getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_5__["default"], null) : getDomainsUrlData == "Err_No_Data_Found" ? /*#__PURE__*/React.createElement(_Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_6__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(_Components_Filter_index_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    url: url,
+    method: method,
+    header: header,
+    setActiveData: setActiveData,
+    fromDate: fromDate,
+    toDate: toDate,
+    setFromDate: setFromDate,
+    setToDate: setToDate
+  }), getDomainsUrlLoading && !getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_2__["default"], null) : getDomainsUrlData == "Err_No_Data_Found" ? /*#__PURE__*/React.createElement(_Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_3__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, getDomainsUrlData === null || getDomainsUrlData === void 0 ? void 0 : getDomainsUrlData.map((d, key) => {
     var _consent, _consent2, _consent3, _consent4;
 
     let consent = "";
 
-    if ((0,_Functions_isJson_js__WEBPACK_IMPORTED_MODULE_2__.isJson)(d === null || d === void 0 ? void 0 : d.consent)) {
+    if ((0,_Functions_isJson_js__WEBPACK_IMPORTED_MODULE_0__.isJson)(d === null || d === void 0 ? void 0 : d.consent)) {
       consent = JSON.parse(d === null || d === void 0 ? void 0 : d.consent);
     } else {
       consent = d === null || d === void 0 ? void 0 : d.consent;

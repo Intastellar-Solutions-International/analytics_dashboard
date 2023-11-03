@@ -1,8 +1,5 @@
 const { useState, useEffect, useRef, useContext } = React;
-import Select from "../../Components/SelectInput/Selector.js";
-import NotAllowed from "../../Components/NotAllowed/NotAllowed";
 import { isJson } from "../../Functions/isJson.js";
-import AddDomain from "../../Components/AddDomain/AddDomain";
 import useFetch from "../../Functions/FetchHook";
 import Unknown from "../../Components/Error/Unknown.js";
 import NoDataFound from "../../Components/Error/NoDataFound.js";
@@ -11,6 +8,7 @@ import API from "../../API/api.js";
 import { reportsLinks } from "../Reports/Reports.js";
 import "./Style.css";
 import SideNav from "../../Components/Header/SideNav.js";
+import Filter from "../../Components/Filter/index.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
 const useParams = window.ReactRouterDOM.useParams;
 const urlParams = new URLSearchParams(window.location.search);
@@ -20,11 +18,22 @@ export default function UserConsents(props) {
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const { handle, id } = useParams();
-    const organisations = props.organisations;
     const page = urlParams.get("page") || 1;
+
+    const today = new Date();
+    const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - 30)).toISOString().split("T")[0]);
+    const [toDate, setToDate] = useState(new Date().toISOString().split("T")[0]);
+    const [activeData, setActiveData] = useState(null);
 
     API[id].getDomainsUrl.headers.Domains = currentDomain;
     API[id].getDomainsUrl.headers.Offset = page;
+    API[id].getDomainsUrl.headers.FromDate = fromDate;
+    API[id].getDomainsUrl.headers.ToDate = toDate;
+
+    const header = API[id].getDomainsUrl.headers;
+    const url = API[id].getDomainsUrl.url;
+    const method = API[id].getDomainsUrl.method;
+
     const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = useFetch(5, API[id].getDomainsUrl.url, API[id].getDomainsUrl.method, API[id].getDomainsUrl.headers);
     
     return (
@@ -35,6 +44,7 @@ export default function UserConsents(props) {
                     <h1>Reports - User consents</h1>
                 </section>
                 <div className="dashboard-content">
+                    <Filter url={url} method={method} header={header} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
                     {(getDomainsUrlLoading && !getDomainsUrlError) ? <Loading /> : (getDomainsUrlError) ? <Unknown /> : ( getDomainsUrlData == "Err_No_Data_Found") ? <NoDataFound /> : <>
                         <div className="grid-container grid-3">
                         {
