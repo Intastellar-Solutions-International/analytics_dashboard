@@ -28,5 +28,10 @@ export const reportsLinks = [
         name: "View Domains",
         path: "/settings/view-domains",
         view: ["admin", "super-admin", "manager"]
+    },
+    {
+        name: "Config GDPR",
+        path: "/settings/config-gdpr",
+        view: ["admin", "super-admin", "manager"]
     }
 ]

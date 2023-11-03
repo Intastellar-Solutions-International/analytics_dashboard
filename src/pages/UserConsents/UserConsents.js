@@ -35,7 +35,11 @@ export default function UserConsents(props) {
     const method = API[id].getDomainsUrl.method;
 
     const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = useFetch(5, API[id].getDomainsUrl.url, API[id].getDomainsUrl.method, API[id].getDomainsUrl.headers);
-    
+    useEffect(() => {
+        if(getDomainsUrlData){
+            setActiveData(getDomainsUrlData);
+        }
+    }, [getDomainsUrlData]);
     return (
         <>
             <SideNav links={reportsLinks} />
@@ -50,7 +54,7 @@ export default function UserConsents(props) {
                     {(getDomainsUrlLoading && !getDomainsUrlError) ? <Loading /> : (getDomainsUrlError) ? <Unknown /> : ( getDomainsUrlData == "Err_No_Data_Found") ? <NoDataFound /> : <>
                         <div className="grid-container grid-3">
                         {
-                            getDomainsUrlData?.map((d, key) => {
+                            activeData?.map((d, key) => {
                                 
                                 let consent = "";
                                 if(isJson(d?.consent)) {

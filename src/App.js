@@ -69,8 +69,8 @@ export default function App() {
 
             if(id && API[id]?.getDomains?.url != undefined){
                 Fetch(API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers).then((data) => {
-                    
-                    if(data.error === "Err_No_Domains") {
+                    console.log(data.length);
+                    if(data.error === "Err_No_Domains" || data.length === 0) {
                         setDomainError(true);
                     }else{
                         data.unshift({domain: "all", installed: null, lastedVisited: null});

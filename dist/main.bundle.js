@@ -771,7 +771,9 @@ function App() {
 
       if (id && ((_API$id = _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][id]) === null || _API$id === void 0 ? void 0 : (_API$id$getDomains = _API$id.getDomains) === null || _API$id$getDomains === void 0 ? void 0 : _API$id$getDomains.url) != undefined) {
         (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_16__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomains.headers).then(data => {
-          if (data.error === "Err_No_Domains") {
+          console.log(data.length);
+
+          if (data.error === "Err_No_Domains" || data.length === 0) {
             setDomainError(true);
           } else {
             data.unshift({
@@ -1840,6 +1842,10 @@ const reportsLinks = [{
 }, {
   name: "View Domains",
   path: "/settings/view-domains",
+  view: ["admin", "super-admin", "manager"]
+}, {
+  name: "Config GDPR",
+  path: "/settings/config-gdpr",
   view: ["admin", "super-admin", "manager"]
 }];
 
@@ -4047,6 +4053,11 @@ function UserConsents(props) {
   const url = _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.url;
   const method = _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.method;
   const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_1__["default"])(5, _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.url, _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.method, _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.headers);
+  useEffect(() => {
+    if (getDomainsUrlData) {
+      setActiveData(getDomainsUrlData);
+    }
+  }, [getDomainsUrlData]);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
     links: _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_6__.reportsLinks
   }), /*#__PURE__*/React.createElement("article", {
@@ -4075,7 +4086,7 @@ function UserConsents(props) {
     setToDate: setToDate
   })), getDomainsUrlLoading && !getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_2__["default"], null) : getDomainsUrlData == "Err_No_Data_Found" ? /*#__PURE__*/React.createElement(_Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_3__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
-  }, getDomainsUrlData === null || getDomainsUrlData === void 0 ? void 0 : getDomainsUrlData.map((d, key) => {
+  }, activeData === null || activeData === void 0 ? void 0 : activeData.map((d, key) => {
     var _consent, _consent2, _consent3, _consent4;
 
     let consent = "";
