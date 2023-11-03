@@ -1616,6 +1616,8 @@ function Filter(_ref) {
     method,
     header,
     setActiveData,
+    fromDate,
+    toDate,
     setFromDate,
     setToDate
   } = _ref;
@@ -1641,6 +1643,7 @@ function Filter(_ref) {
   }, /*#__PURE__*/React.createElement("input", {
     type: "date",
     className: "intInput",
+    defaultValue: fromDate,
     onChange: e => {
       setFromDate(e.target.value);
     },
@@ -1648,6 +1651,7 @@ function Filter(_ref) {
   }), /*#__PURE__*/React.createElement("input", {
     type: "date",
     className: "intInput",
+    defaultValue: toDate,
     onChange: e => {
       setToDate(e.target.value);
     },
@@ -3342,8 +3346,9 @@ function Dashboard(props) {
     id
   } = useParams();
   const [activeData, setActiveData] = useState(null);
-  const [fromDate, setFromDate] = useState(null);
-  const [toDate, setToDate] = useState(null);
+  const today = new Date();
+  const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - 30)).toISOString().split("T")[0]);
+  const [toDate, setToDate] = useState(new Date().toISOString().split("T")[0]);
   const dashboardView = props.dashboardView;
   let url = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.url;
   let method = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.method;
@@ -3405,6 +3410,8 @@ function Dashboard(props) {
     method: method,
     header: header,
     setActiveData: setActiveData,
+    fromDate: fromDate,
+    toDate: toDate,
     setFromDate: setFromDate,
     setToDate: setToDate
   }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
