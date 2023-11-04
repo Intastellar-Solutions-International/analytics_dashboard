@@ -1,37 +1,18 @@
+import Table from "../../Tabel";
 
 export default function Line({data, title}){
-    console.log(data);
+    data = data?.map((d, i) => {
+        return {
+            "name": new Intl.DateTimeFormat('da-DK').format(new Date(d.date)),
+            "domain": d.num
+        }
+    })
     return(
         <>
             <div className="line-chart">
                 <div className="chart">
                     {(data !== null) ? <h2>{title}</h2> : null}
-                    <div id="my-chart">
-                        <table className="charts-css line">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Day</th>
-                                    <th scope="col">Amount</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    data?.map((item, index) => {
-                                        return(
-                                            <tr key={index}>
-                                                <td>{item.date}</td>
-                                                <td style={{"--start": 0.2, "--end": item.num}}><span className="data">{item.num}</span></td>
-                                            </tr>
-                                        )
-                                    })
-                                
-                                }
-                            </tbody>
-                        </table>
-                        <ul className="charts-css legend">
-
-                        </ul>
-                    </div>
+                    {(data !== null) ? <Table data={data} headers={["Day", "Amount"]}  /> : null}
                 </div>
             </div>
         </>

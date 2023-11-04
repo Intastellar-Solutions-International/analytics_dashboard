@@ -1268,38 +1268,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Line)
 /* harmony export */ });
+/* harmony import */ var _Tabel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Tabel */ "./src/Components/Tabel/index.js");
+
 function Line(_ref) {
+  var _data;
+
   let {
     data,
     title
   } = _ref;
-  console.log(data);
+  data = (_data = data) === null || _data === void 0 ? void 0 : _data.map((d, i) => {
+    return {
+      "name": new Intl.DateTimeFormat('da-DK').format(new Date(d.date)),
+      "domain": d.num
+    };
+  });
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "line-chart"
   }, /*#__PURE__*/React.createElement("div", {
     className: "chart"
-  }, data !== null ? /*#__PURE__*/React.createElement("h2", null, title) : null, /*#__PURE__*/React.createElement("div", {
-    id: "my-chart"
-  }, /*#__PURE__*/React.createElement("table", {
-    className: "charts-css line"
-  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
-    scope: "col"
-  }, "Day"), /*#__PURE__*/React.createElement("th", {
-    scope: "col"
-  }, "Amount"))), /*#__PURE__*/React.createElement("tbody", null, data === null || data === void 0 ? void 0 : data.map((item, index) => {
-    return /*#__PURE__*/React.createElement("tr", {
-      key: index
-    }, /*#__PURE__*/React.createElement("td", null, item.date), /*#__PURE__*/React.createElement("td", {
-      style: {
-        "--start": 0.2,
-        "--end": item.num
-      }
-    }, /*#__PURE__*/React.createElement("span", {
-      className: "data"
-    }, item.num)));
-  }))), /*#__PURE__*/React.createElement("ul", {
-    className: "charts-css legend"
-  })))));
+  }, data !== null ? /*#__PURE__*/React.createElement("h2", null, title) : null, data !== null ? /*#__PURE__*/React.createElement(_Tabel__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    data: data,
+    headers: ["Day", "Amount"]
+  }) : null)));
 }
 
 /***/ }),
@@ -3195,7 +3186,7 @@ function Table(props) {
     className: "table-body"
   }, /*#__PURE__*/React.createElement("div", {
     className: "table-row"
-  }, data.map((d, i) => {
+  }, data === null || data === void 0 ? void 0 : data.map((d, i) => {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
       className: "table-cell",
       key: i
