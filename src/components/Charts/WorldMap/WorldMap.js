@@ -21,6 +21,7 @@ export default function Map(props) {
                   functional: country.functional,
                   statistics: country.statics,
                   marketing: country.marketing,
+                  color: "#c09f53"
                }
             }
          }
@@ -39,48 +40,48 @@ export default function Map(props) {
                   format: '{0}',
                   thousandSeparator: '.',
                   thresholdMax: 800,
-                  thresholdMin: 50
+                  thresholdMin: 10
                },
                accepted: {
                   name: 'Accepted Consents',
                   format: '{0} %',
                   thousandSeparator: '.',
                   thresholdMax: 800,
-                  thresholdMin: 50
+                  thresholdMin: 10
                },
                rejected: {
                   name: 'Rejected Consents',
                   format: '{0} %',
                   thousandSeparator: '.',
                   thresholdMax: 800,
-                  thresholdMin: 50
+                  thresholdMin: 10
                },
                functional: {
                   name: 'Functional Consents',
                   format: '{0} %',
                   thousandSeparator: '.',
                   thresholdMax: 800,
-                  thresholdMin: 50
+                  thresholdMin: 10
                },
                statistics: {
                   name: 'Statistics Consents',
                   format: '{0} %',
                   thousandSeparator: '.',
                   thresholdMax: 800,
-                  thresholdMin: 50
+                  thresholdMin: 10
                },
                marketing: {
                   name: 'Marketing Consents',
                   format: '{0} %',
                   thousandSeparator: '.',
                   thresholdMax: 800,
-                  thresholdMin: 50
+                  thresholdMin: 10
                }
               },
               applyData: 'total',
               values: mapCountries,
             },
-            initialZoom: 1.1,
+            initialZoom: 1.15,
           });
       }, [data])
    }
