@@ -31,57 +31,60 @@ export default function Map(props) {
 
       const mapCountries = Object.assign({}, ...newArray);
 
-      new svgMap({
-         targetElementID: 'svgMap',
-         data: {
-           data: {
-            total: {
-               name: 'Total Interactions',
-               format: '{0}',
-               thousandSeparator: '.',
-               thresholdMax: 5000,
-               thresholdMin: 1000
-            },
-            accepted: {
-               name: 'Accepted Consents',
-               format: '{0} %',
-               thousandSeparator: '.',
-               thresholdMax: 50000,
-               thresholdMin: 1000
-            },
-            rejected: {
-               name: 'Rejected Consents',
-               format: '{0} %',
-               thousandSeparator: '.',
-               thresholdMax: 50000,
-               thresholdMin: 1000
-            },
-            functional: {
-               name: 'Functional Consents',
-               format: '{0} %',
-               thousandSeparator: '.',
-               thresholdMax: 50000,
-               thresholdMin: 1000
-            },
-            statistics: {
-               name: 'Statistics Consents',
-               format: '{0} %',
-               thousandSeparator: '.',
-               thresholdMax: 50000,
-               thresholdMin: 1000
-            },
-            marketing: {
-               name: 'Marketing Consents',
-               format: '{0} %',
-               thousandSeparator: '.',
-               thresholdMax: 50000,
-               thresholdMin: 1000
+      useEffect(() => {
+         document.getElementById("svgMap").innerHTML = "";
+         new svgMap({
+            targetElementID: 'svgMap',
+            data: {
+              data: {
+               total: {
+                  name: 'Total Interactions',
+                  format: '{0}',
+                  thousandSeparator: '.',
+                  thresholdMax: 5000,
+                  thresholdMin: 1000
+               },
+               accepted: {
+                  name: 'Accepted Consents',
+                  format: '{0} %',
+                  thousandSeparator: '.',
+                  thresholdMax: 50000,
+                  thresholdMin: 1000
+               },
+               rejected: {
+                  name: 'Rejected Consents',
+                  format: '{0} %',
+                  thousandSeparator: '.',
+                  thresholdMax: 50000,
+                  thresholdMin: 1000
+               },
+               functional: {
+                  name: 'Functional Consents',
+                  format: '{0} %',
+                  thousandSeparator: '.',
+                  thresholdMax: 50000,
+                  thresholdMin: 1000
+               },
+               statistics: {
+                  name: 'Statistics Consents',
+                  format: '{0} %',
+                  thousandSeparator: '.',
+                  thresholdMax: 50000,
+                  thresholdMin: 1000
+               },
+               marketing: {
+                  name: 'Marketing Consents',
+                  format: '{0} %',
+                  thousandSeparator: '.',
+                  thresholdMax: 50000,
+                  thresholdMin: 1000
+               }
+              },
+              applyData: 'total',
+              values: mapCountries,
             }
-           },
-           applyData: 'total',
-           values: mapCountries,
-         }
-       });
+          });
+      }, [data])
    }
    
    return (
