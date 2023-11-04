@@ -546,6 +546,15 @@ const API = {
         "Organisation": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getOrganisation(),
         "Content-Type": "application/json"
       }
+    },
+    getCookies: {
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/cookiesAPI.php"),
+      method: "GET",
+      headers: {
+        "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
+        "Organisation": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getOrganisation(),
+        "Content-Type": "application/json"
+      }
     }
   },
   ferry: {

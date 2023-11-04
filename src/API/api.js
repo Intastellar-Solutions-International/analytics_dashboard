@@ -53,6 +53,15 @@ const API = {
                 "Organisation": Authentication.getOrganisation(),
                 "Content-Type": "application/json"
             }
+        },
+        getCookies: {
+            url: `${PrimaryHost}/analytics/gdpr/cookiesAPI.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
+            }
         }
     },
     ferry: {
