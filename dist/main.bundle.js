@@ -2016,35 +2016,70 @@ function Map(props) {
   if (countries != null) {
     const newArray = countries.map((country, key) => {
       if (country.country != "Unknown") {
+        /* console.log(country); */
         const name = country.country;
         const code = countrieCodes.getAlpha2Code(name, "en");
         return {
           [code]: {
+            total: country.num.total,
             accepted: country.accepted,
             rejected: country.declined,
-            total: country.total,
             functional: country.functional,
-            statistics: country.statistics,
+            statistics: country.statics,
             marketing: country.marketing
           }
         };
       }
     });
-    console.log(newArray);
     const mapCountries = Object.assign({}, ...newArray);
     new svgMap({
       targetElementID: 'svgMap',
       data: {
         data: {
-          gdp: {
-            name: 'GDP per capita',
-            format: '{0} USD',
+          total: {
+            name: 'Total Interactions',
+            format: '{0}',
+            thousandSeparator: ',',
+            thresholdMax: 50000,
+            thresholdMin: 1000
+          },
+          accepted: {
+            name: 'Accepted Consents',
+            format: '{0} %',
+            thousandSeparator: ',',
+            thresholdMax: 50000,
+            thresholdMin: 1000
+          },
+          rejected: {
+            name: 'Rejected Consents',
+            format: '{0} %',
+            thousandSeparator: ',',
+            thresholdMax: 50000,
+            thresholdMin: 1000
+          },
+          functional: {
+            name: 'Functional Consents',
+            format: '{0} %',
+            thousandSeparator: ',',
+            thresholdMax: 50000,
+            thresholdMin: 1000
+          },
+          statistics: {
+            name: 'Statistics Consents',
+            format: '{0} %',
+            thousandSeparator: ',',
+            thresholdMax: 50000,
+            thresholdMin: 1000
+          },
+          marketing: {
+            name: 'Marketing Consents',
+            format: '{0} %',
             thousandSeparator: ',',
             thresholdMax: 50000,
             thresholdMin: 1000
           }
         },
-        applyData: 'gdp',
+        applyData: 'accepted',
         values: mapCountries
       }
     });
