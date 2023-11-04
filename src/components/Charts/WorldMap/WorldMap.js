@@ -11,32 +11,39 @@ export default function Map(props) {
 
    if(countries != null){
       
-      countries.map((country, key) => {
+      const newArray = countries.map((country, key) => {
          if(country.country != "Unknown"){
             const name = country.country;
-            console.log(countrieCodes.getAlpha2Codes(name));
-            const countryObj = {};
-            countryObj[countrieCodes.getAlpha2Codes(name)] = {
-               accepted: country.accepted
+            const code = countrieCodes.getAlpha2Code(name, "en");
+            return {
+               [code]: {
+                  accepted: country.accepted,
+                  rejected: country.declined,
+                  total: country.total,
+                  functional: country.functional,
+                  statistics: country.statistics,
+                  marketing: country.marketing
+               }
             }
          }
       });
+      console.log(newArray);
+      const mapCountries = Object.assign({}, ...newArray);
 
-   
       new svgMap({
          targetElementID: 'svgMap',
          data: {
            data: {
-             gdp: {
+            gdp: {
                name: 'GDP per capita',
                format: '{0} USD',
                thousandSeparator: ',',
                thresholdMax: 50000,
                thresholdMin: 1000
-             }
+            }
            },
            applyData: 'gdp',
-           values: countries
+           values: mapCountries
          }
        });
    }
