@@ -1255,8 +1255,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Map)
 /* harmony export */ });
 /* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Style.css */ "./src/Components/Charts/WorldMap/Style.css");
-Object(function webpackMissingModule() { var e = new Error("Cannot find module 'i18next'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-
+/* harmony import */ var _countryCodes_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./countryCodes.js */ "./src/Components/Charts/WorldMap/countryCodes.js");
 
 const {
   useState,
@@ -1266,11 +1265,6 @@ const {
 } = React;
 const svgMap = window.svgMap;
 
-var countrieCodes = __webpack_require__(/*! i18n-iso-countries */ "i18n-iso-countries"); // in a browser environment: countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
-
-
-countrieCodes.registerLocale(__webpack_require__(/*! i18n-iso-countries/langs/en.json */ "./node_modules/i18n-iso-countries/langs/en.json"));
-countrieCodes.registerLocale(__webpack_require__(/*! i18n-iso-countries/langs/fr.json */ "./node_modules/i18n-iso-countries/langs/fr.json"));
 function Map(props) {
   const data = props.data;
   const countries = data.Countries;
@@ -1280,7 +1274,7 @@ function Map(props) {
       if (country.country != "Unknown") {
         /* console.log(country); */
         const name = country.country;
-        const code = countrieCodes.getAlpha2Code(name, "en");
+        const code = _countryCodes_js__WEBPACK_IMPORTED_MODULE_1__["default"][name];
         return {
           [code]: {
             total: country.num.total,
@@ -1361,6 +1355,268 @@ function Map(props) {
     }
   }));
 }
+
+/***/ }),
+
+/***/ "./src/Components/Charts/WorldMap/countryCodes.js":
+/*!********************************************************!*\
+  !*** ./src/Components/Charts/WorldMap/countryCodes.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const countryCodes = {
+  "Afghanistan": "AF",
+  "Aland Islands": "AX",
+  "Albania": "AL",
+  "Algeria": "DZ",
+  "American Samoa": "AS",
+  "Andorra": "AD",
+  "Angola": "AO",
+  "Anguilla": "AI",
+  "Antarctica": "AQ",
+  "Antigua And Barbuda": "AG",
+  "Argentina": "AR",
+  "Armenia": "AM",
+  "Aruba": "AW",
+  "Australia": "AU",
+  "Austria": "AT",
+  "Azerbaijan": "AZ",
+  "Bahamas": "BS",
+  "Bahrain": "BH",
+  "Bangladesh": "BD",
+  "Barbados": "BB",
+  "Belarus": "BY",
+  "Belgium": "BE",
+  "Belize": "BZ",
+  "Benin": "BJ",
+  "Bermuda": "BM",
+  "Bhutan": "BT",
+  "Bolivia": "BO",
+  "Bosnia And Herzegovina": "BA",
+  "Botswana": "BW",
+  "Bouvet Island": "BV",
+  "Brazil": "BR",
+  "British Indian Ocean Territory": "IO",
+  "Brunei Darussalam": "BN",
+  "Bulgaria": "BG",
+  "Burkina Faso": "BF",
+  "Burundi": "BI",
+  "Cambodia": "KH",
+  "Cameroon": "CM",
+  "Canada": "CA",
+  "Cape Verde": "CV",
+  "Cayman Islands": "KY",
+  "Central African Republic": "CF",
+  "Chad": "TD",
+  "Chile": "CL",
+  "China": "CN",
+  "Christmas Island": "CX",
+  "Cocos (Keeling) Islands": "CC",
+  "Colombia": "CO",
+  "Comoros": "KM",
+  "Congo": "CG",
+  "Congo, Democratic Republic": "CD",
+  "Cook Islands": "CK",
+  "Costa Rica": "CR",
+  "Cote D'Ivoire": "CI",
+  "Croatia": "HR",
+  "Cuba": "CU",
+  "Cyprus": "CY",
+  "Czech Republic": "CZ",
+  "Denmark": "DK",
+  "Djibouti": "DJ",
+  "Dominica": "DM",
+  "Dominican Republic": "DO",
+  "Ecuador": "EC",
+  "Egypt": "EG",
+  "El Salvador": "SV",
+  "Equatorial Guinea": "GQ",
+  "Eritrea": "ER",
+  "Estonia": "EE",
+  "Ethiopia": "ET",
+  "Falkland Islands (Malvinas)": "FK",
+  "Faroe Islands": "FO",
+  "Fiji": "FJ",
+  "Finland": "FI",
+  "France": "FR",
+  "French Guiana": "GF",
+  "French Polynesia": "PF",
+  "French Southern Territories": "TF",
+  "Gabon": "GA",
+  "Gambia": "GM",
+  "Georgia": "GE",
+  "Germany": "DE",
+  "Ghana": "GH",
+  "Gibraltar": "GI",
+  "Greece": "GR",
+  "Greenland": "GL",
+  "Grenada": "GD",
+  "Guadeloupe": "GP",
+  "Guam": "GU",
+  "Guatemala": "GT",
+  "Guernsey": "GG",
+  "Guinea": "GN",
+  "Guinea-Bissau": "GW",
+  "Guyana": "GY",
+  "Haiti": "HT",
+  "Heard Island & Mcdonald Islands": "HM",
+  "Holy See (Vatican City State)": "VA",
+  "Honduras": "HN",
+  "Hong Kong": "HK",
+  "Hungary": "HU",
+  "Iceland": "IS",
+  "India": "IN",
+  "Indonesia": "ID",
+  "Iran, Islamic Republic Of": "IR",
+  "Iraq": "IQ",
+  "Ireland": "IE",
+  "Isle Of Man": "IM",
+  "Israel": "IL",
+  "Italy": "IT",
+  "Jamaica": "JM",
+  "Japan": "JP",
+  "Jersey": "JE",
+  "Jordan": "JO",
+  "Kazakhstan": "KZ",
+  "Kenya": "KE",
+  "Kiribati": "KI",
+  "Korea": "KR",
+  "North Korea": "KP",
+  "Kuwait": "KW",
+  "Kyrgyzstan": "KG",
+  "Lao People's Democratic Republic": "LA",
+  "Latvia": "LV",
+  "Lebanon": "LB",
+  "Lesotho": "LS",
+  "Liberia": "LR",
+  "Libyan Arab Jamahiriya": "LY",
+  "Liechtenstein": "LI",
+  "Lithuania": "LT",
+  "Luxembourg": "LU",
+  "Macao": "MO",
+  "Macedonia": "MK",
+  "Madagascar": "MG",
+  "Malawi": "MW",
+  "Malaysia": "MY",
+  "Maldives": "MV",
+  "Mali": "ML",
+  "Malta": "MT",
+  "Marshall Islands": "MH",
+  "Martinique": "MQ",
+  "Mauritania": "MR",
+  "Mauritius": "MU",
+  "Mayotte": "YT",
+  "Mexico": "MX",
+  "Micronesia, Federated States Of": "FM",
+  "Moldova": "MD",
+  "Monaco": "MC",
+  "Mongolia": "MN",
+  "Montenegro": "ME",
+  "Montserrat": "MS",
+  "Morocco": "MA",
+  "Mozambique": "MZ",
+  "Myanmar": "MM",
+  "Namibia": "NA",
+  "Nauru": "NR",
+  "Nepal": "NP",
+  "Netherlands": "NL",
+  "Netherlands Antilles": "AN",
+  "New Caledonia": "NC",
+  "New Zealand": "NZ",
+  "Nicaragua": "NI",
+  "Niger": "NE",
+  "Nigeria": "NG",
+  "Niue": "NU",
+  "Norfolk Island": "NF",
+  "Northern Mariana Islands": "MP",
+  "Norway": "NO",
+  "Oman": "OM",
+  "Pakistan": "PK",
+  "Palau": "PW",
+  "Palestinian Territory, Occupied": "PS",
+  "Panama": "PA",
+  "Papua New Guinea": "PG",
+  "Paraguay": "PY",
+  "Peru": "PE",
+  "Philippines": "PH",
+  "Pitcairn": "PN",
+  "Poland": "PL",
+  "Portugal": "PT",
+  "Puerto Rico": "PR",
+  "Qatar": "QA",
+  "Reunion": "RE",
+  "Romania": "RO",
+  "Russian Federation": "RU",
+  "Rwanda": "RW",
+  "Saint Barthelemy": "BL",
+  "Saint Helena": "SH",
+  "Saint Kitts And Nevis": "KN",
+  "Saint Lucia": "LC",
+  "Saint Martin": "MF",
+  "Saint Pierre And Miquelon": "PM",
+  "Saint Vincent And Grenadines": "VC",
+  "Samoa": "WS",
+  "San Marino": "SM",
+  "Sao Tome And Principe": "ST",
+  "Saudi Arabia": "SA",
+  "Senegal": "SN",
+  "Serbia": "RS",
+  "Seychelles": "SC",
+  "Sierra Leone": "SL",
+  "Singapore": "SG",
+  "Slovakia": "SK",
+  "Slovenia": "SI",
+  "Solomon Islands": "SB",
+  "Somalia": "SO",
+  "South Africa": "ZA",
+  "South Georgia And Sandwich Islands": "GS",
+  "Spain": "ES",
+  "Sri Lanka": "LK",
+  "Sudan": "SD",
+  "Suriname": "SR",
+  "Svalbard And Jan Mayen": "SJ",
+  "Swaziland": "SZ",
+  "Sweden": "SE",
+  "Switzerland": "CH",
+  "Syrian Arab Republic": "SY",
+  "Taiwan": "TW",
+  "Tajikistan": "TJ",
+  "Tanzania": "TZ",
+  "Thailand": "TH",
+  "Timor-Leste": "TL",
+  "Togo": "TG",
+  "Tokelau": "TK",
+  "Tonga": "TO",
+  "Trinidad And Tobago": "TT",
+  "Tunisia": "TN",
+  "Turkey": "TR",
+  "Turkmenistan": "TM",
+  "Turks And Caicos Islands": "TC",
+  "Tuvalu": "TV",
+  "Uganda": "UG",
+  "Ukraine": "UA",
+  "United Arab Emirates": "AE",
+  "United Kingdom": "GB",
+  "United States": "US",
+  "United States Outlying Islands": "UM",
+  "Uruguay": "UY",
+  "Uzbekistan": "UZ",
+  "Vanuatu": "VU",
+  "Venezuela": "VE",
+  "Vietnam": "VN",
+  "Virgin Islands, British": "VG",
+  "Virgin Islands, U.S.": "VI",
+  "Wallis And Futuna": "WF",
+  "Western Sahara": "EH",
+  "Yemen": "YE",
+  "Zambia": "ZM",
+  "Zimbabwe": "ZW"
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (countryCodes);
 
 /***/ }),
 
@@ -6770,16 +7026,6 @@ module.exports = __webpack_require__.p + "75b7b5582fda92e18d8c.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "e3b535deb7cea6e95472.svg";
-
-/***/ }),
-
-/***/ "i18n-iso-countries":
-/*!*************************************!*\
-  !*** external "i18n-iso-countries" ***!
-  \*************************************/
-/***/ ((module) => {
-
-module.exports = i18n-iso-countries;
 
 /***/ }),
 
@@ -21795,26 +22041,6 @@ function styleChanged(style, prevStyle) {
 
 //# sourceMappingURL=helpers.segment.js.map
 
-
-/***/ }),
-
-/***/ "./node_modules/i18n-iso-countries/langs/en.json":
-/*!*******************************************************!*\
-  !*** ./node_modules/i18n-iso-countries/langs/en.json ***!
-  \*******************************************************/
-/***/ ((module) => {
-
-module.exports = JSON.parse('{"locale":"en","countries":{"AF":"Afghanistan","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","BN":"Brunei Darussalam","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","KH":"Cambodia","CM":"Cameroon","CA":"Canada","CV":"Cape Verde","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":["People\'s Republic of China","China"],"CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":["Republic of the Congo","Congo"],"CD":["Democratic Republic of the Congo","Congo"],"CK":"Cook Islands","CR":"Costa Rica","CI":["Cote D\'Ivoire","Ivory Coast"],"HR":"Croatia","CU":"Cuba","CY":"Cyprus","CZ":["Czech Republic","Czechia"],"DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands (Malvinas)","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern Territories","GA":"Gabon","GM":["Republic of The Gambia","The Gambia","Gambia"],"GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and McDonald Islands","VA":"Holy See (Vatican City State)","HN":"Honduras","HK":"Hong Kong","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":["Islamic Republic of Iran","Iran"],"IQ":"Iraq","IE":"Ireland","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KP":"North Korea","KR":["South Korea","Korea, Republic of","Republic of Korea"],"KW":"Kuwait","KG":"Kyrgyzstan","LA":"Lao People\'s Democratic Republic","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia, Federated States of","MD":"Moldova, Republic of","MC":"Monaco","MN":"Mongolia","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","MK":["The Republic of North Macedonia","North Macedonia"],"MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":["State of Palestine","Palestine"],"PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Reunion","RO":"Romania","RU":["Russian Federation","Russia"],"RW":"Rwanda","SH":"Saint Helena","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and the Grenadines","WS":"Samoa","SM":"San Marino","ST":"Sao Tome and Principe","SA":"Saudi Arabia","SN":"Senegal","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and the South Sandwich Islands","ES":"Spain","LK":"Sri Lanka","SD":"Sudan","SR":"Suriname","SJ":"Svalbard and Jan Mayen","SZ":"Eswatini","SE":"Sweden","CH":"Switzerland","SY":"Syrian Arab Republic","TW":["Taiwan, Province of China","Taiwan"],"TJ":"Tajikistan","TZ":["United Republic of Tanzania","Tanzania"],"TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":["Türkiye","Turkey"],"TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":["United Kingdom","UK","Great Britain"],"US":["United States of America","United States","USA"],"UM":"United States Minor Outlying Islands","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VE":"Venezuela","VN":"Vietnam","VG":"Virgin Islands, British","VI":"Virgin Islands, U.S.","WF":"Wallis and Futuna","EH":"Western Sahara","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe","AX":"Åland Islands","BQ":"Bonaire, Sint Eustatius and Saba","CW":"Curaçao","GG":"Guernsey","IM":"Isle of Man","JE":"Jersey","ME":"Montenegro","BL":"Saint Barthélemy","MF":"Saint Martin (French part)","RS":"Serbia","SX":"Sint Maarten (Dutch part)","SS":"South Sudan","XK":"Kosovo"}}');
-
-/***/ }),
-
-/***/ "./node_modules/i18n-iso-countries/langs/fr.json":
-/*!*******************************************************!*\
-  !*** ./node_modules/i18n-iso-countries/langs/fr.json ***!
-  \*******************************************************/
-/***/ ((module) => {
-
-module.exports = JSON.parse('{"locale":"fr","countries":{"AF":"Afghanistan","AL":"Albanie","DZ":"Algérie","AS":"Samoa américaines","AD":"Andorre","AO":"Angola","AI":"Anguilla","AQ":"Antarctique","AG":"Antigua-et-Barbuda","AR":"Argentine","AM":"Arménie","AW":"Aruba","AU":"Australie","AT":"Autriche","AZ":"Azerbaïdjan","BS":"Bahamas","BH":"Bahreïn","BD":"Bangladesh","BB":"Barbade","BY":"Biélorussie","BE":"Belgique","BZ":"Belize","BJ":"Bénin","BM":"Bermudes","BT":"Bhoutan","BO":"Bolivie","BA":"Bosnie-Herzégovine","BW":"Botswana","BV":"Île Bouvet","BR":"Brésil","IO":"Océan Indien Britannique","BN":"Brunei Darussalam","BG":"Bulgarie","BF":"Burkina Faso","BI":"Burundi","KH":"Cambodge","CM":"Cameroun","CA":"Canada","CV":"Cap-Vert","KY":"Îles Caïmans","CF":"République Centrafricaine","TD":"Tchad","CL":"Chili","CN":"Chine","CX":"Île Christmas","CC":"Îles Cocos","CO":"Colombie","KM":"Comores","CG":"République du Congo","CD":"République démocratique du Congo","CK":"Îles Cook","CR":"Costa Rica","CI":"Côte-d\'Ivoire","HR":"Croatie","CU":"Cuba","CY":"Chypre","CZ":"République Tchèque","DK":"Danemark","DJ":"Djibouti","DM":"Dominique","DO":"République Dominicaine","EC":"Équateur","EG":"Égypte","SV":"El Salvador","GQ":"Guinée équatoriale","ER":"Érythrée","EE":"Estonie","ET":"Éthiopie","FK":"Îles Malouines","FO":"Îles Féroé","FJ":"Fidji","FI":"Finlande","FR":"France","GF":"Guyane française","PF":"Polynésie française","TF":"Terres australes françaises","GA":"Gabon","GM":"Gambie","GE":"Géorgie","DE":"Allemagne","GH":"Ghana","GI":"Gibraltar","GR":"Grèce","GL":"Groenland","GD":"Grenade","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GN":"Guinée","GW":"Guinée-Bissau","GY":"Guyana","HT":"Haïti","HM":"Îles Heard-et-MacDonald","VA":"Saint-Siège (Vatican)","HN":"Honduras","HK":"Hong Kong","HU":"Hongrie","IS":"Islande","IN":"Inde","ID":"Indonésie","IR":"Iran","IQ":"Irak","IE":"Irlande","IL":"Israël","IT":"Italie","JM":"Jamaïque","JP":"Japon","JO":"Jordanie","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KP":"Corée du Nord","KR":"Corée du Sud","KW":"Koweït","KG":"Kirghizistan","LA":"Laos","LV":"Lettonie","LB":"Liban","LS":"Lesotho","LR":"Libéria","LY":"Libye","LI":"Liechtenstein","LT":"Lituanie","LU":"Luxembourg","MO":"Macao","MK":"Macédoine du Nord","MG":"Madagascar","MW":"Malawi","MY":"Malaisie","MV":"Maldives","ML":"Mali","MT":"Malte","MH":"Îles Marshall","MQ":"Martinique","MR":"Mauritanie","MU":"Maurice","YT":"Mayotte","MX":"Mexique","FM":"Micronésie","MD":"Moldavie","MC":"Monaco","MN":"Mongolie","MS":"Montserrat","MA":"Maroc","MZ":"Mozambique","MM":"Myanmar","NA":"Namibie","NR":"Nauru","NP":"Népal","NL":"Pays-Bas","NC":"Nouvelle-Calédonie","NZ":"Nouvelle-Zélande","NI":"Nicaragua","NE":"Niger","NG":"Nigéria","NU":"Niué","NF":"Île Norfolk","MP":"Îles Mariannes du Nord","NO":"Norvège","OM":"Oman","PK":"Pakistan","PW":"Palaos","PS":"Palestine","PA":"Panama","PG":"Papouasie-Nouvelle-Guinée","PY":"Paraguay","PE":"Pérou","PH":"Philippines","PN":"Îles Pitcairn","PL":"Pologne","PT":"Portugal","PR":"Porto Rico","QA":"Qatar","RE":"Réunion","RO":"Roumanie","RU":"Russie","RW":"Rwanda","SH":"Sainte-Hélène","KN":"Saint-Christophe-et-Niévès","LC":"Sainte-Lucie","PM":"Saint-Pierre-et-Miquelon","VC":"Saint-Vincent-et-les-Grenadines","WS":"Samoa","SM":"Saint-Marin","ST":"São Tomé-et-Principe","SA":"Arabie Saoudite","SN":"Sénégal","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapour","SK":"Slovaquie","SI":"Slovénie","SB":"Îles Salomon","SO":"Somalie","ZA":"Afrique du Sud","GS":"Géorgie du Sud-et-les Îles Sandwich du Sud","ES":"Espagne","LK":"Sri Lanka","SD":"Soudan","SR":"Suriname","SJ":"Svalbard et Île Jan Mayen","SZ":"Royaume d\'Eswatini","SE":"Suède","CH":"Suisse","SY":"Syrie","TW":"Taïwan","TJ":"Tadjikistan","TZ":"République unie de Tanzanie","TH":"Thaïlande","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinité-et-Tobago","TN":"Tunisie","TR":"Turquie","TM":"Turkménistan","TC":"Îles Turques-et-Caïques","TV":"Tuvalu","UG":"Ouganda","UA":"Ukraine","AE":"Émirats Arabes Unis","GB":"Royaume-Uni","US":"États-Unis d\'Amérique","UM":"Îles mineures éloignées des États-Unis","UY":"Uruguay","UZ":"Ouzbékistan","VU":"Vanuatu","VE":"Venezuela","VN":"Vietnam","VG":"Îles vierges britanniques","VI":"Îles vierges américaines","WF":"Wallis-et-Futuna","EH":"Sahara occidental","YE":"Yémen","ZM":"Zambie","ZW":"Zimbabwe","AX":"Åland","BQ":"Bonaire, Saint-Eustache et Saba","CW":"Curaçao","GG":"Guernesey","IM":"Île de Man","JE":"Jersey","ME":"Monténégro","BL":"Saint-Barthélemy","MF":"Saint-Martin (partie française)","RS":"Serbie","SX":"Saint-Martin (partie néerlandaise)","SS":"Soudan du Sud","XK":"Kosovo"}}');
 
 /***/ })
 

@@ -1,11 +1,7 @@
 import "./Style.css";
-import i18n from "i18next";
 const { useState, useEffect, useRef, createContext } = React;
 const svgMap = window.svgMap;
-var countrieCodes = require("i18n-iso-countries");
-// in a browser environment: countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
-countrieCodes.registerLocale(require("i18n-iso-countries/langs/en.json"));
-countrieCodes.registerLocale(require("i18n-iso-countries/langs/fr.json"));
+import countryCodes from "./countryCodes.js";
 export default function Map(props) {
    const data = props.data;
    const countries = data.Countries;
@@ -16,7 +12,7 @@ export default function Map(props) {
          if(country.country != "Unknown"){
             /* console.log(country); */
             const name = country.country;
-            const code = countrieCodes.getAlpha2Code(name, "en");
+            const code = countryCodes[name];
             return {
                [code]: {
                   total: country.num.total,
