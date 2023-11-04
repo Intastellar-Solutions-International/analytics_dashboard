@@ -98,7 +98,7 @@ export default function Dashboard(props){
                 </div>
                 <div>
                     {
-                        (loading) ? <Loading /> : <Line data={activeData?.number_per_day} />
+                        (loading) ? <Loading /> : <Line data={activeData?.dailyNum} />
                     }
                 </div>
                 <div className="grid-container grid-3">

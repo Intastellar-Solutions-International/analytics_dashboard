@@ -3959,7 +3959,7 @@ function Dashboard(props) {
       Countries: activeData === null || activeData === void 0 ? void 0 : activeData.Countries
     }
   }))))), /*#__PURE__*/React.createElement("div", null, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_Charts_Line__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    data: activeData === null || activeData === void 0 ? void 0 : activeData.number_per_day
+    data: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum
   })), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
