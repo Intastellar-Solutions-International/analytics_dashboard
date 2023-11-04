@@ -1258,6 +1258,51 @@ function Button(props) {
 
 /***/ }),
 
+/***/ "./src/Components/Charts/Line/index.js":
+/*!*********************************************!*\
+  !*** ./src/Components/Charts/Line/index.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Line)
+/* harmony export */ });
+function Line(_ref) {
+  let {
+    data
+  } = _ref;
+  console.log(data);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "line-chart"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "chart"
+  }, /*#__PURE__*/React.createElement("div", {
+    id: "my-chart"
+  }, /*#__PURE__*/React.createElement("table", {
+    className: "charts-css line"
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", {
+    scope: "col"
+  }, "Day"), /*#__PURE__*/React.createElement("th", {
+    scope: "col"
+  }, "Amount"))), /*#__PURE__*/React.createElement("tbody", null, data === null || data === void 0 ? void 0 : data.map((item, index) => {
+    return /*#__PURE__*/React.createElement("tr", {
+      key: index
+    }, /*#__PURE__*/React.createElement("td", null, item.date), /*#__PURE__*/React.createElement("td", {
+      style: {
+        "--start": 0.2,
+        "--end": item.num
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "data"
+    }, item.num)));
+  }))), /*#__PURE__*/React.createElement("ul", {
+    className: "charts-css legend"
+  })))));
+}
+
+/***/ }),
+
 /***/ "./src/Components/Charts/WorldMap/WorldMap.js":
 /*!****************************************************!*\
   !*** ./src/Components/Charts/WorldMap/WorldMap.js ***!
@@ -3778,7 +3823,7 @@ function CookiesDashboard() {
     return /*#__PURE__*/React.createElement("div", {
       className: "cookie",
       key: index
-    }, /*#__PURE__*/React.createElement("h3", null, cookie.cookiename), /*#__PURE__*/React.createElement("p", null, cookie.domain));
+    }, console.log(cookie.cookiename), /*#__PURE__*/React.createElement("p", null, cookie.domain));
   })) : null : /*#__PURE__*/React.createElement("div", {
     className: "loading"
   })));
@@ -3806,6 +3851,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
 /* harmony import */ var _Components_Crawler__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Components/Crawler */ "./src/Components/Crawler/index.js");
 /* harmony import */ var _Components_Filter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Filter */ "./src/Components/Filter/index.js");
+/* harmony import */ var _Components_Charts_Line__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Components/Charts/Line */ "./src/Components/Charts/Line/index.js");
 const {
   useState,
   useEffect,
@@ -3821,6 +3867,7 @@ const {
 
 
 const useParams = window.ReactRouterDOM.useParams;
+
 
 
 function Dashboard(props) {
@@ -3911,7 +3958,9 @@ function Dashboard(props) {
     data: {
       Countries: activeData === null || activeData === void 0 ? void 0 : activeData.Countries
     }
-  }))))), /*#__PURE__*/React.createElement("div", {
+  }))))), /*#__PURE__*/React.createElement("div", null, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_Charts_Line__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    data: activeData === null || activeData === void 0 ? void 0 : activeData.number_per_day
+  })), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Accepted.toLocaleString("de-DE")) + "%",

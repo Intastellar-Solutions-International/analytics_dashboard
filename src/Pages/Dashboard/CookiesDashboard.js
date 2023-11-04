@@ -28,7 +28,10 @@ export default function CookiesDashboard() {
                             data.data.map((cookie, index) => {
                                 return (
                                     <div className="cookie" key={index}>
-                                        <h3>{cookie.cookiename}</h3>
+                                        {
+                                            console.log(cookie.cookiename)
+                                            
+                                        }
                                         <p>{cookie.domain}</p>
                                     </div>
                                 )

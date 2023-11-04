@@ -11,6 +11,7 @@ import { DomainContext, OrganisationContext } from "../../App.js";
 const useParams = window.ReactRouterDOM.useParams;
 import Crawler from "../../Components/Crawler";
 import Filter from "../../Components/Filter";
+import Line from "../../Components/Charts/Line";
 
 export default function Dashboard(props){
     document.title = "Home | Intastellar Analytics";
@@ -94,6 +95,11 @@ export default function Dashboard(props){
                         </div>
                     </>}
                     </div>
+                </div>
+                <div>
+                    {
+                        (loading) ? <Loading /> : <Line data={activeData?.number_per_day} />
+                    }
                 </div>
                 <div className="grid-container grid-3">
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}
