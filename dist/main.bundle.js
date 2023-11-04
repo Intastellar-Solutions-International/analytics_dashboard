@@ -1255,6 +1255,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Map)
 /* harmony export */ });
 /* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Style.css */ "./src/Components/Charts/WorldMap/Style.css");
+Object(function webpackMissingModule() { var e = new Error("Cannot find module 'i18next'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+
 
 const {
   useState,

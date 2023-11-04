@@ -12,6 +12,7 @@ const config = {
     clean: true,
     publicPath: "/"
   },
+  
   externals: {
     "i18n-iso-countries": "i18n-iso-countries",
   },

@@ -1,4 +1,5 @@
 import "./Style.css";
+import i18n from "i18next";
 const { useState, useEffect, useRef, createContext } = React;
 const svgMap = window.svgMap;
 var countrieCodes = require("i18n-iso-countries");
