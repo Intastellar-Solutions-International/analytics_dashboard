@@ -10,6 +10,7 @@ import Header from "./Components/Header/header";
 import Login from "./Login/Login";
 import Signup from "./Login/Signup";
 import Nav from "./Components/Header/Nav";
+import CookiesDashboard from "./Pages/Dashboard/CookiesDashboard";
 import API from "./API/api";
 import useFetch from "./Functions/FetchHook";
 import Dashboard from "./Pages/Dashboard/Dashboard.js";
@@ -160,6 +161,11 @@ export default function App() {
                                     <Route path='/:id/view/:handle'>
                                         <ErrorBoundary>
                                             {domainError ? <AddDomain /> : <DomainDashbord setHandle={setHandle} />}
+                                        </ErrorBoundary>
+                                    </Route>
+                                    <Route path="/:id/cookies" exact>
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <CookiesDashboard />}
                                         </ErrorBoundary>
                                     </Route>
                                     <Route path="/:id/reports" exact>

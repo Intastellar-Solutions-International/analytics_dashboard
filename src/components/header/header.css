@@ -241,6 +241,19 @@
     height: 20px;
 }
 
+.cookies{
+    content: "";
+    background:  url("icons/cookies.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
 .logout::after{
     content: "";
     background:  url("icons/Logout.svg");
