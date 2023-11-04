@@ -5,6 +5,13 @@
     gap: 20px;
 }
 
+.grid-2{
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
 .dashboard-content {
     width: 100%;
     max-width: 1280px;

@@ -5,13 +5,17 @@
     padding: 20px;
     position: relative;
     overflow: hidden;
-    /* min-height: 200px; */
+    min-height: 200px;
     margin: 20px 0px;
     color: rgb(197, 197, 197);
     text-align: center;
     backdrop-filter: saturate(180%) blur(20px);
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     text-decoration: none;
+}
+
+.no-padding{
+    padding: 0px;
 }
 
 /* .overviewTotal::before {

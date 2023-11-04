@@ -81,7 +81,19 @@ export default function Dashboard(props){
                 <div className="" style={{paddingTop: "40px"}}>
                     <h2>Data of user interaction</h2>
                     <Filter url={url} method={method} header={header} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
-                    {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} type="Total interactions" /> }
+                    <div className="grid-container grid-2">
+                    {(loading) ? <>
+                        <Loading />
+                        <Loading />
+                    </> : <>
+                        <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} type="Total interactions" />
+                        <div className={"widget no-padding"}>
+                            <Map  data={{
+                                Countries: activeData?.Countries
+                            }} />
+                        </div>
+                    </>}
+                    </div>
                 </div>
                 <div className="grid-container grid-3">
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}
@@ -92,37 +104,6 @@ export default function Dashboard(props){
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
                 </div>
-                <div>
-                    <section>
-                        {(loading) ? <Loading /> :
-                            <section>
-                                <h3>User interactions based on country</h3>
-                                <p>Updated: {getUpdated}</p>
-                                {
-                                    <Map data={{
-                                        Marketing: activeData?.Marketing.toLocaleString("de-DE"),
-                                        Functional: activeData?.Functional.toLocaleString("de-DE"),
-                                        Statistic: activeData?.Statics.toLocaleString("de-DE"),
-                                        Accepted: activeData?.Accepted.toLocaleString("de-DE"),
-                                        Declined: activeData?.Declined.toLocaleString("de-DE"),
-                                        Countries: activeData?.Countries
-                                    }} />
-                                }
-                            </section>
-                        }
-                    </section>
-                </div>
-                {/* <div className="grid-container grid-3 widget">
-                    {(!data) ? <Loading /> :
-                    <PieChart data={{
-                        Marketing: data.Marketing,
-                        Functional: data.Functional,
-                        Statistic: data.Statics,
-                        Accepted: data.Accepted,
-                        Declined: data.Declined
-                        }} />
-                    }
-                </div> */}
             </div>
         </>
     )

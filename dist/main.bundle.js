@@ -2039,47 +2039,47 @@ function Map(props) {
           total: {
             name: 'Total Interactions',
             format: '{0}',
-            thousandSeparator: ',',
-            thresholdMax: 50000,
+            thousandSeparator: '.',
+            thresholdMax: 5000,
             thresholdMin: 1000
           },
           accepted: {
             name: 'Accepted Consents',
             format: '{0} %',
-            thousandSeparator: ',',
+            thousandSeparator: '.',
             thresholdMax: 50000,
             thresholdMin: 1000
           },
           rejected: {
             name: 'Rejected Consents',
             format: '{0} %',
-            thousandSeparator: ',',
+            thousandSeparator: '.',
             thresholdMax: 50000,
             thresholdMin: 1000
           },
           functional: {
             name: 'Functional Consents',
             format: '{0} %',
-            thousandSeparator: ',',
+            thousandSeparator: '.',
             thresholdMax: 50000,
             thresholdMin: 1000
           },
           statistics: {
             name: 'Statistics Consents',
             format: '{0} %',
-            thousandSeparator: ',',
+            thousandSeparator: '.',
             thresholdMax: 50000,
             thresholdMin: 1000
           },
           marketing: {
             name: 'Marketing Consents',
             format: '{0} %',
-            thousandSeparator: ',',
+            thousandSeparator: '.',
             thresholdMax: 50000,
             thresholdMin: 1000
           }
         },
-        applyData: 'accepted',
+        applyData: 'total',
         values: mapCountries
       }
     });
@@ -4336,10 +4336,18 @@ function Dashboard(props) {
     toDate: toDate,
     setFromDate: setFromDate,
     setToDate: setToDate
-  }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "grid-container grid-2"
+  }, loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null), /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null)) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
     type: "Total interactions"
-  })), /*#__PURE__*/React.createElement("div", {
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "widget no-padding"
+  }, /*#__PURE__*/React.createElement(_Components_Charts_WorldMap_WorldMap_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    data: {
+      Countries: activeData === null || activeData === void 0 ? void 0 : activeData.Countries
+    }
+  }))))), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Accepted.toLocaleString("de-DE")) + "%",
@@ -4358,16 +4366,7 @@ function Dashboard(props) {
   }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Statics.toLocaleString("de-DE")) + "%",
     type: "Accepted only Statics"
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("section", null, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("h3", null, "User interactions based on country"), /*#__PURE__*/React.createElement("p", null, "Updated: ", getUpdated), /*#__PURE__*/React.createElement(_Components_Charts_WorldMap_WorldMap_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    data: {
-      Marketing: activeData === null || activeData === void 0 ? void 0 : activeData.Marketing.toLocaleString("de-DE"),
-      Functional: activeData === null || activeData === void 0 ? void 0 : activeData.Functional.toLocaleString("de-DE"),
-      Statistic: activeData === null || activeData === void 0 ? void 0 : activeData.Statics.toLocaleString("de-DE"),
-      Accepted: activeData === null || activeData === void 0 ? void 0 : activeData.Accepted.toLocaleString("de-DE"),
-      Declined: activeData === null || activeData === void 0 ? void 0 : activeData.Declined.toLocaleString("de-DE"),
-      Countries: activeData === null || activeData === void 0 ? void 0 : activeData.Countries
-    }
-  }))))));
+  }))));
 }
 
 /***/ }),
@@ -5598,7 +5597,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".widget{\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    background: radial-gradient(circle at top, rgb(101, 101, 101) -10%, rgb(48, 48, 48));\n    border-radius: 10px;\n    padding: 20px;\n    position: relative;\n    overflow: hidden;\n    /* min-height: 200px; */\n    margin: 20px 0px;\n    color: rgb(197, 197, 197);\n    text-align: center;\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    text-decoration: none;\n}\n\n/* .overviewTotal::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #c09f53;\n}\n\n.overviewDistribution::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #ddd29b;\n} */", "",{"version":3,"sources":["webpack://./src/Components/widget/Widget.css"],"names":[],"mappings":"AAAA;IACI,kFAAkF;IAClF,oFAAoF;IACpF,mBAAmB;IACnB,aAAa;IACb,kBAAkB;IAClB,gBAAgB;IAChB,uBAAuB;IACvB,gBAAgB;IAChB,yBAAyB;IACzB,kBAAkB;IAClB,0CAA0C;IAC1C,kDAAkD;IAClD,qBAAqB;AACzB;;AAEA;;;;;;;;;;;;;;;;;;GAkBG","sourcesContent":[".widget{\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    background: radial-gradient(circle at top, rgb(101, 101, 101) -10%, rgb(48, 48, 48));\n    border-radius: 10px;\n    padding: 20px;\n    position: relative;\n    overflow: hidden;\n    /* min-height: 200px; */\n    margin: 20px 0px;\n    color: rgb(197, 197, 197);\n    text-align: center;\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    text-decoration: none;\n}\n\n/* .overviewTotal::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #c09f53;\n}\n\n.overviewDistribution::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #ddd29b;\n} */"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".widget{\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    background: radial-gradient(circle at top, rgb(101, 101, 101) -10%, rgb(48, 48, 48));\n    border-radius: 10px;\n    padding: 20px;\n    position: relative;\n    overflow: hidden;\n    min-height: 200px;\n    margin: 20px 0px;\n    color: rgb(197, 197, 197);\n    text-align: center;\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    text-decoration: none;\n}\n\n.no-padding{\n    padding: 0px;\n}\n\n/* .overviewTotal::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #c09f53;\n}\n\n.overviewDistribution::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #ddd29b;\n} */", "",{"version":3,"sources":["webpack://./src/Components/widget/Widget.css"],"names":[],"mappings":"AAAA;IACI,kFAAkF;IAClF,oFAAoF;IACpF,mBAAmB;IACnB,aAAa;IACb,kBAAkB;IAClB,gBAAgB;IAChB,iBAAiB;IACjB,gBAAgB;IAChB,yBAAyB;IACzB,kBAAkB;IAClB,0CAA0C;IAC1C,kDAAkD;IAClD,qBAAqB;AACzB;;AAEA;IACI,YAAY;AAChB;;AAEA;;;;;;;;;;;;;;;;;;GAkBG","sourcesContent":[".widget{\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    background: radial-gradient(circle at top, rgb(101, 101, 101) -10%, rgb(48, 48, 48));\n    border-radius: 10px;\n    padding: 20px;\n    position: relative;\n    overflow: hidden;\n    min-height: 200px;\n    margin: 20px 0px;\n    color: rgb(197, 197, 197);\n    text-align: center;\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    text-decoration: none;\n}\n\n.no-padding{\n    padding: 0px;\n}\n\n/* .overviewTotal::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #c09f53;\n}\n\n.overviewDistribution::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #ddd29b;\n} */"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5679,7 +5678,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".grid-3{\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    max-width: 1280px;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain{\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user{\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content{\n        padding: 0 20px;\n    }\n    \n}", "",{"version":3,"sources":["webpack://./src/Pages/Dashboard/Style.css"],"names":[],"mappings":"AAAA;IACI,yDAAyD;IACzD,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,cAAc;IACd,eAAe;IACf,OAAO;AACX;;AAEA;IACI,gBAAgB;IAChB,qBAAqB;IACrB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI;QACI,eAAe;IACnB;;AAEJ","sourcesContent":[".grid-3{\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    max-width: 1280px;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain{\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user{\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content{\n        padding: 0 20px;\n    }\n    \n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".grid-3{\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.grid-2{\n    grid-template-columns: 1fr 1fr;\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    max-width: 1280px;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain{\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user{\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content{\n        padding: 0 20px;\n    }\n    \n}", "",{"version":3,"sources":["webpack://./src/Pages/Dashboard/Style.css"],"names":[],"mappings":"AAAA;IACI,yDAAyD;IACzD,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,8BAA8B;IAC9B,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,cAAc;IACd,eAAe;IACf,OAAO;AACX;;AAEA;IACI,gBAAgB;IAChB,qBAAqB;IACrB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI;QACI,eAAe;IACnB;;AAEJ","sourcesContent":[".grid-3{\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.grid-2{\n    grid-template-columns: 1fr 1fr;\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    max-width: 1280px;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain{\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user{\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content{\n        padding: 0 20px;\n    }\n    \n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
