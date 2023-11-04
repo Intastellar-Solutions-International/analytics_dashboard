@@ -96,11 +96,6 @@ export default function Dashboard(props){
                     </>}
                     </div>
                 </div>
-                <div>
-                    {
-                        (loading) ? <Loading /> : <Line data={activeData?.dailyNum} title="Daily Interactions" />
-                    }
-                </div>
                 <div className="grid-container grid-3">
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={ activeData?.Declined.toLocaleString("de-DE") + "%"} type="Declined cookies" /> }
@@ -109,6 +104,11 @@ export default function Dashboard(props){
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Marketing.toLocaleString("de-DE") + "%"} type="Accepted only Marketing" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
+                </div>
+                <div>
+                    {
+                        (loading) ? <Loading /> : <Line data={activeData?.dailyNum} title="Daily Interactions" />
+                    }
                 </div>
             </div>
         </>

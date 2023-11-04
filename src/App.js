@@ -7,6 +7,7 @@ const punycode = require("punycode");
 
 import "./App.css";
 import Header from "./Components/Header/header";
+import Footer from "./Components/Footer";
 import Login from "./Login/Login";
 import Signup from "./Login/Signup";
 import Nav from "./Components/Header/Nav";
@@ -206,6 +207,9 @@ export default function App() {
                                     <Redirect to="/login" />
                                 </Switch>
                             </div>
+                            <ErrorBoundary>
+                                <Footer />
+                            </ErrorBoundary>
                         </DomainContext.Provider>
                     </OrganisationContext.Provider>
                 </Router>
