@@ -2182,14 +2182,14 @@ function Nav() {
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Reports")), /*#__PURE__*/React.createElement(Link, {
-    className: "navItems" + (useLocation().pathname === "/domains" ? " --active" : ""),
+    className: "navItems" + (useLocation().pathname.indexOf("/domains") > -1 ? " --active" : ""),
     to: "/" + localStorage.getItem("platform") + "/domains"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons domains"
   }), " ", /*#__PURE__*/React.createElement("span", {
     className: "hiddenCollapsed"
   }, "Domains")), /*#__PURE__*/React.createElement(Link, {
-    className: "navItems" + (useLocation().pathname === "/domains" ? " --active" : ""),
+    className: "navItems" + (useLocation().pathname.indexOf("/cookies") > -1 ? " --active" : ""),
     to: "/" + localStorage.getItem("platform") + "/cookies"
   }, /*#__PURE__*/React.createElement("i", {
     className: "dashboard-icons cookies"
