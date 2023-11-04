@@ -2324,6 +2324,43 @@ const reportsLinks = [{
 
 /***/ }),
 
+/***/ "./src/Components/Header/Sticky/index.js":
+/*!***********************************************!*\
+  !*** ./src/Components/Header/Sticky/index.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ StickyPageTitle)
+/* harmony export */ });
+function StickyPageTitle(_ref) {
+  let {
+    title
+  } = _ref;
+  window.addEventListener("scroll", e => {
+    if (window.scrollY > 0) {
+      document.querySelector(".infoHeader").classList.add("sticky");
+    } else {
+      document.querySelector(".infoHeader").classList.remove("sticky");
+    }
+  });
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+    className: "infoHeader",
+    style: {
+      padding: "40px 0"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dashboard-content"
+  }, /*#__PURE__*/React.createElement("h1", {
+    style: {
+      fontSize: "1.5em"
+    }
+  }, title))));
+}
+
+/***/ }),
+
 /***/ "./src/Components/Header/header.js":
 /*!*****************************************!*\
   !*** ./src/Components/Header/header.js ***!
@@ -3866,6 +3903,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Crawler__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Components/Crawler */ "./src/Components/Crawler/index.js");
 /* harmony import */ var _Components_Filter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Filter */ "./src/Components/Filter/index.js");
 /* harmony import */ var _Components_Charts_Line__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Components/Charts/Line */ "./src/Components/Charts/Line/index.js");
+/* harmony import */ var _Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Components/Header/Sticky/index.js */ "./src/Components/Header/Sticky/index.js");
 const {
   useState,
   useEffect,
@@ -3881,6 +3919,7 @@ const {
 
 
 const useParams = window.ReactRouterDOM.useParams;
+
 
 
 
@@ -3928,17 +3967,11 @@ function Dashboard(props) {
   document.querySelectorAll(".intInput").forEach(input => {
     input.setAttribute("max", new Date().toISOString().split("T")[0]);
   });
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    title: "Home"
+  }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: "40px 0"
-    }
-  }, /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: "1.5em"
-    }
-  }, "Home")), id === "gdpr" && organisation != null && JSON.parse(organisation).id == 1 ? /*#__PURE__*/React.createElement(_Components_widget_TopWidgets_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+  }, id === "gdpr" && organisation != null && JSON.parse(organisation).id == 1 ? /*#__PURE__*/React.createElement(_Components_widget_TopWidgets_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
     dashboardView: dashboardView,
     API: {
       url: _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getTotalNumber.url,
@@ -4600,8 +4633,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Reports/Reports.js */ "./src/Pages/Reports/Reports.js");
 /* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Style.css */ "./src/Pages/UserConsents/Style.css");
 /* harmony import */ var _Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Components/Header/SideNav.js */ "./src/Components/Header/SideNav.js");
-/* harmony import */ var _Components_Filter_index_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Filter/index.js */ "./src/Components/Filter/index.js");
-/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
+/* harmony import */ var _Components_Header_Sticky__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Header/Sticky */ "./src/Components/Header/Sticky/index.js");
+/* harmony import */ var _Components_Filter_index_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Components/Filter/index.js */ "./src/Components/Filter/index.js");
+/* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
 const {
   useState,
   useEffect,
@@ -4619,12 +4653,13 @@ const {
 
 
 
+
 const useParams = window.ReactRouterDOM.useParams;
 const urlParams = new URLSearchParams(window.location.search);
 function UserConsents(props) {
   document.title = "User consents | Intastellar Consents";
-  const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_10__.DomainContext);
-  const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_10__.OrganisationContext);
+  const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_11__.DomainContext);
+  const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_11__.OrganisationContext);
   const {
     handle,
     id
@@ -4653,19 +4688,13 @@ function UserConsents(props) {
     style: {
       flex: "1"
     }
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement(_Components_Header_Sticky__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    title: "User consents"
+  }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      padding: "40px 0px"
-    }
-  }, /*#__PURE__*/React.createElement("h1", {
-    style: {
-      fontSize: "1.5em"
-    }
-  }, "Reports - User consents")), /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/React.createElement("section", {
     className: "filter"
-  }, /*#__PURE__*/React.createElement(_Components_Filter_index_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }, /*#__PURE__*/React.createElement(_Components_Filter_index_js__WEBPACK_IMPORTED_MODULE_10__["default"], {
     url: url,
     method: method,
     header: header,
@@ -4760,7 +4789,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.c
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Questrial&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Cinzel&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root{\n    --heroHeadline: 40px \"Montserrat\", Arial, Helvetica, sans-serif;\n    --heroHedlineColor: rgb(110, 110, 110);\n    --accentColor: rgb(0, 51, 153);\n    --colorHover: rgb(0, 118, 193);\n    --aboutColor: var(--aboutColorMain);\n    --aboutColorVarient: rgb(201, 226, 255);\n    --aboutColorMain: rgb(253, 246, 240);\n    --promoBG: rgba(0, 70, 209, 1);\n    --IntastellarGrey: rgb(88, 88, 88);\n    --IntastellarMediumGrey: rgb(156, 156, 156);\n    --infoBanner: rgb(207, 207, 207);\n    --infoBannerLigherShade: rgb(230, 230, 230);\n    --infoBannerlightesShade: rgb(246, 246, 246);\n    --infoBannerWarning: rgb(251, 237, 225);\n    --infoBannerError: rgb(255, 183, 183);\n    --statusBannerBg: var(--IntastellarMediumGrey);\n    --cookieBanner: rgb(190, 211, 255);\n    --borderRadius: 10px;\n}\n\n*{\n    box-sizing: border-box;\n}\n\nh1, h2, h3, h4, h5, h6{\n    font-weight: lighter;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(55, 55, 55);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n.crawler{\n    background-color: #ffffff;\n    position: relative;\n    padding: 15px;\n    color: #525252;\n    border-radius: 10px;\n}\n\n.cookieCheckContainer{\n    width: 1200px;\n    margin: auto;\n    display: grid;\n    place-items: center;\n    height: 100vh;\n}\n\n.cookieCheckContainer h2{\n    font-size: 2.5em;\n}\n\n.crawlerPage-logo{\n    max-width: 200px;\n}\n\n.cookieCheckContainer .form{\n    width: 100%;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n\n    .cookieCheckContainer{\n        width: 100%;\n        padding: 10px;\n    }\n\n    .dashboard-content{\n        padding: 0 20px;\n    }\n}", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAIA;IACI,+DAA+D;IAC/D,sCAAsC;IACtC,8BAA8B;IAC9B,8BAA8B;IAC9B,mCAAmC;IACnC,uCAAuC;IACvC,oCAAoC;IACpC,8BAA8B;IAC9B,kCAAkC;IAClC,2CAA2C;IAC3C,gCAAgC;IAChC,2CAA2C;IAC3C,4CAA4C;IAC5C,uCAAuC;IACvC,qCAAqC;IACrC,8CAA8C;IAC9C,kCAAkC;IAClC,oBAAoB;AACxB;;AAEA;IACI,sBAAsB;AAC1B;;AAEA;IACI,oBAAoB;AACxB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,iCAAiC;IACjC,yBAAyB;IACzB,sDAAsD;IACtD,SAAS;AACb;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,WAAW;IACX,uBAAuB;IACvB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;;IAEf,wBAAwB;IACxB,iBAAiB;AACrB;;AAEA;IACI,yBAAyB;IACzB,cAAc;IACd,aAAa;IACb,qBAAqB;IACrB,gBAAgB;AACpB;;AAEA;IACI,qBAAqB;IACrB,WAAW;IACX,iBAAiB;IACjB,gBAAgB;IAChB,cAAc;IACd,kBAAkB;IAClB,oBAAoB;AACxB;;AAEA;IACI,WAAW;IACX,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,cAAc;IACd,qBAAqB;IACrB,sBAAsB;IACtB,yBAAyB;AAC7B;;AAEA;IACI,oBAAoB;AACxB;;AAEA;IACI,yBAAyB;IACzB,kBAAkB;IAClB,aAAa;IACb,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,aAAa;AACjB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI;QACI,cAAc;IAClB;;IAEA;QACI,WAAW;QACX,aAAa;IACjB;;IAEA;QACI,eAAe;IACnB;AACJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');\n@import url(\"https://fonts.googleapis.com/css2?family=Questrial&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Cinzel&display=swap\");\n\n:root{\n    --heroHeadline: 40px \"Montserrat\", Arial, Helvetica, sans-serif;\n    --heroHedlineColor: rgb(110, 110, 110);\n    --accentColor: rgb(0, 51, 153);\n    --colorHover: rgb(0, 118, 193);\n    --aboutColor: var(--aboutColorMain);\n    --aboutColorVarient: rgb(201, 226, 255);\n    --aboutColorMain: rgb(253, 246, 240);\n    --promoBG: rgba(0, 70, 209, 1);\n    --IntastellarGrey: rgb(88, 88, 88);\n    --IntastellarMediumGrey: rgb(156, 156, 156);\n    --infoBanner: rgb(207, 207, 207);\n    --infoBannerLigherShade: rgb(230, 230, 230);\n    --infoBannerlightesShade: rgb(246, 246, 246);\n    --infoBannerWarning: rgb(251, 237, 225);\n    --infoBannerError: rgb(255, 183, 183);\n    --statusBannerBg: var(--IntastellarMediumGrey);\n    --cookieBanner: rgb(190, 211, 255);\n    --borderRadius: 10px;\n}\n\n*{\n    box-sizing: border-box;\n}\n\nh1, h2, h3, h4, h5, h6{\n    font-weight: lighter;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(55, 55, 55);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n.crawler{\n    background-color: #ffffff;\n    position: relative;\n    padding: 15px;\n    color: #525252;\n    border-radius: 10px;\n}\n\n.cookieCheckContainer{\n    width: 1200px;\n    margin: auto;\n    display: grid;\n    place-items: center;\n    height: 100vh;\n}\n\n.cookieCheckContainer h2{\n    font-size: 2.5em;\n}\n\n.crawlerPage-logo{\n    max-width: 200px;\n}\n\n.cookieCheckContainer .form{\n    width: 100%;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n\n    .cookieCheckContainer{\n        width: 100%;\n        padding: 10px;\n    }\n\n    .dashboard-content{\n        padding: 0 20px;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root{\n    --heroHeadline: 40px \"Montserrat\", Arial, Helvetica, sans-serif;\n    --heroHedlineColor: rgb(110, 110, 110);\n    --accentColor: rgb(0, 51, 153);\n    --colorHover: rgb(0, 118, 193);\n    --aboutColor: var(--aboutColorMain);\n    --aboutColorVarient: rgb(201, 226, 255);\n    --aboutColorMain: rgb(253, 246, 240);\n    --promoBG: rgba(0, 70, 209, 1);\n    --IntastellarGrey: rgb(88, 88, 88);\n    --IntastellarMediumGrey: rgb(156, 156, 156);\n    --infoBanner: rgb(207, 207, 207);\n    --infoBannerLigherShade: rgb(230, 230, 230);\n    --infoBannerlightesShade: rgb(246, 246, 246);\n    --infoBannerWarning: rgb(251, 237, 225);\n    --infoBannerError: rgb(255, 183, 183);\n    --statusBannerBg: var(--IntastellarMediumGrey);\n    --cookieBanner: rgb(190, 211, 255);\n    --borderRadius: 10px;\n}\n\n*{\n    box-sizing: border-box;\n}\n\nh1, h2, h3, h4, h5, h6{\n    font-weight: lighter;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(55, 55, 55);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n.crawler{\n    background-color: #ffffff;\n    position: relative;\n    padding: 15px;\n    color: #525252;\n    border-radius: 10px;\n}\n\n.cookieCheckContainer{\n    width: 1200px;\n    margin: auto;\n    display: grid;\n    place-items: center;\n    height: 100vh;\n}\n\n.cookieCheckContainer h2{\n    font-size: 2.5em;\n}\n\n.crawlerPage-logo{\n    max-width: 200px;\n}\n\n.cookieCheckContainer .form{\n    width: 100%;\n}\n\n.infoHeader{\n    width: 100%;\n}\n\n.infoHeader.sticky{\n    position: sticky;\n    top: 66px;\n    left: 0;\n    right: 0;\n    z-index: 100;\n    padding: 10px 0 !important;\n    background-color: rgb(55, 55, 55);\n    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.14),inset 0 2px 1px -1px rgba(0,0,0,.12);\n}\n\n.infoHeader.sticky::after{\n    -moz-box-sizing: border-box;\n    box-sizing: border-box;\n    bottom: -4px;\n    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.14),inset 0 2px 1px -1px rgba(0,0,0,.12);\n    content: \"\";\n    height: 4px;\n    left: 8px;\n    mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));\n    mask-image: linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);\n    position: absolute;\n    -webkit-mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));\n    -webkit-mask-image: -webkit-linear-gradient(left,transparent,#000 5%,#000 95%,transparent);\n    width: calc(100% - 16px);\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n\n    .cookieCheckContainer{\n        width: 100%;\n        padding: 10px;\n    }\n\n    .dashboard-content{\n        padding: 0 20px;\n    }\n}", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAIA;IACI,+DAA+D;IAC/D,sCAAsC;IACtC,8BAA8B;IAC9B,8BAA8B;IAC9B,mCAAmC;IACnC,uCAAuC;IACvC,oCAAoC;IACpC,8BAA8B;IAC9B,kCAAkC;IAClC,2CAA2C;IAC3C,gCAAgC;IAChC,2CAA2C;IAC3C,4CAA4C;IAC5C,uCAAuC;IACvC,qCAAqC;IACrC,8CAA8C;IAC9C,kCAAkC;IAClC,oBAAoB;AACxB;;AAEA;IACI,sBAAsB;AAC1B;;AAEA;IACI,oBAAoB;AACxB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,iCAAiC;IACjC,yBAAyB;IACzB,sDAAsD;IACtD,SAAS;AACb;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,WAAW;IACX,uBAAuB;IACvB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;;IAEf,wBAAwB;IACxB,iBAAiB;AACrB;;AAEA;IACI,yBAAyB;IACzB,cAAc;IACd,aAAa;IACb,qBAAqB;IACrB,gBAAgB;AACpB;;AAEA;IACI,qBAAqB;IACrB,WAAW;IACX,iBAAiB;IACjB,gBAAgB;IAChB,cAAc;IACd,kBAAkB;IAClB,oBAAoB;AACxB;;AAEA;IACI,WAAW;IACX,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,cAAc;IACd,qBAAqB;IACrB,sBAAsB;IACtB,yBAAyB;AAC7B;;AAEA;IACI,oBAAoB;AACxB;;AAEA;IACI,yBAAyB;IACzB,kBAAkB;IAClB,aAAa;IACb,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,aAAa;AACjB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,gBAAgB;IAChB,SAAS;IACT,OAAO;IACP,QAAQ;IACR,YAAY;IACZ,0BAA0B;IAC1B,iCAAiC;IACjC,kFAAkF;AACtF;;AAEA;IACI,2BAA2B;IAC3B,sBAAsB;IACtB,YAAY;IACZ,kFAAkF;IAClF,WAAW;IACX,WAAW;IACX,SAAS;IACT,kIAAkI;IAClI,2EAA2E;IAC3E,kBAAkB;IAClB,0IAA0I;IAC1I,0FAA0F;IAC1F,wBAAwB;AAC5B;;AAEA;IACI;QACI,cAAc;IAClB;;IAEA;QACI,WAAW;QACX,aAAa;IACjB;;IAEA;QACI,eAAe;IACnB;AACJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');\n@import url(\"https://fonts.googleapis.com/css2?family=Questrial&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Cinzel&display=swap\");\n\n:root{\n    --heroHeadline: 40px \"Montserrat\", Arial, Helvetica, sans-serif;\n    --heroHedlineColor: rgb(110, 110, 110);\n    --accentColor: rgb(0, 51, 153);\n    --colorHover: rgb(0, 118, 193);\n    --aboutColor: var(--aboutColorMain);\n    --aboutColorVarient: rgb(201, 226, 255);\n    --aboutColorMain: rgb(253, 246, 240);\n    --promoBG: rgba(0, 70, 209, 1);\n    --IntastellarGrey: rgb(88, 88, 88);\n    --IntastellarMediumGrey: rgb(156, 156, 156);\n    --infoBanner: rgb(207, 207, 207);\n    --infoBannerLigherShade: rgb(230, 230, 230);\n    --infoBannerlightesShade: rgb(246, 246, 246);\n    --infoBannerWarning: rgb(251, 237, 225);\n    --infoBannerError: rgb(255, 183, 183);\n    --statusBannerBg: var(--IntastellarMediumGrey);\n    --cookieBanner: rgb(190, 211, 255);\n    --borderRadius: 10px;\n}\n\n*{\n    box-sizing: border-box;\n}\n\nh1, h2, h3, h4, h5, h6{\n    font-weight: lighter;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(55, 55, 55);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n.crawler{\n    background-color: #ffffff;\n    position: relative;\n    padding: 15px;\n    color: #525252;\n    border-radius: 10px;\n}\n\n.cookieCheckContainer{\n    width: 1200px;\n    margin: auto;\n    display: grid;\n    place-items: center;\n    height: 100vh;\n}\n\n.cookieCheckContainer h2{\n    font-size: 2.5em;\n}\n\n.crawlerPage-logo{\n    max-width: 200px;\n}\n\n.cookieCheckContainer .form{\n    width: 100%;\n}\n\n.infoHeader{\n    width: 100%;\n}\n\n.infoHeader.sticky{\n    position: sticky;\n    top: 66px;\n    left: 0;\n    right: 0;\n    z-index: 100;\n    padding: 10px 0 !important;\n    background-color: rgb(55, 55, 55);\n    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.14),inset 0 2px 1px -1px rgba(0,0,0,.12);\n}\n\n.infoHeader.sticky::after{\n    -moz-box-sizing: border-box;\n    box-sizing: border-box;\n    bottom: -4px;\n    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.14),inset 0 2px 1px -1px rgba(0,0,0,.12);\n    content: \"\";\n    height: 4px;\n    left: 8px;\n    mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));\n    mask-image: linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);\n    position: absolute;\n    -webkit-mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));\n    -webkit-mask-image: -webkit-linear-gradient(left,transparent,#000 5%,#000 95%,transparent);\n    width: calc(100% - 16px);\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n\n    .cookieCheckContainer{\n        width: 100%;\n        padding: 10px;\n    }\n\n    .dashboard-content{\n        padding: 0 20px;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -8,6 +8,7 @@ import API from "../../API/api.js";
 import { reportsLinks } from "../Reports/Reports.js";
 import "./Style.css";
 import SideNav from "../../Components/Header/SideNav.js";
+import StickyPageTitle from "../../Components/Header/Sticky";
 import Filter from "../../Components/Filter/index.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
 const useParams = window.ReactRouterDOM.useParams;
@@ -44,10 +45,8 @@ export default function UserConsents(props) {
         <>
             <SideNav links={reportsLinks} />
             <article style={{flex: "1"}}>
+                <StickyPageTitle title="User consents" />
                 <div className="dashboard-content">
-                    <div style={{padding: "40px 0px"}}>
-                        <h1 style={{fontSize: "1.5em"}}>Reports - User consents</h1>
-                    </div>
                     <section className="filter">
                         <Filter url={url} method={method} header={header} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
                     </section>

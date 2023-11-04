@@ -12,6 +12,7 @@ const useParams = window.ReactRouterDOM.useParams;
 import Crawler from "../../Components/Crawler";
 import Filter from "../../Components/Filter";
 import Line from "../../Components/Charts/Line";
+import StickyPageTitle from "../../Components/Header/Sticky/index.js";
 
 export default function Dashboard(props){
     document.title = "Home | Intastellar Analytics";
@@ -65,10 +66,8 @@ export default function Dashboard(props){
 
     return (
         <>
+            <StickyPageTitle title="Home" />
             <div className="dashboard-content">
-                <div style={{padding: "40px 0"}}>
-                    <h1 style={{fontSize: "1.5em"}}>Home</h1>
-                </div>
                 {
                     (id === "gdpr" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
                         url: API[id].getTotalNumber.url,
