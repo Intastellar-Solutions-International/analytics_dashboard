@@ -1270,14 +1270,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 function Line(_ref) {
   let {
-    data
+    data,
+    title
   } = _ref;
   console.log(data);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "line-chart"
   }, /*#__PURE__*/React.createElement("div", {
     className: "chart"
-  }, /*#__PURE__*/React.createElement("div", {
+  }, data !== null ? /*#__PURE__*/React.createElement("h2", null, title) : null, /*#__PURE__*/React.createElement("div", {
     id: "my-chart"
   }, /*#__PURE__*/React.createElement("table", {
     className: "charts-css line"
@@ -3959,7 +3960,8 @@ function Dashboard(props) {
       Countries: activeData === null || activeData === void 0 ? void 0 : activeData.Countries
     }
   }))))), /*#__PURE__*/React.createElement("div", null, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_Charts_Line__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    data: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum
+    data: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum,
+    title: "Daily Interactions"
   })), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {

@@ -1,10 +1,11 @@
 
-export default function Line({data}){
+export default function Line({data, title}){
     console.log(data);
     return(
         <>
             <div className="line-chart">
                 <div className="chart">
+                    {(data !== null) ? <h2>{title}</h2> : null}
                     <div id="my-chart">
                         <table className="charts-css line">
                             <thead>
