@@ -87,7 +87,7 @@ export default function Dashboard(props){
                         <Loading />
                         <Loading />
                     </> : <>
-                        {(activeData) ? <Line data={activeData?.dailyNum} fromDate={fromDate} toDate={toDate} title={"Daily Active users"}/> : null}
+                        {(activeData) ? <Line data={activeData?.dailyNum} fromDate={fromDate} toDate={toDate} title={"Daily user interactions"}/> : null}
                         <div className={"widget no-padding"}>
                             <Map  data={{
                                 Countries: activeData?.Countries

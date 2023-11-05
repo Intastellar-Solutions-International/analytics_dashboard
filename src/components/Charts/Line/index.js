@@ -23,8 +23,8 @@ export default function Line({data, title, fromDate, toDate}){
             
             chart.background().fill("transparent");
             chart.xAxis().title("Day");
-            chart.yAxis().title("Active Users");
-            chart.tooltip().format("Active users: {%Value}");
+            chart.yAxis().title(title);
+            chart.tooltip().format(title + ": {%Value}");
             const series = chart.line(mapping);
     
             series.normal().stroke("#C09F53");
