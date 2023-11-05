@@ -1303,7 +1303,7 @@ function Line(_ref) {
       });
 
       if (dataSet.oc != dailyData) {
-        document.getElementById("chart").innerHTML = "";
+        document.getElementById("line-chart").innerHTML = "";
       }
 
       let chart = anychart.line();
@@ -1315,7 +1315,7 @@ function Line(_ref) {
       series.normal().stroke("#C09F53");
       series.hovered().stroke("#C09F53", 2, "10 5", "round");
       series.selected().stroke("#C09F53", 4, "10 5", "round");
-      chart.container("chart");
+      chart.container("line-chart");
 
       if (data !== null) {
         chart.draw();
@@ -1324,9 +1324,67 @@ function Line(_ref) {
   }, [dailyData]);
   return /*#__PURE__*/React.createElement("div", {
     className: "widget no-padding"
-  }, /*#__PURE__*/React.createElement("h2", null, title), /*#__PURE__*/React.createElement("div", {
-    className: "line-chart",
-    id: "chart"
+  }, title ? /*#__PURE__*/React.createElement("h2", null, title) : null, /*#__PURE__*/React.createElement("div", {
+    className: "chart",
+    id: "line-chart"
+  }));
+}
+
+/***/ }),
+
+/***/ "./src/Components/Charts/Pie/index.js":
+/*!********************************************!*\
+  !*** ./src/Components/Charts/Pie/index.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Pie)
+/* harmony export */ });
+/* harmony import */ var i18next__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! i18next */ "./node_modules/i18next/dist/esm/i18next.js");
+/* harmony import */ var _Line_Style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Line/Style.css */ "./src/Components/Charts/Line/Style.css");
+const {
+  useState,
+  useEffect,
+  useRef,
+  useContext
+} = React;
+
+
+function Pie(_ref) {
+  let {
+    data,
+    title,
+    fromDate,
+    toDate
+  } = _ref;
+  const dailyData = data;
+  console.log(dailyData);
+  useEffect(() => {
+    anychart.onDocumentReady(function () {
+      // The main JS line charting code will be here.
+      let dataSet = anychart.data.set(dailyData);
+
+      if (dataSet.oc != dailyData) {
+        document.getElementById("pie-chart").innerHTML = "";
+      }
+
+      let chart = anychart.pie(dailyData);
+      chart.background().fill("transparent");
+      chart.radius("90%");
+      chart.container("pie-chart");
+
+      if (data !== null || data !== undefined) {
+        chart.draw();
+      }
+    });
+  }, [dailyData]);
+  return /*#__PURE__*/React.createElement("div", {
+    className: "widget no-padding"
+  }, title ? /*#__PURE__*/React.createElement("h2", null, title) : null, /*#__PURE__*/React.createElement("div", {
+    className: "chart",
+    id: "pie-chart"
   }));
 }
 
@@ -3943,7 +4001,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Crawler__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Components/Crawler */ "./src/Components/Crawler/index.js");
 /* harmony import */ var _Components_Filter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Filter */ "./src/Components/Filter/index.js");
 /* harmony import */ var _Components_Charts_Line__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Components/Charts/Line */ "./src/Components/Charts/Line/index.js");
-/* harmony import */ var _Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Components/Header/Sticky/index.js */ "./src/Components/Header/Sticky/index.js");
+/* harmony import */ var _Components_Charts_Pie__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Components/Charts/Pie */ "./src/Components/Charts/Pie/index.js");
+/* harmony import */ var _Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../Components/Header/Sticky/index.js */ "./src/Components/Header/Sticky/index.js");
 const {
   useState,
   useEffect,
@@ -3959,6 +4018,7 @@ const {
 
 
 const useParams = window.ReactRouterDOM.useParams;
+
 
 
 
@@ -4007,7 +4067,7 @@ function Dashboard(props) {
   document.querySelectorAll(".intInput").forEach(input => {
     input.setAttribute("max", new Date().toISOString().split("T")[0]);
   });
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
     title: "Home"
   }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
@@ -4050,6 +4110,23 @@ function Dashboard(props) {
   }))))), /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
     type: "Total interactions"
+  }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_Charts_Pie__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    data: [{
+      x: "Accepted",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.Accepted
+    }, {
+      x: "Declined",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.Declined
+    }, {
+      x: "Only Marketing",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.Marketing
+    }, {
+      x: "Only Functional",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.Functional
+    }, {
+      x: "Only Statics",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.Statics
+    }]
   }), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -4909,7 +4986,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".line-chart{\n    width: 100%;\n    height: 290px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/Line/Style.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,aAAa;IACb,gBAAgB;IAChB,mBAAmB;AACvB;;AAEA;IACI,aAAa;AACjB","sourcesContent":[".line-chart{\n    width: 100%;\n    height: 290px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chart{\n    width: 100%;\n    height: 290px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/Line/Style.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,aAAa;IACb,gBAAgB;IAChB,mBAAmB;AACvB;;AAEA;IACI,aAAa;AACjB","sourcesContent":[".chart{\n    width: 100%;\n    height: 290px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

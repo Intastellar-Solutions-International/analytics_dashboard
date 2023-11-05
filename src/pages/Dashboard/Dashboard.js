@@ -12,6 +12,7 @@ const useParams = window.ReactRouterDOM.useParams;
 import Crawler from "../../Components/Crawler";
 import Filter from "../../Components/Filter";
 import Line from "../../Components/Charts/Line";
+import Pie from "../../Components/Charts/Pie";
 import StickyPageTitle from "../../Components/Header/Sticky/index.js";
 
 export default function Dashboard(props){
@@ -96,6 +97,15 @@ export default function Dashboard(props){
                     </div>
                 </div>
                 <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} type="Total interactions" />
+                {
+                    (loading) ? <Loading /> : <Pie data={[
+                        {x: "Accepted", value: activeData?.Accepted},
+                        {x: "Declined", value: activeData?.Declined},
+                        {x: "Only Marketing", value: activeData?.Marketing},
+                        {x: "Only Functional", value: activeData?.Functional},
+                        {x: "Only Statics", value: activeData?.Statics}
+                    ]} />
+                }
                 <div className="grid-container grid-3">
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={ activeData?.Declined.toLocaleString("de-DE") + "%"} type="Declined cookies" /> }

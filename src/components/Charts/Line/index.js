@@ -17,7 +17,7 @@ export default function Line({data, title, fromDate, toDate}){
             let dataSet = anychart.data.set(dailyData);
             const mapping = dataSet.mapAs({x: "name", value: "domain"});
             if(dataSet.oc != dailyData){
-                document.getElementById("chart").innerHTML = "";
+                document.getElementById("line-chart").innerHTML = "";
             }
             let chart = anychart.line();
             
@@ -31,7 +31,7 @@ export default function Line({data, title, fromDate, toDate}){
             series.hovered().stroke("#C09F53", 2, "10 5", "round");
             series.selected().stroke("#C09F53", 4, "10 5", "round");
     
-            chart.container("chart");
+            chart.container("line-chart");
             if(data !== null){
                 chart.draw();
             }
@@ -40,8 +40,10 @@ export default function Line({data, title, fromDate, toDate}){
 
     return(
         <div className={"widget no-padding"}>
-            <h2>{title}</h2>
-            <div className="line-chart" id="chart">
+            {
+                (title) ? <h2>{title}</h2> : null
+            }
+            <div className="chart" id="line-chart">
             </div>
         </div>
     )
