@@ -1283,7 +1283,9 @@ const {
 function Line(_ref) {
   let {
     data,
-    title
+    title,
+    fromDate,
+    toDate
   } = _ref;
   const dailyData = data === null || data === void 0 ? void 0 : data.map((d, i) => {
     return {
@@ -1291,39 +1293,35 @@ function Line(_ref) {
       "domain": d.num
     };
   });
-  anychart.onDocumentReady(function () {
-    // The main JS line charting code will be here.
-    const dataSet = anychart.data.set(dailyData);
-    const mapping = dataSet.mapAs({
-      x: "name",
-      value: "domain"
-    });
-    const chart = anychart.line();
-    chart.background().fill("transparent");
-    chart.xAxis().title("Day");
-    chart.yAxis().title("Active Users");
-    chart.tooltip().format("Active users: {%Value}");
-    const series = chart.line(mapping);
-    series.normal().stroke("#C09F53");
-    series.hovered().stroke("#C09F53", 2, "10 5", "round");
-    series.selected().stroke("#C09F53", 4, "10 5", "round");
-    chart.container("chart");
+  useEffect(() => {
+    anychart.onDocumentReady(function () {
+      // The main JS line charting code will be here.
+      let dataSet = anychart.data.set(dailyData);
+      const mapping = dataSet.mapAs({
+        x: "name",
+        value: "domain"
+      });
 
-    if (data !== null) {
-      chart.draw();
-      useEffect(() => {
-        const dataSet = anychart.data.set(dailyData);
-        console.log(dailyData);
-        const mapping = dataSet.mapAs({
-          x: "name",
-          value: "domain"
-        });
-        const chart = anychart.line();
-        chart.container("chart");
+      if (dataSet.oc != dailyData) {
+        document.getElementById("chart").innerHTML = "";
+      }
+
+      let chart = anychart.line();
+      chart.background().fill("transparent");
+      chart.xAxis().title("Day");
+      chart.yAxis().title("Active Users");
+      chart.tooltip().format("Active users: {%Value}");
+      const series = chart.line(mapping);
+      series.normal().stroke("#C09F53");
+      series.hovered().stroke("#C09F53", 2, "10 5", "round");
+      series.selected().stroke("#C09F53", 4, "10 5", "round");
+      chart.container("chart");
+
+      if (data !== null) {
         chart.draw();
-      }, [dailyData]);
-    }
-  });
+      }
+    });
+  }, [dailyData]);
   return /*#__PURE__*/React.createElement("div", {
     className: "widget no-padding"
   }, /*#__PURE__*/React.createElement("h2", null, title), /*#__PURE__*/React.createElement("div", {
@@ -4035,6 +4033,8 @@ function Dashboard(props) {
     className: "grid-container grid-2"
   }, loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null), /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null)) : /*#__PURE__*/React.createElement(React.Fragment, null, activeData ? /*#__PURE__*/React.createElement(_Components_Charts_Line__WEBPACK_IMPORTED_MODULE_10__["default"], {
     data: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum,
+    fromDate: fromDate,
+    toDate: toDate,
     title: "Daily Active users"
   }) : null, /*#__PURE__*/React.createElement("div", {
     className: "widget no-padding"
@@ -4904,7 +4904,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".line-chart{\n    width: 100%;\n    height: 230px;\n    overflow: hidden;\n    border-radius: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/Line/Style.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,aAAa;IACb,gBAAgB;IAChB,mBAAmB;AACvB","sourcesContent":[".line-chart{\n    width: 100%;\n    height: 230px;\n    overflow: hidden;\n    border-radius: 10px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".line-chart{\n    width: 100%;\n    height: 230px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/Line/Style.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,aAAa;IACb,gBAAgB;IAChB,mBAAmB;AACvB;;AAEA;IACI,aAAa;AACjB","sourcesContent":[".line-chart{\n    width: 100%;\n    height: 230px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
