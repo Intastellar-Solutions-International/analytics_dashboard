@@ -79,7 +79,7 @@ export default function Dashboard(props){
                     <Crawler />
                 </div>
                 <div className="" style={{paddingTop: "40px"}}>
-                    <h2>Data of user interaction</h2>
+                    <h2>User Interactions</h2>
                     <Filter url={url} method={method} header={header} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
                     <div className="grid-container grid-2">
                     {(loading) ? <>
