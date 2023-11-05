@@ -1309,8 +1309,8 @@ function Line(_ref) {
       let chart = anychart.line();
       chart.background().fill("transparent");
       chart.xAxis().title("Day");
-      chart.yAxis().title("Active Users");
-      chart.tooltip().format("Active users: {%Value}");
+      chart.yAxis().title(title);
+      chart.tooltip().format(title + ": {%Value}");
       const series = chart.line(mapping);
       series.normal().stroke("#C09F53");
       series.hovered().stroke("#C09F53", 2, "10 5", "round");
@@ -4099,7 +4099,7 @@ function Dashboard(props) {
     data: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum,
     fromDate: fromDate,
     toDate: toDate,
-    title: "Daily Active users"
+    title: "Daily user interactions"
   }) : null, /*#__PURE__*/React.createElement("div", {
     className: "widget no-padding"
   }, /*#__PURE__*/React.createElement(_Components_Charts_WorldMap_WorldMap_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
