@@ -15,17 +15,18 @@ export default function Line({data, title}){
 
         const chart = anychart.line();
 
-        chart.normal().stroke("#00cc99", 1, "10 5", "round");
-        chart.hovered().stroke("#00cc99", 2, "10 5", "round");
-        chart.selected().stroke("#00cc99", 4, "10 5", "round");
-
-        chart.xAxis().title("Days");
+        
+        
+        chart.background().fill("transparent");
+        chart.xAxis().title("Day");
         chart.yAxis().title("Active Users");
         chart.tooltip().format("Active users: {%Value}");
-        chart.crosshair().enabled(true).yStroke(null).yLabel(false);
-        chart.xScale().mode('continuous');
+        const series = chart.line(mapping);
 
-        chart.line(mapping).name("Amount");
+        series.normal().stroke("#C09F53");
+        series.hovered().stroke("#C09F53", 2, "10 5", "round");
+        series.selected().stroke("#C09F53", 4, "10 5", "round");
+
         chart.container("chart");
         if(data !== null){
             chart.draw();
@@ -33,10 +34,10 @@ export default function Line({data, title}){
     });
 
     return(
-        <>
+        <div className={"widget no-padding"}>
             <h2>{title}</h2>
             <div className="line-chart" id="chart">
             </div>
-        </>
+        </div>
     )
 }
