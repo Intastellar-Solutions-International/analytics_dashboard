@@ -104,11 +104,7 @@ export default function Dashboard(props){
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
                 </div>
-                <div>
-                    {
-                        (loading) ? <Loading /> : <Line data={activeData?.dailyNum} title="Daily Interactions" />
-                    }
-                </div>
+                {(!activeData) ? <Loading /> : <Line data={activeData?.dailyNum} />}
             </div>
         </>
     )
