@@ -1,3 +1,5 @@
+const { useState, useEffect, useRef, useContext } = React;
+import { use } from "i18next";
 import "./Style.css";
 
 export default function Line({data, title}){
@@ -30,7 +32,17 @@ export default function Line({data, title}){
         chart.container("chart");
         if(data !== null){
             chart.draw();
-        }
+            useEffect(() => {
+                const dataSet = anychart.data.set(dailyData);
+                console.log(dailyData);
+                const mapping = dataSet.mapAs({x: "name", value: "domain"});
+
+                const chart = anychart.line();
+
+                chart.container("chart");
+                chart.draw();
+            }, [dailyData]);
+        } 
     });
 
     return(
