@@ -23,10 +23,20 @@
     border-radius: 10px;
 }
 
+.svgMap-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.svgMap-map-wrapper {
+    width: 100%;
+    height: 355px;
+}
+
 @media screen and (max-width: 768px) {
     .svgMap-map-wrapper {
         width: 100%;
-        height: 200px;
+        height: 100%;
     }
     
 }

@@ -2162,9 +2162,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Style.css */ "./src/Components/Footer/Style.css");
 
 function Footer() {
+  const year = new Date().getFullYear();
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("footer", {
     className: "footer dashboard-content"
-  }, "\xA9 Intastellar Solutions International. All rights reserved."));
+  }, /*#__PURE__*/React.createElement("p", null, "\xA9 ", year, " Intastellar Solutions International. | ", /*#__PURE__*/React.createElement("a", {
+    href: "https://www.intastellarsolutions.com/about/legal/terms",
+    target: "_blank",
+    className: "links"
+  }, "Terms of Service"))));
 }
 
 /***/ }),
@@ -4020,7 +4025,7 @@ function Dashboard(props) {
     style: {
       paddingTop: "40px"
     }
-  }, /*#__PURE__*/React.createElement("h2", null, "Data of user interaction"), /*#__PURE__*/React.createElement(_Components_Filter__WEBPACK_IMPORTED_MODULE_9__["default"], {
+  }, /*#__PURE__*/React.createElement("h2", null, "User Interactions"), /*#__PURE__*/React.createElement(_Components_Filter__WEBPACK_IMPORTED_MODULE_9__["default"], {
     url: url,
     method: method,
     header: header,
@@ -4904,7 +4909,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".line-chart{\n    width: 100%;\n    height: 230px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/Line/Style.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,aAAa;IACb,gBAAgB;IAChB,mBAAmB;AACvB;;AAEA;IACI,aAAa;AACjB","sourcesContent":[".line-chart{\n    width: 100%;\n    height: 230px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".line-chart{\n    width: 100%;\n    height: 290px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/Line/Style.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,aAAa;IACb,gBAAgB;IAChB,mBAAmB;AACvB;;AAEA;IACI,aAAa;AACjB","sourcesContent":[".line-chart{\n    width: 100%;\n    height: 290px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4930,7 +4935,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".map-selected {\n    fill: #E3DA37;\n}\n  \n.map-unselected {\n    fill: #699EAA;\n}\n\n.map-selected:hover, .map-unselected:hover {\n    cursor: pointer;\n}\n\n.countryStats{\n    padding: 15px;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));\n    text-align: center;\n}\n\n.country{\n    padding: 20px 0px;\n    background-color: #343434;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 768px) {\n    .svgMap-map-wrapper {\n        width: 100%;\n        height: 200px;\n    }\n    \n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/WorldMap/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;AACjB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,aAAa;IACb,yDAAyD;IACzD,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,yBAAyB;IACzB,mBAAmB;AACvB;;AAEA;IACI;QACI,WAAW;QACX,aAAa;IACjB;;AAEJ","sourcesContent":[".map-selected {\n    fill: #E3DA37;\n}\n  \n.map-unselected {\n    fill: #699EAA;\n}\n\n.map-selected:hover, .map-unselected:hover {\n    cursor: pointer;\n}\n\n.countryStats{\n    padding: 15px;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));\n    text-align: center;\n}\n\n.country{\n    padding: 20px 0px;\n    background-color: #343434;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 768px) {\n    .svgMap-map-wrapper {\n        width: 100%;\n        height: 200px;\n    }\n    \n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".map-selected {\n    fill: #E3DA37;\n}\n  \n.map-unselected {\n    fill: #699EAA;\n}\n\n.map-selected:hover, .map-unselected:hover {\n    cursor: pointer;\n}\n\n.countryStats{\n    padding: 15px;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));\n    text-align: center;\n}\n\n.country{\n    padding: 20px 0px;\n    background-color: #343434;\n    border-radius: 10px;\n}\n\n.svgMap-wrapper {\n    width: 100%;\n    height: 100%;\n}\n\n.svgMap-map-wrapper {\n    width: 100%;\n    height: 355px;\n}\n\n@media screen and (max-width: 768px) {\n    .svgMap-map-wrapper {\n        width: 100%;\n        height: 100%;\n    }\n    \n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/WorldMap/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;AACjB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,aAAa;IACb,yDAAyD;IACzD,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,yBAAyB;IACzB,mBAAmB;AACvB;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,aAAa;AACjB;;AAEA;IACI;QACI,WAAW;QACX,YAAY;IAChB;;AAEJ","sourcesContent":[".map-selected {\n    fill: #E3DA37;\n}\n  \n.map-unselected {\n    fill: #699EAA;\n}\n\n.map-selected:hover, .map-unselected:hover {\n    cursor: pointer;\n}\n\n.countryStats{\n    padding: 15px;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));\n    text-align: center;\n}\n\n.country{\n    padding: 20px 0px;\n    background-color: #343434;\n    border-radius: 10px;\n}\n\n.svgMap-wrapper {\n    width: 100%;\n    height: 100%;\n}\n\n.svgMap-map-wrapper {\n    width: 100%;\n    height: 355px;\n}\n\n@media screen and (max-width: 768px) {\n    .svgMap-map-wrapper {\n        width: 100%;\n        height: 100%;\n    }\n    \n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5008,7 +5013,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".footer{\n    padding: 30px 60px !important;\n    font-size: 15px;\n    text-align: center;\n}", "",{"version":3,"sources":["webpack://./src/Components/Footer/Style.css"],"names":[],"mappings":"AAAA;IACI,6BAA6B;IAC7B,eAAe;IACf,kBAAkB;AACtB","sourcesContent":[".footer{\n    padding: 30px 60px !important;\n    font-size: 15px;\n    text-align: center;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".footer{\n    padding: 30px 60px !important;\n    font-size: 16px;\n    text-align: center;\n}\n\n.links{\n    color: #c09f53;\n    text-decoration: none;\n}", "",{"version":3,"sources":["webpack://./src/Components/Footer/Style.css"],"names":[],"mappings":"AAAA;IACI,6BAA6B;IAC7B,eAAe;IACf,kBAAkB;AACtB;;AAEA;IACI,cAAc;IACd,qBAAqB;AACzB","sourcesContent":[".footer{\n    padding: 30px 60px !important;\n    font-size: 16px;\n    text-align: center;\n}\n\n.links{\n    color: #c09f53;\n    text-decoration: none;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
