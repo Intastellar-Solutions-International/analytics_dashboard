@@ -1360,7 +1360,6 @@ function Pie(_ref) {
     toDate
   } = _ref;
   const dailyData = data;
-  console.log(dailyData);
   useEffect(() => {
     anychart.onDocumentReady(function () {
       // The main JS line charting code will be here.
@@ -4110,7 +4109,9 @@ function Dashboard(props) {
   }))))), /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
     type: "Total interactions"
-  }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_Charts_Pie__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "grid-container grid-3"
+  }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_Charts_Pie__WEBPACK_IMPORTED_MODULE_11__["default"], {
     data: [{
       x: "Accepted",
       value: activeData === null || activeData === void 0 ? void 0 : activeData.Accepted
@@ -4127,9 +4128,7 @@ function Dashboard(props) {
       x: "Only Statics",
       value: activeData === null || activeData === void 0 ? void 0 : activeData.Statics
     }]
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "grid-container grid-3"
-  }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Accepted.toLocaleString("de-DE")) + "%",
     type: "Accepted cookies"
   }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -4139,13 +4138,13 @@ function Dashboard(props) {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Marketing.toLocaleString("de-DE")) + "%",
-    type: "Accepted only Marketing"
+    type: "Only Marketing"
   }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Functional.toLocaleString("de-DE")) + "%",
-    type: "Accepted only Functional"
+    type: "Only Functional"
   }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Statics.toLocaleString("de-DE")) + "%",
-    type: "Accepted only Statics"
+    type: "Only Statics"
   }))));
 }
 
