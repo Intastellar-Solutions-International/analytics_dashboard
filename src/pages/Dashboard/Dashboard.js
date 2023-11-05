@@ -86,7 +86,7 @@ export default function Dashboard(props){
                         <Loading />
                         <Loading />
                     </> : <>
-                        <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} type="Total interactions" />
+                        {(activeData) ? <Line data={activeData?.dailyNum} title={"Daily Active users"}/> : null}
                         <div className={"widget no-padding"}>
                             <Map  data={{
                                 Countries: activeData?.Countries
@@ -95,6 +95,7 @@ export default function Dashboard(props){
                     </>}
                     </div>
                 </div>
+                <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} type="Total interactions" />
                 <div className="grid-container grid-3">
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={ activeData?.Declined.toLocaleString("de-DE") + "%"} type="Declined cookies" /> }
@@ -104,7 +105,6 @@ export default function Dashboard(props){
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
                 </div>
-                {(!activeData) ? <Loading /> : <Line data={activeData?.dailyNum} />}
             </div>
         </>
     )

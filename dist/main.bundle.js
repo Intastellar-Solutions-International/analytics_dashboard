@@ -1291,22 +1291,23 @@ function Line(_ref) {
       value: "domain"
     });
     const chart = anychart.line();
-    chart.normal().stroke("#00cc99", 1, "10 5", "round");
-    chart.hovered().stroke("#00cc99", 2, "10 5", "round");
-    chart.selected().stroke("#00cc99", 4, "10 5", "round");
-    chart.xAxis().title("Days");
+    chart.background().fill("transparent");
+    chart.xAxis().title("Day");
     chart.yAxis().title("Active Users");
     chart.tooltip().format("Active users: {%Value}");
-    chart.crosshair().enabled(true).yStroke(null).yLabel(false);
-    chart.xScale().mode('continuous');
-    chart.line(mapping).name("Amount");
+    const series = chart.line(mapping);
+    series.normal().stroke("#C09F53");
+    series.hovered().stroke("#C09F53", 2, "10 5", "round");
+    series.selected().stroke("#C09F53", 4, "10 5", "round");
     chart.container("chart");
 
     if (data !== null) {
       chart.draw();
     }
   });
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, title), /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "widget no-padding"
+  }, /*#__PURE__*/React.createElement("h2", null, title), /*#__PURE__*/React.createElement("div", {
     className: "line-chart",
     id: "chart"
   }));
@@ -4013,16 +4014,19 @@ function Dashboard(props) {
     setToDate: setToDate
   }), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-2"
-  }, loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null), /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null)) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
-    type: "Total interactions"
-  }), /*#__PURE__*/React.createElement("div", {
+  }, loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null), /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null)) : /*#__PURE__*/React.createElement(React.Fragment, null, activeData ? /*#__PURE__*/React.createElement(_Components_Charts_Line__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    data: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum,
+    title: "Daily Active users"
+  }) : null, /*#__PURE__*/React.createElement("div", {
     className: "widget no-padding"
   }, /*#__PURE__*/React.createElement(_Components_Charts_WorldMap_WorldMap_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
     data: {
       Countries: activeData === null || activeData === void 0 ? void 0 : activeData.Countries
     }
-  }))))), /*#__PURE__*/React.createElement("div", {
+  }))))), /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
+    type: "Total interactions"
+  }), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Accepted.toLocaleString("de-DE")) + "%",
@@ -4041,9 +4045,7 @@ function Dashboard(props) {
   }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Statics.toLocaleString("de-DE")) + "%",
     type: "Accepted only Statics"
-  })), !activeData ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_Charts_Line__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    data: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum
-  })));
+  }))));
 }
 
 /***/ }),
@@ -4883,7 +4885,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".line-chart{\n    width: 100%;\n    height: 500px;\n    overflow: hidden;\n    border-radius: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/Line/Style.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,aAAa;IACb,gBAAgB;IAChB,mBAAmB;AACvB","sourcesContent":[".line-chart{\n    width: 100%;\n    height: 500px;\n    overflow: hidden;\n    border-radius: 10px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".line-chart{\n    width: 100%;\n    height: 230px;\n    overflow: hidden;\n    border-radius: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/Line/Style.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,aAAa;IACb,gBAAgB;IAChB,mBAAmB;AACvB","sourcesContent":[".line-chart{\n    width: 100%;\n    height: 230px;\n    overflow: hidden;\n    border-radius: 10px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
