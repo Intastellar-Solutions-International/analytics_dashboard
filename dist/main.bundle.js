@@ -715,6 +715,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Pages_Reports_SiteStatus__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./Pages/Reports/SiteStatus */ "./src/Pages/Reports/SiteStatus/index.js");
 /* harmony import */ var _Components_Crawler__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./Components/Crawler */ "./src/Components/Crawler/index.js");
 /* harmony import */ var _Pages_Reports_UserAgents__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./Pages/Reports/UserAgents */ "./src/Pages/Reports/UserAgents/index.js");
+/* harmony import */ var _Pages_Settings_UserPreferences__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./Pages/Settings/UserPreferences */ "./src/Pages/Settings/UserPreferences/index.js");
 const {
   useState,
   useEffect,
@@ -727,6 +728,7 @@ const Switch = window.ReactRouterDOM.Switch;
 const Redirect = window.ReactRouterDOM.Redirect;
 
 const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/punycode.es6.js");
+
 
 
 
@@ -863,6 +865,8 @@ function App() {
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "super-admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "manager" ? /*#__PURE__*/React.createElement(_Pages_Settings_AddDomain__WEBPACK_IMPORTED_MODULE_20__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
       path: "/settings/view-organisations"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_ViewOrganisations__WEBPACK_IMPORTED_MODULE_15__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+      path: "/settings/preferences"
+    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_UserPreferences__WEBPACK_IMPORTED_MODULE_32__["default"], null))), /*#__PURE__*/React.createElement(Route, {
       path: "/:id/view/:handle"
     }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_DomainDashbord__WEBPACK_IMPORTED_MODULE_17__["default"], {
       setHandle: setHandle
@@ -2164,76 +2168,78 @@ function Filter(_ref) {
     setToDate
   } = _ref;
   const [loadingTimeDate, setloadingTimeDate] = useState(false);
-
-  if (getLastDays != null) {
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("select", {
-      className: "intInput",
-      defaultValue: getLastDays,
-      onChange: e => {
-        setLastDays(e.target.value);
-        header.FromDate = new Date(new Date().setDate(new Date().getDate() - e.target.value)).toISOString().split("T")[0];
-        fetch(url, {
-          method: method,
-          headers: header
-        }).then(res => {
-          return res.json();
-        }).then(data => {
-          setActiveData(data);
-          setFromDate(new Date(new Date().setDate(new Date().getDate() - e.target.value)).toISOString().split("T")[0]);
-        }).finally(() => {
-          setloadingTimeDate(false);
-        });
-      }
-    }, /*#__PURE__*/React.createElement("option", {
-      value: "7"
-    }, "Last 7 days"), /*#__PURE__*/React.createElement("option", {
-      value: "14"
-    }, "Last 14 days"), /*#__PURE__*/React.createElement("option", {
-      value: "30"
-    }, "Last 30 days"), /*#__PURE__*/React.createElement("option", {
-      value: "90"
-    }, "Last 90 days")));
-  } else {
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("form", {
-      onSubmit: e => {
-        e.preventDefault();
-        setloadingTimeDate(true);
-        fetch(url, {
-          method: method,
-          headers: header
-        }).then(res => {
-          return res.json();
-        }).then(data => {
-          setActiveData(data);
-        }).finally(() => {
-          setloadingTimeDate(false);
-        });
-      }
-    }, /*#__PURE__*/React.createElement("h3", null, "Filter by date"), /*#__PURE__*/React.createElement("section", {
-      className: "grid-container grid-3"
-    }, /*#__PURE__*/React.createElement("input", {
-      type: "date",
-      className: "intInput",
-      defaultValue: fromDate,
-      onChange: e => {
-        setFromDate(e.target.value);
-      },
-      min: "2019-01-01"
-    }), /*#__PURE__*/React.createElement("input", {
-      type: "date",
-      className: "intInput",
-      defaultValue: toDate,
-      onChange: e => {
-        setToDate(e.target.value);
-      },
-      min: "2019-01-01"
-    }), /*#__PURE__*/React.createElement(_Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
-      type: "submit",
-      disabled: loadingTimeDate ? true : "",
-      className: "crawl-cta",
-      text: loadingTimeDate ? "Loading..." : "Search now"
-    }))));
-  }
+  const [calendar, setCalendar] = useState(false);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("select", {
+    className: "intInput",
+    defaultValue: getLastDays,
+    onChange: e => {
+      setLastDays(e.target.value);
+      header.FromDate = new Date(new Date().setDate(new Date().getDate() - e.target.value)).toISOString().split("T")[0];
+      fetch(url, {
+        method: method,
+        headers: header
+      }).then(res => {
+        return res.json();
+      }).then(data => {
+        setActiveData(data);
+        setFromDate(new Date(new Date().setDate(new Date().getDate() - e.target.value)).toISOString().split("T")[0]);
+      }).finally(() => {
+        setloadingTimeDate(false);
+      });
+    }
+  }, /*#__PURE__*/React.createElement("option", {
+    value: "7"
+  }, "Last 7 days"), /*#__PURE__*/React.createElement("option", {
+    value: "14"
+  }, "Last 14 days"), /*#__PURE__*/React.createElement("option", {
+    value: "30"
+  }, "Last 30 days"), /*#__PURE__*/React.createElement("option", {
+    value: "90"
+  }, "Last 90 days")), /*#__PURE__*/React.createElement(_Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    className: "crawl-cta",
+    text: "View more",
+    onClick: () => {
+      setCalendar(!calendar);
+    }
+  }), calendar ? /*#__PURE__*/React.createElement("form", {
+    onSubmit: e => {
+      e.preventDefault();
+      setloadingTimeDate(true);
+      fetch(url, {
+        method: method,
+        headers: header
+      }).then(res => {
+        return res.json();
+      }).then(data => {
+        setActiveData(data);
+      }).finally(() => {
+        setloadingTimeDate(false);
+      });
+    }
+  }, /*#__PURE__*/React.createElement("h3", null, "Last ", getLastDays, " days"), /*#__PURE__*/React.createElement("section", {
+    className: "grid-container grid-3"
+  }, /*#__PURE__*/React.createElement("input", {
+    type: "date",
+    className: "intInput",
+    defaultValue: fromDate,
+    onChange: e => {
+      setFromDate(e.target.value);
+    },
+    min: "2019-01-01"
+  }), /*#__PURE__*/React.createElement("input", {
+    type: "date",
+    className: "intInput",
+    defaultValue: toDate,
+    onChange: e => {
+      setToDate(e.target.value);
+    },
+    min: "2019-01-01"
+  }), /*#__PURE__*/React.createElement(_Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    type: "submit",
+    disabled: loadingTimeDate ? true : "",
+    className: "crawl-cta",
+    text: loadingTimeDate ? "Loading..." : "Apply"
+  }))) : null);
 }
 
 /***/ }),
@@ -2370,7 +2376,7 @@ function SideNav(props) {
   let url = "";
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("aside", {
     className: "sidebar expand"
-  }, /*#__PURE__*/React.createElement("nav", {
+  }, props !== null && props !== void 0 && props.title ? /*#__PURE__*/React.createElement("h2", null, props === null || props === void 0 ? void 0 : props.title) : null, /*#__PURE__*/React.createElement("nav", {
     className: "collapsed expand"
   }, props === null || props === void 0 ? void 0 : (_props$links = props.links) === null || _props$links === void 0 ? void 0 : _props$links.map((link, key) => {
     var _link$view;
@@ -2422,6 +2428,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "reportsLinks": () => (/* binding */ reportsLinks)
 /* harmony export */ });
 const reportsLinks = [{
+  name: "My Preferences",
+  path: "/settings/preferences",
+  view: ["admin", "super-admin", "manager"]
+}, {
   name: "Add new User",
   path: "/settings/add-user",
   view: ["admin", "super-admin"]
@@ -4433,7 +4443,8 @@ function UserAgents() {
   _API_api__WEBPACK_IMPORTED_MODULE_3__["default"][id].getDevices.headers.ToDate = "2021-12-31";
   const [getDomainsUrlLoading, getDomainsUrlData, getDomainsUrlError, getDomainsUrlGetUpdated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_2__["default"])(5, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"][id].getDevices.url, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"][id].getDevices.method, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"][id].getDevices.headers);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    links: _Reports__WEBPACK_IMPORTED_MODULE_0__.reportsLinks
+    links: _Reports__WEBPACK_IMPORTED_MODULE_0__.reportsLinks,
+    title: "Reports"
   }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "Reports - User agents")));
@@ -4459,7 +4470,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function SettingsAddDomain() {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_2__.reportsLinks
+    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_2__.reportsLinks,
+    title: "Settings"
   }), /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_0__["default"], null));
 }
 
@@ -4545,7 +4557,8 @@ function AddUser() {
   };
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_8__.reportsLinks
+    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_8__.reportsLinks,
+    title: "Settings"
   }), /*#__PURE__*/React.createElement("main", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "Add user for ", JSON.parse(Organisation).name), /*#__PURE__*/React.createElement(Link, {
@@ -4641,7 +4654,8 @@ function AddUser() {
   };
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_4__.reportsLinks
+    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_4__.reportsLinks,
+    title: "Settings"
   }), /*#__PURE__*/React.createElement("main", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "Create a Organisation"), /*#__PURE__*/React.createElement("form", {
@@ -4657,6 +4671,22 @@ function AddUser() {
   }), /*#__PURE__*/React.createElement("button", {
     type: "submit"
   }, "Create Organisation"))));
+}
+
+/***/ }),
+
+/***/ "./src/Pages/Settings/UserPreferences/index.js":
+/*!*****************************************************!*\
+  !*** ./src/Pages/Settings/UserPreferences/index.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ UserPreferences)
+/* harmony export */ });
+function UserPreferences() {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "User Preferences"));
 }
 
 /***/ }),
@@ -4707,7 +4737,8 @@ function ViewOrg() {
   }
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_6__.reportsLinks
+    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_6__.reportsLinks,
+    title: "Settings"
   }), /*#__PURE__*/React.createElement("main", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "My Organisation"), /*#__PURE__*/React.createElement(Link, {
@@ -4759,10 +4790,11 @@ function Settings(props) {
     id
   } = useParams();
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_2__.reportsLinks
+    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_2__.reportsLinks,
+    title: "Settings"
   }), /*#__PURE__*/React.createElement("main", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("h1", null, "Settings")));
+  }));
 }
 
 /***/ }),
@@ -4836,7 +4868,8 @@ function UserConsents(props) {
     }
   }, [getDomainsUrlData]);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    links: _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_6__.reportsLinks
+    links: _Reports_Reports_js__WEBPACK_IMPORTED_MODULE_6__.reportsLinks,
+    title: "Reports"
   }), /*#__PURE__*/React.createElement("article", {
     style: {
       flex: "1"
