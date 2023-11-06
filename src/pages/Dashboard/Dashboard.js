@@ -23,7 +23,7 @@ export default function Dashboard(props){
     const [activeData, setActiveData] = useState(null);
     const today = new Date();
     const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - 30)).toISOString().split("T")[0]);
-    const [toDate, setToDate] = useState(new Date().toISOString().split("T")[0]);
+    const [toDate, setToDate] = useState(new Date(new Date().setDate(today.getDate() - 1)).toISOString().split("T")[0]);
 
     const dashboardView = props.dashboardView;
     let url = API[id].getInteractions.url;

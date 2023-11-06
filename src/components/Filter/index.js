@@ -9,7 +9,6 @@ export default function Filter({url, method, header, setActiveData, fromDate, to
         fetch(url, { method: method, headers: header} ).then((res) => {
             return res.json();
         }).then((data) => {
-            console.log(data);
             setActiveData(data);
         }).finally(() => {
             setloadingTimeDate(false);
