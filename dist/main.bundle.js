@@ -799,7 +799,6 @@ function App() {
       user: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].getUserId()
     })).then(data => {
       const setting = data.setting;
-      console.log(JSON.parse(setting));
 
       if (data === "Err_Login_Expired") {
         localStorage.removeItem("globals");
@@ -807,7 +806,7 @@ function App() {
         return;
       }
 
-      localStorage.setItem("settings", setting);
+      localStorage.setItem("settings", JSON.stringify(setting));
     });
     /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
 
@@ -4760,7 +4759,7 @@ function UserPreferences() {
   }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "grid-item"
+    className: "widget"
   }, /*#__PURE__*/React.createElement("label", {
     htmlFor: "userPreferences-date"
   }, "Default date range"), /*#__PURE__*/React.createElement(_Components_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -4783,7 +4782,7 @@ function UserPreferences() {
       id: 30,
       name: "30 days"
     }]
-  }), /*#__PURE__*/React.createElement(_Components_Button_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  })), /*#__PURE__*/React.createElement(_Components_Button_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
     onClick: () => {
       fetch(_API_api__WEBPACK_IMPORTED_MODULE_6__["default"].settings.user.update.url, {
         method: _API_api__WEBPACK_IMPORTED_MODULE_6__["default"].settings.user.update.method,
@@ -4804,7 +4803,7 @@ function UserPreferences() {
       });
     },
     text: "Save"
-  })))), success ? /*#__PURE__*/React.createElement(_Components_SuccessWindow__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }))), success ? /*#__PURE__*/React.createElement(_Components_SuccessWindow__WEBPACK_IMPORTED_MODULE_7__["default"], {
     message: "Settings updated successfully. Default days: " + dateRange
   }) : null);
 }
