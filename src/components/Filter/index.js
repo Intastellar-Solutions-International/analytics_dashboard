@@ -2,30 +2,30 @@ const { useState, useEffect, useRef, useContext } = React;
 import Button from "../../Components/Button/Button.js";
 export default function Filter({url, method, header, setLastDays, getLastDays, setActiveData, fromDate, toDate, setFromDate, setToDate}) {
     const [loadingTimeDate, setloadingTimeDate] = useState(false);
+    const [calendar, setCalendar] = useState(false);
     
-    if(getLastDays != null){
-        return <>
-            <select className="intInput" defaultValue={getLastDays} onChange={(e) => {
-                setLastDays(e.target.value);
-                header.FromDate = new Date(new Date().setDate(new Date().getDate() - e.target.value)).toISOString().split("T")[0];
-                fetch(url, { method: method, headers: header} ).then((res) => {
-                    return res.json();
-                }).then((data) => {
-                    setActiveData(data);
-                    setFromDate(new Date(new Date().setDate(new Date().getDate() - e.target.value)).toISOString().split("T")[0]);
-                }).finally(() => {
-                    setloadingTimeDate(false);
-                })
-            }}>
-                <option value="7">Last 7 days</option>
-                <option value="14">Last 14 days</option>
-                <option value="30">Last 30 days</option>
-                <option value="90">Last 90 days</option>
-            </select>
-        </>
-    }else{
-        return <>
-        <form onSubmit={(e) => {
+    return <>
+        <select className="intInput" defaultValue={getLastDays} onChange={(e) => {
+            setLastDays(e.target.value);
+            header.FromDate = new Date(new Date().setDate(new Date().getDate() - e.target.value)).toISOString().split("T")[0];
+            fetch(url, { method: method, headers: header} ).then((res) => {
+                return res.json();
+            }).then((data) => {
+                setActiveData(data);
+                setFromDate(new Date(new Date().setDate(new Date().getDate() - e.target.value)).toISOString().split("T")[0]);
+            }).finally(() => {
+                setloadingTimeDate(false);
+            })
+        }}>
+            <option value="7">Last 7 days</option>
+            <option value="14">Last 14 days</option>
+            <option value="30">Last 30 days</option>
+            <option value="90">Last 90 days</option>
+        </select>
+        <Button className="crawl-cta" text="View more" onClick={() => {
+            setCalendar(!calendar);
+        }} />
+        {(calendar) ? <form onSubmit={(e) => {
             e.preventDefault();
             setloadingTimeDate(true);
             fetch(url, { method: method, headers: header} ).then((res) => {
@@ -36,7 +36,7 @@ export default function Filter({url, method, header, setLastDays, getLastDays, s
                 setloadingTimeDate(false);
             })
         }}>
-            <h3>Filter by date</h3>
+            <h3>Last {getLastDays} days</h3>
             <section className="grid-container grid-3">
                 <input type="date" className="intInput" defaultValue={fromDate} onChange={(e) => {
                     setFromDate(e.target.value)
@@ -44,9 +44,8 @@ export default function Filter({url, method, header, setLastDays, getLastDays, s
                 <input type="date" className="intInput" defaultValue={toDate} onChange={(e) => {
                     setToDate(e.target.value)
                 }} min="2019-01-01" />
-                <Button type="submit" disabled={(loadingTimeDate) ? true : ""} className="crawl-cta" text={loadingTimeDate ? "Loading..." : "Search now"} />
+                <Button type="submit" disabled={(loadingTimeDate) ? true : ""} className="crawl-cta" text={loadingTimeDate ? "Loading..." : "Apply"} />
             </section>
-        </form>
-        </>
-    }
+        </form> : null}
+    </>
 }

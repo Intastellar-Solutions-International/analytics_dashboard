@@ -1,5 +1,10 @@
 export const reportsLinks = [
     {
+        name: "My Preferences",
+        path: "/settings/preferences",
+        view: ["admin", "super-admin", "manager"]
+    },
+    {
         name: "Add new User",
         path: "/settings/add-user",
         view: ["admin", "super-admin"]

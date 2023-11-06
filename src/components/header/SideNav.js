@@ -8,6 +8,9 @@ export default function SideNav(props) {
 
     return <>
         <aside className="sidebar expand">
+            {
+                props?.title ? <h2>{props?.title}</h2> : null
+            }
             <nav className="collapsed expand">
                 {
                     props?.links?.map((link, key) => {

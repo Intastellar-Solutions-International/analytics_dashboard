@@ -43,7 +43,7 @@ export default function UserConsents(props) {
     }, [getDomainsUrlData]);
     return (
         <>
-            <SideNav links={reportsLinks} />
+            <SideNav links={reportsLinks} title="Reports" />
             <article style={{flex: "1"}}>
                 <StickyPageTitle title="User consents" />
                 <div className="dashboard-content">

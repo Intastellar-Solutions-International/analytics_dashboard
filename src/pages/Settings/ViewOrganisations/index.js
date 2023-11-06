@@ -22,7 +22,7 @@ export default function ViewOrg() {
 
     return (
         <>
-            <SideNav links={reportsLinks} />
+            <SideNav links={reportsLinks} title="Settings" />
             <main className="dashboard-content">
                 <h1>My Organisation</h1>
                 <Link className="backLink" to="/settings">Back to settings</Link>

@@ -37,6 +37,7 @@ import PlatformSelector from "./Components/PlatformSelector/PlatformSelector";
 import SiteStatus from "./Pages/Reports/SiteStatus";
 import Crawler from "./Components/Crawler";
 import UserAgents from "./Pages/Reports/UserAgents";
+import UserPreferences from "./Pages/Settings/UserPreferences";
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
 export const DomainContext = createContext(null);
@@ -157,6 +158,11 @@ export default function App() {
                                     <Route path="/settings/view-organisations">
                                         <ErrorBoundary>
                                             {domainError ? <AddDomain /> : <ViewOrg />}
+                                        </ErrorBoundary>
+                                    </Route>
+                                    <Route path="/settings/preferences">
+                                        <ErrorBoundary>
+                                            {domainError ? <AddDomain /> : <UserPreferences />}
                                         </ErrorBoundary>
                                     </Route>
                                     <Route path='/:id/view/:handle'>

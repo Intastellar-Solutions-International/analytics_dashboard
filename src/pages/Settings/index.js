@@ -11,9 +11,9 @@ export default function Settings(props) {
     
     return (
         <>
-            <SideNav links={reportsLinks} />
+            <SideNav links={reportsLinks} title="Settings" />
             <main className="dashboard-content">
-                <h1>Settings</h1>
+                
             </main>
         </>
     )
