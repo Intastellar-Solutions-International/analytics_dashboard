@@ -3,7 +3,7 @@ import TopWidgets from "../../Components/widget/TopWidgets.js";
 import useFetch from "../../Functions/FetchHook";
 import API from "../../API/api";
 import Widget from "../../Components/widget/widget";
-import {Loading, CurrentPageLoading} from "../../Components/widget/Loading";
+import {Loading} from "../../Components/widget/Loading";
 
 import "./Style.css";
 import Map from "../../Components/Charts/WorldMap/WorldMap.js";
