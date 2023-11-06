@@ -223,6 +223,8 @@ export default function App() {
                                             <Login />
                                         </ErrorBoundary>
                                     </Router>
+                                    <Route path="/settings/config-gdpr">
+                                    </Route>
                                     <Redirect to="/login" />
                                 </Switch>
                             </div>

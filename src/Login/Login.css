@@ -9,6 +9,9 @@
     background-position: left;
     background-size: cover;
     background-blend-mode: multiply;
+    position: absolute;
+    z-index: 1000000000;
+    top: 0;
 }
 
 .loginForm-overlay{

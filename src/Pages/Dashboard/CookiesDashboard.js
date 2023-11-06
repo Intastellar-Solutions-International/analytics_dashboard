@@ -3,6 +3,7 @@ import API from "../../API/api";
 const useParams = window.ReactRouterDOM.useParams;
 import { DomainContext, OrganisationContext } from "../../App.js";
 import useFetch from "../../Functions/FetchHook";
+import Table from "../../Components/Tabel/index.js";
 
 export default function CookiesDashboard() {
     document.title = "Cookies | Intastellar Consents";
@@ -25,17 +26,18 @@ export default function CookiesDashboard() {
                 {
                     !loading ? data.status == "success" ? <>
                         {
-                            data.data.map((cookie, index) => {
-                                return (
-                                    <div className="cookie" key={index}>
-                                        {
-                                            console.log(cookie.cookiename)
-                                            
-                                        }
-                                        <p>{cookie.domain}</p>
-                                    </div>
-                                )
-                            })
+                            <Table data={data.data.map((cookie, index) => {
+                                const cookieName = JSON.parse(cookie.cookiename).map((c, key) => {
+                                    console.log(c);
+                                    return Object.keys(c).reduce((object, key) => {
+                                        return key;
+                                    })
+                                })
+                                return {
+                                    name: cookieName,
+                                    domain: cookie.domain,
+                                }
+                            })} headers={["Cookie", "Domain"]} />
                         }
                     </> : null : <div className="loading"></div>
                 }
