@@ -4741,8 +4741,8 @@ function UserPreferences() {
     handle,
     id
   } = useParams();
-  const [dateRange, setDateRange] = useState(30);
-  const [defaultRange, setDefaultRange] = useState("30 days");
+  const [dateRange, setDateRange] = useState(localStorage.getItem("settings") != null ? JSON.parse(localStorage.getItem("settings")).dateRange : 30);
+  const [defaultRange, setDefaultRange] = useState(dateRange + " days");
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
     links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_2__.reportsLinks,
     title: "Settings"
