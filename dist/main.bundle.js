@@ -2220,6 +2220,8 @@ function Filter(_ref) {
   }, "Last 7 days"), /*#__PURE__*/React.createElement("option", {
     value: "14"
   }, "Last 14 days"), /*#__PURE__*/React.createElement("option", {
+    value: "28"
+  }, "Last 28 days"), /*#__PURE__*/React.createElement("option", {
     value: "30"
   }, "Last 30 days"), /*#__PURE__*/React.createElement("option", {
     value: "90"

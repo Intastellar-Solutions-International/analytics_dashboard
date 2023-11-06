@@ -19,6 +19,7 @@ export default function Filter({url, method, header, setLastDays, getLastDays, s
         }}>
             <option value="7">Last 7 days</option>
             <option value="14">Last 14 days</option>
+            <option value="28">Last 28 days</option>
             <option value="30">Last 30 days</option>
             <option value="90">Last 90 days</option>
         </select>
