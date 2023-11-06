@@ -70,8 +70,8 @@
 }
 
 .loginForm-logo{
-    width: 60%;
-    margin: 0 auto;
+    width: 35%;
+    margin: 20px auto;
     padding: 20px 15px;
     filter: invert(100) brightness(100);
 }
