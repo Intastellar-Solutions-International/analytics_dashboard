@@ -110,7 +110,7 @@ export default function Header(props) {
                         }
                         </section>
                     </section>
-                    <div className="flex">
+                    <div className="flex profileImage">
                         <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile) } />
                     </div>
                 </div>

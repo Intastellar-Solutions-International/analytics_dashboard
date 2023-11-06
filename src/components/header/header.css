@@ -16,7 +16,7 @@
 
 .dashboard-profile {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr min-content;
     align-items: center;
     justify-content: space-between;
     width: 100%;
@@ -26,6 +26,10 @@
 .flex{
     display: flex;
     align-items: center;
+}
+
+.profileImage{
+    width: 50px;
 }
 
 .clock {
