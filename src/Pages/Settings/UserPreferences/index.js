@@ -22,7 +22,7 @@ export default function UserPreferences(){
             <article style={{flex: "1"}}>
                 <StickyPageTitle title="Edit User Settings" />
                 <div className="dashboard-content">
-                    <div className="grid-item">
+                    <div className="widget">
                         <label htmlFor="userPreferences-date">Default date range</label>
                         <Select name="userPreferences" defaultValue={defaultRange} onChange={(e) => {
                             setDateRange(JSON.parse(e).id);
@@ -47,24 +47,24 @@ export default function UserPreferences(){
                                 }
                             ]
                         }></Select>
-                        <Button onClick={() => {
-                            fetch(API.settings.user.update.url, {
-                                method: API.settings.user.update.method,
-                                headers: API.settings.user.headers,
-                                body: JSON.stringify({
-                                    setting: {
-                                        dateRange: dateRange
-                                    },
-                                    userId: Authentication.getUserId()
-                                })
-                            }).then((res) => {
-                                return res.json();
-                            }).then((data) => {
-                                setSuccess(true);
-                                localStorage.setItem("settings", JSON.stringify({dateRange: dateRange}));
-                            })
-                        } } text="Save" />
                     </div>
+                    <Button onClick={() => {
+                        fetch(API.settings.user.update.url, {
+                            method: API.settings.user.update.method,
+                            headers: API.settings.user.headers,
+                            body: JSON.stringify({
+                                setting: {
+                                    dateRange: dateRange
+                                },
+                                userId: Authentication.getUserId()
+                            })
+                        }).then((res) => {
+                            return res.json();
+                        }).then((data) => {
+                            setSuccess(true);
+                            localStorage.setItem("settings", JSON.stringify({dateRange: dateRange}));
+                        })
+                    } } text="Save" />
                 </div>
             </article>
             {
