@@ -2155,6 +2155,8 @@ function Filter(_ref) {
     url,
     method,
     header,
+    setLastDays,
+    getLastDays,
     setActiveData,
     fromDate,
     toDate,
@@ -2162,45 +2164,76 @@ function Filter(_ref) {
     setToDate
   } = _ref;
   const [loadingTimeDate, setloadingTimeDate] = useState(false);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("form", {
-    onSubmit: e => {
-      e.preventDefault();
-      setloadingTimeDate(true);
-      fetch(url, {
-        method: method,
-        headers: header
-      }).then(res => {
-        return res.json();
-      }).then(data => {
-        setActiveData(data);
-      }).finally(() => {
-        setloadingTimeDate(false);
-      });
-    }
-  }, /*#__PURE__*/React.createElement("h3", null, "Filter by date"), /*#__PURE__*/React.createElement("section", {
-    className: "grid-container grid-3"
-  }, /*#__PURE__*/React.createElement("input", {
-    type: "date",
-    className: "intInput",
-    defaultValue: fromDate,
-    onChange: e => {
-      setFromDate(e.target.value);
-    },
-    min: "2019-01-01"
-  }), /*#__PURE__*/React.createElement("input", {
-    type: "date",
-    className: "intInput",
-    defaultValue: toDate,
-    onChange: e => {
-      setToDate(e.target.value);
-    },
-    min: "2019-01-01"
-  }), /*#__PURE__*/React.createElement(_Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    type: "submit",
-    disabled: loadingTimeDate ? true : "",
-    className: "crawl-cta",
-    text: loadingTimeDate ? "Loading..." : "Search now"
-  }))));
+
+  if (getLastDays != null) {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("select", {
+      className: "intInput",
+      defaultValue: getLastDays,
+      onChange: e => {
+        setLastDays(e.target.value);
+        header.FromDate = new Date(new Date().setDate(new Date().getDate() - e.target.value)).toISOString().split("T")[0];
+        fetch(url, {
+          method: method,
+          headers: header
+        }).then(res => {
+          return res.json();
+        }).then(data => {
+          setActiveData(data);
+          setFromDate(new Date(new Date().setDate(new Date().getDate() - e.target.value)).toISOString().split("T")[0]);
+        }).finally(() => {
+          setloadingTimeDate(false);
+        });
+      }
+    }, /*#__PURE__*/React.createElement("option", {
+      value: "7"
+    }, "Last 7 days"), /*#__PURE__*/React.createElement("option", {
+      value: "14"
+    }, "Last 14 days"), /*#__PURE__*/React.createElement("option", {
+      value: "30"
+    }, "Last 30 days"), /*#__PURE__*/React.createElement("option", {
+      value: "90"
+    }, "Last 90 days")));
+  } else {
+    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("form", {
+      onSubmit: e => {
+        e.preventDefault();
+        setloadingTimeDate(true);
+        fetch(url, {
+          method: method,
+          headers: header
+        }).then(res => {
+          return res.json();
+        }).then(data => {
+          setActiveData(data);
+        }).finally(() => {
+          setloadingTimeDate(false);
+        });
+      }
+    }, /*#__PURE__*/React.createElement("h3", null, "Filter by date"), /*#__PURE__*/React.createElement("section", {
+      className: "grid-container grid-3"
+    }, /*#__PURE__*/React.createElement("input", {
+      type: "date",
+      className: "intInput",
+      defaultValue: fromDate,
+      onChange: e => {
+        setFromDate(e.target.value);
+      },
+      min: "2019-01-01"
+    }), /*#__PURE__*/React.createElement("input", {
+      type: "date",
+      className: "intInput",
+      defaultValue: toDate,
+      onChange: e => {
+        setToDate(e.target.value);
+      },
+      min: "2019-01-01"
+    }), /*#__PURE__*/React.createElement(_Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+      type: "submit",
+      disabled: loadingTimeDate ? true : "",
+      className: "crawl-cta",
+      text: loadingTimeDate ? "Loading..." : "Search now"
+    }))));
+  }
 }
 
 /***/ }),
@@ -4030,8 +4063,9 @@ function Dashboard(props) {
     id
   } = useParams();
   const [activeData, setActiveData] = useState(null);
+  const [getLastDays, setLastDays] = useState(30);
   const today = new Date();
-  const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - 30)).toISOString().split("T")[0]);
+  const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - getLastDays)).toISOString().split("T")[0]);
   const [toDate, setToDate] = useState(new Date(new Date().setDate(today.getDate() - 1)).toISOString().split("T")[0]);
   const dashboardView = props.dashboardView;
   let url = _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.url;
@@ -4087,6 +4121,8 @@ function Dashboard(props) {
     url: url,
     method: method,
     header: header,
+    setLastDays: setLastDays,
+    getLastDays: getLastDays,
     setActiveData: setActiveData,
     fromDate: fromDate,
     toDate: toDate,

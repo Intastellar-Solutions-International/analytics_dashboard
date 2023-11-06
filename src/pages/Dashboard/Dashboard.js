@@ -21,8 +21,9 @@ export default function Dashboard(props){
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const { handle, id } = useParams();
     const [activeData, setActiveData] = useState(null);
+    const [getLastDays, setLastDays] = useState(30);
     const today = new Date();
-    const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - 30)).toISOString().split("T")[0]);
+    const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - getLastDays)).toISOString().split("T")[0]);
     const [toDate, setToDate] = useState(new Date(new Date().setDate(today.getDate() - 1)).toISOString().split("T")[0]);
 
     const dashboardView = props.dashboardView;
@@ -81,7 +82,7 @@ export default function Dashboard(props){
                 </div>
                 <div className="" style={{paddingTop: "40px"}}>
                     <h2>User Interactions</h2>
-                    <Filter url={url} method={method} header={header} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
+                    <Filter url={url} method={method} header={header} setLastDays={setLastDays} getLastDays={getLastDays} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
                     <div className="grid-container grid-2">
                     {(loading) ? <>
                         <Loading />
