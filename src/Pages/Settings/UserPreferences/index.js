@@ -22,9 +22,9 @@ export default function UserPreferences(){
             <article style={{flex: "1"}}>
                 <StickyPageTitle title="Edit User Settings" />
                 <div className="dashboard-content">
-                    <div className="widget">
-                        <label htmlFor="userPreferences-date">Default date range</label>
-                        <Select name="userPreferences" defaultValue={defaultRange} onChange={(e) => {
+                    <div style={{display: "flex"}}>
+                        <label>Default date range</label>
+                        <Select style={{marginLeft: "35px"}} name="userPreferences" defaultValue={defaultRange} onChange={(e) => {
                             setDateRange(JSON.parse(e).id);
                             setDefaultRange(JSON.parse(e).name);
                         }} items={
@@ -48,7 +48,11 @@ export default function UserPreferences(){
                             ]
                         }></Select>
                     </div>
-                    <Button onClick={() => {
+                    <Button style={{
+                        padding: "10px 50px",
+                        fontSize: "1.1rem",
+                        marginTop: "20px"
+                    }} onClick={() => {
                         fetch(API.settings.user.update.url, {
                             method: API.settings.user.update.method,
                             headers: API.settings.user.headers,

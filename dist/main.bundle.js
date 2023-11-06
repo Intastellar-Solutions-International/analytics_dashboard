@@ -1284,6 +1284,7 @@ function Button(props) {
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
     className: props.className ? props.className : "cta",
+    style: props.style ? props.style : null,
     disabled: props.disabled,
     onClick: props === null || props === void 0 ? void 0 : props.onClick
   }, (_props$text = props.text) !== null && _props$text !== void 0 ? _props$text : props.children));
@@ -4759,10 +4760,13 @@ function UserPreferences() {
   }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "widget"
-  }, /*#__PURE__*/React.createElement("label", {
-    htmlFor: "userPreferences-date"
-  }, "Default date range"), /*#__PURE__*/React.createElement(_Components_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    style: {
+      display: "flex"
+    }
+  }, /*#__PURE__*/React.createElement("label", null, "Default date range"), /*#__PURE__*/React.createElement(_Components_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    style: {
+      marginLeft: "35px"
+    },
     name: "userPreferences",
     defaultValue: defaultRange,
     onChange: e => {
@@ -4783,6 +4787,11 @@ function UserPreferences() {
       name: "30 days"
     }]
   })), /*#__PURE__*/React.createElement(_Components_Button_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    style: {
+      padding: "10px 50px",
+      fontSize: "1.1rem",
+      marginTop: "20px"
+    },
     onClick: () => {
       fetch(_API_api__WEBPACK_IMPORTED_MODULE_6__["default"].settings.user.update.url, {
         method: _API_api__WEBPACK_IMPORTED_MODULE_6__["default"].settings.user.update.method,
