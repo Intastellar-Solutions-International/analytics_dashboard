@@ -61,14 +61,13 @@ export default function App() {
             user: Authentication.getUserId()
         })).then((data) => {
             const setting = data.setting;
-            console.log(JSON.parse(setting));
             if (data === "Err_Login_Expired") {
                 localStorage.removeItem("globals");
                 navigate.push("/login");
                 return;
             }
 
-            localStorage.setItem("settings", setting);
+            localStorage.setItem("settings", JSON.stringify(setting));
         });
 
         /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
