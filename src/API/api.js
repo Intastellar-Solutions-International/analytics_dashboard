@@ -134,6 +134,20 @@ const API = {
                 "Content-Type": "application/json"
             }
         },
+        user: {
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Content-Type": "application/json"
+            },
+            update: {
+                url: `${PrimaryHost}/analytics/settings/user.php`,
+                method: "POST"
+            },
+            get: {
+                url: `${PrimaryHost}/analytics/settings/getUserSettings.php`,
+                method: "POST"
+            },
+        }
     },
     ferry: {
         getTotalSales: {

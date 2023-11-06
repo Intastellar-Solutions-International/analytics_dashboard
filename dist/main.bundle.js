@@ -626,6 +626,20 @@ const API = {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
         "Content-Type": "application/json"
       }
+    },
+    user: {
+      headers: {
+        "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
+        "Content-Type": "application/json"
+      },
+      update: {
+        url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/user.php"),
+        method: "POST"
+      },
+      get: {
+        url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/getUserSettings.php"),
+        method: "POST"
+      }
     }
   },
   ferry: {
@@ -780,8 +794,22 @@ function App() {
     if (window.location.pathname === "/") {
       window.location.href = "/" + id + "/dashboard";
     }
-    /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
 
+    (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_18__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_7__["default"].settings.user.get.url, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].settings.user.get.method, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].settings.user.headers, JSON.stringify({
+      user: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].getUserId()
+    })).then(data => {
+      const setting = data.setting;
+      console.log(JSON.parse(setting));
+
+      if (data === "Err_Login_Expired") {
+        localStorage.removeItem("globals");
+        navigate.push("/login");
+        return;
+      }
+
+      localStorage.setItem("settings", setting);
+    });
+    /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
 
     useEffect(() => {
       var _API$id, _API$id$getDomains;
@@ -2376,9 +2404,11 @@ function SideNav(props) {
   let url = "";
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("aside", {
     className: "sidebar expand"
-  }, props !== null && props !== void 0 && props.title ? /*#__PURE__*/React.createElement("h2", null, props === null || props === void 0 ? void 0 : props.title) : null, /*#__PURE__*/React.createElement("nav", {
+  }, /*#__PURE__*/React.createElement("nav", {
     className: "collapsed expand"
-  }, props === null || props === void 0 ? void 0 : (_props$links = props.links) === null || _props$links === void 0 ? void 0 : _props$links.map((link, key) => {
+  }, props !== null && props !== void 0 && props.title ? /*#__PURE__*/React.createElement("h2", {
+    className: "navItems"
+  }, props === null || props === void 0 ? void 0 : props.title) : null, props === null || props === void 0 ? void 0 : (_props$links = props.links) === null || _props$links === void 0 ? void 0 : _props$links.map((link, key) => {
     var _link$view;
 
     if (link.path.indexOf("reports") !== -1) {
@@ -4073,7 +4103,7 @@ function Dashboard(props) {
     id
   } = useParams();
   const [activeData, setActiveData] = useState(null);
-  const [getLastDays, setLastDays] = useState(30);
+  const [getLastDays, setLastDays] = useState(localStorage.getItem("settings") != null ? JSON.parse(localStorage.getItem("settings")).dateRange : 30);
   const today = new Date();
   const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - getLastDays)).toISOString().split("T")[0]);
   const [toDate, setToDate] = useState(new Date(new Date().setDate(today.getDate() - 1)).toISOString().split("T")[0]);
@@ -4685,8 +4715,86 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ UserPreferences)
 /* harmony export */ });
+/* harmony import */ var _Components_Header_Sticky__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../Components/Header/Sticky */ "./src/Components/Header/Sticky/index.js");
+/* harmony import */ var _Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../Components/Header/SideNav */ "./src/Components/Header/SideNav.js");
+/* harmony import */ var _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../Components/Header/SideNavLinks */ "./src/Components/Header/SideNavLinks/index.js");
+/* harmony import */ var _Components_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../Components/SelectInput/Selector */ "./src/Components/SelectInput/Selector.js");
+/* harmony import */ var _Components_Button_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Components/Button/Button */ "./src/Components/Button/Button.js");
+/* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../Authentication/Auth */ "./src/Authentication/Auth.js");
+/* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../API/api */ "./src/API/api.js");
+
+
+
+
+
+
+
+const {
+  useState,
+  useEffect,
+  useRef
+} = React;
+const useParams = window.ReactRouterDOM.useParams;
+const urlParams = new URLSearchParams(window.location.search);
 function UserPreferences() {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h1", null, "User Preferences"));
+  const {
+    handle,
+    id
+  } = useParams();
+  const [dateRange, setDateRange] = useState(30);
+  const [defaultRange, setDefaultRange] = useState("30 days");
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_2__.reportsLinks,
+    title: "Settings"
+  }), /*#__PURE__*/React.createElement("article", {
+    style: {
+      flex: "1"
+    }
+  }, /*#__PURE__*/React.createElement(_Components_Header_Sticky__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    title: "Edit User Settings"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "dashboard-content"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "grid-item"
+  }, /*#__PURE__*/React.createElement("label", {
+    htmlFor: "userPreferences-date"
+  }, "Default date range"), /*#__PURE__*/React.createElement(_Components_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    name: "userPreferences",
+    defaultValue: defaultRange,
+    onChange: e => {
+      setDateRange(JSON.parse(e).id);
+      setDefaultRange(JSON.parse(e).name);
+    },
+    items: [{
+      id: 7,
+      name: "7 days"
+    }, {
+      id: 14,
+      name: "14 days"
+    }, {
+      id: 28,
+      name: "28 days"
+    }, {
+      id: 30,
+      name: "30 days"
+    }]
+  }), /*#__PURE__*/React.createElement(_Components_Button_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    onClick: () => {
+      fetch(_API_api__WEBPACK_IMPORTED_MODULE_6__["default"].settings.user.update.url, {
+        method: _API_api__WEBPACK_IMPORTED_MODULE_6__["default"].settings.user.update.method,
+        headers: _API_api__WEBPACK_IMPORTED_MODULE_6__["default"].settings.user.headers,
+        body: JSON.stringify({
+          setting: {
+            dateRange: dateRange
+          },
+          userId: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_5__["default"].getUserId()
+        })
+      }).then(res => {
+        return res.json();
+      });
+    },
+    text: "Save"
+  })))));
 }
 
 /***/ }),

@@ -8,10 +8,10 @@ export default function SideNav(props) {
 
     return <>
         <aside className="sidebar expand">
-            {
-                props?.title ? <h2>{props?.title}</h2> : null
-            }
             <nav className="collapsed expand">
+                {
+                    props?.title ? <h2 className="navItems">{props?.title}</h2> : null
+                }
                 {
                     props?.links?.map((link, key) => {
                         if(link.path.indexOf("reports") !== -1){

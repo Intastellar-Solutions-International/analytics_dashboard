@@ -56,6 +56,21 @@ export default function App() {
         if(window.location.pathname === "/"){
             window.location.href = "/" + id + "/dashboard";
         }
+
+        Fetch(API.settings.user.get.url, API.settings.user.get.method, API.settings.user.headers, JSON.stringify({
+            user: Authentication.getUserId()
+        })).then((data) => {
+            const setting = data.setting;
+            console.log(JSON.parse(setting));
+            if (data === "Err_Login_Expired") {
+                localStorage.removeItem("globals");
+                navigate.push("/login");
+                return;
+            }
+
+            localStorage.setItem("settings", setting);
+        });
+
         /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
         useEffect(() => {
             Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
@@ -69,7 +84,6 @@ export default function App() {
                 
                 setOrganisations(data);
             });
-
 
             if(id && API[id]?.getDomains?.url != undefined){
                 Fetch(API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers).then((data) => {
