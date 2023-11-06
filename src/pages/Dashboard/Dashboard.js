@@ -81,8 +81,10 @@ export default function Dashboard(props){
                     <Crawler />
                 </div>
                 <div className="" style={{paddingTop: "40px"}}>
-                    <h2>User Interactions</h2>
-                    <Filter url={url} method={method} header={header} setLastDays={setLastDays} getLastDays={getLastDays} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
+                    <div className="grid-container grid-2">
+                        <h2>User Interactions</h2>
+                        <Filter url={url} method={method} header={header} setLastDays={setLastDays} getLastDays={getLastDays} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
+                    </div>
                     <div className="grid-container grid-2">
                     {(loading) ? <>
                         <Loading />
@@ -101,11 +103,11 @@ export default function Dashboard(props){
                 <div className="grid-container grid-3">
                     {
                         (loading) ? <Loading /> : <Pie data={[
-                            {x: "Accepted", value: activeData?.Accepted},
-                            {x: "Declined", value: activeData?.Declined},
-                            {x: "Only Marketing", value: activeData?.Marketing},
-                            {x: "Only Functional", value: activeData?.Functional},
-                            {x: "Only Statics", value: activeData?.Statics}
+                            {x: "Accepted", value: activeData?.interactions_number.accept},
+                            {x: "Declined", value: activeData?.interactions_number.decline},
+                            {x: "Only Marketing", value: activeData?.interactions_number.marketing},
+                            {x: "Only Functional", value: activeData?.interactions_number.functional},
+                            {x: "Only Statics", value: activeData?.interactions_number.statics}
                         ]} />
                     }
                     {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}

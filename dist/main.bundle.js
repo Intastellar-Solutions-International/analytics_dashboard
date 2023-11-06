@@ -2199,7 +2199,13 @@ function Filter(_ref) {
   } = _ref;
   const [loadingTimeDate, setloadingTimeDate] = useState(false);
   const [calendar, setCalendar] = useState(false);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("select", {
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("section", {
+    style: {
+      display: "flex",
+      alignItems: "flex-end",
+      alignItems: "center"
+    }
+  }, /*#__PURE__*/React.createElement("select", {
     className: "intInput",
     defaultValue: getLastDays,
     onChange: e => {
@@ -2229,11 +2235,11 @@ function Filter(_ref) {
     value: "90"
   }, "Last 90 days")), /*#__PURE__*/React.createElement(_Components_Button_Button_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
     className: "crawl-cta",
-    text: "View more",
+    text: "Custom",
     onClick: () => {
       setCalendar(!calendar);
     }
-  }), calendar ? /*#__PURE__*/React.createElement("form", {
+  })), calendar ? /*#__PURE__*/React.createElement("form", {
     onSubmit: e => {
       e.preventDefault();
       setloadingTimeDate(true);
@@ -4172,6 +4178,8 @@ function Dashboard(props) {
     style: {
       paddingTop: "40px"
     }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "grid-container grid-2"
   }, /*#__PURE__*/React.createElement("h2", null, "User Interactions"), /*#__PURE__*/React.createElement(_Components_Filter__WEBPACK_IMPORTED_MODULE_9__["default"], {
     url: url,
     method: method,
@@ -4183,7 +4191,7 @@ function Dashboard(props) {
     toDate: toDate,
     setFromDate: setFromDate,
     setToDate: setToDate
-  }), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-2"
   }, loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null), /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null)) : /*#__PURE__*/React.createElement(React.Fragment, null, activeData ? /*#__PURE__*/React.createElement(_Components_Charts_Line__WEBPACK_IMPORTED_MODULE_10__["default"], {
     data: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum,
@@ -4204,19 +4212,19 @@ function Dashboard(props) {
   }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_Charts_Pie__WEBPACK_IMPORTED_MODULE_11__["default"], {
     data: [{
       x: "Accepted",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.Accepted
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.accept
     }, {
       x: "Declined",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.Declined
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.decline
     }, {
       x: "Only Marketing",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.Marketing
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.marketing
     }, {
       x: "Only Functional",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.Functional
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.functional
     }, {
       x: "Only Statics",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.Statics
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.statics
     }]
   }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Accepted.toLocaleString("de-DE")) + "%",
