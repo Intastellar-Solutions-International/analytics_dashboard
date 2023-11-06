@@ -5,6 +5,7 @@ import Select from "../../../Components/SelectInput/Selector";
 import Button from "../../../Components/Button/Button";
 import Authentication from "../../../Authentication/Auth";
 import API from "../../../API/api";
+import SuccessWindow from "../../../Components/SuccessWindow";
 const { useState, useEffect, useRef } = React;
 const useParams = window.ReactRouterDOM.useParams;
 const urlParams = new URLSearchParams(window.location.search);
@@ -13,6 +14,7 @@ export default function UserPreferences(){
     const { handle, id } = useParams();
     const [dateRange, setDateRange] = useState((localStorage.getItem("settings") != null) ? JSON.parse(localStorage.getItem("settings")).dateRange : 30);
     const [defaultRange, setDefaultRange] = useState(dateRange + " days");
+    const [success, setSuccess] = useState(false);
 
     return (
        <>
@@ -57,11 +59,17 @@ export default function UserPreferences(){
                                 })
                             }).then((res) => {
                                 return res.json();
+                            }).then((data) => {
+                                setSuccess(true);
+                                localStorage.setItem("settings", JSON.stringify({dateRange: dateRange}));
                             })
                         } } text="Save" />
                     </div>
                 </div>
             </article>
+            {
+                (success) ? <SuccessWindow message={"Settings updated successfully. Default days: " + dateRange} /> : null
+            }
        </>
     )
 }

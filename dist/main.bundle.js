@@ -4722,6 +4722,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Button_Button__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../Components/Button/Button */ "./src/Components/Button/Button.js");
 /* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../Authentication/Auth */ "./src/Authentication/Auth.js");
 /* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../API/api */ "./src/API/api.js");
+/* harmony import */ var _Components_SuccessWindow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../Components/SuccessWindow */ "./src/Components/SuccessWindow/index.js");
+
 
 
 
@@ -4743,6 +4745,7 @@ function UserPreferences() {
   } = useParams();
   const [dateRange, setDateRange] = useState(localStorage.getItem("settings") != null ? JSON.parse(localStorage.getItem("settings")).dateRange : 30);
   const [defaultRange, setDefaultRange] = useState(dateRange + " days");
+  const [success, setSuccess] = useState(false);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_1__["default"], {
     links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_2__.reportsLinks,
     title: "Settings"
@@ -4791,10 +4794,17 @@ function UserPreferences() {
         })
       }).then(res => {
         return res.json();
+      }).then(data => {
+        setSuccess(true);
+        localStorage.setItem("settings", JSON.stringify({
+          dateRange: dateRange
+        }));
       });
     },
     text: "Save"
-  })))));
+  })))), success ? /*#__PURE__*/React.createElement(_Components_SuccessWindow__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    message: "Settings updated successfully. Default days: " + dateRange
+  }) : null);
 }
 
 /***/ }),
