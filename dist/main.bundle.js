@@ -4231,7 +4231,11 @@ function Dashboard(props) {
   }, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-2"
   }, /*#__PURE__*/React.createElement("h2", null, "User Interactions")), /*#__PURE__*/React.createElement("div", {
-    className: "grid-container grid-2"
+    className: "grid-container",
+    style: {
+      gridTemplateColumns: "1fr .5fr",
+      gap: "20px"
+    }
   }, loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null), /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null)) : /*#__PURE__*/React.createElement(React.Fragment, null, activeData ? /*#__PURE__*/React.createElement(_Components_Charts_Line__WEBPACK_IMPORTED_MODULE_9__["default"], {
     data: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum,
     data2: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum,
