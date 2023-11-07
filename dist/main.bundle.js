@@ -2553,7 +2553,7 @@ function StickyPageTitle(_ref) {
     style: {
       fontSize: "1.5em"
     }
-  }, title), /*#__PURE__*/React.createElement(_Filter_index_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+  }, title), url ? /*#__PURE__*/React.createElement(_Filter_index_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
     url: url,
     method: method,
     header: header,
@@ -2564,7 +2564,7 @@ function StickyPageTitle(_ref) {
     toDate: toDate,
     setFromDate: setFromDate,
     setToDate: setToDate
-  }))));
+  }) : null)));
 }
 
 /***/ }),
