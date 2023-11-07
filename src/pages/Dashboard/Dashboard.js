@@ -99,7 +99,7 @@ export default function Dashboard(props){
                     </>}
                     </div>
                 </div>
-                <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} type="Total interactions" />
+                {(loading) ? <Loading /> : <Widget totalNumber={activeData?.Total.toLocaleString("de-DE")} type="Total interactions" />}
                 <div className="grid-container grid-3">
                     {
                         (loading) ? <Loading /> : <Pie data={[
