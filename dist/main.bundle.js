@@ -1317,14 +1317,19 @@ const {
 function Line(_ref) {
   let {
     data,
-    title,
-    fromDate,
-    toDate
+    data2,
+    title
   } = _ref;
   const dailyData = data === null || data === void 0 ? void 0 : data.map((d, i) => {
     return {
       "name": new Intl.DateTimeFormat('da-DK').format(new Date(d.date)),
       "domain": d.num
+    };
+  });
+  const dailyData2 = data2 === null || data2 === void 0 ? void 0 : data2.map((d, i) => {
+    return {
+      "name": new Intl.DateTimeFormat('da-DK').format(new Date(d.previousPeriod.date)),
+      "domain": d.previousPeriod.num
     };
   });
   useEffect(() => {
@@ -1340,15 +1345,23 @@ function Line(_ref) {
         document.getElementById("line-chart").innerHTML = "";
       }
 
+      let dataSet2 = anychart.data.set(dailyData2);
       let chart = anychart.line();
       chart.background().fill("transparent");
       chart.xAxis().title("Day");
       chart.yAxis().title(title);
       chart.tooltip().format(title + ": {%Value}");
       const series = chart.line(mapping);
+      const series2 = chart.line(dataSet2.mapAs({
+        x: "name",
+        value: "domain"
+      }));
       series.normal().stroke("#C09F53");
       series.hovered().stroke("#C09F53", 2, "10 5", "round");
       series.selected().stroke("#C09F53", 4, "10 5", "round");
+      series2.normal().stroke("#C09F53", 1, "10 5", "round");
+      series2.hovered().stroke("#C09F53", 2);
+      series2.selected().stroke("#C09F53", 4);
       chart.container("line-chart");
 
       if (data !== null) {
@@ -4221,6 +4234,7 @@ function Dashboard(props) {
     className: "grid-container grid-2"
   }, loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null), /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null)) : /*#__PURE__*/React.createElement(React.Fragment, null, activeData ? /*#__PURE__*/React.createElement(_Components_Charts_Line__WEBPACK_IMPORTED_MODULE_9__["default"], {
     data: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum,
+    data2: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum,
     fromDate: fromDate,
     toDate: toDate,
     title: "Daily user interactions"
