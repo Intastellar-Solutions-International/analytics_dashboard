@@ -1730,7 +1730,7 @@ const countryCodes = {
   "Qatar": "QA",
   "Reunion": "RE",
   "Romania": "RO",
-  "Russian Federation": "RU",
+  "Russia": "RU",
   "Rwanda": "RW",
   "Saint Barthelemy": "BL",
   "Saint Helena": "SH",
