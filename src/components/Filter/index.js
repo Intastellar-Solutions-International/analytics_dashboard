@@ -5,7 +5,7 @@ export default function Filter({url, method, header, setLastDays, getLastDays, s
     const [calendar, setCalendar] = useState(false);
     
     return <div>
-        <section style={{display: "flex", alignItems: "flex-end", alignItems: "center"}}>
+        <section style={{display: "flex", alignItems: "flex-end", gap: "10px", alignItems: "center"}}>
             <select className="intInput" defaultValue={getLastDays} onChange={(e) => {
                 setLastDays(e.target.value);
                 header.FromDate = new Date(new Date().setDate(new Date().getDate() - e.target.value)).toISOString().split("T")[0];

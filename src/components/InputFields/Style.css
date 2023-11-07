@@ -1,10 +1,9 @@
 .intInput{
-    padding: 15px;
+    padding: 12px;
     width: 100%;
     border: none;
     appearance: none;
     -webkit-appearance: none;
     border-radius: 5px;
-    font-size: 15px;
-    font-size: 16px;
+    font-size: 14px;
 }
