@@ -10,7 +10,6 @@ import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
 const useParams = window.ReactRouterDOM.useParams;
 import Crawler from "../../Components/Crawler";
-import Filter from "../../Components/Filter";
 import Line from "../../Components/Charts/Line";
 import Pie from "../../Components/Charts/Pie";
 import StickyPageTitle from "../../Components/Header/Sticky/index.js";
@@ -68,7 +67,7 @@ export default function Dashboard(props){
 
     return (
         <>
-            <StickyPageTitle title="Home" />
+            <StickyPageTitle title="Home" url={url} method={method} header={header} setLastDays={setLastDays} getLastDays={getLastDays} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
             <div className="dashboard-content">
                 {
                     (id === "gdpr" && organisation != null &&  JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
@@ -83,7 +82,7 @@ export default function Dashboard(props){
                 <div className="" style={{paddingTop: "40px"}}>
                     <div className="grid-container grid-2">
                         <h2>User Interactions</h2>
-                        <Filter url={url} method={method} header={header} setLastDays={setLastDays} getLastDays={getLastDays} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
+                        
                     </div>
                     <div className="grid-container grid-2">
                     {(loading) ? <>

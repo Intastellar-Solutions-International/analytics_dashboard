@@ -2514,9 +2514,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ StickyPageTitle)
 /* harmony export */ });
+/* harmony import */ var _Filter_index_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Filter/index.js */ "./src/Components/Filter/index.js");
+
 function StickyPageTitle(_ref) {
   let {
-    title
+    title,
+    url,
+    method,
+    header,
+    setLastDays,
+    getLastDays,
+    setActiveData,
+    fromDate,
+    toDate,
+    setFromDate,
+    setToDate
   } = _ref;
   window.addEventListener("scroll", e => {
     if (window.scrollY > 0) {
@@ -2531,12 +2543,28 @@ function StickyPageTitle(_ref) {
       padding: "40px 0"
     }
   }, /*#__PURE__*/React.createElement("div", {
-    className: "dashboard-content"
+    className: "dashboard-content",
+    style: {
+      display: "grid",
+      gridTemplateColumns: "1fr .5fr",
+      alignItems: "center"
+    }
   }, /*#__PURE__*/React.createElement("h1", {
     style: {
       fontSize: "1.5em"
     }
-  }, title))));
+  }, title), /*#__PURE__*/React.createElement(_Filter_index_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    url: url,
+    method: method,
+    header: header,
+    setLastDays: setLastDays,
+    getLastDays: getLastDays,
+    setActiveData: setActiveData,
+    fromDate: fromDate,
+    toDate: toDate,
+    setFromDate: setFromDate,
+    setToDate: setToDate
+  }))));
 }
 
 /***/ }),
@@ -4092,10 +4120,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Charts_WorldMap_WorldMap_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Components/Charts/WorldMap/WorldMap.js */ "./src/Components/Charts/WorldMap/WorldMap.js");
 /* harmony import */ var _App_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../App.js */ "./src/App.js");
 /* harmony import */ var _Components_Crawler__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Components/Crawler */ "./src/Components/Crawler/index.js");
-/* harmony import */ var _Components_Filter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Filter */ "./src/Components/Filter/index.js");
-/* harmony import */ var _Components_Charts_Line__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Components/Charts/Line */ "./src/Components/Charts/Line/index.js");
-/* harmony import */ var _Components_Charts_Pie__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Components/Charts/Pie */ "./src/Components/Charts/Pie/index.js");
-/* harmony import */ var _Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../Components/Header/Sticky/index.js */ "./src/Components/Header/Sticky/index.js");
+/* harmony import */ var _Components_Charts_Line__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Charts/Line */ "./src/Components/Charts/Line/index.js");
+/* harmony import */ var _Components_Charts_Pie__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Components/Charts/Pie */ "./src/Components/Charts/Pie/index.js");
+/* harmony import */ var _Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Components/Header/Sticky/index.js */ "./src/Components/Header/Sticky/index.js");
 const {
   useState,
   useEffect,
@@ -4111,7 +4138,6 @@ const {
 
 
 const useParams = window.ReactRouterDOM.useParams;
-
 
 
 
@@ -4161,8 +4187,18 @@ function Dashboard(props) {
   document.querySelectorAll(".intInput").forEach(input => {
     input.setAttribute("max", new Date().toISOString().split("T")[0]);
   });
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_12__["default"], {
-    title: "Home"
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    title: "Home",
+    url: url,
+    method: method,
+    header: header,
+    setLastDays: setLastDays,
+    getLastDays: getLastDays,
+    setActiveData: setActiveData,
+    fromDate: fromDate,
+    toDate: toDate,
+    setFromDate: setFromDate,
+    setToDate: setToDate
   }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, id === "gdpr" && organisation != null && JSON.parse(organisation).id == 1 ? /*#__PURE__*/React.createElement(_Components_widget_TopWidgets_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
@@ -4181,20 +4217,9 @@ function Dashboard(props) {
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-2"
-  }, /*#__PURE__*/React.createElement("h2", null, "User Interactions"), /*#__PURE__*/React.createElement(_Components_Filter__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    url: url,
-    method: method,
-    header: header,
-    setLastDays: setLastDays,
-    getLastDays: getLastDays,
-    setActiveData: setActiveData,
-    fromDate: fromDate,
-    toDate: toDate,
-    setFromDate: setFromDate,
-    setToDate: setToDate
-  })), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h2", null, "User Interactions")), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-2"
-  }, loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null), /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null)) : /*#__PURE__*/React.createElement(React.Fragment, null, activeData ? /*#__PURE__*/React.createElement(_Components_Charts_Line__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }, loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null), /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null)) : /*#__PURE__*/React.createElement(React.Fragment, null, activeData ? /*#__PURE__*/React.createElement(_Components_Charts_Line__WEBPACK_IMPORTED_MODULE_9__["default"], {
     data: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum,
     fromDate: fromDate,
     toDate: toDate,
@@ -4210,7 +4235,7 @@ function Dashboard(props) {
     type: "Total interactions"
   }), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
-  }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_Charts_Pie__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_Charts_Pie__WEBPACK_IMPORTED_MODULE_10__["default"], {
     data: [{
       x: "Accepted",
       value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.accept
