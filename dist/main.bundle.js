@@ -5036,6 +5036,7 @@ const useParams = window.ReactRouterDOM.useParams;
 const urlParams = new URLSearchParams(window.location.search);
 function UserConsents(props) {
   document.title = "User consents | Intastellar Consents";
+  const settings = JSON.parse(localStorage.getItem("settings"));
   const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_11__.DomainContext);
   const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_11__.OrganisationContext);
   const {
@@ -5043,10 +5044,11 @@ function UserConsents(props) {
     id
   } = useParams();
   const page = urlParams.get("page") || 1;
-  const today = new Date();
-  const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - 30)).toISOString().split("T")[0]);
-  const [toDate, setToDate] = useState(new Date().toISOString().split("T")[0]);
   const [activeData, setActiveData] = useState(null);
+  const [getLastDays, setLastDays] = useState(localStorage.getItem("settings") != null ? JSON.parse(localStorage.getItem("settings")).dateRange : 30);
+  const today = new Date();
+  const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - settings.dateRange)).toISOString().split("T")[0]);
+  const [toDate, setToDate] = useState(new Date().toISOString().split("T")[0]);
   _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.headers.Domains = currentDomain;
   _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.headers.Offset = page;
   _API_api_js__WEBPACK_IMPORTED_MODULE_5__["default"][id].getDomainsUrl.headers.FromDate = fromDate;
@@ -5077,6 +5079,8 @@ function UserConsents(props) {
     url: url,
     method: method,
     header: header,
+    setLastDays: setLastDays,
+    getLastDays: getLastDays,
     setActiveData: setActiveData,
     fromDate: fromDate,
     toDate: toDate,

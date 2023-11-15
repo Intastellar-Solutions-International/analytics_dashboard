@@ -16,15 +16,18 @@ const urlParams = new URLSearchParams(window.location.search);
 
 export default function UserConsents(props) {
     document.title = "User consents | Intastellar Consents";
+    const settings = JSON.parse(localStorage.getItem("settings"));
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const { handle, id } = useParams();
     const page = urlParams.get("page") || 1;
 
-    const today = new Date();
-    const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - 30)).toISOString().split("T")[0]);
-    const [toDate, setToDate] = useState(new Date().toISOString().split("T")[0]);
     const [activeData, setActiveData] = useState(null);
+    const [getLastDays, setLastDays] = useState((localStorage.getItem("settings") != null) ? JSON.parse(localStorage.getItem("settings")).dateRange : 30);
+
+    const today = new Date();
+    const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - settings.dateRange)).toISOString().split("T")[0]);
+    const [toDate, setToDate] = useState(new Date().toISOString().split("T")[0]);
 
     API[id].getDomainsUrl.headers.Domains = currentDomain;
     API[id].getDomainsUrl.headers.Offset = page;
@@ -48,7 +51,7 @@ export default function UserConsents(props) {
                 <StickyPageTitle title="User consents" />
                 <div className="dashboard-content">
                     <section className="filter">
-                        <Filter url={url} method={method} header={header} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
+                        <Filter url={url} method={method} header={header} setLastDays={setLastDays} getLastDays={getLastDays} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
                     </section>
                     {(getDomainsUrlLoading && !getDomainsUrlError) ? <Loading /> : (getDomainsUrlError) ? <Unknown /> : ( getDomainsUrlData == "Err_No_Data_Found") ? <NoDataFound /> : <>
                         <div className="grid-container grid-3">
