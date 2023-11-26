@@ -501,6 +501,14 @@ const API = {
   SignUp: {
     url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.LoginHost, "/consents/signup/v1/signup.php")
   },
+  Subscription: {
+    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/payment/subscription/v1/subscription.php"),
+    method: "POST",
+    headers: {
+      "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
+      "Content-Type": "application/json"
+    }
+  },
   gdpr: {
     getTotalNumber: {
       url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getTotalNumber.php"),
@@ -730,6 +738,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Crawler__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./Components/Crawler */ "./src/Components/Crawler/index.js");
 /* harmony import */ var _Pages_Reports_UserAgents__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./Pages/Reports/UserAgents */ "./src/Pages/Reports/UserAgents/index.js");
 /* harmony import */ var _Pages_Settings_UserPreferences__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./Pages/Settings/UserPreferences */ "./src/Pages/Settings/UserPreferences/index.js");
+/* harmony import */ var _Components_StripePayment__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./Components/StripePayment */ "./src/Components/StripePayment/index.js");
 const {
   useState,
   useEffect,
@@ -776,6 +785,7 @@ const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/pu
 
 
 
+
 const OrganisationContext = createContext(localStorage.getItem("organisation"));
 const DomainContext = createContext(null);
 function App() {
@@ -786,6 +796,7 @@ function App() {
   const [organisations, setOrganisations] = useState(null);
   const [domains, setDomains] = useState(null);
   const [domainError, setDomainError] = useState(false);
+  const [subscriptionStatus, setSubscriptionStatus] = useState(null);
   const [id, setId] = useState(localStorage.getItem("platform") ? localStorage.getItem("platform") : null);
 
   if (localStorage.getItem("globals") != null) {
@@ -824,6 +835,18 @@ function App() {
 
         setOrganisations(data);
       });
+      (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_18__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_7__["default"].Subscription.url, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].Subscription.method, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].Subscription.headers, JSON.stringify({
+        user: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].getUserId()
+      })).then(data => {
+        if (data === "Err_Login_Expired") {
+          localStorage.removeItem("globals");
+          navigate.push("/login");
+          return;
+        }
+
+        setSubscriptionStatus(data);
+        localStorage.setItem("subscription", JSON.stringify(data));
+      });
 
       if (id && ((_API$id = _API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id]) === null || _API$id === void 0 ? void 0 : (_API$id$getDomains = _API$id.getDomains) === null || _API$id$getDomains === void 0 ? void 0 : _API$id$getDomains.url) != undefined) {
         (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_18__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id].getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id].getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id].getDomains.headers).then(data => {
@@ -853,6 +876,14 @@ function App() {
         setId: setId,
         platforms: organisations
       }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_27__["default"], null));
+    }
+
+    console.log(subscriptionStatus === null || subscriptionStatus === void 0 ? void 0 : subscriptionStatus.status);
+
+    if ((subscriptionStatus === null || subscriptionStatus === void 0 ? void 0 : subscriptionStatus.status) != "active") {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_StripePayment__WEBPACK_IMPORTED_MODULE_33__["default"], {
+        userId: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].getUserId
+      }));
     }
 
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Router, null, /*#__PURE__*/React.createElement(OrganisationContext.Provider, {
@@ -3397,6 +3428,31 @@ function Select(props) {
 
 /***/ }),
 
+/***/ "./src/Components/StripePayment/index.js":
+/*!***********************************************!*\
+  !*** ./src/Components/StripePayment/index.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ StripePayment)
+/* harmony export */ });
+/* harmony import */ var _Style_Stripe_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Style/Stripe.css */ "./src/Components/StripePayment/Style/Stripe.css");
+
+function StripePayment(props) {
+  return /*#__PURE__*/React.createElement("div", {
+    className: "content"
+  }, /*#__PURE__*/React.createElement("h1", null, "Choose a Plan"), /*#__PURE__*/React.createElement("stripe-pricing-table", {
+    class: "stripe-price-table",
+    "pricing-table-id": "prctbl_1OGmIdEK0yX4gMoH7rRqdg9y",
+    "publishable-key": "pk_test_cdjFXrTVnj1SdyYXzlTz95Sk",
+    "customer-email": props.userId()
+  }));
+}
+
+/***/ }),
+
 /***/ "./src/Components/SuccessWindow/index.js":
 /*!***********************************************!*\
   !*** ./src/Components/SuccessWindow/index.js ***!
@@ -5564,6 +5620,32 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".selector{\n    width: calc(max-conten
 
 /***/ }),
 
+/***/ "../node_modules/css-loader/dist/cjs.js!./src/Components/StripePayment/Style/Stripe.css":
+/*!**********************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!./src/Components/StripePayment/Style/Stripe.css ***!
+  \**********************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "../node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".content{\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n    font-weight: 300;\n    font-size: 16px;\n    line-height: 24px;\n    text-align: center;\n    margin-top: 50px;\n}\n\n.stripe-price-table{\n    width: 100%;\n    margin-bottom: 50px;\n}", "",{"version":3,"sources":["webpack://./src/Components/StripePayment/Style/Stripe.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,aAAa;IACb,sBAAsB;IACtB,iCAAiC;IACjC,gBAAgB;IAChB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,mBAAmB;AACvB","sourcesContent":[".content{\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n    font-weight: 300;\n    font-size: 16px;\n    line-height: 24px;\n    text-align: center;\n    margin-top: 50px;\n}\n\n.stripe-price-table{\n    width: 100%;\n    margin-bottom: 50px;\n}"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "../node_modules/css-loader/dist/cjs.js!./src/Components/SuccessWindow/Style.css":
 /*!***************************************************************************************!*\
   !*** ../node_modules/css-loader/dist/cjs.js!./src/Components/SuccessWindow/Style.css ***!
@@ -6810,6 +6892,60 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
        /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Style_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
+/***/ "./src/Components/StripePayment/Style/Stripe.css":
+/*!*******************************************************!*\
+  !*** ./src/Components/StripePayment/Style/Stripe.css ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "../node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "../node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "../node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "../node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_Stripe_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js!./Stripe.css */ "../node_modules/css-loader/dist/cjs.js!./src/Components/StripePayment/Style/Stripe.css");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_Stripe_css__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_Stripe_css__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_Stripe_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_Stripe_css__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
