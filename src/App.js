@@ -38,6 +38,7 @@ import SiteStatus from "./Pages/Reports/SiteStatus";
 import Crawler from "./Components/Crawler";
 import UserAgents from "./Pages/Reports/UserAgents";
 import UserPreferences from "./Pages/Settings/UserPreferences";
+import StripePayment from "./Components/StripePayment";
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
 export const DomainContext = createContext(null);
@@ -50,6 +51,7 @@ export default function App() {
     const [organisations, setOrganisations] = useState(null);
     const [domains, setDomains] = useState(null);
     const [domainError, setDomainError] = useState(false);
+    const [subscriptionStatus, setSubscriptionStatus] = useState(null);
     const [id, setId] = useState((localStorage.getItem("platform")) ? localStorage.getItem("platform") : null);
 
     if (localStorage.getItem("globals") != null) {
@@ -84,6 +86,18 @@ export default function App() {
                 setOrganisations(data);
             });
 
+            Fetch(API.Subscription.url, API.Subscription.method, API.Subscription.headers, JSON.stringify({
+                user: Authentication.getUserId()
+            })).then((data) => {
+                if (data === "Err_Login_Expired") {
+                    localStorage.removeItem("globals");
+                    navigate.push("/login");
+                    return;
+                }
+                setSubscriptionStatus(data);
+                localStorage.setItem("subscription", JSON.stringify(data));
+            });
+
             if(id && API[id]?.getDomains?.url != undefined){
                 Fetch(API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers).then((data) => {
                     console.log(data.length);
@@ -111,6 +125,14 @@ export default function App() {
                 </>
             )
         }
+        console.log(subscriptionStatus?.status);
+        if(subscriptionStatus?.status != "active") {
+            return (
+                <>
+                    <StripePayment userId={Authentication.getUserId} />
+                </>
+            )
+        }
 
         return (
             <>
@@ -126,10 +148,6 @@ export default function App() {
                                 <Switch>
                                     <Route path="/:id/dashboard" exact>
                                         <div style={{flex:"1"}}>
-                                            {/* <section style={{padding: "40px", backgroundColor: "rgb(218, 218, 218)", color: "#626262"}}>
-                                                <h1>Welcome, {JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name}</h1>
-                                                <p>Here you can see all the data regarding your Intastellar Cookie Consents implementation of your organisation</p>
-                                            </section> */}
                                             {domainError ? <AddDomain /> : 
                                             <ErrorBoundary>
                                                 {(id == "gdpr") ? <Dashboard dashboardView={dashboardView} setDashboardView={setDashboardView} /> : <FerryDashboard />}

@@ -8,6 +8,14 @@ const API = {
     SignUp: {
         url: `${LoginHost}/consents/signup/v1/signup.php`,
     },
+    Subscription: {
+        url: `${PrimaryHost}/payment/subscription/v1/subscription.php`,
+        method: "POST",
+        headers: {
+            "Authorization": Authentication.getToken(),
+            "Content-Type": "application/json"
+        }
+    },
     gdpr: {
         getTotalNumber: {
             url:  `${PrimaryHost}/analytics/gdpr/getTotalNumber.php`,
