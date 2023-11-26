@@ -796,7 +796,11 @@ function App() {
   const [organisations, setOrganisations] = useState(null);
   const [domains, setDomains] = useState(null);
   const [domainError, setDomainError] = useState(false);
-  const [subscriptionStatus, setSubscriptionStatus] = useState(null);
+  const [subscriptionStatus, setSubscriptionStatus] = useState({
+    status: "loading",
+    loading: false,
+    subscription: null
+  });
   const [id, setId] = useState(localStorage.getItem("platform") ? localStorage.getItem("platform") : null);
 
   if (localStorage.getItem("globals") != null) {
@@ -850,8 +854,6 @@ function App() {
 
       if (id && ((_API$id = _API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id]) === null || _API$id === void 0 ? void 0 : (_API$id$getDomains = _API$id.getDomains) === null || _API$id$getDomains === void 0 ? void 0 : _API$id$getDomains.url) != undefined) {
         (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_18__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id].getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id].getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id].getDomains.headers).then(data => {
-          console.log(data.length);
-
           if (data.error === "Err_No_Domains" || data.length === 0) {
             setDomainError(true);
           } else {
@@ -878,12 +880,10 @@ function App() {
       }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_27__["default"], null));
     }
 
-    console.log(subscriptionStatus === null || subscriptionStatus === void 0 ? void 0 : subscriptionStatus.status);
-
-    if ((subscriptionStatus === null || subscriptionStatus === void 0 ? void 0 : subscriptionStatus.status) != "active") {
+    if ((subscriptionStatus === null || subscriptionStatus === void 0 ? void 0 : subscriptionStatus.status) != "active" && subscriptionStatus !== null && subscriptionStatus !== void 0 && subscriptionStatus.loading) {
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_StripePayment__WEBPACK_IMPORTED_MODULE_33__["default"], {
         userId: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].getUserId
-      }));
+      }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_27__["default"], null));
     }
 
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Router, null, /*#__PURE__*/React.createElement(OrganisationContext.Provider, {

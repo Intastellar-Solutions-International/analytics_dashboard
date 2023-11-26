@@ -51,7 +51,11 @@ export default function App() {
     const [organisations, setOrganisations] = useState(null);
     const [domains, setDomains] = useState(null);
     const [domainError, setDomainError] = useState(false);
-    const [subscriptionStatus, setSubscriptionStatus] = useState(null);
+    const [subscriptionStatus, setSubscriptionStatus] = useState({
+        status: "loading",
+        loading: false,
+        subscription: null
+    });
     const [id, setId] = useState((localStorage.getItem("platform")) ? localStorage.getItem("platform") : null);
 
     if (localStorage.getItem("globals") != null) {
@@ -100,7 +104,6 @@ export default function App() {
 
             if(id && API[id]?.getDomains?.url != undefined){
                 Fetch(API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers).then((data) => {
-                    console.log(data.length);
                     if(data.error === "Err_No_Domains" || data.length === 0) {
                         setDomainError(true);
                     }else{
@@ -125,11 +128,12 @@ export default function App() {
                 </>
             )
         }
-        console.log(subscriptionStatus?.status);
-        if(subscriptionStatus?.status != "active") {
+
+        if(subscriptionStatus?.status != "active" && subscriptionStatus?.loading) {
             return (
                 <>
                     <StripePayment userId={Authentication.getUserId} />
+                    <BugReport />
                 </>
             )
         }
