@@ -3446,10 +3446,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ StripePayment)
 /* harmony export */ });
-/* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Authentication/Auth */ "./src/Authentication/Auth.js");
-/* harmony import */ var _Style_Stripe_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Style/Stripe.css */ "./src/Components/StripePayment/Style/Stripe.css");
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../App */ "./src/App.js");
-/* harmony import */ var _SelectInput_Selector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../SelectInput/Selector */ "./src/Components/SelectInput/Selector.js");
+/* harmony import */ var _Header_logo_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Header/logo.png */ "./src/Components/Header/logo.png");
+/* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Authentication/Auth */ "./src/Authentication/Auth.js");
+/* harmony import */ var _Style_Stripe_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Style/Stripe.css */ "./src/Components/StripePayment/Style/Stripe.css");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../App */ "./src/App.js");
+/* harmony import */ var _SelectInput_Selector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../SelectInput/Selector */ "./src/Components/SelectInput/Selector.js");
+
 const {
   useState,
   useEffect,
@@ -3464,11 +3466,17 @@ function StripePayment(props) {
   var _JSON$parse;
 
   document.title = "Choose a Plan | Intastellar Consents";
-  const [allOrganisations, setallOrganisations] = useContext(_App__WEBPACK_IMPORTED_MODULE_2__.AllOrg);
+  const [allOrganisations, setallOrganisations] = useContext(_App__WEBPACK_IMPORTED_MODULE_3__.AllOrg);
   const companyName = (_JSON$parse = JSON.parse(localStorage.getItem("organisation"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.name;
-  return /*#__PURE__*/React.createElement("div", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("header", {
+    className: "payment-header"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: _Header_logo_png__WEBPACK_IMPORTED_MODULE_0__["default"],
+    alt: "Intastellar Consents",
+    className: "logo"
+  }), "Intastellar Consents"), /*#__PURE__*/React.createElement("div", {
     className: "content"
-  }, /*#__PURE__*/React.createElement("h2", null, companyName), /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, /*#__PURE__*/React.createElement("h2", null, companyName), /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_4__["default"], {
     items: allOrganisations,
     onChange: e => {
       localStorage.setItem("organisation", e);
@@ -3480,8 +3488,8 @@ function StripePayment(props) {
     "pricing-table-id": "prctbl_1OGmIdEK0yX4gMoH7rRqdg9y",
     "publishable-key": "pk_test_cdjFXrTVnj1SdyYXzlTz95Sk",
     "customer-email": props.userId(),
-    "client-reference-id": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_0__["default"].getOrganisation()
-  }));
+    "client-reference-id": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getOrganisation()
+  })));
 }
 
 /***/ }),
@@ -5797,7 +5805,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".content{\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n    font-weight: 300;\n    font-size: 16px;\n    line-height: 24px;\n    text-align: center;\n    margin-top: 50px;\n}\n\n.stripe-price-table{\n    width: 100%;\n    margin-bottom: 50px;\n}", "",{"version":3,"sources":["webpack://./src/Components/StripePayment/Style/Stripe.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,aAAa;IACb,sBAAsB;IACtB,iCAAiC;IACjC,gBAAgB;IAChB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,mBAAmB;AACvB","sourcesContent":[".content{\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n    font-weight: 300;\n    font-size: 16px;\n    line-height: 24px;\n    text-align: center;\n    margin-top: 50px;\n}\n\n.stripe-price-table{\n    width: 100%;\n    margin-bottom: 50px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".content{\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n    font-weight: 300;\n    font-size: 16px;\n    line-height: 24px;\n    text-align: center;\n    margin-top: 50px;\n}\n\n.stripe-price-table{\n    width: 100%;\n    margin-bottom: 50px;\n}\n\n.payment-header{\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    max-width: 1400px;\n    width: 100%;\n    margin: auto;\n    padding: 15px;\n}\n.logo{\n    width: 5%;\n    filter: invert(100%);\n    float: left;\n}", "",{"version":3,"sources":["webpack://./src/Components/StripePayment/Style/Stripe.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,aAAa;IACb,sBAAsB;IACtB,iCAAiC;IACjC,gBAAgB;IAChB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,mBAAmB;IACnB,iBAAiB;IACjB,WAAW;IACX,YAAY;IACZ,aAAa;AACjB;AACA;IACI,SAAS;IACT,oBAAoB;IACpB,WAAW;AACf","sourcesContent":[".content{\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n    font-weight: 300;\n    font-size: 16px;\n    line-height: 24px;\n    text-align: center;\n    margin-top: 50px;\n}\n\n.stripe-price-table{\n    width: 100%;\n    margin-bottom: 50px;\n}\n\n.payment-header{\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    max-width: 1400px;\n    width: 100%;\n    margin: auto;\n    padding: 15px;\n}\n.logo{\n    width: 5%;\n    filter: invert(100%);\n    float: left;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
