@@ -3444,9 +3444,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function StripePayment(props) {
+  var _JSON$parse;
+
+  document.title = "Choose a Plan | Intastellar Consents";
+  const companyName = (_JSON$parse = JSON.parse(localStorage.getItem("organisation"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.name;
   return /*#__PURE__*/React.createElement("div", {
     className: "content"
-  }, /*#__PURE__*/React.createElement("h1", null, "Choose a Plan"), /*#__PURE__*/React.createElement("stripe-pricing-table", {
+  }, /*#__PURE__*/React.createElement("h2", null, companyName), /*#__PURE__*/React.createElement("h1", null, "Choose a Plan"), /*#__PURE__*/React.createElement("p", null, "Choose a plan that suits your needs. You\xB4re about to select a plan for your company: ", companyName), /*#__PURE__*/React.createElement("stripe-pricing-table", {
     class: "stripe-price-table",
     "pricing-table-id": "prctbl_1OGmIdEK0yX4gMoH7rRqdg9y",
     "publishable-key": "pk_test_cdjFXrTVnj1SdyYXzlTz95Sk",
