@@ -41,11 +41,13 @@ import UserPreferences from "./Pages/Settings/UserPreferences";
 import StripePayment from "./Components/StripePayment";
 
 export const OrganisationContext = createContext(localStorage.getItem("organisation"));
+export const AllOrg = createContext(null);
 export const DomainContext = createContext(null);
 
 export default function App() {
     const [dashboardView, setDashboardView] = useState((localStorage.getItem("platform")) ? localStorage.getItem("platform") : null);
     const [organisation, setOrganisation] = useState((localStorage.getItem("organisation")) ? localStorage.getItem("organisation") : null);
+    const [AllOrganisations, setAllOrganisations] = useState(null);
     const [currentDomain, setCurrentDomain] = useState("all");
     const [handle, setHandle] = useState(null);
     const [organisations, setOrganisations] = useState(null);
@@ -132,11 +134,15 @@ export default function App() {
             )
         }
 
+        console.log(organisation);
+
         if(subscriptionStatus?.status != "active" && subscriptionStatus?.loading) {
             return (
                 <>
-                    <StripePayment userId={Authentication.getUserId} />
-                    <BugReport />
+                    <AllOrg.Provider value={ [organisations, setOrganisations] }>
+                        <StripePayment userId={Authentication.getUserId} />
+                        <BugReport />
+                    </AllOrg.Provider>
                 </>
             )
         }else{

@@ -37,7 +37,6 @@ export default function Header(props) {
             if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
-
             setallOrganisations(data);
         });
 
