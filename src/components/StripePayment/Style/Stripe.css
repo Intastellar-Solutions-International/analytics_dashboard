@@ -18,3 +18,18 @@
     width: 100%;
     margin-bottom: 50px;
 }
+
+.payment-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1400px;
+    width: 100%;
+    margin: auto;
+    padding: 15px;
+}
+.logo{
+    width: 5%;
+    filter: invert(100%);
+    float: left;
+}
