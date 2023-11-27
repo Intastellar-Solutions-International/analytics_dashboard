@@ -701,6 +701,7 @@ const LoginHost = "https://apis.intastellaraccounts.com";
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AllOrg": () => (/* binding */ AllOrg),
 /* harmony export */   "DomainContext": () => (/* binding */ DomainContext),
 /* harmony export */   "OrganisationContext": () => (/* binding */ OrganisationContext),
 /* harmony export */   "default": () => (/* binding */ App)
@@ -787,10 +788,12 @@ const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/pu
 
 
 const OrganisationContext = createContext(localStorage.getItem("organisation"));
+const AllOrg = createContext(null);
 const DomainContext = createContext(null);
 function App() {
   const [dashboardView, setDashboardView] = useState(localStorage.getItem("platform") ? localStorage.getItem("platform") : null);
   const [organisation, setOrganisation] = useState(localStorage.getItem("organisation") ? localStorage.getItem("organisation") : null);
+  const [AllOrganisations, setAllOrganisations] = useState(null);
   const [currentDomain, setCurrentDomain] = useState("all");
   const [handle, setHandle] = useState(null);
   const [organisations, setOrganisations] = useState(null);
@@ -879,10 +882,14 @@ function App() {
       }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_27__["default"], null));
     }
 
+    console.log(organisation);
+
     if ((subscriptionStatus === null || subscriptionStatus === void 0 ? void 0 : subscriptionStatus.status) != "active" && subscriptionStatus !== null && subscriptionStatus !== void 0 && subscriptionStatus.loading) {
-      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_StripePayment__WEBPACK_IMPORTED_MODULE_33__["default"], {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AllOrg.Provider, {
+        value: [organisations, setOrganisations]
+      }, /*#__PURE__*/React.createElement(_Components_StripePayment__WEBPACK_IMPORTED_MODULE_33__["default"], {
         userId: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].getUserId
-      }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_27__["default"], null));
+      }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_27__["default"], null)));
     } else {
       var _JSON$parse, _JSON$parse$access;
 
@@ -3441,16 +3448,34 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Authentication/Auth */ "./src/Authentication/Auth.js");
 /* harmony import */ var _Style_Stripe_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Style/Stripe.css */ "./src/Components/StripePayment/Style/Stripe.css");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../App */ "./src/App.js");
+/* harmony import */ var _SelectInput_Selector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../SelectInput/Selector */ "./src/Components/SelectInput/Selector.js");
+const {
+  useState,
+  useEffect,
+  useRef,
+  useContext
+} = React;
+
+
 
 
 function StripePayment(props) {
   var _JSON$parse;
 
   document.title = "Choose a Plan | Intastellar Consents";
+  const [allOrganisations, setallOrganisations] = useContext(_App__WEBPACK_IMPORTED_MODULE_2__.AllOrg);
   const companyName = (_JSON$parse = JSON.parse(localStorage.getItem("organisation"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.name;
   return /*#__PURE__*/React.createElement("div", {
     className: "content"
-  }, /*#__PURE__*/React.createElement("h2", null, companyName), /*#__PURE__*/React.createElement("h1", null, "Choose a Plan"), /*#__PURE__*/React.createElement("p", null, "Choose a plan that suits your needs. You\xB4re about to select a plan for your company: ", companyName), /*#__PURE__*/React.createElement("stripe-pricing-table", {
+  }, /*#__PURE__*/React.createElement("h2", null, companyName), /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    items: allOrganisations,
+    onChange: e => {
+      localStorage.setItem("organisation", e);
+      window.location.reload();
+    },
+    defaultValue: companyName
+  }), /*#__PURE__*/React.createElement("h1", null, "Choose a Plan"), /*#__PURE__*/React.createElement("p", null, "Choose a plan that suits your needs. You\xB4re about to select a plan for your company: ", companyName), /*#__PURE__*/React.createElement("stripe-pricing-table", {
     class: "stripe-price-table",
     "pricing-table-id": "prctbl_1OGmIdEK0yX4gMoH7rRqdg9y",
     "publishable-key": "pk_test_cdjFXrTVnj1SdyYXzlTz95Sk",
