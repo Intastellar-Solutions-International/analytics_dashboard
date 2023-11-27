@@ -840,7 +840,7 @@ function App() {
         setOrganisations(data);
       });
       (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_18__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_7__["default"].Subscription.url, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].Subscription.method, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].Subscription.headers, JSON.stringify({
-        user: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].getUserId()
+        organization: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].getOrganisation()
       })).then(data => {
         if (data === "Err_Login_Expired") {
           localStorage.removeItem("globals");
@@ -848,6 +848,7 @@ function App() {
           return;
         }
 
+        console.log(data);
         setSubscriptionStatus(data);
         localStorage.setItem("subscription", JSON.stringify(data));
       });
@@ -3438,7 +3439,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ StripePayment)
 /* harmony export */ });
-/* harmony import */ var _Style_Stripe_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Style/Stripe.css */ "./src/Components/StripePayment/Style/Stripe.css");
+/* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Authentication/Auth */ "./src/Authentication/Auth.js");
+/* harmony import */ var _Style_Stripe_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Style/Stripe.css */ "./src/Components/StripePayment/Style/Stripe.css");
+
 
 function StripePayment(props) {
   return /*#__PURE__*/React.createElement("div", {
@@ -3447,7 +3450,8 @@ function StripePayment(props) {
     class: "stripe-price-table",
     "pricing-table-id": "prctbl_1OGmIdEK0yX4gMoH7rRqdg9y",
     "publishable-key": "pk_test_cdjFXrTVnj1SdyYXzlTz95Sk",
-    "customer-email": props.userId()
+    "customer-email": props.userId(),
+    "client-reference-id": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_0__["default"].getOrganisation()
   }));
 }
 

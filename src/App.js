@@ -91,13 +91,16 @@ export default function App() {
             });
 
             Fetch(API.Subscription.url, API.Subscription.method, API.Subscription.headers, JSON.stringify({
-                user: Authentication.getUserId()
+                organization: Authentication.getOrganisation()
             })).then((data) => {
                 if (data === "Err_Login_Expired") {
                     localStorage.removeItem("globals");
                     navigate.push("/login");
                     return;
                 }
+
+                console.log(data);
+
                 setSubscriptionStatus(data);
                 localStorage.setItem("subscription", JSON.stringify(data));
             });
