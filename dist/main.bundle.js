@@ -804,8 +804,6 @@ function App() {
   const [id, setId] = useState(localStorage.getItem("platform") ? localStorage.getItem("platform") : null);
 
   if (localStorage.getItem("globals") != null) {
-    var _JSON$parse, _JSON$parse$access;
-
     if (window.location.pathname === "/") {
       window.location.href = "/" + id + "/dashboard";
     }
@@ -885,84 +883,86 @@ function App() {
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_StripePayment__WEBPACK_IMPORTED_MODULE_33__["default"], {
         userId: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].getUserId
       }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_27__["default"], null));
-    }
+    } else {
+      var _JSON$parse, _JSON$parse$access;
 
-    return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Router, null, /*#__PURE__*/React.createElement(OrganisationContext.Provider, {
-      value: [organisation, setOrganisation]
-    }, /*#__PURE__*/React.createElement(DomainContext.Provider, {
-      value: [currentDomain, setCurrentDomain]
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Components_Header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      handle: handle,
-      id: id
-    }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_27__["default"], null)), /*#__PURE__*/React.createElement("div", {
-      className: "main-grid"
-    }, /*#__PURE__*/React.createElement(_Components_Header_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/React.createElement(Switch, null, /*#__PURE__*/React.createElement(Route, {
-      path: "/:id/dashboard",
-      exact: true
-    }, /*#__PURE__*/React.createElement("div", {
-      style: {
-        flex: "1"
-      }
-    }, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, id == "gdpr" ? /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
-      dashboardView: dashboardView,
-      setDashboardView: setDashboardView
-    }) : /*#__PURE__*/React.createElement(_Pages_Dashboard_ferry_Dashboard_js__WEBPACK_IMPORTED_MODULE_10__["default"], null)))), /*#__PURE__*/React.createElement(Route, {
-      path: "/signup",
-      exact: true
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Login_Signup__WEBPACK_IMPORTED_MODULE_4__["default"], null))), /*#__PURE__*/React.createElement(Route, {
-      path: "/:id/domains",
-      exact: true
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Domains_index_js__WEBPACK_IMPORTED_MODULE_11__["default"], null))), /*#__PURE__*/React.createElement(Route, {
-      path: "/settings",
-      exact: true
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings__WEBPACK_IMPORTED_MODULE_12__["default"], null))), /*#__PURE__*/React.createElement(Route, {
-      path: "/settings/create-organisation"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "super-admin" ? /*#__PURE__*/React.createElement(_Pages_Settings_CreateOrganisation__WEBPACK_IMPORTED_MODULE_13__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
-      path: "/settings/add-user"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "super-admin" ? /*#__PURE__*/React.createElement(_Pages_Settings_AddUser__WEBPACK_IMPORTED_MODULE_14__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
-      path: "/settings/add-domain"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "super-admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "manager" ? /*#__PURE__*/React.createElement(_Pages_Settings_AddDomain__WEBPACK_IMPORTED_MODULE_20__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
-      path: "/settings/view-organisations"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_ViewOrganisations__WEBPACK_IMPORTED_MODULE_15__["default"], null))), /*#__PURE__*/React.createElement(Route, {
-      path: "/settings/preferences"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_UserPreferences__WEBPACK_IMPORTED_MODULE_32__["default"], null))), /*#__PURE__*/React.createElement(Route, {
-      path: "/:id/view/:handle"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_DomainDashbord__WEBPACK_IMPORTED_MODULE_17__["default"], {
-      setHandle: setHandle
-    }))), /*#__PURE__*/React.createElement(Route, {
-      path: "/:id/cookies",
-      exact: true
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_CookiesDashboard__WEBPACK_IMPORTED_MODULE_6__["default"], null))), /*#__PURE__*/React.createElement(Route, {
-      path: "/:id/reports",
-      exact: true
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Pages_Reports_Reports__WEBPACK_IMPORTED_MODULE_24__["default"], null))), /*#__PURE__*/React.createElement(Route, {
-      path: "/:id/reports/user-consents"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_UserConsents_UserConsents__WEBPACK_IMPORTED_MODULE_23__["default"], {
-      organisations: organisations
-    }))), /*#__PURE__*/React.createElement(Route, {
-      path: "/:id/reports/user-agents"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Reports_UserAgents__WEBPACK_IMPORTED_MODULE_31__["default"], null))), /*#__PURE__*/React.createElement(Route, {
-      path: "/:id/reports/countries"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Countries_Countries__WEBPACK_IMPORTED_MODULE_26__["default"], {
-      organisations: organisations
-    }))), /*#__PURE__*/React.createElement(Route, {
-      path: "/:id/reports/site-status"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Reports_SiteStatus__WEBPACK_IMPORTED_MODULE_29__["default"], {
-      domains: domains,
-      organisations: organisations
-    }))), /*#__PURE__*/React.createElement(Route, {
-      path: "/dashboard"
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_28__["default"], {
-      setId: setId,
-      platforms: (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$access = _JSON$parse.access) === null || _JSON$parse$access === void 0 ? void 0 : _JSON$parse$access.type
-    }))), /*#__PURE__*/React.createElement(Router, {
-      path: "/login",
-      exact: true
-    }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Login_Login__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/React.createElement(Route, {
-      path: "/settings/config-gdpr"
-    }), /*#__PURE__*/React.createElement(Redirect, {
-      to: "/login"
-    }))), /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Components_Footer__WEBPACK_IMPORTED_MODULE_2__["default"], null))))));
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Router, null, /*#__PURE__*/React.createElement(OrganisationContext.Provider, {
+        value: [organisation, setOrganisation]
+      }, /*#__PURE__*/React.createElement(DomainContext.Provider, {
+        value: [currentDomain, setCurrentDomain]
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Components_Header_header__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        handle: handle,
+        id: id
+      }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_27__["default"], null)), /*#__PURE__*/React.createElement("div", {
+        className: "main-grid"
+      }, /*#__PURE__*/React.createElement(_Components_Header_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/React.createElement(Switch, null, /*#__PURE__*/React.createElement(Route, {
+        path: "/:id/dashboard",
+        exact: true
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          flex: "1"
+        }
+      }, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, id == "gdpr" ? /*#__PURE__*/React.createElement(_Pages_Dashboard_Dashboard_js__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        dashboardView: dashboardView,
+        setDashboardView: setDashboardView
+      }) : /*#__PURE__*/React.createElement(_Pages_Dashboard_ferry_Dashboard_js__WEBPACK_IMPORTED_MODULE_10__["default"], null)))), /*#__PURE__*/React.createElement(Route, {
+        path: "/signup",
+        exact: true
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Login_Signup__WEBPACK_IMPORTED_MODULE_4__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+        path: "/:id/domains",
+        exact: true
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Domains_index_js__WEBPACK_IMPORTED_MODULE_11__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+        path: "/settings",
+        exact: true
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings__WEBPACK_IMPORTED_MODULE_12__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+        path: "/settings/create-organisation"
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "super-admin" ? /*#__PURE__*/React.createElement(_Pages_Settings_CreateOrganisation__WEBPACK_IMPORTED_MODULE_13__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
+        path: "/settings/add-user"
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "super-admin" ? /*#__PURE__*/React.createElement(_Pages_Settings_AddUser__WEBPACK_IMPORTED_MODULE_14__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
+        path: "/settings/add-domain"
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "super-admin" || _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].User.Status === "manager" ? /*#__PURE__*/React.createElement(_Pages_Settings_AddDomain__WEBPACK_IMPORTED_MODULE_20__["default"], null) : null)), /*#__PURE__*/React.createElement(Route, {
+        path: "/settings/view-organisations"
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_ViewOrganisations__WEBPACK_IMPORTED_MODULE_15__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+        path: "/settings/preferences"
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Settings_UserPreferences__WEBPACK_IMPORTED_MODULE_32__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+        path: "/:id/view/:handle"
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_DomainDashbord__WEBPACK_IMPORTED_MODULE_17__["default"], {
+        setHandle: setHandle
+      }))), /*#__PURE__*/React.createElement(Route, {
+        path: "/:id/cookies",
+        exact: true
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Dashboard_CookiesDashboard__WEBPACK_IMPORTED_MODULE_6__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+        path: "/:id/reports",
+        exact: true
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Pages_Reports_Reports__WEBPACK_IMPORTED_MODULE_24__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+        path: "/:id/reports/user-consents"
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_UserConsents_UserConsents__WEBPACK_IMPORTED_MODULE_23__["default"], {
+        organisations: organisations
+      }))), /*#__PURE__*/React.createElement(Route, {
+        path: "/:id/reports/user-agents"
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Reports_UserAgents__WEBPACK_IMPORTED_MODULE_31__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+        path: "/:id/reports/countries"
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Countries_Countries__WEBPACK_IMPORTED_MODULE_26__["default"], {
+        organisations: organisations
+      }))), /*#__PURE__*/React.createElement(Route, {
+        path: "/:id/reports/site-status"
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, domainError ? /*#__PURE__*/React.createElement(_Components_AddDomain_AddDomain__WEBPACK_IMPORTED_MODULE_19__["default"], null) : /*#__PURE__*/React.createElement(_Pages_Reports_SiteStatus__WEBPACK_IMPORTED_MODULE_29__["default"], {
+        domains: domains,
+        organisations: organisations
+      }))), /*#__PURE__*/React.createElement(Route, {
+        path: "/dashboard"
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_28__["default"], {
+        setId: setId,
+        platforms: (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$access = _JSON$parse.access) === null || _JSON$parse$access === void 0 ? void 0 : _JSON$parse$access.type
+      }))), /*#__PURE__*/React.createElement(Router, {
+        path: "/login",
+        exact: true
+      }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Login_Login__WEBPACK_IMPORTED_MODULE_3__["default"], null))), /*#__PURE__*/React.createElement(Route, {
+        path: "/settings/config-gdpr"
+      }), /*#__PURE__*/React.createElement(Redirect, {
+        to: "/login"
+      }))), /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Components_Footer__WEBPACK_IMPORTED_MODULE_2__["default"], null))))));
+    }
   } else {
     if (window.location.pathname !== "/login" && window.location.pathname !== "/signup") {
       window.location.href = "/login";
@@ -3543,6 +3543,161 @@ function Table(props) {
 
 /***/ }),
 
+/***/ "./src/Components/tiers/Basic.js":
+/*!***************************************!*\
+  !*** ./src/Components/tiers/Basic.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ BasicTier)
+/* harmony export */ });
+/* harmony import */ var _widget_widget__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widget/widget */ "./src/Components/widget/widget.js");
+/* harmony import */ var _Charts_Pie__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Charts/Pie */ "./src/Components/Charts/Pie/index.js");
+
+
+function BasicTier() {}
+
+/***/ }),
+
+/***/ "./src/Components/tiers/Premium.js":
+/*!*****************************************!*\
+  !*** ./src/Components/tiers/Premium.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ PremiumTier)
+/* harmony export */ });
+/* harmony import */ var _widget_Loading__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widget/Loading */ "./src/Components/widget/Loading.js");
+/* harmony import */ var _widget_widget__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../widget/widget */ "./src/Components/widget/widget.js");
+/* harmony import */ var _Charts_Pie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Charts/Pie */ "./src/Components/Charts/Pie/index.js");
+
+
+
+function PremiumTier(props) {
+  const loading = props.loading;
+  const activeData = props.activeData;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
+    type: "Total interactions"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "grid-container grid-3"
+  }, loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_Charts_Pie__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    data: [{
+      x: "Accepted",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.accept
+    }, {
+      x: "Declined",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.decline
+    }, {
+      x: "Only Marketing",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.marketing
+    }, {
+      x: "Only Functional",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.functional
+    }, {
+      x: "Only Statics",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.statics
+    }]
+  }), loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Accepted.toLocaleString("de-DE")) + "%",
+    type: "Accepted cookies"
+  }), loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Declined.toLocaleString("de-DE")) + "%",
+    type: "Declined cookies"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "grid-container grid-3"
+  }, loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Marketing.toLocaleString("de-DE")) + "%",
+    type: "Only Marketing"
+  }), loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Functional.toLocaleString("de-DE")) + "%",
+    type: "Only Functional"
+  }), loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Statics.toLocaleString("de-DE")) + "%",
+    type: "Only Statics"
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/Components/tiers/Pro.js":
+/*!*************************************!*\
+  !*** ./src/Components/tiers/Pro.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ ProTier)
+/* harmony export */ });
+/* harmony import */ var _widget_Loading__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../widget/Loading */ "./src/Components/widget/Loading.js");
+/* harmony import */ var _widget_widget__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../widget/widget */ "./src/Components/widget/widget.js");
+/* harmony import */ var _Charts_Pie__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Charts/Pie */ "./src/Components/Charts/Pie/index.js");
+
+
+
+function ProTier(props) {
+  const loading = props.loading;
+  const activeData = props.activeData;
+  return /*#__PURE__*/React.createElement(React.Fragment, null, loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
+    type: "Total interactions"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "grid-container grid-3"
+  }, loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_Charts_Pie__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    data: [{
+      x: "Accepted",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.accept
+    }, {
+      x: "Declined",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.decline
+    }, {
+      x: "Only Marketing",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.marketing
+    }, {
+      x: "Only Functional",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.functional
+    }, {
+      x: "Only Statics",
+      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.statics
+    }]
+  }), loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Accepted.toLocaleString("de-DE")) + "%",
+    type: "Accepted cookies"
+  }), loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Declined.toLocaleString("de-DE")) + "%",
+    type: "Declined cookies"
+  })));
+}
+
+/***/ }),
+
+/***/ "./src/Components/tiers/index.js":
+/*!***************************************!*\
+  !*** ./src/Components/tiers/index.js ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "BasicTier": () => (/* reexport safe */ _Basic_js__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   "PremiumTier": () => (/* reexport safe */ _Premium_js__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   "ProTier": () => (/* reexport safe */ _Pro_js__WEBPACK_IMPORTED_MODULE_2__["default"])
+/* harmony export */ });
+/* harmony import */ var _Premium_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Premium.js */ "./src/Components/tiers/Premium.js");
+/* harmony import */ var _Basic_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Basic.js */ "./src/Components/tiers/Basic.js");
+/* harmony import */ var _Pro_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Pro.js */ "./src/Components/tiers/Pro.js");
+
+
+
+
+
+/***/ }),
+
 /***/ "./src/Components/widget/Loading.js":
 /*!******************************************!*\
   !*** ./src/Components/widget/Loading.js ***!
@@ -4200,6 +4355,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Charts_Line__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Charts/Line */ "./src/Components/Charts/Line/index.js");
 /* harmony import */ var _Components_Charts_Pie__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Components/Charts/Pie */ "./src/Components/Charts/Pie/index.js");
 /* harmony import */ var _Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Components/Header/Sticky/index.js */ "./src/Components/Header/Sticky/index.js");
+/* harmony import */ var _Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../Components/tiers/index.js */ "./src/Components/tiers/index.js");
 const {
   useState,
   useEffect,
@@ -4219,10 +4375,12 @@ const useParams = window.ReactRouterDOM.useParams;
 
 
 
+
 function Dashboard(props) {
   document.title = "Home | Intastellar Analytics";
   const [currentDomain, setCurrentDomain] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_7__.DomainContext);
   const [organisation, setOrganisation] = useContext(_App_js__WEBPACK_IMPORTED_MODULE_7__.OrganisationContext);
+  const subscriptionStatus = JSON.parse(localStorage.getItem("subscription"));
   const {
     handle,
     id
@@ -4312,46 +4470,13 @@ function Dashboard(props) {
     data: {
       Countries: activeData === null || activeData === void 0 ? void 0 : activeData.Countries
     }
-  }))))), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
-    type: "Total interactions"
-  }), /*#__PURE__*/React.createElement("div", {
-    className: "grid-container grid-3"
-  }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_Charts_Pie__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    data: [{
-      x: "Accepted",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.accept
-    }, {
-      x: "Declined",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.decline
-    }, {
-      x: "Only Marketing",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.marketing
-    }, {
-      x: "Only Functional",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.functional
-    }, {
-      x: "Only Statics",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.statics
-    }]
-  }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Accepted.toLocaleString("de-DE")) + "%",
-    type: "Accepted cookies"
-  }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Declined.toLocaleString("de-DE")) + "%",
-    type: "Declined cookies"
-  })), /*#__PURE__*/React.createElement("div", {
-    className: "grid-container grid-3"
-  }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Marketing.toLocaleString("de-DE")) + "%",
-    type: "Only Marketing"
-  }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Functional.toLocaleString("de-DE")) + "%",
-    type: "Only Functional"
-  }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Statics.toLocaleString("de-DE")) + "%",
-    type: "Only Statics"
-  }))));
+  }))))), (subscriptionStatus === null || subscriptionStatus === void 0 ? void 0 : subscriptionStatus.tier) === "premium" ? /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__.PremiumTier, {
+    loading: loading,
+    activeData: activeData
+  }) : (subscriptionStatus === null || subscriptionStatus === void 0 ? void 0 : subscriptionStatus.tier) === "professional" ? /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__.ProTier, {
+    loading: loading,
+    activeData: activeData
+  }) : /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__.BasicTier, null)));
 }
 
 /***/ }),
