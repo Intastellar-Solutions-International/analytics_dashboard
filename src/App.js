@@ -143,7 +143,7 @@ export default function App() {
                     </AllOrg.Provider>
                 </>
             )
-        }else{
+        }else if(!subscriptionStatus?.loading && subscriptionStatus?.status === "active"){
             return (
                 <>
                     <Router>
