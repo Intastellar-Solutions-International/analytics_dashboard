@@ -24,13 +24,13 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "decode": () => (/* binding */ decode),
+/* harmony export */   decode: () => (/* binding */ decode),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   "encode": () => (/* binding */ encode),
-/* harmony export */   "toASCII": () => (/* binding */ toASCII),
-/* harmony export */   "toUnicode": () => (/* binding */ toUnicode),
-/* harmony export */   "ucs2decode": () => (/* binding */ ucs2decode),
-/* harmony export */   "ucs2encode": () => (/* binding */ ucs2encode)
+/* harmony export */   encode: () => (/* binding */ encode),
+/* harmony export */   toASCII: () => (/* binding */ toASCII),
+/* harmony export */   toUnicode: () => (/* binding */ toUnicode),
+/* harmony export */   ucs2decode: () => (/* binding */ ucs2decode),
+/* harmony export */   ucs2encode: () => (/* binding */ ucs2encode)
 /* harmony export */ });
 
 
@@ -496,13 +496,13 @@ __webpack_require__.r(__webpack_exports__);
 
 const API = {
   Login: {
-    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.LoginHost, "/signin/v2/signin.php")
+    url: `${_host__WEBPACK_IMPORTED_MODULE_0__.LoginHost}/signin/v2/signin.php`
   },
   SignUp: {
-    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.LoginHost, "/consents/signup/v1/signup.php")
+    url: `${_host__WEBPACK_IMPORTED_MODULE_0__.LoginHost}/consents/signup/v1/signup.php`
   },
   Subscription: {
-    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/payment/subscription/v1/subscription.php"),
+    url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/payment/subscription/v1/subscription.php`,
     method: "POST",
     headers: {
       "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -511,7 +511,7 @@ const API = {
   },
   gdpr: {
     getTotalNumber: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getTotalNumber.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/gdpr/getTotalNumber.php`,
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -520,7 +520,7 @@ const API = {
       }
     },
     getDomainsUrl: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getDomainStatistics.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/gdpr/getDomainStatistics.php`,
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -529,7 +529,7 @@ const API = {
       }
     },
     getInteractions: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getInteractions.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/gdpr/getInteractions.php`,
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -538,7 +538,7 @@ const API = {
       }
     },
     getDomains: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getDomains.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/gdpr/getDomains.php`,
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -547,7 +547,7 @@ const API = {
       }
     },
     getDevices: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getDevices.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/gdpr/getDevices.php`,
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -556,7 +556,7 @@ const API = {
       }
     },
     getCookies: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/cookiesAPI.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/gdpr/cookiesAPI.php`,
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -567,7 +567,7 @@ const API = {
   },
   ferry: {
     getTotalSales: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/ferry/getTotalSales.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/ferry/getTotalSales.php`,
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -577,7 +577,7 @@ const API = {
   },
   settings: {
     getOrganisation: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/getOrganisation.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/settings/getOrganisation.php`,
       method: "POST",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -585,7 +585,7 @@ const API = {
       }
     },
     createOrganisation: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/create-organisation.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/settings/create-organisation.php`,
       method: "POST",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -593,7 +593,7 @@ const API = {
       }
     },
     updateSettings: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/updateSettings.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/settings/updateSettings.php`,
       method: "POST",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -602,7 +602,7 @@ const API = {
       }
     },
     addUser: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/add-user.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/settings/add-user.php`,
       method: "POST",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -610,7 +610,7 @@ const API = {
       }
     },
     getSettings: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/getOrganisation.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/settings/getOrganisation.php`,
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -619,7 +619,7 @@ const API = {
       }
     },
     createSettings: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/create-organisation.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/settings/create-organisation.php`,
       method: "POST",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -628,7 +628,7 @@ const API = {
       }
     },
     addDomain: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/add-domain.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/settings/add-domain.php`,
       method: "POST",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -641,18 +641,18 @@ const API = {
         "Content-Type": "application/json"
       },
       update: {
-        url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/user.php"),
+        url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/settings/user.php`,
         method: "POST"
       },
       get: {
-        url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/getUserSettings.php"),
+        url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/settings/getUserSettings.php`,
         method: "POST"
       }
     }
   },
   ferry: {
     getTotalSales: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/ferry/getTotalSales.php"),
+      url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/ferry/getTotalSales.php`,
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -684,8 +684,8 @@ const API = {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "LoginHost": () => (/* binding */ LoginHost),
-/* harmony export */   "PrimaryHost": () => (/* binding */ PrimaryHost)
+/* harmony export */   LoginHost: () => (/* binding */ LoginHost),
+/* harmony export */   PrimaryHost: () => (/* binding */ PrimaryHost)
 /* harmony export */ });
 const PrimaryHost = "https://apis.intastellarsolutions.com";
 const LoginHost = "https://apis.intastellaraccounts.com";
@@ -701,9 +701,9 @@ const LoginHost = "https://apis.intastellaraccounts.com";
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "AllOrg": () => (/* binding */ AllOrg),
-/* harmony export */   "DomainContext": () => (/* binding */ DomainContext),
-/* harmony export */   "OrganisationContext": () => (/* binding */ OrganisationContext),
+/* harmony export */   AllOrg: () => (/* binding */ AllOrg),
+/* harmony export */   DomainContext: () => (/* binding */ DomainContext),
+/* harmony export */   OrganisationContext: () => (/* binding */ OrganisationContext),
 /* harmony export */   "default": () => (/* binding */ App)
 /* harmony export */ });
 /* harmony import */ var _App_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.css */ "./src/App.css");
@@ -750,9 +750,7 @@ const Router = window.ReactRouterDOM.BrowserRouter;
 const Route = window.ReactRouterDOM.Route;
 const Switch = window.ReactRouterDOM.Switch;
 const Redirect = window.ReactRouterDOM.Redirect;
-
 const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/punycode.es6.js");
-
 
 
 
@@ -805,30 +803,24 @@ function App() {
     subscription: null
   });
   const [id, setId] = useState(localStorage.getItem("platform") ? localStorage.getItem("platform") : null);
-
   if (localStorage.getItem("globals") != null) {
     if (window.location.pathname === "/") {
       window.location.href = "/" + id + "/dashboard";
     }
-
     (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_18__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_7__["default"].settings.user.get.url, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].settings.user.get.method, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].settings.user.headers, JSON.stringify({
       user: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].getUserId()
     })).then(data => {
       const setting = data.setting;
-
       if (data === "Err_Login_Expired") {
         localStorage.removeItem("globals");
         navigate.push("/login");
         return;
       }
-
       localStorage.setItem("settings", JSON.stringify(setting));
     });
+
     /* const [domainLoadings, data, error, getUpdated] = useFetch(null, API[id].getDomains.url, API[id].getDomains.method, API[id].getDomains.headers); */
-
     useEffect(() => {
-      var _API$id, _API$id$getDomains;
-
       (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_18__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_7__["default"].settings.getOrganisation.url, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].settings.getOrganisation.method, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].settings.getOrganisation.headers, JSON.stringify({
         organisationMember: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].getUserId()
       })).then(data => {
@@ -837,7 +829,6 @@ function App() {
           navigate.push("/login");
           return;
         }
-
         setOrganisations(data);
       });
       (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_18__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_7__["default"].Subscription.url, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].Subscription.method, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].Subscription.headers, JSON.stringify({
@@ -848,13 +839,11 @@ function App() {
           navigate.push("/login");
           return;
         }
-
         console.log(data);
         setSubscriptionStatus(data);
         localStorage.setItem("subscription", JSON.stringify(data));
       });
-
-      if (id && ((_API$id = _API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id]) === null || _API$id === void 0 ? void 0 : (_API$id$getDomains = _API$id.getDomains) === null || _API$id$getDomains === void 0 ? void 0 : _API$id$getDomains.url) != undefined) {
+      if (id && _API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id]?.getDomains?.url != undefined) {
         (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_18__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id].getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id].getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"][id].getDomains.headers).then(data => {
           if (data.error === "Err_No_Domains" || data.length === 0) {
             setDomainError(true);
@@ -864,7 +853,7 @@ function App() {
               installed: null,
               lastedVisited: null
             });
-            data === null || data === void 0 ? void 0 : data.map(d => {
+            data?.map(d => {
               return punycode.toUnicode(d.domain);
             }).filter(d => {
               return d !== undefined && d !== "" && d !== "undefined.";
@@ -874,23 +863,19 @@ function App() {
         });
       }
     }, []);
-
     if (id === null && organisations) {
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_28__["default"], {
         setId: setId,
         platforms: organisations
       }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_27__["default"], null));
     }
-
-    if ((subscriptionStatus === null || subscriptionStatus === void 0 ? void 0 : subscriptionStatus.status) != "active" && subscriptionStatus !== null && subscriptionStatus !== void 0 && subscriptionStatus.loading) {
+    if (subscriptionStatus?.status != "active" && subscriptionStatus?.loading) {
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(AllOrg.Provider, {
         value: [organisations, setOrganisations]
       }, /*#__PURE__*/React.createElement(_Components_StripePayment__WEBPACK_IMPORTED_MODULE_33__["default"], {
         userId: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_22__["default"].getUserId
       }), /*#__PURE__*/React.createElement(_Components_BugReport_BugReport__WEBPACK_IMPORTED_MODULE_27__["default"], null)));
-    } else {
-      var _JSON$parse, _JSON$parse$access;
-
+    } else if (!subscriptionStatus?.loading && subscriptionStatus?.status === "active") {
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Router, null, /*#__PURE__*/React.createElement(OrganisationContext.Provider, {
         value: [organisation, setOrganisation]
       }, /*#__PURE__*/React.createElement(DomainContext.Provider, {
@@ -958,7 +943,7 @@ function App() {
         path: "/dashboard"
       }, /*#__PURE__*/React.createElement(_Components_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_25__["default"], null, /*#__PURE__*/React.createElement(_Components_PlatformSelector_PlatformSelector__WEBPACK_IMPORTED_MODULE_28__["default"], {
         setId: setId,
-        platforms: (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$access = _JSON$parse.access) === null || _JSON$parse$access === void 0 ? void 0 : _JSON$parse$access.type
+        platforms: JSON.parse(localStorage.getItem("globals"))?.access?.type
       }))), /*#__PURE__*/React.createElement(Router, {
         path: "/login",
         exact: true
@@ -972,7 +957,6 @@ function App() {
     if (window.location.pathname !== "/login" && window.location.pathname !== "/signup") {
       window.location.href = "/login";
     }
-
     return /*#__PURE__*/React.createElement(Router, null, /*#__PURE__*/React.createElement(Switch, null, /*#__PURE__*/React.createElement(Route, {
       path: "/login",
       exact: true
@@ -1002,8 +986,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var _JSON$parse6;
-
 const Authentication = {
   Login: function (url, email, password, type, setErrorMessage, setLoading) {
     setLoading(true);
@@ -1027,23 +1009,19 @@ const Authentication = {
         setLoading(false);
         return;
       }
-
       if (response === "Err_Logon_Fail_Wrong_Password_Or_Email") {
         setErrorMessage("Wrong password or email");
         setLoading(false);
         return;
       }
-
       if (response === "Err_Logon_Deny") {
         setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Intastellar Account Manager for assistance");
         setLoading(false);
         return;
       }
-
       setLoading(false);
       localStorage.setItem("organisation", response.organisation);
       localStorage.setItem("globals", JSON.stringify(response));
-
       if (localStorage.getItem("platform") === null || localStorage.getItem("platform") === undefined) {
         window.location.href = "/dashboard";
       } else {
@@ -1058,21 +1036,15 @@ const Authentication = {
     window.location.reload();
   },
   getToken: function () {
-    var _JSON$parse, _JSON$parse2;
-
-    const token = (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) !== null && _JSON$parse !== void 0 && _JSON$parse.token ? "Bearer " + ((_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse2 === void 0 ? void 0 : _JSON$parse2.token) : undefined;
+    const token = JSON.parse(localStorage.getItem("globals"))?.token ? "Bearer " + JSON.parse(localStorage.getItem("globals"))?.token : undefined;
     return token;
   },
   getUserId: function () {
-    var _JSON$parse3, _JSON$parse3$profile, _JSON$parse4, _JSON$parse4$profile;
-
-    const email = (_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) !== null && _JSON$parse3 !== void 0 && (_JSON$parse3$profile = _JSON$parse3.profile) !== null && _JSON$parse3$profile !== void 0 && _JSON$parse3$profile.email ? (_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : (_JSON$parse4$profile = _JSON$parse4.profile) === null || _JSON$parse4$profile === void 0 ? void 0 : _JSON$parse4$profile.email : undefined;
+    const email = JSON.parse(localStorage.getItem("globals"))?.profile?.email ? JSON.parse(localStorage.getItem("globals"))?.profile?.email : undefined;
     return email;
   },
   getOrganisation: function () {
-    var _JSON$parse5;
-
-    const organisation = localStorage.getItem("organisation") != null || localStorage.getItem("organisation") != undefined ? (_JSON$parse5 = JSON.parse(localStorage.getItem("organisation"))) === null || _JSON$parse5 === void 0 ? void 0 : _JSON$parse5.id : undefined;
+    const organisation = localStorage.getItem("organisation") != null || localStorage.getItem("organisation") != undefined ? JSON.parse(localStorage.getItem("organisation"))?.id : undefined;
     return organisation;
   },
   SignUp: function (url, email, password, firstname, lastname, type, companyName, setErrorMessage, setLoading) {
@@ -1100,28 +1072,24 @@ const Authentication = {
         setLoading(false);
         return;
       }
-
       if (response === "Err_Logon_Fail_Wrong_Password_Or_Email") {
         setErrorMessage("Wrong password or email");
         setLoading(false);
         return;
       }
-
       if (response === "Err_Logon_Deny") {
         setErrorMessage("Your account has been locked due to too many incorrect password attempts – please contact your Intastellar Account Manager for assistance");
         setLoading(false);
         return;
       }
-
       setLoading(false);
-
       if (response == "Success") {
         window.location.href = "/login";
       }
     });
   },
   User: {
-    Status: (_JSON$parse6 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse6 === void 0 ? void 0 : _JSON$parse6.status
+    Status: JSON.parse(localStorage.getItem("globals"))?.status
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Authentication);
@@ -1176,7 +1144,6 @@ function AddDomain() {
     disabled: disabled,
     onClick: e => {
       e.preventDefault();
-
       if (!disabled) {
         const domain = (0,_Utils_Utils__WEBPACK_IMPORTED_MODULE_4__.extractHostname)(e.target.previousSibling.value);
         setCurrentDomain([...currentDomain, domain]);
@@ -1214,21 +1181,16 @@ const {
 
 
 function BugReport() {
-  var _JSON$parse, _JSON$parse$profile, _JSON$parse2, _JSON$parse2$profile, _JSON$parse3, _JSON$parse3$profile;
-
   const [isOpen, setIsOpen] = useState(false);
   const [statusMessage, setStatusMessage] = useState(null);
-
   function openMenu() {
     setIsOpen(!isOpen);
   }
-
   function clickOutSide(e) {
     if (e.target.className !== "send-feedback" && e.target.className !== "bugReport-input" && e.target.className !== "bugReport-input bugReport-input --height" && e.target.className !== "bugReport-send") {
       setIsOpen(false);
     }
   }
-
   function sendFeedback(e) {
     e.preventDefault();
     /* setIsOpen(false); */
@@ -1251,15 +1213,14 @@ function BugReport() {
       } else {
         setStatusMessage("An error occured. Please try again later.");
       }
-
       console.log(data);
     });
   }
+
   /* useEffect(() => {
       document.addEventListener("click", clickOutSide);
   }
   , []); */
-
 
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "bug-container"
@@ -1291,12 +1252,12 @@ function BugReport() {
   }), /*#__PURE__*/React.createElement("input", {
     className: "bugReport-input",
     type: "hidden",
-    value: (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$profile = _JSON$parse.profile) === null || _JSON$parse$profile === void 0 ? void 0 : _JSON$parse$profile.email,
+    value: JSON.parse(localStorage.getItem("globals"))?.profile?.email,
     placeholder: "email"
   }), /*#__PURE__*/React.createElement("input", {
     className: "bugReport-input",
     type: "hidden",
-    value: ((_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse2 === void 0 ? void 0 : (_JSON$parse2$profile = _JSON$parse2.profile) === null || _JSON$parse2$profile === void 0 ? void 0 : _JSON$parse2$profile.first_name) + " " + ((_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$profile = _JSON$parse3.profile) === null || _JSON$parse3$profile === void 0 ? void 0 : _JSON$parse3$profile.last_name),
+    value: JSON.parse(localStorage.getItem("globals"))?.profile?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.last_name,
     placeholder: "email"
   }), /*#__PURE__*/React.createElement("button", {
     className: "bugReport-send"
@@ -1319,14 +1280,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ Button)
 /* harmony export */ });
 function Button(props) {
-  var _props$text;
-
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("button", {
     className: props.className ? props.className : "cta",
     style: props.style ? props.style : null,
     disabled: props.disabled,
-    onClick: props === null || props === void 0 ? void 0 : props.onClick
-  }, (_props$text = props.text) !== null && _props$text !== void 0 ? _props$text : props.children));
+    onClick: props?.onClick
+  }, props.text ?? props.children));
 }
 
 /***/ }),
@@ -1357,13 +1316,13 @@ function Line(_ref) {
     data2,
     title
   } = _ref;
-  const dailyData = data === null || data === void 0 ? void 0 : data.map((d, i) => {
+  const dailyData = data?.map((d, i) => {
     return {
       "name": new Intl.DateTimeFormat('da-DK').format(new Date(d.date)),
       "domain": d.num
     };
   });
-  const dailyData2 = data2 === null || data2 === void 0 ? void 0 : data2.map((d, i) => {
+  const dailyData2 = data2?.map((d, i) => {
     return {
       "name": new Intl.DateTimeFormat('da-DK').format(new Date(d.previousPeriod.date)),
       "domain": d.previousPeriod.num
@@ -1377,11 +1336,9 @@ function Line(_ref) {
         x: "name",
         value: "domain"
       });
-
       if (dataSet.oc != dailyData) {
         document.getElementById("line-chart").innerHTML = "";
       }
-
       let dataSet2 = anychart.data.set(dailyData2);
       let chart = anychart.line();
       chart.background().fill("transparent");
@@ -1400,7 +1357,6 @@ function Line(_ref) {
       series2.hovered().stroke("#C09F53", 2);
       series2.selected().stroke("#C09F53", 4);
       chart.container("line-chart");
-
       if (data !== null) {
         chart.draw();
       }
@@ -1448,16 +1404,13 @@ function Pie(_ref) {
     anychart.onDocumentReady(function () {
       // The main JS line charting code will be here.
       let dataSet = anychart.data.set(dailyData);
-
       if (dataSet.oc != dailyData) {
         document.getElementById("pie-chart").innerHTML = "";
       }
-
       let chart = anychart.pie(dailyData);
       chart.background().fill("transparent");
       chart.radius("90%");
       chart.container("pie-chart");
-
       if (data !== null || data !== undefined) {
         chart.draw();
       }
@@ -1497,7 +1450,6 @@ const svgMap = window.svgMap;
 function Map(props) {
   const data = props.data;
   const countries = data.Countries;
-
   if (countries != null) {
     const newArray = countries.map((country, key) => {
       if (country.country != "Unknown") {
@@ -1574,7 +1526,6 @@ function Map(props) {
       });
     }, [data]);
   }
-
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, /*#__PURE__*/React.createElement("div", {
@@ -1892,15 +1843,12 @@ function Crawler(_ref) {
   const [fetchedWebsites, setFetchedWebsites] = useState("");
   const [crawlerItem, setCrawlerItem] = useState("");
   const [defaultValue, setDefaultValue] = useState("or Select a Website");
-
   if (websiteStatus === null) {
     [websiteStatus, setWebsiteStatus] = useState("Not Crawled");
   }
-
   if (window.location.pathname === "/crawler" || window.location.pathname === "/check") {
     document.title = "CookieBot | Intastellar Consents Platform";
   }
-
   function crawlWebsite(e) {
     e.preventDefault();
     setWebsiteStatus("Crawling...");
@@ -1919,7 +1867,6 @@ function Crawler(_ref) {
         setLoading(false);
         return;
       }
-
       setLoading(false);
       setWebsiteStatus("Crawled");
       setData(res);
@@ -1929,7 +1876,6 @@ function Crawler(_ref) {
       setError(err);
     });
   }
-
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "form"
   }, /*#__PURE__*/React.createElement("section", {
@@ -1945,13 +1891,12 @@ function Crawler(_ref) {
       if (e.target.value.indexOf("https://") !== -1) {
         e.target.value = e.target.value.replace("https://", "");
       }
-
       setCrawlerItem(e.target.value);
     }
   }), domains && /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_0__["default"], {
     defaultValue: defaultValue,
     key: "",
-    items: domains === null || domains === void 0 ? void 0 : domains.map(d => {
+    items: domains?.map(d => {
       return d.domain;
     }),
     onChange: e => {
@@ -1963,11 +1908,7 @@ function Crawler(_ref) {
     onClick: crawlWebsite
   }, "Find Cookies"))), /*#__PURE__*/React.createElement("section", {
     className: "crawler-intro"
-  }, /*#__PURE__*/React.createElement("p", null, "Free to use"), /*#__PURE__*/React.createElement("p", null, "Instant Report")), data === "Err_Development_Only" && /*#__PURE__*/React.createElement("p", null, "Sorry, this feature is only available in development mode"), websiteStatus === "Crawled" && data !== "Err_Development_Only" && /*#__PURE__*/React.createElement("p", null, "Found ", (data === null || data === void 0 ? void 0 : data.length) - 1, " cookies on your website across ", data === null || data === void 0 ? void 0 : data.map(crawledUrl => {
-    var _crawledUrl$crawledUr;
-
-    return crawledUrl === null || crawledUrl === void 0 ? void 0 : (_crawledUrl$crawledUr = crawledUrl.crawledUrls) === null || _crawledUrl$crawledUr === void 0 ? void 0 : _crawledUrl$crawledUr.length;
-  }), " sites"), loading && /*#__PURE__*/React.createElement(_LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_4__["default"], null), !loading && data !== "Err_Development_Only" && (data === null || data === void 0 ? void 0 : data.length) - 1 > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, "First party & third party Cookies found on ", fetchedWebsites.replace("https://", "").replace("http://", "").replace("www.", "")), /*#__PURE__*/React.createElement(_Tabel__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/React.createElement("p", null, "Free to use"), /*#__PURE__*/React.createElement("p", null, "Instant Report")), data === "Err_Development_Only" && /*#__PURE__*/React.createElement("p", null, "Sorry, this feature is only available in development mode"), websiteStatus === "Crawled" && data !== "Err_Development_Only" && /*#__PURE__*/React.createElement("p", null, "Found ", data?.length - 1, " cookies on your website across ", data?.map(crawledUrl => crawledUrl?.crawledUrls?.length), " sites"), loading && /*#__PURE__*/React.createElement(_LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_4__["default"], null), !loading && data !== "Err_Development_Only" && data?.length - 1 > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h3", null, "First party & third party Cookies found on ", fetchedWebsites.replace("https://", "").replace("http://", "").replace("www.", "")), /*#__PURE__*/React.createElement(_Tabel__WEBPACK_IMPORTED_MODULE_2__["default"], {
     headers: ["Name", "Domain"],
     data: data
   }))));
@@ -2016,7 +1957,6 @@ function DomainList(props) {
   const [companyLogo, setCompanyLogo] = useState("");
   const [requiredCookies, setRequiredCookies] = useState("");
   const [partnerDomain, setPartnerDomain] = useState("");
-
   function saveDomains(domains, settings) {
     (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_4__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.url, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.method, _API_api__WEBPACK_IMPORTED_MODULE_3__["default"].settings.addDomain.headers, JSON.stringify({
       organisationId: organisationId,
@@ -2035,15 +1975,12 @@ function DomainList(props) {
       }
     }).catch(setErrorMessage);
   }
-
   function copy(item) {
     navigator.clipboard.writeText(item);
   }
-
   if (currentDomain.length > 0 && privacyPolicyLink.length === 0) {
     setPrivacyPolicyLink("https://" + currentDomain[0] + "/privacy-policy");
   }
-
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "domain-list"
   }, success ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains added"), /*#__PURE__*/React.createElement("p", null, "You have added the following domains to your Organisation: ", organisation.name), /*#__PURE__*/React.createElement("ul", null, savedDomains.map((domain, index) => {
@@ -2053,13 +1990,15 @@ function DomainList(props) {
   })), /*#__PURE__*/React.createElement("p", null, "Now you can add these two lines of code into your head tag of your Website:"), /*#__PURE__*/React.createElement("button", {
     className: "copyCta",
     onClick: () => {
-      copy("<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script>\n                            <script href='https://downloads.intastellarsolutions.com/cookieconsents/".concat(savedDomains[0], "/config.js'></script>"));
+      copy(`<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script>
+                            <script href='https://downloads.intastellarsolutions.com/cookieconsents/${savedDomains[0]}/config.js'></script>`);
     }
   }, "Copy"), /*#__PURE__*/React.createElement("div", {
     style: {
       clear: "both"
     }
-  }), "<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script> \n\n                        <script href='https://downloads.intastellarsolutions.com/cookieconsents/".concat(savedDomains[0], "/config.js'></script>")) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains to be added"), /*#__PURE__*/React.createElement("p", null, "You\xB4re about to add these domains to your Organisation: ", organisation.name), /*#__PURE__*/React.createElement("ul", null, currentDomain.map((domain, index) => {
+  }), `<script src='https://consents.cdn.intastellarsolutions.com/gdpr.js'></script> \n
+                        <script href='https://downloads.intastellarsolutions.com/cookieconsents/${savedDomains[0]}/config.js'></script>`) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Domains to be added"), /*#__PURE__*/React.createElement("p", null, "You\xB4re about to add these domains to your Organisation: ", organisation.name), /*#__PURE__*/React.createElement("ul", null, currentDomain.map((domain, index) => {
     return /*#__PURE__*/React.createElement("li", {
       key: index
     }, domain);
@@ -2072,7 +2011,7 @@ function DomainList(props) {
       setPrivacyPolicyLink(e.target.innerHTML);
     },
     className: "editable"
-  }, "\"", currentDomain[0] != undefined ? "https://".concat(currentDomain[0], "/privacy-policy") : null, "\""), /*#__PURE__*/React.createElement("br", null), "Color: ", /*#__PURE__*/React.createElement("span", {
+  }, "\"", currentDomain[0] != undefined ? `https://${currentDomain[0]}/privacy-policy` : null, "\""), /*#__PURE__*/React.createElement("br", null), "Color: ", /*#__PURE__*/React.createElement("span", {
     contentEditable: true,
     suppressContentEditableWarning: true,
     className: "editable",
@@ -2113,7 +2052,20 @@ function DomainList(props) {
   }, "https://developers.intastellarsolutions.com/cookie-solutions/docs/js-docs"))), currentDomain.length > 0 && !success ? /*#__PURE__*/React.createElement(_Button_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
     text: "Save",
     onClick: () => {
-      saveDomains(currentDomain, "\n                    <script>\n                        window.INTA = {\n                            policy_link: '".concat(privacyPolicyLink, "',\n                            settings: {\n                                company: '").concat(organisation.name, "',\n                                color: '").concat(choosenColor, "',\n                                arrange: '").concat(bannerArrangement, "',\n                                logo: '").concat(companyLogo, "',\n                                requiredCookies: '").concat(requiredCookies, "',\n                                partnerDomain: '").concat(savedDomains, "',\n                            }\n                        }\n                    </>"));
+      saveDomains(currentDomain, `
+                    <script>
+                        window.INTA = {
+                            policy_link: '${privacyPolicyLink}',
+                            settings: {
+                                company: '${organisation.name}',
+                                color: '${choosenColor}',
+                                arrange: '${bannerArrangement}',
+                                logo: '${companyLogo}',
+                                requiredCookies: '${requiredCookies}',
+                                partnerDomain: '${savedDomains}',
+                            }
+                        }
+                    </>`);
     }
   }) : ""), viewPopUp && success ? /*#__PURE__*/React.createElement(_SuccessWindow_index__WEBPACK_IMPORTED_MODULE_2__["default"], {
     message: /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "Success!"), /*#__PURE__*/React.createElement("p", null, "You have added the following domains:"), /*#__PURE__*/React.createElement("ul", null, savedDomains.map((domain, index) => {
@@ -2143,25 +2095,22 @@ class ErrorBoundary extends React.Component {
       hasError: false
     };
   }
-
   static getDerivedStateFromError(error) {
     // Update state so the next render will show the fallback UI.
     return {
       hasError: true
     };
   }
-
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
+
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
         className: "ppad"
       }, /*#__PURE__*/React.createElement("h1", null, "Something went wrong."), /*#__PURE__*/React.createElement("p", null, "Sorry for the inconvenient, but we are hav'ing currently some technical errors.")));
     }
-
     return this.props.children;
   }
-
 }
 
 /***/ }),
@@ -2381,7 +2330,6 @@ function Nav() {
     document.querySelector(".sidebar").classList.toggle("expand");
     document.querySelector(".collapsed").classList.toggle("expand");
   };
-
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "navOverlay"
   }, /*#__PURE__*/React.createElement("aside", {
@@ -2455,8 +2403,6 @@ const Link = window.ReactRouterDOM.Link;
 const useParams = window.ReactRouterDOM.useParams;
 
 function SideNav(props) {
-  var _props$links;
-
   const useLocation = window.ReactRouterDOM.useLocation;
   const {
     handle,
@@ -2467,41 +2413,34 @@ function SideNav(props) {
     className: "sidebar expand"
   }, /*#__PURE__*/React.createElement("nav", {
     className: "collapsed expand"
-  }, props !== null && props !== void 0 && props.title ? /*#__PURE__*/React.createElement("h2", {
+  }, props?.title ? /*#__PURE__*/React.createElement("h2", {
     className: "navItems"
-  }, props === null || props === void 0 ? void 0 : props.title) : null, props === null || props === void 0 ? void 0 : (_props$links = props.links) === null || _props$links === void 0 ? void 0 : _props$links.map((link, key) => {
-    var _link$view;
-
+  }, props?.title) : null, props?.links?.map((link, key) => {
     if (link.path.indexOf("reports") !== -1) {
-      url = "/" + id + (link === null || link === void 0 ? void 0 : link.path);
+      url = "/" + id + link?.path;
     } else {
-      url = link === null || link === void 0 ? void 0 : link.path;
+      url = link?.path;
     }
-
-    if ((link === null || link === void 0 ? void 0 : (_link$view = link.view) === null || _link$view === void 0 ? void 0 : _link$view.indexOf(_Authentication_Auth__WEBPACK_IMPORTED_MODULE_0__["default"].User.Status)) != -1) {
-      var _useLocation;
-
+    if (link?.view?.indexOf(_Authentication_Auth__WEBPACK_IMPORTED_MODULE_0__["default"].User.Status) != -1) {
       return /*#__PURE__*/React.createElement(Link, {
         key: key,
-        className: "navItems" + (((_useLocation = useLocation()) === null || _useLocation === void 0 ? void 0 : _useLocation.pathname) === (link === null || link === void 0 ? void 0 : link.path) ? " --active" : ""),
+        className: "navItems" + (useLocation()?.pathname === link?.path ? " --active" : ""),
         to: url
-      }, link !== null && link !== void 0 && link.icon ? /*#__PURE__*/React.createElement("i", {
-        className: "dashboard-icons " + (link === null || link === void 0 ? void 0 : link.icon)
+      }, link?.icon ? /*#__PURE__*/React.createElement("i", {
+        className: "dashboard-icons " + link?.icon
       }) : null, " ", /*#__PURE__*/React.createElement("span", {
         className: "hiddenCollapsed"
-      }, link === null || link === void 0 ? void 0 : link.name));
+      }, link?.name));
     } else {
-      var _useLocation2;
-
       return /*#__PURE__*/React.createElement(Link, {
         key: key,
-        className: "navItems" + (((_useLocation2 = useLocation()) === null || _useLocation2 === void 0 ? void 0 : _useLocation2.pathname) === (link === null || link === void 0 ? void 0 : link.path) ? " --active" : ""),
+        className: "navItems" + (useLocation()?.pathname === link?.path ? " --active" : ""),
         to: url
-      }, link !== null && link !== void 0 && link.icon ? /*#__PURE__*/React.createElement("i", {
-        className: "dashboard-icons " + (link === null || link === void 0 ? void 0 : link.icon)
+      }, link?.icon ? /*#__PURE__*/React.createElement("i", {
+        className: "dashboard-icons " + link?.icon
       }) : null, " ", /*#__PURE__*/React.createElement("span", {
         className: "hiddenCollapsed"
-      }, link === null || link === void 0 ? void 0 : link.name));
+      }, link?.name));
     }
   }))));
 }
@@ -2516,7 +2455,7 @@ function SideNav(props) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "reportsLinks": () => (/* binding */ reportsLinks)
+/* harmony export */   reportsLinks: () => (/* binding */ reportsLinks)
 /* harmony export */ });
 const reportsLinks = [{
   name: "My Preferences",
@@ -2654,25 +2593,19 @@ const {
 
 
 const useHistory = window.ReactRouterDOM.useHistory;
-
 const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/punycode.es6.js");
-
 function Header(props) {
-  var _window$location$path, _JSON$parse, _JSON$parse$profile, _JSON$parse2, _JSON$parse2$profile, _JSON$parse2$profile$, _JSON$parse3, _JSON$parse3$profile, _JSON$parse3$profile$, _JSON$parse4, _JSON$parse4$profile, _JSON$parse4$profile$, _JSON$parse5, _JSON$parse5$profile;
-
   const [Organisation, setOrganisation] = useContext(_App__WEBPACK_IMPORTED_MODULE_0__.OrganisationContext);
-  const [currentDomain, setCurrentDomain] = useState(window.location.pathname.split("/")[2] === "view" ? decodeURI((_window$location$path = window.location.pathname.split("/")[3]) === null || _window$location$path === void 0 ? void 0 : _window$location$path.replace("%2E", ".")) : "all");
-  const profileImage = (_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : (_JSON$parse$profile = _JSON$parse.profile) === null || _JSON$parse$profile === void 0 ? void 0 : _JSON$parse$profile.image;
+  const [currentDomain, setCurrentDomain] = useState(window.location.pathname.split("/")[2] === "view" ? decodeURI(window.location.pathname.split("/")[3]?.replace("%2E", ".")) : "all");
+  const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
   let domainList = null;
-  const Name = ((_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse2 === void 0 ? void 0 : (_JSON$parse2$profile = _JSON$parse2.profile) === null || _JSON$parse2$profile === void 0 ? void 0 : (_JSON$parse2$profile$ = _JSON$parse2$profile.name) === null || _JSON$parse2$profile$ === void 0 ? void 0 : _JSON$parse2$profile$.first_name) + " " + ((_JSON$parse3 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse3 === void 0 ? void 0 : (_JSON$parse3$profile = _JSON$parse3.profile) === null || _JSON$parse3$profile === void 0 ? void 0 : (_JSON$parse3$profile$ = _JSON$parse3$profile.name) === null || _JSON$parse3$profile$ === void 0 ? void 0 : _JSON$parse3$profile$.last_name);
+  const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
   const navigate = useHistory();
   const [allOrganisations, setallOrganisations] = useState(null);
   const [domains, setDomains] = useState(props.domains);
   const [viewUserProfile, setViewUserProfile] = useState(false);
   const Platform = localStorage.getItem("platform") == "gdpr" ? "Cookie Consents" : "Ferry Booking";
   useEffect(() => {
-    var _API$window$location$, _API$window$location$2, _API$window$location$3, _API$window$location$4, _API$window$location$5, _API$window$location$6;
-
     (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_3__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_5__["default"].settings.getOrganisation.url, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"].settings.getOrganisation.method, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"].settings.getOrganisation.headers, JSON.stringify({
       organisationMember: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_6__["default"].getUserId()
     })).then(data => {
@@ -2681,33 +2614,30 @@ function Header(props) {
         navigate.push("/login");
         return;
       }
-
       if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
         JSON.parse(localStorage.getItem("globals")).organisation = data;
       }
-
       setallOrganisations(data);
     });
-    (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_3__["default"])((_API$window$location$ = _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]]) === null || _API$window$location$ === void 0 ? void 0 : (_API$window$location$2 = _API$window$location$.getDomains) === null || _API$window$location$2 === void 0 ? void 0 : _API$window$location$2.url, (_API$window$location$3 = _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]]) === null || _API$window$location$3 === void 0 ? void 0 : (_API$window$location$4 = _API$window$location$3.getDomains) === null || _API$window$location$4 === void 0 ? void 0 : _API$window$location$4.method, (_API$window$location$5 = _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]]) === null || _API$window$location$5 === void 0 ? void 0 : (_API$window$location$6 = _API$window$location$5.getDomains) === null || _API$window$location$6 === void 0 ? void 0 : _API$window$location$6.headers).then(data => {
+    (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_3__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]]?.getDomains?.url, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]]?.getDomains?.method, _API_api__WEBPACK_IMPORTED_MODULE_5__["default"][window.location.pathname.split("/")[1]]?.getDomains?.headers).then(data => {
       if (data === "Err_Login_Expired") {
         localStorage.removeItem("globals");
         window.location.href = "/login";
         return;
       }
-
       if (data.error === "Err_No_Domains") {} else {
         data.unshift({
           domain: "all",
           installed: null,
           lastedVisited: null
         });
-        data === null || data === void 0 ? void 0 : data.map(d => {
+        data?.map(d => {
           return punycode.toUnicode(d.domain);
         }).filter(d => {
           return d !== undefined && d !== "" && d !== "undefined.";
         });
         setDomains(data);
-        const allowedDomains = data === null || data === void 0 ? void 0 : data.map(d => {
+        const allowedDomains = data?.map(d => {
           return punycode.toUnicode(d.domain);
         }).filter(d => {
           return d !== undefined && d !== "" && d !== "undefined." && d !== "all";
@@ -2716,7 +2646,7 @@ function Header(props) {
       }
     });
   }, []);
-  domainList = domains === null || domains === void 0 ? void 0 : domains.map(d => {
+  domainList = domains?.map(d => {
     return punycode.toUnicode(d.domain);
   });
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("header", {
@@ -2752,7 +2682,7 @@ function Header(props) {
     onChange: e => {
       const domain = e;
       setCurrentDomain(domain);
-      window.location.href = "/".concat(window.location.pathname.split("/")[1], "/view/").concat(domain.replace('.', '%2E'));
+      window.location.href = `/${window.location.pathname.split("/")[1]}/view/${domain.replace('.', '%2E')}`;
     },
     items: domainList,
     title: "Choose one of your domains",
@@ -2769,8 +2699,8 @@ function Header(props) {
   }))), viewUserProfile ? /*#__PURE__*/React.createElement(_IntastellarAccounts_IntastellarAccounts__WEBPACK_IMPORTED_MODULE_8__["default"], {
     profile: {
       image: profileImage,
-      name: (_JSON$parse4 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse4 === void 0 ? void 0 : (_JSON$parse4$profile = _JSON$parse4.profile) === null || _JSON$parse4$profile === void 0 ? void 0 : (_JSON$parse4$profile$ = _JSON$parse4$profile.name) === null || _JSON$parse4$profile$ === void 0 ? void 0 : _JSON$parse4$profile$.first_name,
-      email: (_JSON$parse5 = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse5 === void 0 ? void 0 : (_JSON$parse5$profile = _JSON$parse5.profile) === null || _JSON$parse5$profile === void 0 ? void 0 : _JSON$parse5$profile.email
+      name: JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name,
+      email: JSON.parse(localStorage.getItem("globals"))?.profile?.email
     },
     setIsOpen: setViewUserProfile
   }) : null));
@@ -2836,9 +2766,9 @@ __webpack_require__.r(__webpack_exports__);
 function Text(props) {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("input", {
     className: "intInput",
-    placeholder: props === null || props === void 0 ? void 0 : props.placeholder,
+    placeholder: props?.placeholder,
     autoComplete: "off",
-    type: props !== null && props !== void 0 && props.type ? props.type : "text",
+    type: props?.type ? props.type : "text",
     onChange: props.onChange
   }));
 }
@@ -2867,19 +2797,17 @@ const {
 } = window.React;
 const Link = window.ReactRouterDOM.Link;
 function Account(props) {
-  var _JSON$parse;
-
   function clickOutSide(e) {
     if (e.target.className !== "user_content" || e.target.className !== "content-img") {
       props.setIsOpen(false);
     }
   }
+
   /* useEffect(() => {
       document.addEventListener("click", clickOutSide);
   }, []); */
 
-
-  console.log((_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.access.type);
+  console.log(JSON.parse(localStorage.getItem("globals"))?.access.type);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "user_content"
   }, /*#__PURE__*/React.createElement("div", {
@@ -3270,33 +3198,29 @@ const {
   useContext
 } = React;
 function PlatformSelector(props) {
-  var _Object$keys$map$filt, _Object$keys$map$filt2;
-
-  const items = (_Object$keys$map$filt = Object.keys(props === null || props === void 0 ? void 0 : props.platforms).map(platform => {
-    return props === null || props === void 0 ? void 0 : props.platforms[platform];
+  const items = Object.keys(props?.platforms).map(platform => {
+    return props?.platforms[platform];
   }).filter(company => {
     return company.name === JSON.parse(localStorage.getItem("organisation")).name;
-  })) === null || _Object$keys$map$filt === void 0 ? void 0 : (_Object$keys$map$filt2 = _Object$keys$map$filt.map(platform => {
+  })?.map(platform => {
     return {
       type: platform.access.type,
       uri: platform.access.uri
     };
   }).map(platform => {
-    var _platform$type, _platform$type$split, _platform$uri, _platform$uri$split;
-
-    const type = platform === null || platform === void 0 ? void 0 : (_platform$type = platform.type) === null || _platform$type === void 0 ? void 0 : (_platform$type$split = _platform$type.split(",")) === null || _platform$type$split === void 0 ? void 0 : _platform$type$split.map(type => {
+    const type = platform?.type?.split(",")?.map(type => {
       return type.trim();
     });
-    const uri = platform === null || platform === void 0 ? void 0 : (_platform$uri = platform.uri) === null || _platform$uri === void 0 ? void 0 : (_platform$uri$split = _platform$uri.split(",")) === null || _platform$uri$split === void 0 ? void 0 : _platform$uri$split.map(uri => {
+    const uri = platform?.uri?.split(",")?.map(uri => {
       return uri.trim();
     });
-    return type === null || type === void 0 ? void 0 : type.map((type, key) => {
+    return type?.map((type, key) => {
       return {
         type: type,
         uri: uri[key]
       };
     });
-  }).reduce((acc, val) => acc.concat(val), [])) === null || _Object$keys$map$filt2 === void 0 ? void 0 : _Object$keys$map$filt2.map(item => {
+  }).reduce((acc, val) => acc.concat(val), [])?.map(item => {
     return item;
   });
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
@@ -3308,7 +3232,7 @@ function PlatformSelector(props) {
   }), /*#__PURE__*/React.createElement("h1", null, "Please Select a Platform that you want to view data for:"), items.length === 1 && items.indexOf(undefined) > -1 ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, "You don\xB4t have access to any platforms yet, please contact your administrator."), /*#__PURE__*/React.createElement(_SelectInput_Selector__WEBPACK_IMPORTED_MODULE_0__["default"], {
     defaultValue: "Choose another Organisation",
     key: "",
-    items: props === null || props === void 0 ? void 0 : props.platforms,
+    items: props?.platforms,
     onChange: e => {
       localStorage.setItem("organisation", JSON.stringify(JSON.parse(e)));
       window.location.reload();
@@ -3324,7 +3248,7 @@ function PlatformSelector(props) {
     onChange: e => {
       props.setId(JSON.parse(e).uri);
       localStorage.setItem("platform", JSON.parse(e).uri);
-      window.location.href = "/".concat(JSON.parse(e).uri, "/dashboard");
+      window.location.href = `/${JSON.parse(e).uri}/dashboard`;
     }
   })));
 }
@@ -3351,30 +3275,23 @@ const {
 
 const useParams = window.ReactRouterDOM.useParams;
 function Select(props) {
-  var _props$items;
-
   const [isOpen, setIsOpen] = useState(false);
-
   function isJson(str) {
     try {
       JSON.parse(str);
     } catch (e) {
       return false;
     }
-
     return true;
   }
-
   function openMenu() {
     setIsOpen(!isOpen);
   }
-
   function clickOutSide(e) {
     if (e.target.className !== "dropdown-menu-button") {
       setIsOpen(false);
     }
   }
-
   useEffect(() => {
     document.addEventListener("click", clickOutSide);
   }, []);
@@ -3387,16 +3304,14 @@ function Select(props) {
     className: props.icon
   }) : null, /*#__PURE__*/React.createElement("button", {
     className: "dropdown-menu-button",
-    style: props === null || props === void 0 ? void 0 : props.style2,
+    style: props?.style2,
     onClick: openMenu
   }, isJson(props.defaultValue) ? JSON.parse(props.defaultValue).name : props.defaultValue), isOpen ? /*#__PURE__*/React.createElement("div", {
     className: "dropdown-menu"
   }, /*#__PURE__*/React.createElement("ul", {
     className: "dropdown-menu__content",
     style: props.style
-  }, props === null || props === void 0 ? void 0 : (_props$items = props.items) === null || _props$items === void 0 ? void 0 : _props$items.map((item, key) => {
-    var _item;
-
+  }, props?.items?.map((item, key) => {
     if (isJson(item)) {
       item = JSON.parse(item);
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("li", {
@@ -3406,7 +3321,7 @@ function Select(props) {
         })),
         key: item.id
       }, item.name));
-    } else if (typeof item === "object" && (_item = item) !== null && _item !== void 0 && _item.uri) {
+    } else if (typeof item === "object" && item?.uri) {
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("li", {
         onClick: () => props.onChange(JSON.stringify({
           name: item.type,
@@ -3461,11 +3376,9 @@ const {
 
 
 function StripePayment(props) {
-  var _JSON$parse;
-
   document.title = "Choose a Plan | Intastellar Consents";
   const [allOrganisations, setallOrganisations] = useContext(_App__WEBPACK_IMPORTED_MODULE_3__.AllOrg);
-  const companyName = (_JSON$parse = JSON.parse(localStorage.getItem("organisation"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.name;
+  const companyName = JSON.parse(localStorage.getItem("organisation"))?.name;
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("header", {
     className: "payment-header"
   }, /*#__PURE__*/React.createElement("img", {
@@ -3487,7 +3400,17 @@ function StripePayment(props) {
     "publishable-key": "pk_test_cdjFXrTVnj1SdyYXzlTz95Sk",
     "customer-email": props.userId(),
     "client-reference-id": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getOrganisation()
-  })));
+  })), /*#__PURE__*/React.createElement("footer", {
+    className: "footer"
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "https://www.intastellarsolutions.com/about/legal/terms",
+    target: "_blank"
+  }, "Terms of Service"), " | ", /*#__PURE__*/React.createElement("a", {
+    href: "https://www.intastellarsolutions.com/about/legal/privacy",
+    target: "_blank"
+  }, "Privacy Policy"), " | ", /*#__PURE__*/React.createElement("a", {
+    href: "https://www.intastellarsolutions.com/about/legal/subscriber-agreement"
+  }, "Subscriber agreement"), /*#__PURE__*/React.createElement("p", null, "\xA9 ", new Date().getFullYear(), " Intastellar Solutions, International. All rights reserved.")));
 }
 
 /***/ }),
@@ -3510,14 +3433,12 @@ const {
   useRef
 } = React;
 function SuccessWindow(props) {
-  const [Style, setStyle] = useState(props === null || props === void 0 ? void 0 : props.style);
-
+  const [Style, setStyle] = useState(props?.style);
   function closeWindow() {
     setStyle({
       right: "-100%"
     });
   }
-
   setTimeout(() => {
     closeWindow();
   }, 5000);
@@ -3526,7 +3447,7 @@ function SuccessWindow(props) {
     className: "successWindow"
   }, /*#__PURE__*/React.createElement("div", {
     className: "successWindow-content"
-  }, props === null || props === void 0 ? void 0 : props.message)));
+  }, props?.message)));
 }
 
 /***/ }),
@@ -3561,7 +3482,7 @@ function Table(props) {
     className: "table-body"
   }, /*#__PURE__*/React.createElement("div", {
     className: "table-row"
-  }, data === null || data === void 0 ? void 0 : data.map((d, i) => {
+  }, data?.map((d, i) => {
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
       className: "table-cell",
       key: i
@@ -3612,43 +3533,43 @@ function PremiumTier(props) {
   const loading = props.loading;
   const activeData = props.activeData;
   return /*#__PURE__*/React.createElement(React.Fragment, null, loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
+    totalNumber: activeData?.Total.toLocaleString("de-DE"),
     type: "Total interactions"
   }), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_Charts_Pie__WEBPACK_IMPORTED_MODULE_2__["default"], {
     data: [{
       x: "Accepted",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.accept
+      value: activeData?.interactions_number.accept
     }, {
       x: "Declined",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.decline
+      value: activeData?.interactions_number.decline
     }, {
       x: "Only Marketing",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.marketing
+      value: activeData?.interactions_number.marketing
     }, {
       x: "Only Functional",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.functional
+      value: activeData?.interactions_number.functional
     }, {
       x: "Only Statics",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.statics
+      value: activeData?.interactions_number.statics
     }]
   }), loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Accepted.toLocaleString("de-DE")) + "%",
+    totalNumber: activeData?.Accepted.toLocaleString("de-DE") + "%",
     type: "Accepted cookies"
   }), loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Declined.toLocaleString("de-DE")) + "%",
+    totalNumber: activeData?.Declined.toLocaleString("de-DE") + "%",
     type: "Declined cookies"
   })), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Marketing.toLocaleString("de-DE")) + "%",
+    totalNumber: activeData?.Marketing.toLocaleString("de-DE") + "%",
     type: "Only Marketing"
   }), loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Functional.toLocaleString("de-DE")) + "%",
+    totalNumber: activeData?.Functional.toLocaleString("de-DE") + "%",
     type: "Only Functional"
   }), loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Statics.toLocaleString("de-DE")) + "%",
+    totalNumber: activeData?.Statics.toLocaleString("de-DE") + "%",
     type: "Only Statics"
   })));
 }
@@ -3675,32 +3596,32 @@ function ProTier(props) {
   const loading = props.loading;
   const activeData = props.activeData;
   return /*#__PURE__*/React.createElement(React.Fragment, null, loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    totalNumber: activeData === null || activeData === void 0 ? void 0 : activeData.Total.toLocaleString("de-DE"),
+    totalNumber: activeData?.Total.toLocaleString("de-DE"),
     type: "Total interactions"
   }), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_Charts_Pie__WEBPACK_IMPORTED_MODULE_2__["default"], {
     data: [{
       x: "Accepted",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.accept
+      value: activeData?.interactions_number.accept
     }, {
       x: "Declined",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.decline
+      value: activeData?.interactions_number.decline
     }, {
       x: "Only Marketing",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.marketing
+      value: activeData?.interactions_number.marketing
     }, {
       x: "Only Functional",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.functional
+      value: activeData?.interactions_number.functional
     }, {
       x: "Only Statics",
-      value: activeData === null || activeData === void 0 ? void 0 : activeData.interactions_number.statics
+      value: activeData?.interactions_number.statics
     }]
   }), loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Accepted.toLocaleString("de-DE")) + "%",
+    totalNumber: activeData?.Accepted.toLocaleString("de-DE") + "%",
     type: "Accepted cookies"
   }), loading ? /*#__PURE__*/React.createElement(_widget_Loading__WEBPACK_IMPORTED_MODULE_0__.Loading, null) : /*#__PURE__*/React.createElement(_widget_widget__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    totalNumber: (activeData === null || activeData === void 0 ? void 0 : activeData.Declined.toLocaleString("de-DE")) + "%",
+    totalNumber: activeData?.Declined.toLocaleString("de-DE") + "%",
     type: "Declined cookies"
   })));
 }
@@ -3715,9 +3636,9 @@ function ProTier(props) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "BasicTier": () => (/* reexport safe */ _Basic_js__WEBPACK_IMPORTED_MODULE_1__["default"]),
-/* harmony export */   "PremiumTier": () => (/* reexport safe */ _Premium_js__WEBPACK_IMPORTED_MODULE_0__["default"]),
-/* harmony export */   "ProTier": () => (/* reexport safe */ _Pro_js__WEBPACK_IMPORTED_MODULE_2__["default"])
+/* harmony export */   BasicTier: () => (/* reexport safe */ _Basic_js__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   PremiumTier: () => (/* reexport safe */ _Premium_js__WEBPACK_IMPORTED_MODULE_0__["default"]),
+/* harmony export */   ProTier: () => (/* reexport safe */ _Pro_js__WEBPACK_IMPORTED_MODULE_2__["default"])
 /* harmony export */ });
 /* harmony import */ var _Premium_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Premium.js */ "./src/Components/tiers/Premium.js");
 /* harmony import */ var _Basic_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Basic.js */ "./src/Components/tiers/Basic.js");
@@ -3737,12 +3658,11 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "CurrentPageLoading": () => (/* binding */ CurrentPageLoading),
-/* harmony export */   "Loading": () => (/* binding */ Loading)
+/* harmony export */   CurrentPageLoading: () => (/* binding */ CurrentPageLoading),
+/* harmony export */   Loading: () => (/* binding */ Loading)
 /* harmony export */ });
 /* harmony import */ var _Widget_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Widget.css */ "./src/Components/widget/Widget.css");
 /* harmony import */ var _Loading_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Loading.css */ "./src/Components/widget/Loading.css");
-
 
 
 function Loading() {
@@ -3754,7 +3674,6 @@ function Loading() {
     className: "smallIsLoading"
   })));
 }
-
 function CurrentPageLoading() {
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
@@ -3764,7 +3683,6 @@ function CurrentPageLoading() {
     className: "smallIsLoading"
   })));
 }
-
 
 
 /***/ }),
@@ -3802,26 +3720,24 @@ function TopWidgets(props) {
   const APIMethod = props.API.method;
   const APIHeader = props.API.header;
   const [loading, data, error, updated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_1__["default"])(30, APIUrl, APIMethod, APIHeader);
-
   if (data === "Err_Login_Expired") {
     localStorage.removeItem("globals");
     window.location.href = "/#login";
     return;
   }
-
   const chartRef = useRef(chart_js__WEBPACK_IMPORTED_MODULE_4__.Chart);
   const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_Loading__WEBPACK_IMPORTED_MODULE_2__.Loading, null) : /*#__PURE__*/React.createElement(_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/React.createElement(_widget__WEBPACK_IMPORTED_MODULE_0__["default"], {
     overviewTotal: true,
-    totalNumber: data === null || data === void 0 ? void 0 : data.Total.toLocaleString("de-DE"),
+    totalNumber: data?.Total.toLocaleString("de-DE"),
     type: "Website"
   })), loading ? /*#__PURE__*/React.createElement(_Loading__WEBPACK_IMPORTED_MODULE_2__.Loading, null) : /*#__PURE__*/React.createElement(_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/React.createElement(_widget__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    totalNumber: (data === null || data === void 0 ? void 0 : data.JS.toLocaleString("de-DE")) + "%",
+    totalNumber: data?.JS.toLocaleString("de-DE") + "%",
     type: "JavaScript"
   })), loading ? /*#__PURE__*/React.createElement(_Loading__WEBPACK_IMPORTED_MODULE_2__.Loading, null) : /*#__PURE__*/React.createElement(_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/React.createElement(_widget__WEBPACK_IMPORTED_MODULE_0__["default"], {
-    totalNumber: (data === null || data === void 0 ? void 0 : data.WP.toLocaleString("de-DE")) + "%",
+    totalNumber: data?.WP.toLocaleString("de-DE") + "%",
     type: "WordPress"
   }))));
 }
@@ -3841,12 +3757,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Widget_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Widget.css */ "./src/Components/widget/Widget.css");
 
 function Widget(props) {
-  const overViewTotal = props !== null && props !== void 0 && props.overviewTotal ? " overviewTotal" : " overviewDistribution";
+  const overViewTotal = props?.overviewTotal ? " overviewTotal" : " overviewDistribution";
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "widget" + overViewTotal
   }, /*#__PURE__*/React.createElement("h2", {
     className: "overvieTotal-num"
-  }, props === null || props === void 0 ? void 0 : props.totalNumber), /*#__PURE__*/React.createElement("p", null, props === null || props === void 0 ? void 0 : props.type)));
+  }, props?.totalNumber), /*#__PURE__*/React.createElement("p", null, props?.type)));
 }
 
 /***/ }),
@@ -3888,14 +3804,12 @@ function useFetch(updateInterval, url, method, headers, body, handle) {
       } else if (res.status === 404 || res.status === 500 || res.status === 502 || res.status === 503 || res.status === 504) {
         return "Err_Server_Error";
       }
-
       return res.json();
     }).then(setData).catch(setError).finally(() => {
       setLoading(false);
       setUpdated("Now");
       setLastUpdated(Math.floor(Date.now() / 1000));
     });
-
     if (typeof updateInterval !== 'undefined') {
       const interval1 = setInterval(() => {
         if (Math.floor(Date.now() / 1000) - lastUpdated >= 60) {
@@ -3916,22 +3830,18 @@ function useFetch(updateInterval, url, method, headers, body, handle) {
         });
       }, updateInterval * 60 * 1000);
     }
-
     return () => {
       controller.abort();
-
       if (typeof updateInterval !== 'undefined') {
         clearInterval(id);
       }
     };
   }, [url, handle]);
-
   if (data == "Err_Login_Expired") {
     localStorage.removeItem("globals");
     window.location.href = "/login";
     return;
   }
-
   return [loading, data, error, updated, lastUpdated, setUpdated];
 }
 
@@ -3963,12 +3873,10 @@ const Fetch = async (url, method, headers, body, signal) => {
     } else if (res.status === 500) {
       return "Err_Server_Error";
     }
-
     return res.json();
   });
   return t;
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Fetch);
 
 /***/ }),
@@ -3981,7 +3889,7 @@ const Fetch = async (url, method, headers, body, signal) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "isJson": () => (/* binding */ isJson)
+/* harmony export */   isJson: () => (/* binding */ isJson)
 /* harmony export */ });
 function isJson(str) {
   try {
@@ -3989,7 +3897,6 @@ function isJson(str) {
   } catch (e) {
     return false;
   }
-
   return true;
 }
 
@@ -4084,8 +3991,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function LoginOverLay() {
-  var _JSON$parse, _JSON$parse2;
-
   document.title = "Signin | Intastellar Consents";
   document.body.style.overflow = "hidden";
   document.body.style.height = "100vh";
@@ -4093,11 +3998,9 @@ function LoginOverLay() {
   const [password, setPassword] = React.useState();
   const [isLoading, setLoading] = React.useState(false);
   const [errorMessage, setErrorMessage] = React.useState(null);
-
-  if (((_JSON$parse = JSON.parse(localStorage.getItem("globals"))) === null || _JSON$parse === void 0 ? void 0 : _JSON$parse.token) !== undefined || (_JSON$parse2 = JSON.parse(localStorage.getItem("globals"))) !== null && _JSON$parse2 !== void 0 && _JSON$parse2.status) {
+  if (JSON.parse(localStorage.getItem("globals"))?.token !== undefined || JSON.parse(localStorage.getItem("globals"))?.status) {
     window.location.href = "/dashboard";
   }
-
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "loginForm-overlay"
   }, /*#__PURE__*/React.createElement("form", {
@@ -4429,7 +4332,8 @@ function Dashboard(props) {
   useEffect(() => {
     function handleScrollEvent() {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        console.log("you're at the bottom of the page"); // here add more items in the 'filteredData' state from the 'allData' state source.
+        console.log("you're at the bottom of the page");
+        // here add more items in the 'filteredData' state from the 'allData' state source.
       }
     }
 
@@ -4490,8 +4394,8 @@ function Dashboard(props) {
       gap: "20px"
     }
   }, loading ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null), /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null)) : /*#__PURE__*/React.createElement(React.Fragment, null, activeData ? /*#__PURE__*/React.createElement(_Components_Charts_Line__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    data: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum,
-    data2: activeData === null || activeData === void 0 ? void 0 : activeData.dailyNum,
+    data: activeData?.dailyNum,
+    data2: activeData?.dailyNum,
     fromDate: fromDate,
     toDate: toDate,
     title: "Daily user interactions"
@@ -4499,12 +4403,12 @@ function Dashboard(props) {
     className: "widget no-padding"
   }, /*#__PURE__*/React.createElement(_Components_Charts_WorldMap_WorldMap_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
     data: {
-      Countries: activeData === null || activeData === void 0 ? void 0 : activeData.Countries
+      Countries: activeData?.Countries
     }
-  }))))), (subscriptionStatus === null || subscriptionStatus === void 0 ? void 0 : subscriptionStatus.tier) === "premium" ? /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__.PremiumTier, {
+  }))))), subscriptionStatus?.tier === "premium" ? /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__.PremiumTier, {
     loading: loading,
     activeData: activeData
-  }) : (subscriptionStatus === null || subscriptionStatus === void 0 ? void 0 : subscriptionStatus.tier) === "professional" ? /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__.ProTier, {
+  }) : subscriptionStatus?.tier === "professional" ? /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__.ProTier, {
     loading: loading,
     activeData: activeData
   }) : /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__.BasicTier, null)));
@@ -4547,24 +4451,20 @@ const {
 
 
 const useParams = window.ReactRouterDOM.useParams;
-
 const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/punycode.es6.js");
-
 function DomainDashbord(props) {
-  var _localStorage, _localStorage$getItem;
-
   const {
     handle,
     id
   } = useParams();
-  document.title = "".concat(punycode.toUnicode(handle), " Dashboard | Intastellar Analytics");
+  document.title = `${punycode.toUnicode(handle)} Dashboard | Intastellar Analytics`;
   _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.headers.Domains = punycode.toASCII(handle);
   const [loading, data, error, updated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__["default"])(5, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.url, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.method, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.headers, null, handle);
-  return (_localStorage = localStorage) !== null && _localStorage !== void 0 && (_localStorage$getItem = _localStorage.getItem("domains")) !== null && _localStorage$getItem !== void 0 && _localStorage$getItem.includes(punycode.toUnicode(handle)) || handle == "all" ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  return localStorage?.getItem("domains")?.includes(punycode.toUnicode(handle)) || handle == "all" ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h1", null, "Dashboard"), /*#__PURE__*/React.createElement("p", null, "You\xB4re currently viewing the data for:"), /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("a", {
     className: "activeDomain",
-    href: "https://".concat(handle),
+    href: `https://${handle}`,
     target: "_blank"
   }, punycode.toUnicode(handle))), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : data.Total === 0 ? /*#__PURE__*/React.createElement("h1", null, "No interactions yet") : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: data.Total.toLocaleString("de-DE"),
@@ -4573,21 +4473,21 @@ function DomainDashbord(props) {
   }), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    totalNumber: (data === null || data === void 0 ? void 0 : data.Accepted.toLocaleString("de-DE")) + "%",
+    totalNumber: data?.Accepted.toLocaleString("de-DE") + "%",
     type: "Accepted cookies"
   }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    totalNumber: (data === null || data === void 0 ? void 0 : data.Declined.toLocaleString("de-DE")) + "%",
+    totalNumber: data?.Declined.toLocaleString("de-DE") + "%",
     type: "Declined cookies"
   })), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
   }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    totalNumber: (data === null || data === void 0 ? void 0 : data.Marketing.toLocaleString("de-DE")) + "%",
+    totalNumber: data?.Marketing.toLocaleString("de-DE") + "%",
     type: "Accepted only Marketing"
   }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    totalNumber: (data === null || data === void 0 ? void 0 : data.Functional.toLocaleString("de-DE")) + "%",
+    totalNumber: data?.Functional.toLocaleString("de-DE") + "%",
     type: "Accepted only Functional"
   }), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    totalNumber: (data === null || data === void 0 ? void 0 : data.Statics.toLocaleString("de-DE")) + "%",
+    totalNumber: data?.Statics.toLocaleString("de-DE") + "%",
     type: "Accepted only Statics"
   }))), /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
@@ -4644,16 +4544,14 @@ const {
   useEffect,
   useRef
 } = React;
-
 const punycode = __webpack_require__(/*! punycode */ "./node_modules/punycode/punycode.es6.js");
-
 function Websites() {
   const [loading, data, error] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__["default"])(10, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].gdpr.getDomains.url, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].gdpr.getDomains.method, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].gdpr.getDomains.headers);
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("main", {
     className: "dashboard-content"
   }, /*#__PURE__*/React.createElement("h2", null, "Analytics"), /*#__PURE__*/React.createElement("h3", null, "List of all domains"), /*#__PURE__*/React.createElement("p", null, "On all these domains the Intastellar Cookie Consents is implemented"), /*#__PURE__*/React.createElement("section", {
     className: "grid-container grid-3"
-  }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_2__.Loading, null) : data === null || data === void 0 ? void 0 : data.map((domain, key) => {
+  }, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_2__.Loading, null) : data?.map((domain, key) => {
     const main = domain["domain"];
     const timestamp = domain[1];
     const installed = domain["installed"];
@@ -4679,7 +4577,7 @@ function Websites() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Reports),
-/* harmony export */   "reportsLinks": () => (/* binding */ reportsLinks)
+/* harmony export */   reportsLinks: () => (/* binding */ reportsLinks)
 /* harmony export */ });
 /* harmony import */ var _Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Components/Header/SideNav */ "./src/Components/Header/SideNav.js");
 
@@ -4840,7 +4738,6 @@ function AddUser() {
   const [style, setStyle] = useState({
     right: "-100%"
   });
-
   const addUser = e => {
     e.preventDefault();
     setStatus("Loading...");
@@ -4850,20 +4747,18 @@ function AddUser() {
       userRole: userRole
     })).then(re => {
       setStatus(null);
-
       if (re == "ERROR_ADDING_USER" || re === "Err_Token_Not_Found") {
-        setStatus("We couldn\xB4t add the user");
+        setStatus(`We couldn´t add the user`);
         setStyle({
           right: "0",
           borderColor: "red"
         });
       } else {
-        setStatus("User ".concat(userName, " added to ").concat(Organisation === null || Organisation === void 0 ? void 0 : Organisation.name));
+        setStatus(`User ${userName} added to ${Organisation?.name}`);
         setStyle({
           right: "0"
         });
       }
-
       setTimeout(() => {
         setStyle({
           right: "-100%",
@@ -4872,7 +4767,6 @@ function AddUser() {
       }, 6000);
     });
   };
-
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_7__["default"], {
     links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_8__.reportsLinks,
     title: "Settings"
@@ -4956,7 +4850,6 @@ function AddUser() {
   const [organisationName, setOrganisationName] = useState("");
   const [organisationAdmin, setOrganisationAdmin] = useState("");
   const [status, setStatus] = useState(null);
-
   const create = e => {
     e.preventDefault();
     setStatus("Loading...");
@@ -4966,10 +4859,9 @@ function AddUser() {
     })).then(re => {
       setStatus(null);
       if (re == "ERROR_CREATING_ORGANISATION" || re === "Err_Token_Not_Found") return;
-      setStatus("Organisation Created with the name: ".concat(organisationName));
+      setStatus(`Organisation Created with the name: ${organisationName}`);
     });
   };
-
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_3__["default"], {
     links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_4__.reportsLinks,
     title: "Settings"
@@ -5144,11 +5036,9 @@ function ViewOrg() {
   const [loading, data, error, updated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_1__["default"])(1, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].settings.getOrganisation.url, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].settings.getOrganisation.method, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"].settings.getOrganisation.headers, JSON.stringify({
     organisationMember: _Authentication_Auth__WEBPACK_IMPORTED_MODULE_3__["default"].getUserId()
   }));
-
   function editOrganisation(org) {
     console.log("Edit: ", org);
   }
-
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_Header_SideNav__WEBPACK_IMPORTED_MODULE_5__["default"], {
     links: _Components_Header_SideNavLinks__WEBPACK_IMPORTED_MODULE_6__.reportsLinks,
     title: "Settings"
@@ -5308,31 +5198,27 @@ function UserConsents(props) {
     setToDate: setToDate
   })), getDomainsUrlLoading && !getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_widget_Loading_js__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : getDomainsUrlError ? /*#__PURE__*/React.createElement(_Components_Error_Unknown_js__WEBPACK_IMPORTED_MODULE_2__["default"], null) : getDomainsUrlData == "Err_No_Data_Found" ? /*#__PURE__*/React.createElement(_Components_Error_NoDataFound_js__WEBPACK_IMPORTED_MODULE_3__["default"], null) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
-  }, activeData === null || activeData === void 0 ? void 0 : activeData.map((d, key) => {
-    var _consent, _consent2, _consent3, _consent4;
-
+  }, activeData?.map((d, key) => {
     let consent = "";
-
-    if ((0,_Functions_isJson_js__WEBPACK_IMPORTED_MODULE_0__.isJson)(d === null || d === void 0 ? void 0 : d.consent)) {
-      consent = JSON.parse(d === null || d === void 0 ? void 0 : d.consent);
+    if ((0,_Functions_isJson_js__WEBPACK_IMPORTED_MODULE_0__.isJson)(d?.consent)) {
+      consent = JSON.parse(d?.consent);
     } else {
-      consent = d === null || d === void 0 ? void 0 : d.consent;
+      consent = d?.consent;
     }
-
     return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
       className: "user",
       key: key
-    }, /*#__PURE__*/React.createElement("p", null, "UID: ", d === null || d === void 0 ? void 0 : d.uid), /*#__PURE__*/React.createElement("p", null, "Time: ", new Date(d === null || d === void 0 ? void 0 : d.consents_timestamp).toLocaleString('de-DE', {
+    }, /*#__PURE__*/React.createElement("p", null, "UID: ", d?.uid), /*#__PURE__*/React.createElement("p", null, "Time: ", new Date(d?.consents_timestamp).toLocaleString('de-DE', {
       timeZone: 'Europe/Copenhagen'
     })), /*#__PURE__*/React.createElement("p", {
       className: "lb"
-    }, "Referrer: ", d === null || d === void 0 ? void 0 : d.referrer), /*#__PURE__*/React.createElement("p", {
+    }, "Referrer: ", d?.referrer), /*#__PURE__*/React.createElement("p", {
       className: "lb"
-    }, "URL: ", d === null || d === void 0 ? void 0 : d.url), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("h4", null, "Consent given"), Object.prototype.toString.call(consent) === '[object Array]' ? (_consent = consent) === null || _consent === void 0 ? void 0 : _consent.map((c, key) => {
+    }, "URL: ", d?.url), /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("h4", null, "Consent given"), Object.prototype.toString.call(consent) === '[object Array]' ? consent?.map((c, key) => {
       return /*#__PURE__*/React.createElement("p", {
         key: key
-      }, c === null || c === void 0 ? void 0 : c.type, " cookies: ", !c.checked ? "declined" : (c === null || c === void 0 ? void 0 : c.checked) == "checked" || (c === null || c === void 0 ? void 0 : c.checked) == "1" ? "Accepted" : c === null || c === void 0 ? void 0 : c.checked);
-    }) : /*#__PURE__*/React.createElement("p", null, (_consent2 = consent) === null || _consent2 === void 0 ? void 0 : _consent2.consent_type, " cookies: ", ((_consent3 = consent) === null || _consent3 === void 0 ? void 0 : _consent3.consent_value) == "1" || ((_consent4 = consent) === null || _consent4 === void 0 ? void 0 : _consent4.consent_value) == "checked" ? "Accepted" : "declined"))));
+      }, c?.type, " cookies: ", !c.checked ? "declined" : c?.checked == "checked" || c?.checked == "1" ? "Accepted" : c?.checked);
+    }) : /*#__PURE__*/React.createElement("p", null, consent?.consent_type, " cookies: ", consent?.consent_value == "1" || consent?.consent_value == "checked" ? "Accepted" : "declined"))));
   }))))));
 }
 
@@ -5346,21 +5232,19 @@ function UserConsents(props) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "clearTextfield": () => (/* binding */ clearTextfield),
-/* harmony export */   "extractHostname": () => (/* binding */ extractHostname)
+/* harmony export */   clearTextfield: () => (/* binding */ clearTextfield),
+/* harmony export */   extractHostname: () => (/* binding */ extractHostname)
 /* harmony export */ });
 function clearTextfield(textfield) {
   textfield.value = "";
 }
 function extractHostname(url) {
   var hostname;
-
   if (url.indexOf("//") > -1) {
     hostname = url.split('/')[2];
   } else {
     hostname = url.split('/')[0];
   }
-
   hostname = hostname.split(':')[0];
   hostname = hostname.split('?')[0];
   hostname = hostname.split('.');
@@ -5392,7 +5276,172 @@ ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.c
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Questrial&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Cinzel&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root{\n    --heroHeadline: 40px \"Montserrat\", Arial, Helvetica, sans-serif;\n    --heroHedlineColor: rgb(110, 110, 110);\n    --accentColor: rgb(0, 51, 153);\n    --colorHover: rgb(0, 118, 193);\n    --aboutColor: var(--aboutColorMain);\n    --aboutColorVarient: rgb(201, 226, 255);\n    --aboutColorMain: rgb(253, 246, 240);\n    --promoBG: rgba(0, 70, 209, 1);\n    --IntastellarGrey: rgb(88, 88, 88);\n    --IntastellarMediumGrey: rgb(156, 156, 156);\n    --infoBanner: rgb(207, 207, 207);\n    --infoBannerLigherShade: rgb(230, 230, 230);\n    --infoBannerlightesShade: rgb(246, 246, 246);\n    --infoBannerWarning: rgb(251, 237, 225);\n    --infoBannerError: rgb(255, 183, 183);\n    --statusBannerBg: var(--IntastellarMediumGrey);\n    --cookieBanner: rgb(190, 211, 255);\n    --borderRadius: 10px;\n}\n\n*{\n    box-sizing: border-box;\n}\n\nh1, h2, h3, h4, h5, h6{\n    font-weight: lighter;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(55, 55, 55);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n.crawler{\n    background-color: #ffffff;\n    position: relative;\n    padding: 15px;\n    color: #525252;\n    border-radius: 10px;\n}\n\n.cookieCheckContainer{\n    width: 1200px;\n    margin: auto;\n    display: grid;\n    place-items: center;\n    height: 100vh;\n}\n\n.cookieCheckContainer h2{\n    font-size: 2.5em;\n}\n\n.crawlerPage-logo{\n    max-width: 200px;\n}\n\n.cookieCheckContainer .form{\n    width: 100%;\n}\n\n.infoHeader{\n    width: 100%;\n}\n\n.infoHeader.sticky{\n    position: sticky;\n    top: 66px;\n    left: 0;\n    right: 0;\n    z-index: 100;\n    padding: 10px 0 !important;\n    background-color: rgb(55, 55, 55);\n    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.14),inset 0 2px 1px -1px rgba(209, 209, 209, 0.12);\n}\n\n.infoHeader.sticky::after{\n    -moz-box-sizing: border-box;\n    box-sizing: border-box;\n    bottom: -4px;\n    box-shadow: inset 0 1px 1px 0 rgba(182, 182, 182, 0.14),inset 0 2px 1px -1px rgba(182, 182, 182,.12);\n    content: \"\";\n    height: 4px;\n    left: 8px;\n    mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));\n    mask-image: linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);\n    position: absolute;\n    -webkit-mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));\n    -webkit-mask-image: -webkit-linear-gradient(left,transparent,#000 5%,#000 95%,transparent);\n    width: calc(100% - 16px);\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n\n    .cookieCheckContainer{\n        width: 100%;\n        padding: 10px;\n    }\n\n    .dashboard-content{\n        padding: 0 20px;\n    }\n}", "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAIA;IACI,+DAA+D;IAC/D,sCAAsC;IACtC,8BAA8B;IAC9B,8BAA8B;IAC9B,mCAAmC;IACnC,uCAAuC;IACvC,oCAAoC;IACpC,8BAA8B;IAC9B,kCAAkC;IAClC,2CAA2C;IAC3C,gCAAgC;IAChC,2CAA2C;IAC3C,4CAA4C;IAC5C,uCAAuC;IACvC,qCAAqC;IACrC,8CAA8C;IAC9C,kCAAkC;IAClC,oBAAoB;AACxB;;AAEA;IACI,sBAAsB;AAC1B;;AAEA;IACI,oBAAoB;AACxB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,iCAAiC;IACjC,yBAAyB;IACzB,sDAAsD;IACtD,SAAS;AACb;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,WAAW;IACX,uBAAuB;IACvB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;;IAEf,wBAAwB;IACxB,iBAAiB;AACrB;;AAEA;IACI,yBAAyB;IACzB,cAAc;IACd,aAAa;IACb,qBAAqB;IACrB,gBAAgB;AACpB;;AAEA;IACI,qBAAqB;IACrB,WAAW;IACX,iBAAiB;IACjB,gBAAgB;IAChB,cAAc;IACd,kBAAkB;IAClB,oBAAoB;AACxB;;AAEA;IACI,WAAW;IACX,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,cAAc;IACd,qBAAqB;IACrB,sBAAsB;IACtB,yBAAyB;AAC7B;;AAEA;IACI,oBAAoB;AACxB;;AAEA;IACI,yBAAyB;IACzB,kBAAkB;IAClB,aAAa;IACb,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,aAAa;AACjB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,gBAAgB;IAChB,SAAS;IACT,OAAO;IACP,QAAQ;IACR,YAAY;IACZ,0BAA0B;IAC1B,iCAAiC;IACjC,4FAA4F;AAChG;;AAEA;IACI,2BAA2B;IAC3B,sBAAsB;IACtB,YAAY;IACZ,oGAAoG;IACpG,WAAW;IACX,WAAW;IACX,SAAS;IACT,kIAAkI;IAClI,2EAA2E;IAC3E,kBAAkB;IAClB,0IAA0I;IAC1I,0FAA0F;IAC1F,wBAAwB;AAC5B;;AAEA;IACI;QACI,cAAc;IAClB;;IAEA;QACI,WAAW;QACX,aAAa;IACjB;;IAEA;QACI,eAAe;IACnB;AACJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');\n@import url(\"https://fonts.googleapis.com/css2?family=Questrial&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Cinzel&display=swap\");\n\n:root{\n    --heroHeadline: 40px \"Montserrat\", Arial, Helvetica, sans-serif;\n    --heroHedlineColor: rgb(110, 110, 110);\n    --accentColor: rgb(0, 51, 153);\n    --colorHover: rgb(0, 118, 193);\n    --aboutColor: var(--aboutColorMain);\n    --aboutColorVarient: rgb(201, 226, 255);\n    --aboutColorMain: rgb(253, 246, 240);\n    --promoBG: rgba(0, 70, 209, 1);\n    --IntastellarGrey: rgb(88, 88, 88);\n    --IntastellarMediumGrey: rgb(156, 156, 156);\n    --infoBanner: rgb(207, 207, 207);\n    --infoBannerLigherShade: rgb(230, 230, 230);\n    --infoBannerlightesShade: rgb(246, 246, 246);\n    --infoBannerWarning: rgb(251, 237, 225);\n    --infoBannerError: rgb(255, 183, 183);\n    --statusBannerBg: var(--IntastellarMediumGrey);\n    --cookieBanner: rgb(190, 211, 255);\n    --borderRadius: 10px;\n}\n\n*{\n    box-sizing: border-box;\n}\n\nh1, h2, h3, h4, h5, h6{\n    font-weight: lighter;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(55, 55, 55);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n.crawler{\n    background-color: #ffffff;\n    position: relative;\n    padding: 15px;\n    color: #525252;\n    border-radius: 10px;\n}\n\n.cookieCheckContainer{\n    width: 1200px;\n    margin: auto;\n    display: grid;\n    place-items: center;\n    height: 100vh;\n}\n\n.cookieCheckContainer h2{\n    font-size: 2.5em;\n}\n\n.crawlerPage-logo{\n    max-width: 200px;\n}\n\n.cookieCheckContainer .form{\n    width: 100%;\n}\n\n.infoHeader{\n    width: 100%;\n}\n\n.infoHeader.sticky{\n    position: sticky;\n    top: 66px;\n    left: 0;\n    right: 0;\n    z-index: 100;\n    padding: 10px 0 !important;\n    background-color: rgb(55, 55, 55);\n    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.14),inset 0 2px 1px -1px rgba(209, 209, 209, 0.12);\n}\n\n.infoHeader.sticky::after{\n    -moz-box-sizing: border-box;\n    box-sizing: border-box;\n    bottom: -4px;\n    box-shadow: inset 0 1px 1px 0 rgba(182, 182, 182, 0.14),inset 0 2px 1px -1px rgba(182, 182, 182,.12);\n    content: \"\";\n    height: 4px;\n    left: 8px;\n    mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));\n    mask-image: linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);\n    position: absolute;\n    -webkit-mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));\n    -webkit-mask-image: -webkit-linear-gradient(left,transparent,#000 5%,#000 95%,transparent);\n    width: calc(100% - 16px);\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n\n    .cookieCheckContainer{\n        width: 100%;\n        padding: 10px;\n    }\n\n    .dashboard-content{\n        padding: 0 20px;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `:root{
+    --heroHeadline: 40px "Montserrat", Arial, Helvetica, sans-serif;
+    --heroHedlineColor: rgb(110, 110, 110);
+    --accentColor: rgb(0, 51, 153);
+    --colorHover: rgb(0, 118, 193);
+    --aboutColor: var(--aboutColorMain);
+    --aboutColorVarient: rgb(201, 226, 255);
+    --aboutColorMain: rgb(253, 246, 240);
+    --promoBG: rgba(0, 70, 209, 1);
+    --IntastellarGrey: rgb(88, 88, 88);
+    --IntastellarMediumGrey: rgb(156, 156, 156);
+    --infoBanner: rgb(207, 207, 207);
+    --infoBannerLigherShade: rgb(230, 230, 230);
+    --infoBannerlightesShade: rgb(246, 246, 246);
+    --infoBannerWarning: rgb(251, 237, 225);
+    --infoBannerError: rgb(255, 183, 183);
+    --statusBannerBg: var(--IntastellarMediumGrey);
+    --cookieBanner: rgb(190, 211, 255);
+    --borderRadius: 10px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: lighter;
+}
+
+img{
+    max-width: 100%;
+}
+
+body{
+    background-color: rgb(55, 55, 55);
+    color: rgb(197, 197, 197);
+    font-family: "Questrial", Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.grid-container{
+    display: grid;
+}
+
+.overvieTotal-num {
+    font-size: 2.7em;
+    margin: 0px;
+    margin-block-start: 1em;
+    color: rgb(239, 239, 239);
+}
+
+.main-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    scroll-padding-top: 66px;
+    padding-top: 66px;
+}
+
+.link{
+    color: rgb(207, 207, 207);
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    text-align: left;
+}
+
+.backLink{
+    text-decoration: none;
+    color: #fff;
+    padding: 15px 0px;
+    margin: 10px 0px;
+    display: block;
+    position: relative;
+    display: inline-flex;
+}
+
+.backLink::before{
+    content: "";
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    display: block;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    transform: rotate(-45deg);
+}
+
+.lb{
+    line-break: anywhere;
+}
+
+.crawler{
+    background-color: #ffffff;
+    position: relative;
+    padding: 15px;
+    color: #525252;
+    border-radius: 10px;
+}
+
+.cookieCheckContainer{
+    width: 1200px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.cookieCheckContainer h2{
+    font-size: 2.5em;
+}
+
+.crawlerPage-logo{
+    max-width: 200px;
+}
+
+.cookieCheckContainer .form{
+    width: 100%;
+}
+
+.infoHeader{
+    width: 100%;
+}
+
+.infoHeader.sticky{
+    position: sticky;
+    top: 66px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 10px 0 !important;
+    background-color: rgb(55, 55, 55);
+    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.14),inset 0 2px 1px -1px rgba(209, 209, 209, 0.12);
+}
+
+.infoHeader.sticky::after{
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    bottom: -4px;
+    box-shadow: inset 0 1px 1px 0 rgba(182, 182, 182, 0.14),inset 0 2px 1px -1px rgba(182, 182, 182,.12);
+    content: "";
+    height: 4px;
+    left: 8px;
+    mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));
+    mask-image: linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+    position: absolute;
+    -webkit-mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));
+    -webkit-mask-image: -webkit-linear-gradient(left,transparent,#000 5%,#000 95%,transparent);
+    width: calc(100% - 16px);
+}
+
+@media screen and (min-width: 320px) and (max-width: 900px) {
+    .main-grid{
+        display: block;
+    }
+
+    .cookieCheckContainer{
+        width: 100%;
+        padding: 10px;
+    }
+
+    .dashboard-content{
+        padding: 0 20px;
+    }
+}`, "",{"version":3,"sources":["webpack://./src/App.css"],"names":[],"mappings":"AAIA;IACI,+DAA+D;IAC/D,sCAAsC;IACtC,8BAA8B;IAC9B,8BAA8B;IAC9B,mCAAmC;IACnC,uCAAuC;IACvC,oCAAoC;IACpC,8BAA8B;IAC9B,kCAAkC;IAClC,2CAA2C;IAC3C,gCAAgC;IAChC,2CAA2C;IAC3C,4CAA4C;IAC5C,uCAAuC;IACvC,qCAAqC;IACrC,8CAA8C;IAC9C,kCAAkC;IAClC,oBAAoB;AACxB;;AAEA;IACI,sBAAsB;AAC1B;;AAEA;IACI,oBAAoB;AACxB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,iCAAiC;IACjC,yBAAyB;IACzB,sDAAsD;IACtD,SAAS;AACb;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,gBAAgB;IAChB,WAAW;IACX,uBAAuB;IACvB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,eAAe;;IAEf,wBAAwB;IACxB,iBAAiB;AACrB;;AAEA;IACI,yBAAyB;IACzB,cAAc;IACd,aAAa;IACb,qBAAqB;IACrB,gBAAgB;AACpB;;AAEA;IACI,qBAAqB;IACrB,WAAW;IACX,iBAAiB;IACjB,gBAAgB;IAChB,cAAc;IACd,kBAAkB;IAClB,oBAAoB;AACxB;;AAEA;IACI,WAAW;IACX,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,cAAc;IACd,qBAAqB;IACrB,sBAAsB;IACtB,yBAAyB;AAC7B;;AAEA;IACI,oBAAoB;AACxB;;AAEA;IACI,yBAAyB;IACzB,kBAAkB;IAClB,aAAa;IACb,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,aAAa;AACjB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,gBAAgB;IAChB,SAAS;IACT,OAAO;IACP,QAAQ;IACR,YAAY;IACZ,0BAA0B;IAC1B,iCAAiC;IACjC,4FAA4F;AAChG;;AAEA;IACI,2BAA2B;IAC3B,sBAAsB;IACtB,YAAY;IACZ,oGAAoG;IACpG,WAAW;IACX,WAAW;IACX,SAAS;IACT,kIAAkI;IAClI,2EAA2E;IAC3E,kBAAkB;IAClB,0IAA0I;IAC1I,0FAA0F;IAC1F,wBAAwB;AAC5B;;AAEA;IACI;QACI,cAAc;IAClB;;IAEA;QACI,WAAW;QACX,aAAa;IACjB;;IAEA;QACI,eAAe;IACnB;AACJ","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');\n@import url(\"https://fonts.googleapis.com/css2?family=Questrial&display=swap\");\n@import url(\"https://fonts.googleapis.com/css2?family=Cinzel&display=swap\");\n\n:root{\n    --heroHeadline: 40px \"Montserrat\", Arial, Helvetica, sans-serif;\n    --heroHedlineColor: rgb(110, 110, 110);\n    --accentColor: rgb(0, 51, 153);\n    --colorHover: rgb(0, 118, 193);\n    --aboutColor: var(--aboutColorMain);\n    --aboutColorVarient: rgb(201, 226, 255);\n    --aboutColorMain: rgb(253, 246, 240);\n    --promoBG: rgba(0, 70, 209, 1);\n    --IntastellarGrey: rgb(88, 88, 88);\n    --IntastellarMediumGrey: rgb(156, 156, 156);\n    --infoBanner: rgb(207, 207, 207);\n    --infoBannerLigherShade: rgb(230, 230, 230);\n    --infoBannerlightesShade: rgb(246, 246, 246);\n    --infoBannerWarning: rgb(251, 237, 225);\n    --infoBannerError: rgb(255, 183, 183);\n    --statusBannerBg: var(--IntastellarMediumGrey);\n    --cookieBanner: rgb(190, 211, 255);\n    --borderRadius: 10px;\n}\n\n*{\n    box-sizing: border-box;\n}\n\nh1, h2, h3, h4, h5, h6{\n    font-weight: lighter;\n}\n\nimg{\n    max-width: 100%;\n}\n\nbody{\n    background-color: rgb(55, 55, 55);\n    color: rgb(197, 197, 197);\n    font-family: \"Questrial\", Arial, Helvetica, sans-serif;\n    margin: 0;\n}\n\n.grid-container{\n    display: grid;\n}\n\n.overvieTotal-num {\n    font-size: 2.7em;\n    margin: 0px;\n    margin-block-start: 1em;\n    color: rgb(239, 239, 239);\n}\n\n.main-grid {\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n\n    scroll-padding-top: 66px;\n    padding-top: 66px;\n}\n\n.link{\n    color: rgb(207, 207, 207);\n    display: block;\n    padding: 15px;\n    text-decoration: none;\n    text-align: left;\n}\n\n.backLink{\n    text-decoration: none;\n    color: #fff;\n    padding: 15px 0px;\n    margin: 10px 0px;\n    display: block;\n    position: relative;\n    display: inline-flex;\n}\n\n.backLink::before{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-45deg);\n}\n\n.lb{\n    line-break: anywhere;\n}\n\n.crawler{\n    background-color: #ffffff;\n    position: relative;\n    padding: 15px;\n    color: #525252;\n    border-radius: 10px;\n}\n\n.cookieCheckContainer{\n    width: 1200px;\n    margin: auto;\n    display: grid;\n    place-items: center;\n    height: 100vh;\n}\n\n.cookieCheckContainer h2{\n    font-size: 2.5em;\n}\n\n.crawlerPage-logo{\n    max-width: 200px;\n}\n\n.cookieCheckContainer .form{\n    width: 100%;\n}\n\n.infoHeader{\n    width: 100%;\n}\n\n.infoHeader.sticky{\n    position: sticky;\n    top: 66px;\n    left: 0;\n    right: 0;\n    z-index: 100;\n    padding: 10px 0 !important;\n    background-color: rgb(55, 55, 55);\n    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.14),inset 0 2px 1px -1px rgba(209, 209, 209, 0.12);\n}\n\n.infoHeader.sticky::after{\n    -moz-box-sizing: border-box;\n    box-sizing: border-box;\n    bottom: -4px;\n    box-shadow: inset 0 1px 1px 0 rgba(182, 182, 182, 0.14),inset 0 2px 1px -1px rgba(182, 182, 182,.12);\n    content: \"\";\n    height: 4px;\n    left: 8px;\n    mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));\n    mask-image: linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);\n    position: absolute;\n    -webkit-mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));\n    -webkit-mask-image: -webkit-linear-gradient(left,transparent,#000 5%,#000 95%,transparent);\n    width: calc(100% - 16px);\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .main-grid{\n        display: block;\n    }\n\n    .cookieCheckContainer{\n        width: 100%;\n        padding: 10px;\n    }\n\n    .dashboard-content{\n        padding: 0 20px;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5418,7 +5467,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".grid{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 20px;\n}", "",{"version":3,"sources":["webpack://./src/Components/AddDomain/AddDomain.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,8BAA8B;IAC9B,SAAS;AACb","sourcesContent":[".grid{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 20px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}`, "",{"version":3,"sources":["webpack://./src/Components/AddDomain/AddDomain.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,8BAA8B;IAC9B,SAAS;AACb","sourcesContent":[".grid{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 20px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5444,7 +5497,80 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".bug-container{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    z-index: 20001;\n}\n\n.send-feedback{\n    background-color: #fff;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n}\n\n.bug-menu{\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n    position: fixed;\n    bottom: 70px;\n    background-color: #fff;\n    color: #2f2f2f;\n    border-radius: 10px;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);\n    max-width: 450px;\n}\n\n.bug-menu .bug-menu-header{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.bug-menu .bug-menu-header .bug-menu-title{\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.bugReport-input{\n    border: 1px solid #bec0c3;\n    border-radius: 5px;\n    padding: 10px;\n    outline: none;\n    font-size: 15px;\n    color: #2f2f2f;\n    resize: none;\n    width: 100%;\n    margin: 20px 0px;\n}\n\n.bugReport-input.--height{\n    height: 200px;\n}\n\n.bugReport-send{\n    background-color: #ff5e5e;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n    float: right;\n    margin-top: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Components/BugReport/BugReport.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,YAAY;IACZ,WAAW;IACX,cAAc;AAClB;;AAEA;IACI,sBAAsB;IACtB,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;AACpB;;AAEA;IACI,YAAY;IACZ,WAAW;IACX,YAAY;IACZ,eAAe;IACf,YAAY;IACZ,sBAAsB;IACtB,cAAc;IACd,mBAAmB;IACnB,aAAa;IACb,aAAa;IACb,sBAAsB;IACtB,SAAS;IACT,6CAA6C;IAC7C,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,gBAAgB;AACpB;;AAEA;IACI,yBAAyB;IACzB,kBAAkB;IAClB,aAAa;IACb,aAAa;IACb,eAAe;IACf,cAAc;IACd,YAAY;IACZ,WAAW;IACX,gBAAgB;AACpB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,yBAAyB;IACzB,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;IAChB,YAAY;IACZ,gBAAgB;AACpB","sourcesContent":[".bug-container{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    z-index: 20001;\n}\n\n.send-feedback{\n    background-color: #fff;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n}\n\n.bug-menu{\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n    position: fixed;\n    bottom: 70px;\n    background-color: #fff;\n    color: #2f2f2f;\n    border-radius: 10px;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);\n    max-width: 450px;\n}\n\n.bug-menu .bug-menu-header{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.bug-menu .bug-menu-header .bug-menu-title{\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.bugReport-input{\n    border: 1px solid #bec0c3;\n    border-radius: 5px;\n    padding: 10px;\n    outline: none;\n    font-size: 15px;\n    color: #2f2f2f;\n    resize: none;\n    width: 100%;\n    margin: 20px 0px;\n}\n\n.bugReport-input.--height{\n    height: 200px;\n}\n\n.bugReport-send{\n    background-color: #ff5e5e;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n    float: right;\n    margin-top: 10px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.bug-container{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 20001;
+}
+
+.send-feedback{
+    background-color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 15px;
+    margin-left: auto;
+    position: relative;
+    border-radius: 10px;
+    max-height: 50px;
+}
+
+.bug-menu{
+    bottom: 10px;
+    right: 10px;
+    z-index: 200;
+    position: fixed;
+    bottom: 70px;
+    background-color: #fff;
+    color: #2f2f2f;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    max-width: 450px;
+}
+
+.bug-menu .bug-menu-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bug-menu .bug-menu-header .bug-menu-title{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.bugReport-input{
+    border: 1px solid #bec0c3;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    font-size: 15px;
+    color: #2f2f2f;
+    resize: none;
+    width: 100%;
+    margin: 20px 0px;
+}
+
+.bugReport-input.--height{
+    height: 200px;
+}
+
+.bugReport-send{
+    background-color: #ff5e5e;
+    border: none;
+    padding: 15px 30px;
+    font-size: 15px;
+    margin-left: auto;
+    position: relative;
+    border-radius: 10px;
+    max-height: 50px;
+    float: right;
+    margin-top: 10px;
+}`, "",{"version":3,"sources":["webpack://./src/Components/BugReport/BugReport.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,YAAY;IACZ,WAAW;IACX,cAAc;AAClB;;AAEA;IACI,sBAAsB;IACtB,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;AACpB;;AAEA;IACI,YAAY;IACZ,WAAW;IACX,YAAY;IACZ,eAAe;IACf,YAAY;IACZ,sBAAsB;IACtB,cAAc;IACd,mBAAmB;IACnB,aAAa;IACb,aAAa;IACb,sBAAsB;IACtB,SAAS;IACT,6CAA6C;IAC7C,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,gBAAgB;AACpB;;AAEA;IACI,yBAAyB;IACzB,kBAAkB;IAClB,aAAa;IACb,aAAa;IACb,eAAe;IACf,cAAc;IACd,YAAY;IACZ,WAAW;IACX,gBAAgB;AACpB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,yBAAyB;IACzB,YAAY;IACZ,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,mBAAmB;IACnB,gBAAgB;IAChB,YAAY;IACZ,gBAAgB;AACpB","sourcesContent":[".bug-container{\n    position: fixed;\n    bottom: 10px;\n    right: 10px;\n    z-index: 20001;\n}\n\n.send-feedback{\n    background-color: #fff;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n}\n\n.bug-menu{\n    bottom: 10px;\n    right: 10px;\n    z-index: 200;\n    position: fixed;\n    bottom: 70px;\n    background-color: #fff;\n    color: #2f2f2f;\n    border-radius: 10px;\n    padding: 10px;\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);\n    max-width: 450px;\n}\n\n.bug-menu .bug-menu-header{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n.bug-menu .bug-menu-header .bug-menu-title{\n    font-size: 20px;\n    font-weight: 600;\n}\n\n.bugReport-input{\n    border: 1px solid #bec0c3;\n    border-radius: 5px;\n    padding: 10px;\n    outline: none;\n    font-size: 15px;\n    color: #2f2f2f;\n    resize: none;\n    width: 100%;\n    margin: 20px 0px;\n}\n\n.bugReport-input.--height{\n    height: 200px;\n}\n\n.bugReport-send{\n    background-color: #ff5e5e;\n    border: none;\n    padding: 15px 30px;\n    font-size: 15px;\n    margin-left: auto;\n    position: relative;\n    border-radius: 10px;\n    max-height: 50px;\n    float: right;\n    margin-top: 10px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5470,7 +5596,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chart{\n    width: 100%;\n    height: 290px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/Line/Style.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,aAAa;IACb,gBAAgB;IAChB,mBAAmB;AACvB;;AAEA;IACI,aAAa;AACjB","sourcesContent":[".chart{\n    width: 100%;\n    height: 290px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.chart{
+    width: 100%;
+    height: 290px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.anychart-credits{
+    display: none;
+}`, "",{"version":3,"sources":["webpack://./src/Components/Charts/Line/Style.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,aAAa;IACb,gBAAgB;IAChB,mBAAmB;AACvB;;AAEA;IACI,aAAa;AACjB","sourcesContent":[".chart{\n    width: 100%;\n    height: 290px;\n    overflow: hidden;\n    border-radius: 10px;\n}\n\n.anychart-credits{\n    display: none;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5496,7 +5631,49 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".map-selected {\n    fill: #E3DA37;\n}\n  \n.map-unselected {\n    fill: #699EAA;\n}\n\n.map-selected:hover, .map-unselected:hover {\n    cursor: pointer;\n}\n\n.countryStats{\n    padding: 15px;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));\n    text-align: center;\n}\n\n.country{\n    padding: 20px 0px;\n    background-color: #343434;\n    border-radius: 10px;\n}\n\n.svgMap-wrapper {\n    width: 100%;\n    height: 100%;\n}\n\n.svgMap-map-wrapper {\n    width: 100%;\n    height: 355px;\n}\n\n@media screen and (max-width: 768px) {\n    .svgMap-map-wrapper {\n        width: 100%;\n        height: 100%;\n    }\n    \n}", "",{"version":3,"sources":["webpack://./src/Components/Charts/WorldMap/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;AACjB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,aAAa;IACb,yDAAyD;IACzD,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,yBAAyB;IACzB,mBAAmB;AACvB;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,aAAa;AACjB;;AAEA;IACI;QACI,WAAW;QACX,YAAY;IAChB;;AAEJ","sourcesContent":[".map-selected {\n    fill: #E3DA37;\n}\n  \n.map-unselected {\n    fill: #699EAA;\n}\n\n.map-selected:hover, .map-unselected:hover {\n    cursor: pointer;\n}\n\n.countryStats{\n    padding: 15px;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));\n    text-align: center;\n}\n\n.country{\n    padding: 20px 0px;\n    background-color: #343434;\n    border-radius: 10px;\n}\n\n.svgMap-wrapper {\n    width: 100%;\n    height: 100%;\n}\n\n.svgMap-map-wrapper {\n    width: 100%;\n    height: 355px;\n}\n\n@media screen and (max-width: 768px) {\n    .svgMap-map-wrapper {\n        width: 100%;\n        height: 100%;\n    }\n    \n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.map-selected {
+    fill: #E3DA37;
+}
+  
+.map-unselected {
+    fill: #699EAA;
+}
+
+.map-selected:hover, .map-unselected:hover {
+    cursor: pointer;
+}
+
+.countryStats{
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    text-align: center;
+}
+
+.country{
+    padding: 20px 0px;
+    background-color: #343434;
+    border-radius: 10px;
+}
+
+.svgMap-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.svgMap-map-wrapper {
+    width: 100%;
+    height: 355px;
+    background-color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+    .svgMap-map-wrapper {
+        width: 100%;
+        height: 100%;
+    }
+    
+}`, "",{"version":3,"sources":["webpack://./src/Components/Charts/WorldMap/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;AACjB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,aAAa;IACb,yDAAyD;IACzD,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,yBAAyB;IACzB,mBAAmB;AACvB;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,aAAa;IACb,6BAA6B;AACjC;;AAEA;IACI;QACI,WAAW;QACX,YAAY;IAChB;;AAEJ","sourcesContent":[".map-selected {\n    fill: #E3DA37;\n}\n  \n.map-unselected {\n    fill: #699EAA;\n}\n\n.map-selected:hover, .map-unselected:hover {\n    cursor: pointer;\n}\n\n.countryStats{\n    padding: 15px;\n    display: grid;\n    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));\n    text-align: center;\n}\n\n.country{\n    padding: 20px 0px;\n    background-color: #343434;\n    border-radius: 10px;\n}\n\n.svgMap-wrapper {\n    width: 100%;\n    height: 100%;\n}\n\n.svgMap-map-wrapper {\n    width: 100%;\n    height: 355px;\n    background-color: transparent;\n}\n\n@media screen and (max-width: 768px) {\n    .svgMap-map-wrapper {\n        width: 100%;\n        height: 100%;\n    }\n    \n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5522,7 +5699,51 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".crawler-intro{\n    text-align: center;\n    line-height: .5em;\n}\n.crawler-form{\n    display: flex;\n    gap: 20px;\n    justify-content: center;\n    align-items: center;\n    margin-top: 20px;\n    margin-bottom: 20px;\n    background-color: #8e8e8e;\n    border-radius: 10px;\n    padding: 15px;\n}\n\n.crawl-cta{\n    padding: 12px 35px;\n    border: none;\n    border-radius: 5px;\n    background-color: #dcbf00;\n    width: max-content;\n    font-size: 14px;\n    font-weight: bold;\n    text-transform: uppercase;\n    color: #fff;\n    margin-left: auto;\n    flex-shrink: 0;\n}\n\n@media screen and (max-width: 768px){\n    .crawler-form{\n        flex-direction: column;\n    }\n    .crawl-cta{\n        margin-left: 0;\n        margin-top: 5px;\n        width: 100%;\n    }\n\n    .crawler-intro{\n        line-height: 1.5em;\n    }\n    \n}", "",{"version":3,"sources":["webpack://./src/Components/Crawler/Style.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,iBAAiB;AACrB;AACA;IACI,aAAa;IACb,SAAS;IACT,uBAAuB;IACvB,mBAAmB;IACnB,gBAAgB;IAChB,mBAAmB;IACnB,yBAAyB;IACzB,mBAAmB;IACnB,aAAa;AACjB;;AAEA;IACI,kBAAkB;IAClB,YAAY;IACZ,kBAAkB;IAClB,yBAAyB;IACzB,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,yBAAyB;IACzB,WAAW;IACX,iBAAiB;IACjB,cAAc;AAClB;;AAEA;IACI;QACI,sBAAsB;IAC1B;IACA;QACI,cAAc;QACd,eAAe;QACf,WAAW;IACf;;IAEA;QACI,kBAAkB;IACtB;;AAEJ","sourcesContent":[".crawler-intro{\n    text-align: center;\n    line-height: .5em;\n}\n.crawler-form{\n    display: flex;\n    gap: 20px;\n    justify-content: center;\n    align-items: center;\n    margin-top: 20px;\n    margin-bottom: 20px;\n    background-color: #8e8e8e;\n    border-radius: 10px;\n    padding: 15px;\n}\n\n.crawl-cta{\n    padding: 12px 35px;\n    border: none;\n    border-radius: 5px;\n    background-color: #dcbf00;\n    width: max-content;\n    font-size: 14px;\n    font-weight: bold;\n    text-transform: uppercase;\n    color: #fff;\n    margin-left: auto;\n    flex-shrink: 0;\n}\n\n@media screen and (max-width: 768px){\n    .crawler-form{\n        flex-direction: column;\n    }\n    .crawl-cta{\n        margin-left: 0;\n        margin-top: 5px;\n        width: 100%;\n    }\n\n    .crawler-intro{\n        line-height: 1.5em;\n    }\n    \n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.crawler-intro{
+    text-align: center;
+    line-height: .5em;
+}
+.crawler-form{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #8e8e8e;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.crawl-cta{
+    padding: 12px 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: #dcbf00;
+    width: max-content;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+@media screen and (max-width: 768px){
+    .crawler-form{
+        flex-direction: column;
+    }
+    .crawl-cta{
+        margin-left: 0;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    .crawler-intro{
+        line-height: 1.5em;
+    }
+    
+}`, "",{"version":3,"sources":["webpack://./src/Components/Crawler/Style.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,iBAAiB;AACrB;AACA;IACI,aAAa;IACb,SAAS;IACT,uBAAuB;IACvB,mBAAmB;IACnB,gBAAgB;IAChB,mBAAmB;IACnB,yBAAyB;IACzB,mBAAmB;IACnB,aAAa;AACjB;;AAEA;IACI,kBAAkB;IAClB,YAAY;IACZ,kBAAkB;IAClB,yBAAyB;IACzB,kBAAkB;IAClB,eAAe;IACf,iBAAiB;IACjB,yBAAyB;IACzB,WAAW;IACX,iBAAiB;IACjB,cAAc;AAClB;;AAEA;IACI;QACI,sBAAsB;IAC1B;IACA;QACI,cAAc;QACd,eAAe;QACf,WAAW;IACf;;IAEA;QACI,kBAAkB;IACtB;;AAEJ","sourcesContent":[".crawler-intro{\n    text-align: center;\n    line-height: .5em;\n}\n.crawler-form{\n    display: flex;\n    gap: 20px;\n    justify-content: center;\n    align-items: center;\n    margin-top: 20px;\n    margin-bottom: 20px;\n    background-color: #8e8e8e;\n    border-radius: 10px;\n    padding: 15px;\n}\n\n.crawl-cta{\n    padding: 12px 35px;\n    border: none;\n    border-radius: 5px;\n    background-color: #dcbf00;\n    width: max-content;\n    font-size: 14px;\n    font-weight: bold;\n    text-transform: uppercase;\n    color: #fff;\n    margin-left: auto;\n    flex-shrink: 0;\n}\n\n@media screen and (max-width: 768px){\n    .crawler-form{\n        flex-direction: column;\n    }\n    .crawl-cta{\n        margin-left: 0;\n        margin-top: 5px;\n        width: 100%;\n    }\n\n    .crawler-intro{\n        line-height: 1.5em;\n    }\n    \n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5548,7 +5769,39 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".copyCta{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 10px 20px;\n    background-color: #befc4d;\n    border-radius: 5px;\n    margin-bottom: 15px;\n    border: none;\n    float: right;\n}\n\n.editable{\n    text-decoration: underline;\n    text-decoration-style: dotted;\n    color: rgb(0, 76, 130);\n}\n\n.domain-list{\n    padding: 0 15px;\n    background-color: #f5f5f5;\n    border-radius: 10px;\n    color: #6b6b6b;\n    padding-bottom: 15px;\n    white-space: pre-line;\n}\n\n.editor{\n    background-color: #d5d5d5;\n    display: block;\n    padding: 15px;\n    border-radius: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Components/DomainList/DomainList.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,kBAAkB;IAClB,yBAAyB;IACzB,kBAAkB;IAClB,mBAAmB;IACnB,YAAY;IACZ,YAAY;AAChB;;AAEA;IACI,0BAA0B;IAC1B,6BAA6B;IAC7B,sBAAsB;AAC1B;;AAEA;IACI,eAAe;IACf,yBAAyB;IACzB,mBAAmB;IACnB,cAAc;IACd,oBAAoB;IACpB,qBAAqB;AACzB;;AAEA;IACI,yBAAyB;IACzB,cAAc;IACd,aAAa;IACb,mBAAmB;AACvB","sourcesContent":[".copyCta{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 10px 20px;\n    background-color: #befc4d;\n    border-radius: 5px;\n    margin-bottom: 15px;\n    border: none;\n    float: right;\n}\n\n.editable{\n    text-decoration: underline;\n    text-decoration-style: dotted;\n    color: rgb(0, 76, 130);\n}\n\n.domain-list{\n    padding: 0 15px;\n    background-color: #f5f5f5;\n    border-radius: 10px;\n    color: #6b6b6b;\n    padding-bottom: 15px;\n    white-space: pre-line;\n}\n\n.editor{\n    background-color: #d5d5d5;\n    display: block;\n    padding: 15px;\n    border-radius: 10px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.copyCta{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #befc4d;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: none;
+    float: right;
+}
+
+.editable{
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    color: rgb(0, 76, 130);
+}
+
+.domain-list{
+    padding: 0 15px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    color: #6b6b6b;
+    padding-bottom: 15px;
+    white-space: pre-line;
+}
+
+.editor{
+    background-color: #d5d5d5;
+    display: block;
+    padding: 15px;
+    border-radius: 10px;
+}`, "",{"version":3,"sources":["webpack://./src/Components/DomainList/DomainList.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,8BAA8B;IAC9B,mBAAmB;IACnB,kBAAkB;IAClB,yBAAyB;IACzB,kBAAkB;IAClB,mBAAmB;IACnB,YAAY;IACZ,YAAY;AAChB;;AAEA;IACI,0BAA0B;IAC1B,6BAA6B;IAC7B,sBAAsB;AAC1B;;AAEA;IACI,eAAe;IACf,yBAAyB;IACzB,mBAAmB;IACnB,cAAc;IACd,oBAAoB;IACpB,qBAAqB;AACzB;;AAEA;IACI,yBAAyB;IACzB,cAAc;IACd,aAAa;IACb,mBAAmB;AACvB","sourcesContent":[".copyCta{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    padding: 10px 20px;\n    background-color: #befc4d;\n    border-radius: 5px;\n    margin-bottom: 15px;\n    border: none;\n    float: right;\n}\n\n.editable{\n    text-decoration: underline;\n    text-decoration-style: dotted;\n    color: rgb(0, 76, 130);\n}\n\n.domain-list{\n    padding: 0 15px;\n    background-color: #f5f5f5;\n    border-radius: 10px;\n    color: #6b6b6b;\n    padding-bottom: 15px;\n    white-space: pre-line;\n}\n\n.editor{\n    background-color: #d5d5d5;\n    display: block;\n    padding: 15px;\n    border-radius: 10px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5574,7 +5827,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".footer{\n    padding: 30px 60px !important;\n    font-size: 16px;\n    text-align: center;\n}\n\n.links{\n    color: #c09f53;\n    text-decoration: none;\n}", "",{"version":3,"sources":["webpack://./src/Components/Footer/Style.css"],"names":[],"mappings":"AAAA;IACI,6BAA6B;IAC7B,eAAe;IACf,kBAAkB;AACtB;;AAEA;IACI,cAAc;IACd,qBAAqB;AACzB","sourcesContent":[".footer{\n    padding: 30px 60px !important;\n    font-size: 16px;\n    text-align: center;\n}\n\n.links{\n    color: #c09f53;\n    text-decoration: none;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.footer{
+    padding: 30px 60px !important;
+    font-size: 16px;
+    text-align: center;
+}
+
+.links{
+    color: #c09f53;
+    text-decoration: none;
+}`, "",{"version":3,"sources":["webpack://./src/Components/Footer/Style.css"],"names":[],"mappings":"AAAA;IACI,6BAA6B;IAC7B,eAAe;IACf,kBAAkB;AACtB;;AAEA;IACI,cAAc;IACd,qBAAqB;AACzB","sourcesContent":[".footer{\n    padding: 30px 60px !important;\n    font-size: 16px;\n    text-align: center;\n}\n\n.links{\n    color: #c09f53;\n    text-decoration: none;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5621,7 +5883,405 @@ var ___CSS_LOADER_URL_REPLACEMENT_6___ = _node_modules_css_loader_dist_runtime_g
 var ___CSS_LOADER_URL_REPLACEMENT_7___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_7___);
 var ___CSS_LOADER_URL_REPLACEMENT_8___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_8___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 101;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n    border-bottom: 1px solid rgb(95, 95, 95);\n}\n\n.dashboard-profile {\n    display: grid;\n    grid-template-columns: 1fr min-content;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n    font-size: 19px;\n}\n\n.flex{\n    display: flex;\n    align-items: center;\n}\n\n.profileImage{\n    width: 50px;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-color: transparent;\n    border-radius: 50%;\n    object-fit: cover;\n    margin-left: auto;\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    padding: 20px;\n    padding-right: 0;\n    height: 66px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar{\n    transition: width .5s ease-in-out;\n    width: 65px;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n    \n    transition: width .25s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n\n    min-height: calc(100vh - 66px);\n    border-right: 1px solid rgb(95, 95, 95);\n    background-color: rgb(63, 63, 63);\n}\n\n.divider{\n    padding: 0 0 0 20px;\n}\n\n.platform-view{\n    padding: 0 20px;\n    display: inline-block;\n    border-right: 1px solid;\n    padding-right: 10px;\n    margin-right: 10px;\n}\n\n.collapsed .hiddenCollapsed{\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all .25s ease-in-out;\n}\n\n.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay{\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 25px 15px;\n    overflow: hidden;\n    align-items: center;\n    justify-content: center;\n    white-space: nowrap;\n    transition: width .15s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active, .navItems:hover{\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .15s ease-in-out;\n}\n\n.collapsed:hover .navItems, .collapsed.expand a{\n    width: 100%;\n}\n\n.collapsed:hover nav, .collapsed.expand nav{\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons{\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.collapsed .dashboard-icons{\n    margin-right: 0px;\n}\n\n.collapsed.expand .dashboard-icons, .collapsed:hover .dashboard-icons{\n    margin-right: 10px;\n}\n\n.dashboard::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_1___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.home::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_2___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_3___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_4___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_5___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.cookies{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_6___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after{\n    content: \"\";\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_7___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn{\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after{\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background:  url(" + ___CSS_LOADER_URL_REPLACEMENT_8___ + ");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom{\n    margin-top: auto;\n}\n\n.navLogout{\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector{\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{\n    outline: none;\n}\n\n.dashboard-organisationContainer{\n    position: relative;\n}\n\n.dashboard-profile__nameContainer{\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n.arrowRight{\n    width: 10px;\n    height: 10px;\n    display: inline-block;\n    margin-left: 10px;\n\n}\n\n.company_container{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.company_container .selectorContianer{\n    margin-right: 20px;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n        max-height: max-content;\n        padding-right: 0;\n    }\n\n    .main-grid{\n        padding-top: 104px;\n    }\n\n    .grid-3, .dashboard-profile{\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container{\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer{\n        width: auto;\n    }\n\n    .navOverlay{\n        display: none;\n    }\n\n    .dashboard-header>.dashboard-profile .content-img{\n        margin: 0 5px 5px auto;\n    }\n\n    .company_container{\n        flex-direction: column;\n    }\n}", "",{"version":3,"sources":["webpack://./src/Components/Header/header.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,gBAAgB;IAChB,eAAe;IACf,MAAM;IACN,OAAO;IACP,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,8BAA8B;IAC9B,yBAAyB;IACzB,iCAAiC;IACjC,yBAAyB;IACzB,wCAAwC;AAC5C;;AAEA;IACI,aAAa;IACb,sCAAsC;IACtC,mBAAmB;IACnB,8BAA8B;IAC9B,WAAW;IACX,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,yBAAyB;IACzB,SAAS;AACb;;AAEA;IACI,eAAe;IACf,eAAe;IACf,SAAS;AACb;;AAEA;IACI,SAAS;IACT,WAAW;IACX,YAAY;IACZ,mBAAmB;IACnB,yBAAyB;IACzB,kBAAkB;IAClB,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,mBAAmB;IACnB,aAAa;IACb,gBAAgB;IAChB,YAAY;IACZ,gBAAgB;IAChB,mBAAmB;IACnB,kBAAkB;IAClB,kBAAkB;AACtB;;AAEA;IACI,iCAAiC;IACjC,WAAW;AACf;;AAEA;IACI,WAAW;IACX,0BAA0B;;IAE1B,kCAAkC;IAClC,aAAa;IACb,sBAAsB;IACtB,eAAe;;IAEf,8BAA8B;IAC9B,uCAAuC;IACvC,iCAAiC;AACrC;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,qBAAqB;IACrB,uBAAuB;IACvB,mBAAmB;IACnB,kBAAkB;AACtB;;AAEA;IACI,UAAU;IACV,QAAQ;IACR,kBAAkB;IAClB,gCAAgC;AACpC;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,WAAW;IACX,aAAa;IACb,WAAW;IACX,kBAAkB;IAClB,gBAAgB;IAChB,mBAAmB;IACnB,uBAAuB;IACvB,mBAAmB;IACnB,kCAAkC;IAClC,qBAAqB;AACzB;;AAEA;IACI,iCAAiC;IACjC,yBAAyB;IACzB,kCAAkC;AACtC;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,UAAU;IACV,WAAW;IACX,mBAAmB;AACvB;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,mBAAmB;IACnB,kBAAkB;IAClB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,WAAW;IACX,oDAAuC;IACvC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,kBAAkB;IAClB,eAAe;;IAEf,cAAc;IACd,kBAAkB;IAClB,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAAqC;IACrC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAAkC;IAClC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAA2C;IAC3C,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAAoC;IACpC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAAsC;IACtC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAAqC;IACrC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAAoC;IACpC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,gBAAgB;IAChB,YAAY;IACZ,uBAAuB;IACvB,WAAW;;IAEX,aAAa;IACb,mBAAmB;IACnB,oBAAoB;IACpB,eAAe;AACnB;;AAEA;IACI,WAAW;IACX,WAAW;IACX,YAAY;IACZ,cAAc;IACd,YAAY;IACZ,iBAAiB;IACjB,oDAAoC;IACpC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;AAClC;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;IACvB,YAAY;IACZ,WAAW;IACX,WAAW;IACX,kBAAkB;IAClB,eAAe;IACf,kBAAkB;IAClB,6BAA6B;IAC7B,eAAe;IACf,aAAa;IACb,mBAAmB;;AAEvB;;AAEA;IACI,YAAY;IACZ,iBAAiB;IACjB,uBAAuB;IACvB,WAAW;IACX,eAAe;IACf,gBAAgB;IAChB,wBAAwB;IACxB,kBAAkB;AACtB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,YAAY;IACZ,kBAAkB;IAClB,iBAAiB;AACrB;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,qBAAqB;IACrB,iBAAiB;;AAErB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI;QACI,WAAW;QACX,uBAAuB;QACvB,gBAAgB;IACpB;;IAEA;QACI,kBAAkB;IACtB;;IAEA;QACI,0BAA0B;IAC9B;;IAEA;QACI,cAAc;IAClB;;IAEA;QACI,WAAW;IACf;;IAEA;QACI,aAAa;IACjB;;IAEA;QACI,sBAAsB;IAC1B;;IAEA;QACI,sBAAsB;IAC1B;AACJ","sourcesContent":[".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 101;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n    border-bottom: 1px solid rgb(95, 95, 95);\n}\n\n.dashboard-profile {\n    display: grid;\n    grid-template-columns: 1fr min-content;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n    font-size: 19px;\n}\n\n.flex{\n    display: flex;\n    align-items: center;\n}\n\n.profileImage{\n    width: 50px;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-color: transparent;\n    border-radius: 50%;\n    object-fit: cover;\n    margin-left: auto;\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    padding: 20px;\n    padding-right: 0;\n    height: 66px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar{\n    transition: width .5s ease-in-out;\n    width: 65px;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n    \n    transition: width .25s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n\n    min-height: calc(100vh - 66px);\n    border-right: 1px solid rgb(95, 95, 95);\n    background-color: rgb(63, 63, 63);\n}\n\n.divider{\n    padding: 0 0 0 20px;\n}\n\n.platform-view{\n    padding: 0 20px;\n    display: inline-block;\n    border-right: 1px solid;\n    padding-right: 10px;\n    margin-right: 10px;\n}\n\n.collapsed .hiddenCollapsed{\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all .25s ease-in-out;\n}\n\n.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay{\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 25px 15px;\n    overflow: hidden;\n    align-items: center;\n    justify-content: center;\n    white-space: nowrap;\n    transition: width .15s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active, .navItems:hover{\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .15s ease-in-out;\n}\n\n.collapsed:hover .navItems, .collapsed.expand a{\n    width: 100%;\n}\n\n.collapsed:hover nav, .collapsed.expand nav{\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons{\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.collapsed .dashboard-icons{\n    margin-right: 0px;\n}\n\n.collapsed.expand .dashboard-icons, .collapsed:hover .dashboard-icons{\n    margin-right: 10px;\n}\n\n.dashboard::after{\n    content: \"\";\n    background:  url(\"icons/dashboard.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after{\n    content: \"\";\n    background:  url(\"icons/reports.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.home::after{\n    content: \"\";\n    background:  url(\"icons/home.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after{\n    content: \"\";\n    background:  url(\"icons/user-consents.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after{\n    content: \"\";\n    background:  url(\"icons/domain.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after{\n    content: \"\";\n    background:  url(\"icons/settings.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.cookies{\n    content: \"\";\n    background:  url(\"icons/cookies.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after{\n    content: \"\";\n    background:  url(\"icons/Logout.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn{\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after{\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background:  url(\"icons/expand.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom{\n    margin-top: auto;\n}\n\n.navLogout{\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector{\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{\n    outline: none;\n}\n\n.dashboard-organisationContainer{\n    position: relative;\n}\n\n.dashboard-profile__nameContainer{\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n.arrowRight{\n    width: 10px;\n    height: 10px;\n    display: inline-block;\n    margin-left: 10px;\n\n}\n\n.company_container{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.company_container .selectorContianer{\n    margin-right: 20px;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n        max-height: max-content;\n        padding-right: 0;\n    }\n\n    .main-grid{\n        padding-top: 104px;\n    }\n\n    .grid-3, .dashboard-profile{\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container{\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer{\n        width: auto;\n    }\n\n    .navOverlay{\n        display: none;\n    }\n\n    .dashboard-header>.dashboard-profile .content-img{\n        margin: 0 5px 5px auto;\n    }\n\n    .company_container{\n        flex-direction: column;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
+    width: 100%;
+    max-height: 66px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 25px 0px 0px;
+    background-color: rgb(63, 63, 63);
+    color: rgb(197, 197, 197);
+    border-bottom: 1px solid rgb(95, 95, 95);
+}
+
+.dashboard-profile {
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 19px;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.profileImage{
+    width: 50px;
+}
+
+.clock {
+    color: rgb(197, 197, 197);
+    margin: 0;
+}
+
+.dashboard-name {
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.dashboard-header>.dashboard-profile .content-img {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    border-width: 2.5px;
+    border-color: transparent;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: auto;
+}
+
+.dashboard-logo {
+    filter: invert(100);
+    padding: 20px;
+    padding-right: 0;
+    height: 66px;
+    text-align: left;
+    object-fit: contain;
+    object-position: 0;
+    position: relative;
+}
+
+.sidebar{
+    transition: width .5s ease-in-out;
+    width: 65px;
+}
+
+.collapsed {
+    width: 65px;
+    height: calc(100vh - 88px);
+    
+    transition: width .25s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+
+    min-height: calc(100vh - 66px);
+    border-right: 1px solid rgb(95, 95, 95);
+    background-color: rgb(63, 63, 63);
+}
+
+.divider{
+    padding: 0 0 0 20px;
+}
+
+.platform-view{
+    padding: 0 20px;
+    display: inline-block;
+    border-right: 1px solid;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+.collapsed .hiddenCollapsed{
+    opacity: 0;
+    width: 0;
+    visibility: hidden;
+    transition: all .25s ease-in-out;
+}
+
+.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {
+    width: 170px;
+}
+
+.navOverlay{
+    display: flex;
+}
+
+.collapsed nav {
+    width: 100%;
+}
+
+.collapsed .navItems {
+    color: #fff;
+    display: flex;
+    width: 100%;
+    padding: 25px 15px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transition: width .15s ease-in-out;
+    text-decoration: none;
+}
+
+.navItems.--active, .navItems:hover{
+    background-color: rgb(95, 95, 95);
+    color: rgb(241, 241, 241);
+    transition: width .15s ease-in-out;
+}
+
+.collapsed:hover .navItems, .collapsed.expand a{
+    width: 100%;
+}
+
+.collapsed:hover nav, .collapsed.expand nav{
+    width: 150px;
+}
+
+.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{
+    opacity: 1;
+    width: auto;
+    visibility: visible;
+}
+
+.dashboard-icons{
+    width: 25px;
+    height: 25px;
+    /* padding: 15px; */
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.collapsed .dashboard-icons{
+    margin-right: 0px;
+}
+
+.collapsed.expand .dashboard-icons, .collapsed:hover .dashboard-icons{
+    margin-right: 10px;
+}
+
+.dashboard::after{
+    content: "";
+    background:  url(${___CSS_LOADER_URL_REPLACEMENT_0___});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    font-style: normal;
+    font-size: 20px;
+
+    display: block;
+    font-style: normal;
+    width: 20px;
+    height: 20px;
+}
+
+.reports::after{
+    content: "";
+    background:  url(${___CSS_LOADER_URL_REPLACEMENT_1___});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.home::after{
+    content: "";
+    background:  url(${___CSS_LOADER_URL_REPLACEMENT_2___});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.user-consents::after{
+    content: "";
+    background:  url(${___CSS_LOADER_URL_REPLACEMENT_3___});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.domains::after{
+    content: "";
+    background:  url(${___CSS_LOADER_URL_REPLACEMENT_4___});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.settings::after{
+    content: "";
+    background:  url(${___CSS_LOADER_URL_REPLACEMENT_5___});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.cookies{
+    content: "";
+    background:  url(${___CSS_LOADER_URL_REPLACEMENT_6___});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.logout::after{
+    content: "";
+    background:  url(${___CSS_LOADER_URL_REPLACEMENT_7___});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+    display: block;
+    font-style: normal;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.expandBtn{
+    float: right;
+    padding: 10px;
+    margin: 10px 0px;
+    border: none;
+    background: transparent;
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    cursor: pointer;
+}
+
+.expandBtn::after{
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: block;
+    float: right;
+    margin-left: auto;
+    background:  url(${___CSS_LOADER_URL_REPLACEMENT_8___});
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-blend-mode: lighten;
+}
+
+.navItems--bottom{
+    margin-top: auto;
+}
+
+.navLogout{
+    margin-top: auto;
+    background: transparent;
+    border: none;
+    width: 100%;
+    color: #fff;
+    padding: 30px 15px;
+    font-size: 15px;
+    text-align: center;
+    border-top: 1px solid #636363;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+}
+
+.dashboard-organisationSelector{
+    border: none;
+    padding: 0px 17px;
+    background: transparent;
+    color: #fff;
+    font-size: 12px;
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+}
+
+.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{
+    outline: none;
+}
+
+.dashboard-organisationContainer{
+    position: relative;
+}
+
+.dashboard-profile__nameContainer{
+    width: 250px;
+    margin-right: 20px;
+    text-align: right;
+}
+
+.arrowRight{
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-left: 10px;
+
+}
+
+.company_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.company_container .selectorContianer{
+    margin-right: 20px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 900px) {
+    .dashboard-header {
+        width: 100%;
+        max-height: max-content;
+        padding-right: 0;
+    }
+
+    .main-grid{
+        padding-top: 104px;
+    }
+
+    .grid-3, .dashboard-profile{
+        grid-template-columns: 1fr;
+    }
+
+    .grid-container{
+        display: block;
+    }
+
+    .dashboard-profile__nameContainer{
+        width: auto;
+    }
+
+    .navOverlay{
+        display: none;
+    }
+
+    .dashboard-header>.dashboard-profile .content-img{
+        margin: 0 5px 5px auto;
+    }
+
+    .company_container{
+        flex-direction: column;
+    }
+}`, "",{"version":3,"sources":["webpack://./src/Components/Header/header.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,gBAAgB;IAChB,eAAe;IACf,MAAM;IACN,OAAO;IACP,YAAY;IACZ,aAAa;IACb,mBAAmB;IACnB,8BAA8B;IAC9B,yBAAyB;IACzB,iCAAiC;IACjC,yBAAyB;IACzB,wCAAwC;AAC5C;;AAEA;IACI,aAAa;IACb,sCAAsC;IACtC,mBAAmB;IACnB,8BAA8B;IAC9B,WAAW;IACX,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,yBAAyB;IACzB,SAAS;AACb;;AAEA;IACI,eAAe;IACf,eAAe;IACf,SAAS;AACb;;AAEA;IACI,SAAS;IACT,WAAW;IACX,YAAY;IACZ,mBAAmB;IACnB,yBAAyB;IACzB,kBAAkB;IAClB,iBAAiB;IACjB,iBAAiB;AACrB;;AAEA;IACI,mBAAmB;IACnB,aAAa;IACb,gBAAgB;IAChB,YAAY;IACZ,gBAAgB;IAChB,mBAAmB;IACnB,kBAAkB;IAClB,kBAAkB;AACtB;;AAEA;IACI,iCAAiC;IACjC,WAAW;AACf;;AAEA;IACI,WAAW;IACX,0BAA0B;;IAE1B,kCAAkC;IAClC,aAAa;IACb,sBAAsB;IACtB,eAAe;;IAEf,8BAA8B;IAC9B,uCAAuC;IACvC,iCAAiC;AACrC;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,eAAe;IACf,qBAAqB;IACrB,uBAAuB;IACvB,mBAAmB;IACnB,kBAAkB;AACtB;;AAEA;IACI,UAAU;IACV,QAAQ;IACR,kBAAkB;IAClB,gCAAgC;AACpC;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,WAAW;IACX,aAAa;IACb,WAAW;IACX,kBAAkB;IAClB,gBAAgB;IAChB,mBAAmB;IACnB,uBAAuB;IACvB,mBAAmB;IACnB,kCAAkC;IAClC,qBAAqB;AACzB;;AAEA;IACI,iCAAiC;IACjC,yBAAyB;IACzB,kCAAkC;AACtC;;AAEA;IACI,WAAW;AACf;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,UAAU;IACV,WAAW;IACX,mBAAmB;AACvB;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,mBAAmB;IACnB,kBAAkB;IAClB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,WAAW;IACX,oDAAuC;IACvC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,kBAAkB;IAClB,eAAe;;IAEf,cAAc;IACd,kBAAkB;IAClB,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAAqC;IACrC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAAkC;IAClC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAA2C;IAC3C,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAAoC;IACpC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAAsC;IACtC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAAqC;IACrC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,WAAW;IACX,oDAAoC;IACpC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;IAC9B,cAAc;IACd,kBAAkB;IAClB,eAAe;IACf,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,gBAAgB;IAChB,YAAY;IACZ,uBAAuB;IACvB,WAAW;;IAEX,aAAa;IACb,mBAAmB;IACnB,oBAAoB;IACpB,eAAe;AACnB;;AAEA;IACI,WAAW;IACX,WAAW;IACX,YAAY;IACZ,cAAc;IACd,YAAY;IACZ,iBAAiB;IACjB,oDAAoC;IACpC,wBAAwB;IACxB,4BAA4B;IAC5B,8BAA8B;AAClC;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,gBAAgB;IAChB,uBAAuB;IACvB,YAAY;IACZ,WAAW;IACX,WAAW;IACX,kBAAkB;IAClB,eAAe;IACf,kBAAkB;IAClB,6BAA6B;IAC7B,eAAe;IACf,aAAa;IACb,mBAAmB;;AAEvB;;AAEA;IACI,YAAY;IACZ,iBAAiB;IACjB,uBAAuB;IACvB,WAAW;IACX,eAAe;IACf,gBAAgB;IAChB,wBAAwB;IACxB,kBAAkB;AACtB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,YAAY;IACZ,kBAAkB;IAClB,iBAAiB;AACrB;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,qBAAqB;IACrB,iBAAiB;;AAErB;;AAEA;IACI,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI;QACI,WAAW;QACX,uBAAuB;QACvB,gBAAgB;IACpB;;IAEA;QACI,kBAAkB;IACtB;;IAEA;QACI,0BAA0B;IAC9B;;IAEA;QACI,cAAc;IAClB;;IAEA;QACI,WAAW;IACf;;IAEA;QACI,aAAa;IACjB;;IAEA;QACI,sBAAsB;IAC1B;;IAEA;QACI,sBAAsB;IAC1B;AACJ","sourcesContent":[".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 101;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n    border-bottom: 1px solid rgb(95, 95, 95);\n}\n\n.dashboard-profile {\n    display: grid;\n    grid-template-columns: 1fr min-content;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n    font-size: 19px;\n}\n\n.flex{\n    display: flex;\n    align-items: center;\n}\n\n.profileImage{\n    width: 50px;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-color: transparent;\n    border-radius: 50%;\n    object-fit: cover;\n    margin-left: auto;\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    padding: 20px;\n    padding-right: 0;\n    height: 66px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar{\n    transition: width .5s ease-in-out;\n    width: 65px;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n    \n    transition: width .25s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n\n    min-height: calc(100vh - 66px);\n    border-right: 1px solid rgb(95, 95, 95);\n    background-color: rgb(63, 63, 63);\n}\n\n.divider{\n    padding: 0 0 0 20px;\n}\n\n.platform-view{\n    padding: 0 20px;\n    display: inline-block;\n    border-right: 1px solid;\n    padding-right: 10px;\n    margin-right: 10px;\n}\n\n.collapsed .hiddenCollapsed{\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all .25s ease-in-out;\n}\n\n.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay{\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 25px 15px;\n    overflow: hidden;\n    align-items: center;\n    justify-content: center;\n    white-space: nowrap;\n    transition: width .15s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active, .navItems:hover{\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .15s ease-in-out;\n}\n\n.collapsed:hover .navItems, .collapsed.expand a{\n    width: 100%;\n}\n\n.collapsed:hover nav, .collapsed.expand nav{\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons{\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.collapsed .dashboard-icons{\n    margin-right: 0px;\n}\n\n.collapsed.expand .dashboard-icons, .collapsed:hover .dashboard-icons{\n    margin-right: 10px;\n}\n\n.dashboard::after{\n    content: \"\";\n    background:  url(\"icons/dashboard.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after{\n    content: \"\";\n    background:  url(\"icons/reports.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.home::after{\n    content: \"\";\n    background:  url(\"icons/home.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after{\n    content: \"\";\n    background:  url(\"icons/user-consents.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after{\n    content: \"\";\n    background:  url(\"icons/domain.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after{\n    content: \"\";\n    background:  url(\"icons/settings.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.cookies{\n    content: \"\";\n    background:  url(\"icons/cookies.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after{\n    content: \"\";\n    background:  url(\"icons/Logout.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn{\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after{\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background:  url(\"icons/expand.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom{\n    margin-top: auto;\n}\n\n.navLogout{\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector{\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{\n    outline: none;\n}\n\n.dashboard-organisationContainer{\n    position: relative;\n}\n\n.dashboard-profile__nameContainer{\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n.arrowRight{\n    width: 10px;\n    height: 10px;\n    display: inline-block;\n    margin-left: 10px;\n\n}\n\n.company_container{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.company_container .selectorContianer{\n    margin-right: 20px;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n        max-height: max-content;\n        padding-right: 0;\n    }\n\n    .main-grid{\n        padding-top: 104px;\n    }\n\n    .grid-3, .dashboard-profile{\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container{\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer{\n        width: auto;\n    }\n\n    .navOverlay{\n        display: none;\n    }\n\n    .dashboard-header>.dashboard-profile .content-img{\n        margin: 0 5px 5px auto;\n    }\n\n    .company_container{\n        flex-direction: column;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5647,7 +6307,33 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "h2:has(.highlight) {\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    gap: 10px;\n}\n.highlight {\n    border: 1px solid red;\n    padding: 10px 20px;\n    background: red;\n    color: white;\n    border-radius: 5px;\n    text-align: center;\n    margin: 0 auto;\n    display: inline-block;\n    font-size: 15px;\n}\n\n.highlight.--new{\n    border: 1px solid var(--intastellarGold);\n    background-color: var(--intastellarGold);\n}\n\n.highlight.--coming{\n    border: 1px solid var(--IntastellarGrey);\n    background-color: var(--IntastellarGrey);\n}", "",{"version":3,"sources":["webpack://./src/Components/Highlighter/Style.css"],"names":[],"mappings":"AAAA;IACI,oBAAoB;IACpB,mBAAmB;IACnB,uBAAuB;IACvB,SAAS;AACb;AACA;IACI,qBAAqB;IACrB,kBAAkB;IAClB,eAAe;IACf,YAAY;IACZ,kBAAkB;IAClB,kBAAkB;IAClB,cAAc;IACd,qBAAqB;IACrB,eAAe;AACnB;;AAEA;IACI,wCAAwC;IACxC,wCAAwC;AAC5C;;AAEA;IACI,wCAAwC;IACxC,wCAAwC;AAC5C","sourcesContent":["h2:has(.highlight) {\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    gap: 10px;\n}\n.highlight {\n    border: 1px solid red;\n    padding: 10px 20px;\n    background: red;\n    color: white;\n    border-radius: 5px;\n    text-align: center;\n    margin: 0 auto;\n    display: inline-block;\n    font-size: 15px;\n}\n\n.highlight.--new{\n    border: 1px solid var(--intastellarGold);\n    background-color: var(--intastellarGold);\n}\n\n.highlight.--coming{\n    border: 1px solid var(--IntastellarGrey);\n    background-color: var(--IntastellarGrey);\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `h2:has(.highlight) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.highlight {
+    border: 1px solid red;
+    padding: 10px 20px;
+    background: red;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 auto;
+    display: inline-block;
+    font-size: 15px;
+}
+
+.highlight.--new{
+    border: 1px solid var(--intastellarGold);
+    background-color: var(--intastellarGold);
+}
+
+.highlight.--coming{
+    border: 1px solid var(--IntastellarGrey);
+    background-color: var(--IntastellarGrey);
+}`, "",{"version":3,"sources":["webpack://./src/Components/Highlighter/Style.css"],"names":[],"mappings":"AAAA;IACI,oBAAoB;IACpB,mBAAmB;IACnB,uBAAuB;IACvB,SAAS;AACb;AACA;IACI,qBAAqB;IACrB,kBAAkB;IAClB,eAAe;IACf,YAAY;IACZ,kBAAkB;IAClB,kBAAkB;IAClB,cAAc;IACd,qBAAqB;IACrB,eAAe;AACnB;;AAEA;IACI,wCAAwC;IACxC,wCAAwC;AAC5C;;AAEA;IACI,wCAAwC;IACxC,wCAAwC;AAC5C","sourcesContent":["h2:has(.highlight) {\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n    gap: 10px;\n}\n.highlight {\n    border: 1px solid red;\n    padding: 10px 20px;\n    background: red;\n    color: white;\n    border-radius: 5px;\n    text-align: center;\n    margin: 0 auto;\n    display: inline-block;\n    font-size: 15px;\n}\n\n.highlight.--new{\n    border: 1px solid var(--intastellarGold);\n    background-color: var(--intastellarGold);\n}\n\n.highlight.--coming{\n    border: 1px solid var(--IntastellarGrey);\n    background-color: var(--IntastellarGrey);\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5673,7 +6359,15 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".intInput{\n    padding: 12px;\n    width: 100%;\n    border: none;\n    appearance: none;\n    -webkit-appearance: none;\n    border-radius: 5px;\n    font-size: 14px;\n}", "",{"version":3,"sources":["webpack://./src/Components/InputFields/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,WAAW;IACX,YAAY;IACZ,gBAAgB;IAChB,wBAAwB;IACxB,kBAAkB;IAClB,eAAe;AACnB","sourcesContent":[".intInput{\n    padding: 12px;\n    width: 100%;\n    border: none;\n    appearance: none;\n    -webkit-appearance: none;\n    border-radius: 5px;\n    font-size: 14px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.intInput{
+    padding: 12px;
+    width: 100%;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 5px;
+    font-size: 14px;
+}`, "",{"version":3,"sources":["webpack://./src/Components/InputFields/Style.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,WAAW;IACX,YAAY;IACZ,gBAAgB;IAChB,wBAAwB;IACxB,kBAAkB;IAClB,eAAe;AACnB","sourcesContent":[".intInput{\n    padding: 12px;\n    width: 100%;\n    border: none;\n    appearance: none;\n    -webkit-appearance: none;\n    border-radius: 5px;\n    font-size: 14px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5699,7 +6393,166 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".user_content, .services-overview-container {\n    width: 345px;\n    height: auto;\n    max-height: 600px;\n    overflow: hidden;\n    border-radius: 10px;\n    float: right;\n    position: absolute;\n    top: 60px;\n    right: 20px;\n    box-sizing: border-box;\n    background: rgba(255,255,255,0.8);\n    /* box-shadow: 0 0 3px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.28); */\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    -webkit-backdrop-filter: blur(10px);\n    backdrop-filter: blur(10px);\n    -moz-backdrop-filter: blur(10px);\n}\n\n.dropdown-image-name {\n    height: auto;\n    padding: 25px 15px 10px;\n    text-align: center;\n}\n\n.dropdown-links {\n    max-height: 140px;\n    height: auto;\n    overflow: scroll;\n}\n\n.dropdown-links a {\n    color: #000;\n    font-size: 15px;\n    padding: 15px;\n    display: block;\n\ttext-decoration: none;\n}\n\n.dropdown-links a:hover {\n    background: #b7b7b7;\n    text-decoration: none;\n    color: #000;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dropdown-image-name {\n    text-align: center;\n}\n\n.content-img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n    border: 5px solid #fff;\n}\n\n.dropdown-name {\n    width: 100%;\n    color: #000;\n}\n\n.dpdn {\n    color: #202124;\n    font: 500 16px/22px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .29px;\n    margin: 0;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.acc {\n    background-color: transparent;\n    padding: 0;\n    border: none;\n    max-width: fit-content;\n}\n\n.logo-icon {\n    width: 44px;\n    aspect-ratio: 1/1;\n    padding: 5px;\n}\n\n.sign_out_btn_container {\n    padding: 20px 30px;\n    border-top: 1px solid #c4c4c4;\n}\n\n.acc, .sign_out_btn {\n    background-color: #ffffff;\n    border: 1px solid #dadce0;\n    -moz-border-radius: 100px;\n    border-radius: 100px;\n    color: #3c4043;\n    display: inline-block;\n    font: 500 13px/16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .25px;\n    margin: 16px 0 0;\n    max-width: 260px;\n    outline: 0;\n    padding: 8px 9px;\n    text-align: center;\n    text-decoration: none;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.sign_out_btn {\n    border-radius: 4px !important;\n    margin: auto;\n    width: 100%;\n    display: flex;\n    align-items: center;\n}\n\n.acc a, .sign_out_btn {\n    color: #3c4043 !important;\n    text-decoration: none;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.ziuVxb{\n    position: absolute;\n    bottom: 10px;\n    right: 20px;\n}\n\nsvg.uarSJe.NMm5M {\n    width: 24px;\n    height: 24px;\n}\n\n.dpde .intastellaraccounts-logo {\n    width: 50%;\n    margin: 0;\n}", "",{"version":3,"sources":["webpack://./src/Components/IntastellarAccounts/Style.css"],"names":[],"mappings":"AAAA;IACI,YAAY;IACZ,YAAY;IACZ,iBAAiB;IACjB,gBAAgB;IAChB,mBAAmB;IACnB,YAAY;IACZ,kBAAkB;IAClB,SAAS;IACT,WAAW;IACX,sBAAsB;IACtB,iCAAiC;IACjC,oEAAoE;IACpE,kFAAkF;IAClF,mCAAmC;IACnC,2BAA2B;IAC3B,gCAAgC;AACpC;;AAEA;IACI,YAAY;IACZ,uBAAuB;IACvB,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,eAAe;IACf,aAAa;IACb,cAAc;CACjB,qBAAqB;AACtB;;AAEA;IACI,mBAAmB;IACnB,qBAAqB;IACrB,WAAW;AACf;;AAEA;IACI,cAAc;IACd,iEAAiE;IACjE,sBAAsB;IACtB,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,kBAAkB;IAClB,iBAAiB;IACjB,YAAY;IACZ,sEAAsE;IACtE,sBAAsB;AAC1B;;AAEA;IACI,WAAW;IACX,WAAW;AACf;;AAEA;IACI,cAAc;IACd,6EAA6E;IAC7E,qBAAqB;IACrB,SAAS;IACT,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,cAAc;IACd,iEAAiE;IACjE,sBAAsB;IACtB,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,6BAA6B;IAC7B,UAAU;IACV,YAAY;IACZ,sBAAsB;AAC1B;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,6BAA6B;AACjC;;AAEA;IACI,yBAAyB;IACzB,yBAAyB;IACzB,yBAAyB;IACzB,oBAAoB;IACpB,cAAc;IACd,qBAAqB;IACrB,6EAA6E;IAC7E,qBAAqB;IACrB,gBAAgB;IAChB,gBAAgB;IAChB,UAAU;IACV,gBAAgB;IAChB,kBAAkB;IAClB,qBAAqB;IACrB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,6BAA6B;IAC7B,YAAY;IACZ,WAAW;IACX,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,yBAAyB;IACzB,qBAAqB;IACrB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;IAClB,YAAY;IACZ,WAAW;AACf;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,UAAU;IACV,SAAS;AACb","sourcesContent":[".user_content, .services-overview-container {\n    width: 345px;\n    height: auto;\n    max-height: 600px;\n    overflow: hidden;\n    border-radius: 10px;\n    float: right;\n    position: absolute;\n    top: 60px;\n    right: 20px;\n    box-sizing: border-box;\n    background: rgba(255,255,255,0.8);\n    /* box-shadow: 0 0 3px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.28); */\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    -webkit-backdrop-filter: blur(10px);\n    backdrop-filter: blur(10px);\n    -moz-backdrop-filter: blur(10px);\n}\n\n.dropdown-image-name {\n    height: auto;\n    padding: 25px 15px 10px;\n    text-align: center;\n}\n\n.dropdown-links {\n    max-height: 140px;\n    height: auto;\n    overflow: scroll;\n}\n\n.dropdown-links a {\n    color: #000;\n    font-size: 15px;\n    padding: 15px;\n    display: block;\n\ttext-decoration: none;\n}\n\n.dropdown-links a:hover {\n    background: #b7b7b7;\n    text-decoration: none;\n    color: #000;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dropdown-image-name {\n    text-align: center;\n}\n\n.content-img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n    border: 5px solid #fff;\n}\n\n.dropdown-name {\n    width: 100%;\n    color: #000;\n}\n\n.dpdn {\n    color: #202124;\n    font: 500 16px/22px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .29px;\n    margin: 0;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.acc {\n    background-color: transparent;\n    padding: 0;\n    border: none;\n    max-width: fit-content;\n}\n\n.logo-icon {\n    width: 44px;\n    aspect-ratio: 1/1;\n    padding: 5px;\n}\n\n.sign_out_btn_container {\n    padding: 20px 30px;\n    border-top: 1px solid #c4c4c4;\n}\n\n.acc, .sign_out_btn {\n    background-color: #ffffff;\n    border: 1px solid #dadce0;\n    -moz-border-radius: 100px;\n    border-radius: 100px;\n    color: #3c4043;\n    display: inline-block;\n    font: 500 13px/16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .25px;\n    margin: 16px 0 0;\n    max-width: 260px;\n    outline: 0;\n    padding: 8px 9px;\n    text-align: center;\n    text-decoration: none;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.sign_out_btn {\n    border-radius: 4px !important;\n    margin: auto;\n    width: 100%;\n    display: flex;\n    align-items: center;\n}\n\n.acc a, .sign_out_btn {\n    color: #3c4043 !important;\n    text-decoration: none;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.ziuVxb{\n    position: absolute;\n    bottom: 10px;\n    right: 20px;\n}\n\nsvg.uarSJe.NMm5M {\n    width: 24px;\n    height: 24px;\n}\n\n.dpde .intastellaraccounts-logo {\n    width: 50%;\n    margin: 0;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.user_content, .services-overview-container {
+    width: 345px;
+    height: auto;
+    max-height: 600px;
+    overflow: hidden;
+    border-radius: 10px;
+    float: right;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.8);
+    /* box-shadow: 0 0 3px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.28); */
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    -moz-backdrop-filter: blur(10px);
+}
+
+.dropdown-image-name {
+    height: auto;
+    padding: 25px 15px 10px;
+    text-align: center;
+}
+
+.dropdown-links {
+    max-height: 140px;
+    height: auto;
+    overflow: scroll;
+}
+
+.dropdown-links a {
+    color: #000;
+    font-size: 15px;
+    padding: 15px;
+    display: block;
+	text-decoration: none;
+}
+
+.dropdown-links a:hover {
+    background: #b7b7b7;
+    text-decoration: none;
+    color: #000;
+}
+
+.dpde {
+    color: #5f6368;
+    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    letter-spacing: normal;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.dropdown-image-name {
+    text-align: center;
+}
+
+.content-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: auto;
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);
+    border: 5px solid #fff;
+}
+
+.dropdown-name {
+    width: 100%;
+    color: #000;
+}
+
+.dpdn {
+    color: #202124;
+    font: 500 16px/22px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    letter-spacing: .29px;
+    margin: 0;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.dpde {
+    color: #5f6368;
+    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    letter-spacing: normal;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.acc {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    max-width: fit-content;
+}
+
+.logo-icon {
+    width: 44px;
+    aspect-ratio: 1/1;
+    padding: 5px;
+}
+
+.sign_out_btn_container {
+    padding: 20px 30px;
+    border-top: 1px solid #c4c4c4;
+}
+
+.acc, .sign_out_btn {
+    background-color: #ffffff;
+    border: 1px solid #dadce0;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    color: #3c4043;
+    display: inline-block;
+    font: 500 13px/16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    letter-spacing: .25px;
+    margin: 16px 0 0;
+    max-width: 260px;
+    outline: 0;
+    padding: 8px 9px;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.sign_out_btn {
+    border-radius: 4px !important;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.acc a, .sign_out_btn {
+    color: #3c4043 !important;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ziuVxb{
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+svg.uarSJe.NMm5M {
+    width: 24px;
+    height: 24px;
+}
+
+.dpde .intastellaraccounts-logo {
+    width: 50%;
+    margin: 0;
+}`, "",{"version":3,"sources":["webpack://./src/Components/IntastellarAccounts/Style.css"],"names":[],"mappings":"AAAA;IACI,YAAY;IACZ,YAAY;IACZ,iBAAiB;IACjB,gBAAgB;IAChB,mBAAmB;IACnB,YAAY;IACZ,kBAAkB;IAClB,SAAS;IACT,WAAW;IACX,sBAAsB;IACtB,iCAAiC;IACjC,oEAAoE;IACpE,kFAAkF;IAClF,mCAAmC;IACnC,2BAA2B;IAC3B,gCAAgC;AACpC;;AAEA;IACI,YAAY;IACZ,uBAAuB;IACvB,kBAAkB;AACtB;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,eAAe;IACf,aAAa;IACb,cAAc;CACjB,qBAAqB;AACtB;;AAEA;IACI,mBAAmB;IACnB,qBAAqB;IACrB,WAAW;AACf;;AAEA;IACI,cAAc;IACd,iEAAiE;IACjE,sBAAsB;IACtB,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,kBAAkB;IAClB,iBAAiB;IACjB,YAAY;IACZ,sEAAsE;IACtE,sBAAsB;AAC1B;;AAEA;IACI,WAAW;IACX,WAAW;AACf;;AAEA;IACI,cAAc;IACd,6EAA6E;IAC7E,qBAAqB;IACrB,SAAS;IACT,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,cAAc;IACd,iEAAiE;IACjE,sBAAsB;IACtB,kBAAkB;IAClB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,6BAA6B;IAC7B,UAAU;IACV,YAAY;IACZ,sBAAsB;AAC1B;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,6BAA6B;AACjC;;AAEA;IACI,yBAAyB;IACzB,yBAAyB;IACzB,yBAAyB;IACzB,oBAAoB;IACpB,cAAc;IACd,qBAAqB;IACrB,6EAA6E;IAC7E,qBAAqB;IACrB,gBAAgB;IAChB,gBAAgB;IAChB,UAAU;IACV,gBAAgB;IAChB,kBAAkB;IAClB,qBAAqB;IACrB,uBAAuB;IACvB,gBAAgB;AACpB;;AAEA;IACI,6BAA6B;IAC7B,YAAY;IACZ,WAAW;IACX,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,yBAAyB;IACzB,qBAAqB;IACrB,aAAa;IACb,uBAAuB;IACvB,mBAAmB;AACvB;;AAEA;IACI,kBAAkB;IAClB,YAAY;IACZ,WAAW;AACf;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,UAAU;IACV,SAAS;AACb","sourcesContent":[".user_content, .services-overview-container {\n    width: 345px;\n    height: auto;\n    max-height: 600px;\n    overflow: hidden;\n    border-radius: 10px;\n    float: right;\n    position: absolute;\n    top: 60px;\n    right: 20px;\n    box-sizing: border-box;\n    background: rgba(255,255,255,0.8);\n    /* box-shadow: 0 0 3px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.28); */\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    -webkit-backdrop-filter: blur(10px);\n    backdrop-filter: blur(10px);\n    -moz-backdrop-filter: blur(10px);\n}\n\n.dropdown-image-name {\n    height: auto;\n    padding: 25px 15px 10px;\n    text-align: center;\n}\n\n.dropdown-links {\n    max-height: 140px;\n    height: auto;\n    overflow: scroll;\n}\n\n.dropdown-links a {\n    color: #000;\n    font-size: 15px;\n    padding: 15px;\n    display: block;\n\ttext-decoration: none;\n}\n\n.dropdown-links a:hover {\n    background: #b7b7b7;\n    text-decoration: none;\n    color: #000;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dropdown-image-name {\n    text-align: center;\n}\n\n.content-img {\n    width: 200px;\n    height: 200px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin: auto;\n    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);\n    border: 5px solid #fff;\n}\n\n.dropdown-name {\n    width: 100%;\n    color: #000;\n}\n\n.dpdn {\n    color: #202124;\n    font: 500 16px/22px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .29px;\n    margin: 0;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.dpde {\n    color: #5f6368;\n    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: normal;\n    text-align: center;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.acc {\n    background-color: transparent;\n    padding: 0;\n    border: none;\n    max-width: fit-content;\n}\n\n.logo-icon {\n    width: 44px;\n    aspect-ratio: 1/1;\n    padding: 5px;\n}\n\n.sign_out_btn_container {\n    padding: 20px 30px;\n    border-top: 1px solid #c4c4c4;\n}\n\n.acc, .sign_out_btn {\n    background-color: #ffffff;\n    border: 1px solid #dadce0;\n    -moz-border-radius: 100px;\n    border-radius: 100px;\n    color: #3c4043;\n    display: inline-block;\n    font: 500 13px/16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;\n    letter-spacing: .25px;\n    margin: 16px 0 0;\n    max-width: 260px;\n    outline: 0;\n    padding: 8px 9px;\n    text-align: center;\n    text-decoration: none;\n    text-overflow: ellipsis;\n    overflow: hidden;\n}\n\n.sign_out_btn {\n    border-radius: 4px !important;\n    margin: auto;\n    width: 100%;\n    display: flex;\n    align-items: center;\n}\n\n.acc a, .sign_out_btn {\n    color: #3c4043 !important;\n    text-decoration: none;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.ziuVxb{\n    position: absolute;\n    bottom: 10px;\n    right: 20px;\n}\n\nsvg.uarSJe.NMm5M {\n    width: 24px;\n    height: 24px;\n}\n\n.dpde .intastellaraccounts-logo {\n    width: 50%;\n    margin: 0;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5725,7 +6578,34 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".loading-spinner{\n    position: relative;\n    width: 150px;\n    height: 150px;\n    margin: auto;\n}\n\n.spinner{\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    border: 8px solid #9f9f9f;\n    border-radius: 50%;\n    border-top: 8px solid #fff;\n    width: 100px;\n    height: 100px;\n    animation: spin .5s linear infinite;\n}\n\n@keyframes spin{\n    0%{\n        transform: translate(-50%, -50%) rotate(0deg);\n    }\n    100%{\n        transform: translate(-50%, -50%) rotate(360deg);\n    }\n}", "",{"version":3,"sources":["webpack://./src/Components/LoadingSpinner/Style.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,YAAY;IACZ,aAAa;IACb,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,yBAAyB;IACzB,kBAAkB;IAClB,0BAA0B;IAC1B,YAAY;IACZ,aAAa;IACb,mCAAmC;AACvC;;AAEA;IACI;QACI,6CAA6C;IACjD;IACA;QACI,+CAA+C;IACnD;AACJ","sourcesContent":[".loading-spinner{\n    position: relative;\n    width: 150px;\n    height: 150px;\n    margin: auto;\n}\n\n.spinner{\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    border: 8px solid #9f9f9f;\n    border-radius: 50%;\n    border-top: 8px solid #fff;\n    width: 100px;\n    height: 100px;\n    animation: spin .5s linear infinite;\n}\n\n@keyframes spin{\n    0%{\n        transform: translate(-50%, -50%) rotate(0deg);\n    }\n    100%{\n        transform: translate(-50%, -50%) rotate(360deg);\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.loading-spinner{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: auto;
+}
+
+.spinner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 8px solid #9f9f9f;
+    border-radius: 50%;
+    border-top: 8px solid #fff;
+    width: 100px;
+    height: 100px;
+    animation: spin .5s linear infinite;
+}
+
+@keyframes spin{
+    0%{
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100%{
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}`, "",{"version":3,"sources":["webpack://./src/Components/LoadingSpinner/Style.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,YAAY;IACZ,aAAa;IACb,YAAY;AAChB;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,SAAS;IACT,gCAAgC;IAChC,yBAAyB;IACzB,kBAAkB;IAClB,0BAA0B;IAC1B,YAAY;IACZ,aAAa;IACb,mCAAmC;AACvC;;AAEA;IACI;QACI,6CAA6C;IACjD;IACA;QACI,+CAA+C;IACnD;AACJ","sourcesContent":[".loading-spinner{\n    position: relative;\n    width: 150px;\n    height: 150px;\n    margin: auto;\n}\n\n.spinner{\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    transform: translate(-50%, -50%);\n    border: 8px solid #9f9f9f;\n    border-radius: 50%;\n    border-top: 8px solid #fff;\n    width: 100px;\n    height: 100px;\n    animation: spin .5s linear infinite;\n}\n\n@keyframes spin{\n    0%{\n        transform: translate(-50%, -50%) rotate(0deg);\n    }\n    100%{\n        transform: translate(-50%, -50%) rotate(360deg);\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5751,7 +6631,24 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".platform{\n    display: grid;\n    place-content: center;\n    place-items: center;\n    height: 100vh;\n    position: fixed;\n    top: 0;\n    grid-template-columns: 1fr;\n    z-index: 20000;\n    background-color: rgb(36, 36, 36);\n}\n\n.platform-select-logo{\n    filter: invert(1);\n    width: 35%;\n    padding: 45px;\n    margin-top: -105px;\n}", "",{"version":3,"sources":["webpack://./src/Components/PlatformSelector/PlatformSelector.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,qBAAqB;IACrB,mBAAmB;IACnB,aAAa;IACb,eAAe;IACf,MAAM;IACN,0BAA0B;IAC1B,cAAc;IACd,iCAAiC;AACrC;;AAEA;IACI,iBAAiB;IACjB,UAAU;IACV,aAAa;IACb,kBAAkB;AACtB","sourcesContent":[".platform{\n    display: grid;\n    place-content: center;\n    place-items: center;\n    height: 100vh;\n    position: fixed;\n    top: 0;\n    grid-template-columns: 1fr;\n    z-index: 20000;\n    background-color: rgb(36, 36, 36);\n}\n\n.platform-select-logo{\n    filter: invert(1);\n    width: 35%;\n    padding: 45px;\n    margin-top: -105px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.platform{
+    display: grid;
+    place-content: center;
+    place-items: center;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    grid-template-columns: 1fr;
+    z-index: 20000;
+    background-color: rgb(36, 36, 36);
+}
+
+.platform-select-logo{
+    filter: invert(1);
+    width: 35%;
+    padding: 45px;
+    margin-top: -105px;
+}`, "",{"version":3,"sources":["webpack://./src/Components/PlatformSelector/PlatformSelector.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,qBAAqB;IACrB,mBAAmB;IACnB,aAAa;IACb,eAAe;IACf,MAAM;IACN,0BAA0B;IAC1B,cAAc;IACd,iCAAiC;AACrC;;AAEA;IACI,iBAAiB;IACjB,UAAU;IACV,aAAa;IACb,kBAAkB;AACtB","sourcesContent":[".platform{\n    display: grid;\n    place-content: center;\n    place-items: center;\n    height: 100vh;\n    position: fixed;\n    top: 0;\n    grid-template-columns: 1fr;\n    z-index: 20000;\n    background-color: rgb(36, 36, 36);\n}\n\n.platform-select-logo{\n    filter: invert(1);\n    width: 35%;\n    padding: 45px;\n    margin-top: -105px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5777,7 +6674,118 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".selector{\n    width: calc(max-content + 20px);\n    position: relative;\n    display: flex;\n}\n\n.selectTitle{\n    margin-bottom: 10px;\n    display: block;\n}\n\n.selector select{\n    border: 1px solid rgba(255,255,255,0.2);\n    background: transparent;\n    appearance: none;\n    -webkit-appearance: none;\n    color: #fff;\n    font-size: 12px;\n    margin: 0px;\n    padding: 8px 16px;\n    border-radius: 0;\n    /* border-bottom: 1px solid; */\n    display: block;\n    max-width: 100%;\n    min-width: 175px;\n\n    vertical-align: baseline;\n    white-space: nowrap;\n}\n\n.selector select:focus, .selector select:focus-within, .selector select:focus-visible{\n    outline: none;\n    border-bottom: 1px solid;\n}\n\n.dropdown-menu__content{\n    position: absolute;\n    top: 100%;\n    left: 0;\n    font-size: 16px;\n    font-weight: lighter;\n    width: 100%;\n    max-height: 500px;\n    overflow: scroll;\n    text-align: left;\n    background: rgb(75, 75, 75);\n    border: 1px solid rgba(255,255,255,0.2);\n    color: #d2d2d2;\n    border-radius: 5px;\n    padding: 0;\n    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);\n    /* display: none; */\n    list-style: none;\n    z-index: 1;\n}\n\n.dropdown-menu__content li{\n    padding: 10px;\n    cursor: pointer;\n    border-bottom: 1px solid transparent;\n}\n\n.dropdown-menu__content li:hover{\n    background: #959595;\n    border: 1px solid rgba(255,255,255,0.2);\n    color: #e5e5e5;\n}\n\n.dropdown-menu__content li:last-child{\n    border-bottom: none;\n}\n\n.dropdown-menu-button{\n    border: 1px solid rgba(255,255,255,0.2);\n    background: rgba(255,255,255,0.1);\n    appearance: none;\n    -webkit-appearance: none;\n    color: #fff;\n    margin: 0px;\n    padding: 8px 16px;\n    border-radius: 6px;\n    font-size: 14px;\n    font-weight: 500;\n    line-height: 16px;\n    /* border-bottom: 1px solid; */\n    display: flex;\n    -webkit-flex-direction: row;\n    -ms-flex-direction: row;\n    flex-direction: row;\n    max-width: 100%;\n    min-width: 175px;\n\n    vertical-align: baseline;\n    white-space: nowrap;\n    justify-content: space-between;\n}\n\n.dropdown-menu-button::after{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    margin-left: 10px;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-135deg);\n}\n\n/* .selectorContianer{\n    z-index: 1;\n} */", "",{"version":3,"sources":["webpack://./src/Components/SelectInput/Style.css"],"names":[],"mappings":"AAAA;IACI,+BAA+B;IAC/B,kBAAkB;IAClB,aAAa;AACjB;;AAEA;IACI,mBAAmB;IACnB,cAAc;AAClB;;AAEA;IACI,uCAAuC;IACvC,uBAAuB;IACvB,gBAAgB;IAChB,wBAAwB;IACxB,WAAW;IACX,eAAe;IACf,WAAW;IACX,iBAAiB;IACjB,gBAAgB;IAChB,8BAA8B;IAC9B,cAAc;IACd,eAAe;IACf,gBAAgB;;IAEhB,wBAAwB;IACxB,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,wBAAwB;AAC5B;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,OAAO;IACP,eAAe;IACf,oBAAoB;IACpB,WAAW;IACX,iBAAiB;IACjB,gBAAgB;IAChB,gBAAgB;IAChB,2BAA2B;IAC3B,uCAAuC;IACvC,cAAc;IACd,kBAAkB;IAClB,UAAU;IACV,wCAAwC;IACxC,mBAAmB;IACnB,gBAAgB;IAChB,UAAU;AACd;;AAEA;IACI,aAAa;IACb,eAAe;IACf,oCAAoC;AACxC;;AAEA;IACI,mBAAmB;IACnB,uCAAuC;IACvC,cAAc;AAClB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,uCAAuC;IACvC,iCAAiC;IACjC,gBAAgB;IAChB,wBAAwB;IACxB,WAAW;IACX,WAAW;IACX,iBAAiB;IACjB,kBAAkB;IAClB,eAAe;IACf,gBAAgB;IAChB,iBAAiB;IACjB,8BAA8B;IAC9B,aAAa;IACb,2BAA2B;IAC3B,uBAAuB;IACvB,mBAAmB;IACnB,eAAe;IACf,gBAAgB;;IAEhB,wBAAwB;IACxB,mBAAmB;IACnB,8BAA8B;AAClC;;AAEA;IACI,WAAW;IACX,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,cAAc;IACd,iBAAiB;IACjB,qBAAqB;IACrB,sBAAsB;IACtB,0BAA0B;AAC9B;;AAEA;;GAEG","sourcesContent":[".selector{\n    width: calc(max-content + 20px);\n    position: relative;\n    display: flex;\n}\n\n.selectTitle{\n    margin-bottom: 10px;\n    display: block;\n}\n\n.selector select{\n    border: 1px solid rgba(255,255,255,0.2);\n    background: transparent;\n    appearance: none;\n    -webkit-appearance: none;\n    color: #fff;\n    font-size: 12px;\n    margin: 0px;\n    padding: 8px 16px;\n    border-radius: 0;\n    /* border-bottom: 1px solid; */\n    display: block;\n    max-width: 100%;\n    min-width: 175px;\n\n    vertical-align: baseline;\n    white-space: nowrap;\n}\n\n.selector select:focus, .selector select:focus-within, .selector select:focus-visible{\n    outline: none;\n    border-bottom: 1px solid;\n}\n\n.dropdown-menu__content{\n    position: absolute;\n    top: 100%;\n    left: 0;\n    font-size: 16px;\n    font-weight: lighter;\n    width: 100%;\n    max-height: 500px;\n    overflow: scroll;\n    text-align: left;\n    background: rgb(75, 75, 75);\n    border: 1px solid rgba(255,255,255,0.2);\n    color: #d2d2d2;\n    border-radius: 5px;\n    padding: 0;\n    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);\n    /* display: none; */\n    list-style: none;\n    z-index: 1;\n}\n\n.dropdown-menu__content li{\n    padding: 10px;\n    cursor: pointer;\n    border-bottom: 1px solid transparent;\n}\n\n.dropdown-menu__content li:hover{\n    background: #959595;\n    border: 1px solid rgba(255,255,255,0.2);\n    color: #e5e5e5;\n}\n\n.dropdown-menu__content li:last-child{\n    border-bottom: none;\n}\n\n.dropdown-menu-button{\n    border: 1px solid rgba(255,255,255,0.2);\n    background: rgba(255,255,255,0.1);\n    appearance: none;\n    -webkit-appearance: none;\n    color: #fff;\n    margin: 0px;\n    padding: 8px 16px;\n    border-radius: 6px;\n    font-size: 14px;\n    font-weight: 500;\n    line-height: 16px;\n    /* border-bottom: 1px solid; */\n    display: flex;\n    -webkit-flex-direction: row;\n    -ms-flex-direction: row;\n    flex-direction: row;\n    max-width: 100%;\n    min-width: 175px;\n\n    vertical-align: baseline;\n    white-space: nowrap;\n    justify-content: space-between;\n}\n\n.dropdown-menu-button::after{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    margin-right: 10px;\n    display: block;\n    margin-left: 10px;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-135deg);\n}\n\n/* .selectorContianer{\n    z-index: 1;\n} */"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.selector{
+    width: calc(max-content + 20px);
+    position: relative;
+    display: flex;
+}
+
+.selectTitle{
+    margin-bottom: 10px;
+    display: block;
+}
+
+.selector select{
+    border: 1px solid rgba(255,255,255,0.2);
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    color: #fff;
+    font-size: 12px;
+    margin: 0px;
+    padding: 8px 16px;
+    border-radius: 0;
+    /* border-bottom: 1px solid; */
+    display: block;
+    max-width: 100%;
+    min-width: 175px;
+
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+.selector select:focus, .selector select:focus-within, .selector select:focus-visible{
+    outline: none;
+    border-bottom: 1px solid;
+}
+
+.dropdown-menu__content{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 16px;
+    font-weight: lighter;
+    width: 100%;
+    max-height: 500px;
+    overflow: scroll;
+    text-align: left;
+    background: rgb(75, 75, 75);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #d2d2d2;
+    border-radius: 5px;
+    padding: 0;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    /* display: none; */
+    list-style: none;
+    z-index: 1;
+}
+
+.dropdown-menu__content li{
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+}
+
+.dropdown-menu__content li:hover{
+    background: #959595;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #e5e5e5;
+}
+
+.dropdown-menu__content li:last-child{
+    border-bottom: none;
+}
+
+.dropdown-menu-button{
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    appearance: none;
+    -webkit-appearance: none;
+    color: #fff;
+    margin: 0px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    /* border-bottom: 1px solid; */
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    max-width: 100%;
+    min-width: 175px;
+
+    vertical-align: baseline;
+    white-space: nowrap;
+    justify-content: space-between;
+}
+
+.dropdown-menu-button::after{
+    content: "";
+    width: 10px;
+    height: 10px;
+    
+    display: block;
+    margin-left: 10px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    transform: rotate(-135deg);
+}
+
+/* .selectorContianer{
+    z-index: 1;
+} */`, "",{"version":3,"sources":["webpack://./src/Components/SelectInput/Style.css"],"names":[],"mappings":"AAAA;IACI,+BAA+B;IAC/B,kBAAkB;IAClB,aAAa;AACjB;;AAEA;IACI,mBAAmB;IACnB,cAAc;AAClB;;AAEA;IACI,uCAAuC;IACvC,uBAAuB;IACvB,gBAAgB;IAChB,wBAAwB;IACxB,WAAW;IACX,eAAe;IACf,WAAW;IACX,iBAAiB;IACjB,gBAAgB;IAChB,8BAA8B;IAC9B,cAAc;IACd,eAAe;IACf,gBAAgB;;IAEhB,wBAAwB;IACxB,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,wBAAwB;AAC5B;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,OAAO;IACP,eAAe;IACf,oBAAoB;IACpB,WAAW;IACX,iBAAiB;IACjB,gBAAgB;IAChB,gBAAgB;IAChB,2BAA2B;IAC3B,uCAAuC;IACvC,cAAc;IACd,kBAAkB;IAClB,UAAU;IACV,wCAAwC;IACxC,mBAAmB;IACnB,gBAAgB;IAChB,UAAU;AACd;;AAEA;IACI,aAAa;IACb,eAAe;IACf,oCAAoC;AACxC;;AAEA;IACI,mBAAmB;IACnB,uCAAuC;IACvC,cAAc;AAClB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,uCAAuC;IACvC,iCAAiC;IACjC,gBAAgB;IAChB,wBAAwB;IACxB,WAAW;IACX,WAAW;IACX,iBAAiB;IACjB,kBAAkB;IAClB,eAAe;IACf,gBAAgB;IAChB,iBAAiB;IACjB,8BAA8B;IAC9B,aAAa;IACb,2BAA2B;IAC3B,uBAAuB;IACvB,mBAAmB;IACnB,eAAe;IACf,gBAAgB;;IAEhB,wBAAwB;IACxB,mBAAmB;IACnB,8BAA8B;AAClC;;AAEA;IACI,WAAW;IACX,WAAW;IACX,YAAY;;IAEZ,cAAc;IACd,iBAAiB;IACjB,qBAAqB;IACrB,sBAAsB;IACtB,0BAA0B;AAC9B;;AAEA;;GAEG","sourcesContent":[".selector{\n    width: calc(max-content + 20px);\n    position: relative;\n    display: flex;\n}\n\n.selectTitle{\n    margin-bottom: 10px;\n    display: block;\n}\n\n.selector select{\n    border: 1px solid rgba(255,255,255,0.2);\n    background: transparent;\n    appearance: none;\n    -webkit-appearance: none;\n    color: #fff;\n    font-size: 12px;\n    margin: 0px;\n    padding: 8px 16px;\n    border-radius: 0;\n    /* border-bottom: 1px solid; */\n    display: block;\n    max-width: 100%;\n    min-width: 175px;\n\n    vertical-align: baseline;\n    white-space: nowrap;\n}\n\n.selector select:focus, .selector select:focus-within, .selector select:focus-visible{\n    outline: none;\n    border-bottom: 1px solid;\n}\n\n.dropdown-menu__content{\n    position: absolute;\n    top: 100%;\n    left: 0;\n    font-size: 16px;\n    font-weight: lighter;\n    width: 100%;\n    max-height: 500px;\n    overflow: scroll;\n    text-align: left;\n    background: rgb(75, 75, 75);\n    border: 1px solid rgba(255,255,255,0.2);\n    color: #d2d2d2;\n    border-radius: 5px;\n    padding: 0;\n    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);\n    /* display: none; */\n    list-style: none;\n    z-index: 1;\n}\n\n.dropdown-menu__content li{\n    padding: 10px;\n    cursor: pointer;\n    border-bottom: 1px solid transparent;\n}\n\n.dropdown-menu__content li:hover{\n    background: #959595;\n    border: 1px solid rgba(255,255,255,0.2);\n    color: #e5e5e5;\n}\n\n.dropdown-menu__content li:last-child{\n    border-bottom: none;\n}\n\n.dropdown-menu-button{\n    border: 1px solid rgba(255,255,255,0.2);\n    background: rgba(255,255,255,0.1);\n    appearance: none;\n    -webkit-appearance: none;\n    color: #fff;\n    margin: 0px;\n    padding: 8px 16px;\n    border-radius: 6px;\n    font-size: 14px;\n    font-weight: 500;\n    line-height: 16px;\n    /* border-bottom: 1px solid; */\n    display: flex;\n    -webkit-flex-direction: row;\n    -ms-flex-direction: row;\n    flex-direction: row;\n    max-width: 100%;\n    min-width: 175px;\n\n    vertical-align: baseline;\n    white-space: nowrap;\n    justify-content: space-between;\n}\n\n.dropdown-menu-button::after{\n    content: \"\";\n    width: 10px;\n    height: 10px;\n    \n    display: block;\n    margin-left: 10px;\n    border-top: 1px solid;\n    border-left: 1px solid;\n    transform: rotate(-135deg);\n}\n\n/* .selectorContianer{\n    z-index: 1;\n} */"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5803,7 +6811,58 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".content{\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n    font-weight: 300;\n    font-size: 16px;\n    line-height: 24px;\n    text-align: center;\n    margin-top: 50px;\n}\n\n.stripe-price-table{\n    width: 100%;\n    margin-bottom: 50px;\n}\n\n.payment-header{\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    max-width: 1400px;\n    width: 100%;\n    margin: auto;\n    padding: 15px;\n}\n.logo{\n    width: 5%;\n    filter: invert(100%);\n    float: left;\n}\n\n@media screen and (max-width: 600px){\n    .logo{\n        width: 12%;\n    }\n}", "",{"version":3,"sources":["webpack://./src/Components/StripePayment/Style/Stripe.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,aAAa;IACb,sBAAsB;IACtB,iCAAiC;IACjC,gBAAgB;IAChB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,mBAAmB;IACnB,iBAAiB;IACjB,WAAW;IACX,YAAY;IACZ,aAAa;AACjB;AACA;IACI,SAAS;IACT,oBAAoB;IACpB,WAAW;AACf;;AAEA;IACI;QACI,UAAU;IACd;AACJ","sourcesContent":[".content{\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n    font-weight: 300;\n    font-size: 16px;\n    line-height: 24px;\n    text-align: center;\n    margin-top: 50px;\n}\n\n.stripe-price-table{\n    width: 100%;\n    margin-bottom: 50px;\n}\n\n.payment-header{\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    max-width: 1400px;\n    width: 100%;\n    margin: auto;\n    padding: 15px;\n}\n.logo{\n    width: 5%;\n    filter: invert(100%);\n    float: left;\n}\n\n@media screen and (max-width: 600px){\n    .logo{\n        width: 12%;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.stripe-price-table{
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.payment-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1400px;
+    width: 100%;
+    margin: auto;
+    padding: 15px;
+}
+.logo{
+    width: 5%;
+    filter: invert(100%);
+    float: left;
+}
+
+.footer a{
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.footer a:hover{
+    color: #E3DA37;
+}
+
+@media screen and (max-width: 600px){
+    .logo{
+        width: 12%;
+    }
+}`, "",{"version":3,"sources":["webpack://./src/Components/StripePayment/Style/Stripe.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,sBAAsB;IACtB,mBAAmB;IACnB,aAAa;IACb,sBAAsB;IACtB,iCAAiC;IACjC,gBAAgB;IAChB,eAAe;IACf,iBAAiB;IACjB,kBAAkB;IAClB,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,mBAAmB;IACnB,iBAAiB;IACjB,WAAW;IACX,YAAY;IACZ,aAAa;AACjB;AACA;IACI,SAAS;IACT,oBAAoB;IACpB,WAAW;AACf;;AAEA;IACI,WAAW;IACX,qBAAqB;IACrB,qBAAqB;IACrB,eAAe;AACnB;;AAEA;IACI,cAAc;AAClB;;AAEA;IACI;QACI,UAAU;IACd;AACJ","sourcesContent":[".content{\n    width: 100%;\n    height: 100%;\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    padding: 20px;\n    box-sizing: border-box;\n    font-family: 'Roboto', sans-serif;\n    font-weight: 300;\n    font-size: 16px;\n    line-height: 24px;\n    text-align: center;\n    margin-top: 50px;\n}\n\n.stripe-price-table{\n    width: 100%;\n    margin-bottom: 50px;\n}\n\n.payment-header{\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n    max-width: 1400px;\n    width: 100%;\n    margin: auto;\n    padding: 15px;\n}\n.logo{\n    width: 5%;\n    filter: invert(100%);\n    float: left;\n}\n\n.footer a{\n    color: #fff;\n    text-decoration: none;\n    display: inline-block;\n    padding: 0 10px;\n}\n\n.footer a:hover{\n    color: #E3DA37;\n}\n\n@media screen and (max-width: 600px){\n    .logo{\n        width: 12%;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5829,7 +6888,20 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".successWindow{\n    position: fixed;\n    right: 0;\n    top: 100px;\n    background: rgb(58, 58, 58);\n    width: auto;\n    border-top: 2px solid green;\n    transition: right .5s ease-in-out;\n}\n\n.successWindow-content{\n    padding: 15px;\n    color: #fff;\n}", "",{"version":3,"sources":["webpack://./src/Components/SuccessWindow/Style.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,QAAQ;IACR,UAAU;IACV,2BAA2B;IAC3B,WAAW;IACX,2BAA2B;IAC3B,iCAAiC;AACrC;;AAEA;IACI,aAAa;IACb,WAAW;AACf","sourcesContent":[".successWindow{\n    position: fixed;\n    right: 0;\n    top: 100px;\n    background: rgb(58, 58, 58);\n    width: auto;\n    border-top: 2px solid green;\n    transition: right .5s ease-in-out;\n}\n\n.successWindow-content{\n    padding: 15px;\n    color: #fff;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.successWindow{
+    position: fixed;
+    right: 0;
+    top: 100px;
+    background: rgb(58, 58, 58);
+    width: auto;
+    border-top: 2px solid green;
+    transition: right .5s ease-in-out;
+}
+
+.successWindow-content{
+    padding: 15px;
+    color: #fff;
+}`, "",{"version":3,"sources":["webpack://./src/Components/SuccessWindow/Style.css"],"names":[],"mappings":"AAAA;IACI,eAAe;IACf,QAAQ;IACR,UAAU;IACV,2BAA2B;IAC3B,WAAW;IACX,2BAA2B;IAC3B,iCAAiC;AACrC;;AAEA;IACI,aAAa;IACb,WAAW;AACf","sourcesContent":[".successWindow{\n    position: fixed;\n    right: 0;\n    top: 100px;\n    background: rgb(58, 58, 58);\n    width: auto;\n    border-top: 2px solid green;\n    transition: right .5s ease-in-out;\n}\n\n.successWindow-content{\n    padding: 15px;\n    color: #fff;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5855,7 +6927,35 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".table{\n    background-color: #5c5c5c;\n    padding: 15px;\n    border-radius: 10px;\n    max-height: 500px;\n    overflow: scroll;\n    position: relative;\n}\n\n.table-header{\n    font-size: 18px;\n    border-bottom: 1px solid #fff;\n    font-weight: bold;\n}\n\n.table-row{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    padding: 15px 0;\n    gap: 10px;\n    white-space: wrap;\n}\n\n.table-cell{\n    color: #fff;\n    padding: 0 5px;\n    white-space: wrap;\n    overflow: scroll;\n}", "",{"version":3,"sources":["webpack://./src/Components/Tabel/Style.css"],"names":[],"mappings":"AAAA;IACI,yBAAyB;IACzB,aAAa;IACb,mBAAmB;IACnB,iBAAiB;IACjB,gBAAgB;IAChB,kBAAkB;AACtB;;AAEA;IACI,eAAe;IACf,6BAA6B;IAC7B,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,eAAe;IACf,SAAS;IACT,iBAAiB;AACrB;;AAEA;IACI,WAAW;IACX,cAAc;IACd,iBAAiB;IACjB,gBAAgB;AACpB","sourcesContent":[".table{\n    background-color: #5c5c5c;\n    padding: 15px;\n    border-radius: 10px;\n    max-height: 500px;\n    overflow: scroll;\n    position: relative;\n}\n\n.table-header{\n    font-size: 18px;\n    border-bottom: 1px solid #fff;\n    font-weight: bold;\n}\n\n.table-row{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    padding: 15px 0;\n    gap: 10px;\n    white-space: wrap;\n}\n\n.table-cell{\n    color: #fff;\n    padding: 0 5px;\n    white-space: wrap;\n    overflow: scroll;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.table{
+    background-color: #5c5c5c;
+    padding: 15px;
+    border-radius: 10px;
+    max-height: 500px;
+    overflow: scroll;
+    position: relative;
+}
+
+.table-header{
+    font-size: 18px;
+    border-bottom: 1px solid #fff;
+    font-weight: bold;
+}
+
+.table-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 15px 0;
+    gap: 10px;
+    white-space: wrap;
+}
+
+.table-cell{
+    color: #fff;
+    padding: 0 5px;
+    white-space: wrap;
+    overflow: scroll;
+}`, "",{"version":3,"sources":["webpack://./src/Components/Tabel/Style.css"],"names":[],"mappings":"AAAA;IACI,yBAAyB;IACzB,aAAa;IACb,mBAAmB;IACnB,iBAAiB;IACjB,gBAAgB;IAChB,kBAAkB;AACtB;;AAEA;IACI,eAAe;IACf,6BAA6B;IAC7B,iBAAiB;AACrB;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,eAAe;IACf,SAAS;IACT,iBAAiB;AACrB;;AAEA;IACI,WAAW;IACX,cAAc;IACd,iBAAiB;IACjB,gBAAgB;AACpB","sourcesContent":[".table{\n    background-color: #5c5c5c;\n    padding: 15px;\n    border-radius: 10px;\n    max-height: 500px;\n    overflow: scroll;\n    position: relative;\n}\n\n.table-header{\n    font-size: 18px;\n    border-bottom: 1px solid #fff;\n    font-weight: bold;\n}\n\n.table-row{\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    padding: 15px 0;\n    gap: 10px;\n    white-space: wrap;\n}\n\n.table-cell{\n    color: #fff;\n    padding: 0 5px;\n    white-space: wrap;\n    overflow: scroll;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5881,7 +6981,33 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".bigNumIsLoading{\n    width: 100%;\n    height: 44px;\n    margin: 1em 0;\n    background: linear-gradient(to right, rgba(131, 131, 131, 0), rgb(66, 66, 66), rgba(131, 131, 131, 0));\n    animation-name: pulse;\n    animation-duration: 2s;\n    animation-iteration-count: infinite;\n    animation-delay: 1ms;\n}\n\n.smallIsLoading{\n    width: 70%;\n    height: 34px;\n    margin: 1em auto;\n    background: linear-gradient(to right, rgba(131, 131, 131, 0), rgb(66, 66, 66), rgba(131, 131, 131, 0));\n    animation-name: pulse;\n    animation-duration: 2s;\n    animation-iteration-count: infinite;\n    animation-delay: 1ms;\n}\n\n@keyframes pulse {\n    0%   {opacity: .5;}\n    50%  {opacity: 1;}\n    100% {opacity: .5;}\n}  ", "",{"version":3,"sources":["webpack://./src/Components/widget/Loading.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,sGAAsG;IACtG,qBAAqB;IACrB,sBAAsB;IACtB,mCAAmC;IACnC,oBAAoB;AACxB;;AAEA;IACI,UAAU;IACV,YAAY;IACZ,gBAAgB;IAChB,sGAAsG;IACtG,qBAAqB;IACrB,sBAAsB;IACtB,mCAAmC;IACnC,oBAAoB;AACxB;;AAEA;IACI,MAAM,WAAW,CAAC;IAClB,MAAM,UAAU,CAAC;IACjB,MAAM,WAAW,CAAC;AACtB","sourcesContent":[".bigNumIsLoading{\n    width: 100%;\n    height: 44px;\n    margin: 1em 0;\n    background: linear-gradient(to right, rgba(131, 131, 131, 0), rgb(66, 66, 66), rgba(131, 131, 131, 0));\n    animation-name: pulse;\n    animation-duration: 2s;\n    animation-iteration-count: infinite;\n    animation-delay: 1ms;\n}\n\n.smallIsLoading{\n    width: 70%;\n    height: 34px;\n    margin: 1em auto;\n    background: linear-gradient(to right, rgba(131, 131, 131, 0), rgb(66, 66, 66), rgba(131, 131, 131, 0));\n    animation-name: pulse;\n    animation-duration: 2s;\n    animation-iteration-count: infinite;\n    animation-delay: 1ms;\n}\n\n@keyframes pulse {\n    0%   {opacity: .5;}\n    50%  {opacity: 1;}\n    100% {opacity: .5;}\n}  "],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.bigNumIsLoading{
+    width: 100%;
+    height: 44px;
+    margin: 1em 0;
+    background: linear-gradient(to right, rgba(131, 131, 131, 0), rgb(66, 66, 66), rgba(131, 131, 131, 0));
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: 1ms;
+}
+
+.smallIsLoading{
+    width: 70%;
+    height: 34px;
+    margin: 1em auto;
+    background: linear-gradient(to right, rgba(131, 131, 131, 0), rgb(66, 66, 66), rgba(131, 131, 131, 0));
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-delay: 1ms;
+}
+
+@keyframes pulse {
+    0%   {opacity: .5;}
+    50%  {opacity: 1;}
+    100% {opacity: .5;}
+}  `, "",{"version":3,"sources":["webpack://./src/Components/widget/Loading.css"],"names":[],"mappings":"AAAA;IACI,WAAW;IACX,YAAY;IACZ,aAAa;IACb,sGAAsG;IACtG,qBAAqB;IACrB,sBAAsB;IACtB,mCAAmC;IACnC,oBAAoB;AACxB;;AAEA;IACI,UAAU;IACV,YAAY;IACZ,gBAAgB;IAChB,sGAAsG;IACtG,qBAAqB;IACrB,sBAAsB;IACtB,mCAAmC;IACnC,oBAAoB;AACxB;;AAEA;IACI,MAAM,WAAW,CAAC;IAClB,MAAM,UAAU,CAAC;IACjB,MAAM,WAAW,CAAC;AACtB","sourcesContent":[".bigNumIsLoading{\n    width: 100%;\n    height: 44px;\n    margin: 1em 0;\n    background: linear-gradient(to right, rgba(131, 131, 131, 0), rgb(66, 66, 66), rgba(131, 131, 131, 0));\n    animation-name: pulse;\n    animation-duration: 2s;\n    animation-iteration-count: infinite;\n    animation-delay: 1ms;\n}\n\n.smallIsLoading{\n    width: 70%;\n    height: 34px;\n    margin: 1em auto;\n    background: linear-gradient(to right, rgba(131, 131, 131, 0), rgb(66, 66, 66), rgba(131, 131, 131, 0));\n    animation-name: pulse;\n    animation-duration: 2s;\n    animation-iteration-count: infinite;\n    animation-delay: 1ms;\n}\n\n@keyframes pulse {\n    0%   {opacity: .5;}\n    50%  {opacity: 1;}\n    100% {opacity: .5;}\n}  "],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5907,7 +7033,45 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".widget{\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    background: radial-gradient(circle at top, rgb(101, 101, 101) -10%, rgb(48, 48, 48));\n    border-radius: 10px;\n    padding: 20px;\n    position: relative;\n    overflow: hidden;\n    min-height: 200px;\n    margin: 20px 0px;\n    color: rgb(197, 197, 197);\n    text-align: center;\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    text-decoration: none;\n}\n\n.no-padding{\n    padding: 0px;\n}\n\n/* .overviewTotal::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #c09f53;\n}\n\n.overviewDistribution::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #ddd29b;\n} */", "",{"version":3,"sources":["webpack://./src/Components/widget/Widget.css"],"names":[],"mappings":"AAAA;IACI,kFAAkF;IAClF,oFAAoF;IACpF,mBAAmB;IACnB,aAAa;IACb,kBAAkB;IAClB,gBAAgB;IAChB,iBAAiB;IACjB,gBAAgB;IAChB,yBAAyB;IACzB,kBAAkB;IAClB,0CAA0C;IAC1C,kDAAkD;IAClD,qBAAqB;AACzB;;AAEA;IACI,YAAY;AAChB;;AAEA;;;;;;;;;;;;;;;;;;GAkBG","sourcesContent":[".widget{\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    background: radial-gradient(circle at top, rgb(101, 101, 101) -10%, rgb(48, 48, 48));\n    border-radius: 10px;\n    padding: 20px;\n    position: relative;\n    overflow: hidden;\n    min-height: 200px;\n    margin: 20px 0px;\n    color: rgb(197, 197, 197);\n    text-align: center;\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    text-decoration: none;\n}\n\n.no-padding{\n    padding: 0px;\n}\n\n/* .overviewTotal::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #c09f53;\n}\n\n.overviewDistribution::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #ddd29b;\n} */"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.widget{
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+    background: radial-gradient(circle at top, rgb(101, 101, 101) -10%, rgb(48, 48, 48));
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    min-height: 200px;
+    margin: 20px 0px;
+    color: rgb(197, 197, 197);
+    text-align: center;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    text-decoration: none;
+}
+
+.no-padding{
+    padding: 0px;
+}
+
+/* .overviewTotal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #c09f53;
+}
+
+.overviewDistribution::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #ddd29b;
+} */`, "",{"version":3,"sources":["webpack://./src/Components/widget/Widget.css"],"names":[],"mappings":"AAAA;IACI,kFAAkF;IAClF,oFAAoF;IACpF,mBAAmB;IACnB,aAAa;IACb,kBAAkB;IAClB,gBAAgB;IAChB,iBAAiB;IACjB,gBAAgB;IAChB,yBAAyB;IACzB,kBAAkB;IAClB,0CAA0C;IAC1C,kDAAkD;IAClD,qBAAqB;AACzB;;AAEA;IACI,YAAY;AAChB;;AAEA;;;;;;;;;;;;;;;;;;GAkBG","sourcesContent":[".widget{\n    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);\n    background: radial-gradient(circle at top, rgb(101, 101, 101) -10%, rgb(48, 48, 48));\n    border-radius: 10px;\n    padding: 20px;\n    position: relative;\n    overflow: hidden;\n    min-height: 200px;\n    margin: 20px 0px;\n    color: rgb(197, 197, 197);\n    text-align: center;\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    text-decoration: none;\n}\n\n.no-padding{\n    padding: 0px;\n}\n\n/* .overviewTotal::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #c09f53;\n}\n\n.overviewDistribution::before {\n    content: '';\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 10px;\n    background-color: #ddd29b;\n} */"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5933,7 +7097,143 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".loginForm-container{\n    display: grid;\n    grid-template-columns: 1fr .85fr;\n    height: 100vh;\n    width: 100%;\n    text-align: center;\n    background-color: #c09f53;\n    background-image: url(\"https://www.intastellaraccounts.com/images/AdobeStock_317238161.jpeg\");\n    background-position: left;\n    background-size: cover;\n    background-blend-mode: multiply;\n    position: absolute;\n    z-index: 1000000000;\n    top: 0;\n}\n\n.loginForm-overlay{\n    position: fixed;\n    top: 0;\n    z-index: 100;\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    display: grid;\n    place-content: center;\n    background: rgba(0,0,0,.7);\n}\n\n.loginForm{\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    background: radial-gradient(circle at top, rgba(188, 188, 188, .8) -10%, rgba(48, 48, 48, .6));\n    padding: 80px;\n    box-sizing: border-box;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    color: rgb(234, 234, 234);\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    grid-column: 2/3;\n}\n\n.loginForm-overlay .loginForm{\n    width: 500px;\n}\n\n.loginForm label{\n    text-align: left;\n    display: block;\n    padding: 5px 0px;\n}\n\n.loginForm-inputField{\n    padding: 15px;\n    border: none;\n    width: 100%;\n    box-sizing: border-box;\n    font-size: 12px;\n    margin: 2px 0px;\n}\n\n.loginForm-forget{\n    padding: 15px;\n    color: rgb(234, 234, 234);\n    text-decoration: none;\n    display: block;\n    text-align: right;\n}\n\n.loginForm-logo{\n    width: 35%;\n    margin: 20px auto;\n    padding: 20px 15px;\n    filter: invert(100) brightness(100);\n}\n\n.loginForm-logo.--hideMobile{\n    display: none;\n}\n\n.loginForm-inputField.--btn{\n    background-color: #c09f53;\n    font-size: 16px;\n    color: #fff;\n    font-weight: bold;\n    letter-spacing: 5px;\n    text-transform: uppercase;\n}\n\n.loginForm-title{\n    font-size: 1.7em;\n    text-align: left;\n    padding: 15px 0px;\n    width: 70%;\n    text-transform: uppercase;\n    margin-bottom: -2px;\n}\n\n.loginForm-service{\n    margin: 0 0 10px;\n}\n\n.loginForm-inputField.--link{\n    color: #fff;\n    text-decoration: none;\n    font-size: 14px;\n    text-align: center;\n    display: block;\n    margin: 10px 0px;\n}\n\n@media screen and (min-width: 375px) and (max-width: 900px) {\n    .loginForm-container{\n        grid-template-columns: 1fr;\n    }\n\n    .loginForm-logo{\n        width: 100%;\n        padding: 0;\n        margin: 20px 0px;\n    }\n\n    .loginForm{\n        padding: 40px;\n        background: radial-gradient(circle at top, rgba(188, 188, 188, .6) -10%, rgba(48, 48, 48, .4));\n    }\n\n    .loginForm-container{\n        background-position: -250px;\n    }\n\n    .signup{\n        overflow: scroll;\n    }\n}", "",{"version":3,"sources":["webpack://./src/Login/Login.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,gCAAgC;IAChC,aAAa;IACb,WAAW;IACX,kBAAkB;IAClB,yBAAyB;IACzB,6FAA6F;IAC7F,yBAAyB;IACzB,sBAAsB;IACtB,+BAA+B;IAC/B,kBAAkB;IAClB,mBAAmB;IACnB,MAAM;AACV;;AAEA;IACI,eAAe;IACf,MAAM;IACN,YAAY;IACZ,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,qBAAqB;IACrB,0BAA0B;AAC9B;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,8FAA8F;IAC9F,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,yBAAyB;IACzB,0CAA0C;IAC1C,kDAAkD;IAClD,gBAAgB;AACpB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,gBAAgB;IAChB,cAAc;IACd,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,YAAY;IACZ,WAAW;IACX,sBAAsB;IACtB,eAAe;IACf,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,yBAAyB;IACzB,qBAAqB;IACrB,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,UAAU;IACV,iBAAiB;IACjB,kBAAkB;IAClB,mCAAmC;AACvC;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,yBAAyB;IACzB,eAAe;IACf,WAAW;IACX,iBAAiB;IACjB,mBAAmB;IACnB,yBAAyB;AAC7B;;AAEA;IACI,gBAAgB;IAChB,gBAAgB;IAChB,iBAAiB;IACjB,UAAU;IACV,yBAAyB;IACzB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,qBAAqB;IACrB,eAAe;IACf,kBAAkB;IAClB,cAAc;IACd,gBAAgB;AACpB;;AAEA;IACI;QACI,0BAA0B;IAC9B;;IAEA;QACI,WAAW;QACX,UAAU;QACV,gBAAgB;IACpB;;IAEA;QACI,aAAa;QACb,8FAA8F;IAClG;;IAEA;QACI,2BAA2B;IAC/B;;IAEA;QACI,gBAAgB;IACpB;AACJ","sourcesContent":[".loginForm-container{\n    display: grid;\n    grid-template-columns: 1fr .85fr;\n    height: 100vh;\n    width: 100%;\n    text-align: center;\n    background-color: #c09f53;\n    background-image: url(\"https://www.intastellaraccounts.com/images/AdobeStock_317238161.jpeg\");\n    background-position: left;\n    background-size: cover;\n    background-blend-mode: multiply;\n    position: absolute;\n    z-index: 1000000000;\n    top: 0;\n}\n\n.loginForm-overlay{\n    position: fixed;\n    top: 0;\n    z-index: 100;\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    display: grid;\n    place-content: center;\n    background: rgba(0,0,0,.7);\n}\n\n.loginForm{\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    background: radial-gradient(circle at top, rgba(188, 188, 188, .8) -10%, rgba(48, 48, 48, .6));\n    padding: 80px;\n    box-sizing: border-box;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    color: rgb(234, 234, 234);\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    grid-column: 2/3;\n}\n\n.loginForm-overlay .loginForm{\n    width: 500px;\n}\n\n.loginForm label{\n    text-align: left;\n    display: block;\n    padding: 5px 0px;\n}\n\n.loginForm-inputField{\n    padding: 15px;\n    border: none;\n    width: 100%;\n    box-sizing: border-box;\n    font-size: 12px;\n    margin: 2px 0px;\n}\n\n.loginForm-forget{\n    padding: 15px;\n    color: rgb(234, 234, 234);\n    text-decoration: none;\n    display: block;\n    text-align: right;\n}\n\n.loginForm-logo{\n    width: 35%;\n    margin: 20px auto;\n    padding: 20px 15px;\n    filter: invert(100) brightness(100);\n}\n\n.loginForm-logo.--hideMobile{\n    display: none;\n}\n\n.loginForm-inputField.--btn{\n    background-color: #c09f53;\n    font-size: 16px;\n    color: #fff;\n    font-weight: bold;\n    letter-spacing: 5px;\n    text-transform: uppercase;\n}\n\n.loginForm-title{\n    font-size: 1.7em;\n    text-align: left;\n    padding: 15px 0px;\n    width: 70%;\n    text-transform: uppercase;\n    margin-bottom: -2px;\n}\n\n.loginForm-service{\n    margin: 0 0 10px;\n}\n\n.loginForm-inputField.--link{\n    color: #fff;\n    text-decoration: none;\n    font-size: 14px;\n    text-align: center;\n    display: block;\n    margin: 10px 0px;\n}\n\n@media screen and (min-width: 375px) and (max-width: 900px) {\n    .loginForm-container{\n        grid-template-columns: 1fr;\n    }\n\n    .loginForm-logo{\n        width: 100%;\n        padding: 0;\n        margin: 20px 0px;\n    }\n\n    .loginForm{\n        padding: 40px;\n        background: radial-gradient(circle at top, rgba(188, 188, 188, .6) -10%, rgba(48, 48, 48, .4));\n    }\n\n    .loginForm-container{\n        background-position: -250px;\n    }\n\n    .signup{\n        overflow: scroll;\n    }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.loginForm-container{
+    display: grid;
+    grid-template-columns: 1fr .85fr;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    background-color: #c09f53;
+    background-image: url("https://www.intastellaraccounts.com/images/AdobeStock_317238161.jpeg");
+    background-position: left;
+    background-size: cover;
+    background-blend-mode: multiply;
+    position: absolute;
+    z-index: 1000000000;
+    top: 0;
+}
+
+.loginForm-overlay{
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: grid;
+    place-content: center;
+    background: rgba(0,0,0,.7);
+}
+
+.loginForm{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    background: radial-gradient(circle at top, rgba(188, 188, 188, .8) -10%, rgba(48, 48, 48, .6));
+    padding: 80px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: rgb(234, 234, 234);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    grid-column: 2/3;
+}
+
+.loginForm-overlay .loginForm{
+    width: 500px;
+}
+
+.loginForm label{
+    text-align: left;
+    display: block;
+    padding: 5px 0px;
+}
+
+.loginForm-inputField{
+    padding: 15px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 12px;
+    margin: 2px 0px;
+}
+
+.loginForm-forget{
+    padding: 15px;
+    color: rgb(234, 234, 234);
+    text-decoration: none;
+    display: block;
+    text-align: right;
+}
+
+.loginForm-logo{
+    width: 35%;
+    margin: 20px auto;
+    padding: 20px 15px;
+    filter: invert(100) brightness(100);
+}
+
+.loginForm-logo.--hideMobile{
+    display: none;
+}
+
+.loginForm-inputField.--btn{
+    background-color: #c09f53;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.loginForm-title{
+    font-size: 1.7em;
+    text-align: left;
+    padding: 15px 0px;
+    width: 70%;
+    text-transform: uppercase;
+    margin-bottom: -2px;
+}
+
+.loginForm-service{
+    margin: 0 0 10px;
+}
+
+.loginForm-inputField.--link{
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    margin: 10px 0px;
+}
+
+@media screen and (min-width: 375px) and (max-width: 900px) {
+    .loginForm-container{
+        grid-template-columns: 1fr;
+    }
+
+    .loginForm-logo{
+        width: 100%;
+        padding: 0;
+        margin: 20px 0px;
+    }
+
+    .loginForm{
+        padding: 40px;
+        background: radial-gradient(circle at top, rgba(188, 188, 188, .6) -10%, rgba(48, 48, 48, .4));
+    }
+
+    .loginForm-container{
+        background-position: -250px;
+    }
+
+    .signup{
+        overflow: scroll;
+    }
+}`, "",{"version":3,"sources":["webpack://./src/Login/Login.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,gCAAgC;IAChC,aAAa;IACb,WAAW;IACX,kBAAkB;IAClB,yBAAyB;IACzB,6FAA6F;IAC7F,yBAAyB;IACzB,sBAAsB;IACtB,+BAA+B;IAC/B,kBAAkB;IAClB,mBAAmB;IACnB,MAAM;AACV;;AAEA;IACI,eAAe;IACf,MAAM;IACN,YAAY;IACZ,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,aAAa;IACb,qBAAqB;IACrB,0BAA0B;AAC9B;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,YAAY;IACZ,8FAA8F;IAC9F,aAAa;IACb,sBAAsB;IACtB,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,yBAAyB;IACzB,0CAA0C;IAC1C,kDAAkD;IAClD,gBAAgB;AACpB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,gBAAgB;IAChB,cAAc;IACd,gBAAgB;AACpB;;AAEA;IACI,aAAa;IACb,YAAY;IACZ,WAAW;IACX,sBAAsB;IACtB,eAAe;IACf,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,yBAAyB;IACzB,qBAAqB;IACrB,cAAc;IACd,iBAAiB;AACrB;;AAEA;IACI,UAAU;IACV,iBAAiB;IACjB,kBAAkB;IAClB,mCAAmC;AACvC;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,yBAAyB;IACzB,eAAe;IACf,WAAW;IACX,iBAAiB;IACjB,mBAAmB;IACnB,yBAAyB;AAC7B;;AAEA;IACI,gBAAgB;IAChB,gBAAgB;IAChB,iBAAiB;IACjB,UAAU;IACV,yBAAyB;IACzB,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,WAAW;IACX,qBAAqB;IACrB,eAAe;IACf,kBAAkB;IAClB,cAAc;IACd,gBAAgB;AACpB;;AAEA;IACI;QACI,0BAA0B;IAC9B;;IAEA;QACI,WAAW;QACX,UAAU;QACV,gBAAgB;IACpB;;IAEA;QACI,aAAa;QACb,8FAA8F;IAClG;;IAEA;QACI,2BAA2B;IAC/B;;IAEA;QACI,gBAAgB;IACpB;AACJ","sourcesContent":[".loginForm-container{\n    display: grid;\n    grid-template-columns: 1fr .85fr;\n    height: 100vh;\n    width: 100%;\n    text-align: center;\n    background-color: #c09f53;\n    background-image: url(\"https://www.intastellaraccounts.com/images/AdobeStock_317238161.jpeg\");\n    background-position: left;\n    background-size: cover;\n    background-blend-mode: multiply;\n    position: absolute;\n    z-index: 1000000000;\n    top: 0;\n}\n\n.loginForm-overlay{\n    position: fixed;\n    top: 0;\n    z-index: 100;\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    display: grid;\n    place-content: center;\n    background: rgba(0,0,0,.7);\n}\n\n.loginForm{\n    width: 100%;\n    height: 100%;\n    margin: auto;\n    background: radial-gradient(circle at top, rgba(188, 188, 188, .8) -10%, rgba(48, 48, 48, .6));\n    padding: 80px;\n    box-sizing: border-box;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    color: rgb(234, 234, 234);\n    backdrop-filter: saturate(180%) blur(20px);\n    -webkit-backdrop-filter: saturate(180%) blur(20px);\n    grid-column: 2/3;\n}\n\n.loginForm-overlay .loginForm{\n    width: 500px;\n}\n\n.loginForm label{\n    text-align: left;\n    display: block;\n    padding: 5px 0px;\n}\n\n.loginForm-inputField{\n    padding: 15px;\n    border: none;\n    width: 100%;\n    box-sizing: border-box;\n    font-size: 12px;\n    margin: 2px 0px;\n}\n\n.loginForm-forget{\n    padding: 15px;\n    color: rgb(234, 234, 234);\n    text-decoration: none;\n    display: block;\n    text-align: right;\n}\n\n.loginForm-logo{\n    width: 35%;\n    margin: 20px auto;\n    padding: 20px 15px;\n    filter: invert(100) brightness(100);\n}\n\n.loginForm-logo.--hideMobile{\n    display: none;\n}\n\n.loginForm-inputField.--btn{\n    background-color: #c09f53;\n    font-size: 16px;\n    color: #fff;\n    font-weight: bold;\n    letter-spacing: 5px;\n    text-transform: uppercase;\n}\n\n.loginForm-title{\n    font-size: 1.7em;\n    text-align: left;\n    padding: 15px 0px;\n    width: 70%;\n    text-transform: uppercase;\n    margin-bottom: -2px;\n}\n\n.loginForm-service{\n    margin: 0 0 10px;\n}\n\n.loginForm-inputField.--link{\n    color: #fff;\n    text-decoration: none;\n    font-size: 14px;\n    text-align: center;\n    display: block;\n    margin: 10px 0px;\n}\n\n@media screen and (min-width: 375px) and (max-width: 900px) {\n    .loginForm-container{\n        grid-template-columns: 1fr;\n    }\n\n    .loginForm-logo{\n        width: 100%;\n        padding: 0;\n        margin: 20px 0px;\n    }\n\n    .loginForm{\n        padding: 40px;\n        background: radial-gradient(circle at top, rgba(188, 188, 188, .6) -10%, rgba(48, 48, 48, .4));\n    }\n\n    .loginForm-container{\n        background-position: -250px;\n    }\n\n    .signup{\n        overflow: scroll;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5959,7 +7259,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "", "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ``, "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -5985,7 +7285,47 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".grid-3{\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.grid-2{\n    grid-template-columns: 1fr 1fr;\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    max-width: 1280px;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain{\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user{\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content{\n        padding: 0 20px;\n    }\n    \n}", "",{"version":3,"sources":["webpack://./src/Pages/Dashboard/Style.css"],"names":[],"mappings":"AAAA;IACI,yDAAyD;IACzD,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,8BAA8B;IAC9B,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,cAAc;IACd,eAAe;IACf,OAAO;AACX;;AAEA;IACI,gBAAgB;IAChB,qBAAqB;IACrB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI;QACI,eAAe;IACnB;;AAEJ","sourcesContent":[".grid-3{\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.grid-2{\n    grid-template-columns: 1fr 1fr;\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    max-width: 1280px;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain{\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user{\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content{\n        padding: 0 20px;\n    }\n    \n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.grid-3{
+    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.grid-2{
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.dashboard-content {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 50px;
+    flex: 1;
+}
+
+.activeDomain{
+    color: aliceblue;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.user{
+    padding: 20px;
+    background-color: #fff;
+    color: #3d3d3d;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 900px) {
+    .dashboard-content{
+        padding: 0 20px;
+    }
+    
+}`, "",{"version":3,"sources":["webpack://./src/Pages/Dashboard/Style.css"],"names":[],"mappings":"AAAA;IACI,yDAAyD;IACzD,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,8BAA8B;IAC9B,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,cAAc;IACd,eAAe;IACf,OAAO;AACX;;AAEA;IACI,gBAAgB;IAChB,qBAAqB;IACrB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI;QACI,eAAe;IACnB;;AAEJ","sourcesContent":[".grid-3{\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.grid-2{\n    grid-template-columns: 1fr 1fr;\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    max-width: 1280px;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain{\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user{\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content{\n        padding: 0 20px;\n    }\n    \n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6011,7 +7351,20 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".cta{\n    padding: 15px 30px;\n    background-color: #1e90ff;\n    border: none;\n    margin-top: 10px;\n    color: #fff;\n    font-size: 1rem;\n    border-radius: 5px;\n}\n\n.cta:disabled{\n    background-color: #b3b3b3;\n    color: #fff;\n}", "",{"version":3,"sources":["webpack://./src/Pages/Settings/AddUser/Style/Style.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,yBAAyB;IACzB,YAAY;IACZ,gBAAgB;IAChB,WAAW;IACX,eAAe;IACf,kBAAkB;AACtB;;AAEA;IACI,yBAAyB;IACzB,WAAW;AACf","sourcesContent":[".cta{\n    padding: 15px 30px;\n    background-color: #1e90ff;\n    border: none;\n    margin-top: 10px;\n    color: #fff;\n    font-size: 1rem;\n    border-radius: 5px;\n}\n\n.cta:disabled{\n    background-color: #b3b3b3;\n    color: #fff;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.cta{
+    padding: 15px 30px;
+    background-color: #1e90ff;
+    border: none;
+    margin-top: 10px;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.cta:disabled{
+    background-color: #b3b3b3;
+    color: #fff;
+}`, "",{"version":3,"sources":["webpack://./src/Pages/Settings/AddUser/Style/Style.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,yBAAyB;IACzB,YAAY;IACZ,gBAAgB;IAChB,WAAW;IACX,eAAe;IACf,kBAAkB;AACtB;;AAEA;IACI,yBAAyB;IACzB,WAAW;AACf","sourcesContent":[".cta{\n    padding: 15px 30px;\n    background-color: #1e90ff;\n    border: none;\n    margin-top: 10px;\n    color: #fff;\n    font-size: 1rem;\n    border-radius: 5px;\n}\n\n.cta:disabled{\n    background-color: #b3b3b3;\n    color: #fff;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6037,7 +7390,18 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".settingsNavItem{\n    display: inline-block;\n    padding: 15px;\n    color: inherit;\n    text-decoration: none;\n}\n\n.settingsNavItem:hover{\n    background-color: rgb(197, 197, 197);\n    color: initial;\n    border-radius: 10px;\n}", "",{"version":3,"sources":["webpack://./src/Pages/Settings/Style.css"],"names":[],"mappings":"AAAA;IACI,qBAAqB;IACrB,aAAa;IACb,cAAc;IACd,qBAAqB;AACzB;;AAEA;IACI,oCAAoC;IACpC,cAAc;IACd,mBAAmB;AACvB","sourcesContent":[".settingsNavItem{\n    display: inline-block;\n    padding: 15px;\n    color: inherit;\n    text-decoration: none;\n}\n\n.settingsNavItem:hover{\n    background-color: rgb(197, 197, 197);\n    color: initial;\n    border-radius: 10px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.settingsNavItem{
+    display: inline-block;
+    padding: 15px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.settingsNavItem:hover{
+    background-color: rgb(197, 197, 197);
+    color: initial;
+    border-radius: 10px;
+}`, "",{"version":3,"sources":["webpack://./src/Pages/Settings/Style.css"],"names":[],"mappings":"AAAA;IACI,qBAAqB;IACrB,aAAa;IACb,cAAc;IACd,qBAAqB;AACzB;;AAEA;IACI,oCAAoC;IACpC,cAAc;IACd,mBAAmB;AACvB","sourcesContent":[".settingsNavItem{\n    display: inline-block;\n    padding: 15px;\n    color: inherit;\n    text-decoration: none;\n}\n\n.settingsNavItem:hover{\n    background-color: rgb(197, 197, 197);\n    color: initial;\n    border-radius: 10px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6063,7 +7427,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".filter{\n    margin-bottom: 15px;\n}", "",{"version":3,"sources":["webpack://./src/Pages/UserConsents/Style.css"],"names":[],"mappings":"AAAA;IACI,mBAAmB;AACvB","sourcesContent":[".filter{\n    margin-bottom: 15px;\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, `.filter{
+    margin-bottom: 15px;
+}`, "",{"version":3,"sources":["webpack://./src/Pages/UserConsents/Style.css"],"names":[],"mappings":"AAAA;IACI,mBAAmB;AACvB","sourcesContent":[".filter{\n    margin-bottom: 15px;\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6083,68 +7449,55 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".filter{\n    margin-bottom: 15px;\n}"
   Author Tobias Koppers @sokra
 */
 module.exports = function (cssWithMappingToString) {
-  var list = []; // return the list of modules as css string
+  var list = [];
 
+  // return the list of modules as css string
   list.toString = function toString() {
     return this.map(function (item) {
       var content = "";
       var needLayer = typeof item[5] !== "undefined";
-
       if (item[4]) {
         content += "@supports (".concat(item[4], ") {");
       }
-
       if (item[2]) {
         content += "@media ".concat(item[2], " {");
       }
-
       if (needLayer) {
         content += "@layer".concat(item[5].length > 0 ? " ".concat(item[5]) : "", " {");
       }
-
       content += cssWithMappingToString(item);
-
       if (needLayer) {
         content += "}";
       }
-
       if (item[2]) {
         content += "}";
       }
-
       if (item[4]) {
         content += "}";
       }
-
       return content;
     }).join("");
-  }; // import a list of modules into the list
+  };
 
-
+  // import a list of modules into the list
   list.i = function i(modules, media, dedupe, supports, layer) {
     if (typeof modules === "string") {
       modules = [[null, modules, undefined]];
     }
-
     var alreadyImportedModules = {};
-
     if (dedupe) {
       for (var k = 0; k < this.length; k++) {
         var id = this[k][0];
-
         if (id != null) {
           alreadyImportedModules[id] = true;
         }
       }
     }
-
     for (var _k = 0; _k < modules.length; _k++) {
       var item = [].concat(modules[_k]);
-
       if (dedupe && alreadyImportedModules[item[0]]) {
         continue;
       }
-
       if (typeof layer !== "undefined") {
         if (typeof item[5] === "undefined") {
           item[5] = layer;
@@ -6153,7 +7506,6 @@ module.exports = function (cssWithMappingToString) {
           item[5] = layer;
         }
       }
-
       if (media) {
         if (!item[2]) {
           item[2] = media;
@@ -6162,7 +7514,6 @@ module.exports = function (cssWithMappingToString) {
           item[2] = media;
         }
       }
-
       if (supports) {
         if (!item[4]) {
           item[4] = "".concat(supports);
@@ -6171,11 +7522,9 @@ module.exports = function (cssWithMappingToString) {
           item[4] = supports;
         }
       }
-
       list.push(item);
     }
   };
-
   return list;
 };
 
@@ -6193,27 +7542,24 @@ module.exports = function (url, options) {
   if (!options) {
     options = {};
   }
-
   if (!url) {
     return url;
   }
+  url = String(url.__esModule ? url.default : url);
 
-  url = String(url.__esModule ? url.default : url); // If url is already wrapped in quotes, remove them
-
+  // If url is already wrapped in quotes, remove them
   if (/^['"].*['"]$/.test(url)) {
     url = url.slice(1, -1);
   }
-
   if (options.hash) {
     url += options.hash;
-  } // Should url be wrapped?
+  }
+
+  // Should url be wrapped?
   // See https://drafts.csswg.org/css-values-3/#urls
-
-
   if (/["'() \t\n]|(%20)/.test(url) || options.needQuotes) {
     return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
   }
-
   return url;
 };
 
@@ -6230,21 +7576,15 @@ module.exports = function (url, options) {
 module.exports = function (item) {
   var content = item[1];
   var cssMapping = item[3];
-
   if (!cssMapping) {
     return content;
   }
-
   if (typeof btoa === "function") {
     var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(cssMapping))));
     var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
     var sourceMapping = "/*# ".concat(data, " */");
-    var sourceURLs = cssMapping.sources.map(function (source) {
-      return "/*# sourceURL=".concat(cssMapping.sourceRoot || "").concat(source, " */");
-    });
-    return [content].concat(sourceURLs).concat([sourceMapping]).join("\n");
+    return [content].concat([sourceMapping]).join("\n");
   }
-
   return [content].join("\n");
 };
 
@@ -7663,24 +9003,19 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 var stylesInDOM = [];
-
 function getIndexByIdentifier(identifier) {
   var result = -1;
-
   for (var i = 0; i < stylesInDOM.length; i++) {
     if (stylesInDOM[i].identifier === identifier) {
       result = i;
       break;
     }
   }
-
   return result;
 }
-
 function modulesToDom(list, options) {
   var idCountMap = {};
   var identifiers = [];
-
   for (var i = 0; i < list.length; i++) {
     var item = list[i];
     var id = options.base ? item[0] + options.base : item[0];
@@ -7695,7 +9030,6 @@ function modulesToDom(list, options) {
       supports: item[4],
       layer: item[5]
     };
-
     if (indexByIdentifier !== -1) {
       stylesInDOM[indexByIdentifier].references++;
       stylesInDOM[indexByIdentifier].updater(obj);
@@ -7708,59 +9042,45 @@ function modulesToDom(list, options) {
         references: 1
       });
     }
-
     identifiers.push(identifier);
   }
-
   return identifiers;
 }
-
 function addElementStyle(obj, options) {
   var api = options.domAPI(options);
   api.update(obj);
-
   var updater = function updater(newObj) {
     if (newObj) {
       if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap && newObj.supports === obj.supports && newObj.layer === obj.layer) {
         return;
       }
-
       api.update(obj = newObj);
     } else {
       api.remove();
     }
   };
-
   return updater;
 }
-
 module.exports = function (list, options) {
   options = options || {};
   list = list || [];
   var lastIdentifiers = modulesToDom(list, options);
   return function update(newList) {
     newList = newList || [];
-
     for (var i = 0; i < lastIdentifiers.length; i++) {
       var identifier = lastIdentifiers[i];
       var index = getIndexByIdentifier(identifier);
       stylesInDOM[index].references--;
     }
-
     var newLastIdentifiers = modulesToDom(newList, options);
-
     for (var _i = 0; _i < lastIdentifiers.length; _i++) {
       var _identifier = lastIdentifiers[_i];
-
       var _index = getIndexByIdentifier(_identifier);
-
       if (stylesInDOM[_index].references === 0) {
         stylesInDOM[_index].updater();
-
         stylesInDOM.splice(_index, 1);
       }
     }
-
     lastIdentifiers = newLastIdentifiers;
   };
 };
@@ -7776,12 +9096,13 @@ module.exports = function (list, options) {
 
 
 var memo = {};
-/* istanbul ignore next  */
 
+/* istanbul ignore next  */
 function getTarget(target) {
   if (typeof memo[target] === "undefined") {
-    var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
+    var styleTarget = document.querySelector(target);
 
+    // Special case to return head of iframe instead of iframe itself
     if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
       try {
         // This will throw an exception if access to iframe is blocked
@@ -7792,25 +9113,19 @@ function getTarget(target) {
         styleTarget = null;
       }
     }
-
     memo[target] = styleTarget;
   }
-
   return memo[target];
 }
+
 /* istanbul ignore next  */
-
-
 function insertBySelector(insert, style) {
   var target = getTarget(insert);
-
   if (!target) {
     throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
   }
-
   target.appendChild(style);
 }
-
 module.exports = insertBySelector;
 
 /***/ }),
@@ -7830,7 +9145,6 @@ function insertStyleElement(options) {
   options.insert(element, options.options);
   return element;
 }
-
 module.exports = insertStyleElement;
 
 /***/ }),
@@ -7846,12 +9160,10 @@ module.exports = insertStyleElement;
 /* istanbul ignore next  */
 function setAttributesWithoutAttributes(styleElement) {
   var nonce =  true ? __webpack_require__.nc : 0;
-
   if (nonce) {
     styleElement.setAttribute("nonce", nonce);
   }
 }
-
 module.exports = setAttributesWithoutAttributes;
 
 /***/ }),
@@ -7867,59 +9179,51 @@ module.exports = setAttributesWithoutAttributes;
 /* istanbul ignore next  */
 function apply(styleElement, options, obj) {
   var css = "";
-
   if (obj.supports) {
     css += "@supports (".concat(obj.supports, ") {");
   }
-
   if (obj.media) {
     css += "@media ".concat(obj.media, " {");
   }
-
   var needLayer = typeof obj.layer !== "undefined";
-
   if (needLayer) {
     css += "@layer".concat(obj.layer.length > 0 ? " ".concat(obj.layer) : "", " {");
   }
-
   css += obj.css;
-
   if (needLayer) {
     css += "}";
   }
-
   if (obj.media) {
     css += "}";
   }
-
   if (obj.supports) {
     css += "}";
   }
-
   var sourceMap = obj.sourceMap;
-
   if (sourceMap && typeof btoa !== "undefined") {
     css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
-  } // For old IE
+  }
 
+  // For old IE
   /* istanbul ignore if  */
-
-
   options.styleTagTransform(css, styleElement, options.options);
 }
-
 function removeStyleElement(styleElement) {
   // istanbul ignore if
   if (styleElement.parentNode === null) {
     return false;
   }
-
   styleElement.parentNode.removeChild(styleElement);
 }
+
 /* istanbul ignore next  */
-
-
 function domAPI(options) {
+  if (typeof document === "undefined") {
+    return {
+      update: function update() {},
+      remove: function remove() {}
+    };
+  }
   var styleElement = options.insertStyleElement(options);
   return {
     update: function update(obj) {
@@ -7930,7 +9234,6 @@ function domAPI(options) {
     }
   };
 }
-
 module.exports = domAPI;
 
 /***/ }),
@@ -7951,11 +9254,9 @@ function styleTagTransform(css, styleElement) {
     while (styleElement.firstChild) {
       styleElement.removeChild(styleElement.firstChild);
     }
-
     styleElement.appendChild(document.createTextNode(css));
   }
 }
-
 module.exports = styleTagTransform;
 
 /***/ }),
@@ -8058,27 +9359,27 @@ module.exports = __webpack_require__.p + "e3b535deb7cea6e95472.svg";
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Color": () => (/* binding */ Color),
-/* harmony export */   "b2n": () => (/* binding */ b2n),
-/* harmony export */   "b2p": () => (/* binding */ b2p),
+/* harmony export */   Color: () => (/* binding */ Color),
+/* harmony export */   b2n: () => (/* binding */ b2n),
+/* harmony export */   b2p: () => (/* binding */ b2p),
 /* harmony export */   "default": () => (/* binding */ index_esm),
-/* harmony export */   "hexParse": () => (/* binding */ hexParse),
-/* harmony export */   "hexString": () => (/* binding */ hexString),
-/* harmony export */   "hsl2rgb": () => (/* binding */ hsl2rgb),
-/* harmony export */   "hslString": () => (/* binding */ hslString),
-/* harmony export */   "hsv2rgb": () => (/* binding */ hsv2rgb),
-/* harmony export */   "hueParse": () => (/* binding */ hueParse),
-/* harmony export */   "hwb2rgb": () => (/* binding */ hwb2rgb),
-/* harmony export */   "lim": () => (/* binding */ lim),
-/* harmony export */   "n2b": () => (/* binding */ n2b),
-/* harmony export */   "n2p": () => (/* binding */ n2p),
-/* harmony export */   "nameParse": () => (/* binding */ nameParse),
-/* harmony export */   "p2b": () => (/* binding */ p2b),
-/* harmony export */   "rgb2hsl": () => (/* binding */ rgb2hsl),
-/* harmony export */   "rgbParse": () => (/* binding */ rgbParse),
-/* harmony export */   "rgbString": () => (/* binding */ rgbString),
-/* harmony export */   "rotate": () => (/* binding */ rotate),
-/* harmony export */   "round": () => (/* binding */ round)
+/* harmony export */   hexParse: () => (/* binding */ hexParse),
+/* harmony export */   hexString: () => (/* binding */ hexString),
+/* harmony export */   hsl2rgb: () => (/* binding */ hsl2rgb),
+/* harmony export */   hslString: () => (/* binding */ hslString),
+/* harmony export */   hsv2rgb: () => (/* binding */ hsv2rgb),
+/* harmony export */   hueParse: () => (/* binding */ hueParse),
+/* harmony export */   hwb2rgb: () => (/* binding */ hwb2rgb),
+/* harmony export */   lim: () => (/* binding */ lim),
+/* harmony export */   n2b: () => (/* binding */ n2b),
+/* harmony export */   n2p: () => (/* binding */ n2p),
+/* harmony export */   nameParse: () => (/* binding */ nameParse),
+/* harmony export */   p2b: () => (/* binding */ p2b),
+/* harmony export */   rgb2hsl: () => (/* binding */ rgb2hsl),
+/* harmony export */   rgbParse: () => (/* binding */ rgbParse),
+/* harmony export */   rgbString: () => (/* binding */ rgbString),
+/* harmony export */   rotate: () => (/* binding */ rotate),
+/* harmony export */   round: () => (/* binding */ round)
 /* harmony export */ });
 /*!
  * @kurkle/color v0.3.2
@@ -8681,53 +9982,53 @@ function index_esm(input) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Animation": () => (/* binding */ Animation),
-/* harmony export */   "Animations": () => (/* binding */ Animations),
-/* harmony export */   "ArcElement": () => (/* binding */ ArcElement),
-/* harmony export */   "BarController": () => (/* binding */ BarController),
-/* harmony export */   "BarElement": () => (/* binding */ BarElement),
-/* harmony export */   "BasePlatform": () => (/* binding */ BasePlatform),
-/* harmony export */   "BasicPlatform": () => (/* binding */ BasicPlatform),
-/* harmony export */   "BubbleController": () => (/* binding */ BubbleController),
-/* harmony export */   "CategoryScale": () => (/* binding */ CategoryScale),
-/* harmony export */   "Chart": () => (/* binding */ Chart),
-/* harmony export */   "Colors": () => (/* binding */ plugin_colors),
-/* harmony export */   "DatasetController": () => (/* binding */ DatasetController),
-/* harmony export */   "Decimation": () => (/* binding */ plugin_decimation),
-/* harmony export */   "DomPlatform": () => (/* binding */ DomPlatform),
-/* harmony export */   "DoughnutController": () => (/* binding */ DoughnutController),
-/* harmony export */   "Element": () => (/* binding */ Element),
-/* harmony export */   "Filler": () => (/* binding */ index),
-/* harmony export */   "Interaction": () => (/* binding */ Interaction),
-/* harmony export */   "Legend": () => (/* binding */ plugin_legend),
-/* harmony export */   "LineController": () => (/* binding */ LineController),
-/* harmony export */   "LineElement": () => (/* binding */ LineElement),
-/* harmony export */   "LinearScale": () => (/* binding */ LinearScale),
-/* harmony export */   "LogarithmicScale": () => (/* binding */ LogarithmicScale),
-/* harmony export */   "PieController": () => (/* binding */ PieController),
-/* harmony export */   "PointElement": () => (/* binding */ PointElement),
-/* harmony export */   "PolarAreaController": () => (/* binding */ PolarAreaController),
-/* harmony export */   "RadarController": () => (/* binding */ RadarController),
-/* harmony export */   "RadialLinearScale": () => (/* binding */ RadialLinearScale),
-/* harmony export */   "Scale": () => (/* binding */ Scale),
-/* harmony export */   "ScatterController": () => (/* binding */ ScatterController),
-/* harmony export */   "SubTitle": () => (/* binding */ plugin_subtitle),
-/* harmony export */   "Ticks": () => (/* reexport safe */ _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aL),
-/* harmony export */   "TimeScale": () => (/* binding */ TimeScale),
-/* harmony export */   "TimeSeriesScale": () => (/* binding */ TimeSeriesScale),
-/* harmony export */   "Title": () => (/* binding */ plugin_title),
-/* harmony export */   "Tooltip": () => (/* binding */ plugin_tooltip),
-/* harmony export */   "_adapters": () => (/* binding */ adapters),
-/* harmony export */   "_detectPlatform": () => (/* binding */ _detectPlatform),
-/* harmony export */   "animator": () => (/* binding */ animator),
-/* harmony export */   "controllers": () => (/* binding */ controllers),
-/* harmony export */   "defaults": () => (/* reexport safe */ _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d),
-/* harmony export */   "elements": () => (/* binding */ elements),
-/* harmony export */   "layouts": () => (/* binding */ layouts),
-/* harmony export */   "plugins": () => (/* binding */ plugins),
-/* harmony export */   "registerables": () => (/* binding */ registerables),
-/* harmony export */   "registry": () => (/* binding */ registry),
-/* harmony export */   "scales": () => (/* binding */ scales)
+/* harmony export */   Animation: () => (/* binding */ Animation),
+/* harmony export */   Animations: () => (/* binding */ Animations),
+/* harmony export */   ArcElement: () => (/* binding */ ArcElement),
+/* harmony export */   BarController: () => (/* binding */ BarController),
+/* harmony export */   BarElement: () => (/* binding */ BarElement),
+/* harmony export */   BasePlatform: () => (/* binding */ BasePlatform),
+/* harmony export */   BasicPlatform: () => (/* binding */ BasicPlatform),
+/* harmony export */   BubbleController: () => (/* binding */ BubbleController),
+/* harmony export */   CategoryScale: () => (/* binding */ CategoryScale),
+/* harmony export */   Chart: () => (/* binding */ Chart),
+/* harmony export */   Colors: () => (/* binding */ plugin_colors),
+/* harmony export */   DatasetController: () => (/* binding */ DatasetController),
+/* harmony export */   Decimation: () => (/* binding */ plugin_decimation),
+/* harmony export */   DomPlatform: () => (/* binding */ DomPlatform),
+/* harmony export */   DoughnutController: () => (/* binding */ DoughnutController),
+/* harmony export */   Element: () => (/* binding */ Element),
+/* harmony export */   Filler: () => (/* binding */ index),
+/* harmony export */   Interaction: () => (/* binding */ Interaction),
+/* harmony export */   Legend: () => (/* binding */ plugin_legend),
+/* harmony export */   LineController: () => (/* binding */ LineController),
+/* harmony export */   LineElement: () => (/* binding */ LineElement),
+/* harmony export */   LinearScale: () => (/* binding */ LinearScale),
+/* harmony export */   LogarithmicScale: () => (/* binding */ LogarithmicScale),
+/* harmony export */   PieController: () => (/* binding */ PieController),
+/* harmony export */   PointElement: () => (/* binding */ PointElement),
+/* harmony export */   PolarAreaController: () => (/* binding */ PolarAreaController),
+/* harmony export */   RadarController: () => (/* binding */ RadarController),
+/* harmony export */   RadialLinearScale: () => (/* binding */ RadialLinearScale),
+/* harmony export */   Scale: () => (/* binding */ Scale),
+/* harmony export */   ScatterController: () => (/* binding */ ScatterController),
+/* harmony export */   SubTitle: () => (/* binding */ plugin_subtitle),
+/* harmony export */   Ticks: () => (/* reexport safe */ _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.aL),
+/* harmony export */   TimeScale: () => (/* binding */ TimeScale),
+/* harmony export */   TimeSeriesScale: () => (/* binding */ TimeSeriesScale),
+/* harmony export */   Title: () => (/* binding */ plugin_title),
+/* harmony export */   Tooltip: () => (/* binding */ plugin_tooltip),
+/* harmony export */   _adapters: () => (/* binding */ adapters),
+/* harmony export */   _detectPlatform: () => (/* binding */ _detectPlatform),
+/* harmony export */   animator: () => (/* binding */ animator),
+/* harmony export */   controllers: () => (/* binding */ controllers),
+/* harmony export */   defaults: () => (/* reexport safe */ _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__.d),
+/* harmony export */   elements: () => (/* binding */ elements),
+/* harmony export */   layouts: () => (/* binding */ layouts),
+/* harmony export */   plugins: () => (/* binding */ plugins),
+/* harmony export */   registerables: () => (/* binding */ registerables),
+/* harmony export */   registry: () => (/* binding */ registry),
+/* harmony export */   scales: () => (/* binding */ scales)
 /* harmony export */ });
 /* harmony import */ var _chunks_helpers_segment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chunks/helpers.segment.js */ "./node_modules/chart.js/dist/chunks/helpers.segment.js");
 /*!
@@ -20190,131 +21491,131 @@ const registerables = [
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "$": () => (/* binding */ unclipArea),
-/* harmony export */   "A": () => (/* binding */ _rlookupByKey),
-/* harmony export */   "B": () => (/* binding */ _lookupByKey),
-/* harmony export */   "C": () => (/* binding */ _isPointInArea),
-/* harmony export */   "D": () => (/* binding */ getAngleFromPoint),
-/* harmony export */   "E": () => (/* binding */ toPadding),
-/* harmony export */   "F": () => (/* binding */ each),
-/* harmony export */   "G": () => (/* binding */ getMaximumSize),
-/* harmony export */   "H": () => (/* binding */ HALF_PI),
-/* harmony export */   "I": () => (/* binding */ _getParentNode),
-/* harmony export */   "J": () => (/* binding */ readUsedSize),
-/* harmony export */   "K": () => (/* binding */ supportsEventListenerOptions),
-/* harmony export */   "L": () => (/* binding */ throttled),
-/* harmony export */   "M": () => (/* binding */ _isDomSupported),
-/* harmony export */   "N": () => (/* binding */ _factorize),
-/* harmony export */   "O": () => (/* binding */ finiteOrDefault),
-/* harmony export */   "P": () => (/* binding */ PI),
-/* harmony export */   "Q": () => (/* binding */ callback),
-/* harmony export */   "R": () => (/* binding */ _addGrace),
-/* harmony export */   "S": () => (/* binding */ _limitValue),
-/* harmony export */   "T": () => (/* binding */ TAU),
-/* harmony export */   "U": () => (/* binding */ toDegrees),
-/* harmony export */   "V": () => (/* binding */ _measureText),
-/* harmony export */   "W": () => (/* binding */ _int16Range),
-/* harmony export */   "X": () => (/* binding */ _alignPixel),
-/* harmony export */   "Y": () => (/* binding */ clipArea),
-/* harmony export */   "Z": () => (/* binding */ renderText),
-/* harmony export */   "_": () => (/* binding */ _arrayUnique),
-/* harmony export */   "a": () => (/* binding */ resolve),
-/* harmony export */   "a$": () => (/* binding */ fontString),
-/* harmony export */   "a0": () => (/* binding */ toFont),
-/* harmony export */   "a1": () => (/* binding */ _toLeftRightCenter),
-/* harmony export */   "a2": () => (/* binding */ _alignStartEnd),
-/* harmony export */   "a3": () => (/* binding */ overrides),
-/* harmony export */   "a4": () => (/* binding */ merge),
-/* harmony export */   "a5": () => (/* binding */ _capitalize),
-/* harmony export */   "a6": () => (/* binding */ descriptors),
-/* harmony export */   "a7": () => (/* binding */ isFunction),
-/* harmony export */   "a8": () => (/* binding */ _attachContext),
-/* harmony export */   "a9": () => (/* binding */ _createResolver),
-/* harmony export */   "aA": () => (/* binding */ overrideTextDirection),
-/* harmony export */   "aB": () => (/* binding */ _textX),
-/* harmony export */   "aC": () => (/* binding */ restoreTextDirection),
-/* harmony export */   "aD": () => (/* binding */ drawPointLegend),
-/* harmony export */   "aE": () => (/* binding */ distanceBetweenPoints),
-/* harmony export */   "aF": () => (/* binding */ noop),
-/* harmony export */   "aG": () => (/* binding */ _setMinAndMaxByKey),
-/* harmony export */   "aH": () => (/* binding */ niceNum),
-/* harmony export */   "aI": () => (/* binding */ almostWhole),
-/* harmony export */   "aJ": () => (/* binding */ almostEquals),
-/* harmony export */   "aK": () => (/* binding */ _decimalPlaces),
-/* harmony export */   "aL": () => (/* binding */ Ticks),
-/* harmony export */   "aM": () => (/* binding */ log10),
-/* harmony export */   "aN": () => (/* binding */ _longestText),
-/* harmony export */   "aO": () => (/* binding */ _filterBetween),
-/* harmony export */   "aP": () => (/* binding */ _lookup),
-/* harmony export */   "aQ": () => (/* binding */ isPatternOrGradient),
-/* harmony export */   "aR": () => (/* binding */ getHoverColor),
-/* harmony export */   "aS": () => (/* binding */ clone),
-/* harmony export */   "aT": () => (/* binding */ _merger),
-/* harmony export */   "aU": () => (/* binding */ _mergerIf),
-/* harmony export */   "aV": () => (/* binding */ _deprecated),
-/* harmony export */   "aW": () => (/* binding */ _splitKey),
-/* harmony export */   "aX": () => (/* binding */ toFontString),
-/* harmony export */   "aY": () => (/* binding */ splineCurve),
-/* harmony export */   "aZ": () => (/* binding */ splineCurveMonotone),
-/* harmony export */   "a_": () => (/* binding */ getStyle),
-/* harmony export */   "aa": () => (/* binding */ _descriptors),
-/* harmony export */   "ab": () => (/* binding */ mergeIf),
-/* harmony export */   "ac": () => (/* binding */ uid),
-/* harmony export */   "ad": () => (/* binding */ debounce),
-/* harmony export */   "ae": () => (/* binding */ retinaScale),
-/* harmony export */   "af": () => (/* binding */ clearCanvas),
-/* harmony export */   "ag": () => (/* binding */ setsEqual),
-/* harmony export */   "ah": () => (/* binding */ _elementsEqual),
-/* harmony export */   "ai": () => (/* binding */ _isClickEvent),
-/* harmony export */   "aj": () => (/* binding */ _isBetween),
-/* harmony export */   "ak": () => (/* binding */ _readValueToProps),
-/* harmony export */   "al": () => (/* binding */ _updateBezierControlPoints),
-/* harmony export */   "am": () => (/* binding */ _computeSegments),
-/* harmony export */   "an": () => (/* binding */ _boundSegments),
-/* harmony export */   "ao": () => (/* binding */ _steppedInterpolation),
-/* harmony export */   "ap": () => (/* binding */ _bezierInterpolation),
-/* harmony export */   "aq": () => (/* binding */ _pointInLine),
-/* harmony export */   "ar": () => (/* binding */ _steppedLineTo),
-/* harmony export */   "as": () => (/* binding */ _bezierCurveTo),
-/* harmony export */   "at": () => (/* binding */ drawPoint),
-/* harmony export */   "au": () => (/* binding */ addRoundedRectPath),
-/* harmony export */   "av": () => (/* binding */ toTRBL),
-/* harmony export */   "aw": () => (/* binding */ toTRBLCorners),
-/* harmony export */   "ax": () => (/* binding */ _boundSegment),
-/* harmony export */   "ay": () => (/* binding */ _normalizeAngle),
-/* harmony export */   "az": () => (/* binding */ getRtlAdapter),
-/* harmony export */   "b": () => (/* binding */ isArray),
-/* harmony export */   "b0": () => (/* binding */ toLineHeight),
-/* harmony export */   "b1": () => (/* binding */ PITAU),
-/* harmony export */   "b2": () => (/* binding */ INFINITY),
-/* harmony export */   "b3": () => (/* binding */ RAD_PER_DEG),
-/* harmony export */   "b4": () => (/* binding */ QUARTER_PI),
-/* harmony export */   "b5": () => (/* binding */ TWO_THIRDS_PI),
-/* harmony export */   "b6": () => (/* binding */ _angleDiff),
-/* harmony export */   "c": () => (/* binding */ color),
-/* harmony export */   "d": () => (/* binding */ defaults),
-/* harmony export */   "e": () => (/* binding */ effects),
-/* harmony export */   "f": () => (/* binding */ resolveObjectKey),
-/* harmony export */   "g": () => (/* binding */ isNumberFinite),
-/* harmony export */   "h": () => (/* binding */ defined),
-/* harmony export */   "i": () => (/* binding */ isObject),
-/* harmony export */   "j": () => (/* binding */ createContext),
-/* harmony export */   "k": () => (/* binding */ isNullOrUndef),
-/* harmony export */   "l": () => (/* binding */ listenArrayEvents),
-/* harmony export */   "m": () => (/* binding */ toPercentage),
-/* harmony export */   "n": () => (/* binding */ toDimension),
-/* harmony export */   "o": () => (/* binding */ formatNumber),
-/* harmony export */   "p": () => (/* binding */ _angleBetween),
-/* harmony export */   "q": () => (/* binding */ _getStartAndCountOfVisiblePoints),
-/* harmony export */   "r": () => (/* binding */ requestAnimFrame),
-/* harmony export */   "s": () => (/* binding */ sign),
-/* harmony export */   "t": () => (/* binding */ toRadians),
-/* harmony export */   "u": () => (/* binding */ unlistenArrayEvents),
-/* harmony export */   "v": () => (/* binding */ valueOrDefault),
-/* harmony export */   "w": () => (/* binding */ _scaleRangesChanged),
-/* harmony export */   "x": () => (/* binding */ isNumber),
-/* harmony export */   "y": () => (/* binding */ _parseObjectDataRadialScale),
-/* harmony export */   "z": () => (/* binding */ getRelativePosition)
+/* harmony export */   $: () => (/* binding */ unclipArea),
+/* harmony export */   A: () => (/* binding */ _rlookupByKey),
+/* harmony export */   B: () => (/* binding */ _lookupByKey),
+/* harmony export */   C: () => (/* binding */ _isPointInArea),
+/* harmony export */   D: () => (/* binding */ getAngleFromPoint),
+/* harmony export */   E: () => (/* binding */ toPadding),
+/* harmony export */   F: () => (/* binding */ each),
+/* harmony export */   G: () => (/* binding */ getMaximumSize),
+/* harmony export */   H: () => (/* binding */ HALF_PI),
+/* harmony export */   I: () => (/* binding */ _getParentNode),
+/* harmony export */   J: () => (/* binding */ readUsedSize),
+/* harmony export */   K: () => (/* binding */ supportsEventListenerOptions),
+/* harmony export */   L: () => (/* binding */ throttled),
+/* harmony export */   M: () => (/* binding */ _isDomSupported),
+/* harmony export */   N: () => (/* binding */ _factorize),
+/* harmony export */   O: () => (/* binding */ finiteOrDefault),
+/* harmony export */   P: () => (/* binding */ PI),
+/* harmony export */   Q: () => (/* binding */ callback),
+/* harmony export */   R: () => (/* binding */ _addGrace),
+/* harmony export */   S: () => (/* binding */ _limitValue),
+/* harmony export */   T: () => (/* binding */ TAU),
+/* harmony export */   U: () => (/* binding */ toDegrees),
+/* harmony export */   V: () => (/* binding */ _measureText),
+/* harmony export */   W: () => (/* binding */ _int16Range),
+/* harmony export */   X: () => (/* binding */ _alignPixel),
+/* harmony export */   Y: () => (/* binding */ clipArea),
+/* harmony export */   Z: () => (/* binding */ renderText),
+/* harmony export */   _: () => (/* binding */ _arrayUnique),
+/* harmony export */   a: () => (/* binding */ resolve),
+/* harmony export */   a$: () => (/* binding */ fontString),
+/* harmony export */   a0: () => (/* binding */ toFont),
+/* harmony export */   a1: () => (/* binding */ _toLeftRightCenter),
+/* harmony export */   a2: () => (/* binding */ _alignStartEnd),
+/* harmony export */   a3: () => (/* binding */ overrides),
+/* harmony export */   a4: () => (/* binding */ merge),
+/* harmony export */   a5: () => (/* binding */ _capitalize),
+/* harmony export */   a6: () => (/* binding */ descriptors),
+/* harmony export */   a7: () => (/* binding */ isFunction),
+/* harmony export */   a8: () => (/* binding */ _attachContext),
+/* harmony export */   a9: () => (/* binding */ _createResolver),
+/* harmony export */   aA: () => (/* binding */ overrideTextDirection),
+/* harmony export */   aB: () => (/* binding */ _textX),
+/* harmony export */   aC: () => (/* binding */ restoreTextDirection),
+/* harmony export */   aD: () => (/* binding */ drawPointLegend),
+/* harmony export */   aE: () => (/* binding */ distanceBetweenPoints),
+/* harmony export */   aF: () => (/* binding */ noop),
+/* harmony export */   aG: () => (/* binding */ _setMinAndMaxByKey),
+/* harmony export */   aH: () => (/* binding */ niceNum),
+/* harmony export */   aI: () => (/* binding */ almostWhole),
+/* harmony export */   aJ: () => (/* binding */ almostEquals),
+/* harmony export */   aK: () => (/* binding */ _decimalPlaces),
+/* harmony export */   aL: () => (/* binding */ Ticks),
+/* harmony export */   aM: () => (/* binding */ log10),
+/* harmony export */   aN: () => (/* binding */ _longestText),
+/* harmony export */   aO: () => (/* binding */ _filterBetween),
+/* harmony export */   aP: () => (/* binding */ _lookup),
+/* harmony export */   aQ: () => (/* binding */ isPatternOrGradient),
+/* harmony export */   aR: () => (/* binding */ getHoverColor),
+/* harmony export */   aS: () => (/* binding */ clone),
+/* harmony export */   aT: () => (/* binding */ _merger),
+/* harmony export */   aU: () => (/* binding */ _mergerIf),
+/* harmony export */   aV: () => (/* binding */ _deprecated),
+/* harmony export */   aW: () => (/* binding */ _splitKey),
+/* harmony export */   aX: () => (/* binding */ toFontString),
+/* harmony export */   aY: () => (/* binding */ splineCurve),
+/* harmony export */   aZ: () => (/* binding */ splineCurveMonotone),
+/* harmony export */   a_: () => (/* binding */ getStyle),
+/* harmony export */   aa: () => (/* binding */ _descriptors),
+/* harmony export */   ab: () => (/* binding */ mergeIf),
+/* harmony export */   ac: () => (/* binding */ uid),
+/* harmony export */   ad: () => (/* binding */ debounce),
+/* harmony export */   ae: () => (/* binding */ retinaScale),
+/* harmony export */   af: () => (/* binding */ clearCanvas),
+/* harmony export */   ag: () => (/* binding */ setsEqual),
+/* harmony export */   ah: () => (/* binding */ _elementsEqual),
+/* harmony export */   ai: () => (/* binding */ _isClickEvent),
+/* harmony export */   aj: () => (/* binding */ _isBetween),
+/* harmony export */   ak: () => (/* binding */ _readValueToProps),
+/* harmony export */   al: () => (/* binding */ _updateBezierControlPoints),
+/* harmony export */   am: () => (/* binding */ _computeSegments),
+/* harmony export */   an: () => (/* binding */ _boundSegments),
+/* harmony export */   ao: () => (/* binding */ _steppedInterpolation),
+/* harmony export */   ap: () => (/* binding */ _bezierInterpolation),
+/* harmony export */   aq: () => (/* binding */ _pointInLine),
+/* harmony export */   ar: () => (/* binding */ _steppedLineTo),
+/* harmony export */   as: () => (/* binding */ _bezierCurveTo),
+/* harmony export */   at: () => (/* binding */ drawPoint),
+/* harmony export */   au: () => (/* binding */ addRoundedRectPath),
+/* harmony export */   av: () => (/* binding */ toTRBL),
+/* harmony export */   aw: () => (/* binding */ toTRBLCorners),
+/* harmony export */   ax: () => (/* binding */ _boundSegment),
+/* harmony export */   ay: () => (/* binding */ _normalizeAngle),
+/* harmony export */   az: () => (/* binding */ getRtlAdapter),
+/* harmony export */   b: () => (/* binding */ isArray),
+/* harmony export */   b0: () => (/* binding */ toLineHeight),
+/* harmony export */   b1: () => (/* binding */ PITAU),
+/* harmony export */   b2: () => (/* binding */ INFINITY),
+/* harmony export */   b3: () => (/* binding */ RAD_PER_DEG),
+/* harmony export */   b4: () => (/* binding */ QUARTER_PI),
+/* harmony export */   b5: () => (/* binding */ TWO_THIRDS_PI),
+/* harmony export */   b6: () => (/* binding */ _angleDiff),
+/* harmony export */   c: () => (/* binding */ color),
+/* harmony export */   d: () => (/* binding */ defaults),
+/* harmony export */   e: () => (/* binding */ effects),
+/* harmony export */   f: () => (/* binding */ resolveObjectKey),
+/* harmony export */   g: () => (/* binding */ isNumberFinite),
+/* harmony export */   h: () => (/* binding */ defined),
+/* harmony export */   i: () => (/* binding */ isObject),
+/* harmony export */   j: () => (/* binding */ createContext),
+/* harmony export */   k: () => (/* binding */ isNullOrUndef),
+/* harmony export */   l: () => (/* binding */ listenArrayEvents),
+/* harmony export */   m: () => (/* binding */ toPercentage),
+/* harmony export */   n: () => (/* binding */ toDimension),
+/* harmony export */   o: () => (/* binding */ formatNumber),
+/* harmony export */   p: () => (/* binding */ _angleBetween),
+/* harmony export */   q: () => (/* binding */ _getStartAndCountOfVisiblePoints),
+/* harmony export */   r: () => (/* binding */ requestAnimFrame),
+/* harmony export */   s: () => (/* binding */ sign),
+/* harmony export */   t: () => (/* binding */ toRadians),
+/* harmony export */   u: () => (/* binding */ unlistenArrayEvents),
+/* harmony export */   v: () => (/* binding */ valueOrDefault),
+/* harmony export */   w: () => (/* binding */ _scaleRangesChanged),
+/* harmony export */   x: () => (/* binding */ isNumber),
+/* harmony export */   y: () => (/* binding */ _parseObjectDataRadialScale),
+/* harmony export */   z: () => (/* binding */ getRelativePosition)
 /* harmony export */ });
 /* harmony import */ var _kurkle_color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @kurkle/color */ "./node_modules/@kurkle/color/dist/color.esm.js");
 /*!
@@ -23073,21 +24374,21 @@ function styleChanged(style, prevStyle) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "changeLanguage": () => (/* binding */ changeLanguage),
-/* harmony export */   "createInstance": () => (/* binding */ createInstance),
+/* harmony export */   changeLanguage: () => (/* binding */ changeLanguage),
+/* harmony export */   createInstance: () => (/* binding */ createInstance),
 /* harmony export */   "default": () => (/* binding */ instance),
-/* harmony export */   "dir": () => (/* binding */ dir),
-/* harmony export */   "exists": () => (/* binding */ exists),
-/* harmony export */   "getFixedT": () => (/* binding */ getFixedT),
-/* harmony export */   "hasLoadedNamespace": () => (/* binding */ hasLoadedNamespace),
-/* harmony export */   "init": () => (/* binding */ init),
-/* harmony export */   "loadLanguages": () => (/* binding */ loadLanguages),
-/* harmony export */   "loadNamespaces": () => (/* binding */ loadNamespaces),
-/* harmony export */   "loadResources": () => (/* binding */ loadResources),
-/* harmony export */   "reloadResources": () => (/* binding */ reloadResources),
-/* harmony export */   "setDefaultNamespace": () => (/* binding */ setDefaultNamespace),
-/* harmony export */   "t": () => (/* binding */ t),
-/* harmony export */   "use": () => (/* binding */ use)
+/* harmony export */   dir: () => (/* binding */ dir),
+/* harmony export */   exists: () => (/* binding */ exists),
+/* harmony export */   getFixedT: () => (/* binding */ getFixedT),
+/* harmony export */   hasLoadedNamespace: () => (/* binding */ hasLoadedNamespace),
+/* harmony export */   init: () => (/* binding */ init),
+/* harmony export */   loadLanguages: () => (/* binding */ loadLanguages),
+/* harmony export */   loadNamespaces: () => (/* binding */ loadNamespaces),
+/* harmony export */   loadResources: () => (/* binding */ loadResources),
+/* harmony export */   reloadResources: () => (/* binding */ reloadResources),
+/* harmony export */   setDefaultNamespace: () => (/* binding */ setDefaultNamespace),
+/* harmony export */   t: () => (/* binding */ t),
+/* harmony export */   use: () => (/* binding */ use)
 /* harmony export */ });
 const consoleLogger = {
   type: 'logger',
@@ -25513,7 +26814,6 @@ __webpack_require__.r(__webpack_exports__);
 const createRoot = window.ReactDOM.createRoot;
 const container = document.getElementById('app');
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
-
 root.render( /*#__PURE__*/React.createElement(_src_App_js__WEBPACK_IMPORTED_MODULE_0__["default"], null));
 })();
 
