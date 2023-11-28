@@ -33,6 +33,7 @@ export default function Map(props) {
          document.getElementById("svgMap").innerHTML = "";
          new svgMap({
             targetElementID: 'svgMap',
+            
             data: {
               data: {
                total: {

@@ -134,8 +134,6 @@ export default function App() {
             )
         }
 
-        console.log(organisation);
-
         if(subscriptionStatus?.status != "active" && subscriptionStatus?.loading) {
             return (
                 <>
