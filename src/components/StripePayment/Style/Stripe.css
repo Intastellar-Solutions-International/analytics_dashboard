@@ -34,6 +34,17 @@
     float: left;
 }
 
+.footer a{
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.footer a:hover{
+    color: #E3DA37;
+}
+
 @media screen and (max-width: 600px){
     .logo{
         width: 12%;

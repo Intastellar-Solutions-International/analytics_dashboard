@@ -29,6 +29,10 @@ export default function StripePayment(props) {
                 client-reference-id={Authentication.getOrganisation()}>
                 </stripe-pricing-table>
             </div>
+            <footer className="footer">
+                <a href="https://www.intastellarsolutions.com/about/legal/terms" target="_blank">Terms of Service</a> | <a href="https://www.intastellarsolutions.com/about/legal/privacy" target="_blank">Privacy Policy</a> | <a href="https://www.intastellarsolutions.com/about/legal/subscriber-agreement">Subscriber agreement</a>
+                <p>&copy; {new Date().getFullYear()} Intastellar Solutions, International. All rights reserved.</p>
+            </footer>
         </>
     )
 }
