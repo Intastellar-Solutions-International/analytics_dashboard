@@ -6,7 +6,7 @@ import { AllOrg } from "../../App";
 import Select from "../SelectInput/Selector";
 
 export default function StripePayment(props) {
-    document.title = "Choose a Plan | Intastellar Consents";
+    document.title = "Choose your Plan | Intastellar Consents";
     const [allOrganisations, setallOrganisations] = useContext(AllOrg);
     const companyName = JSON.parse(localStorage.getItem("organisation"))?.name;
 

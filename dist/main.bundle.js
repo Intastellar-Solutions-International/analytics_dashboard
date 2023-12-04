@@ -3376,7 +3376,7 @@ const {
 
 
 function StripePayment(props) {
-  document.title = "Choose a Plan | Intastellar Consents";
+  document.title = "Choose your Plan | Intastellar Consents";
   const [allOrganisations, setallOrganisations] = useContext(_App__WEBPACK_IMPORTED_MODULE_3__.AllOrg);
   const companyName = JSON.parse(localStorage.getItem("organisation"))?.name;
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("header", {
