@@ -79,34 +79,36 @@ export default function Header(props) {
         <>
             <header className="dashboard-header">
                 <div className="dashboard-profile">
-                    <section style={{display:"flex", alignItems:"center"}}>
-                        <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
-                        <span className="platform-view">{Platform}</span>
+                    <section>
+                        <section className="logo_container">
+                            <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
+                            <span className="platform-view">{Platform}</span>
+                        </section>
                         <section className="company_container">
-                        {(allOrganisations && Organisation) ? 
-                            <Select defaultValue={Organisation}
-                                onChange={(e) => { 
-                                    setOrganisation(e);
-                                    localStorage.setItem("organisation", e);
-                                    window.location.reload();}}
-                                items={allOrganisations}
-                                style={{right: "0"}}
-                            /> : null
-                        }
-                        {(domains && currentDomain) ?
-                        <>
-                            <Select defaultValue={currentDomain}
-                                onChange={(e) => { 
-                                    const domain = e;
-                                    setCurrentDomain(domain);
-                                    window.location.href = `/${window.location.pathname.split("/")[1]}/view/${domain.replace('.', '%2E')}`;
-                                }}
-                                items={domainList} title="Choose one of your domains"
-                                style={{left: "0"}}
-                                icon={'dashboard-icons domains'}
-                            />
-                        </> : null
-                        }
+                            {(allOrganisations && Organisation) ? 
+                                <Select defaultValue={Organisation}
+                                    onChange={(e) => { 
+                                        setOrganisation(e);
+                                        localStorage.setItem("organisation", e);
+                                        window.location.reload();}}
+                                    items={allOrganisations}
+                                    style={{right: "0"}}
+                                /> : null
+                            }
+                            {(domains && currentDomain) ?
+                            <>
+                                <Select defaultValue={currentDomain}
+                                    onChange={(e) => { 
+                                        const domain = e;
+                                        setCurrentDomain(domain);
+                                        window.location.href = `/${window.location.pathname.split("/")[1]}/view/${domain.replace('.', '%2E')}`;
+                                    }}
+                                    items={domainList} title="Choose one of your domains"
+                                    style={{left: "0"}}
+                                    icon={'dashboard-icons domains'}
+                                />
+                            </> : null
+                            }
                         </section>
                     </section>
                     <div className="flex profileImage">
