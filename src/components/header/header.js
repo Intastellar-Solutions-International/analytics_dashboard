@@ -79,7 +79,7 @@ export default function Header(props) {
         <>
             <header className="dashboard-header">
                 <div className="dashboard-profile">
-                    <section>
+                    <section className="logo-selector-container">
                         <section className="logo_container">
                             <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
                             <span className="platform-view">{Platform}</span>

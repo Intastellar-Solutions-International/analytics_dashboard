@@ -367,6 +367,11 @@
     align-items: center
 }
 
+.logo-selector-container{
+    display: flex;
+    align-items: center;
+}
+
 @media screen and (min-width: 320px) and (max-width: 900px) {
     .dashboard-header {
         width: 100%;
@@ -376,6 +381,10 @@
 
     .main-grid{
         padding-top: 104px;
+    }
+
+    .logo-selector-container{
+        display: block;
     }
 
     .company_container{
