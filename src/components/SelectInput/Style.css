@@ -2,6 +2,7 @@
     width: calc(max-content + 20px);
     position: relative;
     display: flex;
+    align-items: center;
 }
 
 .selectTitle{
