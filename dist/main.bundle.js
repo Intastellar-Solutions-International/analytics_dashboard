@@ -5290,10 +5290,10 @@ function LiveView() {
   }, /*#__PURE__*/React.createElement("div", {
     className: "liveView-content-data-1"
   }, /*#__PURE__*/React.createElement("p", {
-    className: "liveView-content-data-1-title"
-  }, "Total Users"), /*#__PURE__*/React.createElement("p", {
     className: "liveView-content-data-1-number"
-  }, liveData?.count))))) : null);
+  }, liveData?.count), /*#__PURE__*/React.createElement("p", {
+    className: "liveView-content-data-1-title"
+  }, "last 15 min."))))) : null);
 }
 
 /***/ }),
