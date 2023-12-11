@@ -509,6 +509,14 @@ const API = {
       "Content-Type": "application/json"
     }
   },
+  liveData: {
+    url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/gdpr/livedata.php`,
+    method: "GET",
+    headers: {
+      "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
+      "Content-Type": "application/json"
+    }
+  },
   gdpr: {
     getTotalNumber: {
       url: `${_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost}/analytics/gdpr/getTotalNumber.php`,
@@ -4288,7 +4296,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Charts_Line__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../Components/Charts/Line */ "./src/Components/Charts/Line/index.js");
 /* harmony import */ var _Components_Charts_Pie__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Components/Charts/Pie */ "./src/Components/Charts/Pie/index.js");
 /* harmony import */ var _Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../Components/Header/Sticky/index.js */ "./src/Components/Header/Sticky/index.js");
-/* harmony import */ var _Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../Components/tiers/index.js */ "./src/Components/tiers/index.js");
+/* harmony import */ var _components_LiveView_index_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/LiveView/index.js */ "./src/components/LiveView/index.js");
+/* harmony import */ var _Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../Components/tiers/index.js */ "./src/Components/tiers/index.js");
 const {
   useState,
   useEffect,
@@ -4304,6 +4313,7 @@ const {
 
 
 const useParams = window.ReactRouterDOM.useParams;
+
 
 
 
@@ -4386,7 +4396,7 @@ function Dashboard(props) {
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-2"
-  }, /*#__PURE__*/React.createElement("h2", null, "User Interactions")), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h2", null, "User Interactions"), /*#__PURE__*/React.createElement(_components_LiveView_index_js__WEBPACK_IMPORTED_MODULE_12__.LiveView, null)), /*#__PURE__*/React.createElement("div", {
     className: "grid-container",
     style: {
       gridTemplateColumns: "1fr .5fr",
@@ -4404,13 +4414,13 @@ function Dashboard(props) {
     data: {
       Countries: activeData?.Countries
     }
-  }))))), subscriptionStatus?.tier === "premium" ? /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__.PremiumTier, {
+  }))))), subscriptionStatus?.tier === "premium" ? /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_13__.PremiumTier, {
     loading: loading,
     activeData: activeData
-  }) : subscriptionStatus?.tier === "professional" ? /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__.ProTier, {
+  }) : subscriptionStatus?.tier === "professional" ? /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_13__.ProTier, {
     loading: loading,
     activeData: activeData
-  }) : /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__.BasicTier, null)));
+  }) : /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_13__.BasicTier, null)));
 }
 
 /***/ }),
@@ -5249,6 +5259,41 @@ function extractHostname(url) {
   hostname = hostname.split('.');
   hostname.reverse();
   return hostname[1] + "." + hostname[0];
+}
+
+/***/ }),
+
+/***/ "./src/components/LiveView/index.js":
+/*!******************************************!*\
+  !*** ./src/components/LiveView/index.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   LiveView: () => (/* binding */ LiveView)
+/* harmony export */ });
+/* harmony import */ var _Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Functions/FetchHook */ "./src/Functions/FetchHook.js");
+/* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../API/api */ "./src/API/api.js");
+
+
+function LiveView() {
+  const [loading, liveData, error, updated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__["default"])(0.25, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.url, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.method, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.headers);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, !loading ? /*#__PURE__*/React.createElement("div", {
+    className: "liveView"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "liveView-content"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "liveView-content-title"
+  }, "Live View"), /*#__PURE__*/React.createElement("div", {
+    className: "liveView-content-data"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "liveView-content-data-1"
+  }, /*#__PURE__*/React.createElement("p", {
+    className: "liveView-content-data-1-title"
+  }, "Total Users"), /*#__PURE__*/React.createElement("p", {
+    className: "liveView-content-data-1-number"
+  }, liveData?.count))))) : null);
 }
 
 /***/ }),
