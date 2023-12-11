@@ -13,7 +13,7 @@ import Crawler from "../../Components/Crawler";
 import Line from "../../Components/Charts/Line";
 import Pie from "../../Components/Charts/Pie";
 import StickyPageTitle from "../../Components/Header/Sticky/index.js";
-
+import { LiveView } from "../../components/LiveView/index.js";
 import {PremiumTier, BasicTier, ProTier} from "../../Components/tiers/index.js";
 
 export default function Dashboard(props){
@@ -86,7 +86,7 @@ export default function Dashboard(props){
                 <div className="" style={{paddingTop: "40px"}}>
                     <div className="grid-container grid-2">
                         <h2>User Interactions</h2>
-                        
+                        <LiveView />
                     </div>
                     <div className="grid-container" style={{gridTemplateColumns: "1fr .5fr", gap: "20px"}}>
                     {(loading) ? <>

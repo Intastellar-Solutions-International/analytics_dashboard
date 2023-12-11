@@ -16,6 +16,14 @@ const API = {
             "Content-Type": "application/json"
         }
     },
+    liveData: {
+        url: `${PrimaryHost}/analytics/gdpr/livedata.php`,
+        method: "GET",
+        headers: {
+            "Authorization": Authentication.getToken(),
+            "Content-Type": "application/json"
+        }
+    },
     gdpr: {
         getTotalNumber: {
             url:  `${PrimaryHost}/analytics/gdpr/getTotalNumber.php`,
