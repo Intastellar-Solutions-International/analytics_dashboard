@@ -1,7 +1,9 @@
 import useFetch from "../../Functions/FetchHook";
 import API from "../../API/api";
-export function LiveView(){
-    const [loading, liveData, error, updated] = useFetch(0.25, API.liveData.url + "?ev=cykelfaergen.info", API.liveData.method, API.liveData.headers);
+export function LiveView(props){
+    API.liveData.headers.Domains = props.currentDomain;
+    
+    const [loading, liveData, error, updated] = useFetch(0.25, API.liveData.url, API.liveData.method, API.liveData.headers);
     
     return <>
         {

@@ -514,6 +514,7 @@ const API = {
     method: "GET",
     headers: {
       "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
+      "Organisation": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getOrganisation(),
       "Content-Type": "application/json"
     }
   },
@@ -4396,7 +4397,9 @@ function Dashboard(props) {
     }
   }, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-2"
-  }, /*#__PURE__*/React.createElement("h2", null, "User Interactions"), /*#__PURE__*/React.createElement(_components_LiveView_index_js__WEBPACK_IMPORTED_MODULE_12__.LiveView, null)), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h2", null, "User Interactions"), /*#__PURE__*/React.createElement(_components_LiveView_index_js__WEBPACK_IMPORTED_MODULE_12__.LiveView, {
+    currentDomain: currentDomain
+  })), /*#__PURE__*/React.createElement("div", {
     className: "grid-container",
     style: {
       gridTemplateColumns: "1fr .5fr",
@@ -5277,8 +5280,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../API/api */ "./src/API/api.js");
 
 
-function LiveView() {
-  const [loading, liveData, error, updated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__["default"])(0.25, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.url + "?ev=cykelfaergen.info", _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.method, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.headers);
+function LiveView(props) {
+  _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.headers.Domains = props.currentDomain;
+  const [loading, liveData, error, updated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__["default"])(0.25, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.url, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.method, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.headers);
   return /*#__PURE__*/React.createElement(React.Fragment, null, !loading ? /*#__PURE__*/React.createElement("div", {
     className: "liveView"
   }, /*#__PURE__*/React.createElement("div", {

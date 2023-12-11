@@ -86,7 +86,7 @@ export default function Dashboard(props){
                 <div className="" style={{paddingTop: "40px"}}>
                     <div className="grid-container grid-2">
                         <h2>User Interactions</h2>
-                        <LiveView />
+                        <LiveView currentDomain={currentDomain} />
                     </div>
                     <div className="grid-container" style={{gridTemplateColumns: "1fr .5fr", gap: "20px"}}>
                     {(loading) ? <>

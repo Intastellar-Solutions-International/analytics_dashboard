@@ -21,6 +21,7 @@ const API = {
         method: "GET",
         headers: {
             "Authorization": Authentication.getToken(),
+            "Organisation": Authentication.getOrganisation(),
             "Content-Type": "application/json"
         }
     },
