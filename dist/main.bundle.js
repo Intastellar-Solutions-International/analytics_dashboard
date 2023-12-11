@@ -5278,22 +5278,20 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function LiveView() {
-  const [loading, liveData, error, updated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__["default"])(0.25, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.url, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.method, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.headers);
+  const [loading, liveData, error, updated] = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__["default"])(0.25, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.url + "?ev=cykelfaergen.info", _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.method, _API_api__WEBPACK_IMPORTED_MODULE_1__["default"].liveData.headers);
   return /*#__PURE__*/React.createElement(React.Fragment, null, !loading ? /*#__PURE__*/React.createElement("div", {
     className: "liveView"
   }, /*#__PURE__*/React.createElement("div", {
     className: "liveView-content"
   }, /*#__PURE__*/React.createElement("p", {
     className: "liveView-content-title"
-  }, "Live View"), /*#__PURE__*/React.createElement("div", {
+  }, "USERS IN LAST 30 MINUTES"), /*#__PURE__*/React.createElement("div", {
     className: "liveView-content-data"
   }, /*#__PURE__*/React.createElement("div", {
     className: "liveView-content-data-1"
   }, /*#__PURE__*/React.createElement("p", {
     className: "liveView-content-data-1-number"
-  }, liveData?.count), /*#__PURE__*/React.createElement("p", {
-    className: "liveView-content-data-1-title"
-  }, "last 15 min."))))) : null);
+  }, liveData?.count))))) : null);
 }
 
 /***/ }),
