@@ -5,6 +5,26 @@ const API = {
     Login: {
         url: `${LoginHost}/signin/v2/signin.php`,
     },
+    SignUp: {
+        url: `${LoginHost}/consents/signup/v1/signup.php`,
+    },
+    Subscription: {
+        url: `${PrimaryHost}/payment/subscription/v1/subscription.php`,
+        method: "POST",
+        headers: {
+            "Authorization": Authentication.getToken(),
+            "Content-Type": "application/json"
+        }
+    },
+    liveData: {
+        url: `${PrimaryHost}/analytics/gdpr/livedata.php`,
+        method: "GET",
+        headers: {
+            "Authorization": Authentication.getToken(),
+            "Organisation": Authentication.getOrganisation(),
+            "Content-Type": "application/json"
+        }
+    },
     gdpr: {
         getTotalNumber: {
             url:  `${PrimaryHost}/analytics/gdpr/getTotalNumber.php`,
@@ -35,6 +55,24 @@ const API = {
         },
         getDomains: {
             url: `${PrimaryHost}/analytics/gdpr/getDomains.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
+            }
+        },
+        getDevices: {
+            url: `${PrimaryHost}/analytics/gdpr/getDevices.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
+            }
+        },
+        getCookies: {
+            url: `${PrimaryHost}/analytics/gdpr/cookiesAPI.php`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -113,6 +151,20 @@ const API = {
                 "Content-Type": "application/json"
             }
         },
+        user: {
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Content-Type": "application/json"
+            },
+            update: {
+                url: `${PrimaryHost}/analytics/settings/user.php`,
+                method: "POST"
+            },
+            get: {
+                url: `${PrimaryHost}/analytics/settings/getUserSettings.php`,
+                method: "POST"
+            },
+        }
     },
     ferry: {
         getTotalSales: {

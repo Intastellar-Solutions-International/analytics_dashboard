@@ -22,7 +22,7 @@ export default function Header(props) {
     const [allOrganisations, setallOrganisations] = useState(null);
     const [domains, setDomains] = useState(props.domains);
     const [viewUserProfile, setViewUserProfile] = useState(false);
-    const Platform = (localStorage.getItem("platform") == "gdpr") ? "Platform:  Intastellar Cookie Consents" : "Platform: Ferry Booking";
+    const Platform = (localStorage.getItem("platform") == "gdpr") ? "Cookie Consents" : "Ferry Booking";
     useEffect(() => {
 
         Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
@@ -37,7 +37,6 @@ export default function Header(props) {
             if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
-
             setallOrganisations(data);
         });
 
@@ -80,38 +79,39 @@ export default function Header(props) {
         <>
             <header className="dashboard-header">
                 <div className="dashboard-profile">
-                    <section style={{display:"flex", alignItems:"center"}}>
-                        <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
-                        {Platform}
+                    <section className="logo-selector-container">
+                        <section className="logo_container">
+                            <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
+                            <span className="platform-view">{Platform}</span>
+                        </section>
+                        <section className="company_container">
+                            {(allOrganisations && Organisation) ? 
+                                <Select defaultValue={Organisation}
+                                    onChange={(e) => { 
+                                        setOrganisation(e);
+                                        localStorage.setItem("organisation", e);
+                                        window.location.reload();}}
+                                    items={allOrganisations}
+                                    style={{right: "0"}}
+                                /> : null
+                            }
+                            {(domains && currentDomain) ?
+                            <>
+                                <Select defaultValue={currentDomain}
+                                    onChange={(e) => { 
+                                        const domain = e;
+                                        setCurrentDomain(domain);
+                                        window.location.href = `/${window.location.pathname.split("/")[1]}/view/${domain.replace('.', '%2E')}`;
+                                    }}
+                                    items={domainList} title="Choose one of your domains"
+                                    style={{left: "0"}}
+                                    icon={'dashboard-icons domains'}
+                                />
+                            </> : null
+                            }
+                        </section>
                     </section>
-                    <section style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
-                    {(allOrganisations && Organisation) ? 
-                        <Select defaultValue={Organisation}
-                            onChange={(e) => { 
-                                setOrganisation(e);
-                                localStorage.setItem("organisation", e);
-                                window.location.reload();}}
-                            items={allOrganisations}
-                            style={{right: "0"}}
-                        />: null
-                    }
-                    <i className="arrowRight"></i>
-                    {(domains && currentDomain) ?
-                    <>
-                        <Select defaultValue={currentDomain}
-                            onChange={(e) => { 
-                                const domain = e;
-                                setCurrentDomain(domain);
-                                window.location.href = `/${window.location.pathname.split("/")[1]}/view/${domain.replace('.', '%2E')}`;
-                            }}
-                            items={domainList} title="Choose one of your domains"
-                            style={{left: "0"}}
-                            icon={'dashboard-icons domains'}
-                        />
-                    </> : null
-                    }
-                    </section>
-                    <div className="flex">
+                    <div className="flex profileImage">
                         <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile) } />
                     </div>
                 </div>

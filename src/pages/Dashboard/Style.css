@@ -5,10 +5,18 @@
     gap: 20px;
 }
 
+.grid-2{
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
 .dashboard-content {
     width: 100%;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 50px;
     flex: 1;
 }
 
@@ -23,4 +31,11 @@
     background-color: #fff;
     color: #3d3d3d;
     border-radius: 10px;
+}
+
+@media screen and (max-width: 900px) {
+    .dashboard-content{
+        padding: 0 20px;
+    }
+    
 }

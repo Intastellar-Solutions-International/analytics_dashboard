@@ -27,12 +27,16 @@
     box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6{
+    font-weight: lighter;
+}
+
 img{
     max-width: 100%;
 }
 
 body{
-    background-color: rgb(36, 36, 36);
+    background-color: rgb(55, 55, 55);
     color: rgb(197, 197, 197);
     font-family: "Questrial", Arial, Helvetica, sans-serif;
     margin: 0;
@@ -94,34 +98,73 @@ body{
 .crawler{
     background-color: #ffffff;
     position: relative;
-    padding: 15px 0;
+    padding: 15px;
     color: #525252;
+    border-radius: 10px;
 }
 
-.crawler::before{
-    content: "";
-    display: block;
-    position: absolute;
-    width: 20px;
-    height: 100%;
-    background-color: #fff;
-    top: 0;
-    left: -20px;
+.cookieCheckContainer{
+    width: 1200px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    height: 100vh;
 }
 
-.crawler::after{
+.cookieCheckContainer h2{
+    font-size: 2.5em;
+}
+
+.crawlerPage-logo{
+    max-width: 200px;
+}
+
+.cookieCheckContainer .form{
+    width: 100%;
+}
+
+.infoHeader{
+    width: 100%;
+}
+
+.infoHeader.sticky{
+    position: sticky;
+    top: 66px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 10px 0 !important;
+    background-color: rgb(55, 55, 55);
+    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.14),inset 0 2px 1px -1px rgba(209, 209, 209, 0.12);
+}
+
+.infoHeader.sticky::after{
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    bottom: -4px;
+    box-shadow: inset 0 1px 1px 0 rgba(182, 182, 182, 0.14),inset 0 2px 1px -1px rgba(182, 182, 182,.12);
     content: "";
-    display: block;
+    height: 4px;
+    left: 8px;
+    mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));
+    mask-image: linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
     position: absolute;
-    width: 20px;
-    height: 100%;
-    background-color: #fff;
-    top: 0;
-    right: -20px;
+    -webkit-mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));
+    -webkit-mask-image: -webkit-linear-gradient(left,transparent,#000 5%,#000 95%,transparent);
+    width: calc(100% - 16px);
 }
 
 @media screen and (min-width: 320px) and (max-width: 900px) {
     .main-grid{
         display: block;
+    }
+
+    .cookieCheckContainer{
+        width: 100%;
+        padding: 10px;
+    }
+
+    .dashboard-content{
+        padding: 0 20px;
     }
 }

@@ -3,7 +3,7 @@ import SideNav from "../../../Components/Header/SideNav"
 import { reportsLinks } from "../../../Components/Header/SideNavLinks"
 export default function SettingsAddDomain(){
     return <>
-        <SideNav links={reportsLinks} />
+        <SideNav links={reportsLinks} title="Settings" />
         <AddDomain />
     </>
 }

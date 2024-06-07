@@ -35,7 +35,7 @@ export default function AddUser() {
 
     return (
         <>
-            <SideNav links={reportsLinks} />
+            <SideNav links={reportsLinks} title="Settings" />
             <main className="dashboard-content">
                 <h1>Create a Organisation</h1>
                 <form onSubmit={create}>

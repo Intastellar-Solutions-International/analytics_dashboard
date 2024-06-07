@@ -13,6 +13,9 @@ const client = {
   watchOptions: {
     ignored: /node_modules/,
   },
+  externals: {
+    "i18n-iso-countries": "i18n-iso-countries",
+  },
   devServer: {
     historyApiFallback: true,
   },
