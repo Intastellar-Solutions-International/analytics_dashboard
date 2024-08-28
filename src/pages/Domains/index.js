@@ -13,7 +13,7 @@ export default function Websites() {
             <main className="dashboard-content">
                 <h2>Analytics</h2>
                 <h3>List of all domains</h3>
-                <p>On all these domains the GDPR cookiebanner is implemented</p>
+                <p>On all these domains the Intastellar Cookie Consents is implemented</p>
                 <section className="grid-container grid-3">
                     {
                         (loading) ? <Loading /> : data?.map(
@@ -26,7 +26,7 @@ export default function Websites() {
                                 const lastVisited = domain["lastedVisited"];
                                 return (
                                     <>
-                                        <a key={key} className="link widget" href={"http://" + punycode.toUnicode(main)} target="_blank" rel="noopener nofollow noreferer">
+                                        <a key={key} className="link widget" href={"http://" + main} target="_blank" rel="noopener nofollow noreferer">
                                             {punycode.toUnicode(main)} <br />
                                             Last visited: {lastVisited} <br />
                                             Installed: {installed}

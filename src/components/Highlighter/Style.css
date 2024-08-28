@@ -1,0 +1,27 @@
+h2:has(.highlight) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.highlight {
+    border: 1px solid red;
+    padding: 10px 20px;
+    background: red;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 auto;
+    display: inline-block;
+    font-size: 15px;
+}
+
+.highlight.--new{
+    border: 1px solid var(--intastellarGold);
+    background-color: var(--intastellarGold);
+}
+
+.highlight.--coming{
+    border: 1px solid var(--IntastellarGrey);
+    background-color: var(--IntastellarGrey);
+}

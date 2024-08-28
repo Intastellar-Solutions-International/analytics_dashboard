@@ -2,12 +2,41 @@
 @import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
 
+:root{
+    --heroHeadline: 40px "Montserrat", Arial, Helvetica, sans-serif;
+    --heroHedlineColor: rgb(110, 110, 110);
+    --accentColor: rgb(0, 51, 153);
+    --colorHover: rgb(0, 118, 193);
+    --aboutColor: var(--aboutColorMain);
+    --aboutColorVarient: rgb(201, 226, 255);
+    --aboutColorMain: rgb(253, 246, 240);
+    --promoBG: rgba(0, 70, 209, 1);
+    --IntastellarGrey: rgb(88, 88, 88);
+    --IntastellarMediumGrey: rgb(156, 156, 156);
+    --infoBanner: rgb(207, 207, 207);
+    --infoBannerLigherShade: rgb(230, 230, 230);
+    --infoBannerlightesShade: rgb(246, 246, 246);
+    --infoBannerWarning: rgb(251, 237, 225);
+    --infoBannerError: rgb(255, 183, 183);
+    --statusBannerBg: var(--IntastellarMediumGrey);
+    --cookieBanner: rgb(190, 211, 255);
+    --borderRadius: 10px;
+}
+
 *{
     box-sizing: border-box;
 }
 
+h1, h2, h3, h4, h5, h6{
+    font-weight: lighter;
+}
+
+img{
+    max-width: 100%;
+}
+
 body{
-    background-color: rgb(36, 36, 36);
+    background-color: rgb(55, 55, 55);
     color: rgb(197, 197, 197);
     font-family: "Questrial", Arial, Helvetica, sans-serif;
     margin: 0;
@@ -25,11 +54,12 @@ body{
 }
 
 .main-grid {
-    display: grid;
-    grid-template-columns: minmax(min-content, 150px) 1fr;
-    
-    scroll-padding-top: 88px;
-    padding-top: 88px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    scroll-padding-top: 66px;
+    padding-top: 66px;
 }
 
 .link{
@@ -61,8 +91,80 @@ body{
     transform: rotate(-45deg);
 }
 
+.lb{
+    line-break: anywhere;
+}
+
+.crawler{
+    background-color: #ffffff;
+    position: relative;
+    padding: 15px;
+    color: #525252;
+    border-radius: 10px;
+}
+
+.cookieCheckContainer{
+    width: 1200px;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.cookieCheckContainer h2{
+    font-size: 2.5em;
+}
+
+.crawlerPage-logo{
+    max-width: 200px;
+}
+
+.cookieCheckContainer .form{
+    width: 100%;
+}
+
+.infoHeader{
+    width: 100%;
+}
+
+.infoHeader.sticky{
+    position: sticky;
+    top: 66px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 10px 0 !important;
+    background-color: rgb(55, 55, 55);
+    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.14),inset 0 2px 1px -1px rgba(209, 209, 209, 0.12);
+}
+
+.infoHeader.sticky::after{
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    bottom: -4px;
+    box-shadow: inset 0 1px 1px 0 rgba(182, 182, 182, 0.14),inset 0 2px 1px -1px rgba(182, 182, 182,.12);
+    content: "";
+    height: 4px;
+    left: 8px;
+    mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));
+    mask-image: linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+    position: absolute;
+    -webkit-mask-image: -webkit-gradient(linear,left top,right top,from(transparent),color-stop(5%,#000),color-stop(95%,#000),to(transparent));
+    -webkit-mask-image: -webkit-linear-gradient(left,transparent,#000 5%,#000 95%,transparent);
+    width: calc(100% - 16px);
+}
+
 @media screen and (min-width: 320px) and (max-width: 900px) {
     .main-grid{
         display: block;
+    }
+
+    .cookieCheckContainer{
+        width: 100%;
+        padding: 10px;
+    }
+
+    .dashboard-content{
+        padding: 0 20px;
     }
 }

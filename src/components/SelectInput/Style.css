@@ -1,6 +1,8 @@
 .selector{
     width: calc(max-content + 20px);
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .selectTitle{
@@ -9,18 +11,22 @@
 }
 
 .selector select{
-    border: none;
+    border: 1px solid rgba(255,255,255,0.2);
     background: transparent;
     appearance: none;
     -webkit-appearance: none;
     color: #fff;
     font-size: 12px;
     margin: 0px;
-    padding-bottom: 5px;
+    padding: 8px 16px;
     border-radius: 0;
     /* border-bottom: 1px solid; */
     display: block;
-    width: 100%;
+    max-width: 100%;
+    min-width: 175px;
+
+    vertical-align: baseline;
+    white-space: nowrap;
 }
 
 .selector select:focus, .selector select:focus-within, .selector select:focus-visible{
@@ -28,16 +34,80 @@
     border-bottom: 1px solid;
 }
 
-.selector::after{
+.dropdown-menu__content{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 16px;
+    font-weight: lighter;
+    width: 100%;
+    max-height: 500px;
+    overflow: scroll;
+    text-align: left;
+    background: rgb(75, 75, 75);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #d2d2d2;
+    border-radius: 5px;
+    padding: 0;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    /* display: none; */
+    list-style: none;
+    z-index: 1;
+}
+
+.dropdown-menu__content li{
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
+}
+
+.dropdown-menu__content li:hover{
+    background: #959595;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #e5e5e5;
+}
+
+.dropdown-menu__content li:last-child{
+    border-bottom: none;
+}
+
+.dropdown-menu-button{
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    appearance: none;
+    -webkit-appearance: none;
+    color: #fff;
+    margin: 0px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    /* border-bottom: 1px solid; */
+    display: flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    max-width: 100%;
+    min-width: 175px;
+
+    vertical-align: baseline;
+    white-space: nowrap;
+    justify-content: space-between;
+}
+
+.dropdown-menu-button::after{
     content: "";
     width: 10px;
     height: 10px;
-    margin-right: 10px;
+    
     display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
+    margin-left: 10px;
     border-top: 1px solid;
     border-left: 1px solid;
     transform: rotate(-135deg);
 }
+
+/* .selectorContianer{
+    z-index: 1;
+} */

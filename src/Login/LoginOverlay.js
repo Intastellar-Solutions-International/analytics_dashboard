@@ -4,7 +4,7 @@ import API from "../API/api";
 import Authentication from "../Authentication/Auth";
 
 export default function LoginOverLay() {
-    document.title = "Login | Intastellar Analytics";
+    document.title = "Signin | Intastellar Consents";
     document.body.style.overflow = "hidden";
     document.body.style.height = "100vh"
     const [email, setEmail] = React.useState();

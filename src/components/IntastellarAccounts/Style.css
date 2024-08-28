@@ -1,0 +1,160 @@
+.user_content, .services-overview-container {
+    width: 345px;
+    height: auto;
+    max-height: 600px;
+    overflow: hidden;
+    border-radius: 10px;
+    float: right;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.8);
+    /* box-shadow: 0 0 3px rgba(0,0,0,.14), 0 1px 3px rgba(0,0,0,.28); */
+    box-shadow: 0 0 3px 0 rgba(0,0,0,.22), inset -1px 1px 1px rgba(255, 255, 255, 0.5);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    -moz-backdrop-filter: blur(10px);
+}
+
+.dropdown-image-name {
+    height: auto;
+    padding: 25px 15px 10px;
+    text-align: center;
+}
+
+.dropdown-links {
+    max-height: 140px;
+    height: auto;
+    overflow: scroll;
+}
+
+.dropdown-links a {
+    color: #000;
+    font-size: 15px;
+    padding: 15px;
+    display: block;
+	text-decoration: none;
+}
+
+.dropdown-links a:hover {
+    background: #b7b7b7;
+    text-decoration: none;
+    color: #000;
+}
+
+.dpde {
+    color: #5f6368;
+    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    letter-spacing: normal;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.dropdown-image-name {
+    text-align: center;
+}
+
+.content-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: auto;
+    box-shadow: 0 0 9px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.28);
+    border: 5px solid #fff;
+}
+
+.dropdown-name {
+    width: 100%;
+    color: #000;
+}
+
+.dpdn {
+    color: #202124;
+    font: 500 16px/22px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    letter-spacing: .29px;
+    margin: 0;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.dpde {
+    color: #5f6368;
+    font: 400 14px/19px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    letter-spacing: normal;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.acc {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    max-width: fit-content;
+}
+
+.logo-icon {
+    width: 44px;
+    aspect-ratio: 1/1;
+    padding: 5px;
+}
+
+.sign_out_btn_container {
+    padding: 20px 30px;
+    border-top: 1px solid #c4c4c4;
+}
+
+.acc, .sign_out_btn {
+    background-color: #ffffff;
+    border: 1px solid #dadce0;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    color: #3c4043;
+    display: inline-block;
+    font: 500 13px/16px Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    letter-spacing: .25px;
+    margin: 16px 0 0;
+    max-width: 260px;
+    outline: 0;
+    padding: 8px 9px;
+    text-align: center;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.sign_out_btn {
+    border-radius: 4px !important;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.acc a, .sign_out_btn {
+    color: #3c4043 !important;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ziuVxb{
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+}
+
+svg.uarSJe.NMm5M {
+    width: 24px;
+    height: 24px;
+}
+
+.dpde .intastellaraccounts-logo {
+    width: 50%;
+    margin: 0;
+}

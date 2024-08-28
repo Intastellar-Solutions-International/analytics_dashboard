@@ -7,37 +7,23 @@ import useFetch from "../../Functions/FetchHook";
 import API from "../../API/api";
 import Authentication from "../../Authentication/Auth";
 import Select from "../SelectInput/Selector";
+import IntastellarAccounts from "../IntastellarAccounts/IntastellarAccounts";
 const useHistory = window.ReactRouterDOM.useHistory;
 const punycode = require("punycode");
 
-export default function Header() {
-    const [Organisation, setOrganisation] = useContext(OrganisationContext);
-    const [currentDomain, setCurrentDomain] = useContext(DomainContext);
-    const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
+export default function Header(props) {
 
+    const [Organisation, setOrganisation] = useContext(OrganisationContext);
+    const [currentDomain, setCurrentDomain] = useState((window.location.pathname.split("/")[2] === "view") ? decodeURI(window.location.pathname.split("/")[3]?.replace("%2E", ".")) : "all");
+    const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
+    let domainList = null;
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
     const navigate = useHistory();
-    const [data, setData] = useState(null);
-    const [domains, setDomains] = useState(null);
-
+    const [allOrganisations, setallOrganisations] = useState(null);
+    const [domains, setDomains] = useState(props.domains);
+    const [viewUserProfile, setViewUserProfile] = useState(false);
+    const Platform = (localStorage.getItem("platform") == "gdpr") ? "Cookie Consents" : "Ferry Booking";
     useEffect(() => {
-        Fetch(API.gdpr.getDomains.url, API.gdpr.getDomains.method, API.gdpr.getDomains.headers).then((data) => {
-            if (data === "Err_Login_Expired") {
-                localStorage.removeItem("globals");
-                window.location.href = "/#login";
-                return;
-            }
-
-            if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
-                JSON.parse(localStorage.getItem("globals")).organisation = data;
-            }
-
-            data.unshift({domain: "all", installed: null, lastedVisited: null});
-            data = data.filter((d) => {
-                return d !== undefined && d !== "" && d["domain"] !== "undefined." ;
-            })
-            setDomains(data); 
-        });
 
         Fetch(API.settings.getOrganisation.url, API.settings.getOrganisation.method, API.settings.getOrganisation.headers, JSON.stringify({
             organisationMember: Authentication.getUserId()
@@ -51,73 +37,90 @@ export default function Header() {
             if (JSON.parse(localStorage.getItem("globals")).organisation == null) {
                 JSON.parse(localStorage.getItem("globals")).organisation = data;
             }
-            setData(data);
+            setallOrganisations(data);
         });
-    }, [])
-    let view = "";
-    const domainList = domains?.map((d) => {
-        return  punycode.toUnicode(d.domain);
-    }).filter((d) => {
-        return d !== undefined && d !== "" && d !== "undefined.";
-    });
 
-    const allowedDomains = domains?.map((d) => {
-        return  punycode.toUnicode(d.domain);
-    }).filter((d) => {
-        return d !== undefined && d !== "" && d !== "undefined." && d !== "all";
-    });
+        Fetch(API[window.location.pathname.split("/")[1]]?.getDomains?.url, API[window.location.pathname.split("/")[1]]?.getDomains?.method, API[window.location.pathname.split("/")[1]]?.getDomains?.headers).then((data) => {
+            if (data === "Err_Login_Expired") {
+                localStorage.removeItem("globals");
+                window.location.href = "/login";
+                return;
+            }
+    
+            if(data.error === "Err_No_Domains") {
+                
+            }else{
+                data.unshift({domain: "all", installed: null, lastedVisited: null});
+                data?.map((d) => {
+                    return  punycode.toUnicode(d.domain);
+                }).filter((d) => {
+                    return d !== undefined && d !== "" && d !== "undefined.";
+                });
+                setDomains(data);
 
-    localStorage.setItem("domains", JSON.stringify(allowedDomains));
+                const allowedDomains = data?.map((d) => {
+                    return  punycode.toUnicode(d.domain);
+                }).filter((d) => {
+                    return d !== undefined && d !== "" && d !== "undefined." && d !== "all";
+                });
+            
+                localStorage.setItem("domains", JSON.stringify(allowedDomains));
+    
+            }
+        });
+    }, []);
+    
+
+    domainList = domains?.map((d) => {
+        return punycode.toUnicode(d.domain)
+    })
 
     return (
         <>
             <header className="dashboard-header">
                 <div className="dashboard-profile">
-                    <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
-                    {(domains && currentDomain) ?
-                    <>
-                        <Select defaultValue={currentDomain}
-                            onChange={(e) => { 
-                                const domain = e.target.value;
-                                setCurrentDomain(domain);
-                                window.location.href = `/view/${domain.replace('.', '%2E')}`;
-                            }}
-                            items={domainList} title="Choose one of your domains"
-                        />
-                    </> : null
-                    }
-                    <div className="flex">
-                        <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile) } />
-                        <div className="dashboard-profile__nameContainer">
-                            <p className="dashboard-name">{Name}</p>
-                            <div className="dashboard-organisationContainer">
-                            {(data && Organisation) ?
+                    <section className="logo-selector-container">
+                        <section className="logo_container">
+                            <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
+                            <span className="platform-view">{Platform}</span>
+                        </section>
+                        <section className="company_container">
+                            {(allOrganisations && Organisation) ? 
                                 <Select defaultValue={Organisation}
                                     onChange={(e) => { 
-                                        setOrganisation(JSON.parse(e.target.value));
-                                        localStorage.setItem("organisation", e.target.value);
+                                        setOrganisation(e);
+                                        localStorage.setItem("organisation", e);
                                         window.location.reload();}}
-                                    items={data}
+                                    items={allOrganisations}
+                                    style={{right: "0"}}
                                 /> : null
                             }
-                            </div>
-                        </div>
+                            {(domains && currentDomain) ?
+                            <>
+                                <Select defaultValue={currentDomain}
+                                    onChange={(e) => { 
+                                        const domain = e;
+                                        setCurrentDomain(domain);
+                                        window.location.href = `/${window.location.pathname.split("/")[1]}/view/${domain.replace('.', '%2E')}`;
+                                    }}
+                                    items={domainList} title="Choose one of your domains"
+                                    style={{left: "0"}}
+                                    icon={'dashboard-icons domains'}
+                                />
+                            </> : null
+                            }
+                        </section>
+                    </section>
+                    <div className="flex profileImage">
+                        <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile) } />
                     </div>
                 </div>
+                {(viewUserProfile) ? <IntastellarAccounts profile={{
+                    image: profileImage,
+                    name: JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name,
+                    email: JSON.parse(localStorage.getItem("globals"))?.profile?.email,
+                }} setIsOpen={setViewUserProfile} /> : null}
             </header>
         </>
     )
 }
-
-{/* <select defaultValue={Organisation} onChange={(e) => { setOrganisation({ id: JSON.parse(e.target.value).id, name: JSON.parse(e.target.value).name }) }} className="dashboard-organisationSelector">
-    {
-        (!data) ? "" : data.map((d, key) => {
-            d = JSON.parse(d);
-            return (
-                <>
-                    <option key={key} value={JSON.stringify({ id: d.id, name: d.name })}>{d.name}</option>
-                </>
-            )
-        })
-    }
-</select> */}

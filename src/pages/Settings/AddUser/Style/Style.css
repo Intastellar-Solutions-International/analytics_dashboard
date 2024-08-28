@@ -1,0 +1,14 @@
+.cta{
+    padding: 15px 30px;
+    background-color: #1e90ff;
+    border: none;
+    margin-top: 10px;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.cta:disabled{
+    background-color: #b3b3b3;
+    color: #fff;
+}

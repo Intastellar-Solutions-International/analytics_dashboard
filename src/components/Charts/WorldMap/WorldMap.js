@@ -1,31 +1,96 @@
 import "./Style.css";
-import styles from './Countries.module.css';
+const { useState, useEffect, useRef, createContext } = React;
+const svgMap = window.svgMap;
+import countryCodes from "./countryCodes.js";
 export default function Map(props) {
    const data = props.data;
    const countries = data.Countries;
-   const countryFill = {
-      fill: "",
-      country: ""
+
+   if(countries != null){
+      
+      const newArray = countries.map((country, key) => {
+         if(country.country != "Unknown"){
+            /* console.log(country); */
+            const name = country.country;
+            const code = countryCodes[name];
+            return {
+               [code]: {
+                  total: country.num.total,
+                  accepted: country.accepted,
+                  rejected: country.declined,
+                  functional: country.functional,
+                  statistics: country.statics,
+                  marketing: country.marketing,
+                  color: "#c09f53"
+               }
+            }
+         }
+      });
+
+      const mapCountries = Object.assign({}, ...newArray);
+
+      useEffect(() => {
+         document.getElementById("svgMap").innerHTML = "";
+         new svgMap({
+            targetElementID: 'svgMap',
+            
+            data: {
+              data: {
+               total: {
+                  name: 'Total Interactions',
+                  format: '{0}',
+                  thousandSeparator: '.',
+                  thresholdMax: 800,
+                  thresholdMin: 10
+               },
+               accepted: {
+                  name: 'Accepted Consents',
+                  format: '{0} %',
+                  thousandSeparator: '.',
+                  thresholdMax: 800,
+                  thresholdMin: 10
+               },
+               rejected: {
+                  name: 'Rejected Consents',
+                  format: '{0} %',
+                  thousandSeparator: '.',
+                  thresholdMax: 800,
+                  thresholdMin: 10
+               },
+               functional: {
+                  name: 'Functional Consents',
+                  format: '{0} %',
+                  thousandSeparator: '.',
+                  thresholdMax: 800,
+                  thresholdMin: 10
+               },
+               statistics: {
+                  name: 'Statistics Consents',
+                  format: '{0} %',
+                  thousandSeparator: '.',
+                  thresholdMax: 800,
+                  thresholdMin: 10
+               },
+               marketing: {
+                  name: 'Marketing Consents',
+                  format: '{0} %',
+                  thousandSeparator: '.',
+                  thresholdMax: 800,
+                  thresholdMin: 10
+               }
+              },
+              applyData: 'total',
+              values: mapCountries,
+            },
+            initialZoom: 1.15,
+          });
+      }, [data])
    }
+   
    return (
       <>
          <div className="grid-container grid-3">
-            {
-               countries?.map((country, key) => {
-                  return (
-                      <div className="widget overviewTotal" key={key}>
-                        <h3>{(country.country != "") ? country.country : "Unknown"}</h3>
-                        <h4>Total: {country.num.total}</h4>
-                        <section className="countryStats">
-                           <p>Accepted <br />{country.accepted}%  ({ (country.num.accept === null ) ? "0" : country.num.accept })</p>
-                           <p>Declined <br />{country.declined}% ({ (country.num.decline === null ) ? "0" : country.num.decline  })</p>
-                           <p>Functional <br />{country.functional}% ({ (country.num.functional === null) ? "0" : country.num.functional })</p>
-                           <p>Marketing <br />{country.marketing}% ({ (country.num.marketing === null ) ? "0" : country.num.marketing })</p>
-                           <p>Statics <br />{country.statics}% ({ (country.num.statics === null ) ? "0" : country.num.statics })</p>
-                        </section>
-                     </div>)
-               })
-            }
+            <div id="svgMap"></div>
          </div>
          <div style={{width: "1000px"}}>
          </div>
