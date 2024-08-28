@@ -17,7 +17,10 @@ export default function Crawler({domains, websiteStatus = null, setWebsiteStatus
     if(websiteStatus === null){
         [websiteStatus, setWebsiteStatus] = useState("Not Crawled");
     }
-    
+
+    if(window.location.pathname === "/crawler" || window.location.pathname === "/check"){
+        document.title = "CookieBot | Intastellar Consents Platform"; 
+    }
 
     function crawlWebsite(e){
         e.preventDefault();

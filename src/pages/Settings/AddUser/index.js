@@ -61,7 +61,7 @@ export default function AddUser() {
 
     return (
         <>
-            <SideNav links={reportsLinks} />
+            <SideNav links={reportsLinks} title="Settings" />
             <main className="dashboard-content">
                 <h1>Add user for { JSON.parse(Organisation).name }</h1>
                 <Link className="backLink" to="/settings">Back to settings</Link>

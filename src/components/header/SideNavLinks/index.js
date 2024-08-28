@@ -1,5 +1,10 @@
 export const reportsLinks = [
     {
+        name: "My Preferences",
+        path: "/settings/preferences",
+        view: ["admin", "super-admin", "manager"]
+    },
+    {
         name: "Add new User",
         path: "/settings/add-user",
         view: ["admin", "super-admin"]
@@ -27,6 +32,11 @@ export const reportsLinks = [
     {
         name: "View Domains",
         path: "/settings/view-domains",
+        view: ["admin", "super-admin", "manager"]
+    },
+    {
+        name: "Config GDPR",
+        path: "/settings/config-gdpr",
         view: ["admin", "super-admin", "manager"]
     }
 ]

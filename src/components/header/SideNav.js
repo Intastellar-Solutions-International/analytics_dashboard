@@ -10,6 +10,9 @@ export default function SideNav(props) {
         <aside className="sidebar expand">
             <nav className="collapsed expand">
                 {
+                    props?.title ? <h2 className="navItems">{props?.title}</h2> : null
+                }
+                {
                     props?.links?.map((link, key) => {
                         if(link.path.indexOf("reports") !== -1){
                             url = "/" + id + link?.path;

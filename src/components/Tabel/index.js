@@ -17,7 +17,7 @@ export default function Table(props){
                 {
                     <div className="table-row">
                         {
-                            data.map((d, i) => {
+                            data?.map((d, i) => {
                                 return <>
                                     <div className="table-cell" key={i}>{d.name}</div>
                                     <div className="table-cell" key={i+1}>{d.domain}</div>

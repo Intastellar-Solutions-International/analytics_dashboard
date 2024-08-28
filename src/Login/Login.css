@@ -9,6 +9,9 @@
     background-position: left;
     background-size: cover;
     background-blend-mode: multiply;
+    position: absolute;
+    z-index: 1000000000;
+    top: 0;
 }
 
 .loginForm-overlay{
@@ -67,8 +70,8 @@
 }
 
 .loginForm-logo{
-    width: 50%;
-    margin: 0 auto;
+    width: 35%;
+    margin: 20px auto;
     padding: 20px 15px;
     filter: invert(100) brightness(100);
 }
@@ -90,13 +93,22 @@
     font-size: 1.7em;
     text-align: left;
     padding: 15px 0px;
-    width: 100%;
+    width: 70%;
     text-transform: uppercase;
     margin-bottom: -2px;
 }
 
 .loginForm-service{
     margin: 0 0 10px;
+}
+
+.loginForm-inputField.--link{
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    margin: 10px 0px;
 }
 
 @media screen and (min-width: 375px) and (max-width: 900px) {
@@ -117,5 +129,9 @@
 
     .loginForm-container{
         background-position: -250px;
+    }
+
+    .signup{
+        overflow: scroll;
     }
 }

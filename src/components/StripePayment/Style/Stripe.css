@@ -1,0 +1,52 @@
+.content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.stripe-price-table{
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.payment-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1400px;
+    width: 100%;
+    margin: auto;
+    padding: 15px;
+}
+.logo{
+    width: 5%;
+    filter: invert(100%);
+    float: left;
+}
+
+.footer a{
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.footer a:hover{
+    color: #E3DA37;
+}
+
+@media screen and (max-width: 600px){
+    .logo{
+        width: 12%;
+    }
+}

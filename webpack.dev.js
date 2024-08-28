@@ -9,6 +9,11 @@ module.exports = merge(common, {
   watchOptions: {
     ignored: /node_modules/,
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "src/index.html"
+    })
+  ],
   devServer: {
     static: './dist',
     historyApiFallback: true,
