@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\"",
     "start": "webpack serve --open --mode development",
     "startNodeServer": "nodemon index.js",
-    "buildProd": "webpack --mode=production && cp -R",
-    "buildDev": "webpack --mode=development"
+    "buildProd": "webpack build --mode=production && cp -R",
+    "buildDev": "webpack build --mode=development"
   },
   "repository": {
     "type": "git",
