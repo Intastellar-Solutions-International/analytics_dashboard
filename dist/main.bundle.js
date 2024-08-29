@@ -378,7 +378,7 @@ function App() {
     setId = _useState20[1];
   if (localStorage.getItem("globals") != null) {
     var _JSON$parse;
-    if (window.location.pathname === "/") {
+    if (window.location.pathname === "/login") {
       window.location.href = "/" + id + "/dashboard";
     }
     (0,_Functions_fetch__WEBPACK_IMPORTED_MODULE_19__["default"])(_API_api__WEBPACK_IMPORTED_MODULE_7__["default"].settings.user.get.url, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].settings.user.get.method, _API_api__WEBPACK_IMPORTED_MODULE_7__["default"].settings.user.headers, JSON.stringify({
