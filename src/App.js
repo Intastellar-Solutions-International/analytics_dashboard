@@ -13,6 +13,7 @@ import Signup from "./Login/Signup";
 import Nav from "./Components/Header/Nav";
 import CookiesDashboard from "./Pages/Dashboard/CookiesDashboard";
 import API from "./API/api";
+import LandingPage from "./Pages/LandingPage";
 import useFetch from "./Functions/FetchHook";
 import Dashboard from "./Pages/Dashboard/Dashboard.js";
 import FerryDashboard from "./Pages/Dashboard/ferry/Dashboard.js";
@@ -253,7 +254,12 @@ export default function App() {
                                     </Router>
                                     <Route path="/settings/config-gdpr">
                                     </Route>
-                                    <Redirect to="/login" />
+                                    <Route path="/" exact>
+                                        <ErrorBoundary>
+                                            <LandingPage />
+                                        </ErrorBoundary>
+                                    </Route>
+                                    <Redirect to="/" />
                                 </Switch>
                             </div>
                             <ErrorBoundary>
@@ -266,10 +272,6 @@ export default function App() {
         )
         /* } */
     } else {
-        if (window.location.pathname !== "/login" && window.location.pathname !== "/signup") {
-            window.location.href = "/login";
-
-        }
         return (
             <Router>
                 <Switch>
@@ -279,6 +281,11 @@ export default function App() {
                     <Route path="/signup" exact>
                         <ErrorBoundary>
                             <Signup />
+                        </ErrorBoundary>
+                    </Route>
+                    <Route path="/" exact>
+                        <ErrorBoundary>
+                            <LandingPage />
                         </ErrorBoundary>
                     </Route>
                     <Route path="/check">
@@ -292,7 +299,6 @@ export default function App() {
                         </div>
                     </Route>
                 </Switch>
-
             </Router>
         )
     }

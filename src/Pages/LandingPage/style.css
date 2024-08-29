@@ -1,0 +1,23 @@
+.main-header {
+    padding: 0;
+    width: 100%;
+}
+
+.crawlerPage-logo {
+    width: 150px;
+    padding: 15px;
+}
+
+.main-content {
+    width: 1200px;
+    margin: auto;
+}
+
+.main-content-section-button {
+    margin-top: 20px;
+    color: #f8f9fa;
+    background-color: #c09f53;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
