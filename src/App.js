@@ -151,11 +151,15 @@ export default function App() {
                     <OrganisationContext.Provider value={[organisation, setOrganisation]}>
                         <DomainContext.Provider value={[currentDomain, setCurrentDomain]}>
                             <ErrorBoundary>
-                                <Header handle={handle} id={id} />
-                                <BugReport />
+                                {id ? <>
+                                    <Header handle={handle} id={id} />
+                                    <BugReport />
+                                </> : null}
                             </ErrorBoundary>
                             <div className="main-grid">
-                                <Nav />
+                                {
+                                    id ? <Nav /> : null
+                                }
                                 <Switch>
                                     <Route path="/:id/dashboard" exact>
                                         <div style={{ flex: "1" }}>
