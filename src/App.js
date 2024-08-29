@@ -62,7 +62,7 @@ export default function App() {
     const [id, setId] = useState((localStorage.getItem("platform")) ? localStorage.getItem("platform") : null);
 
     if (localStorage.getItem("globals") != null) {
-        if (window.location.pathname === "/") {
+        if (window.location.pathname === "/login") {
             window.location.href = "/" + id + "/dashboard";
         }
 
