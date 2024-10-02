@@ -17,7 +17,6 @@ export function LiveView(props) {
                                 <p className="liveView-content-data-1-number">{liveData?.count}</p>
                             </div>
                             <div className="liveView-container" style={{
-                                display: "flex",
                                 gap: "2px",
                                 borderBottom: "1px solid rgb(192, 159, 83)",
                                 marginBottom: "10px",

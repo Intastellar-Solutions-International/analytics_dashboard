@@ -5453,7 +5453,6 @@ function LiveView(props) {
   }, liveData === null || liveData === void 0 ? void 0 : liveData.count)), /*#__PURE__*/React.createElement("div", {
     className: "liveView-container",
     style: {
-      display: "flex",
       gap: "2px",
       borderBottom: "1px solid rgb(192, 159, 83)",
       marginBottom: "10px",
