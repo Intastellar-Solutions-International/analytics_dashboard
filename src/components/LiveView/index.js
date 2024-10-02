@@ -17,7 +17,7 @@ export function LiveView(props) {
                                 <p className="liveView-content-data-1-number">{liveData?.count}</p>
                             </div>
                             <div className="liveView-container" style={{
-                                gap: "5px",
+                                gap: "1px",
                                 display: "flex",
                                 // Stretch the container to the full width of the parent container.
                                 width: "100%",
@@ -33,7 +33,7 @@ export function LiveView(props) {
                                         // Get the parent container width.
                                         const containerWidth = document.querySelector(".liveView-container")?.clientWidth;
                                         // Calculate the position of the bar based on the number of minutes gone by and take the container width as 30 minutes.
-                                        const barTransformPosition = ((containerWidth / 30) * minute.minutes);
+                                        const barTransformPosition = ((containerWidth / 30) * minute.minutes) - 4;
 
                                         if (Math.round(minute.minutes) > 30) {
                                             return null;

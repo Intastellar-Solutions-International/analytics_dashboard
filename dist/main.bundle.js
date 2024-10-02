@@ -5453,7 +5453,7 @@ function LiveView(props) {
   }, liveData === null || liveData === void 0 ? void 0 : liveData.count)), /*#__PURE__*/React.createElement("div", {
     className: "liveView-container",
     style: {
-      gap: "5px",
+      gap: "1px",
       display: "flex",
       // Stretch the container to the full width of the parent container.
       width: "100%",
@@ -5468,7 +5468,7 @@ function LiveView(props) {
     // Get the parent container width.
     var containerWidth = (_document$querySelect = document.querySelector(".liveView-container")) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.clientWidth;
     // Calculate the position of the bar based on the number of minutes gone by and take the container width as 30 minutes.
-    var barTransformPosition = containerWidth / 30 * minute.minutes;
+    var barTransformPosition = containerWidth / 30 * minute.minutes - 4;
     if (Math.round(minute.minutes) > 30) {
       return null;
     }
