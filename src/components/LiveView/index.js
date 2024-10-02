@@ -17,10 +17,12 @@ export function LiveView(props) {
                                 <p className="liveView-content-data-1-number">{liveData?.count}</p>
                             </div>
                             <div className="liveView-container" style={{
-                                gap: "2px",
+                                gap: "5px",
+                                display: "flex",
+                                // Stretch the container to the full width of the parent container.
+                                width: "100%",
                                 borderBottom: "1px solid rgb(192, 159, 83)",
-                                marginBottom: "10px",
-                                paddingBottom: "10px"
+                                marginBottom: "10px"
                             }}>
                                 {/* Users count over minutes */}
                                 {
@@ -31,7 +33,7 @@ export function LiveView(props) {
                                         // Get the parent container width.
                                         const containerWidth = document.querySelector(".liveView-container")?.clientWidth;
                                         // Calculate the position of the bar based on the number of minutes gone by and take the container width as 30 minutes.
-                                        const barTransformPosition = (containerWidth / 30) * minute.minutes;
+                                        const barTransformPosition = ((containerWidth / 30) * minute.minutes);
 
                                         if (Math.round(minute.minutes) > 30) {
                                             return null;
@@ -41,7 +43,8 @@ export function LiveView(props) {
                                         // Update the bars position based on the number of users in that minute.
                                         return <div key={index} className="liveView-content-data-1" style={{
                                             // Update the bars position based on the minutes gone by and move it from right to left.
-                                            marginLeft: `${barTransformPosition}px`,
+                                            /* marginLeft: `${barTransformPosition}px`, */
+                                            transform: `translateX(${Math.round(barTransformPosition)}px)`,
                                             transition: "transform 0.5s",
                                             width: "maxContent",
                                         }}>
@@ -49,12 +52,9 @@ export function LiveView(props) {
                                                 height: `${(minute.count / liveData.count) * 100
                                                     }%`,
                                                 minHeight: "70px",
-                                                width: "2px",
-                                                margin: "auto",
+                                                width: "4px",
                                                 backgroundColor: "rgb(192, 159, 83)",
-                                            }}></div>
-                                            <p className="liveView-content-data-1-text">{Math.ceil(minute.minutes)}</p>
-                                            <p className="liveView-content-data-1-text">{minute.count}</p>
+                                            }} data-time={Math.round(minute.minutes)}></div>
                                         </div>
                                     })
                                 }

@@ -5453,10 +5453,12 @@ function LiveView(props) {
   }, liveData === null || liveData === void 0 ? void 0 : liveData.count)), /*#__PURE__*/React.createElement("div", {
     className: "liveView-container",
     style: {
-      gap: "2px",
+      gap: "5px",
+      display: "flex",
+      // Stretch the container to the full width of the parent container.
+      width: "100%",
       borderBottom: "1px solid rgb(192, 159, 83)",
-      marginBottom: "10px",
-      paddingBottom: "10px"
+      marginBottom: "10px"
     }
   }, liveData === null || liveData === void 0 ? void 0 : liveData.visitsOverTime.map(function (minute, index) {
     var _document$querySelect;
@@ -5478,7 +5480,8 @@ function LiveView(props) {
       className: "liveView-content-data-1",
       style: {
         // Update the bars position based on the minutes gone by and move it from right to left.
-        marginLeft: "".concat(barTransformPosition, "px"),
+        /* marginLeft: `${barTransformPosition}px`, */
+        transform: "translateX(".concat(Math.round(barTransformPosition), "px)"),
         transition: "transform 0.5s",
         width: "maxContent"
       }
@@ -5486,15 +5489,11 @@ function LiveView(props) {
       style: {
         height: "".concat(minute.count / liveData.count * 100, "%"),
         minHeight: "70px",
-        width: "2px",
-        margin: "auto",
+        width: "4px",
         backgroundColor: "rgb(192, 159, 83)"
-      }
-    }), /*#__PURE__*/React.createElement("p", {
-      className: "liveView-content-data-1-text"
-    }, Math.ceil(minute.minutes)), /*#__PURE__*/React.createElement("p", {
-      className: "liveView-content-data-1-text"
-    }, minute.count));
+      },
+      "data-time": Math.round(minute.minutes)
+    }));
   })), /*#__PURE__*/React.createElement("div", {
     className: "liveView-content-data-2"
   },
