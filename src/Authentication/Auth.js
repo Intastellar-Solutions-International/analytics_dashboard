@@ -51,7 +51,7 @@ const Authentication = {
         localStorage.removeItem("globals");
         localStorage.removeItem("organisation");
         localStorage.removeItem("domains");
-        window.location.reload();
+        window.location.href = "/";
     },
     getToken: function () {
         const token = (JSON.parse(localStorage.getItem("globals"))?.token) ? "Bearer " + JSON.parse(localStorage.getItem("globals"))?.token : undefined;

@@ -619,7 +619,7 @@ var Authentication = {
     localStorage.removeItem("globals");
     localStorage.removeItem("organisation");
     localStorage.removeItem("domains");
-    window.location.reload();
+    window.location.href = "/";
   },
   getToken: function getToken() {
     var _JSON$parse, _JSON$parse2;
