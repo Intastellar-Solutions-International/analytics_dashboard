@@ -6140,12 +6140,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     font-size: 19px;
 }
 
-.flex{
+.flex {
     display: flex;
     align-items: center;
 }
 
-.profileImage{
+.profileImage {
     width: 50px;
 }
 
@@ -6165,7 +6165,6 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     width: 50px;
     height: 50px;
     border-width: 2.5px;
-    border-color: transparent;
     border-radius: 50%;
     object-fit: cover;
     margin-left: auto;
@@ -6182,7 +6181,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     position: relative;
 }
 
-.sidebar{
+.sidebar {
     transition: width .5s ease-in-out;
     width: 65px;
 }
@@ -6190,7 +6189,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
 .collapsed {
     width: 65px;
     height: calc(100vh - 88px);
-    
+
     transition: width .25s ease-in-out;
     display: flex;
     flex-direction: column;
@@ -6201,11 +6200,11 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     background-color: rgb(63, 63, 63);
 }
 
-.divider{
+.divider {
     padding: 0 0 0 20px;
 }
 
-.platform-view{
+.platform-view {
     padding: 0 20px;
     display: inline-block;
     border-right: 1px solid;
@@ -6213,18 +6212,21 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     margin-right: 10px;
 }
 
-.collapsed .hiddenCollapsed{
+.collapsed .hiddenCollapsed {
     opacity: 0;
     width: 0;
     visibility: hidden;
     transition: all .25s ease-in-out;
 }
 
-.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {
+.sidebar:hover,
+.sidebar:hover>.collapsed,
+.sidebar.expand,
+.collapsed.expand {
     width: 170px;
 }
 
-.navOverlay{
+.navOverlay {
     display: flex;
 }
 
@@ -6245,27 +6247,31 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     text-decoration: none;
 }
 
-.navItems.--active, .navItems:hover{
+.navItems.--active,
+.navItems:hover {
     background-color: rgb(95, 95, 95);
     color: rgb(241, 241, 241);
     transition: width .15s ease-in-out;
 }
 
-.collapsed:hover .navItems, .collapsed.expand a{
+.collapsed:hover .navItems,
+.collapsed.expand a {
     width: 100%;
 }
 
-.collapsed:hover nav, .collapsed.expand nav{
+.collapsed:hover nav,
+.collapsed.expand nav {
     width: 150px;
 }
 
-.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{
+.collapsed.expand .hiddenCollapsed,
+.collapsed:hover .hiddenCollapsed {
     opacity: 1;
     width: auto;
     visibility: visible;
 }
 
-.dashboard-icons{
+.dashboard-icons {
     width: 25px;
     height: 25px;
     /* padding: 15px; */
@@ -6275,17 +6281,18 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     align-items: center;
 }
 
-.collapsed .dashboard-icons{
+.collapsed .dashboard-icons {
     margin-right: 0px;
 }
 
-.collapsed.expand .dashboard-icons, .collapsed:hover .dashboard-icons{
+.collapsed.expand .dashboard-icons,
+.collapsed:hover .dashboard-icons {
     margin-right: 10px;
 }
 
-.dashboard::after{
+.dashboard::after {
     content: "";
-    background:  url(${___CSS_LOADER_URL_REPLACEMENT_0___});
+    background: url(${___CSS_LOADER_URL_REPLACEMENT_0___});
     background-size: contain;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
@@ -6298,9 +6305,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     height: 20px;
 }
 
-.reports::after{
+.reports::after {
     content: "";
-    background:  url(${___CSS_LOADER_URL_REPLACEMENT_1___});
+    background: url(${___CSS_LOADER_URL_REPLACEMENT_1___});
     background-size: contain;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
@@ -6311,9 +6318,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     height: 20px;
 }
 
-.home::after{
+.home::after {
     content: "";
-    background:  url(${___CSS_LOADER_URL_REPLACEMENT_2___});
+    background: url(${___CSS_LOADER_URL_REPLACEMENT_2___});
     background-size: contain;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
@@ -6324,9 +6331,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     height: 20px;
 }
 
-.user-consents::after{
+.user-consents::after {
     content: "";
-    background:  url(${___CSS_LOADER_URL_REPLACEMENT_3___});
+    background: url(${___CSS_LOADER_URL_REPLACEMENT_3___});
     background-size: contain;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
@@ -6337,9 +6344,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     height: 20px;
 }
 
-.domains::after{
+.domains::after {
     content: "";
-    background:  url(${___CSS_LOADER_URL_REPLACEMENT_4___});
+    background: url(${___CSS_LOADER_URL_REPLACEMENT_4___});
     background-size: contain;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
@@ -6350,9 +6357,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     height: 20px;
 }
 
-.settings::after{
+.settings::after {
     content: "";
-    background:  url(${___CSS_LOADER_URL_REPLACEMENT_5___});
+    background: url(${___CSS_LOADER_URL_REPLACEMENT_5___});
     background-size: contain;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
@@ -6363,9 +6370,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     height: 20px;
 }
 
-.cookies{
+.cookies {
     content: "";
-    background:  url(${___CSS_LOADER_URL_REPLACEMENT_6___});
+    background: url(${___CSS_LOADER_URL_REPLACEMENT_6___});
     background-size: contain;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
@@ -6376,9 +6383,9 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     height: 20px;
 }
 
-.logout::after{
+.logout::after {
     content: "";
-    background:  url(${___CSS_LOADER_URL_REPLACEMENT_7___});
+    background: url(${___CSS_LOADER_URL_REPLACEMENT_7___});
     background-size: contain;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
@@ -6389,7 +6396,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     height: 20px;
 }
 
-.expandBtn{
+.expandBtn {
     float: right;
     padding: 10px;
     margin: 10px 0px;
@@ -6403,24 +6410,24 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     cursor: pointer;
 }
 
-.expandBtn::after{
+.expandBtn::after {
     content: "";
     width: 20px;
     height: 20px;
     display: block;
     float: right;
     margin-left: auto;
-    background:  url(${___CSS_LOADER_URL_REPLACEMENT_8___});
+    background: url(${___CSS_LOADER_URL_REPLACEMENT_8___});
     background-size: contain;
     background-repeat: no-repeat;
     background-blend-mode: lighten;
 }
 
-.navItems--bottom{
+.navItems--bottom {
     margin-top: auto;
 }
 
-.navLogout{
+.navLogout {
     margin-top: auto;
     background: transparent;
     border: none;
@@ -6436,7 +6443,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
 
 }
 
-.dashboard-organisationSelector{
+.dashboard-organisationSelector {
     border: none;
     padding: 0px 17px;
     background: transparent;
@@ -6447,21 +6454,23 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
     position: relative;
 }
 
-.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{
+.dashboard-organisationSelector:focus,
+.dashboard-organisationSelector:focus-within,
+.dashboard-organisationSelector:focus-visible {
     outline: none;
 }
 
-.dashboard-organisationContainer{
+.dashboard-organisationContainer {
     position: relative;
 }
 
-.dashboard-profile__nameContainer{
+.dashboard-profile__nameContainer {
     width: 250px;
     margin-right: 20px;
     text-align: right;
 }
 
-.arrowRight{
+.arrowRight {
     width: 10px;
     height: 10px;
     display: inline-block;
@@ -6469,22 +6478,22 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
 
 }
 
-.company_container{
+.company_container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.company_container .selectorContianer{
+.company_container .selectorContianer {
     margin-right: 20px;
 }
 
-.logo_container{
+.logo_container {
     display: flex;
     align-items: center
 }
 
-.logo-selector-container{
+.logo-selector-container {
     display: flex;
     align-items: center;
 }
@@ -6496,15 +6505,15 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
         padding-right: 0;
     }
 
-    .main-grid{
+    .main-grid {
         padding-top: 104px;
     }
 
-    .logo-selector-container{
+    .logo-selector-container {
         display: block;
     }
 
-    .company_container{
+    .company_container {
         flex-direction: column;
         align-items: flex-start;
         padding: 0 20px;
@@ -6512,49 +6521,49 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.dashboard-header {
         gap: 10px;
     }
 
-    .grid-3{
+    .grid-3 {
         grid-template-columns: 1fr;
     }
 
-    .grid-container{
+    .grid-container {
         display: block;
     }
 
-    .dashboard-profile__nameContainer{
+    .dashboard-profile__nameContainer {
         width: auto;
     }
 
-    .navOverlay{
+    .navOverlay {
         display: none;
     }
 
-    .dashboard-header>.dashboard-profile .content-img{
+    .dashboard-header>.dashboard-profile .content-img {
         margin: 0 5px 5px auto;
     }
 
-    .platform-view{
+    .platform-view {
         border: none;
         padding: 0;
         margin: 0;
     }
 
-    .infoHeader{
+    .infoHeader {
         top: 10px;
         position: relative;
     }
 
-    .infoHeader.sticky{
+    .infoHeader.sticky {
         top: 144px;
     }
 
-    .infoHeader .dashboard-content{
+    .infoHeader .dashboard-content {
         grid-template-columns: .5fr 1fr !important;
     }
 
-    .infoHeader .crawl-cta{
+    .infoHeader .crawl-cta {
         width: max-content;
     }
-}`, "",{"version":3,"sources":["webpack://./src/Components/Header/header.css"],"names":[],"mappings":"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","sourcesContent":[".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 101;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n    border-bottom: 1px solid rgb(95, 95, 95);\n}\n\n.dashboard-profile {\n    display: grid;\n    grid-template-columns: 1fr min-content;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n    font-size: 19px;\n}\n\n.flex{\n    display: flex;\n    align-items: center;\n}\n\n.profileImage{\n    width: 50px;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-color: transparent;\n    border-radius: 50%;\n    object-fit: cover;\n    margin-left: auto;\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    padding: 20px;\n    padding-right: 0;\n    height: 66px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar{\n    transition: width .5s ease-in-out;\n    width: 65px;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n    \n    transition: width .25s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n\n    min-height: calc(100vh - 66px);\n    border-right: 1px solid rgb(95, 95, 95);\n    background-color: rgb(63, 63, 63);\n}\n\n.divider{\n    padding: 0 0 0 20px;\n}\n\n.platform-view{\n    padding: 0 20px;\n    display: inline-block;\n    border-right: 1px solid;\n    padding-right: 10px;\n    margin-right: 10px;\n}\n\n.collapsed .hiddenCollapsed{\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all .25s ease-in-out;\n}\n\n.sidebar:hover, .sidebar:hover>.collapsed, .sidebar.expand,.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay{\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 25px 15px;\n    overflow: hidden;\n    align-items: center;\n    justify-content: center;\n    white-space: nowrap;\n    transition: width .15s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active, .navItems:hover{\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .15s ease-in-out;\n}\n\n.collapsed:hover .navItems, .collapsed.expand a{\n    width: 100%;\n}\n\n.collapsed:hover nav, .collapsed.expand nav{\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed, .collapsed:hover .hiddenCollapsed{\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons{\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.collapsed .dashboard-icons{\n    margin-right: 0px;\n}\n\n.collapsed.expand .dashboard-icons, .collapsed:hover .dashboard-icons{\n    margin-right: 10px;\n}\n\n.dashboard::after{\n    content: \"\";\n    background:  url(\"icons/dashboard.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after{\n    content: \"\";\n    background:  url(\"icons/reports.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.home::after{\n    content: \"\";\n    background:  url(\"icons/home.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after{\n    content: \"\";\n    background:  url(\"icons/user-consents.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after{\n    content: \"\";\n    background:  url(\"icons/domain.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after{\n    content: \"\";\n    background:  url(\"icons/settings.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.cookies{\n    content: \"\";\n    background:  url(\"icons/cookies.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after{\n    content: \"\";\n    background:  url(\"icons/Logout.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn{\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after{\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background:  url(\"icons/expand.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom{\n    margin-top: auto;\n}\n\n.navLogout{\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector{\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus, .dashboard-organisationSelector:focus-within, .dashboard-organisationSelector:focus-visible{\n    outline: none;\n}\n\n.dashboard-organisationContainer{\n    position: relative;\n}\n\n.dashboard-profile__nameContainer{\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n.arrowRight{\n    width: 10px;\n    height: 10px;\n    display: inline-block;\n    margin-left: 10px;\n\n}\n\n.company_container{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.company_container .selectorContianer{\n    margin-right: 20px;\n}\n\n.logo_container{\n    display: flex;\n    align-items: center\n}\n\n.logo-selector-container{\n    display: flex;\n    align-items: center;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n        max-height: max-content;\n        padding-right: 0;\n    }\n\n    .main-grid{\n        padding-top: 104px;\n    }\n\n    .logo-selector-container{\n        display: block;\n    }\n\n    .company_container{\n        flex-direction: column;\n        align-items: flex-start;\n        padding: 0 20px;\n        padding-bottom: 10px;\n        gap: 10px;\n    }\n\n    .grid-3{\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container{\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer{\n        width: auto;\n    }\n\n    .navOverlay{\n        display: none;\n    }\n\n    .dashboard-header>.dashboard-profile .content-img{\n        margin: 0 5px 5px auto;\n    }\n\n    .platform-view{\n        border: none;\n        padding: 0;\n        margin: 0;\n    }\n\n    .infoHeader{\n        top: 10px;\n        position: relative;\n    }\n\n    .infoHeader.sticky{\n        top: 144px;\n    }\n\n    .infoHeader .dashboard-content{\n        grid-template-columns: .5fr 1fr !important;\n    }\n\n    .infoHeader .crawl-cta{\n        width: max-content;\n    }\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/Components/Header/header.css"],"names":[],"mappings":"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","sourcesContent":[".dashboard-header {\n    width: 100%;\n    max-height: 66px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    z-index: 101;\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    padding: 0px 25px 0px 0px;\n    background-color: rgb(63, 63, 63);\n    color: rgb(197, 197, 197);\n    border-bottom: 1px solid rgb(95, 95, 95);\n}\n\n.dashboard-profile {\n    display: grid;\n    grid-template-columns: 1fr min-content;\n    align-items: center;\n    justify-content: space-between;\n    width: 100%;\n    font-size: 19px;\n}\n\n.flex {\n    display: flex;\n    align-items: center;\n}\n\n.profileImage {\n    width: 50px;\n}\n\n.clock {\n    color: rgb(197, 197, 197);\n    margin: 0;\n}\n\n.dashboard-name {\n    font-size: 14px;\n    cursor: pointer;\n    margin: 0;\n}\n\n.dashboard-header>.dashboard-profile .content-img {\n    margin: 0;\n    width: 50px;\n    height: 50px;\n    border-width: 2.5px;\n    border-radius: 50%;\n    object-fit: cover;\n    margin-left: auto;\n}\n\n.dashboard-logo {\n    filter: invert(100);\n    padding: 20px;\n    padding-right: 0;\n    height: 66px;\n    text-align: left;\n    object-fit: contain;\n    object-position: 0;\n    position: relative;\n}\n\n.sidebar {\n    transition: width .5s ease-in-out;\n    width: 65px;\n}\n\n.collapsed {\n    width: 65px;\n    height: calc(100vh - 88px);\n\n    transition: width .25s ease-in-out;\n    display: flex;\n    flex-direction: column;\n    position: fixed;\n\n    min-height: calc(100vh - 66px);\n    border-right: 1px solid rgb(95, 95, 95);\n    background-color: rgb(63, 63, 63);\n}\n\n.divider {\n    padding: 0 0 0 20px;\n}\n\n.platform-view {\n    padding: 0 20px;\n    display: inline-block;\n    border-right: 1px solid;\n    padding-right: 10px;\n    margin-right: 10px;\n}\n\n.collapsed .hiddenCollapsed {\n    opacity: 0;\n    width: 0;\n    visibility: hidden;\n    transition: all .25s ease-in-out;\n}\n\n.sidebar:hover,\n.sidebar:hover>.collapsed,\n.sidebar.expand,\n.collapsed.expand {\n    width: 170px;\n}\n\n.navOverlay {\n    display: flex;\n}\n\n.collapsed nav {\n    width: 100%;\n}\n\n.collapsed .navItems {\n    color: #fff;\n    display: flex;\n    width: 100%;\n    padding: 25px 15px;\n    overflow: hidden;\n    align-items: center;\n    justify-content: center;\n    white-space: nowrap;\n    transition: width .15s ease-in-out;\n    text-decoration: none;\n}\n\n.navItems.--active,\n.navItems:hover {\n    background-color: rgb(95, 95, 95);\n    color: rgb(241, 241, 241);\n    transition: width .15s ease-in-out;\n}\n\n.collapsed:hover .navItems,\n.collapsed.expand a {\n    width: 100%;\n}\n\n.collapsed:hover nav,\n.collapsed.expand nav {\n    width: 150px;\n}\n\n.collapsed.expand .hiddenCollapsed,\n.collapsed:hover .hiddenCollapsed {\n    opacity: 1;\n    width: auto;\n    visibility: visible;\n}\n\n.dashboard-icons {\n    width: 25px;\n    height: 25px;\n    /* padding: 15px; */\n    margin-right: 10px;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.collapsed .dashboard-icons {\n    margin-right: 0px;\n}\n\n.collapsed.expand .dashboard-icons,\n.collapsed:hover .dashboard-icons {\n    margin-right: 10px;\n}\n\n.dashboard::after {\n    content: \"\";\n    background: url(\"icons/dashboard.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    font-style: normal;\n    font-size: 20px;\n\n    display: block;\n    font-style: normal;\n    width: 20px;\n    height: 20px;\n}\n\n.reports::after {\n    content: \"\";\n    background: url(\"icons/reports.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.home::after {\n    content: \"\";\n    background: url(\"icons/home.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.user-consents::after {\n    content: \"\";\n    background: url(\"icons/user-consents.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.domains::after {\n    content: \"\";\n    background: url(\"icons/domain.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.settings::after {\n    content: \"\";\n    background: url(\"icons/settings.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.cookies {\n    content: \"\";\n    background: url(\"icons/cookies.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.logout::after {\n    content: \"\";\n    background: url(\"icons/Logout.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n    display: block;\n    font-style: normal;\n    font-size: 20px;\n    width: 20px;\n    height: 20px;\n}\n\n.expandBtn {\n    float: right;\n    padding: 10px;\n    margin: 10px 0px;\n    border: none;\n    background: transparent;\n    color: #fff;\n\n    display: flex;\n    align-items: center;\n    justify-content: end;\n    cursor: pointer;\n}\n\n.expandBtn::after {\n    content: \"\";\n    width: 20px;\n    height: 20px;\n    display: block;\n    float: right;\n    margin-left: auto;\n    background: url(\"icons/expand.svg\");\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-blend-mode: lighten;\n}\n\n.navItems--bottom {\n    margin-top: auto;\n}\n\n.navLogout {\n    margin-top: auto;\n    background: transparent;\n    border: none;\n    width: 100%;\n    color: #fff;\n    padding: 30px 15px;\n    font-size: 15px;\n    text-align: center;\n    border-top: 1px solid #636363;\n    cursor: pointer;\n    display: flex;\n    align-items: center;\n\n}\n\n.dashboard-organisationSelector {\n    border: none;\n    padding: 0px 17px;\n    background: transparent;\n    color: #fff;\n    font-size: 12px;\n    appearance: none;\n    -webkit-appearance: none;\n    position: relative;\n}\n\n.dashboard-organisationSelector:focus,\n.dashboard-organisationSelector:focus-within,\n.dashboard-organisationSelector:focus-visible {\n    outline: none;\n}\n\n.dashboard-organisationContainer {\n    position: relative;\n}\n\n.dashboard-profile__nameContainer {\n    width: 250px;\n    margin-right: 20px;\n    text-align: right;\n}\n\n.arrowRight {\n    width: 10px;\n    height: 10px;\n    display: inline-block;\n    margin-left: 10px;\n\n}\n\n.company_container {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n\n.company_container .selectorContianer {\n    margin-right: 20px;\n}\n\n.logo_container {\n    display: flex;\n    align-items: center\n}\n\n.logo-selector-container {\n    display: flex;\n    align-items: center;\n}\n\n@media screen and (min-width: 320px) and (max-width: 900px) {\n    .dashboard-header {\n        width: 100%;\n        max-height: max-content;\n        padding-right: 0;\n    }\n\n    .main-grid {\n        padding-top: 104px;\n    }\n\n    .logo-selector-container {\n        display: block;\n    }\n\n    .company_container {\n        flex-direction: column;\n        align-items: flex-start;\n        padding: 0 20px;\n        padding-bottom: 10px;\n        gap: 10px;\n    }\n\n    .grid-3 {\n        grid-template-columns: 1fr;\n    }\n\n    .grid-container {\n        display: block;\n    }\n\n    .dashboard-profile__nameContainer {\n        width: auto;\n    }\n\n    .navOverlay {\n        display: none;\n    }\n\n    .dashboard-header>.dashboard-profile .content-img {\n        margin: 0 5px 5px auto;\n    }\n\n    .platform-view {\n        border: none;\n        padding: 0;\n        margin: 0;\n    }\n\n    .infoHeader {\n        top: 10px;\n        position: relative;\n    }\n\n    .infoHeader.sticky {\n        top: 144px;\n    }\n\n    .infoHeader .dashboard-content {\n        grid-template-columns: .5fr 1fr !important;\n    }\n\n    .infoHeader .crawl-cta {\n        width: max-content;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
