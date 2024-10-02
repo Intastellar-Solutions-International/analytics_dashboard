@@ -5450,7 +5450,53 @@ function LiveView(props) {
     className: "liveView-content-data-1"
   }, /*#__PURE__*/React.createElement("p", {
     className: "liveView-content-data-1-number"
-  }, liveData === null || liveData === void 0 ? void 0 : liveData.count)), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", {
+  }, liveData === null || liveData === void 0 ? void 0 : liveData.count)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: "2px",
+      borderBottom: "1px solid rgb(192, 159, 83)",
+      marginBottom: "10px",
+      paddingBottom: "10px"
+    }
+  }, liveData === null || liveData === void 0 ? void 0 : liveData.visitsOverTime.map(function (minute, index) {
+    // Calulate the position of the bar based on the number of minutes gone by.
+
+    var time = new Date();
+    var currentTime = time.getMinutes();
+    var minuteTime = new Date(minute.minutes).getMinutes();
+    var diff = currentTime - minuteTime;
+
+    // Calculate the position of the bar based on the number of minutes gone by and take the container width as 30 minutes.
+
+    var barTransformPosition = diff * 100 / 30;
+    console.log("barTransformPosition", barTransformPosition);
+    console.log("barTransformPosition 2", diff * 30 / 100);
+    console.log("diff", diff);
+
+    // Display a bar for each minute with the height of the bar being the number of users in that minute.
+    // Update the bars position based on the number of users in that minute.
+    return /*#__PURE__*/React.createElement("div", {
+      key: index,
+      className: "liveView-content-data-1",
+      style: {
+        // Update the bars position based on the minutes gone by and move it from right to left.
+        transform: "translateX(".concat(barTransformPosition, "%)"),
+        transition: "transform 0.5s",
+        width: "maxContent"
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        height: "".concat(minute.count / liveData.count * 100, "%"),
+        minHeight: "70px",
+        width: "2px",
+        backgroundColor: "rgb(192, 159, 83)"
+      }
+    }), /*#__PURE__*/React.createElement("p", {
+      className: "liveView-content-data-1-text"
+    }, Math.round(minute.minutes)), /*#__PURE__*/React.createElement("p", {
+      className: "liveView-content-data-1-text"
+    }, minute.count));
+  })), /*#__PURE__*/React.createElement("div", {
     className: "liveView-content-data-2"
   },
   // Loop through the 'liveData.contry' object and display the country name.

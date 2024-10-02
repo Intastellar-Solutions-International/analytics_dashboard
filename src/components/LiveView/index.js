@@ -33,14 +33,19 @@ export function LiveView(props) {
                                         const minuteTime = new Date(minute.minutes).getMinutes();
                                         const diff = currentTime - minuteTime;
 
-                                        // The position should take into account the total width of the container and go from right to left.
-                                        const barTransformPosition = (diff * 5) - 5;
+                                        // Calculate the position of the bar based on the number of minutes gone by and take the container width as 30 minutes.
+
+                                        const barTransformPosition = (diff * 100) / 30;
+
+                                        console.log("barTransformPosition", barTransformPosition);
+                                        console.log("barTransformPosition 2", (diff * 30) / 100);
+                                        console.log("diff", diff);
 
                                         // Display a bar for each minute with the height of the bar being the number of users in that minute.
                                         // Update the bars position based on the number of users in that minute.
                                         return <div key={index} className="liveView-content-data-1" style={{
                                             // Update the bars position based on the minutes gone by and move it from right to left.
-                                            transform: `translateX(${barTransformPosition}px)`,
+                                            transform: `translateX(${barTransformPosition}%)`,
                                             transition: "transform 0.5s",
                                             width: "maxContent",
                                         }}>
