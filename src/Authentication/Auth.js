@@ -39,9 +39,9 @@ const Authentication = {
             localStorage.setItem("organisation", response.organisation);
             localStorage.setItem("globals", JSON.stringify(response));
 
-            if(localStorage.getItem("platform") === null || localStorage.getItem("platform") === undefined){
+            if (localStorage.getItem("platform") === null || localStorage.getItem("platform") === undefined) {
                 window.location.href = "/dashboard";
-            }else{
+            } else {
                 window.location.href = "/" + localStorage.getItem("platform") + "/dashboard";
             }
 
@@ -55,13 +55,13 @@ const Authentication = {
     },
     getToken: function () {
         const token = (JSON.parse(localStorage.getItem("globals"))?.token) ? "Bearer " + JSON.parse(localStorage.getItem("globals"))?.token : undefined;
-        return  token;
+        return token;
     },
     getUserId: function () {
         const email = (JSON.parse(localStorage.getItem("globals"))?.profile?.email) ? JSON.parse(localStorage.getItem("globals"))?.profile?.email : undefined;
-        return  email;
+        return email;
     },
-    getOrganisation: function(){
+    getOrganisation: function () {
         const organisation = (localStorage.getItem("organisation") != null || localStorage.getItem("organisation") != undefined) ? JSON.parse(localStorage.getItem("organisation"))?.id : undefined;
         return organisation;
     },
@@ -105,7 +105,7 @@ const Authentication = {
 
             setLoading(false);
 
-            if(response == "Success"){
+            if (response == "Success") {
                 window.location.href = "/login";
             }
 

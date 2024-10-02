@@ -1,0 +1,27 @@
+.liveView-content-data {
+    margin: 0 20px;
+    padding: 10px 0;
+}
+
+.liveView-content-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.liveView-content-data-1-text {
+    margin: 3px 0;
+}
+
+.liveView-content-country {
+    margin-bottom: 5px;
+}
+
+.liveView-content-data-2 {
+    width: 100%;
+}
+
+.liveView-content-data-1-number {
+    font-size: 30px;
+    font-weight: 200;
+    margin-top: 0;
+}
