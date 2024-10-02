@@ -5450,7 +5450,7 @@ function LiveView(props) {
     className: "liveView-content-data-1"
   }, /*#__PURE__*/React.createElement("p", {
     className: "liveView-content-data-1-number"
-  }, liveData === null || liveData === void 0 ? void 0 : liveData.count)), /*#__PURE__*/React.createElement("div", {
+  }, liveData === null || liveData === void 0 ? void 0 : liveData.count)), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("div", {
     className: "liveView-content-data-2"
   },
   // Loop through the 'liveData.contry' object and display the country name.
