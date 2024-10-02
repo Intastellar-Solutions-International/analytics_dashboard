@@ -5451,6 +5451,7 @@ function LiveView(props) {
   }, /*#__PURE__*/React.createElement("p", {
     className: "liveView-content-data-1-number"
   }, liveData === null || liveData === void 0 ? void 0 : liveData.count)), /*#__PURE__*/React.createElement("div", {
+    className: "liveView-container",
     style: {
       display: "flex",
       gap: "2px",
@@ -5459,19 +5460,17 @@ function LiveView(props) {
       paddingBottom: "10px"
     }
   }, liveData === null || liveData === void 0 ? void 0 : liveData.visitsOverTime.map(function (minute, index) {
+    var _document$querySelect;
     // Calulate the position of the bar based on the number of minutes gone by.
 
-    var time = new Date();
-    var currentTime = time.getMinutes();
-    var minuteTime = new Date(minute.minutes).getMinutes();
-    var diff = currentTime - minuteTime;
-
     // Calculate the position of the bar based on the number of minutes gone by and take the container width as 30 minutes.
-
-    var barTransformPosition = diff * 100 / 30;
-    console.log("barTransformPosition", barTransformPosition);
-    console.log("barTransformPosition 2", diff * 30 / 100);
-    console.log("diff", diff);
+    // Get the parent container width.
+    var containerWidth = (_document$querySelect = document.querySelector(".liveView-container")) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.clientWidth;
+    // Calculate the position of the bar based on the number of minutes gone by and take the container width as 30 minutes.
+    var barTransformPosition = containerWidth / 30 * minute.minutes;
+    if (Math.round(minute.minutes) > 30) {
+      return null;
+    }
 
     // Display a bar for each minute with the height of the bar being the number of users in that minute.
     // Update the bars position based on the number of users in that minute.
@@ -5480,7 +5479,7 @@ function LiveView(props) {
       className: "liveView-content-data-1",
       style: {
         // Update the bars position based on the minutes gone by and move it from right to left.
-        transform: "translateX(".concat(barTransformPosition, "%)"),
+        marginLeft: "".concat(barTransformPosition, "px"),
         transition: "transform 0.5s",
         width: "maxContent"
       }
@@ -5489,11 +5488,12 @@ function LiveView(props) {
         height: "".concat(minute.count / liveData.count * 100, "%"),
         minHeight: "70px",
         width: "2px",
+        margin: "auto",
         backgroundColor: "rgb(192, 159, 83)"
       }
     }), /*#__PURE__*/React.createElement("p", {
       className: "liveView-content-data-1-text"
-    }, Math.round(minute.minutes)), /*#__PURE__*/React.createElement("p", {
+    }, Math.ceil(minute.minutes)), /*#__PURE__*/React.createElement("p", {
       className: "liveView-content-data-1-text"
     }, minute.count));
   })), /*#__PURE__*/React.createElement("div", {
