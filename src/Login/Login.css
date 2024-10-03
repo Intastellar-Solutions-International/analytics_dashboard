@@ -1,4 +1,4 @@
-.loginForm-container{
+.loginForm-container {
     display: grid;
     grid-template-columns: 1fr .85fr;
     height: 100vh;
@@ -14,7 +14,7 @@
     top: 0;
 }
 
-.loginForm-overlay{
+.loginForm-overlay {
     position: fixed;
     top: 0;
     z-index: 100;
@@ -23,10 +23,10 @@
     margin: auto;
     display: grid;
     place-content: center;
-    background: rgba(0,0,0,.7);
+    background: rgba(0, 0, 0, .7);
 }
 
-.loginForm{
+.loginForm {
     width: 100%;
     height: 100%;
     margin: auto;
@@ -42,17 +42,17 @@
     grid-column: 2/3;
 }
 
-.loginForm-overlay .loginForm{
+.loginForm-overlay .loginForm {
     width: 500px;
 }
 
-.loginForm label{
+.loginForm label {
     text-align: left;
     display: block;
     padding: 5px 0px;
 }
 
-.loginForm-inputField{
+.loginForm-inputField {
     padding: 15px;
     border: none;
     width: 100%;
@@ -61,7 +61,7 @@
     margin: 2px 0px;
 }
 
-.loginForm-forget{
+.loginForm-forget {
     padding: 15px;
     color: rgb(234, 234, 234);
     text-decoration: none;
@@ -69,18 +69,18 @@
     text-align: right;
 }
 
-.loginForm-logo{
-    width: 35%;
-    margin: 20px auto;
-    padding: 20px 15px;
+.loginForm-logo {
+    width: 45%;
+    margin: 10px auto;
+    padding: 20px 0px;
     filter: invert(100) brightness(100);
 }
 
-.loginForm-logo.--hideMobile{
+.loginForm-logo.--hideMobile {
     display: none;
 }
 
-.loginForm-inputField.--btn{
+.loginForm-inputField.--btn {
     background-color: #c09f53;
     font-size: 16px;
     color: #fff;
@@ -89,7 +89,7 @@
     text-transform: uppercase;
 }
 
-.loginForm-title{
+.loginForm-title {
     font-size: 1.7em;
     text-align: left;
     padding: 15px 0px;
@@ -98,11 +98,11 @@
     margin-bottom: -2px;
 }
 
-.loginForm-service{
+.loginForm-service {
     margin: 0 0 10px;
 }
 
-.loginForm-inputField.--link{
+.loginForm-inputField.--link {
     color: #fff;
     text-decoration: none;
     font-size: 14px;
@@ -112,26 +112,26 @@
 }
 
 @media screen and (min-width: 375px) and (max-width: 900px) {
-    .loginForm-container{
+    .loginForm-container {
         grid-template-columns: 1fr;
     }
 
-    .loginForm-logo{
+    .loginForm-logo {
         width: 100%;
         padding: 0;
         margin: 20px 0px;
     }
 
-    .loginForm{
+    .loginForm {
         padding: 40px;
         background: radial-gradient(circle at top, rgba(188, 188, 188, .6) -10%, rgba(48, 48, 48, .4));
     }
 
-    .loginForm-container{
+    .loginForm-container {
         background-position: -250px;
     }
 
-    .signup{
+    .signup {
         overflow: scroll;
     }
 }

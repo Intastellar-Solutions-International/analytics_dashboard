@@ -35,7 +35,6 @@ import ErrorBoundary from "./Components/Error/ErrorBoundary";
 import Countries from "./Pages/Countries/Countries";
 import BugReport from "./Components/BugReport/BugReport";
 import PlatformSelector from "./Components/PlatformSelector/PlatformSelector";
-import SiteStatus from "./Pages/Reports/SiteStatus";
 import Crawler from "./Components/Crawler";
 import UserAgents from "./Pages/Reports/UserAgents";
 import UserPreferences from "./Pages/Settings/UserPreferences";
@@ -239,11 +238,6 @@ export default function App() {
                                     <Route path="/:id/reports/countries">
                                         <ErrorBoundary>
                                             {domainError ? <AddDomain /> : <Countries organisations={organisations} />}
-                                        </ErrorBoundary>
-                                    </Route>
-                                    <Route path="/:id/reports/site-status">
-                                        <ErrorBoundary>
-                                            {domainError ? <AddDomain /> : <SiteStatus domains={domains} organisations={organisations} />}
                                         </ErrorBoundary>
                                     </Route>
                                     <Route path="/dashboard">
