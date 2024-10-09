@@ -110,6 +110,12 @@
 
 .navOverlay {
     display: flex;
+    z-index: 100;
+    position: relative;
+}
+
+.navOverlay.expand {
+    display: flex;
 }
 
 .collapsed nav {
@@ -380,6 +386,10 @@
     align-items: center;
 }
 
+.menu {
+    display: none;
+}
+
 @media screen and (min-width: 320px) and (max-width: 900px) {
     .dashboard-header {
         width: 100%;
@@ -389,6 +399,15 @@
 
     .main-grid {
         padding-top: 155px;
+    }
+
+    .menu {
+        display: block;
+        padding: 10px;
+        cursor: pointer;
+        background-color: transparent;
+        border: none;
+        color: #fff;
     }
 
     .logo-selector-container {

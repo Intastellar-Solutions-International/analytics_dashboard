@@ -46,30 +46,30 @@ export default function Header(props) {
                 window.location.href = "/login";
                 return;
             }
-    
-            if(data.error === "Err_No_Domains") {
-                
-            }else{
-                data.unshift({domain: "all", installed: null, lastedVisited: null});
+
+            if (data.error === "Err_No_Domains") {
+
+            } else {
+                data.unshift({ domain: "all", installed: null, lastedVisited: null });
                 data?.map((d) => {
-                    return  punycode.toUnicode(d.domain);
+                    return punycode.toUnicode(d.domain);
                 }).filter((d) => {
                     return d !== undefined && d !== "" && d !== "undefined.";
                 });
                 setDomains(data);
 
                 const allowedDomains = data?.map((d) => {
-                    return  punycode.toUnicode(d.domain);
+                    return punycode.toUnicode(d.domain);
                 }).filter((d) => {
                     return d !== undefined && d !== "" && d !== "undefined." && d !== "all";
                 });
-            
+
                 localStorage.setItem("domains", JSON.stringify(allowedDomains));
-    
+
             }
         });
     }, []);
-    
+
 
     domainList = domains?.map((d) => {
         return punycode.toUnicode(d.domain)
@@ -81,38 +81,42 @@ export default function Header(props) {
                 <div className="dashboard-profile">
                     <section className="logo-selector-container">
                         <section className="logo_container">
-                            <img className="dashboard-logo" src={ logo } alt="Intastellar Solutions Logo" />
+                            <button className="menu" onClick={() => {
+                                document.querySelector(".navOverlay").classList.toggle("expand");
+                            }}>Open</button>
+                            <img className="dashboard-logo" src={logo} alt="Intastellar Solutions Logo" />
                             <span className="platform-view">{Platform}</span>
                         </section>
                         <section className="company_container">
-                            {(allOrganisations && Organisation) ? 
+                            {(allOrganisations && Organisation) ?
                                 <Select defaultValue={Organisation}
-                                    onChange={(e) => { 
+                                    onChange={(e) => {
                                         setOrganisation(e);
                                         localStorage.setItem("organisation", e);
-                                        window.location.reload();}}
+                                        window.location.reload();
+                                    }}
                                     items={allOrganisations}
-                                    style={{right: "0"}}
+                                    style={{ right: "0" }}
                                 /> : null
                             }
                             {(domains && currentDomain) ?
-                            <>
-                                <Select defaultValue={currentDomain}
-                                    onChange={(e) => { 
-                                        const domain = e;
-                                        setCurrentDomain(domain);
-                                        window.location.href = `/${window.location.pathname.split("/")[1]}/view/${domain.replace('.', '%2E')}`;
-                                    }}
-                                    items={domainList} title="Choose one of your domains"
-                                    style={{left: "0"}}
-                                    icon={'dashboard-icons domains'}
-                                />
-                            </> : null
+                                <>
+                                    <Select defaultValue={currentDomain}
+                                        onChange={(e) => {
+                                            const domain = e;
+                                            setCurrentDomain(domain);
+                                            window.location.href = `/${window.location.pathname.split("/")[1]}/view/${domain.replace('.', '%2E')}`;
+                                        }}
+                                        items={domainList} title="Choose one of your domains"
+                                        style={{ left: "0" }}
+                                        icon={'dashboard-icons domains'}
+                                    />
+                                </> : null
                             }
                         </section>
                     </section>
                     <div className="flex profileImage">
-                        <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile) } />
+                        <img src={profileImage} className="content-img" onClick={() => setViewUserProfile(!viewUserProfile)} />
                     </div>
                 </div>
                 {(viewUserProfile) ? <IntastellarAccounts profile={{
