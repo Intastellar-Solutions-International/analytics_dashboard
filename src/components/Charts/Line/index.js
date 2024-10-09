@@ -1,5 +1,4 @@
 const { useState, useEffect, useRef, useContext } = React;
-import { use } from "i18next";
 import "./Style.css";
 
 export default function Line({ data, data2, title }) {

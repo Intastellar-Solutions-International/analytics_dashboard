@@ -917,14 +917,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Line)
 /* harmony export */ });
-/* harmony import */ var i18next__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! i18next */ "./node_modules/i18next/dist/esm/i18next.js");
-/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Style.css */ "./src/Components/Charts/Line/Style.css");
+/* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Style.css */ "./src/Components/Charts/Line/Style.css");
 var _React = React,
   useState = _React.useState,
   useEffect = _React.useEffect,
   useRef = _React.useRef,
   useContext = _React.useContext;
-
 
 function Line(_ref) {
   var data = _ref.data,
