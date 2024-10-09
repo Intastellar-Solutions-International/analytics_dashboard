@@ -1,8 +1,8 @@
 const { useState, useEffect, useRef, useContext } = React;
 import TopWidgets from "../../Components/widget/TopWidgets.js";
+import StyleWidget from "../../Components/widget/StyleWidget.js";
 import useFetch from "../../Functions/FetchHook";
 import API from "../../API/api";
-import Widget from "../../Components/widget/widget";
 import { Loading } from "../../Components/widget/Loading";
 
 import "./Style.css";
@@ -10,8 +10,7 @@ import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext, OrganisationContext } from "../../App.js";
 const useParams = window.ReactRouterDOM.useParams;
 import Crawler from "../../Components/Crawler";
-import Line from "../../Components/Charts/Line";
-import Pie from "../../Components/Charts/Pie";
+import Line from "../../Components/Charts/Line"
 import StickyPageTitle from "../../Components/Header/Sticky/index.js";
 import { LiveView } from "../../components/LiveView/index.js";
 import { PremiumTier, BasicTier, ProTier } from "../../Components/tiers/index.js";
@@ -78,6 +77,13 @@ export default function Dashboard(props) {
                         url: API[id].getTotalNumber.url,
                         method: API[id].getTotalNumber.method,
                         header: API[id].getTotalNumber.headers
+                    }} /> : null
+                }
+                {
+                    (id === "gdpr" && organisation != null && JSON.parse(organisation).id == 1) ? <StyleWidget dashboardView={dashboardView} API={{
+                        url: API[id].getStyle.url,
+                        method: API[id].getStyle.method,
+                        header: API[id].getStyle.headers
                     }} /> : null
                 }
                 <div className="crawler">

@@ -27,7 +27,16 @@ const API = {
     },
     gdpr: {
         getTotalNumber: {
-            url:  `${PrimaryHost}/analytics/gdpr/getTotalNumber.php`,
+            url: `${PrimaryHost}/analytics/gdpr/getTotalNumber.php`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Organisation": Authentication.getOrganisation(),
+                "Content-Type": "application/json"
+            }
+        },
+        getStyle: {
+            url: `${PrimaryHost}/analytics/gdpr/getBannerStyle.php`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -45,7 +54,7 @@ const API = {
             }
         },
         getInteractions: {
-            url:  `${PrimaryHost}/analytics/gdpr/getInteractions.php`,
+            url: `${PrimaryHost}/analytics/gdpr/getInteractions.php`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
