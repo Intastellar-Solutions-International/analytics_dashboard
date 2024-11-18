@@ -16,7 +16,7 @@ import { LiveView } from "../../components/LiveView/index.js";
 import { PremiumTier, BasicTier, ProTier } from "../../Components/tiers/index.js";
 
 export default function Dashboard(props) {
-    document.title = "Home | Intastellar Analytics";
+    document.title = "Home | Intastellar Consents Solutions";
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const subscriptionStatus = JSON.parse(localStorage.getItem("subscription"));

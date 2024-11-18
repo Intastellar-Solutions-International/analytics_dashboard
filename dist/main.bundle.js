@@ -4355,7 +4355,7 @@ var useParams = window.ReactRouterDOM.useParams;
 
 
 function Dashboard(props) {
-  document.title = "Home | Intastellar Analytics";
+  document.title = "Home | Intastellar Consents Solutions";
   var _useContext = useContext(_App_js__WEBPACK_IMPORTED_MODULE_7__.DomainContext),
     _useContext2 = _slicedToArray(_useContext, 2),
     currentDomain = _useContext2[0],
