@@ -6,6 +6,7 @@ export function LiveView(props) {
 
     const [loading, liveData, error, updated] = useFetch(0.25, API.liveData.url, API.liveData.method, API.liveData.headers);
 
+
     return <>
         {
             (!loading) ?

@@ -1,5 +1,6 @@
 const { useState, useEffect } = React;
-export default function useFetch(updateInterval, url, method, headers, body, handle){
+import Authentication from "../Authentication/Auth";
+export default function useFetch(updateInterval, url, method, headers, body, handle) {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState();
     const [error, setError] = useState();
@@ -10,19 +11,19 @@ export default function useFetch(updateInterval, url, method, headers, body, han
     useEffect(() => {
         const controller = new AbortController();
         setLoading(true);
-        fetch(url, { method: method, headers, body, signal: controller.signal } )
+        fetch(url, { method: method, headers, body, signal: controller.signal })
             .then((res) => {
-                if(res.status === 401){
+                if (res.status === 401) {
                     return "Err_Login_Expired";
-                }else if(res.status === 403){
+                } else if (res.status === 403) {
                     return "Err_No_Access";
-                }else if(
+                } else if (
                     res.status === 404 ||
                     res.status === 500 ||
                     res.status === 502 ||
                     res.status === 503 ||
                     res.status === 504
-                ){
+                ) {
                     return "Err_Server_Error";
                 }
 
@@ -36,7 +37,7 @@ export default function useFetch(updateInterval, url, method, headers, body, han
                 setLastUpdated(Math.floor(Date.now() / 1000));
             });
 
-        if(typeof(updateInterval) !=='undefined'){
+        if (typeof (updateInterval) !== 'undefined') {
             const interval1 = setInterval(() => {
                 if ((Math.floor(Date.now() / 1000)) - lastUpdated >= 60) {
                     setUpdated(Math.floor(((Math.floor(Date.now() / 1000)) - lastUpdated) / 60) + " minute ago");
@@ -44,32 +45,72 @@ export default function useFetch(updateInterval, url, method, headers, body, han
             }, 1000);
 
             id = setInterval(() => {
-                fetch(url, { method: method, headers, body, signal: controller.signal } )
-                .then((res) => res.json())
-                .then(setData)
-                .catch(setError)
-                .finally(() => {
-                    setLoading(false);
-                    clearInterval(interval1);
-                    setUpdated("Now");
-                    setLastUpdated(Math.floor(Date.now() / 1000));
-                });
+                fetch(url, { method: method, headers, body, signal: controller.signal })
+                    .then((res) => res.json())
+                    .then(setData)
+                    .catch(setError)
+                    .finally(() => {
+                        setLoading(false);
+                        clearInterval(interval1);
+                        setUpdated("Now");
+                        setLastUpdated(Math.floor(Date.now() / 1000));
+                    });
             }, updateInterval * 60 * 1000)
         }
 
         return () => {
             controller.abort();
-            if(typeof(updateInterval) !=='undefined'){
+            if (typeof (updateInterval) !== 'undefined') {
                 clearInterval(id);
             }
         }
     }, [url, handle]);
 
-    if(data == "Err_Login_Expired"){
+    if (data == "Err_Login_Expired") {
         localStorage.removeItem("globals");
         window.location.href = "/login";
         return;
     }
 
     return [loading, data, error, updated, lastUpdated, setUpdated];
+}
+
+export function useEventSource(url) {
+
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState();
+    const [error, setError] = useState();
+    const [lastUpdated, setLastUpdated] = useState(Math.floor(Date.now() / 100));
+    const [updated, setUpdated] = useState("");
+
+    const evtSource = new EventSource(`${url}`, {
+        withCredentials: true,
+    });
+
+    if (typeof (EventSource) !== "undefined") {
+        //console.log("EventSource is supported.");
+        evtSource.onmessage = (event) => {
+            console.log(event.data);
+            setData(JSON.parse(event.data));
+            setLoading(false);
+            setUpdated("Now");
+            setLastUpdated(Math.floor(Date.now() / 1000));
+        };
+
+        evtSource.addEventListener("ping", (event) => {
+            setData(JSON.parse(event.data));
+            setLoading(false);
+            setUpdated("Now");
+            setLastUpdated(Math.floor(Date.now() / 1000));
+        });
+
+        evtSource.onerror = (err) => {
+            //console.error("EventSource failed:", err);
+        };
+
+        return [loading, data, error, updated, lastUpdated, setUpdated];
+    } else {
+        //console.log("EventSource is not supported.");
+        return [loading, data, error, updated, lastUpdated, setUpdated];
+    }
 }

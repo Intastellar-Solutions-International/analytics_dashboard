@@ -46,7 +46,7 @@ export default function DomainDashbord(props) {
                                 <p>Updated: {updated}</p>
                                 {
                                     <Map data={{
-                                        date: Intl.DateTimeFormat("da-DK").format(new Date(data.date.from)) + " - " + Intl.DateTimeFormat("da-DK").format(new Date(data.date.to)),
+                                        date: Intl.DateTimeFormat("de-DE").format(new Date(data.date.from)) + " - " + Intl.DateTimeFormat("da-DK").format(new Date(data.date.to)),
                                         Marketing: data.Marketing.toLocaleString("de-DE"),
                                         Functional: data.Functional.toLocaleString("de-DE"),
                                         Statistic: data.Statics.toLocaleString("de-DE"),

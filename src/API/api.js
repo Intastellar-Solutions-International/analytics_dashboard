@@ -3,13 +3,13 @@ import Authentication from "../Authentication/Auth";
 
 const API = {
     Login: {
-        url: `${LoginHost}/signin/v2/signin.php`,
+        url: `${LoginHost}/signin/v2/signin`,
     },
     SignUp: {
-        url: `${LoginHost}/consents/signup/v1/signup.php`,
+        url: `${LoginHost}/consents/signup/v1/signup`,
     },
     Subscription: {
-        url: `${PrimaryHost}/payment/subscription/v1/subscription.php`,
+        url: `${PrimaryHost}/payment/subscription/v1/subscription`,
         method: "POST",
         headers: {
             "Authorization": Authentication.getToken(),
@@ -17,7 +17,7 @@ const API = {
         }
     },
     liveData: {
-        url: `${PrimaryHost}/analytics/gdpr/livedata.php`,
+        url: `//apis.intastellarsolutions.com/analytics/gdpr/livedata`,
         method: "GET",
         headers: {
             "Authorization": Authentication.getToken(),
@@ -27,7 +27,7 @@ const API = {
     },
     gdpr: {
         getTotalNumber: {
-            url: `${PrimaryHost}/analytics/gdpr/getTotalNumber.php`,
+            url: `${PrimaryHost}/analytics/gdpr/getTotalNumber`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -36,7 +36,7 @@ const API = {
             }
         },
         getStyle: {
-            url: `${PrimaryHost}/analytics/gdpr/getBannerStyle.php`,
+            url: `${PrimaryHost}/analytics/gdpr/getBannerStyle`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -45,7 +45,7 @@ const API = {
             }
         },
         getDomainsUrl: {
-            url: `${PrimaryHost}/analytics/gdpr/getDomainStatistics.php`,
+            url: `${PrimaryHost}/analytics/gdpr/getDomainStatistics`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -54,7 +54,7 @@ const API = {
             }
         },
         getInteractions: {
-            url: `${PrimaryHost}/analytics/gdpr/getInteractions.php`,
+            url: `${PrimaryHost}/analytics/gdpr/getInteractions`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -63,7 +63,7 @@ const API = {
             }
         },
         getDomains: {
-            url: `${PrimaryHost}/analytics/gdpr/getDomains.php`,
+            url: `${PrimaryHost}/analytics/gdpr/getDomains`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -72,7 +72,7 @@ const API = {
             }
         },
         getDevices: {
-            url: `${PrimaryHost}/analytics/gdpr/getDevices.php`,
+            url: `${PrimaryHost}/analytics/gdpr/getDevices`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -81,7 +81,7 @@ const API = {
             }
         },
         getCookies: {
-            url: `${PrimaryHost}/analytics/gdpr/cookiesAPI.php`,
+            url: `${PrimaryHost}/analytics/gdpr/cookiesAPI`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -92,7 +92,7 @@ const API = {
     },
     ferry: {
         getTotalSales: {
-            url: `${PrimaryHost}/analytics/ferry/getTotalSales.php`,
+            url: `${PrimaryHost}/analytics/ferry/getTotalSales`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -102,7 +102,7 @@ const API = {
     },
     settings: {
         getOrganisation: {
-            url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
+            url: `${PrimaryHost}/analytics/settings/getOrganisation`,
             method: "POST",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -110,7 +110,7 @@ const API = {
             }
         },
         createOrganisation: {
-            url: `${PrimaryHost}/analytics/settings/create-organisation.php`,
+            url: `${PrimaryHost}/analytics/settings/create-organisation`,
             method: "POST",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -118,7 +118,7 @@ const API = {
             }
         },
         updateSettings: {
-            url: `${PrimaryHost}/analytics/settings/updateSettings.php`,
+            url: `${PrimaryHost}/analytics/settings/updateSettings`,
             method: "POST",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -127,7 +127,7 @@ const API = {
             }
         },
         addUser: {
-            url: `${PrimaryHost}/analytics/settings/add-user.php`,
+            url: `${PrimaryHost}/analytics/settings/add-user`,
             method: "POST",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -135,7 +135,7 @@ const API = {
             }
         },
         getSettings: {
-            url: `${PrimaryHost}/analytics/settings/getOrganisation.php`,
+            url: `${PrimaryHost}/analytics/settings/getOrganisation`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -144,7 +144,7 @@ const API = {
             }
         },
         createSettings: {
-            url: `${PrimaryHost}/analytics/settings/create-organisation.php`,
+            url: `${PrimaryHost}/analytics/settings/create-organisation`,
             method: "POST",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -153,7 +153,7 @@ const API = {
             }
         },
         addDomain: {
-            url: `${PrimaryHost}/analytics/settings/add-domain.php`,
+            url: `${PrimaryHost}/analytics/settings/add-domain`,
             method: "POST",
             headers: {
                 "Authorization": Authentication.getToken(),
@@ -166,18 +166,18 @@ const API = {
                 "Content-Type": "application/json"
             },
             update: {
-                url: `${PrimaryHost}/analytics/settings/user.php`,
+                url: `${PrimaryHost}/analytics/settings/user`,
                 method: "POST"
             },
             get: {
-                url: `${PrimaryHost}/analytics/settings/getUserSettings.php`,
+                url: `${PrimaryHost}/analytics/settings/getUserSettings`,
                 method: "POST"
             },
         }
     },
     ferry: {
         getTotalSales: {
-            url: `${PrimaryHost}/analytics/ferry/getTotalSales.php`,
+            url: `${PrimaryHost}/analytics/ferry/getTotalSales`,
             method: "GET",
             headers: {
                 "Authorization": Authentication.getToken(),
