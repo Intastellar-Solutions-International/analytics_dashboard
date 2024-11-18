@@ -5570,20 +5570,42 @@ function LiveView(props) {
   Object.keys(liveData === null || liveData === void 0 ? void 0 : liveData.country).map(function (key, index) {
     return /*#__PURE__*/React.createElement("div", {
       key: index,
-      className: "liveView-content-country"
+      className: "liveView-content-country",
+      style: {
+        marginBottom: (liveData === null || liveData === void 0 ? void 0 : liveData.country.length) - 1 === index ? "0" : "10px"
+      }
     }, /*#__PURE__*/React.createElement("div", {
       className: "liveView-content-flex"
     }, /*#__PURE__*/React.createElement("p", {
       className: "liveView-content-data-1-text"
     }, key), /*#__PURE__*/React.createElement("p", {
       className: "liveView-content-data-1-text"
-    }, liveData === null || liveData === void 0 ? void 0 : liveData.country[key].count)), /*#__PURE__*/React.createElement("div", {
+    }, liveData === null || liveData === void 0 ? void 0 : liveData.count)), /*#__PURE__*/React.createElement("div", {
       style: {
         width: "".concat((liveData === null || liveData === void 0 ? void 0 : liveData.country[key].count) / liveData.count * 100, "%"),
         height: "2px",
         backgroundColor: "rgb(192, 159, 83)",
         marginBottom: "10px"
       }
+    }), Object.keys(liveData === null || liveData === void 0 ? void 0 : liveData.domains).map(function (domain, index) {
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+        key: index,
+        className: "liveView-content-flex",
+        style: {
+          fontSize: "12px"
+        }
+      }, /*#__PURE__*/React.createElement("p", {
+        className: "liveView-content-data-1-text"
+      }, domain), /*#__PURE__*/React.createElement("p", {
+        className: "liveView-content-data-1-text"
+      }, liveData === null || liveData === void 0 ? void 0 : liveData.domains[domain].count)), /*#__PURE__*/React.createElement("div", {
+        style: {
+          width: "".concat((liveData === null || liveData === void 0 ? void 0 : liveData.domains[domain].count) / liveData.count * 100, "%"),
+          height: "2px",
+          backgroundColor: "rgb(192, 159, 83)",
+          marginBottom: "10px"
+        }
+      }));
     }));
   }))))) : null);
 }

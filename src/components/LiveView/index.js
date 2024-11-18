@@ -66,10 +66,12 @@ export function LiveView(props) {
                                     Object.keys(
                                         liveData?.country
                                     ).map((key, index) => {
-                                        return <div key={index} className="liveView-content-country">
+                                        return <div key={index} className="liveView-content-country" style={{
+                                            marginBottom: (liveData?.country.length - 1 === index) ? "0" : "10px"
+                                        }}>
                                             <div className="liveView-content-flex">
                                                 <p className="liveView-content-data-1-text">{key}</p>
-                                                <p className="liveView-content-data-1-text">{liveData?.country[key].count}</p>
+                                                <p className="liveView-content-data-1-text">{liveData?.count}</p>
                                             </div>
                                             <div style={{
                                                 width: `${(liveData?.country[key].count / liveData.count) * 100
@@ -78,6 +80,27 @@ export function LiveView(props) {
                                                 backgroundColor: "rgb(192, 159, 83)",
                                                 marginBottom: "10px"
                                             }}></div>
+                                            {
+                                                Object.keys(
+                                                    liveData?.domains
+                                                ).map((domain, index) => {
+                                                    return <>
+                                                        <div key={index} className="liveView-content-flex" style={{
+                                                            fontSize: "12px",
+                                                        }}>
+                                                            <p className="liveView-content-data-1-text">{domain}</p>
+                                                            <p className="liveView-content-data-1-text">{liveData?.domains[domain].count}</p>
+                                                        </div>
+                                                        <div style={{
+                                                            width: `${(liveData?.domains[domain].count / liveData.count) * 100
+                                                                }%`,
+                                                            height: "2px",
+                                                            backgroundColor: "rgb(192, 159, 83)",
+                                                            marginBottom: "10px"
+                                                        }}></div>
+                                                    </>
+                                                })
+                                            }
                                         </div>
                                     })
                                 }
