@@ -4451,8 +4451,6 @@ function Dashboard(props) {
       header: _API_api__WEBPACK_IMPORTED_MODULE_3__["default"][id].getStyle.headers
     }
   }) : null, /*#__PURE__*/React.createElement("div", {
-    className: "crawler"
-  }, /*#__PURE__*/React.createElement(_Components_Crawler__WEBPACK_IMPORTED_MODULE_8__["default"], null)), /*#__PURE__*/React.createElement("div", {
     className: "",
     style: {
       paddingTop: "40px"
