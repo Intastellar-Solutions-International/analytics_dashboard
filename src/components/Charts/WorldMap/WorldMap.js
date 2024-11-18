@@ -2,6 +2,29 @@ import "./Style.css";
 const { useState, useEffect, useRef, createContext } = React;
 const svgMap = window.svgMap;
 import countryCodes from "./countryCodes.js";
+
+function colorCalulator(value) {
+   const baseColor = "#c09f53";
+   const maxColor = "#c09f53";
+   const minColor = "#ddd29b";
+   const max = 1000;
+   const min = 0;
+   const percent = (value - min) / (max - min);
+
+
+   const color = {
+      r: Math.floor(parseInt(minColor.slice(1, 3), 16) * (1 - percent) + parseInt(maxColor.slice(1, 3), 16) * percent),
+      g: Math.floor(parseInt(minColor.slice(3, 5), 16) * (1 - percent) + parseInt(maxColor.slice(3, 5), 16) * percent),
+      b: Math.floor(parseInt(minColor.slice(5, 7), 16) * (1 - percent) + parseInt(maxColor.slice(5, 7), 16) * percent)
+   }
+
+   if (value > 10000) {
+      return baseColor;
+   } else {
+      return `rgb(${color.r}, ${color.g}, ${color.b})`;
+   }
+}
+
 export default function Map(props) {
    const data = props.data;
    const countries = data.Countries;
@@ -22,7 +45,7 @@ export default function Map(props) {
                   functional: country.functional,
                   statistics: country.statics,
                   marketing: country.marketing,
-                  color: "#c09f53"
+                  color: colorCalulator(country.num.total)
                }
             }
          }

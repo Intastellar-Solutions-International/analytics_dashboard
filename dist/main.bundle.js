@@ -1065,6 +1065,24 @@ var _React = React,
   createContext = _React.createContext;
 var svgMap = window.svgMap;
 
+function colorCalulator(value) {
+  var baseColor = "#c09f53";
+  var maxColor = "#c09f53";
+  var minColor = "#ddd29b";
+  var max = 1000;
+  var min = 0;
+  var percent = (value - min) / (max - min);
+  var color = {
+    r: Math.floor(parseInt(minColor.slice(1, 3), 16) * (1 - percent) + parseInt(maxColor.slice(1, 3), 16) * percent),
+    g: Math.floor(parseInt(minColor.slice(3, 5), 16) * (1 - percent) + parseInt(maxColor.slice(3, 5), 16) * percent),
+    b: Math.floor(parseInt(minColor.slice(5, 7), 16) * (1 - percent) + parseInt(maxColor.slice(5, 7), 16) * percent)
+  };
+  if (value > 10000) {
+    return baseColor;
+  } else {
+    return "rgb(".concat(color.r, ", ").concat(color.g, ", ").concat(color.b, ")");
+  }
+}
 function Map(props) {
   var data = props.data;
   var countries = data.Countries;
@@ -1082,7 +1100,7 @@ function Map(props) {
           functional: country.functional,
           statistics: country.statics,
           marketing: country.marketing,
-          color: "#c09f53"
+          color: colorCalulator(country.num.total)
         });
       }
     });
