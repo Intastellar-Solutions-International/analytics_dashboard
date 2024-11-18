@@ -1009,6 +1009,7 @@ function Pie(_ref) {
     fromDate = _ref.fromDate,
     toDate = _ref.toDate;
   var dailyData = data;
+  console.log(dailyData);
   useEffect(function () {
     anychart.onDocumentReady(function () {
       // The main JS line charting code will be here.
@@ -3258,7 +3259,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Functions_FetchHook__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Functions/FetchHook */ "./src/Functions/FetchHook.js");
 /* harmony import */ var _Loading__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Loading */ "./src/Components/widget/Loading.js");
 /* harmony import */ var _Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Error/ErrorBoundary */ "./src/Components/Error/ErrorBoundary.js");
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/chart.js");
+/* harmony import */ var _Charts_Pie__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Charts/Pie */ "./src/Components/Charts/Pie/index.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -3276,7 +3278,8 @@ var _React = React,
 
 
 
-chart_js__WEBPACK_IMPORTED_MODULE_4__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_4__.ArcElement, chart_js__WEBPACK_IMPORTED_MODULE_4__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_4__.Legend);
+
+chart_js__WEBPACK_IMPORTED_MODULE_5__.Chart.register(chart_js__WEBPACK_IMPORTED_MODULE_5__.ArcElement, chart_js__WEBPACK_IMPORTED_MODULE_5__.Tooltip, chart_js__WEBPACK_IMPORTED_MODULE_5__.Legend);
 function TopWidgets(props) {
   var APIUrl = props.API.url;
   var APIMethod = props.API.method;
@@ -3295,16 +3298,16 @@ function TopWidgets(props) {
   if (!loading) {
     console.log(data);
   }
+  var dataset = data === null || data === void 0 ? void 0 : data.map(function (item) {
+    return {
+      name: item.design.toUpperCase(),
+      value: item.bannerCount
+    };
+  });
   return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "grid-container grid-3"
-  }, loading ? /*#__PURE__*/React.createElement(_Loading__WEBPACK_IMPORTED_MODULE_2__.Loading, null) : /*#__PURE__*/React.createElement(_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_3__["default"], null, data === null || data === void 0 ? void 0 : data.map(function (item, index) {
-    var _item$bannerCount;
-    return /*#__PURE__*/React.createElement(_widget__WEBPACK_IMPORTED_MODULE_0__["default"], {
-      key: index,
-      overviewTotal: true,
-      totalNumber: item === null || item === void 0 || (_item$bannerCount = item.bannerCount) === null || _item$bannerCount === void 0 ? void 0 : _item$bannerCount.toLocaleString("de-DE"),
-      type: item === null || item === void 0 ? void 0 : item.design
-    });
+  }, loading ? /*#__PURE__*/React.createElement(_Loading__WEBPACK_IMPORTED_MODULE_2__.Loading, null) : /*#__PURE__*/React.createElement(_Error_ErrorBoundary__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/React.createElement(_Charts_Pie__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    data: dataset
   }))));
 }
 
@@ -4110,6 +4113,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Components_Header_Sticky_index_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../Components/Header/Sticky/index.js */ "./src/Components/Header/Sticky/index.js");
 /* harmony import */ var _components_LiveView_index_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/LiveView/index.js */ "./src/components/LiveView/index.js");
 /* harmony import */ var _Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../Components/tiers/index.js */ "./src/Components/tiers/index.js");
+/* harmony import */ var _Components_Charts_Pie_index_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../Components/Charts/Pie/index.js */ "./src/Components/Charts/Pie/index.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -4130,6 +4134,7 @@ var _React = React,
 
 
 var useParams = window.ReactRouterDOM.useParams;
+
 
 
 

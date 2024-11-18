@@ -5,6 +5,7 @@ import { Loading } from "./Loading";
 import ErrorBoundary from "../Error/ErrorBoundary";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import Pie from "../Charts/Pie";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -25,14 +26,21 @@ export default function TopWidgets(props) {
         console.log(data);
     }
 
+    const dataset = data?.map((item) => {
+        return {
+            name: item.design.toUpperCase(),
+            value: item.bannerCount
+        }
+    });
+
     return (
         <>
             <div className="grid-container grid-3">
                 {(loading) ? <Loading /> : <ErrorBoundary>
                     {
-                        data?.map((item, index) => {
-                            return <Widget key={index} overviewTotal={true} totalNumber={item?.bannerCount?.toLocaleString("de-DE")} type={item?.design} />
-                        })
+                        <Pie data={
+                            dataset
+                        } />
                     }
                 </ErrorBoundary>
                 }

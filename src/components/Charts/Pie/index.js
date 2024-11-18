@@ -2,15 +2,17 @@ const { useState, useEffect, useRef, useContext } = React;
 import { use } from "i18next";
 import "../Line/Style.css";
 
-export default function Pie({data, title, fromDate, toDate}){
+export default function Pie({ data, title, fromDate, toDate }) {
     const dailyData = data;
 
+    console.log(dailyData);
+
     useEffect(() => {
-        
-        anychart.onDocumentReady(function() {
+
+        anychart.onDocumentReady(function () {
             // The main JS line charting code will be here.
             let dataSet = anychart.data.set(dailyData);
-            if(dataSet.oc != dailyData){
+            if (dataSet.oc != dailyData) {
                 document.getElementById("pie-chart").innerHTML = "";
             }
             let chart = anychart.pie(dailyData);
@@ -18,13 +20,13 @@ export default function Pie({data, title, fromDate, toDate}){
             chart.radius("90%")
 
             chart.container("pie-chart");
-            if(data !== null || data !== undefined){
+            if (data !== null || data !== undefined) {
                 chart.draw();
             }
         });
     }, [dailyData]);
 
-    return(
+    return (
         <div className={"widget no-padding"}>
             {
                 (title) ? <h2>{title}</h2> : null
