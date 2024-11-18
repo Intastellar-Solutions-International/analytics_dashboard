@@ -14,7 +14,7 @@ const punycode = require("punycode");
 export default function Header(props) {
 
     const [Organisation, setOrganisation] = useContext(OrganisationContext);
-    const [currentDomain, setCurrentDomain] = useState((window.location.pathname.split("/")[2] === "view") ? decodeURI(window.location.pathname.split("/")[3]?.replace("%2E", ".")) : "all");
+    const [currentDomain, setCurrentDomain] = useState((window.location.pathname.split("/")[2] === "view") ? decodeURI(window.location.pathname.split("/")[3]?.replace("%2E", ".")) : "Choose one of your domains");
     const profileImage = JSON.parse(localStorage.getItem("globals"))?.profile?.image;
     let domainList = null;
     const Name = JSON.parse(localStorage.getItem("globals"))?.profile?.name?.first_name + " " + JSON.parse(localStorage.getItem("globals"))?.profile?.name?.last_name;
@@ -107,7 +107,7 @@ export default function Header(props) {
                                             setCurrentDomain(domain);
                                             window.location.href = `/${window.location.pathname.split("/")[1]}/view/${domain.replace('.', '%2E')}`;
                                         }}
-                                        items={domainList} title="Choose one of your domains"
+                                        items={domainList}
                                         style={{ left: "0" }}
                                         icon={'dashboard-icons domains'}
                                     />

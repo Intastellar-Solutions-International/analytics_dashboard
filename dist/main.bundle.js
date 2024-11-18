@@ -2333,7 +2333,7 @@ function Header(props) {
     _useContext2 = _slicedToArray(_useContext, 2),
     Organisation = _useContext2[0],
     setOrganisation = _useContext2[1];
-  var _useState = useState(window.location.pathname.split("/")[2] === "view" ? decodeURI((_window$location$path = window.location.pathname.split("/")[3]) === null || _window$location$path === void 0 ? void 0 : _window$location$path.replace("%2E", ".")) : "all"),
+  var _useState = useState(window.location.pathname.split("/")[2] === "view" ? decodeURI((_window$location$path = window.location.pathname.split("/")[3]) === null || _window$location$path === void 0 ? void 0 : _window$location$path.replace("%2E", ".")) : "Choose one of your domains"),
     _useState2 = _slicedToArray(_useState, 2),
     currentDomain = _useState2[0],
     setCurrentDomain = _useState2[1];
@@ -2439,7 +2439,6 @@ function Header(props) {
       window.location.href = "/".concat(window.location.pathname.split("/")[1], "/view/").concat(domain.replace('.', '%2E'));
     },
     items: domainList,
-    title: "Choose one of your domains",
     style: {
       left: "0"
     },
