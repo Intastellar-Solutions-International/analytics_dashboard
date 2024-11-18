@@ -4479,6 +4479,7 @@ function Dashboard(props) {
     className: "widget no-padding"
   }, /*#__PURE__*/React.createElement(_Components_Charts_WorldMap_WorldMap_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
     data: {
+      date: Intl.DateTimeFormat("de-DE").format(new Date(data.date.from)) + " - " + Intl.DateTimeFormat("da-DK").format(new Date(data.date.to)),
       Countries: activeData === null || activeData === void 0 ? void 0 : activeData.Countries
     }
   }))))), /*#__PURE__*/React.createElement(_Components_tiers_index_js__WEBPACK_IMPORTED_MODULE_12__.PremiumTier, {
