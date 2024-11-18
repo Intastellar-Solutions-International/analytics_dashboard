@@ -5490,6 +5490,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Functions/FetchHook */ "./src/Functions/FetchHook.js");
 /* harmony import */ var _API_api__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../API/api */ "./src/API/api.js");
 /* harmony import */ var _Style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Style.css */ "./src/components/LiveView/Style.css");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -5572,7 +5576,7 @@ function LiveView(props) {
       key: index,
       className: "liveView-content-country",
       style: {
-        marginBottom: (liveData === null || liveData === void 0 ? void 0 : liveData.country.length) - 1 === index ? "0" : "10px"
+        marginBottom: (liveData === null || liveData === void 0 ? void 0 : liveData.country.length) - 1 === index ? "0" : "40px"
       }
     }, /*#__PURE__*/React.createElement("div", {
       className: "liveView-content-flex"
@@ -5580,14 +5584,15 @@ function LiveView(props) {
       className: "liveView-content-data-1-text"
     }, key), /*#__PURE__*/React.createElement("p", {
       className: "liveView-content-data-1-text"
-    }, liveData === null || liveData === void 0 ? void 0 : liveData.count)), /*#__PURE__*/React.createElement("div", {
-      style: {
+    }, liveData === null || liveData === void 0 ? void 0 : liveData.country[key].count)), /*#__PURE__*/React.createElement("div", {
+      style: _defineProperty(_defineProperty({
         width: "".concat((liveData === null || liveData === void 0 ? void 0 : liveData.country[key].count) / liveData.count * 100, "%"),
         height: "2px",
-        backgroundColor: "rgb(192, 159, 83)",
-        marginBottom: "10px"
-      }
-    }), Object.keys(liveData === null || liveData === void 0 ? void 0 : liveData.domains).map(function (domain, index) {
+        backgroundColor: "rgb(222, 189, 113)"
+      }, "backgroundColor", "rgb(192, 159, 83)"), "marginBottom", "10px")
+    }), Object.keys(liveData === null || liveData === void 0 ? void 0 : liveData.domains).filter(function (domain) {
+      return (liveData === null || liveData === void 0 ? void 0 : liveData.domains[domain].country.indexOf(key)) > -1;
+    }).map(function (domain, index) {
       return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
         key: index,
         className: "liveView-content-flex",
@@ -5602,7 +5607,7 @@ function LiveView(props) {
         style: {
           width: "".concat((liveData === null || liveData === void 0 ? void 0 : liveData.domains[domain].count) / liveData.count * 100, "%"),
           height: "2px",
-          backgroundColor: "rgb(192, 159, 83)",
+          backgroundColor: "rgb(222, 189, 113)",
           marginBottom: "10px"
         }
       }));
