@@ -17,7 +17,6 @@ export default function DomainDashbord(props) {
 
     API[id].getInteractions.headers.Domains = punycode.toASCII(handle);
     const [loading, data, error, updated] = useFetch(5, API[id].getInteractions.url, API[id].getInteractions.method, API[id].getInteractions.headers, null, handle);
-
     return (localStorage?.getItem("domains")?.includes(punycode.toUnicode(handle)) || handle == "all") ? (
         <>
             <div className="dashboard-content">
@@ -47,7 +46,7 @@ export default function DomainDashbord(props) {
                                 <p>Updated: {updated}</p>
                                 {
                                     <Map data={{
-                                        date: data.date,
+                                        date: Intl.DateTimeFormat("da-DK").format(new Date(data.date.from)) + " - " + Intl.DateTimeFormat("da-DK").format(new Date(data.date.to)),
                                         Marketing: data.Marketing.toLocaleString("de-DE"),
                                         Functional: data.Functional.toLocaleString("de-DE"),
                                         Statistic: data.Statics.toLocaleString("de-DE"),
