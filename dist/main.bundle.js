@@ -36,7 +36,7 @@ var API = _defineProperty(_defineProperty({
     }
   },
   liveData: {
-    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/livedata.php"),
+    url: "//apis.intastellarsolutions.com/analytics/gdpr/livedata.php",
     method: "GET",
     headers: {
       "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -1075,6 +1075,7 @@ function Map(props) {
         var name = country.country;
         var code = _countryCodes_js__WEBPACK_IMPORTED_MODULE_1__["default"][name];
         return _defineProperty({}, code, {
+          date: data.date ? data.date : "No data",
           total: country.num.total,
           accepted: country.accepted,
           rejected: country.declined,
@@ -1092,6 +1093,10 @@ function Map(props) {
         targetElementID: 'svgMap',
         data: {
           data: {
+            date: {
+              name: 'Date',
+              format: '{0}'
+            },
             total: {
               name: 'Total Interactions',
               format: '{0}',
@@ -1907,7 +1912,7 @@ function Filter(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     calendar = _useState4[0],
     setCalendar = _useState4[1];
-  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("section", {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("section", {
     style: _defineProperty({
       display: "flex",
       alignItems: "flex-end",
@@ -1947,7 +1952,17 @@ function Filter(_ref) {
     onClick: function onClick() {
       setCalendar(!calendar);
     }
-  })), calendar ? /*#__PURE__*/React.createElement("form", {
+  })), calendar ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      right: 89,
+      width: "400px",
+      backgroundColor: " rgb(55, 55, 55)",
+      top: 60,
+      padding: 20,
+      boxShadow: "inset 0 1px 1px 0 rgba(0,0,0,.14),inset 0 2px 1px -1px rgba(209, 209, 209, 0.12)"
+    }
+  }, /*#__PURE__*/React.createElement("form", {
     onSubmit: function onSubmit(e) {
       e.preventDefault();
       setloadingTimeDate(true);
@@ -1985,7 +2000,7 @@ function Filter(_ref) {
     disabled: loadingTimeDate ? true : "",
     className: "crawl-cta",
     text: loadingTimeDate ? "Loading..." : "Apply"
-  }))) : null);
+  })))) : null);
 }
 
 /***/ }),
@@ -3613,8 +3628,10 @@ function Widget(props) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ useFetch)
+/* harmony export */   "default": () => (/* binding */ useFetch),
+/* harmony export */   useEventSource: () => (/* binding */ useEventSource)
 /* harmony export */ });
+/* harmony import */ var _Authentication_Auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Authentication/Auth */ "./src/Authentication/Auth.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -3624,6 +3641,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var _React = React,
   useState = _React.useState,
   useEffect = _React.useEffect;
+
 function useFetch(updateInterval, url, method, headers, body, handle) {
   var _useState = useState(true),
     _useState2 = _slicedToArray(_useState, 2),
@@ -3703,6 +3721,54 @@ function useFetch(updateInterval, url, method, headers, body, handle) {
     return;
   }
   return [loading, data, error, updated, lastUpdated, setUpdated];
+}
+function useEventSource(url) {
+  var _useState11 = useState(true),
+    _useState12 = _slicedToArray(_useState11, 2),
+    loading = _useState12[0],
+    setLoading = _useState12[1];
+  var _useState13 = useState(),
+    _useState14 = _slicedToArray(_useState13, 2),
+    data = _useState14[0],
+    setData = _useState14[1];
+  var _useState15 = useState(),
+    _useState16 = _slicedToArray(_useState15, 2),
+    error = _useState16[0],
+    setError = _useState16[1];
+  var _useState17 = useState(Math.floor(Date.now() / 100)),
+    _useState18 = _slicedToArray(_useState17, 2),
+    lastUpdated = _useState18[0],
+    setLastUpdated = _useState18[1];
+  var _useState19 = useState(""),
+    _useState20 = _slicedToArray(_useState19, 2),
+    updated = _useState20[0],
+    setUpdated = _useState20[1];
+  var evtSource = new EventSource("".concat(url), {
+    withCredentials: true
+  });
+  if (typeof EventSource !== "undefined") {
+    //console.log("EventSource is supported.");
+    evtSource.onmessage = function (event) {
+      console.log(event.data);
+      setData(JSON.parse(event.data));
+      setLoading(false);
+      setUpdated("Now");
+      setLastUpdated(Math.floor(Date.now() / 1000));
+    };
+    evtSource.addEventListener("ping", function (event) {
+      setData(JSON.parse(event.data));
+      setLoading(false);
+      setUpdated("Now");
+      setLastUpdated(Math.floor(Date.now() / 1000));
+    });
+    evtSource.onerror = function (err) {
+      //console.error("EventSource failed:", err);
+    };
+    return [loading, data, error, updated, lastUpdated, setUpdated];
+  } else {
+    //console.log("EventSource is not supported.");
+    return [loading, data, error, updated, lastUpdated, setUpdated];
+  }
 }
 
 /***/ }),
@@ -4483,7 +4549,7 @@ function DomainDashbord(props) {
     className: "activeDomain",
     href: "https://".concat(handle),
     target: "_blank"
-  }, punycode.toUnicode(handle))), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : data.Total === 0 ? /*#__PURE__*/React.createElement("h1", null, "No interactions yet") : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, punycode.toUnicode(handle))), loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : data.Total === 0 ? /*#__PURE__*/React.createElement("h1", null, "No interactions yet") : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("p", null, "Date Range: ", Intl.DateTimeFormat("da-DK").format(new Date(data.date.from)), " - ", Intl.DateTimeFormat("da-DK").format(new Date(data.date.to))), /*#__PURE__*/React.createElement(_Components_widget_widget__WEBPACK_IMPORTED_MODULE_3__["default"], {
     totalNumber: data.Total.toLocaleString("de-DE"),
     overviewTotal: true,
     type: "Total interactions"
@@ -4510,6 +4576,7 @@ function DomainDashbord(props) {
     className: "grid-container grid-3"
   }, /*#__PURE__*/React.createElement("section", null, loading ? /*#__PURE__*/React.createElement(_Components_widget_Loading__WEBPACK_IMPORTED_MODULE_4__.Loading, null) : data.Total === 0 ? null : /*#__PURE__*/React.createElement("section", null, /*#__PURE__*/React.createElement("h3", null, "User interactions based on country"), /*#__PURE__*/React.createElement("p", null, "Updated: ", updated), /*#__PURE__*/React.createElement(_Components_Charts_WorldMap_WorldMap_js__WEBPACK_IMPORTED_MODULE_6__["default"], {
     data: {
+      date: Intl.DateTimeFormat("de-DE").format(new Date(data.date.from)) + " - " + Intl.DateTimeFormat("da-DK").format(new Date(data.date.to)),
       Marketing: data.Marketing.toLocaleString("de-DE"),
       Functional: data.Functional.toLocaleString("de-DE"),
       Statistic: data.Statics.toLocaleString("de-DE"),
@@ -8038,7 +8105,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "f2adaedf78290e17e116012ae32eac48.png");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "74ae33ac1829441d334b7880ffda08db.png");
 
 /***/ }),
 
