@@ -20,6 +20,8 @@ export default function Dashboard(props) {
     const [currentDomain, setCurrentDomain] = useContext(DomainContext);
     const [organisation, setOrganisation] = useContext(OrganisationContext);
     const subscriptionStatus = JSON.parse(localStorage.getItem("subscription"));
+    const userProfile = JSON.parse(localStorage.getItem("globals")).profile.image;
+
     const { handle, id } = useParams();
     const [activeData, setActiveData] = useState(null);
     const [getLastDays, setLastDays] = useState((localStorage.getItem("settings") != null) ? JSON.parse(localStorage.getItem("settings")).dateRange : 30);
@@ -72,6 +74,10 @@ export default function Dashboard(props) {
         <>
             <StickyPageTitle title="Home" url={url} method={method} header={header} setLastDays={setLastDays} getLastDays={getLastDays} setActiveData={setActiveData} fromDate={fromDate} toDate={toDate} setFromDate={setFromDate} setToDate={setToDate} />
             <div className="dashboard-content">
+                <div className="profilePicture-container">
+                    <img src={userProfile} className="profilePicture" />
+                    <p className="profile-user">Welcome, {JSON.parse(localStorage.getItem("globals")).profile.name.first_name}</p>
+                </div>
                 {
                     (id === "gdpr" && organisation != null && JSON.parse(organisation).id == 1) ? <TopWidgets dashboardView={dashboardView} API={{
                         url: API[id].getTotalNumber.url,

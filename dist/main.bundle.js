@@ -4146,6 +4146,7 @@ function Dashboard(props) {
     organisation = _useContext4[0],
     setOrganisation = _useContext4[1];
   var subscriptionStatus = JSON.parse(localStorage.getItem("subscription"));
+  var userProfile = JSON.parse(localStorage.getItem("globals")).profile.image;
   var _useParams = useParams(),
     handle = _useParams.handle,
     id = _useParams.id;
@@ -4217,7 +4218,14 @@ function Dashboard(props) {
     setToDate: setToDate
   }), /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, id === "gdpr" && organisation != null && JSON.parse(organisation).id == 1 ? /*#__PURE__*/React.createElement(_Components_widget_TopWidgets_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "profilePicture-container"
+  }, /*#__PURE__*/React.createElement("img", {
+    src: userProfile,
+    className: "profilePicture"
+  }), /*#__PURE__*/React.createElement("p", {
+    className: "profile-user"
+  }, "Welcome, ", JSON.parse(localStorage.getItem("globals")).profile.name.first_name)), id === "gdpr" && organisation != null && JSON.parse(organisation).id == 1 ? /*#__PURE__*/React.createElement(_Components_widget_TopWidgets_js__WEBPACK_IMPORTED_MODULE_0__["default"], {
     dashboardView: dashboardView,
     API: {
       url: _API_api__WEBPACK_IMPORTED_MODULE_3__["default"][id].getTotalNumber.url,
@@ -7497,14 +7505,14 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, `.grid-3{
+___CSS_LOADER_EXPORT___.push([module.id, `.grid-3 {
     grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
     justify-content: center;
     align-items: center;
     gap: 20px;
 }
 
-.grid-2{
+.grid-2 {
     grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
@@ -7519,25 +7527,44 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.grid-3{
     flex: 1;
 }
 
-.activeDomain{
+.activeDomain {
     color: aliceblue;
     text-decoration: none;
     text-transform: uppercase;
 }
 
-.user{
+.user {
     padding: 20px;
     background-color: #fff;
     color: #3d3d3d;
     border-radius: 10px;
 }
 
+.profile-user {
+    font-size: 30px;
+}
+
+.profilePicture-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profilePicture {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 @media screen and (max-width: 900px) {
-    .dashboard-content{
+    .dashboard-content {
         padding: 0 20px;
     }
-    
-}`, "",{"version":3,"sources":["webpack://./src/Pages/Dashboard/Style.css"],"names":[],"mappings":"AAAA;IACI,yDAAyD;IACzD,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,8BAA8B;IAC9B,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,cAAc;IACd,eAAe;IACf,OAAO;AACX;;AAEA;IACI,gBAAgB;IAChB,qBAAqB;IACrB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI;QACI,eAAe;IACnB;;AAEJ","sourcesContent":[".grid-3{\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.grid-2{\n    grid-template-columns: 1fr 1fr;\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    max-width: 1280px;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain{\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user{\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content{\n        padding: 0 20px;\n    }\n    \n}"],"sourceRoot":""}]);
+
+}`, "",{"version":3,"sources":["webpack://./src/Pages/Dashboard/Style.css"],"names":[],"mappings":"AAAA;IACI,yDAAyD;IACzD,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,8BAA8B;IAC9B,uBAAuB;IACvB,mBAAmB;IACnB,SAAS;AACb;;AAEA;IACI,WAAW;IACX,iBAAiB;IACjB,cAAc;IACd,eAAe;IACf,OAAO;AACX;;AAEA;IACI,gBAAgB;IAChB,qBAAqB;IACrB,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,cAAc;IACd,mBAAmB;AACvB;;AAEA;IACI,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,uBAAuB;IACvB,mBAAmB;IACnB,mBAAmB;AACvB;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,kBAAkB;IAClB,iBAAiB;AACrB;;AAEA;IACI;QACI,eAAe;IACnB;;AAEJ","sourcesContent":[".grid-3 {\n    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.grid-2 {\n    grid-template-columns: 1fr 1fr;\n    justify-content: center;\n    align-items: center;\n    gap: 20px;\n}\n\n.dashboard-content {\n    width: 100%;\n    max-width: 1280px;\n    margin: 0 auto;\n    padding: 0 50px;\n    flex: 1;\n}\n\n.activeDomain {\n    color: aliceblue;\n    text-decoration: none;\n    text-transform: uppercase;\n}\n\n.user {\n    padding: 20px;\n    background-color: #fff;\n    color: #3d3d3d;\n    border-radius: 10px;\n}\n\n.profile-user {\n    font-size: 30px;\n}\n\n.profilePicture-container {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    margin-bottom: 30px;\n}\n\n.profilePicture {\n    width: 250px;\n    height: 250px;\n    border-radius: 50%;\n    object-fit: cover;\n}\n\n@media screen and (max-width: 900px) {\n    .dashboard-content {\n        padding: 0 20px;\n    }\n\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
