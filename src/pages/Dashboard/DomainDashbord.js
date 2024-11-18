@@ -3,7 +3,7 @@ import useFetch from "../../Functions/FetchHook";
 import Fetch from "../../Functions/fetch";
 import API from "../../API/api";
 import Widget from "../../Components/widget/widget";
-import {Loading, CurrentPageLoading} from "../../Components/widget/Loading";
+import { Loading, CurrentPageLoading } from "../../Components/widget/Loading";
 import "./Style.css";
 import Map from "../../Components/Charts/WorldMap/WorldMap.js";
 import { DomainContext } from "../../App.js";
@@ -11,7 +11,7 @@ import NotAllowed from "../../Components/NotAllowed/NotAllowed";
 const useParams = window.ReactRouterDOM.useParams;
 const punycode = require("punycode");
 
-export default function DomainDashbord(props){
+export default function DomainDashbord(props) {
     const { handle, id } = useParams();
     document.title = `${punycode.toUnicode(handle)} Dashboard | Intastellar Analytics`;
 
@@ -24,19 +24,20 @@ export default function DomainDashbord(props){
                 <h1>Dashboard</h1>
                 <p>You´re currently viewing the data for:</p>
                 <h2><a className="activeDomain" href={`https://${handle}`} target="_blank">{punycode.toUnicode(handle)}</a></h2>
-                {(loading) ? <Loading /> : (data.Total === 0) ? <h1>No interactions yet</h1> : 
-                <>
-                    <Widget totalNumber={data.Total.toLocaleString("de-DE")} overviewTotal={ true } type="Total interactions" />
-                    <div className="grid-container grid-3">
-                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}
-                        {(loading) ? <Loading /> : <Widget totalNumber={ data?.Declined.toLocaleString("de-DE") + "%"} type="Declined cookies" /> }
-                    </div>
-                    <div className="grid-container grid-3">
-                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Marketing.toLocaleString("de-DE") + "%"} type="Accepted only Marketing" />}
-                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
-                        {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
-                    </div>
-                </>
+                {(loading) ? <Loading /> : (data.Total === 0) ? <h1>No interactions yet</h1> :
+                    <>
+                        <p>Date Range: {Intl.DateTimeFormat("da-DK").format(new Date(data.date.from))} - {Intl.DateTimeFormat("da-DK").format(new Date(data.date.to))}</p>
+                        <Widget totalNumber={data.Total.toLocaleString("de-DE")} overviewTotal={true} type="Total interactions" />
+                        <div className="grid-container grid-3">
+                            {(loading) ? <Loading /> : <Widget totalNumber={data?.Accepted.toLocaleString("de-DE") + "%"} type="Accepted cookies" />}
+                            {(loading) ? <Loading /> : <Widget totalNumber={data?.Declined.toLocaleString("de-DE") + "%"} type="Declined cookies" />}
+                        </div>
+                        <div className="grid-container grid-3">
+                            {(loading) ? <Loading /> : <Widget totalNumber={data?.Marketing.toLocaleString("de-DE") + "%"} type="Accepted only Marketing" />}
+                            {(loading) ? <Loading /> : <Widget totalNumber={data?.Functional.toLocaleString("de-DE") + "%"} type="Accepted only Functional" />}
+                            {(loading) ? <Loading /> : <Widget totalNumber={data?.Statics.toLocaleString("de-DE") + "%"} type="Accepted only Statics" />}
+                        </div>
+                    </>
                 }
                 <div className="grid-container grid-3">
                     <section>
@@ -46,6 +47,7 @@ export default function DomainDashbord(props){
                                 <p>Updated: {updated}</p>
                                 {
                                     <Map data={{
+                                        date: data.date,
                                         Marketing: data.Marketing.toLocaleString("de-DE"),
                                         Functional: data.Functional.toLocaleString("de-DE"),
                                         Statistic: data.Statics.toLocaleString("de-DE"),
@@ -60,5 +62,5 @@ export default function DomainDashbord(props){
                 </div>
             </div>
         </>
-    ) : (loading) ? <CurrentPageLoading/> : <NotAllowed />
+    ) : (loading) ? <CurrentPageLoading /> : <NotAllowed />
 }   
