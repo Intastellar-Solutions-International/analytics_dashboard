@@ -22,13 +22,13 @@ function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e 
 
 var API = _defineProperty(_defineProperty({
   Login: {
-    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.LoginHost, "/signin/v2/signin.php")
+    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.LoginHost, "/signin/v2/signin")
   },
   SignUp: {
-    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.LoginHost, "/consents/signup/v1/signup.php")
+    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.LoginHost, "/consents/signup/v1/signup")
   },
   Subscription: {
-    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/payment/subscription/v1/subscription.php"),
+    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/payment/subscription/v1/subscription"),
     method: "POST",
     headers: {
       "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -36,7 +36,7 @@ var API = _defineProperty(_defineProperty({
     }
   },
   liveData: {
-    url: "//apis.intastellarsolutions.com/analytics/gdpr/livedata.php",
+    url: "//apis.intastellarsolutions.com/analytics/gdpr/livedata",
     method: "GET",
     headers: {
       "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -46,7 +46,7 @@ var API = _defineProperty(_defineProperty({
   },
   gdpr: {
     getTotalNumber: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getTotalNumber.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getTotalNumber"),
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -55,7 +55,7 @@ var API = _defineProperty(_defineProperty({
       }
     },
     getStyle: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getBannerStyle.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getBannerStyle"),
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -64,7 +64,7 @@ var API = _defineProperty(_defineProperty({
       }
     },
     getDomainsUrl: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getDomainStatistics.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getDomainStatistics"),
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -73,7 +73,7 @@ var API = _defineProperty(_defineProperty({
       }
     },
     getInteractions: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getInteractions.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getInteractions"),
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -82,7 +82,7 @@ var API = _defineProperty(_defineProperty({
       }
     },
     getDomains: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getDomains.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getDomains"),
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -91,7 +91,7 @@ var API = _defineProperty(_defineProperty({
       }
     },
     getDevices: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getDevices.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getDevices"),
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -100,7 +100,7 @@ var API = _defineProperty(_defineProperty({
       }
     },
     getCookies: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/cookiesAPI.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/cookiesAPI"),
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -111,7 +111,7 @@ var API = _defineProperty(_defineProperty({
   },
   ferry: {
     getTotalSales: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/ferry/getTotalSales.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/ferry/getTotalSales"),
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -121,7 +121,7 @@ var API = _defineProperty(_defineProperty({
   },
   settings: {
     getOrganisation: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/getOrganisation.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/getOrganisation"),
       method: "POST",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -129,7 +129,7 @@ var API = _defineProperty(_defineProperty({
       }
     },
     createOrganisation: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/create-organisation.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/create-organisation"),
       method: "POST",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -137,7 +137,7 @@ var API = _defineProperty(_defineProperty({
       }
     },
     updateSettings: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/updateSettings.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/updateSettings"),
       method: "POST",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -146,7 +146,7 @@ var API = _defineProperty(_defineProperty({
       }
     },
     addUser: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/add-user.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/add-user"),
       method: "POST",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -154,7 +154,7 @@ var API = _defineProperty(_defineProperty({
       }
     },
     getSettings: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/getOrganisation.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/getOrganisation"),
       method: "GET",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -163,7 +163,7 @@ var API = _defineProperty(_defineProperty({
       }
     },
     createSettings: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/create-organisation.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/create-organisation"),
       method: "POST",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -172,7 +172,7 @@ var API = _defineProperty(_defineProperty({
       }
     },
     addDomain: {
-      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/add-domain.php"),
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/add-domain"),
       method: "POST",
       headers: {
         "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
@@ -185,18 +185,18 @@ var API = _defineProperty(_defineProperty({
         "Content-Type": "application/json"
       },
       update: {
-        url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/user.php"),
+        url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/user"),
         method: "POST"
       },
       get: {
-        url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/getUserSettings.php"),
+        url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/settings/getUserSettings"),
         method: "POST"
       }
     }
   }
 }, "ferry", {
   getTotalSales: {
-    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/ferry/getTotalSales.php"),
+    url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/ferry/getTotalSales"),
     method: "GET",
     headers: {
       "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
