@@ -13,16 +13,22 @@ const punycode = require("punycode");
 
 export default function DomainDashbord(props) {
     const { handle, id } = useParams();
-    document.title = `${punycode.toUnicode(handle)} Dashboard | Intastellar Analytics`;
+    document.title = `${punycode.toUnicode(handle)} Dashboard | Intastellar Consents Solutions`;
+
+    const today = new Date();
+    const [fromDate, setFromDate] = useState(new Date(new Date().setDate(today.getDate() - 360)).toISOString().split("T")[0]);
+    const [toDate, setToDate] = useState(new Date(new Date().setDate(today.getDate() - 1)).toISOString().split("T")[0]);
 
     API[id].getInteractions.headers.Domains = punycode.toASCII(handle);
+    API[id].getInteractions.headers.FromDate = fromDate;
+    API[id].getInteractions.headers.ToDate = toDate;
     const [loading, data, error, updated] = useFetch(5, API[id].getInteractions.url, API[id].getInteractions.method, API[id].getInteractions.headers, null, handle);
     return (localStorage?.getItem("domains")?.includes(punycode.toUnicode(handle)) || handle == "all") ? (
         <>
             <div className="dashboard-content">
                 <h1>Dashboard</h1>
                 <p>You´re currently viewing the data for:</p>
-                <h2><a className="activeDomain" href={`https://${handle}`} target="_blank">{punycode.toUnicode(handle)}</a></h2>
+                <h2>Domain: <a className="activeDomain" href={`https://${handle}`} target="_blank">{punycode.toUnicode(handle)}</a></h2>
                 {(loading) ? <Loading /> : (data.Total === 0) ? <h1>No interactions yet</h1> :
                     <>
                         <p>Date Range: {Intl.DateTimeFormat("da-DK").format(new Date(data.date.from))} - {Intl.DateTimeFormat("da-DK").format(new Date(data.date.to))}</p>

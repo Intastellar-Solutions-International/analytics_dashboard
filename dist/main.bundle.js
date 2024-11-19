@@ -5359,8 +5359,19 @@ function DomainDashbord(props) {
   var _useParams = useParams(),
     handle = _useParams.handle,
     id = _useParams.id;
-  document.title = "".concat(punycode.toUnicode(handle), " Dashboard | Intastellar Analytics");
+  document.title = "".concat(punycode.toUnicode(handle), " Dashboard | Intastellar Consents Solutions");
+  var today = new Date();
+  var _useState = useState(new Date(new Date().setDate(today.getDate() - 360)).toISOString().split("T")[0]),
+    _useState2 = _slicedToArray(_useState, 2),
+    fromDate = _useState2[0],
+    setFromDate = _useState2[1];
+  var _useState3 = useState(new Date(new Date().setDate(today.getDate() - 1)).toISOString().split("T")[0]),
+    _useState4 = _slicedToArray(_useState3, 2),
+    toDate = _useState4[0],
+    setToDate = _useState4[1];
   _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.headers.Domains = punycode.toASCII(handle);
+  _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.headers.FromDate = fromDate;
+  _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.headers.ToDate = toDate;
   var _useFetch = (0,_Functions_FetchHook__WEBPACK_IMPORTED_MODULE_0__["default"])(5, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.url, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.method, _API_api__WEBPACK_IMPORTED_MODULE_2__["default"][id].getInteractions.headers, null, handle),
     _useFetch2 = _slicedToArray(_useFetch, 4),
     loading = _useFetch2[0],
@@ -5369,7 +5380,7 @@ function DomainDashbord(props) {
     updated = _useFetch2[3];
   return (_localStorage = localStorage) !== null && _localStorage !== void 0 && (_localStorage = _localStorage.getItem("domains")) !== null && _localStorage !== void 0 && _localStorage.includes(punycode.toUnicode(handle)) || handle == "all" ? /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     className: "dashboard-content"
-  }, /*#__PURE__*/React.createElement("h1", null, "Dashboard"), /*#__PURE__*/React.createElement("p", null, "You\xB4re currently viewing the data for:"), /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("h1", null, "Dashboard"), /*#__PURE__*/React.createElement("p", null, "You\xB4re currently viewing the data for:"), /*#__PURE__*/React.createElement("h2", null, "Domain: ", /*#__PURE__*/React.createElement("a", {
     className: "activeDomain",
     href: "https://".concat(handle),
     target: "_blank"
@@ -6428,6 +6439,7 @@ function LiveView(props) {
       }, domain), /*#__PURE__*/React.createElement("p", {
         className: "liveView-content-data-1-text"
       }, liveData === null || liveData === void 0 ? void 0 : liveData.domains[domain].count)), /*#__PURE__*/React.createElement("div", {
+        key: index,
         style: {
           width: "".concat((liveData === null || liveData === void 0 ? void 0 : liveData.domains[domain].count) / liveData.count * 100, "%"),
           height: "2px",

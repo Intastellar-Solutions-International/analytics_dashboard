@@ -94,7 +94,7 @@ export function LiveView(props) {
                                                             <p className="liveView-content-data-1-text">{domain}</p>
                                                             <p className="liveView-content-data-1-text">{liveData?.domains[domain].count}</p>
                                                         </div>
-                                                        <div style={{
+                                                        <div key={index} style={{
                                                             width: `${(liveData?.domains[domain].count / liveData.count) * 100
                                                                 }%`,
                                                             height: "2px",
