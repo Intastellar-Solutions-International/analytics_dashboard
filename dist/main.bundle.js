@@ -3494,8 +3494,7 @@ function Header(props) {
     items: domainList,
     style: {
       left: "0"
-    },
-    icon: 'dashboard-icons domains'
+    }
   })) : null)), /*#__PURE__*/React.createElement("div", {
     className: "flex profileImage"
   }, /*#__PURE__*/React.createElement("img", {
