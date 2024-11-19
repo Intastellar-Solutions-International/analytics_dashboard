@@ -1,7 +1,7 @@
 import "./Style.css";
 const { useState, useEffect, useRef, createContext } = React;
 const svgMap = window.svgMap;
-import countryCodes from "./countryCodes.js";
+import { countryCodes, countryCoordinates } from "./countryCodes.js";
 
 function colorCalulator(value) {
    const baseColor = "#c09f53";
@@ -55,6 +55,45 @@ export default function Map(props) {
 
       useEffect(() => {
          document.getElementById("svgMap").innerHTML = "";
+         let zoomLevel = 1.5;
+         let center = [0, 0];
+
+         // Zoom into center the area of the map where the data is
+         if (countries.length > 0) {
+            const min = Math.min(...countries.map(country => country.num.total));
+            const max = Math.max(...countries.map(country => country.num.total));
+
+            if (max - min > 1000) {
+               zoomLevel = 1.75;
+
+               const lat = countries.map(country => {
+                  // Find the country code of the max value
+                  const code = countryCodes[country.country];
+                  const coords = countryCoordinates[code];
+                  return coords ? [coords.lat, coords.lng] : undefined;
+               }).filter((lat) => {
+                  return lat !== undefined
+               });
+
+               const lng = countries.map(country => {
+                  const code = countryCodes[country.country];
+                  const coords = countryCoordinates[code];
+                  return coords ? [coords.lat, coords.lng] : undefined;
+               }).filter((lng) => {
+                  return lng !== undefined;
+               });
+
+               const latMin = Math.min(...lat);
+               const latMax = Math.max(...lat);
+
+               const lngMin = Math.min(...lng);
+               const lngMax = Math.max(...lng);
+
+               center = [(latMax + latMin) / 2, (lngMax + lngMin) / 2];
+            }
+         }
+
+
          new svgMap({
             targetElementID: 'svgMap',
 
@@ -110,7 +149,8 @@ export default function Map(props) {
                applyData: 'total',
                values: mapCountries,
             },
-            initialZoom: 1.15,
+            initialZoom: zoomLevel,
+            initialLocation: center,
          });
       }, [data])
    }
