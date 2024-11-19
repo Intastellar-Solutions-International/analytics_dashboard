@@ -2990,6 +2990,8 @@ function Filter(_ref) {
       });
     }
   }, /*#__PURE__*/React.createElement("option", {
+    value: "1"
+  }, "Yesterday"), /*#__PURE__*/React.createElement("option", {
     value: "7"
   }, "Last 7 days"), /*#__PURE__*/React.createElement("option", {
     value: "14"

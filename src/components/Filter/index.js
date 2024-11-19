@@ -18,6 +18,7 @@ export default function Filter({ url, method, header, setLastDays, getLastDays, 
                     setloadingTimeDate(false);
                 })
             }}>
+                <option value="1">Yesterday</option>
                 <option value="7">Last 7 days</option>
                 <option value="14">Last 14 days</option>
                 <option value="28">Last 28 days</option>
