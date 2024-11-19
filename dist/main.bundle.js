@@ -1081,20 +1081,20 @@ function colorCalulator(value) {
   var baseColor = "#c09f53";
   var maxColor = "#c09f53";
   var minColor = "#ddd29b";
-  var max = 1000;
-  var min = 0;
-  var percent = Math.round((value - min) / (max - min) * 100);
-  console.log(value, percent);
-  var color = {
-    r: Math.floor(parseInt(minColor.slice(1, 3), 16) * (1 - percent) + parseInt(maxColor.slice(1, 3), 16) * percent),
-    g: Math.floor(parseInt(minColor.slice(3, 5), 16) * (1 - percent) + parseInt(maxColor.slice(3, 5), 16) * percent),
-    b: Math.floor(parseInt(minColor.slice(5, 7), 16) * (1 - percent) + parseInt(maxColor.slice(5, 7), 16) * percent)
+
+  // Calculate the color based on the value, the higher the value the darker the color taken from the baseColor
+
+  // convert the base hex color to rgb
+  var base = {
+    r: parseInt(baseColor.substring(1, 3), 16),
+    g: parseInt(baseColor.substring(3, 5), 16),
+    b: parseInt(baseColor.substring(5, 7), 16)
   };
-  if (value > 1000) {
-    return baseColor;
-  } else {
-    return "rgb(".concat(color.r, ", ").concat(color.g, ", ").concat(color.b, ")");
-  }
+
+  // calculate the color opacity based on the value and the minColor value
+  var opacity = value / 100 * (1 - 0.1) + 0.46;
+  console.log("rgba(".concat(base.r, ", ").concat(base.g, ", ").concat(base.b, ", ").concat(opacity, ")"));
+  return "rgba(".concat(base.r, ", ").concat(base.g, ", ").concat(base.b, ", ").concat(opacity, ")");
 }
 function Map(props) {
   var data = props.data;

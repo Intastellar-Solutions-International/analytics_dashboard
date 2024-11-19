@@ -7,24 +7,23 @@ function colorCalulator(value) {
    const baseColor = "#c09f53";
    const maxColor = "#c09f53";
    const minColor = "#ddd29b";
-   const max = 1000;
-   const min = 0;
-   const percent = Math.round((value - min) / (max - min) * 100);
 
-   console.log(value, percent);
+   // Calculate the color based on the value, the higher the value the darker the color taken from the baseColor
 
+   // convert the base hex color to rgb
+   const base = {
+      r: parseInt(baseColor.substring(1, 3), 16),
+      g: parseInt(baseColor.substring(3, 5), 16),
+      b: parseInt(baseColor.substring(5, 7), 16)
+   };
 
-   const color = {
-      r: Math.floor(parseInt(minColor.slice(1, 3), 16) * (1 - percent) + parseInt(maxColor.slice(1, 3), 16) * percent),
-      g: Math.floor(parseInt(minColor.slice(3, 5), 16) * (1 - percent) + parseInt(maxColor.slice(3, 5), 16) * percent),
-      b: Math.floor(parseInt(minColor.slice(5, 7), 16) * (1 - percent) + parseInt(maxColor.slice(5, 7), 16) * percent)
-   }
+   // calculate the color opacity based on the value and the minColor value
+   const opacity = value / 100 * (1 - 0.1) + 0.46;
 
-   if (value > 1000) {
-      return baseColor;
-   } else {
-      return `rgb(${color.r}, ${color.g}, ${color.b})`;
-   }
+   console.log(`rgba(${base.r}, ${base.g}, ${base.b}, ${opacity})`);
+
+   return `rgba(${base.r}, ${base.g}, ${base.b}, ${opacity})`;
+
 }
 
 export default function Map(props) {
