@@ -40,7 +40,7 @@ export default function Dashboard(props) {
     useEffect(() => {
         function handleScrollEvent() {
             if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                console.log("you're at the bottom of the page");
+                /* console.log("you're at the bottom of the page"); */
                 // here add more items in the 'filteredData' state from the 'allData' state source.
             }
 

@@ -1083,13 +1083,14 @@ function colorCalulator(value) {
   var minColor = "#ddd29b";
   var max = 1000;
   var min = 0;
-  var percent = (value - min) / (max - min);
+  var percent = Math.round((value - min) / (max - min) * 100);
+  console.log(value, percent);
   var color = {
     r: Math.floor(parseInt(minColor.slice(1, 3), 16) * (1 - percent) + parseInt(maxColor.slice(1, 3), 16) * percent),
     g: Math.floor(parseInt(minColor.slice(3, 5), 16) * (1 - percent) + parseInt(maxColor.slice(3, 5), 16) * percent),
     b: Math.floor(parseInt(minColor.slice(5, 7), 16) * (1 - percent) + parseInt(maxColor.slice(5, 7), 16) * percent)
   };
-  if (value > 10000) {
+  if (value > 1000) {
     return baseColor;
   } else {
     return "rgb(".concat(color.r, ", ").concat(color.g, ", ").concat(color.b, ")");
@@ -4329,9 +4330,6 @@ function TopWidgets(props) {
     window.location.href = "/login";
     return;
   }
-  if (!loading) {
-    console.log(data);
-  }
   var dataset = data === null || data === void 0 ? void 0 : data.map(function (item) {
     return {
       name: item.design.toUpperCase(),
@@ -5214,7 +5212,7 @@ function Dashboard(props) {
   useEffect(function () {
     function handleScrollEvent() {
       if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        console.log("you're at the bottom of the page");
+        /* console.log("you're at the bottom of the page"); */
         // here add more items in the 'filteredData' state from the 'allData' state source.
       }
     }

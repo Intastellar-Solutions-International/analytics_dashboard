@@ -22,10 +22,6 @@ export default function TopWidgets(props) {
         return;
     }
 
-    if (!loading) {
-        console.log(data);
-    }
-
     const dataset = data?.map((item) => {
         return {
             name: item.design.toUpperCase(),

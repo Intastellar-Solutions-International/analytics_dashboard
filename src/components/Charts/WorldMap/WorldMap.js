@@ -9,7 +9,9 @@ function colorCalulator(value) {
    const minColor = "#ddd29b";
    const max = 1000;
    const min = 0;
-   const percent = (value - min) / (max - min);
+   const percent = Math.round((value - min) / (max - min) * 100);
+
+   console.log(value, percent);
 
 
    const color = {
@@ -18,7 +20,7 @@ function colorCalulator(value) {
       b: Math.floor(parseInt(minColor.slice(5, 7), 16) * (1 - percent) + parseInt(maxColor.slice(5, 7), 16) * percent)
    }
 
-   if (value > 10000) {
+   if (value > 1000) {
       return baseColor;
    } else {
       return `rgb(${color.r}, ${color.g}, ${color.b})`;
