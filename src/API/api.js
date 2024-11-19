@@ -71,6 +71,22 @@ const API = {
                 "Content-Type": "application/json"
             }
         },
+        getLanguage: {
+            url: `${PrimaryHost}/analytics/gdpr/getLanguage`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Content-Type": "application/json"
+            }
+        },
+        generatePDF: {
+            url: `${PrimaryHost}/analytics/gdpr/generatePDF`,
+            method: "GET",
+            headers: {
+                "Authorization": Authentication.getToken(),
+                "Content-Type": "application/json"
+            }
+        },
         getDevices: {
             url: `${PrimaryHost}/analytics/gdpr/getDevices`,
             method: "GET",

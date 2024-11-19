@@ -90,6 +90,22 @@ var API = _defineProperty(_defineProperty({
         "Content-Type": "application/json"
       }
     },
+    getLanguage: {
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getLanguage"),
+      method: "GET",
+      headers: {
+        "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
+        "Content-Type": "application/json"
+      }
+    },
+    generatePDF: {
+      url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/generatePDF"),
+      method: "GET",
+      headers: {
+        "Authorization": _Authentication_Auth__WEBPACK_IMPORTED_MODULE_1__["default"].getToken(),
+        "Content-Type": "application/json"
+      }
+    },
     getDevices: {
       url: "".concat(_host__WEBPACK_IMPORTED_MODULE_0__.PrimaryHost, "/analytics/gdpr/getDevices"),
       method: "GET",
