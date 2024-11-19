@@ -1093,7 +1093,6 @@ function colorCalulator(value) {
 
   // calculate the color opacity based on the value and the minColor value
   var opacity = value / 100 * (1 - 0.1) + 0.46;
-  console.log("rgba(".concat(base.r, ", ").concat(base.g, ", ").concat(base.b, ", ").concat(opacity, ")"));
   return "rgba(".concat(base.r, ", ").concat(base.g, ", ").concat(base.b, ", ").concat(opacity, ")");
 }
 function Map(props) {

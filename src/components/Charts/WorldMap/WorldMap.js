@@ -20,8 +20,6 @@ function colorCalulator(value) {
    // calculate the color opacity based on the value and the minColor value
    const opacity = value / 100 * (1 - 0.1) + 0.46;
 
-   console.log(`rgba(${base.r}, ${base.g}, ${base.b}, ${opacity})`);
-
    return `rgba(${base.r}, ${base.g}, ${base.b}, ${opacity})`;
 
 }
